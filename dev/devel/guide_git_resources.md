@@ -1,4 +1,4 @@
-# Git Resources Guidelines[#](#git-resources-guidelines "Link to this heading")
+# [Git Resources Guidelines](#id2)[#](#git-resources-guidelines "Link to this heading")
 
 Git is central to astropy development. While Git is undeniably complex and at times
 inscrutable, in practice there is only a very small subset of commands that you will
@@ -31,14 +31,14 @@ You may also consider using an Interactive Development
 Environment (IDE) like [PyCharm](https://www.jetbrains.com/pycharm/) or [Visual Studio Code](https://code.visualstudio.com/). Both of these IDEs have
 built-in Git support.
 
-## If something goes wrong[#](#if-something-goes-wrong "Link to this heading")
+## [If something goes wrong](#id4)[#](#if-something-goes-wrong "Link to this heading")
 
 [git](https://git-scm.com/) provides a number of ways to recover from errors. If you end up making a
 [git](https://git-scm.com/) mistake, do not hesitate to ask for help. An additional resource that
 walks you through recovering from [git](https://git-scm.com/) mistakes is the
 [git choose-your-own-adventure](http://sethrobertson.github.io/GitFixUm/fixup.html).
 
-## Tutorials and summaries[#](#tutorials-and-summaries "Link to this heading")
+## [Tutorials and summaries](#id5)[#](#tutorials-and-summaries "Link to this heading")
 
 * [GitHub Help](https://help.github.com/) has an excellent series of how-to guides.
 * [learn.github](https://services.github.com/) has an excellent series of tutorials
@@ -53,7 +53,7 @@ walks you through recovering from [git](https://git-scm.com/) mistakes is the
 * Fernando Perez’s [ipython notebook on using git in science](https://nbviewer.jupyter.org/github/fperez/reprosw/blob/master/Version%20Control.ipynb)
 * A good but technical page on [git concepts](https://www.sbf5.com/~cduan/technical/git/)
 
-## Additional Tips and Tricks[#](#additional-tips-and-tricks "Link to this heading")
+## [Additional Tips and Tricks](#id6)[#](#additional-tips-and-tricks "Link to this heading")
 
 ### About Names in [git](https://git-scm.com/)[#](#about-names-in-git "Link to this heading")
 

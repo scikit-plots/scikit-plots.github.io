@@ -11,17 +11,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/devel/guide_release.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Versioning Scheme: Matplotlib follows the Intended Effort Versioning (EffVer) versioning scheme: macro.meso.micro. macro, A release that we expect a large effort from our users to upgrade to. The v..." />
+<meta property="og:description" content="On this page: Release Guidelines- Versioning Scheme, Making the release branch, Testing, GitHub statistics, Update and validate the docs, Create release commit and tag, Release management / DOI, Bu..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Versioning Scheme: Matplotlib follows the Intended Effort Versioning (EffVer) versioning scheme: macro.meso.micro. macro, A release that we expect a large effort from our users to upgrade to. The v..." />
+<meta name="description" content="On this page: Release Guidelines- Versioning Scheme, Making the release branch, Testing, GitHub statistics, Update and validate the docs, Create release commit and tag, Release management / DOI, Bu..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:42:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:36Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"devel/guide_release","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -785,8 +785,30 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="release-guidelines">
-<span id="release-guide"></span><h1>Release Guidelines<a class="headerlink" href="#release-guidelines" title="Link to this heading">#</a></h1>
+  <nav class="contents local" id="on-this-page" role="doc-toc">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#release-guidelines" id="id3">Release Guidelines</a></p>
+<ul>
+<li><p><a class="reference internal" href="#versioning-scheme" id="id4">Versioning Scheme</a></p></li>
+<li><p><a class="reference internal" href="#making-the-release-branch" id="id5">Making the release branch</a></p></li>
+<li><p><a class="reference internal" href="#testing" id="id6">Testing</a></p></li>
+<li><p><a class="reference internal" href="#github-statistics" id="id7">GitHub statistics</a></p></li>
+<li><p><a class="reference internal" href="#update-and-validate-the-docs" id="id8">Update and validate the docs</a></p></li>
+<li><p><a class="reference internal" href="#create-release-commit-and-tag" id="id9">Create release commit and tag</a></p></li>
+<li><p><a class="reference internal" href="#release-management-doi" id="id10">Release management / DOI</a></p></li>
+<li><p><a class="reference internal" href="#building-binaries" id="id11">Building binaries</a></p></li>
+<li><p><a class="reference internal" href="#manually-uploading-to-pypi" id="id12">Manually uploading to PyPI</a></p></li>
+<li><p><a class="reference internal" href="#build-and-deploy-documentation" id="id13">Build and deploy documentation</a></p></li>
+<li><p><a class="reference internal" href="#merge-up-changes-to-main" id="id14">Merge up changes to main</a></p></li>
+<li><p><a class="reference internal" href="#publicize-this-release" id="id15">Publicize this release</a></p></li>
+<li><p><a class="reference internal" href="#conda-packages" id="id16">Conda packages</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="release-guidelines">
+<span id="release-guide"></span><h1><a class="toc-backref" href="#id3" role="doc-backlink">Release Guidelines</a><a class="headerlink" href="#release-guidelines" title="Link to this heading">#</a></h1>
 <div class="admonition-template admonition">
 <p class="admonition-title">Template</p>
 <p>Template for further usage, template belong to matplotlib.</p>
@@ -796,7 +818,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <p>A guide for developers who are doing a Matplotlib release.</p>
 </div>
 <section id="versioning-scheme">
-<h2>Versioning Scheme<a class="headerlink" href="#versioning-scheme" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Versioning Scheme</a><a class="headerlink" href="#versioning-scheme" title="Link to this heading">#</a></h2>
 <p>Matplotlib follows the <a class="reference external" href="https://jacobtomlinson.dev/effver/">Intended Effort Versioning (EffVer)</a>
 versioning scheme: <em>macro.meso.micro</em>.</p>
 <dl>
@@ -820,7 +842,7 @@ fixed bug or <a class="reference external" href="https://xkcd.com/1172/">bugs be
 </dl>
 </section>
 <section id="making-the-release-branch">
-<span id="release-feature-freeze"></span><h2>Making the release branch<a class="headerlink" href="#making-the-release-branch" title="Link to this heading">#</a></h2>
+<span id="release-feature-freeze"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Making the release branch</a><a class="headerlink" href="#making-the-release-branch" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This assumes that a read-only remote for the canonical repository is
@@ -861,7 +883,7 @@ this milestone can help with longer term planning, especially around deprecation
 cycles.</p>
 </section>
 <section id="testing">
-<span id="release-testing"></span><h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<span id="release-testing"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">Testing</a><a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
 <p>We use <a class="reference external" href="https://github.com/matplotlib/matplotlib/actions">GitHub Actions</a>
 for continuous integration.  When preparing for a release, the final tagged
 commit should be tested locally before it is uploaded:</p>
@@ -882,7 +904,7 @@ not run the cell with <code class="docutils literal notranslate"><span class="pr
 to work for <code class="docutils literal notranslate"><span class="pre">ipympl</span></code>.</p>
 </section>
 <section id="github-statistics">
-<span id="release-ghstats"></span><h2>GitHub statistics<a class="headerlink" href="#github-statistics" title="Link to this heading">#</a></h2>
+<span id="release-ghstats"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">GitHub statistics</a><a class="headerlink" href="#github-statistics" title="Link to this heading">#</a></h2>
 <p>We automatically extract GitHub issue, PRs, and authors from GitHub via the API. To
 prepare this list:</p>
 <ol class="arabic">
@@ -926,7 +948,7 @@ scope and place the token in <code class="file docutils literal notranslate"><sp
 </div>
 </section>
 <section id="update-and-validate-the-docs">
-<span id="release-chkdocs"></span><h2>Update and validate the docs<a class="headerlink" href="#update-and-validate-the-docs" title="Link to this heading">#</a></h2>
+<span id="release-chkdocs"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">Update and validate the docs</a><a class="headerlink" href="#update-and-validate-the-docs" title="Link to this heading">#</a></h2>
 <section id="merge-doc-branch">
 <h3>Merge <code class="docutils literal notranslate"><span class="pre">*-doc</span></code> branch<a class="headerlink" href="#merge-doc-branch" title="Link to this heading">#</a></h3>
 <p>Merge the most recent ‘doc’ branch (e.g., <code class="docutils literal notranslate"><span class="pre">v3.7.0-doc</span></code>) into the branch you
@@ -1016,7 +1038,7 @@ should only flag failed external links.</p>
 </section>
 </section>
 <section id="create-release-commit-and-tag">
-<span id="release-tag"></span><h2>Create release commit and tag<a class="headerlink" href="#create-release-commit-and-tag" title="Link to this heading">#</a></h2>
+<span id="release-tag"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Create release commit and tag</a><a class="headerlink" href="#create-release-commit-and-tag" title="Link to this heading">#</a></h2>
 <p>To create the tag, first create an empty commit with a very terse set of the release
 notes in the commit message:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty
@@ -1083,7 +1105,7 @@ higher meso versions (e.g. <code class="docutils literal notranslate"><span clas
 if the <code class="docutils literal notranslate"><span class="pre">v3.7.x</span></code> branch exists)</p>
 </section>
 <section id="release-management-doi">
-<span id="release-doi"></span><h2>Release management / DOI<a class="headerlink" href="#release-management-doi" title="Link to this heading">#</a></h2>
+<span id="release-doi"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Release management / DOI</a><a class="headerlink" href="#release-management-doi" title="Link to this heading">#</a></h2>
 <p>Via the <a class="reference external" href="https://github.com/matplotlib/matplotlib/releases">GitHub UI</a>, turn the
 newly pushed tag into a release. If this is a pre-release remember to mark it as such.</p>
 <p>For final releases, also get the DOI from <a class="reference external" href="https://zenodo.org/">Zenodo</a> (which will
@@ -1102,7 +1124,7 @@ git<span class="w"> </span>push<span class="w"> </span>DANGER<span class="w"> </
 </div>
 </section>
 <section id="building-binaries">
-<span id="release-bld-bin"></span><h2>Building binaries<a class="headerlink" href="#building-binaries" title="Link to this heading">#</a></h2>
+<span id="release-bld-bin"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Building binaries</a><a class="headerlink" href="#building-binaries" title="Link to this heading">#</a></h2>
 <p>We distribute macOS, Windows, and many Linux wheels as well as a source tarball via
 PyPI. Most builders should trigger automatically once the tag is pushed to GitHub:</p>
 <ul class="simple">
@@ -1120,7 +1142,7 @@ the tag as discussed in <a class="reference internal" href="#release-tag"><span 
 </div>
 </section>
 <section id="manually-uploading-to-pypi">
-<span id="release-upload-bin"></span><h2>Manually uploading to PyPI<a class="headerlink" href="#manually-uploading-to-pypi" title="Link to this heading">#</a></h2>
+<span id="release-upload-bin"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">Manually uploading to PyPI</a><a class="headerlink" href="#manually-uploading-to-pypi" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As noted above, the GitHub Actions workflow should build and upload source tarballs
@@ -1147,7 +1169,7 @@ twine<span class="w"> </span>upload<span class="w"> </span>dist/*whl
 <p>Congratulations, you have now done the second scariest part!</p>
 </section>
 <section id="build-and-deploy-documentation">
-<span id="release-docs"></span><h2>Build and deploy documentation<a class="headerlink" href="#build-and-deploy-documentation" title="Link to this heading">#</a></h2>
+<span id="release-docs"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Build and deploy documentation</a><a class="headerlink" href="#build-and-deploy-documentation" title="Link to this heading">#</a></h2>
 <p>To build the documentation you must have the tagged version installed, but
 build the docs from the <code class="docutils literal notranslate"><span class="pre">ver-doc</span></code> branch.  An easy way to arrange this is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
@@ -1191,7 +1213,7 @@ git<span class="w"> </span>push<span class="w"> </span>DANGER<span class="w"> </
 live web page (remember to clear your browser cache).</p>
 </section>
 <section id="merge-up-changes-to-main">
-<span id="release-merge-up"></span><h2>Merge up changes to main<a class="headerlink" href="#merge-up-changes-to-main" title="Link to this heading">#</a></h2>
+<span id="release-merge-up"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Merge up changes to main</a><a class="headerlink" href="#merge-up-changes-to-main" title="Link to this heading">#</a></h2>
 <p>After a release is done, the changes from the release branch should be merged into the
 <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. This is primarily done so that the released tag is on the main branch
 so <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">describe</span></code> (and thus <code class="docutils literal notranslate"><span class="pre">setuptools-scm</span></code>) has the most current tag.
@@ -1215,7 +1237,7 @@ request, though the PR cleanliness status check is expected to fail. The PR shou
 be squashed because the intent is to merge the branch histories.</p>
 </section>
 <section id="publicize-this-release">
-<h2>Publicize this release<a class="headerlink" href="#publicize-this-release" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Publicize this release</a><a class="headerlink" href="#publicize-this-release" title="Link to this heading">#</a></h2>
 <p>After the release is published to PyPI and conda, it should be announced
 through our communication channels:</p>
 <ul class="checklist simple">
@@ -1229,7 +1251,7 @@ which is in <a class="reference external" href="https://discourse.matplotlib.org
 </ul>
 </section>
 <section id="conda-packages">
-<h2>Conda packages<a class="headerlink" href="#conda-packages" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Conda packages</a><a class="headerlink" href="#conda-packages" title="Link to this heading">#</a></h2>
 <p>The Matplotlib project itself does not release conda packages. In particular,
 the Matplotlib release manager is not responsible for conda packaging.</p>
 <p>For information on the packaging of Matplotlib for conda-forge see
@@ -1371,7 +1393,7 @@ the Matplotlib release manager is not responsible for conda packaging.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

@@ -1,9 +1,9 @@
-# Documentation Tagging Guidelines[#](#documentation-tagging-guidelines "Link to this heading")
+# [Documentation Tagging Guidelines](#id1)[#](#documentation-tagging-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
 
-## Why do we need tags?[#](#why-do-we-need-tags "Link to this heading")
+## [Why do we need tags?](#id2)[#](#why-do-we-need-tags "Link to this heading")
 
 Tags serve multiple purposes.
 
@@ -17,7 +17,7 @@ helpful for users struggling to write a search query for what they’re looking 
 
 Hidden tags provide additional functionality for maintainers and contributors.
 
-## How to tag?[#](#how-to-tag "Link to this heading")
+## [How to tag?](#id3)[#](#how-to-tag "Link to this heading")
 
 Place the tag directive at the bottom of each page and add the tags underneath, e.g.:
 
@@ -27,7 +27,7 @@ Place the tag directive at the bottom of each page and add the tags underneath, 
 
 ```
 
-## What gets a tag?[#](#what-gets-a-tag "Link to this heading")
+## [What gets a tag?](#id4)[#](#what-gets-a-tag "Link to this heading")
 
 Every gallery example should be tagged with:
 
@@ -52,7 +52,7 @@ title or the scope of the example.
 
 See [Tag Glossary](guide_document_tag_glossary.html) for a complete list
 
-## Proposing new tags[#](#proposing-new-tags "Link to this heading")
+## [Proposing new tags](#id5)[#](#proposing-new-tags "Link to this heading")
 
 1. Review existing tag list, looking out for similar entries (i.e. `axes` and `axis`).
 2. If a relevant tag or subcategory does not yet exist, propose it. Each tag is two

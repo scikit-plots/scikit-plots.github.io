@@ -1,6 +1,6 @@
 # list\_workflows[#](#list-workflows "Link to this heading")
 
-scikitplot.cython.list\_workflows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_templates_api.py#L808)[#](#scikitplot.cython.list_workflows "Link to this definition")
+scikitplot.cython.list\_workflows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_templates_api.py#L808)[#](#scikitplot.cython.list_workflows "Link to this definition")
 :   List available workflow template folders.
 
     Returns:

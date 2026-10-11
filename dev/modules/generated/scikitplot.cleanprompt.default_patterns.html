@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:42:33Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:16:06Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.default_patterns","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1644,7 +1646,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>default_patterns<a class="headerlink" href="#default-patterns" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.default_patterns">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">default_patterns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_patterns.py#L641"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.default_patterns" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">default_patterns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_patterns.py#L641"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.default_patterns" title="Link to this definition">#</a></dt>
 <dd><p>Return the patterns enabled when a policy does not name <code class="docutils literal notranslate"><span class="pre">kinds</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1659,8 +1661,8 @@ stable across runs.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f4e480c6-542e-4ba3-b794-fbcfce0eb976">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f4e480c6-542e-4ba3-b794-fbcfce0eb976','c69b04a0-662e-496f-a040-e0fc8de9a479','52a3a1b1-43c8-4c1d-8e7e-d5a16bd8c48b','../../lite/tree/../notebooks/index.html?path=d918e376_9c80_4cd1_bed4_dfbb1cf2b20a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="92cf17ff-b09a-41a7-83dc-899e362f34a1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('92cf17ff-b09a-41a7-83dc-899e362f34a1','8d886903-32c8-450c-8e8e-156943ac0676','cbb7b1c1-d7c6-4385-b198-83bdc437c23a','../../lite/tree/../notebooks/index.html?path=6a2e5e60_6c96_400b_b2e3_761ae037184c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kinds</span> <span class="o">=</span> <span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">kind</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">default_patterns</span><span class="p">()]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">"EMAIL"</span> <span class="ow">in</span> <span class="n">kinds</span> <span class="ow">and</span> <span class="s2">"URL"</span> <span class="ow">in</span> <span class="n">kinds</span>
 <span class="go">True</span>
@@ -1668,7 +1670,7 @@ stable across runs.</p>
 </div>
 </div>
 </div>
-<div id="52a3a1b1-43c8-4c1d-8e7e-d5a16bd8c48b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f4e480c6-542e-4ba3-b794-fbcfce0eb976','52a3a1b1-43c8-4c1d-8e7e-d5a16bd8c48b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f4e480c6-542e-4ba3-b794-fbcfce0eb976','52a3a1b1-43c8-4c1d-8e7e-d5a16bd8c48b')">Open In Tab</button></div><div id="c69b04a0-662e-496f-a040-e0fc8de9a479" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="cbb7b1c1-d7c6-4385-b198-83bdc437c23a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('92cf17ff-b09a-41a7-83dc-899e362f34a1','cbb7b1c1-d7c6-4385-b198-83bdc437c23a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('92cf17ff-b09a-41a7-83dc-899e362f34a1','cbb7b1c1-d7c6-4385-b198-83bdc437c23a')">Open In Tab</button></div><div id="8d886903-32c8-450c-8e8e-156943ac0676" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1786,7 +1788,7 @@ stable across runs.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

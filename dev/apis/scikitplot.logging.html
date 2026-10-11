@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:41:27Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:05Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.logging","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -111,7 +111,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CRITICAL" href="../modules/generated/scikitplot.logging.CRITICAL.html" />
-    <link rel="prev" title="ANNImputer" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html" />
+    <link rel="prev" title="scikitplot.levenshtein" href="scikitplot.levenshtein.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -1282,6 +1282,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot.logging</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1454,6 +1455,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1669,7 +1671,7 @@ and flexibility for large-scale projects.</p>
 Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py#L94</a></p>
 </div>
 </div>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/logging/index.html#logging-index"><span class="std std-ref">Logging System</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/logging/index.html#logging-index"><span class="std std-ref">Logging</span></a> section for further details.</p>
 <section id="logging-levels">
 <span id="logging-ref-logging-levels"></span><h2>Logging Levels<a class="headerlink" href="#logging-levels" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
@@ -1798,12 +1800,12 @@ Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/pyth
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.impute._ann.ANNImputer.html"
+       href="scikitplot.levenshtein.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ANNImputer</p>
+        <p class="prev-next-title">scikitplot.levenshtein</p>
       </div>
     </a>
     <a class="right-next"
@@ -1855,7 +1857,7 @@ Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/pyth
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

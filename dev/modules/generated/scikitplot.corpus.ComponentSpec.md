@@ -1,6 +1,6 @@
 # ComponentSpec[#](#componentspec "Link to this heading")
 
-class scikitplot.corpus.ComponentSpec(**name**, **category**, **implementation**, **status=CapabilityStatus.UNKNOWN**, **reason\_code=None**, **aliases=()**, **optional\_dependencies=()**, **capabilities=<factory>**, **config\_type=None**, **version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec "Link to this definition")
+class scikitplot.corpus.ComponentSpec(**name**, **category**, **implementation**, **status=CapabilityStatus.UNKNOWN**, **reason\_code=None**, **aliases=()**, **optional\_dependencies=()**, **capabilities=<factory>**, **config\_type=None**, **version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec "Link to this definition")
 :   Everything the catalog knows about one component.
 
     Parameters:
@@ -64,23 +64,23 @@ class scikitplot.corpus.ComponentSpec(**name**, **category**, **implementation**
         Derived from [`status`](#scikitplot.corpus.ComponentSpec.status "scikitplot.corpus.ComponentSpec.status"), which is the authority. `UNKNOWN` is
         ****not**** available: an unprobed component must not be reported as usable.
 
-    capabilities: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.capabilities "Link to this definition")
+    capabilities: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.capabilities "Link to this definition")
 
-    category: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.category "Link to this definition")
+    category: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.category "Link to this definition")
 
     config\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ComponentSpec.config_type "Link to this definition")
 
-    implementation: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.implementation "Link to this definition")
+    implementation: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.implementation "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L105)[#](#scikitplot.corpus.ComponentSpec.name "Link to this definition")
 
     optional\_dependencies: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.corpus.ComponentSpec.optional_dependencies "Link to this definition")
 
     reason\_code: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ComponentSpec.reason_code "Link to this definition")
 
-    status: [CapabilityStatus](scikitplot.corpus.CapabilityStatus.html#scikitplot.corpus.CapabilityStatus "scikitplot.corpus._capabilities.CapabilityStatus") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.ComponentSpec.status "Link to this definition")
+    status: [CapabilityStatus](scikitplot.corpus.CapabilityStatus.html#scikitplot.corpus.CapabilityStatus "scikitplot.corpus._capabilities.CapabilityStatus") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.ComponentSpec.status "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L163)[#](#scikitplot.corpus.ComponentSpec.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L163)[#](#scikitplot.corpus.ComponentSpec.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

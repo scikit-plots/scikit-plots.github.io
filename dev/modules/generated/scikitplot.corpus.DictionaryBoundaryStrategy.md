@@ -1,6 +1,6 @@
 # DictionaryBoundaryStrategy[#](#dictionaryboundarystrategy "Link to this heading")
 
-class scikitplot.corpus.DictionaryBoundaryStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L916)[#](#scikitplot.corpus.DictionaryBoundaryStrategy "Link to this definition")
+class scikitplot.corpus.DictionaryBoundaryStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L916)[#](#scikitplot.corpus.DictionaryBoundaryStrategy "Link to this definition")
 :   Dictionary-based word boundary detection for no-space scripts.
 
     Covers:
@@ -27,7 +27,7 @@ class scikitplot.corpus.DictionaryBoundaryStrategy[[source]](https://github.com/
     ****Developer note:**** Thai has no sentence-terminal character; sentence
     splitting for Thai is handled here via PyThaiNLP `sent_tokenize`.
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L957)[#](#scikitplot.corpus.DictionaryBoundaryStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L957)[#](#scikitplot.corpus.DictionaryBoundaryStrategy.segment "Link to this definition")
     :   Segment no-space **span** using dictionary lookup.
 
         Parameters:

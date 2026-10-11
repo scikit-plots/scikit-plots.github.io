@@ -1,0 +1,13 @@
+# scikitplot.levenshtein.normalized\_distance[#](#scikitplot-levenshtein-normalized-distance "Link to this heading")
+
+scikitplot.levenshtein.normalized\_distance(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/levenshtein/_core.py#L353)[#](#scikitplot.levenshtein.normalized_distance "Link to this definition")
+:   Return distance normalised to `[0, 1]` by maximum sequence length.
+
+    Parameters:
+    :   * ****a**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****b**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
+        * ****backend**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+
+    Return type:
+    :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")

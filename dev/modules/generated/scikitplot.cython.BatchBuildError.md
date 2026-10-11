@@ -1,6 +1,6 @@
 # BatchBuildError[#](#batchbuilderror "Link to this heading")
 
-exception scikitplot.cython.BatchBuildError(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_result.py#L468)[#](#scikitplot.cython.BatchBuildError "Link to this definition")
+exception scikitplot.cython.BatchBuildError(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_result.py#L468)[#](#scikitplot.cython.BatchBuildError "Link to this definition")
 :   Raised by fail-fast batch builds, carrying the partial result.
 
     Attributes:

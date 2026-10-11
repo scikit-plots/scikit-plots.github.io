@@ -1,6 +1,6 @@
 # scikitplot.visualkeras[#](#module-scikitplot.visualkeras "Link to this heading")
 
-****User guide.**** See the [Visualkeras](../user_guide/visualkeras/index.html#visualkeras-index) section for further details.
+****User guide.**** See the [Keras architecture visualization](../user_guide/visualkeras/index.html#visualkeras-index) section for further details.
 
 ## Graphical Visualization[#](#module-scikitplot.visualkeras._graph "Link to this heading")
 

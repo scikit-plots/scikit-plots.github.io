@@ -1,113 +1,55 @@
-# ANNoy Vector Database[#](#annoy-vector-database "Link to this heading")
+# Annoy vector search[#](#annoy-vector-search "Link to this heading")
 
-ANNOY (Approximate Nearest Neighbors Oh Yeah): The core data structure are random projection trees,
-a set of binary trees where each non-leaf node represents a hyperplane splitting the input space into half
-and each leaf stores one data point. Trees are built independently and at random, so to some extent,
-it mimics a hashing function. ANNOY search happens in all the trees to iteratively search through the half
-that is closest to the query and then aggregates the results.
-The idea is quite related to KD tree but a lot more scalable.
-`LLM Powered Autonomous Agents <https://lilianweng.github.io/posts/2023-06-23-agent/>`
+`scikitplot.annoy` wraps Spotify Annoy-style approximate nearest-neighbor
+search with a higher-level `Index` facade. It is designed for immutable or
+build-once vector indexes where memory-mapped persistence, predictable query
+semantics, and process sharing matter more than online mutation.
 
-ANNoy helps you find **similar items** fast.
+> **Important**
+> Approximate nearest-neighbor search is a retrieval strategy, not a proof of
+semantic relevance. Vector dimensionality and metric are index invariants; add
+items before building, and treat saved indexes as data artifacts with their own
+lifecycle.
+Getting started
 
-You give your data as ****vectors**** (arrays of numbers). Then you can search for
-the ****nearest neighbors**** (the most similar vectors).
+Build a small index, add vectors, build trees, and query neighbors.
 
-This page documents the Annoy [[1]](#id2) user guide integration shipped with scikit-plots.
+[Getting started](getting_started.html#annoy-getting-started)Architecture
 
-* Low-level bindings C-API: [`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy")
-* High-level Python-API: [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy")
+Understand the compiled backend, high-level `Index` facade, and mixins.
 
-**VectorDB**
+[Architecture](architecture.html#annoy-architecture)Persistence and I/O
 
-* [Vector Similarity Search](annoy_index_vector_database.html)
-  * [Vector similarity search](annoy_index_vector_database.html#vector-similarity-search)
-  * [Vector database vs “vector index library”](annoy_index_vector_database.html#vector-database-vs-vector-index-library)
-  * [Pros and cons of vector search](annoy_index_vector_database.html#pros-and-cons-of-vector-search)
-  * [5 practical tips](annoy_index_vector_database.html#practical-tips)
-  * [Open source options](annoy_index_vector_database.html#open-source-options)
-  * [How to choose (simple rules)](annoy_index_vector_database.html#how-to-choose-simple-rules)
-**Architecture**
+Choose native files, bundles, bytes, metadata, or pickle deliberately.
 
-* [Index Inheritance](annoy_index_inheritance_diagrams.html)
-  * [Index + mixins](annoy_index_inheritance_diagrams.html#index-mixins)
-  * [Mixins only (independence + MRO scan)](annoy_index_inheritance_diagrams.html#mixins-only-independence-mro-scan)
-  * [Notes and Limitations](annoy_index_inheritance_diagrams.html#notes-and-limitations)
-**cython**
+[Persistence and I/O](persistence_and_io.html#annoy-persistence-and-io)Performance and threads
 
-* [ANNoy Cython](_annoy.html)
+Tune tree count, search effort, metrics, and build concurrency.
 
-## Public Python API[#](#public-python-api "Link to this heading")
+[Performance and threads](performance_and_threads.html#annoy-performance-and-threads)Python API
 
-This module exports:
+Map the high-level public surface and advanced mixins.
 
-* [`Annoy`](../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy "scikitplot.annoy.Annoy"):
-  Low-level C-extension type (stable, picklable).
-* [`AnnoyIndex`](../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex "scikitplot.annoy.AnnoyIndex"):
-  Public alias of the Low-level [`Annoy`](../../modules/generated/scikitplot.annoy.Annoy.html#scikitplot.annoy.Annoy "scikitplot.annoy.Annoy") index.
-* [`Index`](../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index"):
-  High-level Python wrapper subclass (stable, picklable).
+[Python API](python_api.html#annoy-python-api)Limits and troubleshooting
 
-> **Note**
-> For backend and C-extension details, see [spotify/ANNoy Vector Database (Approximate Nearest Neighbors)](../cexternals/_annoy/index.html#cexternals-annoy-index).
+Compiled-backend requirements, mmap lifetime, vector rules, and build caveats.
 
-High-level Python interface for the C++ Annoy backend.
+[Limits and troubleshooting](limits_and_troubleshooting.html#annoy-limits-and-troubleshooting)
 
-This page documents [`annoy`](../../apis/scikitplot.annoy.html#module-scikitplot.annoy "scikitplot.annoy"). It provides a stable import path
-and a small, user-facing API built on the low-level bindings in
-[`_annoy`](../../apis/scikitplot.cexternals.html#module-scikitplot.cexternals._annoy "scikitplot.cexternals._annoy").
+## Deep dives[#](#deep-dives "Link to this heading")
 
-## Workflow[#](#workflow "Link to this heading")
+* [Vector Similarity Search and Vector Database](annoy_index_vector_database.html) – vector-database concepts and similarity search.
+* [Annoy Index class Inheritance Diagrams (MRO)](annoy_index_inheritance_diagrams.html) – wrapper/backend inheritance diagrams.
+* [ANNoy Cython](_annoy.html) – private Cython-backend notes for advanced maintainers.
 
-1. Create an [`AnnoyIndex`](../../modules/generated/scikitplot.annoy.AnnoyIndex.html#scikitplot.annoy.AnnoyIndex "scikitplot.annoy.AnnoyIndex") with a fixed vector length `f` and a metric.
-2. Add items with `add_item`.
-3. Build the forest with `build`.
-4. Save and load with `save` and `load`.
+## Examples[#](#examples "Link to this heading")
 
-## Quick start[#](#quick-start "Link to this heading")
+See [Annoy](../../auto_examples/annoy/index.html#annoy-examples) for executable examples that accompany this guide.
 
-Examples
+## See also[#](#see-also "Link to this heading")
 
-```
-import random; random.seed(0)
-# from annoy import Annoy, AnnoyIndex
-# from scikitplot.cexternals._annoy import Annoy, AnnoyIndex
-from scikitplot.annoy import Annoy, AnnoyIndex, Index
-
-f = 40  # Length of item vector that will be indexed
-t = AnnoyIndex(f, 'angular')
-
-for i in range(1000):
-    v = [random.gauss(0, 1) for z in range(f)]
-    t.add_item(i, v)
-
-t.build(10)  # 10 trees
-t.save('test.ann')
-
-u = AnnoyIndex(f, 'angular')
-u.load('test.ann')  # memory-mapped
-
-print(u.get_nns_by_item(0, 1000))
-
-```
-
-## Notes[#](#notes "Link to this heading")
-
-* Every added vector must have length `f`.
-* Add items before calling `build`.
-* Item ids are integers. Storage is allocated up to `max(id) + 1`.
-
-## High-level wrapper: [`Index`](../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index")[#](#high-level-wrapper-index "Link to this heading")
-
-[`Index`](../../modules/generated/scikitplot.annoy.Index.html#scikitplot.annoy.Index "scikitplot.annoy.Index") is a Pythonic wrapper for Annoy-like objects.
-
-It is designed for higher-level workflows where you want a Python object that is
-safe to serialize and move between processes.
-
-## Mixins used by the high-level wrapper[#](#mixins-used-by-the-high-level-wrapper "Link to this heading")
-
-The wrapper uses mixins `_mixins`
-to keep features separate and explicit.
+* [spotify/ANNoy Vector Database (Approximate Nearest Neighbors)](../cexternals/_annoy/index.html#cexternals-annoy-index)
+* [Corpus User Guide](../corpus/index.html#corpus-index)
 
 ## Further reading[#](#further-reading "Link to this heading")
 
@@ -135,7 +77,7 @@ to keep features separate and explicit.
 
 ## References[#](#references "Link to this heading")
 
-[[1](#id1)]
+[1]
 
 [Spotify AB. (2013, Feb 20). “Approximate Nearest Neighbors Oh Yeah”
 Github. https://pypi.org/project/annoy](https://pypi.org/project/annoy)

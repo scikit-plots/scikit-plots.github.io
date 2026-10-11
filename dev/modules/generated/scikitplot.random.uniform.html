@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:31Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:17:56Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.random.uniform","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -109,7 +109,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="scikitplot.seaborn" href="../../apis/scikitplot.seaborn.html" />
+    <link rel="next" title="scikitplot.rank_bm25" href="../../apis/scikitplot.rank_bm25.html" />
     <link rel="prev" title="shuffle" href="scikitplot.random.shuffle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1665,8 +1667,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="801aaf23-8a19-476b-807e-8eed83ff9566">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('801aaf23-8a19-476b-807e-8eed83ff9566','fec8983c-2816-4e2a-b636-96cbb64ff0d6','4abebfba-f0c7-40b4-9de9-ab7f2662d0ff','../../lite/tree/../notebooks/index.html?path=c11576ee_3371_43db_a677_9d26f9a30571.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7f58ed97-e8e5-411e-905d-2f06d44c8e85">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7f58ed97-e8e5-411e-905d-2f06d44c8e85','b14482b8-07fc-455c-8ef1-5d392f7a1340','e11f8dc0-7071-47c5-8442-2e6362ba1b26','../../lite/tree/../notebooks/index.html?path=1043a555_08c4_4e21_aef6_8c3240f120dd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span> <span class="o">=</span> <span class="n">KissGenerator</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gen</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">array([...])</span>
@@ -1674,7 +1676,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="4abebfba-f0c7-40b4-9de9-ab7f2662d0ff" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('801aaf23-8a19-476b-807e-8eed83ff9566','4abebfba-f0c7-40b4-9de9-ab7f2662d0ff')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('801aaf23-8a19-476b-807e-8eed83ff9566','4abebfba-f0c7-40b4-9de9-ab7f2662d0ff')">Open In Tab</button></div><div id="fec8983c-2816-4e2a-b636-96cbb64ff0d6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e11f8dc0-7071-47c5-8442-2e6362ba1b26" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7f58ed97-e8e5-411e-905d-2f06d44c8e85','e11f8dc0-7071-47c5-8442-2e6362ba1b26')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7f58ed97-e8e5-411e-905d-2f06d44c8e85','e11f8dc0-7071-47c5-8442-2e6362ba1b26')">Open In Tab</button></div><div id="b14482b8-07fc-455c-8ef1-5d392f7a1340" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1698,11 +1700,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       </div>
     </a>
     <a class="right-next"
-       href="../../apis/scikitplot.seaborn.html"
+       href="../../apis/scikitplot.rank_bm25.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.seaborn</p>
+        <p class="prev-next-title">scikitplot.rank_bm25</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1792,7 +1794,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

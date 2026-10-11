@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:43:40Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:17:04Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.export_documents","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1287,6 +1287,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1459,6 +1460,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1646,7 +1648,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>export_documents<a class="headerlink" href="#export-documents" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.export_documents">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">export_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parquet_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'snappy'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_export/_export.py#L146"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.export_documents" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">export_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_embedding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parquet_compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'snappy'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_export/_export.py#L146"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.export_documents" title="Link to this definition">#</a></dt>
 <dd><p>Export a list of documents to <code class="docutils literal notranslate"><span class="pre">output_path</span></code> in the given format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1724,8 +1726,8 @@ partial files at the final path.</p>
 because storing a float32 vector per row in a tabular cell is
 impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="fc69159c-643c-458a-b808-a82827ccc8d5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fc69159c-643c-458a-b808-a82827ccc8d5','d3ac8cae-2221-4268-99dc-08d4fb6d79b9','3bdd41a7-dddf-4ac8-93f8-e8dcfe8210f6','../../lite/tree/../notebooks/index.html?path=6309bd9c_dc4c_4966_b79d_d319dae2cd51.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0bf599d1-9ed3-41bd-ac4b-5ccbc317bf9a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0bf599d1-9ed3-41bd-ac4b-5ccbc317bf9a','ae239b1b-7a1d-4051-82c9-08dcf082a3fc','6c9b8ada-d6f7-4494-bc80-ba8c3098e60c','../../lite/tree/../notebooks/index.html?path=514db386_0a99_4e4e_86d2_10a143391ec2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>CSV export (zero dependencies):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">export_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"corpus.csv"</span><span class="p">),</span> <span class="n">ExportFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">)</span>
@@ -1748,7 +1750,7 @@ impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 </div>
 </div>
 </div>
-<div id="3bdd41a7-dddf-4ac8-93f8-e8dcfe8210f6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fc69159c-643c-458a-b808-a82827ccc8d5','3bdd41a7-dddf-4ac8-93f8-e8dcfe8210f6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fc69159c-643c-458a-b808-a82827ccc8d5','3bdd41a7-dddf-4ac8-93f8-e8dcfe8210f6')">Open In Tab</button></div><div id="d3ac8cae-2221-4268-99dc-08d4fb6d79b9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6c9b8ada-d6f7-4494-bc80-ba8c3098e60c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0bf599d1-9ed3-41bd-ac4b-5ccbc317bf9a','6c9b8ada-d6f7-4494-bc80-ba8c3098e60c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0bf599d1-9ed3-41bd-ac4b-5ccbc317bf9a','6c9b8ada-d6f7-4494-bc80-ba8c3098e60c')">Open In Tab</button></div><div id="ae239b1b-7a1d-4051-82c9-08dcf082a3fc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1873,7 +1875,7 @@ impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

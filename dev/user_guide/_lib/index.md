@@ -1,7 +1,7 @@
 > **Template**
 > Template for further usage, template belong to Scikit-learn.
 
-# Array API support[#](#array-api-support "Link to this heading")
+# [Array API support](#id3)[#](#array-api-support "Link to this heading")
 
 > **See also**
 > <https://data-apis.org/>
@@ -40,7 +40,7 @@ and how it facilitates interoperability between array libraries:
 * [Scikit-learn on GPUs with Array API](https://www.youtube.com/watch?v=c_s8tr1AizA)
   by [Thomas Fan](https://github.com/thomasjpfan) at PyData NYC 2023.
 
-## Example usage[#](#example-usage "Link to this heading")
+## [Example usage](#id4)[#](#example-usage "Link to this heading")
 
 Here is an example code snippet to demonstrate how to use [CuPy](https://cupy.dev/) to run
 `LinearDiscriminantAnalysis` on a GPU:
@@ -101,7 +101,7 @@ the tensors directly:
 
 ```
 
-## Support for `Array API`-compatible inputs[#](#support-for-array-api-compatible-inputs "Link to this heading")
+## [Support for `Array API`-compatible inputs](#id5)[#](#support-for-array-api-compatible-inputs "Link to this heading")
 
 Estimators and other tools in scikit-learn that support Array API compatible inputs.
 
@@ -186,7 +186,7 @@ method.
 Note however that scoring functions that return scalar values return Python
 scalars (typically a `float` instance) instead of an array scalar value.
 
-## Common estimator checks[#](#common-estimator-checks "Link to this heading")
+## [Common estimator checks](#id6)[#](#common-estimator-checks "Link to this heading")
 
 Add the `array_api_support` tag to an estimator’s set of tags to indicate that
 it supports the Array API. This will enable dedicated checks as part of the

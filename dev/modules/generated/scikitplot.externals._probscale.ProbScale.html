@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:05Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:17:31Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.externals._probscale.ProbScale","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1644,7 +1646,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ProbScale<a class="headerlink" href="#probscale" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.externals._probscale.</span></span><span class="sig-name descname"><span class="pre">ProbScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/externals/_probscale/probscale.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.externals._probscale.</span></span><span class="sig-name descname"><span class="pre">ProbScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/externals/_probscale/probscale.py#L240"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale" title="Link to this definition">#</a></dt>
 <dd><p>A probability scale for matplotlib Axes.</p>
 <p>Transforms an axis so that normally distributed data plot as a straight
 line.  Tick locations correspond to probability (or percentage) values;
@@ -1729,8 +1731,8 @@ all configuration is driven by keyword arguments.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="72b37b5a-05ef-4595-af74-d8facb5c9e54">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('72b37b5a-05ef-4595-af74-d8facb5c9e54','2ac9323a-809b-4842-ad41-26d51b73671c','88011f98-d751-4c38-9c0b-2f2419b1660f','../../lite/tree/../notebooks/index.html?path=4def11e1_9811_4893_ab6a_b43d0b3f0978.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="758bbb5f-0baa-459a-8add-2dcc7f7f9a91">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('758bbb5f-0baa-459a-8add-2dcc7f7f9a91','69ad1cc7-74f9-4723-ad7a-5e09d75e4f0a','72c7786b-b506-4c17-9c57-1afd91d3a0c2','../../lite/tree/../notebooks/index.html?path=b87cd9d4_096e_4c25_891d_81f18595f7d4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Basic probability scale (percentage labels):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot.externals._probscale</span>  <span class="c1"># registers 'prob' scale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
@@ -1756,9 +1758,9 @@ all configuration is driven by keyword arguments.</p>
 </figure>
 </div>
 </div>
-<div id="88011f98-d751-4c38-9c0b-2f2419b1660f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('72b37b5a-05ef-4595-af74-d8facb5c9e54','88011f98-d751-4c38-9c0b-2f2419b1660f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('72b37b5a-05ef-4595-af74-d8facb5c9e54','88011f98-d751-4c38-9c0b-2f2419b1660f')">Open In Tab</button></div><div id="2ac9323a-809b-4842-ad41-26d51b73671c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="72c7786b-b506-4c17-9c57-1afd91d3a0c2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('758bbb5f-0baa-459a-8add-2dcc7f7f9a91','72c7786b-b506-4c17-9c57-1afd91d3a0c2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('758bbb5f-0baa-459a-8add-2dcc7f7f9a91','72c7786b-b506-4c17-9c57-1afd91d3a0c2')">Open In Tab</button></div><div id="69ad1cc7-74f9-4723-ad7a-5e09d75e4f0a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.get_transform">
-<span class="sig-name descname"><span class="pre">get_transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/externals/_probscale/probscale.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.get_transform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/externals/_probscale/probscale.py#L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.get_transform" title="Link to this definition">#</a></dt>
 <dd><p>Return the probability transform for this scale.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1778,7 +1780,7 @@ twin <code class="xref py py-class docutils literal notranslate"><span class="pr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.limit_range_for_scale">
-<span class="sig-name descname"><span class="pre">limit_range_for_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minpos</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/externals/_probscale/probscale.py#L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.limit_range_for_scale" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">limit_range_for_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minpos</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/externals/_probscale/probscale.py#L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.limit_range_for_scale" title="Link to this definition">#</a></dt>
 <dd><p>Clamp axis limits to positive probability values.</p>
 <p>Any limit at or below zero is replaced by <em>minpos</em>, the smallest
 strictly-positive value on the axis, so that the probability
@@ -1832,7 +1834,7 @@ form used here is always correct regardless of the truthiness of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters">
-<span class="sig-name descname"><span class="pre">set_default_locators_and_formatters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/externals/_probscale/probscale.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_default_locators_and_formatters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/externals/_probscale/probscale.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.set_default_locators_and_formatters" title="Link to this definition">#</a></dt>
 <dd><p>Configure probability-scale locators and formatters.</p>
 <p>Sets a <a class="reference external" href="https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FixedLocator" title="(in Matplotlib v3.12.0.dev731+g2fb04d1a6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FixedLocator</span></code></a> at standard
 probability tick positions, a <a class="reference external" href="https://matplotlib.org/devdocs/api/ticker_api.html#matplotlib.ticker.FuncFormatter" title="(in Matplotlib v3.12.0.dev731+g2fb04d1a6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FuncFormatter</span></code></a>
@@ -1856,7 +1858,7 @@ that renders probabilities as percentages or proportions, and
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.externals._probscale.ProbScale.val_in_range">
-<span class="sig-name descname"><span class="pre">val_in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../matplotlib/scale.py#L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.val_in_range" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">val_in_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../matplotlib/scale.py#L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.externals._probscale.ProbScale.val_in_range" title="Link to this definition">#</a></dt>
 <dd><p>Return whether the value(s) are within the valid range for this scale.</p>
 <p>Accepts a scalar or array-like <code class="docutils literal notranslate"><span class="pre">val</span></code>. For a scalar, returns a
 Python <code class="docutils literal notranslate"><span class="pre">bool</span></code>. For an array, returns a bool ndarray of the same
@@ -1989,7 +1991,7 @@ more efficient solutions for their domain.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

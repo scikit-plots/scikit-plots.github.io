@@ -1,6 +1,6 @@
 # SpacePunctuationStrategy[#](#spacepunctuationstrategy "Link to this heading")
 
-class scikitplot.corpus.SpacePunctuationStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L302)[#](#scikitplot.corpus.SpacePunctuationStrategy "Link to this definition")
+class scikitplot.corpus.SpacePunctuationStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L302)[#](#scikitplot.corpus.SpacePunctuationStrategy "Link to this definition")
 :   Whitespace-and-punctuation segmentation for space-delimited scripts.
 
     Covers: Latin, Cyrillic, Greek, Armenian, Georgian, Ethiopic, and any
@@ -13,7 +13,7 @@ class scikitplot.corpus.SpacePunctuationStrategy[[source]](https://github.com/sc
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L317)[#](#scikitplot.corpus.SpacePunctuationStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L317)[#](#scikitplot.corpus.SpacePunctuationStrategy.segment "Link to this definition")
     :   Segment **span** by whitespace (words) or sentence boundary (sentences).
 
         Parameters:

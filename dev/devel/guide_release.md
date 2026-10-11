@@ -1,11 +1,11 @@
-# Release Guidelines[#](#release-guidelines "Link to this heading")
+# [Release Guidelines](#id3)[#](#release-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
 > **This document is only relevant for Matplotlib release managers.**
 > A guide for developers who are doing a Matplotlib release.
 
-## Versioning Scheme[#](#versioning-scheme "Link to this heading")
+## [Versioning Scheme](#id4)[#](#versioning-scheme "Link to this heading")
 
 Matplotlib follows the [Intended Effort Versioning (EffVer)](https://jacobtomlinson.dev/effver/)
 versioning scheme: **macro.meso.micro**.
@@ -32,7 +32,7 @@ versioning scheme: **macro.meso.micro**.
 
     These are released as-needed, but typically every 1-2 months between meso releases.
 
-## Making the release branch[#](#making-the-release-branch "Link to this heading")
+## [Making the release branch](#id5)[#](#making-the-release-branch "Link to this heading")
 
 > **Note**
 > This assumes that a read-only remote for the canonical repository is
@@ -83,7 +83,7 @@ should already exist). While most active items should go in the next meso releas
 this milestone can help with longer term planning, especially around deprecation
 cycles.
 
-## Testing[#](#testing "Link to this heading")
+## [Testing](#id6)[#](#testing "Link to this heading")
 
 We use [GitHub Actions](https://github.com/matplotlib/matplotlib/actions)
 for continuous integration. When preparing for a release, the final tagged
@@ -113,7 +113,7 @@ not run the cell with `matplotlib.use('nbagg')`. Tests which check
 `connection_info`, use `reshow`, or test the OO interface are not expected
 to work for `ipympl`.
 
-## GitHub statistics[#](#github-statistics "Link to this heading")
+## [GitHub statistics](#id7)[#](#github-statistics "Link to this heading")
 
 We automatically extract GitHub issue, PRs, and authors from GitHub via the API. To
 prepare this list:
@@ -156,7 +156,7 @@ two ways:
 * using a personal access token; generate a new token [on this GitHub page](https://github.com/settings/tokens) with the `repo:public_repo`
   scope and place the token in `~/.ghoauth`.
 
-## Update and validate the docs[#](#update-and-validate-the-docs "Link to this heading")
+## [Update and validate the docs](#id8)[#](#update-and-validate-the-docs "Link to this heading")
 
 ### Merge `*-doc` branch[#](#merge-doc-branch "Link to this heading")
 
@@ -254,7 +254,7 @@ popd
 Address any issues which may arise. The internal links are checked on Circle CI, so this
 should only flag failed external links.
 
-## Create release commit and tag[#](#create-release-commit-and-tag "Link to this heading")
+## [Create release commit and tag](#id9)[#](#create-release-commit-and-tag "Link to this heading")
 
 To create the tag, first create an empty commit with a very terse set of the release
 notes in the commit message:
@@ -342,7 +342,7 @@ Check all active milestones for consistency. Older doc milestones should also ba
 higher meso versions (e.g. `v3.6-doc` should backport to both `v3.6.x` and `v3.7.x`
 if the `v3.7.x` branch exists)
 
-## Release management / DOI[#](#release-management-doi "Link to this heading")
+## [Release management / DOI](#id10)[#](#release-management-doi "Link to this heading")
 
 Via the [GitHub UI](https://github.com/matplotlib/matplotlib/releases), turn the
 newly pushed tag into a release. If this is a pre-release remember to mark it as such.
@@ -365,7 +365,7 @@ git push DANGER v3.7.0-doc:v3.7.0-doc
 
 ```
 
-## Building binaries[#](#building-binaries "Link to this heading")
+## [Building binaries](#id11)[#](#building-binaries "Link to this heading")
 
 We distribute macOS, Windows, and many Linux wheels as well as a source tarball via
 PyPI. Most builders should trigger automatically once the tag is pushed to GitHub:
@@ -381,7 +381,7 @@ PyPI. Most builders should trigger automatically once the tag is pushed to GitHu
 > Because this is automated, it is extremely important to bump all branches away from
 the tag as discussed in [Create release commit and tag](#release-tag).
 
-## Manually uploading to PyPI[#](#manually-uploading-to-pypi "Link to this heading")
+## [Manually uploading to PyPI](#id12)[#](#manually-uploading-to-pypi "Link to this heading")
 
 > **Note**
 > As noted above, the GitHub Actions workflow should build and upload source tarballs
@@ -416,7 +416,7 @@ twine upload dist/*whl
 
 Congratulations, you have now done the second scariest part!
 
-## Build and deploy documentation[#](#build-and-deploy-documentation "Link to this heading")
+## [Build and deploy documentation](#id13)[#](#build-and-deploy-documentation "Link to this heading")
 
 To build the documentation you must have the tagged version installed, but
 build the docs from the `ver-doc` branch. An easy way to arrange this is:
@@ -477,7 +477,7 @@ If you have access, clear the CloudFlare caches.
 It typically takes about 5-10 minutes for the website to process the push and update the
 live web page (remember to clear your browser cache).
 
-## Merge up changes to main[#](#merge-up-changes-to-main "Link to this heading")
+## [Merge up changes to main](#id14)[#](#merge-up-changes-to-main "Link to this heading")
 
 After a release is done, the changes from the release branch should be merged into the
 `main` branch. This is primarily done so that the released tag is on the main branch
@@ -505,7 +505,7 @@ Due to branch protections for the `main` branch, this is merged via a standard p
 request, though the PR cleanliness status check is expected to fail. The PR should not
 be squashed because the intent is to merge the branch histories.
 
-## Publicize this release[#](#publicize-this-release "Link to this heading")
+## [Publicize this release](#id15)[#](#publicize-this-release "Link to this heading")
 
 After the release is published to PyPI and conda, it should be announced
 through our communication channels:
@@ -518,7 +518,7 @@ through our communication channels:
   `docs/body.html`. Link to the auto-generated announcement discourse post,
   which is in [Announcements > matplotlib-announcements](https://discourse.matplotlib.org/c/announce/matplotlib-announce/10).
 
-## Conda packages[#](#conda-packages "Link to this heading")
+## [Conda packages](#id16)[#](#conda-packages "Link to this heading")
 
 The Matplotlib project itself does not release conda packages. In particular,
 the Matplotlib release manager is not responsible for conda packaging.

@@ -1,9 +1,9 @@
-# Maintainer Guidelines[#](#maintainer-guidelines "Link to this heading")
+# [Maintainer Guidelines](#id14)[#](#maintainer-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to scikit-learn.
 
-## Releasing[#](#releasing "Link to this heading")
+## [Releasing](#id15)[#](#releasing "Link to this heading")
 
 This section is about preparing a major/minor release, a release candidate (RC), or a
 bug-fix release. We follow [PEP440](https://www.python.org/dev/peps/pep-0440/) for
@@ -550,7 +550,7 @@ Suppose that we are preparing the release `0.4.1`.
   is available both on PyPI and conda-forge and once the website is up to date.
 * Update `SECURITY.md` to reflect the latest supported version `0.4.1`.
 
-## Updating Authors List[#](#updating-authors-list "Link to this heading")
+## [Updating Authors List](#id16)[#](#updating-authors-list "Link to this heading")
 
 This section is about updating [Sphinx authors](https://www.sphinx-doc.org/en/master/authors.html#authors "(in Sphinx v9.1.1)"). First create a [classic token on GitHub](https://github.com/settings/tokens/new) with the `read:org` permission. Then run the
 following script and enter the token when prompted:
@@ -561,7 +561,7 @@ make authors  # Enter the token when prompted
 
 ```
 
-## Merging Pull Requests[#](#merging-pull-requests "Link to this heading")
+## [Merging Pull Requests](#id17)[#](#merging-pull-requests "Link to this heading")
 
 Individual commits are squashed when a PR is merged on GitHub. Before merging:
 
@@ -575,7 +575,7 @@ Individual commits are squashed when a PR is merged on GitHub. Before merging:
   Whether code contributions are significantly enough to merit co-authorship is left to
   the maintainer’s discretion, same as for the what’s new entry.
 
-## The `scikit-plots.github.io` Website[#](#the-scikit-plots-github-io-website "Link to this heading")
+## [The `scikit-plots.github.io` Website](#id18)[#](#the-scikit-plots-github-io-website "Link to this heading")
 
 The scikit-learn website (<https://scikit-learn.org>) is hosted on GitHub, but should
 rarely be updated manually by pushing to the
@@ -583,7 +583,7 @@ rarely be updated manually by pushing to the
 made by pushing to `main` (for `/dev`) or a release branch `A.B.X`, from which Circle CI
 builds and uploads the documentation automatically.
 
-## Experimental Features[#](#experimental-features "Link to this heading")
+## [Experimental Features](#id19)[#](#experimental-features "Link to this heading")
 
 The [`sklearn.experimental`](https://scikit-learn.org/dev/api/sklearn.experimental.html#module-sklearn.experimental "(in scikit-learn v1.10)") module was introduced in 0.21 and contains
 experimental features and estimators that are subject to change without

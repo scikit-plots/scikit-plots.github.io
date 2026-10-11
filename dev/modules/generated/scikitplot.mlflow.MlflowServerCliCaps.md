@@ -1,6 +1,6 @@
 # MlflowServerCliCaps[#](#mlflowserverclicaps "Link to this heading")
 
-class scikitplot.mlflow.MlflowServerCliCaps(**flags=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mlflow/_cli_caps.py#L31)[#](#scikitplot.mlflow.MlflowServerCliCaps "Link to this definition")
+class scikitplot.mlflow.MlflowServerCliCaps(**flags=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mlflow/_cli_caps.py#L31)[#](#scikitplot.mlflow.MlflowServerCliCaps "Link to this definition")
 :   Parsed capability set for `mlflow server` CLI flags.
 
     Attributes:

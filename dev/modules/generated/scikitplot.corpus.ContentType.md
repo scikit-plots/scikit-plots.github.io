@@ -1,6 +1,6 @@
 # ContentType[#](#contenttype "Link to this heading")
 
-class scikitplot.corpus.ContentType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L163)[#](#scikitplot.corpus.ContentType "Link to this definition")
+class scikitplot.corpus.ContentType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L163)[#](#scikitplot.corpus.ContentType "Link to this definition")
 :   MIME-style content type for raw document payloads.
 
     Parameters:
@@ -34,25 +34,25 @@ class scikitplot.corpus.ContentType(**\*values**)[[source]](https://github.com/s
         ****UNKNOWN****
         :   Content type could not be determined.
 
-    CODE = 'text/x-code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.CODE "Link to this definition")
+    CODE = 'text/x-code'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.CODE "Link to this definition")
 
-    CSV = 'text/csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.CSV "Link to this definition")
+    CSV = 'text/csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.CSV "Link to this definition")
 
-    DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.DOCX "Link to this definition")
+    DOCX = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.DOCX "Link to this definition")
 
-    HTML = 'text/html'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.HTML "Link to this definition")
+    HTML = 'text/html'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.HTML "Link to this definition")
 
-    JSON = 'application/json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.JSON "Link to this definition")
+    JSON = 'application/json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.JSON "Link to this definition")
 
-    JSONL = 'application/jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.JSONL "Link to this definition")
+    JSONL = 'application/jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.JSONL "Link to this definition")
 
-    MARKDOWN = 'text/markdown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.MARKDOWN "Link to this definition")
+    MARKDOWN = 'text/markdown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.MARKDOWN "Link to this definition")
 
-    PDF = 'application/pdf'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.PDF "Link to this definition")
+    PDF = 'application/pdf'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.PDF "Link to this definition")
 
-    PLAIN\_TEXT = 'text/plain'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.PLAIN_TEXT "Link to this definition")
+    PLAIN\_TEXT = 'text/plain'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.PLAIN_TEXT "Link to this definition")
 
-    UNKNOWN = 'application/octet-stream'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.UNKNOWN "Link to this definition")
+    UNKNOWN = 'application/octet-stream'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.ContentType.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.ContentType.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

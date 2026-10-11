@@ -1,6 +1,6 @@
 # DiscoveryStatus[#](#discoverystatus "Link to this heading")
 
-class scikitplot.corpus.DiscoveryStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L64)[#](#scikitplot.corpus.DiscoveryStatus "Link to this definition")
+class scikitplot.corpus.DiscoveryStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L64)[#](#scikitplot.corpus.DiscoveryStatus "Link to this definition")
 :   Terminal outcome of asking one source what components it has.
 
     A bare `except Exception` that returned `[]` made three of these one
@@ -8,13 +8,13 @@ class scikitplot.corpus.DiscoveryStatus(**\*values**)[[source]](https://github.c
     a module that failed to import. The second is a bug someone needs to see,
     and the difference is what this vocabulary exists to preserve.
 
-    BROKEN = 'broken'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.BROKEN "Link to this definition")
+    BROKEN = 'broken'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.BROKEN "Link to this definition")
     :   The source could not be consulted. Not an answer about components at all.
 
-    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.EMPTY "Link to this definition")
+    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.EMPTY "Link to this definition")
     :   The source ran and has nothing to contribute. A real, usable answer.
 
-    OK = 'ok'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.OK "Link to this definition")
+    OK = 'ok'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_catalog.py#L)[#](#scikitplot.corpus.DiscoveryStatus.OK "Link to this definition")
     :   The source ran and contributed components.
 
     capitalize(**/**)[#](#scikitplot.corpus.DiscoveryStatus.capitalize "Link to this definition")

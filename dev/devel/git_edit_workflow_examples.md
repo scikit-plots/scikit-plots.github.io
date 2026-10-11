@@ -1,4 +1,4 @@
-# Contributing Code: a Worked Example[#](#contributing-code-a-worked-example "Link to this heading")
+# [Contributing Code: a Worked Example](#id2)[#](#contributing-code-a-worked-example "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to `astropy`.
@@ -14,13 +14,13 @@ many coordinates are present.”
 This particular example was chosen because it was tagged as easy in GitHub;
 seemed like the best place to start out!
 
-## Before you begin[#](#before-you-begin "Link to this heading")
+## [Before you begin](#id3)[#](#before-you-begin "Link to this heading")
 
 Make sure you have created a development environment for astropy as described in
 [Creating a development environment](guide_qu_contribute.html#contributing-environment). The rest of this tutorial assumes you have done that
 and are working in your local copy of the astropy git repository.
 
-## Grab the latest updates to astropy[#](#grab-the-latest-updates-to-astropy "Link to this heading")
+## [Grab the latest updates to astropy](#id4)[#](#grab-the-latest-updates-to-astropy "Link to this heading")
 
 A few steps in this tutorial take only a single command. They are broken out
 separately to outline the process in words as well as code.
@@ -33,7 +33,7 @@ git fetch upstream --tags
 
 ```
 
-## Set up an isolated workspace[#](#set-up-an-isolated-workspace "Link to this heading")
+## [Set up an isolated workspace](#id5)[#](#set-up-an-isolated-workspace "Link to this heading")
 
 * Make a new [git](https://git-scm.com/) branch for fixing this issue and switch to the branch:
 
@@ -59,7 +59,7 @@ If installation fails, try to upgrade `pip` using `python -m pip install pip
 --upgrade` command. It is also a good practice to occasionally keep your `conda`
 up-to-date by running `conda update conda --name base` when prompted to do so.
 
-## Test first, please[#](#test-first-please "Link to this heading")
+## [Test first, please](#id6)[#](#test-first-please "Link to this heading")
 
 It would be hard to overstate the importance of testing in Astropy. Tests are
 what gives you confidence that new code does what it should and that it
@@ -283,7 +283,7 @@ nothing to commit, working directory clean
 In other words, we have made a change to our local copy of `astropy` but we
 have not pushed (transferred) that change to our GitHub account.
 
-## Fix the issue[#](#fix-the-issue "Link to this heading")
+## [Fix the issue](#id8)[#](#fix-the-issue "Link to this heading")
 
 ### Write the code[#](#write-the-code "Link to this heading")
 
@@ -387,7 +387,7 @@ your changes.
 We will take care of that in a moment with a “pull request”, but first,
 see [Stop and think: Any more tests or other changes?](#astropy-fix-add-tests).
 
-## Stop and think: Any more tests or other changes?[#](#stop-and-think-any-more-tests-or-other-changes "Link to this heading")
+## [Stop and think: Any more tests or other changes?](#id9)[#](#stop-and-think-any-more-tests-or-other-changes "Link to this heading")
 
 It never hurts to pause at this point and review whether your proposed
 changes are complete. In this case, there are some more tests that could
@@ -463,7 +463,7 @@ Adding an explicit check for the case of a scalar here would have the very
 big downside of having two things that need to be kept in sync: handling of
 scalars in `Angle` and in coordinates.
 
-## Commit any additional changes[#](#commit-any-additional-changes "Link to this heading")
+## [Commit any additional changes](#id10)[#](#commit-any-additional-changes "Link to this heading")
 
 Continue to follow the development cycle above for other files that you need
 to modify, including changelog (see [Edit the changelog](#git-edit-changelog)) and
@@ -485,7 +485,7 @@ git log
 
 ```
 
-## Push your changes to your GitHub fork of astropy[#](#push-your-changes-to-your-github-fork-of-astropy "Link to this heading")
+## [Push your changes to your GitHub fork of astropy](#id11)[#](#push-your-changes-to-your-github-fork-of-astropy "Link to this heading")
 
 Use this command to push your local changes out to your copy of `astropy`
 on GitHub before asking for the changes to be reviewed:
@@ -495,7 +495,7 @@ git push origin fix-1761
 
 ```
 
-## Propose your changes as a pull request[#](#propose-your-changes-as-a-pull-request "Link to this heading")
+## [Propose your changes as a pull request](#id12)[#](#propose-your-changes-as-a-pull-request "Link to this heading")
 
 This stage requires going to your GitHub account and navigate to **your** copy
 of `astropy`; the url will be something like
@@ -517,7 +517,7 @@ created to the original issue, as stated in `astropy`’s pull request template.
 
 Please see [pull request 1917](https://github.com/astropy/astropy/pull/1917) for the pull request showcased in this tutorial.
 
-## Edit the changelog[#](#edit-the-changelog "Link to this heading")
+## [Edit the changelog](#id13)[#](#edit-the-changelog "Link to this heading")
 
 Keeping the list of changes up to date is nearly impossible unless each
 contributor makes the appropriate updates as they propose changes.
@@ -550,7 +550,7 @@ git push
 
 ```
 
-## Revise and push as necessary[#](#revise-and-push-as-necessary "Link to this heading")
+## [Revise and push as necessary](#id14)[#](#revise-and-push-as-necessary "Link to this heading")
 
 You may be asked to make changes in the discussion of the pull request. Make
 those changes in your local copy, commit them to your local repo, and push them

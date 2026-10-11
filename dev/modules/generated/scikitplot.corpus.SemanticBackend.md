@@ -1,6 +1,6 @@
 # SemanticBackend[#](#semanticbackend "Link to this heading")
 
-class scikitplot.corpus.SemanticBackend(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_semantic.py#L90)[#](#scikitplot.corpus.SemanticBackend "Link to this definition")
+class scikitplot.corpus.SemanticBackend(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L90)[#](#scikitplot.corpus.SemanticBackend "Link to this definition")
 :   Semantic chunking backend selector.
 
     Attributes:
@@ -16,11 +16,11 @@ class scikitplot.corpus.SemanticBackend(**\*values**)[[source]](https://github.c
         :   MORPHOLOGICAL first, then EMBEDDING boundary refinement.
             Default — provides linguistic grounding + RAG quality.
 
-    EMBEDDING = 'embedding'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.EMBEDDING "Link to this definition")
+    EMBEDDING = 'embedding'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.EMBEDDING "Link to this definition")
 
-    HYBRID = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.HYBRID "Link to this definition")
+    HYBRID = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.HYBRID "Link to this definition")
 
-    MORPHOLOGICAL = 'morphological'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.MORPHOLOGICAL "Link to this definition")
+    MORPHOLOGICAL = 'morphological'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticBackend.MORPHOLOGICAL "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.SemanticBackend.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

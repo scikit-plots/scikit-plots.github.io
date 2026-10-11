@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:43:05Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:16:30Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.FluentCorpus","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1287,6 +1287,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1459,6 +1460,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1646,7 +1648,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>FluentCorpus<a class="headerlink" href="#fluentcorpus" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FluentCorpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">FluentCorpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L404"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus" title="Link to this definition">#</a></dt>
 <dd><p>Immutable fluent builder over a <a class="reference internal" href="scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan" title="scikitplot.corpus.CorpusPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPlan</span></code></a>.</p>
 <p class="rubric">Notes</p>
 <p>Every method returns a <strong>new</strong> instance, so a partially-configured builder is
@@ -1656,8 +1658,8 @@ safely reusable as a template:</p>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="09c55a4b-d4aa-415c-b331-98b07b47d2ea">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('09c55a4b-d4aa-415c-b331-98b07b47d2ea','8e53fcf1-0785-4a88-9a83-c345e694c913','e782cf12-8ea6-4984-919b-b41647ded761','../../lite/tree/../notebooks/index.html?path=32648fd0_2fc9_4b28_b229_8a0f66baba00.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="3572dd61-0585-4129-84c8-5eeef1578d93">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3572dd61-0585-4129-84c8-5eeef1578d93','ebeefb1f-7c2e-4db9-8b52-ad50d38140dc','5a5205a2-66be-4772-aed2-3c672bf69595','../../lite/tree/../notebooks/index.html?path=4cf008f8_f0be_4a43_a817_6ec0fc6fe6c6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">FluentCorpus</span><span class="p">()</span><span class="o">.</span><span class="n">embedder</span><span class="p">(</span><span class="s2">"E"</span><span class="p">)</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s2">"S"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">FluentCorpus</span><span class="p">()</span><span class="o">.</span><span class="n">storage</span><span class="p">(</span><span class="s2">"S"</span><span class="p">)</span><span class="o">.</span><span class="n">embedder</span><span class="p">(</span><span class="s2">"E"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">plan</span><span class="p">()</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">plan</span><span class="p">()</span>
@@ -1666,14 +1668,14 @@ safely reusable as a template:</p>
 </div>
 </div>
 </div>
-<div id="e782cf12-8ea6-4984-919b-b41647ded761" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('09c55a4b-d4aa-415c-b331-98b07b47d2ea','e782cf12-8ea6-4984-919b-b41647ded761')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('09c55a4b-d4aa-415c-b331-98b07b47d2ea','e782cf12-8ea6-4984-919b-b41647ded761')">Open In Tab</button></div><div id="8e53fcf1-0785-4a88-9a83-c345e694c913" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="field-list simple">
+<div id="5a5205a2-66be-4772-aed2-3c672bf69595" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3572dd61-0585-4129-84c8-5eeef1578d93','5a5205a2-66be-4772-aed2-3c672bf69595')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3572dd61-0585-4129-84c8-5eeef1578d93','5a5205a2-66be-4772-aed2-3c672bf69595')">Open In Tab</button></div><div id="ebeefb1f-7c2e-4db9-8b52-ad50d38140dc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>plan</strong> (<a class="reference internal" href="scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan" title="scikitplot.corpus.CorpusPlan"><em>CorpusPlan</em></a><em> | </em><em>None</em>)</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L680"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.build" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L680"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.build" title="Link to this definition">#</a></dt>
 <dd><p>Validate and return the plan, raising on any problem.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -1695,7 +1697,7 @@ a plan without constructing operational state.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.chunker">
-<span class="sig-name descname"><span class="pre">chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.chunker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.chunker" title="Link to this definition">#</a></dt>
 <dd><p>Configure the chunker.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1735,7 +1737,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.config">
-<span class="sig-name descname"><span class="pre">config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L609"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.config" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L609"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.config" title="Link to this definition">#</a></dt>
 <dd><p>Set one configuration domain by name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1753,7 +1755,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.configure">
-<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L462"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.configure" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L462"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.configure" title="Link to this definition">#</a></dt>
 <dd><p>Set several domains atomically using the normal conflict contract.</p>
 <p>Domains are applied in canonical <a class="reference internal" href="scikitplot.corpus.CONFIG_DOMAINS.html#scikitplot.corpus.CONFIG_DOMAINS" title="scikitplot.corpus.CONFIG_DOMAINS"><code class="xref py py-data docutils literal notranslate"><span class="pre">CONFIG_DOMAINS</span></code></a> order, never in
 mapping insertion order; fluent configuration therefore remains
@@ -1774,7 +1776,7 @@ declarative and order-independent.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.diff">
-<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L649"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.diff" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L649"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.diff" title="Link to this definition">#</a></dt>
 <dd><p>Describe domain/stage differences without constructing components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1788,7 +1790,7 @@ declarative and order-independent.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.embedder">
-<span class="sig-name descname"><span class="pre">embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.embedder" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.embedder" title="Link to this definition">#</a></dt>
 <dd><p>Configure the embedder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1828,7 +1830,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.enricher">
-<span class="sig-name descname"><span class="pre">enricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.enricher" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.enricher" title="Link to this definition">#</a></dt>
 <dd><p>Configure the enricher.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1868,7 +1870,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.explain">
-<span class="sig-name descname"><span class="pre">explain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.explain" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">explain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.explain" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-compatible explanation of configuration and validity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1879,7 +1881,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.export">
-<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.export" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.export" title="Link to this definition">#</a></dt>
 <dd><p>Configure the export.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1919,7 +1921,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.from_config">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stages</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L430"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.from_config" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stages</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L430"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.from_config" title="Link to this definition">#</a></dt>
 <dd><p>Generate a fluent plan from a user mapping plus keyword fragments.</p>
 <p>This is the data-driven counterpart to chained setters. It is useful for
 configuration files, notebooks and generated experiment matrices while
@@ -1940,7 +1942,7 @@ preserving the same canonical conflict/validation rules.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.index">
-<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.index" title="Link to this definition">#</a></dt>
 <dd><p>Configure the index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1980,7 +1982,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.iter_variants">
-<span class="sig-name descname"><span class="pre">iter_variants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">choices</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.iter_variants" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">iter_variants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">choices</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.iter_variants" title="Link to this definition">#</a></dt>
 <dd><p>Lazily generate a deterministic bounded configuration grid.</p>
 <p>The full Cartesian size is validated <em>before</em> the first value is
 yielded.  This preserves the existing safety bound while letting
@@ -2001,7 +2003,7 @@ every <a class="reference internal" href="#scikitplot.corpus.FluentCorpus" title
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.materialize">
-<span class="sig-name descname"><span class="pre">materialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L701"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.materialize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">materialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L701"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.materialize" title="Link to this definition">#</a></dt>
 <dd><p>Validate this plan and construct a <a class="reference internal" href="scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus" title="scikitplot.corpus.RuntimeCorpus"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeCorpus</span></code></a>.</p>
 <p>Unlike the fluent setters, materialization is an operational boundary:
 it may construct storage/index/component objects, but it does not read
@@ -2022,7 +2024,7 @@ the configured source.  Source processing starts only when
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.normalizer">
-<span class="sig-name descname"><span class="pre">normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.normalizer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.normalizer" title="Link to this definition">#</a></dt>
 <dd><p>Configure the normalizer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2062,7 +2064,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.plan">
-<span class="sig-name descname"><span class="pre">plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.plan" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L631"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.plan" title="Link to this definition">#</a></dt>
 <dd><p>Return the canonical plan this builder describes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2073,7 +2075,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.reader">
-<span class="sig-name descname"><span class="pre">reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.reader" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.reader" title="Link to this definition">#</a></dt>
 <dd><p>Configure the reader.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2113,7 +2115,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_chunker">
-<span class="sig-name descname"><span class="pre">replace_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_chunker" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_chunker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_chunker" title="Link to this definition">#</a></dt>
 <dd><p>Replace the chunker, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2134,7 +2136,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_embedder">
-<span class="sig-name descname"><span class="pre">replace_embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_embedder" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_embedder" title="Link to this definition">#</a></dt>
 <dd><p>Replace the embedder, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2155,7 +2157,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_enricher">
-<span class="sig-name descname"><span class="pre">replace_enricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_enricher" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_enricher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_enricher" title="Link to this definition">#</a></dt>
 <dd><p>Replace the enricher, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2176,7 +2178,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_export">
-<span class="sig-name descname"><span class="pre">replace_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_export" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_export" title="Link to this definition">#</a></dt>
 <dd><p>Replace the export, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2197,7 +2199,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_index">
-<span class="sig-name descname"><span class="pre">replace_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_index" title="Link to this definition">#</a></dt>
 <dd><p>Replace the index, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2218,7 +2220,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_normalizer">
-<span class="sig-name descname"><span class="pre">replace_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_normalizer" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_normalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_normalizer" title="Link to this definition">#</a></dt>
 <dd><p>Replace the normalizer, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2239,7 +2241,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_reader">
-<span class="sig-name descname"><span class="pre">replace_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_reader" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_reader" title="Link to this definition">#</a></dt>
 <dd><p>Replace the reader, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2260,7 +2262,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_retrieval">
-<span class="sig-name descname"><span class="pre">replace_retrieval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_retrieval" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_retrieval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_retrieval" title="Link to this definition">#</a></dt>
 <dd><p>Replace the retrieval, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2281,7 +2283,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_source">
-<span class="sig-name descname"><span class="pre">replace_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_source" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_source" title="Link to this definition">#</a></dt>
 <dd><p>Replace the source, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2302,7 +2304,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.replace_storage">
-<span class="sig-name descname"><span class="pre">replace_storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_storage" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">replace_storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.replace_storage" title="Link to this definition">#</a></dt>
 <dd><p>Replace the storage, whether or not one is already configured.</p>
 <p>The explicit counterpart to the error-by-default rule: the
 intent to substitute is stated in the method name.</p>
@@ -2323,7 +2325,7 @@ intent to substitute is stated in the method name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.retrieval">
-<span class="sig-name descname"><span class="pre">retrieval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.retrieval" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">retrieval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.retrieval" title="Link to this definition">#</a></dt>
 <dd><p>Configure the retrieval.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2363,7 +2365,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.source">
-<span class="sig-name descname"><span class="pre">source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.source" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.source" title="Link to this definition">#</a></dt>
 <dd><p>Configure the source.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2403,7 +2405,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.stages">
-<span class="sig-name descname"><span class="pre">stages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">stages</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.stages" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">stages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">stages</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L615"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.stages" title="Link to this definition">#</a></dt>
 <dd><p>Set an explicit pipeline stage order.</p>
 <p class="rubric">Notes</p>
 <p><strong>Developer.</strong>  This is the <em>only</em> way to express execution order.
@@ -2422,7 +2424,7 @@ defined by call order.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.storage">
-<span class="sig-name descname"><span class="pre">storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.storage" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">storage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.storage" title="Link to this definition">#</a></dt>
 <dd><p>Configure the storage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2462,7 +2464,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L635"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.validate" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L635"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.validate" title="Link to this definition">#</a></dt>
 <dd><p>Return cross-fragment problems, empty when coherent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2473,7 +2475,7 @@ a configuration that looks applied but was overwritten.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.variants">
-<span class="sig-name descname"><span class="pre">variants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">choices</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L575"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.variants" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">variants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_variants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">choices</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L575"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.variants" title="Link to this definition">#</a></dt>
 <dd><p>Materialize <a class="reference internal" href="#scikitplot.corpus.FluentCorpus.iter_variants" title="scikitplot.corpus.FluentCorpus.iter_variants"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iter_variants</span></code></a> as a convenience tuple.</p>
 <p>Use <a class="reference internal" href="#scikitplot.corpus.FluentCorpus.iter_variants" title="scikitplot.corpus.FluentCorpus.iter_variants"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iter_variants</span></code></a> when the consumer itself is streaming or when
 constructing every variant object at once is unnecessary.</p>
@@ -2492,7 +2494,7 @@ constructing every variant object at once is unnecessary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.with_overrides">
-<span class="sig-name descname"><span class="pre">with_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L494"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.with_overrides" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">with_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fragments</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L494"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.with_overrides" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy with explicit multi-domain replacements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2509,7 +2511,7 @@ constructing every variant object at once is unnecessary.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.FluentCorpus.without">
-<span class="sig-name descname"><span class="pre">without</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">domains</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_plan.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.without" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">without</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">domains</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_plan.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.FluentCorpus.without" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy with selected configuration domains removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2691,7 +2693,7 @@ constructing every variant object at once is unnecessary.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

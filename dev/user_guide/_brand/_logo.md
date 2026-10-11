@@ -1,4 +1,4 @@
-# Logo API[#](#logo-api "Link to this heading")
+# [Logo API](#id1)[#](#logo-api "Link to this heading")
 
 Scikit-plots includes a small brand helper that generates the official
 logo using ****pure Matplotlib primitives****.
@@ -37,7 +37,7 @@ sp._brand._logo.save(
 
 ```
 
-## Variants[#](#variants "Link to this heading")
+## [Variants](#id2)[#](#variants "Link to this heading")
 
 Scikit-plots provides several icon variants tuned for different contexts:
 
@@ -55,7 +55,7 @@ sp._brand._logo.save("assets/scikit-plots.svg", variants=sp._brand._logo.list_va
 
 ```
 
-## Themes & Monochrome[#](#themes-monochrome "Link to this heading")
+## [Themes & Monochrome](#id3)[#](#themes-monochrome "Link to this heading")
 
 Use themes for dark backgrounds and monochrome for badges or watermarks.
 
@@ -68,7 +68,7 @@ sp._brand._logo.save("assets/scikit-plots-mono.svg", mono=True)
 
 ```
 
-## Decorative Dots[#](#decorative-dots "Link to this heading")
+## [Decorative Dots](#id4)[#](#decorative-dots "Link to this heading")
 
 The primary mark supports a small dot field.
 For brand-stable output, keep `dots="fixed"` (the default).
@@ -85,7 +85,7 @@ sp._brand._logo.save("assets/scikit-plots-random.svg", dots="random", seed=42)
 
 ```
 
-## Presets[#](#presets "Link to this heading")
+## [Presets](#id5)[#](#presets "Link to this heading")
 
 Presets provide convenient defaults for common contexts such as favicons,
 avatars, and documentation hero images.
@@ -105,7 +105,7 @@ sp._brand._logo.save("assets/hero.svg", preset="docs-hero")
 
 ```
 
-## Wordmark[#](#wordmark "Link to this heading")
+## [Wordmark](#id6)[#](#wordmark "Link to this heading")
 
 The wordmark combines the icon with a text lockup.
 This is useful for website headers, slides, and banners.
@@ -119,7 +119,7 @@ sp._brand._logo.wordmark.save("assets/scikit-plots-lockup.svg")
 
 ```
 
-## Saving Behavior[#](#saving-behavior "Link to this heading")
+## [Saving Behavior](#id7)[#](#saving-behavior "Link to this heading")
 
 The save API follows Matplotlib-style conventions:
 
@@ -143,7 +143,7 @@ sp._brand._logo.save(
 
 ```
 
-## Command Line[#](#command-line "Link to this heading")
+## [Command Line](#id8)[#](#command-line "Link to this heading")
 
 A lightweight CLI is available for batch generation.
 
@@ -161,7 +161,7 @@ python -m scikitplot._brand._logo --wordmark --out assets --format png
 
 ```
 
-## Developing & Testing Logos[#](#developing-testing-logos "Link to this heading")
+## [Developing & Testing Logos](#id9)[#](#developing-testing-logos "Link to this heading")
 
 When extending or adjusting the brand system:
 

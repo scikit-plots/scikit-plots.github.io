@@ -1,6 +1,6 @@
 # EmbeddingManifest[#](#embeddingmanifest "Link to this heading")
 
-class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=None**, **dimension=None**, **dtype='float32'**, **normalization='none'**, **preprocessing=None**, **extra=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest "Link to this definition")
+class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=None**, **dimension=None**, **dtype='float32'**, **normalization='none'**, **preprocessing=None**, **extra=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest "Link to this definition")
 :   Identity of one embedding generation.
 
     Parameters:
@@ -62,7 +62,7 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
     ```
     Go BackOpen In Tab
 
-    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L278)[#](#scikitplot.corpus.EmbeddingManifest.describe "Link to this definition")
+    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L278)[#](#scikitplot.corpus.EmbeddingManifest.describe "Link to this definition")
     :   Return a compact human-readable identifier.
 
         Return type:
@@ -72,7 +72,7 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
 
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.EmbeddingManifest.dtype "Link to this definition")
 
-    extra: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.extra "Link to this definition")
+    extra: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.extra "Link to this definition")
 
     property fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.EmbeddingManifest.fingerprint "Link to this definition")
     :   Stable content-derived identifier for this generation.
@@ -92,7 +92,7 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
         `extra` participates, sorted by key, so provider-specific provenance
         that changes the vectors also changes the fingerprint.
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L302)[#](#scikitplot.corpus.EmbeddingManifest.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L302)[#](#scikitplot.corpus.EmbeddingManifest.from_dict "Link to this definition")
     :   Rebuild from [`to_dict`](#scikitplot.corpus.EmbeddingManifest.to_dict "scikitplot.corpus.EmbeddingManifest.to_dict") output.
 
         Raises:
@@ -106,7 +106,7 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
         Return type:
         :   [**EmbeddingManifest**](#scikitplot.corpus.EmbeddingManifest "scikitplot.corpus._embedding_manifest.EmbeddingManifest")
 
-    is\_compatible(**other**, **\***, **assume\_unpinned\_match=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L184)[#](#scikitplot.corpus.EmbeddingManifest.is_compatible "Link to this definition")
+    is\_compatible(**other**, **\***, **assume\_unpinned\_match=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L184)[#](#scikitplot.corpus.EmbeddingManifest.is_compatible "Link to this definition")
     :   Whether vectors from `self` and `other` may share an index.
 
         Parameters:
@@ -149,15 +149,15 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
         the unverified case is a decision someone made rather than an answer the
         code gave by default.
 
-    model: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.model "Link to this definition")
+    model: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.model "Link to this definition")
 
     normalization: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'none'[#](#scikitplot.corpus.EmbeddingManifest.normalization "Link to this definition")
 
     preprocessing: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.EmbeddingManifest.preprocessing "Link to this definition")
 
-    provider: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.provider "Link to this definition")
+    provider: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L96)[#](#scikitplot.corpus.EmbeddingManifest.provider "Link to this definition")
 
-    require\_compatible(**other**, **\***, **assume\_unpinned\_match=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L232)[#](#scikitplot.corpus.EmbeddingManifest.require_compatible "Link to this definition")
+    require\_compatible(**other**, **\***, **assume\_unpinned\_match=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L232)[#](#scikitplot.corpus.EmbeddingManifest.require_compatible "Link to this definition")
     :   Raise unless `other` is compatible with `self`.
 
         Parameters:
@@ -184,13 +184,13 @@ class scikitplot.corpus.EmbeddingManifest(**provider**, **model**, **revision=No
 
     revision: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.EmbeddingManifest.revision "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L296)[#](#scikitplot.corpus.EmbeddingManifest.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L296)[#](#scikitplot.corpus.EmbeddingManifest.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping, including the fingerprint.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    with\_dimension(**dimension**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_embedding_manifest.py#L284)[#](#scikitplot.corpus.EmbeddingManifest.with_dimension "Link to this definition")
+    with\_dimension(**dimension**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_embedding_manifest.py#L284)[#](#scikitplot.corpus.EmbeddingManifest.with_dimension "Link to this definition")
     :   Return a copy with `dimension` set.
 
         Notes

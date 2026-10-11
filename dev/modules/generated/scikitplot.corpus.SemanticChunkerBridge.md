@@ -1,6 +1,6 @@
 # SemanticChunkerBridge[#](#semanticchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.SemanticChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_chunker_bridge.py#L342)[#](#scikitplot.corpus.SemanticChunkerBridge "Link to this definition")
+class scikitplot.corpus.SemanticChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_chunker_bridge.py#L342)[#](#scikitplot.corpus.SemanticChunkerBridge "Link to this definition")
 :   Bridge for `SemanticChunker` → `ChunkerBase` contract.
 
     The [`SemanticChunker`](scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker "scikitplot.corpus._chunkers._semantic.SemanticChunker") (Layer 3) is a new-style
@@ -28,7 +28,7 @@ class scikitplot.corpus.SemanticChunkerBridge(**inner**)[[source]](https://githu
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.SemanticChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_chunker_bridge.py#L160)[#](#scikitplot.corpus.SemanticChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.
@@ -61,4 +61,4 @@ class scikitplot.corpus.SemanticChunkerBridge(**inner**)[[source]](https://githu
         Use `_to_tuples` to convert to the legacy
         `list[tuple[int, str]]` format if needed for backward compat.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SemanticChunkerBridge.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'semantic'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.SemanticChunkerBridge.strategy "Link to this definition")

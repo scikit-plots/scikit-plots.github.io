@@ -47,11 +47,11 @@ Context manager
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
+****User guide.**** See the [KISS random number generation](../user_guide/random/index.html#random-index) section for further details.
 
 ## Random Number Generation (Numpy-Like [`Generator`](https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator "(in NumPy v2.6.dev0)")).[#](#random-number-generation-numpy-like-generator "Link to this heading")
 
-****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
+****User guide.**** See the [KISS random number generation](../user_guide/random/index.html#random-index) section for further details.
 
 Class inheritance
 
@@ -78,7 +78,7 @@ Class inheritance
 
 ## `KissGenerator` Distribution Methods[#](#kissgenerator-distribution-methods "Link to this heading")
 
-****User guide.**** See the [Random](../user_guide/random/index.html#random-index) section for further details.
+****User guide.**** See the [KISS random number generation](../user_guide/random/index.html#random-index) section for further details.
 
 |  |  |
 | --- | --- |

@@ -1,6 +1,6 @@
 # GraphemeClusterStrategy[#](#graphemeclusterstrategy "Link to this heading")
 
-class scikitplot.corpus.GraphemeClusterStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L174)[#](#scikitplot.corpus.GraphemeClusterStrategy "Link to this definition")
+class scikitplot.corpus.GraphemeClusterStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L174)[#](#scikitplot.corpus.GraphemeClusterStrategy "Link to this definition")
 :   Grapheme-cluster-level fallback strategy for any script.
 
     Splits text into individual grapheme clusters (UAX #29 `\X`).
@@ -34,7 +34,7 @@ class scikitplot.corpus.GraphemeClusterStrategy[[source]](https://github.com/sci
     ```
     Go BackOpen In Tab
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L205)[#](#scikitplot.corpus.GraphemeClusterStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L205)[#](#scikitplot.corpus.GraphemeClusterStrategy.segment "Link to this definition")
     :   Split **span** into grapheme-cluster or whitespace-word chunks.
 
         Parameters:

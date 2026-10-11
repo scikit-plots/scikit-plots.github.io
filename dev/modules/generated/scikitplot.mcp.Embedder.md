@@ -1,9 +1,9 @@
 # Embedder[#](#embedder "Link to this heading")
 
-class scikitplot.mcp.Embedder(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_corpus_annoy.py#L65)[#](#scikitplot.mcp.Embedder "Link to this definition")
+class scikitplot.mcp.Embedder(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_corpus_annoy.py#L65)[#](#scikitplot.mcp.Embedder "Link to this definition")
 :   Anything that turns a query string into a vector (e.g. corpus `EmbeddingEngine`).
 
-    embed(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_corpus_annoy.py#L68)[#](#scikitplot.mcp.Embedder.embed "Link to this definition")
+    embed(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_corpus_annoy.py#L68)[#](#scikitplot.mcp.Embedder.embed "Link to this definition")
     :   Parameters:
         :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 

@@ -1,6 +1,6 @@
 # info[#](#info "Link to this heading")
 
-scikitplot.logging.info(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/logging/_logging.py#L1549)[#](#scikitplot.logging.info "Link to this definition")
+scikitplot.logging.info(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/logging/_logging.py#L1549)[#](#scikitplot.logging.info "Link to this definition")
 :   Log a message at the INFO log level.
 
     Parameters:

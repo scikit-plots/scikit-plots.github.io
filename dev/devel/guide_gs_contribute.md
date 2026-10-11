@@ -1,4 +1,4 @@
-# Getting Started Contributing Guidelines[#](#getting-started-contributing-guidelines "Link to this heading")
+# [Getting Started Contributing Guidelines](#id11)[#](#getting-started-contributing-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -13,7 +13,7 @@ You want to tell us about it — best of all!
 Below, you can find a number of ways to contribute, and how to connect with the
 scikit-plots community.
 
-## Ways to contribute[#](#ways-to-contribute "Link to this heading")
+## [Ways to contribute](#id12)[#](#ways-to-contribute "Link to this heading")
 
 Do I really have something to contribute to scikit-plots?[#](#do-i-really-have-something-to-contribute-to-scikit-plots? "Link to this dropdown")
 
@@ -162,7 +162,7 @@ please cite us following the [Citing scikit-plots Guidelines](../project/citing.
 If you have developed an extension to Matplotlib, please consider adding it to our
 [third party package](https://github.com/matplotlib/mpl-third-party) list.
 
-## Restrictions on Generative AI Usage[#](#restrictions-on-generative-ai-usage "Link to this heading")
+## [Restrictions on Generative AI Usage](#id13)[#](#restrictions-on-generative-ai-usage "Link to this heading")
 
 We expect authentic engagement in our community. Be wary of posting output
 from Large Language Models or similar generative AI as comments on GitHub or
@@ -171,7 +171,7 @@ If you use generative AI tools as an aid in developing code or documentation
 changes, ensure that you fully understand the proposed changes and can explain
 why they are the correct approach and an improvement to the current state.
 
-## New contributors[#](#new-contributors "Link to this heading")
+## [New contributors](#id14)[#](#new-contributors "Link to this heading")
 
 Everyone comes to the project from a different place — in terms of experience
 and interest — so there is no one-size-fits-all path to getting involved. We
@@ -302,7 +302,7 @@ to hear back on your PR.-->
 
 ```
 
-## Get connected[#](#get-connected "Link to this heading")
+## [Get connected](#id15)[#](#get-connected "Link to this heading")
 
 When in doubt, we recommend going together! Get connected with our community of
 active contributors, many of whom felt just like you when they started out and
@@ -311,7 +311,7 @@ where things are. You can reach out on any of our [Official project platforms](h
 For development questions we recommend reaching out on our development [gitter](https://gitter.im/matplotlib/matplotlib)
 chat room and for community questions reach out at [community](https://gitter.im/matplotlib/community).
 
-## Choose an issue[#](#choose-an-issue "Link to this heading")
+## [Choose an issue](#id16)[#](#choose-an-issue "Link to this heading")
 
 In general, the Matplotlib project does not assign issues. Issues are
 “assigned” or “claimed” by opening a PR; there is no other assignment
@@ -323,7 +323,7 @@ a new PR; duplicate PRs are subject to being closed. However, if the existing
 PR is an outline, unlikely to work, or stalled, and the original author is
 unresponsive, feel free to open a new PR referencing the old one.
 
-## Start a pull request[#](#start-a-pull-request "Link to this heading")
+## [Start a pull request](#id17)[#](#start-a-pull-request "Link to this heading")
 
 The preferred way to contribute to Matplotlib is to fork the [main
 repository](https://github.com/matplotlib/matplotlib/) on GitHub,

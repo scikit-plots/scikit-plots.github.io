@@ -1,4 +1,4 @@
-# Pull Request Guidelines[#](#pull-request-guidelines "Link to this heading")
+# [Pull Request Guidelines](#id5)[#](#pull-request-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -17,7 +17,7 @@ Please be patient with reviewers. We try our best to respond quickly, but we hav
 limited bandwidth. If there is no feedback within a couple of days, please ping
 us by posting a comment to your PR or reaching out on a [communication channel](https://matplotlib.org/devdocs/devel/communication_guide.html#communication-channels "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)")
 
-## Summary for pull request authors[#](#summary-for-pull-request-authors "Link to this heading")
+## [Summary for pull request authors](#id6)[#](#summary-for-pull-request-authors "Link to this heading")
 
 We recommend that you check that your contribution complies with the following
 guidelines before submitting a pull request:
@@ -52,7 +52,7 @@ For guidance on creating and managing a pull request, please see our
 [contributing](guide_gs_contribute.html#contributing) and [pull request workflow](guide_devel_details.html#edit-flow) or [The editing workflow](guide_devel_workflow.html#edit-flow-work)
 guides.
 
-## Summary for pull request reviewers[#](#summary-for-pull-request-reviewers "Link to this heading")
+## [Summary for pull request reviewers](#id7)[#](#summary-for-pull-request-reviewers "Link to this heading")
 
 ****Please help review and merge PRs!****
 
@@ -83,7 +83,7 @@ requirements before merging it:
 * Approve if all of the above topics are handled.
 * [Merge](#pr-merging) if a sufficient number of approvals is reached.
 
-## Detailed guidelines[#](#detailed-guidelines "Link to this heading")
+## [Detailed guidelines](#id8)[#](#detailed-guidelines "Link to this heading")
 
 ### Documentation[#](#documentation "Link to this heading")
 
@@ -188,7 +188,7 @@ unsure why a test is failing, ask on the PR or in our [Official project platform
   substantial changes to the code or intent of the PR please check
   with the contributor first.
 
-## Branches and backports[#](#branches-and-backports "Link to this heading")
+## [Branches and backports](#id9)[#](#branches-and-backports "Link to this heading")
 
 ### Current branches[#](#current-branches "Link to this heading")
 

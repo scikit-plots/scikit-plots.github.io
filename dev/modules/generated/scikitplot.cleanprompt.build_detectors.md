@@ -1,6 +1,6 @@
 # build\_detectors[#](#build-detectors "Link to this heading")
 
-scikitplot.cleanprompt.build\_detectors(**mode='auto'**, **language='en'**, **model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **size='sm'**, **required=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_engines.py#L920)[#](#scikitplot.cleanprompt.build_detectors "Link to this definition")
+scikitplot.cleanprompt.build\_detectors(**mode='auto'**, **language='en'**, **model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **size='sm'**, **required=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_engines.py#L920)[#](#scikitplot.cleanprompt.build_detectors "Link to this definition")
 :   Construct the detectors for an engine mode.
 
     Parameters:

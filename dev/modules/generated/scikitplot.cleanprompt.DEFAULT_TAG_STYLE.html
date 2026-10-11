@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:42:23Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:52Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.DEFAULT_TAG_STYLE","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1644,7 +1646,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>DEFAULT_TAG_STYLE<a class="headerlink" href="#default-tag-style" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.DEFAULT_TAG_STYLE">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TAG_STYLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.DEFAULT_TAG_STYLE" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TAG_STYLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.DEFAULT_TAG_STYLE" title="Link to this definition">#</a></dt>
 <dd><p>The placeholder grammar.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1694,8 +1696,8 @@ upstream project happened to be safe here; making the suffix mandatory turns
 that accident into a guarantee, and
 <code class="docutils literal notranslate"><span class="pre">test__engine.py::test_ordinal_ten_does_not_collide</span></code> keeps it honest.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="84e5d2c2-67da-4d1f-ae95-45d77559398b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('84e5d2c2-67da-4d1f-ae95-45d77559398b','fb926ad3-7c1e-4839-8925-ba4a702092f7','1b004ac8-35d9-4cb7-95b9-e04c558f31fb','../../lite/tree/../notebooks/index.html?path=22304a35_6957_4783_a1a2_07c79903af5e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="759787e5-6a40-498d-8d83-0ebf2643694e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('759787e5-6a40-498d-8d83-0ebf2643694e','2de95c2e-fff1-407d-acb4-e1c4bfd721b7','54a39be9-0694-477f-9f91-3e90087860cb','../../lite/tree/../notebooks/index.html?path=7603999c_9e6a_4cf7_823b_7f283d0c9ea8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TagStyle</span><span class="p">()</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">"email"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="go">'[EMAIL-3]'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">TagStyle</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"&lt;&lt;"</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">"&gt;&gt;"</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">"_"</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">"email"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1704,7 +1706,7 @@ that accident into a guarantee, and
 </div>
 </div>
 </div>
-<div id="1b004ac8-35d9-4cb7-95b9-e04c558f31fb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('84e5d2c2-67da-4d1f-ae95-45d77559398b','1b004ac8-35d9-4cb7-95b9-e04c558f31fb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('84e5d2c2-67da-4d1f-ae95-45d77559398b','1b004ac8-35d9-4cb7-95b9-e04c558f31fb')">Open In Tab</button></div><div id="fb926ad3-7c1e-4839-8925-ba4a702092f7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="54a39be9-0694-477f-9f91-3e90087860cb" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('759787e5-6a40-498d-8d83-0ebf2643694e','54a39be9-0694-477f-9f91-3e90087860cb')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('759787e5-6a40-498d-8d83-0ebf2643694e','54a39be9-0694-477f-9f91-3e90087860cb')">Open In Tab</button></div><div id="2de95c2e-fff1-407d-acb4-e1c4bfd721b7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1822,7 +1824,7 @@ that accident into a guarantee, and
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

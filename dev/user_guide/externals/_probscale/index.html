@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:43Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:18:11Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/externals/_probscale/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -645,8 +645,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_vector_database.html">Vector Similarity Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/persistence_and_io.html">Persistence and I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/performance_and_threads.html">Performance and threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_vector_database.html">Vector Similarity Search and Vector Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../annoy/annoy_index_inheritance_diagrams.html">Annoy <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code> class Inheritance Diagrams (MRO)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../annoy/_annoy.html">ANNoy Cython</a></li>
 </ul>
 </details></li>
@@ -691,19 +697,59 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../cython/_templates/templates_index.html">Cython templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/trust_and_security.html">Trust and security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/build_cache_import.html">Build, cache, and import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/profiles_and_toolchains.html">Profiles and toolchains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/packages_templates_workflows.html">Packages, templates, and workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/cache_pins_gc.html">Cache, pins, and garbage collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cython/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cython/_templates/templates_index.html">Cython templates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_basic_cython.html">basic_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_basic_python.html">basic_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_complex_cython.html">complex_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_complex_python.html">complex_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_cython.html">devel_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_numcpp_cpp_api_cython.html">devel_numcpp_cpp_api_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_numcpp_cpp_api_python.html">devel_numcpp_cpp_api_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_numpy_c_api_cython.html">devel_numpy_c_api_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_numpy_c_api_python.html">devel_numpy_c_api_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_devel_python.html">devel_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_easy_cython.html">easy_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_easy_python.html">easy_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_hard_cython.html">hard_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_hard_python.html">hard_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_medium_cython.html">medium_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_medium_python.html">medium_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_mixed.html">mixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_module_cython.html">module_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cython/_templates/templates_module_python.html">module_python</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../decile/index.html">Decile analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/kds.html">KDS functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../decile/modelplotpy.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/business_plots_and_financial.html">Business and financial plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decile/compatibility_and_limits.html">Compatibility and limits</a></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../impute/index.html">Impute</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../impute/index.html">Missing-value imputation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/standard_imputers.html">Standard imputers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/ann_imputer.html">ANNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/index_access_and_privacy.html">Index access and privacy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../impute/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -712,44 +758,136 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../levenshtein/corpus_integration.html">Corpus integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../levenshtein/python_api.html">Python API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.distance.html">scikitplot.levenshtein.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.similarity.html">scikitplot.levenshtein.similarity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.normalized_distance.html">scikitplot.levenshtein.normalized_distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.normalized_similarity.html">scikitplot.levenshtein.normalized_similarity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.rank.html">scikitplot.levenshtein.rank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.closest.html">scikitplot.levenshtein.closest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.Match.html">scikitplot.levenshtein.Match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.backend_info.html">scikitplot.levenshtein.backend_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.available_backends.html">scikitplot.levenshtein.available_backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.BackendInfo.html">scikitplot.levenshtein.BackendInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../levenshtein/generated/scikitplot.levenshtein.make_corpus_scorer.html">scikitplot.levenshtein.make_corpus_scorer</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../logging/index.html">Logging</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../logging/index.html">Logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/levels_and_loggers.html">Levels and loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/formatting_and_helpers.html">Formatting and helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../memmap/index.html">MemMap</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../memmap/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memmap/lifecycle_and_io.html">Lifecycle and I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memmap/protection_sync_locking.html">Protection, sync, and locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memmap/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memmap/platform_and_limits.html">Platform and limits</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../mcp/index.html">Mcp</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/retrieval_and_fusion.html">Retrieval and fusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/corpus_and_annoy.html">Corpus and Annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/capabilities_and_runtime.html">Capabilities and runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/server_cli_security.html">Server, CLI, and security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/deployment_and_operations.html">Deployment and operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mcp/usage_scenarios.html">Model Context Protocol (MCP)</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../mlflow/index.html">MLflow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/project_configuration.html">Project configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/sessions_and_facades.html">Sessions and facades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/server_and_cli.html">Server and CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/providers_and_workflows.html">Providers and workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/security_and_readiness.html">Security and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mlflow/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../nc/index.html">Nc</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../preprocessing/index.html">Preprocessing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../preprocessing/index.html">Categorical preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/get_dummies.html">GetDummies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/dummy_code_encoder.html">DummyCodeEncoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/sklearn_integration.html">Scikit-learn integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing/known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../random/index.html">Random</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../random/index.html">KISS random number generation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../random/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random/generators_and_seeding.html">Generators and seeding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random/state_and_serialization.html">State and serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random/numpy_interop_and_reproducibility.html">NumPy interop and reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../rank_bm25/index.html">Rank-BM25</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../rank_bm25/index.html">Rank-BM25</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/recipes_and_tokenization.html">Recipes and tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/retrieval_and_identity.html">Retrieval and identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/persistence_and_reproducibility.html">Persistence and reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/performance_and_scaling.html">Performance and scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rank_bm25/usage_scenarios.html">Rank-BM25 Usage Scenarios</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../seaborn/index.html">Seaborn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/auc_and_evaluation.html">AUC and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/decile_and_model_plots.html">Decile and model plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/data_semantics_and_styling.html">Data semantics and styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seaborn/known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../stats/index.html">Stats</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../visualkeras/index.html">Visualkeras</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../visualkeras/index.html">Keras architecture visualization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/layered_view.html">Layered view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/graph_view.html">Graph view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/styling_and_spacing.html">Styling and spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/dependencies_and_limits.html">Dependencies and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualkeras/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../_lib/index.html">Array API support</a></li>
@@ -787,7 +925,23 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../_externals/index.html">Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../_externals/_sphinx_ext/index.html">Sphinx Ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../_externals/_jupyter_ext/index.html">Jupyter Ext</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../_externals/_sphinx_ext/index.html">Sphinx Ext</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_ansi_sanitizer/index.html">ANSI Sanitizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_pydata_component_list/index.html">PyData Component List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_ai_assistant/index.html">Sphinx AI Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_ai_learn/index.html">Sphinx AI Learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_collection/index.html">Sphinx Collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_feedback/index.html">Sphinx Feedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_gallery_grid/index.html">Sphinx Gallery Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_gallery_jupyterlite/index.html">Sphinx-Gallery JupyterLite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_jinja_render/index.html">Sphinx Jinja Render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_llm/index.html">Sphinx LLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_youtube_core/index.html">Sphinx YouTube Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinx_youtube_gallery/index.html">Sphinx YouTube Gallery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../_externals/_sphinx_ext/_sphinxcontrib_youtube/index.html">Sphinx Video Directives</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -998,7 +1152,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

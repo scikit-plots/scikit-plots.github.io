@@ -1,6 +1,6 @@
 # CapabilityStatus[#](#capabilitystatus "Link to this heading")
 
-class scikitplot.corpus.CapabilityStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L132)[#](#scikitplot.corpus.CapabilityStatus "Link to this definition")
+class scikitplot.corpus.CapabilityStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L132)[#](#scikitplot.corpus.CapabilityStatus "Link to this definition")
 :   Why a capability is or is not usable.
 
     Notes
@@ -25,32 +25,32 @@ class scikitplot.corpus.CapabilityStatus(**\*values**)[[source]](https://github.
 
     Those need opposite responses, so they are now different states.
 
-    ABSENT = 'absent'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.ABSENT "Link to this definition")
+    ABSENT = 'absent'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.ABSENT "Link to this definition")
     :   Not installed. Install the relevant extra.
 
-    AVAILABLE = 'available'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.AVAILABLE "Link to this definition")
+    AVAILABLE = 'available'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.AVAILABLE "Link to this definition")
     :   Present, importable and reporting itself usable.
 
-    BROKEN = 'broken'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.BROKEN "Link to this definition")
+    BROKEN = 'broken'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.BROKEN "Link to this definition")
     :   its availability probe raised.
 
         Type:
         :   Installed but failing
 
-    INCOMPATIBLE = 'incompatible'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.INCOMPATIBLE "Link to this definition")
+    INCOMPATIBLE = 'incompatible'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.INCOMPATIBLE "Link to this definition")
     :   Installed at a version this build does not support.
 
-    MISCONFIGURED = 'misconfigured'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.MISCONFIGURED "Link to this definition")
+    MISCONFIGURED = 'misconfigured'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.MISCONFIGURED "Link to this definition")
     :   Importable, but a non-Python prerequisite is missing.
 
         The motivating case is `pytesseract`, which needs a Tesseract **binary**
         that pip cannot supply – so the extra installs “successfully” while the
         capability remains unusable (finding F-R14-01).
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.UNKNOWN "Link to this definition")
     :   Not probed. Never a guess – see [`probe_backend`](scikitplot.corpus.probe_backend.html#scikitplot.corpus.probe_backend "scikitplot.corpus.probe_backend").
 
-    UNREACHABLE = 'unreachable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.UNREACHABLE "Link to this definition")
+    UNREACHABLE = 'unreachable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_capabilities.py#L)[#](#scikitplot.corpus.CapabilityStatus.UNREACHABLE "Link to this definition")
     :   A remote dependency could not be contacted.
 
     capitalize(**/**)[#](#scikitplot.corpus.CapabilityStatus.capitalize "Link to this definition")

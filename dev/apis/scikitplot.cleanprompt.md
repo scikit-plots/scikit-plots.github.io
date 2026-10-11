@@ -75,6 +75,8 @@ Each is a checked-in regression test, not a claim.
 :   The curated pattern library.
 :   !! processed by numpydoc !!
 
+****User guide.**** See the [CleanPrompt User Guide](../user_guide/cleanprompt/index.html#cleanprompt-index) section for further details.
+
 ## API Encode Prompt[#](#api-encode-prompt "Link to this heading")
 
 |  |  |

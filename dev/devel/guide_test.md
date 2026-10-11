@@ -1,10 +1,10 @@
-# Testing Guidelines[#](#testing-guidelines "Link to this heading")
+# [Testing Guidelines](#id12)[#](#testing-guidelines "Link to this heading")
 
 This section describes the [pytest](https://docs.pytest.org/en/stable/) testing framework and format standards for tests in
 Astropy core, coordinated packages, and packages using the [OpenAstronomy Packaging Guide](https://packaging-guide.openastronomy.org/en/latest).
 It also serves as recommendations for affiliated packages.
 
-## Testing Dependencies[#](#testing-dependencies "Link to this heading")
+## [Testing Dependencies](#id13)[#](#testing-dependencies "Link to this heading")
 
 Most commonly, you should install the full suite of testing and development
 dependencies:
@@ -18,7 +18,7 @@ This will provide all dependencies for running the full test suite using [tox](h
 and [pytest](https://docs.pytest.org/en/stable/). It will also allow running tests via any IDE which
 supports `pytest` integration.
 
-## Running Tests[#](#running-tests "Link to this heading")
+## [Running Tests](#id14)[#](#running-tests "Link to this heading")
 
 There are two different ways to run Astropy tests: `tox` and
 `pytest`. Each of these invokes [pytest](https://docs.pytest.org/en/stable/) to run
@@ -183,7 +183,7 @@ pytest --pyargs astropy
 
 You can also include other `pytest` options as needed.
 
-## Writing tests[#](#writing-tests "Link to this heading")
+## [Writing tests](#id15)[#](#writing-tests "Link to this heading")
 
 `pytest` has the following test discovery rules:
 
@@ -796,7 +796,7 @@ images for changed tests - when pull requests are merged, a CircleCI job will au
 update the reference images in the [astropy-figure-tests](https://github.com/astropy/astropy-figure-tests)
 repository.
 
-## Writing doctests[#](#writing-doctests "Link to this heading")
+## [Writing doctests](#id16)[#](#writing-doctests "Link to this heading")
 
 A doctest in Python is a special kind of test that is embedded in a
 function, class, or module’s docstring, or in the narrative Sphinx
@@ -992,7 +992,7 @@ differences in representation of roundoff digits will be ignored by the
 doctest. The values are otherwise compared exactly, so more significant
 (albeit possibly small) differences will still be caught by these tests.
 
-## Continuous integration[#](#continuous-integration "Link to this heading")
+## [Continuous integration](#id17)[#](#continuous-integration "Link to this heading")
 
 ### Overview[#](#overview "Link to this heading")
 

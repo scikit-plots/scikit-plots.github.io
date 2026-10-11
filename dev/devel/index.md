@@ -1,8 +1,8 @@
 Scikit-plots Contributing
   
- 0.5.dev0+git.20261010.c24961d - October 10, 2026 21:35 UTC
+ 0.5.dev0+git.20261011.d2447a3 - October 11, 2026 05:09 UTC
 
-# Contributing Guidelines to scikit-plots[#](#contributing-guidelines-to-scikit-plots "Link to this heading")
+# [Contributing Guidelines to scikit-plots](#id1)[#](#contributing-guidelines-to-scikit-plots "Link to this heading")
 
 Thank you for your interest in helping to improve scikit-plots!
 
@@ -24,7 +24,7 @@ reporting and fixing bugs, requesting and implementing new features…
 [scikit-learn developer documentation](https://scikit-learn.org/dev/developers/index.html)
 Scikit-plots is grateful to the these teams for their documentation efforts.
 
-## Quickstart Contribute Guide[#](#quickstart-contribute-guide "Link to this heading")
+## [Quickstart Contribute Guide](#id2)[#](#quickstart-contribute-guide "Link to this heading")
 
 Here you’ll find all the guidance and resources you need to quickly start contributing to this project.
 
@@ -90,7 +90,7 @@ docker
   * [📦 Conda/Anaconda Environment Guidelines](guide_python_env_manager.html#conda-anaconda-environment-guidelines)
   * [📦 Pipenv Environment Guidelines](guide_python_env_manager.html#pipenv-environment-guidelines)
 
-## GitHub issue tracker[#](#github-issue-tracker "Link to this heading")
+## [GitHub issue tracker](#id3)[#](#github-issue-tracker "Link to this heading")
 
 The [issue tracker](https://github.com/scikit-plots/scikit-plots/issues) serves as the
 centralized location for making feature requests, reporting bugs, identifying major
@@ -116,7 +116,7 @@ Since scikit-plots is an open source project with limited resources, we encourag
 to also [participate](guide_gs_contribute.html#contribute-code) in fixing bugs and implementing new
 features.
 
-## Getting Started Contribute Guide[#](#getting-started-contribute-guide "Link to this heading")
+## [Getting Started Contribute Guide](#id4)[#](#getting-started-contribute-guide "Link to this heading")
 
 We welcome you to get more involved with the scikit-plots project! If you are new
 to contributing, we recommend that you first read our
@@ -146,7 +146,7 @@ Build community
 
 [How do I start a pull request?](guide_gs_contribute.html#how-to-pull-request)
 
-## Development Workflow Guide[#](#development-workflow-guide "Link to this heading")
+## [Development Workflow Guide](#id5)[#](#development-workflow-guide "Link to this heading")
 
 If you are contributing code or documentation, please follow our guide for setting up
 and managing a development environment and workflow:
@@ -224,7 +224,7 @@ and managing a development environment and workflow:
   * [Troubleshooting the build](guide_devel_details.html#troubleshooting-the-build)
   * [External C Libraries](guide_devel_details.html#external-c-libraries)
 
-## Policies and Guidelines for Consistent Maintenance and Workflow Management[#](#policies-and-guidelines-for-consistent-maintenance-and-workflow-management "Link to this heading")
+## [Policies and Guidelines for Consistent Maintenance and Workflow Management](#id6)[#](#policies-and-guidelines-for-consistent-maintenance-and-workflow-management "Link to this heading")
 
 These policies and guidelines help us maintain consistency in the various types
 of maintenance work. If you are writing code or documentation, following these policies

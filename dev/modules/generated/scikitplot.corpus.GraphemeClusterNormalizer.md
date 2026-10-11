@@ -1,6 +1,6 @@
 # GraphemeClusterNormalizer[#](#graphemeclusternormalizer "Link to this heading")
 
-class scikitplot.corpus.GraphemeClusterNormalizer(**form='NFC'**, **\***, **strip\_bom=True**, **strip\_control=True**, **max\_text\_length=None**, **write\_normalized\_text=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_normalizer.py#L734)[#](#scikitplot.corpus.GraphemeClusterNormalizer "Link to this definition")
+class scikitplot.corpus.GraphemeClusterNormalizer(**form='NFC'**, **\***, **strip\_bom=True**, **strip\_control=True**, **max\_text\_length=None**, **write\_normalized\_text=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_normalizers/_normalizer.py#L734)[#](#scikitplot.corpus.GraphemeClusterNormalizer "Link to this definition")
 :   Normalize text to NFC and compute grapheme cluster boundaries.
 
     ****This is the mandatory first step for all multilang processing.****
@@ -106,7 +106,7 @@ class scikitplot.corpus.GraphemeClusterNormalizer(**form='NFC'**, **\***, **stri
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_normalizer.py#L875)[#](#scikitplot.corpus.GraphemeClusterNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_normalizers/_normalizer.py#L875)[#](#scikitplot.corpus.GraphemeClusterNormalizer.normalize_doc "Link to this definition")
     :   Normalize **doc** text to NFC and populate grapheme-cluster counts.
 
         Parameters:

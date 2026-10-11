@@ -37,7 +37,7 @@ References
 “Tensorflow’s logging system”
 Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf\_logging.py#L94](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/platform/tf_logging.py#L94)
 
-****User guide.**** See the [Logging System](../user_guide/logging/index.html#logging-index) section for further details.
+****User guide.**** See the [Logging](../user_guide/logging/index.html#logging-index) section for further details.
 
 ## Logging Levels[#](#logging-levels "Link to this heading")
 

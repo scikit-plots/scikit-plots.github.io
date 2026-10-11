@@ -17,74 +17,6 @@ information. Run `doctor` to see which detection surfaces are active and
 `inspect` when you need to review what a particular input would expose.
 [What it protects, and what it does not](security_and_limits.html#cleanprompt-security) lists what is and is not covered.
 
-## The whole idea in one picture[#](#the-whole-idea-in-one-picture "Link to this heading")
-
-```
-original text
-    |
-    v
-detect -> assign stable labels -> rewrite
-    |                              |
-    |                              +---- safe text ----> model / tool / agent
-    |
-    +---- handle / vault stays local
-                                   |
-                        model reply v
-                              restore
-                                   |
-                                   v
-                            local clear text
-
-```
-
-Two kinds of state come out of every redaction, and they go to different
-places. The ****redacted text**** is meant to cross the model boundary. The
-****vault**** (inside a [`Handle`](../../modules/generated/scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt.Handle") in the high-level API) holds the removed
-values; it is the authority to restore them and ****must not be sent with the
-prompt****. Treat a [`Handle`](../../modules/generated/scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt.Handle") or [`Vault`](../../modules/generated/scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault "scikitplot.cleanprompt.Vault") like a secret.
-
-## Thirty seconds[#](#thirty-seconds "Link to this heading")
-
-```
-from scikitplot.cleanprompt import encode, decode
-
-encoded = encode("Mail ada@example.com about the Acme renewal", hide=["Acme"])
-encoded.text
-# 'Mail [EMAIL-1] about the [CUSTOM-1] renewal'
-decode("I will contact [EMAIL-1] about [CUSTOM-1].", encoded.handle)
-# 'I will contact ada@example.com about Acme.'
-
-```
-
-From a terminal, the same pair needs no paths at all:
-
-```
-python -m scikitplot.cleanprompt encode "Mail ada@example.com about the renewal"
-python -m scikitplot.cleanprompt decode "I will contact [EMAIL-1]."
-
-```
-
-## Which surface should I use?[#](#which-surface-should-i-use "Link to this heading")
-
-| Goal | Start with |
-| --- | --- |
-| One prompt/reply exchange in Python | [`encode`](../../modules/generated/scikitplot.cleanprompt.encode.html#scikitplot.cleanprompt.encode "scikitplot.cleanprompt.encode") and [`decode`](../../modules/generated/scikitplot.cleanprompt.decode.html#scikitplot.cleanprompt.decode "scikitplot.cleanprompt.decode") ([The Python API](python_api.html#cleanprompt-python-api)) |
-| A multi-turn conversation with stable labels | [`Session`](../../modules/generated/scikitplot.cleanprompt.Session.html#scikitplot.cleanprompt.Session "scikitplot.cleanprompt.Session") or [`session`](../../modules/generated/scikitplot.cleanprompt.session-func.html#scikitplot.cleanprompt.session "scikitplot.cleanprompt.session") |
-| Full control over policy and detectors | [`Redactor`](../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor "scikitplot.cleanprompt.Redactor"), [`RedactionPolicy`](../../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy"), [`DetectorRegistry`](../../modules/generated/scikitplot.cleanprompt.DetectorRegistry.html#scikitplot.cleanprompt.DetectorRegistry "scikitplot.cleanprompt.DetectorRegistry") |
-| Paste text into a chat by hand | `cleanprompt encode` and `cleanprompt decode` ([The command line](command_line.html#cleanprompt-command-line)) |
-| Preview what would be removed | `cleanprompt inspect` |
-| Fail CI when findings are present | `cleanprompt scan` |
-| Names, organisations and places | the entity engines ([Names, organisations and places](entity_detection.html#cleanprompt-entity-detection)) |
-| Files, records, folders, Office documents, or archives | [`FluentCleanPrompt`](../../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt") / `cleanprompt batch` ([Files, records, packs and plans](files_and_packs.html#cleanprompt-files-and-packs)) |
-| Put a privacy gate in front of a model client | [`Guard`](../../modules/generated/scikitplot.cleanprompt.Guard.html#scikitplot.cleanprompt.Guard "scikitplot.cleanprompt.Guard") ([Models, tools and agents](agents_and_models.html#cleanprompt-agents)) |
-| Guard an arbitrary command-line model | `cleanprompt ask --via "COMMAND"` |
-| Give an MCP agent a local redaction boundary | `cleanprompt mcp` |
-| Pin team configuration and detect definition drift | `cleanprompt plan` |
-| A browser page, locally or in a container | `cleanprompt flask` / `cleanprompt docker` ([The web page and containers](web_and_containers.html#cleanprompt-web-and-containers)) |
-| Check installation and optional capabilities | [`capabilities`](../../modules/generated/scikitplot.cleanprompt.capabilities.html#scikitplot.cleanprompt.capabilities "scikitplot.cleanprompt.capabilities") / `cleanprompt doctor` |
-
-## How this guide is organised[#](#how-this-guide-is-organised "Link to this heading")
-
 Read the first two pages in order; after that, go to the page for the job in
 front of you.
 
@@ -192,3 +124,69 @@ moderate and advanced topics, recipes, packs and formats, and agents.
 > * [Cleanprompt](../../auto_examples/cleanprompt/index.html#cleanprompt-examples)
 * [Corpus User Guide](../corpus/index.html#corpus-index)
 * [`scikitplot.cleanprompt`](../../apis/scikitplot.cleanprompt.html#module-scikitplot.cleanprompt "scikitplot.cleanprompt")
+
+## The whole idea in one picture[#](#the-whole-idea-in-one-picture "Link to this heading")
+
+```
+original text
+    |
+    v
+detect -> assign stable labels -> rewrite
+    |                              |
+    |                              +---- safe text ----> model / tool / agent
+    |
+    +---- handle / vault stays local
+                                   |
+                        model reply v
+                              restore
+                                   |
+                                   v
+                            local clear text
+
+```
+
+Two kinds of state come out of every redaction, and they go to different
+places. The ****redacted text**** is meant to cross the model boundary. The
+****vault**** (inside a [`Handle`](../../modules/generated/scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt.Handle") in the high-level API) holds the removed
+values; it is the authority to restore them and ****must not be sent with the
+prompt****. Treat a [`Handle`](../../modules/generated/scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt.Handle") or [`Vault`](../../modules/generated/scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault "scikitplot.cleanprompt.Vault") like a secret.
+
+## Thirty seconds[#](#thirty-seconds "Link to this heading")
+
+```
+from scikitplot.cleanprompt import encode, decode
+
+encoded = encode("Mail ada@example.com about the Acme renewal", hide=["Acme"])
+encoded.text
+# 'Mail [EMAIL-1] about the [CUSTOM-1] renewal'
+decode("I will contact [EMAIL-1] about [CUSTOM-1].", encoded.handle)
+# 'I will contact ada@example.com about Acme.'
+
+```
+
+From a terminal, the same pair needs no paths at all:
+
+```
+python -m scikitplot.cleanprompt encode "Mail ada@example.com about the renewal"
+python -m scikitplot.cleanprompt decode "I will contact [EMAIL-1]."
+
+```
+
+## Which surface should I use?[#](#which-surface-should-i-use "Link to this heading")
+
+| Goal | Start with |
+| --- | --- |
+| One prompt/reply exchange in Python | [`encode`](../../modules/generated/scikitplot.cleanprompt.encode.html#scikitplot.cleanprompt.encode "scikitplot.cleanprompt.encode") and [`decode`](../../modules/generated/scikitplot.cleanprompt.decode.html#scikitplot.cleanprompt.decode "scikitplot.cleanprompt.decode") ([The Python API](python_api.html#cleanprompt-python-api)) |
+| A multi-turn conversation with stable labels | [`Session`](../../modules/generated/scikitplot.cleanprompt.Session.html#scikitplot.cleanprompt.Session "scikitplot.cleanprompt.Session") or [`session`](../../modules/generated/scikitplot.cleanprompt.session-func.html#scikitplot.cleanprompt.session "scikitplot.cleanprompt.session") |
+| Full control over policy and detectors | [`Redactor`](../../modules/generated/scikitplot.cleanprompt.Redactor.html#scikitplot.cleanprompt.Redactor "scikitplot.cleanprompt.Redactor"), [`RedactionPolicy`](../../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy"), [`DetectorRegistry`](../../modules/generated/scikitplot.cleanprompt.DetectorRegistry.html#scikitplot.cleanprompt.DetectorRegistry "scikitplot.cleanprompt.DetectorRegistry") |
+| Paste text into a chat by hand | `cleanprompt encode` and `cleanprompt decode` ([The command line](command_line.html#cleanprompt-command-line)) |
+| Preview what would be removed | `cleanprompt inspect` |
+| Fail CI when findings are present | `cleanprompt scan` |
+| Names, organisations and places | the entity engines ([Names, organisations and places](entity_detection.html#cleanprompt-entity-detection)) |
+| Files, records, folders, Office documents, or archives | [`FluentCleanPrompt`](../../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt") / `cleanprompt batch` ([Files, records, packs and plans](files_and_packs.html#cleanprompt-files-and-packs)) |
+| Put a privacy gate in front of a model client | [`Guard`](../../modules/generated/scikitplot.cleanprompt.Guard.html#scikitplot.cleanprompt.Guard "scikitplot.cleanprompt.Guard") ([Models, tools and agents](agents_and_models.html#cleanprompt-agents)) |
+| Guard an arbitrary command-line model | `cleanprompt ask --via "COMMAND"` |
+| Give an MCP agent a local redaction boundary | `cleanprompt mcp` |
+| Pin team configuration and detect definition drift | `cleanprompt plan` |
+| A browser page, locally or in a container | `cleanprompt flask` / `cleanprompt docker` ([The web page and containers](web_and_containers.html#cleanprompt-web-and-containers)) |
+| Check installation and optional capabilities | [`capabilities`](../../modules/generated/scikitplot.cleanprompt.capabilities.html#scikitplot.cleanprompt.capabilities "scikitplot.cleanprompt.capabilities") / `cleanprompt doctor` |

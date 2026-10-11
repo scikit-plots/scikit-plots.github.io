@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:42:46Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:16:15Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.ChunkedTextList","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1644,7 +1646,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ChunkedTextList<a class="headerlink" href="#chunkedtextlist" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkedTextList">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkedTextList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_metadata_list</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_chunker_bridge.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkedTextList" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ChunkedTextList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_metadata_list</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_chunker_bridge.py#L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ChunkedTextList" title="Link to this definition">#</a></dt>
 <dd><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> subclass that carries per-chunk metadata alongside <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">str)</span></code> pairs.</p>
 <p>Returned by every <a class="reference internal" href="scikitplot.corpus.ChunkerBridge.html#scikitplot.corpus.ChunkerBridge" title="scikitplot.corpus.ChunkerBridge"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChunkerBridge</span></code></a> subclass in place of a plain
 <code class="docutils literal notranslate"><span class="pre">list</span></code>.  Behaves identically to <code class="docutils literal notranslate"><span class="pre">list</span></code> for all existing callers
@@ -1677,8 +1679,8 @@ are unaffected — they never see <code class="docutils literal notranslate"><sp
 <p>Idempotency: <code class="docutils literal notranslate"><span class="pre">ChunkedTextList</span></code> is constructed once per <code class="docutils literal notranslate"><span class="pre">chunk()</span></code>
 call and never mutated after construction.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="1e69ef22-bb20-4c5a-a790-acbff1454fbd">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1e69ef22-bb20-4c5a-a790-acbff1454fbd','d0bb96a2-37d5-41de-933a-c04d88295937','adb5ede0-0a5a-4f57-a2b5-2beb587a2fc8','../../lite/tree/../notebooks/index.html?path=7c237d9e_aca3_42c9_a475_298d9d1b6a78.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="870381dd-3cd2-47c7-a4f7-d1a9a6a081b3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('870381dd-3cd2-47c7-a4f7-d1a9a6a081b3','92820039-4e24-4bc1-98eb-56cdf48b10d1','5957e39f-72e6-4dc2-80c4-c350870f49ff','../../lite/tree/../notebooks/index.html?path=d85a02ac_4c0c_4059_968a_7e6e304a0903.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cl</span> <span class="o">=</span> <span class="n">ChunkedTextList</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"Hello"</span><span class="p">)],</span> <span class="p">[{</span><span class="s2">"multilang"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"script"</span><span class="p">:</span> <span class="s2">"latin"</span><span class="p">}}])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
@@ -1689,7 +1691,7 @@ call and never mutated after construction.</p>
 </div>
 </div>
 </div>
-<div id="adb5ede0-0a5a-4f57-a2b5-2beb587a2fc8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1e69ef22-bb20-4c5a-a790-acbff1454fbd','adb5ede0-0a5a-4f57-a2b5-2beb587a2fc8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1e69ef22-bb20-4c5a-a790-acbff1454fbd','adb5ede0-0a5a-4f57-a2b5-2beb587a2fc8')">Open In Tab</button></div><div id="d0bb96a2-37d5-41de-933a-c04d88295937" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="5957e39f-72e6-4dc2-80c4-c350870f49ff" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('870381dd-3cd2-47c7-a4f7-d1a9a6a081b3','5957e39f-72e6-4dc2-80c4-c350870f49ff')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('870381dd-3cd2-47c7-a4f7-d1a9a6a081b3','5957e39f-72e6-4dc2-80c4-c350870f49ff')">Open In Tab</button></div><div id="92820039-4e24-4bc1-98eb-56cdf48b10d1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ChunkedTextList.append">
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.corpus.ChunkedTextList.append" title="Link to this definition">#</a></dt>
 <dd><p>Append object to the end of the list.</p>
@@ -1894,7 +1896,7 @@ ascending or descending, according to their function values.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

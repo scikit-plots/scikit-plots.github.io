@@ -1,6 +1,6 @@
 # AppliedProfile[#](#appliedprofile "Link to this heading")
 
-class scikitplot.cython.AppliedProfile(**annotate**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_profiles.py#L135)[#](#scikitplot.cython.AppliedProfile "Link to this definition")
+class scikitplot.cython.AppliedProfile(**annotate**, **compiler\_directives**, **extra\_compile\_args**, **extra\_link\_args**, **language**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_profiles.py#L135)[#](#scikitplot.cython.AppliedProfile "Link to this definition")
 :   Result of applying a profile with user-precedence rules.
 
     This is the return type of [`apply_profile`](scikitplot.cython.apply_profile.html#scikitplot.cython.apply_profile "scikitplot.cython.apply_profile"). It is a
@@ -41,19 +41,19 @@ class scikitplot.cython.AppliedProfile(**annotate**, **compiler\_directives**, *
     callers, but if a sixth field is ever appended, fixed-arity unpackers
     (`a, b, c, d, e = ...`) must migrate to named access or `*rest`.
 
-    annotate: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.annotate "Link to this definition")
+    annotate: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.annotate "Link to this definition")
     :   Alias for field number 0
 
-    compiler\_directives: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.compiler_directives "Link to this definition")
+    compiler\_directives: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.compiler_directives "Link to this definition")
     :   Alias for field number 1
 
     count(**value**, **/**)[#](#scikitplot.cython.AppliedProfile.count "Link to this definition")
     :   Return number of occurrences of value.
 
-    extra\_compile\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.extra_compile_args "Link to this definition")
+    extra\_compile\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.extra_compile_args "Link to this definition")
     :   Alias for field number 2
 
-    extra\_link\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.extra_link_args "Link to this definition")
+    extra\_link\_args: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.extra_link_args "Link to this definition")
     :   Alias for field number 3
 
     index(**value**, **start=0**, **stop=sys.maxsize**, **/**)[#](#scikitplot.cython.AppliedProfile.index "Link to this definition")
@@ -61,5 +61,5 @@ class scikitplot.cython.AppliedProfile(**annotate**, **compiler\_directives**, *
 
         Raises ValueError if the value is not present.
 
-    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.AppliedProfile.language "Link to this definition")
     :   Alias for field number 4

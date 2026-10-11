@@ -1,6 +1,6 @@
-# Quickstart Contributing Guidelines[#](#quickstart-contributing-guidelines "Link to this heading")
+# [Quickstart Contributing Guidelines](#id1)[#](#quickstart-contributing-guidelines "Link to this heading")
 
-## Creating a development environment[#](#creating-a-development-environment "Link to this heading")
+## [Creating a development environment](#id2)[#](#creating-a-development-environment "Link to this heading")
 
 To make and test code changes and build the documentation locally you will need to
 create a development environment. If you run into problems at any stage do not hesitate
@@ -56,7 +56,7 @@ Further details and related information can be found at
 
 For Linux-based installations, you won’t have to install any additional components.
 
-## Create a clone of scikit-plots[#](#create-a-clone-of-scikit-plots "Link to this heading")
+## [Create a clone of scikit-plots](#id3)[#](#create-a-clone-of-scikit-plots "Link to this heading")
 
 If you have not done so already, you will need your own copy of `scikit-plots` to
 build it and/or contribute to the source. scikit-plots is hosted in the
@@ -275,7 +275,7 @@ You will see something like:
 
 ```
 
-## Create an isolated development environment[#](#create-an-isolated-development-environment "Link to this heading")
+## [Create an isolated development environment](#id4)[#](#create-an-isolated-development-environment "Link to this heading")
 
 A key requirement is to have an isolated Python environment, meaning that it is
 isolated from both your system Python and any other Python environments you may have
@@ -370,7 +370,7 @@ scikitplot -V
 
 Next you may want to try running some or all of the `scikitplot` unit tests.
 Running the full test suite can take a few minutes, so you may want to start with a
-single sub-package (e.g. [KeyToDataScience](../user_guide/decile/kds.html#decile-kds-index)):
+single sub-package (e.g. decile-kds-index):
 
 ```
 >>> ## python -m pytest -p vscode_pytest --collect-only --rootdir=.
@@ -431,7 +431,7 @@ pass.
 > **Tip**
 > To learn more about pre-commit, see the [Pre-commit](guide_devel_details.html#pre-commit) section.
 
-## Creating and submitting a pull request[#](#creating-and-submitting-a-pull-request "Link to this heading")
+## [Creating and submitting a pull request](#id5)[#](#creating-and-submitting-a-pull-request "Link to this heading")
 
 You can contribute bug fixes, new features, and documentation updates by submitting a
 GitHub pull request (PR). This section will guide you through the process. We encourage
@@ -554,7 +554,7 @@ When you want to update the feature branch with changes in main after
 you created the branch, check the section on
 [updating a PR](#contributing-update-pr).
 
-## Making code or documentation changes[#](#making-code-or-documentation-changes "Link to this heading")
+## [Making code or documentation changes](#id6)[#](#making-code-or-documentation-changes "Link to this heading")
 
 Now comes the fun part where you use your favorite editor or IDE to make changes to the
 code or documentation! At a high level this breaks into a few parts:

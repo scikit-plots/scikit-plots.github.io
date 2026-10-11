@@ -1,6 +1,6 @@
 # log[#](#log "Link to this heading")
 
-scikitplot.logging.log(**level**, **msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/logging/_logging.py#L1581)[#](#scikitplot.logging.log "Link to this definition")
+scikitplot.logging.log(**level**, **msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/logging/_logging.py#L1581)[#](#scikitplot.logging.log "Link to this definition")
 :   Log a message at the specified log level.
 
     Parameters:

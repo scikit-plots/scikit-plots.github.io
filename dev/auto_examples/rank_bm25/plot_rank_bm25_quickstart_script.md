@@ -118,7 +118,7 @@ tie order: ['first', 'second', 'third']
 
 The next examples compare scoring recipes, explain sparse versus dense paths,
 and persist an index. The full contracts and failure modes live in
-[Rank-BM25 user guide](../../user_guide/rank_bm25/index.html#rank-bm25-index).
+[BM25 lexical ranking](../../user_guide/rank_bm25/index.html#rank-bm25-index).
 
 Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: tutorial](../../_tags/purpose-tutorial.html)
 

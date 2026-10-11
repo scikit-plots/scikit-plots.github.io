@@ -44,7 +44,7 @@ CLI
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [MLflow Workflow Automation](../user_guide/mlflow/index.html#mlflow-index) section for further details.
+****User guide.**** See the [MLflow project integration](../user_guide/mlflow/index.html#mlflow-index) section for further details.
 
 ## Cli Helper[#](#cli-helper "Link to this heading")
 
@@ -66,7 +66,7 @@ Go BackOpen In Tab
 
 \_config.
 
-****User guide.**** See the [MLflow Workflow Automation](../user_guide/mlflow/index.html#mlflow-index) section for further details.
+****User guide.**** See the [MLflow project integration](../user_guide/mlflow/index.html#mlflow-index) section for further details.
 
 |  |  |
 | --- | --- |
@@ -170,7 +170,7 @@ Option C — config-driven (best for teams)
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [MLflow Workflow Automation](../user_guide/mlflow/index.html#mlflow-index) section for further details.
+****User guide.**** See the [MLflow project integration](../user_guide/mlflow/index.html#mlflow-index) section for further details.
 
 |  |  |
 | --- | --- |

@@ -1,6 +1,6 @@
 # import\_cached\_by\_name[#](#import-cached-by-name "Link to this heading")
 
-scikitplot.cython.import\_cached\_by\_name(**module\_name**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_public.py#L1241)[#](#scikitplot.cython.import_cached_by_name "Link to this definition")
+scikitplot.cython.import\_cached\_by\_name(**module\_name**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_public.py#L1241)[#](#scikitplot.cython.import_cached_by_name "Link to this definition")
 :   Import the newest cached module entry matching `module_name`.
 
     Parameters:

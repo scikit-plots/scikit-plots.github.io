@@ -40,7 +40,7 @@ print(match.choice, match.distance, match.similarity)
 
 ```
 
-The returned `Match` also records the backend that actually produced
+The returned [`Match`](generated/scikitplot.levenshtein.Match.html#scikitplot.levenshtein.Match "scikitplot.levenshtein.Match") also records the backend that actually produced
 the score.
 
 ## Rank several choices[#](#rank-several-choices "Link to this heading")

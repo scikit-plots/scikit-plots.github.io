@@ -1,6 +1,6 @@
 # ChunkerProtocol[#](#chunkerprotocol "Link to this heading")
 
-class scikitplot.corpus.ChunkerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L699)[#](#scikitplot.corpus.ChunkerProtocol "Link to this definition")
+class scikitplot.corpus.ChunkerProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L699)[#](#scikitplot.corpus.ChunkerProtocol "Link to this definition")
 :   Structural interface every chunker must satisfy.
 
     Any class that implements `chunk` and `chunk_batch` with the
@@ -12,7 +12,7 @@ class scikitplot.corpus.ChunkerProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
     `runtime_checkable` enables `isinstance(obj, ChunkerProtocol)`
     in pipeline validation and registry lookups.
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L713)[#](#scikitplot.corpus.ChunkerProtocol.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L713)[#](#scikitplot.corpus.ChunkerProtocol.chunk "Link to this definition")
     :   Split a single document into chunks.
 
         Parameters:
@@ -36,7 +36,7 @@ class scikitplot.corpus.ChunkerProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_types.py#L736)[#](#scikitplot.corpus.ChunkerProtocol.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_types.py#L736)[#](#scikitplot.corpus.ChunkerProtocol.chunk_batch "Link to this definition")
     :   Split a list of documents into chunks.
 
         Parameters:

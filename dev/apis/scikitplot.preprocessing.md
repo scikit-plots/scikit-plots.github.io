@@ -2,7 +2,7 @@
 
 Methods for scaling, centering, normalization, binarization, and more.
 
-****User guide.**** See the [Preprocessing](../user_guide/preprocessing/index.html#preprocessing-index) section for further details.
+****User guide.**** See the [Categorical preprocessing](../user_guide/preprocessing/index.html#preprocessing-index) section for further details.
 
 ## Extended sklearn feature preprocessing.[#](#extended-sklearn-feature-preprocessing "Link to this heading")
 

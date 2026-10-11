@@ -1,4 +1,4 @@
-# Installing scikit-plots[#](#installing-scikit-plots "Link to this heading")
+# [Installing scikit-plots](#id10)[#](#installing-scikit-plots "Link to this heading")
 
 Scikit-plots relies on [Matplotlib](http://matplotlib.org/) and
 [Scikit-learn](http://scikit-learn.org/) for plotting model results.
@@ -12,7 +12,7 @@ There are different ways to install scikit-plots:
   is the best approach for most users. It will provide a stable version
   and pre-built packages are available for most platforms.
 
-## Installing the latest release[#](#installing-the-latest-release "Link to this heading")
+## [Installing the latest release](#id11)[#](#installing-the-latest-release "Link to this heading")
 
 ⚠️ Partially support Python 3.8 3.9 without some packages in cexternals, externals due to externals lib dep (e.g., astropy.stats, arrat-api-compat, arrat-api-extra)
 
@@ -262,7 +262,7 @@ When using [pip](https://pip.pypa.io/en/stable/), ensure that **binary wheels** 
 compiling from source. This is particularly important for certain configurations,
 such as running Linux on a Raspberry Pi.
 
-## Installing A lightweight version `scikit-plots-x`[#](#installing-a-lightweight-version-scikit-plots-x "Link to this heading")
+## [Installing A lightweight version `scikit-plots-x`](#id12)[#](#installing-a-lightweight-version-scikit-plots-x "Link to this heading")
 
 🔜🚀 [README.md](https://github.com/scikit-plots/scikit-plots#----by-----github-urls---)
 A lightweight version that is designed to be used in environments where you want to minimize the size of the package.
@@ -370,7 +370,7 @@ pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/sim
 
 ```
 
-## Dependencies[#](#dependencies "Link to this heading")
+## [Dependencies](#id13)[#](#dependencies "Link to this heading")
 
 Mandatory dependencies should be installed automatically if you install Matplotlib using
 a package manager such as `pip` or `conda`; therefore this list is primarily for

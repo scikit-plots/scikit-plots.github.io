@@ -1,6 +1,6 @@
 # DEFAULT\_TAG\_STYLE[#](#default-tag-style "Link to this heading")
 
-scikitplot.cleanprompt.DEFAULT\_TAG\_STYLE = TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_TAG_STYLE "Link to this definition")
+scikitplot.cleanprompt.DEFAULT\_TAG\_STYLE = TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_TAG_STYLE "Link to this definition")
 :   The placeholder grammar.
 
     Parameters:

@@ -1,43 +1,40 @@
-# Logging System[#](#logging-system "Link to this heading")
+# Logging[#](#logging "Link to this heading")
 
-This module contains functions related to [`logging`](../../apis/scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") (Scikit-plots Logging).
+`scikitplot.logging` wraps Python’s standard logging model with a Scikit-Plots package logger, Google-style formatting, verbosity helpers and rate-limited convenience functions.
 
-> **Note**
-> The Scikit-plots logging system is meant for internal scikit-plots usage.
-For use in other packages, we recommend implementing your own `logger` instead.
-> **Tip**
-> The Scikit-plots logging system compatible with python logging API system.
-This module defines a logging class based on the built-in logging module.
+> **Important**
+> The current repository snapshot has several open compatibility findings in this submodule. Prefer the basic `get_logger` / `setLevel` / standard `debug`-`critical` path and read ****Known limits**** before depending on helper or environment behavior.
+Getting started
 
-## Configuring the logging system[#](#configuring-the-logging-system "Link to this heading")
+Use the package logger and set verbosity without configuring duplicate handlers.
 
-Examples
+[Getting started](getting_started.html#logging-getting-started)Levels and loggers
 
-Get the root `logger` from `module attr`:
+Understand package-level helpers, effective level, verbosity, and stdlib compatibility.
 
-```
->>> from scikitplot import logger
->>> logger.setLevel(logger.INFO)  # default WARNING
->>> logger.info("This is a info message from the sp logger.")
-2026-01-23 11:06:27.180474: I scikitplot 140316325247872 3536182465.py:3:<module>] This is a info message from the sp logger.
+[Levels and loggers](levels_and_loggers.html#logging-levels-and-loggers)Formatting and helpers
 
->>> import scikitplot as sp
->>> sp.logger.setLevel(sp.logger.INFO)  # default WARNING
->>> sp.logger.info("This is a info message from the sp logger.")
-2026-01-23 11:06:27.181338: I scikitplot 140316325247872 3536182465.py:7:<module>] This is a info message from the sp logger.
+Google-style formatting, sanitization, rate-limited helpers, and stderr behavior.
 
-```
+[Formatting and helpers](formatting_and_helpers.html#logging-formatting-and-helpers)Python API
 
-Get the root `logger` from `func`:
+Public constants, stdlib-compatible objects, and Scikit-Plots helpers.
 
-```
->>> import scikitplot as sp
+[Python API](python_api.html#logging-python-api)Known limits and troubleshooting
 
->>> sp.get_logger().setLevel(sp.logging.INFO)  # default WARNING
->>> sp.get_logger().info("This is a info message from the sp logger.")
-2026-01-23 11:06:27.186634: I scikitplot 140316325247872 interactiveshell.py:3701:run_code] This is a info message from the sp logger.
+Current compatibility findings and safe workarounds.
 
-```
+[Known limits and troubleshooting](known_limits_and_troubleshooting.html#logging-known-limits-and-troubleshooting)
+
+## Which page should I use?[#](#which-page-should-i-use "Link to this heading")
+
+Start with ****Getting started****. Then choose the page that owns the decision
+you are making: architecture and lifecycle, configuration, persistence,
+performance, public API, or limits. The guide intentionally separates those
+concerns so examples do not accidentally become policy.
+
+## Further reading[#](#further-reading "Link to this heading")
+
 > **Note**
 > This module builds on Python’s standard [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") library.
 For more information on Python’s logging API, refer to the official

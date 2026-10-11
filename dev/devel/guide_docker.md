@@ -1,4 +1,4 @@
-# Docker Containerization Guidelines[#](#docker-containerization-guidelines "Link to this heading")
+# [Docker Containerization Guidelines](#id1)[#](#docker-containerization-guidelines "Link to this heading")
 
 > **Important**
 > By default, all Docker containers are pre-configured and ready to use.
@@ -20,7 +20,7 @@ See [Checking the scikit-plots build](guide_qu_contribute.html#contributing-chec
 * [“🐋 docker/README.md”](https://github.com/scikit-plots/scikit-plots/blob/main/docker/README.md)
 * [“💡 bash-first-run-notice.txt”](https://github.com/scikit-plots/scikit-plots/blob/main/docker/scripts/bash-first-run-notice.txt)
 
-## 🐋 Docker Containerization[#](#docker-containerization "Link to this heading")
+## [🐋 Docker Containerization](#id2)[#](#docker-containerization "Link to this heading")
 
 💡 Work on Docker Desktop or Github Codespaces
 
@@ -31,7 +31,7 @@ Here’s how containerization works:
 * ****Efficiency****: Containers are more lightweight than virtual machines (VMs) because they share the host OS’s kernel rather than running their own separate operating system. This makes them faster and more resource-efficient.
 * ****Consistency****: The application inside the container runs the same way regardless of where it’s deployed, ensuring consistency across environments.
 
-## 🏷️ Github Codespaces Guide[#](#github-codespaces-guide "Link to this heading")
+## [🏷️ Github Codespaces Guide](#id3)[#](#github-codespaces-guide "Link to this heading")
 
 (Connect IDE Interface Vscode or Jupyter Notebook)
 
@@ -47,7 +47,7 @@ Here’s how containerization works:
   
 ![](https://docs.github.com/assets/cb-66206/mw-1440/images/help/codespaces/advanced-options.webp)
 
-## 🏷️ Docker Desktop Guide[#](#docker-desktop-guide "Link to this heading")
+## [🏷️ Docker Desktop Guide](#id4)[#](#docker-desktop-guide "Link to this heading")
 
 ```
 ## Forked repo: https://github.com/scikit-plots/scikit-plots.git
@@ -65,7 +65,7 @@ This repository contains Docker & Docker Compose configurations for running Jupy
 
 You can run containers with either host-installed CUDA or pre-installed CUDA inside the container.
 
-## 🐳 Docker Compose Quickstart Guide[#](#docker-compose-quickstart-guide "Link to this heading")
+## [🐳 Docker Compose Quickstart Guide](#id5)[#](#docker-compose-quickstart-guide "Link to this heading")
 
 ### (Optionally) 📦 Prebuilt Image from Docker Hub[#](#optionally-prebuilt-image-from-docker-hub "Link to this heading")
 
@@ -270,7 +270,7 @@ docker compose down
 
 ```
 
-## 🐳 Docker Compose Configuration[#](#docker-compose-configuration "Link to this heading")
+## [🐳 Docker Compose Configuration](#id6)[#](#docker-compose-configuration "Link to this heading")
 
 This project is based on Docker Compose and includes multiple services:
 
@@ -304,7 +304,7 @@ Requires NVIDIA runtime (–runtime=nvidia)
 
 Runs on port `8890`
 
-## 🛠️ Custom Docker Commands[#](#custom-docker-commands "Link to this heading")
+## [🛠️ Custom Docker Commands](#id7)[#](#custom-docker-commands "Link to this heading")
 
 If you need more control, you can use Docker CLI commands.
 
@@ -323,7 +323,7 @@ docker exec -it <container_id> nvidia-smi
 
 ```
 
-## 📂 Folder Structure[#](#folder-structure "Link to this heading")
+## [📂 Folder Structure](#id8)[#](#folder-structure "Link to this heading")
 
 ```
 docker/
@@ -335,7 +335,7 @@ docker/
 
 ```
 
-## 🖥️ Useful References[#](#useful-references "Link to this heading")
+## [🖥️ Useful References](#id9)[#](#useful-references "Link to this heading")
 
 📚 [Jupyter Docker Stacks: Read the Docs](https://jupyter-docker-stacks.readthedocs.io/en/latest/)
 

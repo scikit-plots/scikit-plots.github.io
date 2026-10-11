@@ -70,7 +70,7 @@ Try it in your browser!
 ```
 Go BackOpen In Tab
 
-****User guide.**** See the [ANNoy Vector Database](../user_guide/annoy/index.html#annoy-index) section for further details.
+****User guide.**** See the [Annoy vector search](../user_guide/annoy/index.html#annoy-index) section for further details.
 
 ## ANNoy (`cython` based `scikitplot/annoy/_annoy`)[#](#annoy-cython-based-scikitplot-annoy-annoy "Link to this heading")
 

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:41:28Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:15:06Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.random","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1282,6 +1282,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1454,6 +1455,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1664,8 +1666,8 @@ Bioinformatics Applications.”
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d59eac12-804f-45fd-ac86-57b684b2fd29">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d59eac12-804f-45fd-ac86-57b684b2fd29','3f505062-7a46-4cec-8d11-08e1b2e06dac','5f75b248-7f67-4804-8cf3-66cbe756b17e','../lite/tree/../notebooks/index.html?path=44ed0389_5329_4a93_b523_105eb2e0ad8d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ea5269df-2a14-4bfa-9712-9466ab7ab152">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ea5269df-2a14-4bfa-9712-9466ab7ab152','c9e50e58-080a-4084-9ee0-ea8503fd86e8','283a8d13-83a2-48ea-8aeb-8c684a720f50','../lite/tree/../notebooks/index.html?path=a68904a9_6ad2_46c8_8387_8efd0b6a8557.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.random</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_rng</span><span class="p">,</span> <span class="n">kiss_context</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
@@ -1681,10 +1683,10 @@ Bioinformatics Applications.”
 </div>
 </div>
 </div>
-<div id="5f75b248-7f67-4804-8cf3-66cbe756b17e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d59eac12-804f-45fd-ac86-57b684b2fd29','5f75b248-7f67-4804-8cf3-66cbe756b17e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d59eac12-804f-45fd-ac86-57b684b2fd29','5f75b248-7f67-4804-8cf3-66cbe756b17e')">Open In Tab</button></div><div id="3f505062-7a46-4cec-8d11-08e1b2e06dac" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">Random</span></a> section for further details.</p>
+<div id="283a8d13-83a2-48ea-8aeb-8c684a720f50" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ea5269df-2a14-4bfa-9712-9466ab7ab152','283a8d13-83a2-48ea-8aeb-8c684a720f50')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ea5269df-2a14-4bfa-9712-9466ab7ab152','283a8d13-83a2-48ea-8aeb-8c684a720f50')">Open In Tab</button></div><div id="c9e50e58-080a-4084-9ee0-ea8503fd86e8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">KISS random number generation</span></a> section for further details.</p>
 <section id="random-number-generation-numpy-like-generator">
 <span id="random-ref-random-number-generation-numpy-like-class-numpy-random-generator"></span><h2>Random Number Generation (Numpy-Like <a class="reference external" href="https://numpy.org/devdocs/reference/random/generator.html#numpy.random.Generator" title="(in NumPy v2.6.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code></a>).<a class="headerlink" href="#random-number-generation-numpy-like-generator" title="Link to this heading">#</a></h2>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">Random</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">KISS random number generation</span></a> section for further details.</p>
 <p class="rubric">Class inheritance</p>
 <div class="graphviz"><img src="../_images/inheritance-1afc048cd6b3769c9971dbbea2db15804738806e.png" alt="Inheritance diagram of Kiss32Random, Kiss64Random, KissSeedSequence, KissBitGenerator, KissGenerator, KissRandomState" usemap="#inheritance1e52a57e24" class="inheritance graphviz" /></div>
 <map id="inheritance1e52a57e24" name="inheritance1e52a57e24">
@@ -1729,7 +1731,7 @@ Bioinformatics Applications.”
 </section>
 <section id="kissgenerator-distribution-methods">
 <span id="random-ref-kissgenerator-distribution-methods"></span><h2><code class="docutils literal notranslate"><span class="pre">KissGenerator</span></code> Distribution Methods<a class="headerlink" href="#kissgenerator-distribution-methods" title="Link to this heading">#</a></h2>
-<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">Random</span></a> section for further details.</p>
+<p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/random/index.html#random-index"><span class="std std-ref">KISS random number generation</span></a> section for further details.</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.random.choice.html#scikitplot.random.choice" title="scikitplot.random.choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">choice</span></code></a></p></td>
@@ -1827,7 +1829,7 @@ Bioinformatics Applications.”
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

@@ -1,15 +1,15 @@
 # EdgeTrust[#](#edgetrust "Link to this heading")
 
-class scikitplot.corpus.EdgeTrust(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_graph.py#L131)[#](#scikitplot.corpus.EdgeTrust "Link to this definition")
+class scikitplot.corpus.EdgeTrust(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_graph.py#L131)[#](#scikitplot.corpus.EdgeTrust "Link to this definition")
 :   How an edge came to exist.
 
-    CLAIMED = 'claimed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.CLAIMED "Link to this definition")
+    CLAIMED = 'claimed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.CLAIMED "Link to this definition")
     :   Asserted by a model. The G2 tier; never auto-promoted.
 
-    DERIVED = 'derived'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.DERIVED "Link to this definition")
+    DERIVED = 'derived'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.DERIVED "Link to this definition")
     :   A pure function of stored fields. The G0 tier.
 
-    EXTRACTED = 'extracted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.EXTRACTED "Link to this definition")
+    EXTRACTED = 'extracted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.EdgeTrust.EXTRACTED "Link to this definition")
     :   Produced by a deterministic extractor. The G1 tier.
 
     capitalize(**/**)[#](#scikitplot.corpus.EdgeTrust.capitalize "Link to this definition")

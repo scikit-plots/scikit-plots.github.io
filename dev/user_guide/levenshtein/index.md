@@ -1,6 +1,6 @@
 # Levenshtein distance and fuzzy matching[#](#levenshtein-distance-and-fuzzy-matching "Link to this heading")
 
-`scikitplot.levenshtein` provides one small, stable facade for exact
+[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") provides one small, stable facade for exact
 unit-cost Levenshtein edit distance, normalized similarity, deterministic
 ranking and optional Corpus retrieval.
 

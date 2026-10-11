@@ -1,90 +1,24 @@
-# KeyToDataScience[#](#keytodatascience "Link to this heading")
+# KDS functions[#](#kds-functions "Link to this heading")
 
-This module contains functions related to [`kds`](../../apis/scikitplot.decile.html#module-scikitplot.decile.kds "scikitplot.decile.kds").
+The `scikitplot.decile.kds` namespace provides array-oriented decile
+statistics and plots.
 
-> **See also**
-> * [tensorbored/kds](https://github.com/tensorbored/kds/blob/master/kds/metrics.py)
+|  |  |
+| --- | --- |
+| [`scikitplot.decile.kds.decile_table`](../../modules/generated/scikitplot.decile.kds.decile_table.html#scikitplot.decile.kds.decile_table "scikitplot.decile.kds.decile_table") | Generate the Decile Table from labels and probabilities. |
+| [`scikitplot.decile.kds.plot_lift`](../../modules/generated/scikitplot.decile.kds.plot_lift.html#scikitplot.decile.kds.plot_lift "scikitplot.decile.kds.plot_lift") | Generate the Decile based cumulative Lift Plot from labels and probabilities. |
+| [`scikitplot.decile.kds.plot_lift_decile_wise`](../../modules/generated/scikitplot.decile.kds.plot_lift_decile_wise.html#scikitplot.decile.kds.plot_lift_decile_wise "scikitplot.decile.kds.plot_lift_decile_wise") | Generate the Decile-wise Lift Plot from labels and probabilities. |
+| [`scikitplot.decile.kds.plot_cumulative_gain`](../../modules/generated/scikitplot.decile.kds.plot_cumulative_gain.html#scikitplot.decile.kds.plot_cumulative_gain "scikitplot.decile.kds.plot_cumulative_gain") | Generate the Decile-wise Lift Plot from labels and probabilities. |
+| [`scikitplot.decile.kds.plot_ks_statistic`](../../modules/generated/scikitplot.decile.kds.plot_ks_statistic.html#scikitplot.decile.kds.plot_ks_statistic "scikitplot.decile.kds.plot_ks_statistic") | Generate the KS Statistic Plot from labels and probabilities. |
+| [`scikitplot.decile.kds.report`](../../modules/generated/scikitplot.decile.kds.report.html#scikitplot.decile.kds.report "scikitplot.decile.kds.report") | Generate a decile table and four plots. |
+| [`scikitplot.decile.kds.print_labels`](../../modules/generated/scikitplot.decile.kds.print_labels.html#scikitplot.decile.kds.print_labels "scikitplot.decile.kds.print_labels") | Display a legend for the abbreviations of decile table column names. |
 
-## kds Plots[#](#kds-plots "Link to this heading")
+`decile_table` is the shared statistical core. Plot/report helpers should be
+interpreted from the same positive-class definition and decile count.
 
-* Let’s introduce the Gains, Lift and (cumulative) Response plots.
-
-### plot cumulative gain[#](#plot-cumulative-gain "Link to this heading")
-
-[`plot_cumulative_gain`](../../modules/generated/scikitplot.decile.kds.plot_cumulative_gain.html#scikitplot.decile.kds.plot_cumulative_gain "scikitplot.decile.kds.plot_cumulative_gain")
-
-The mathematical formulation is the following:
-
-\[\hat{K}\]
-
-Trained model of [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") and
-[`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)"). For an example of
-performing image:
-
-Examples
-
-* [plot\_cumulative\_gain with examples](../../auto_examples/decile/plot_cumulative_gain_script.html#sphx-glr-auto-examples-decile-plot-cumulative-gain-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the iris dataset
-* [plot\_cumulative\_gain with examples](../../auto_examples/decile/plot_cumulative_gain_script.html#sphx-glr-auto-examples-decile-plot-cumulative-gain-script-py): Example usage of
-  [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)") using the iris dataset
-
-References[#](#references "Link to this dropdown")
-
-* cumulative\_gain
-
-### plot lift[#](#plot-lift "Link to this heading")
-
-[`plot_lift`](../../modules/generated/scikitplot.decile.kds.plot_lift.html#scikitplot.decile.kds.plot_lift "scikitplot.decile.kds.plot_lift")
-
-> **Note**
-> ****Lift Curve****
-
-Trained model of [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") and
-[`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)"). For an example of
-performing image:
-
-Examples
-
-* [plot\_lift with examples](../../auto_examples/decile/plot_lift_script.html#sphx-glr-auto-examples-decile-plot-lift-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the iris dataset
-* [plot\_lift with examples](../../auto_examples/decile/plot_lift_script.html#sphx-glr-auto-examples-decile-plot-lift-script-py): Example usage of
-  [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)") using the iris dataset
-
-References[#](#references-2 "Link to this dropdown")
-
-* lift\_curve
-
-### plot\_ks\_statistic[#](#plot-ks-statistic "Link to this heading")
-
-[`plot_ks_statistic`](../../modules/generated/scikitplot.decile.kds.plot_ks_statistic.html#scikitplot.decile.kds.plot_ks_statistic "scikitplot.decile.kds.plot_ks_statistic")
-
-Trained model of [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") and
-[`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)"). For an example of
-performing image:
-
-Examples
-
-* [plot\_ks\_statistic with examples](../../auto_examples/decile/plot_ks_statistic_script.html#sphx-glr-auto-examples-decile-plot-ks-statistic-script-py): Example usage of
-  [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") using the iris dataset
-* [plot\_ks\_statistic with examples](../../auto_examples/decile/plot_ks_statistic_script.html#sphx-glr-auto-examples-decile-plot-ks-statistic-script-py): Example usage of
-  [`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)") using the iris dataset
-
-References[#](#references-3 "Link to this dropdown")
-
-* ks\_statistic
-
-### report[#](#report "Link to this heading")
-
-[`report`](../../modules/generated/scikitplot.decile.kds.report.html#scikitplot.decile.kds.report "scikitplot.decile.kds.report")
-
-Trained model of [`LogisticRegression`](https://scikit-learn.org/dev/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression "(in scikit-learn v1.10)") and
-[`RandomForestClassifier`](https://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier "(in scikit-learn v1.10)"). For an example of
-performing image:
-
-Examples
-
-* report
-
-References[#](#references-4 "Link to this dropdown")
-
-* report
+> **Warning**
+> The repository maintenance review records a current KDS contract issue where
+some documented class/positive-label/precision arguments are dropped by
+internal calls. Until that finding is closed, validate non-default
+`class_index`, `pos_label` and precision-sensitive workflows with focused
+tests rather than assuming every wrapper forwards every option.

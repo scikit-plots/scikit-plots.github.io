@@ -1,6 +1,6 @@
-# Dependencies[#](#dependencies "Link to this heading")
+# [Dependencies](#id17)[#](#dependencies "Link to this heading")
 
-## Runtime dependencies[#](#runtime-dependencies "Link to this heading")
+## [Runtime dependencies](#id18)[#](#runtime-dependencies "Link to this heading")
 
 ### Required[#](#required "Link to this heading")
 
@@ -163,7 +163,7 @@ which have a minimum version of pip which will recognize the wheels
 
 In all cases the required version of pip is embedded in the CPython source.
 
-## Build dependencies[#](#build-dependencies "Link to this heading")
+## [Build dependencies](#id19)[#](#build-dependencies "Link to this heading")
 
 ### Python[#](#setup-dependencies "Link to this heading")
 
@@ -236,7 +236,7 @@ VS Code or Linux package manager. Choose ****one**** compiler from this list:
 | Clang (LLVM) | ****5**** | Linux, macOS | [clang 5](https://clang.llvm.org/cxx_status.html), [LLVM](https://releases.llvm.org/download.html) |
 | MSVC++ | ****16.0**** | Windows | [Visual Studio 2019 C++](https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance?view=msvc-160) |
 
-## Test dependencies[#](#test-dependencies "Link to this heading")
+## [Test dependencies](#id20)[#](#test-dependencies "Link to this heading")
 
 This section lists the additional software required for
 [running the tests](https://docs.xarray.dev/en/stable/user-guide/testing.html#testing "(in xarray v2026.9.0)").
@@ -282,7 +282,7 @@ them will be skipped by pytest.
 Inkscape to system PATH”, either for all users or current user, or the
 tests will not find it.
 
-## Documentation dependencies[#](#documentation-dependencies "Link to this heading")
+## [Documentation dependencies](#id21)[#](#documentation-dependencies "Link to this heading")
 
 ### Python[#](#id12 "Link to this heading")
 

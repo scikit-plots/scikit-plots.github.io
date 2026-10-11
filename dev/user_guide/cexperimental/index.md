@@ -1,9 +1,9 @@
-# C-Experimental (experimental)[#](#c-experimental-experimental "Link to this heading")
+# [C-Experimental (experimental)](#id1)[#](#c-experimental-experimental "Link to this heading")
 
 This module contains functions related to [`cexperimental`](../../apis/scikitplot.cexperimental.html#module-scikitplot.cexperimental "scikitplot.cexperimental").
 Placeholder for c-experimental features for developers…
 
-## Cython Bindings[#](#cython-bindings "Link to this heading")
+## [Cython Bindings](#id2)[#](#cython-bindings "Link to this heading")
 
 The Cython language is a superset of the Python language that additionally
 supports calling C functions and declaring C types on variables
@@ -12,7 +12,7 @@ and class attributes.
 > **See also**
 > * <https://cython.org/>
 
-## Pybind11 Bindings[#](#pybind11-bindings "Link to this heading")
+## [Pybind11 Bindings](#id3)[#](#pybind11-bindings "Link to this heading")
 
 pybind11 is a lightweight header-only library that exposes C++ types in Python
 and vice versa, mainly to create Python bindings of existing C++ code.
@@ -20,7 +20,7 @@ and vice versa, mainly to create Python bindings of existing C++ code.
 > **See also**
 > * [pybind/pybind11](https://github.com/pybind/pybind11)
 
-## C/CPP Headers Source[#](#c-cpp-headers-source "Link to this heading")
+## [C/CPP Headers Source](#id4)[#](#c-cpp-headers-source "Link to this heading")
 
 ### NumPy C-API Headers[#](#numpy-c-api-headers "Link to this heading")
 

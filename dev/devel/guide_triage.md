@@ -1,4 +1,4 @@
-# Bug Triaging and Issue Curation Guidelines[#](#bug-triaging-and-issue-curation-guidelines "Link to this heading")
+# [Bug Triaging and Issue Curation Guidelines](#id5)[#](#bug-triaging-and-issue-curation-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -16,7 +16,7 @@ the [scikit learn](https://scikit-learn.org/stable/developers/bug_triaging.html)
 and [Pandas](https://pandas.pydata.org/docs/development/maintaining.html)
 contributing guides.
 
-## Improve issue reports[#](#improve-issue-reports "Link to this heading")
+## [Improve issue reports](#id6)[#](#improve-issue-reports "Link to this heading")
 
 Triaging issues does not require any particular expertise in the
 internals of Matplotlib, is extremely valuable to the project, and we
@@ -87,12 +87,12 @@ to seek relevant expertise. However, when the issue is a usage
 question or has been considered as unclear for many years, then it
 should be closed.
 
-## Preparing PRs for review[#](#preparing-prs-for-review "Link to this heading")
+## [Preparing PRs for review](#id7)[#](#preparing-prs-for-review "Link to this heading")
 
 Reviewing code is also encouraged. Contributors and users are welcome to
 participate to the review process following our [review guidelines](guide_pr.html#pr-guidelines).
 
-## Triage workflow[#](#triage-workflow "Link to this heading")
+## [Triage workflow](#id8)[#](#triage-workflow "Link to this heading")
 
 The following workflow is a good way to approach issue triaging:
 
@@ -164,7 +164,7 @@ The following workflow is a good way to approach issue triaging:
    An additional useful step can be to tag the corresponding module e.g.
    the “GUI/Qt” label when relevant.
 
-## Triage team[#](#triage-team "Link to this heading")
+## [Triage team](#id9)[#](#triage-team "Link to this heading")
 
 If you would like to join the triage team:
 

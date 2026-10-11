@@ -1,6 +1,6 @@
 # TibetanStrategy[#](#tibetanstrategy "Link to this heading")
 
-class scikitplot.corpus.TibetanStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L1181)[#](#scikitplot.corpus.TibetanStrategy "Link to this definition")
+class scikitplot.corpus.TibetanStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L1181)[#](#scikitplot.corpus.TibetanStrategy "Link to this definition")
 :   Tibetan segmentation strategy.
 
     Word boundary: tsek `·` (U+0F0B Tibetan Mark Intersyllabic Tsheg).
@@ -9,7 +9,7 @@ class scikitplot.corpus.TibetanStrategy[[source]](https://github.com/scikit-plot
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L1195)[#](#scikitplot.corpus.TibetanStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L1195)[#](#scikitplot.corpus.TibetanStrategy.segment "Link to this definition")
     :   Segment Tibetan **span** by tsek (word) or shad (sentence).
 
         Parameters:

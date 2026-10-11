@@ -1,4 +1,4 @@
-# Documentation Guidelines[#](#documentation-guidelines "Link to this heading")
+# [Documentation Guidelines](#id6)[#](#documentation-guidelines "Link to this heading")
 
 High-quality, consistent documentation for astronomy code is one of the major goals of
 the Astropy Project. We encourage you to help us improve the documentation, and you
@@ -10,7 +10,7 @@ In this section we describe our documentation procedures and rules that apply to
 `astropy` core package and coordinated packages. We encourage affiliated packages to
 do the same.
 
-## Astropy Documentation Overview[#](#astropy-documentation-overview "Link to this heading")
+## [Astropy Documentation Overview](#id7)[#](#astropy-documentation-overview "Link to this heading")
 
 The documentation is written in ****reStructuredText****, which is almost like writing in
 plain English, and built using [Sphinx](https://pypi.org/project/Sphinx/). The
@@ -26,7 +26,7 @@ Developer documentation, etc.
 The [OpenAstronomy Packaging Guide](https://packaging-guide.openastronomy.org/en/latest) provides a recommended general structure for
 documentation.
 
-## Astropy Documentation Guidelines[#](#astropy-documentation-guidelines "Link to this heading")
+## [Astropy Documentation Guidelines](#id8)[#](#astropy-documentation-guidelines "Link to this heading")
 
 This section describes the standards for documentation that any contribution
 being considered for integration into the core package should follow, as well as
@@ -49,7 +49,7 @@ the standard Astropy docstring format.
 * Configuration options using the [`astropy.config`](https://docs.astropy.org/en/latest/config/ref_api.html#module-astropy.config "(in Astropy v8.1)") mechanisms must be
   explicitly mentioned in the documentation.
 
-## Building the Documentation from Source[#](#building-the-documentation-from-source "Link to this heading")
+## [Building the Documentation from Source](#id9)[#](#building-the-documentation-from-source "Link to this heading")
 
 There are two ways to build the Astropy documentation. The first way is to
 execute the following `tox` command from within the `astropy` source directory:
@@ -129,7 +129,7 @@ can also open issues in the repositories for some of the dependencies:
 * For issues related to the default configuration (e.g which extensions are
   enabled by default), you can use the [sphinx-astropy issue tracker](https://github.com/astropy/sphinx-astropy/issues).
 
-## Details for Package Maintainers[#](#details-for-package-maintainers "Link to this heading")
+## [Details for Package Maintainers](#id10)[#](#details-for-package-maintainers "Link to this heading")
 
 Following is useful information for package maintainers who are using the Astropy
 documentation infrastructure and may want to customize it for their package.

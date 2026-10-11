@@ -1,6 +1,6 @@
 # Guard[#](#guard "Link to this heading")
 
-class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L334)[#](#scikitplot.cleanprompt.Guard "Link to this definition")
+class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L334)[#](#scikitplot.cleanprompt.Guard "Link to this definition")
 :   Encode what goes to a model, check it, and decode what comes back.
 
     Parameters:
@@ -42,7 +42,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
     ```
     Go BackOpen In Tab
 
-    async aask(**prompt**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L776)[#](#scikitplot.cleanprompt.Guard.aask "Link to this definition")
+    async aask(**prompt**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L776)[#](#scikitplot.cleanprompt.Guard.aask "Link to this definition")
     :   Guard `prompt`, await `call` with it, and decode the answer.
 
         Parameters:
@@ -78,7 +78,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         prompt. For a large document, `await asyncio.to_thread(guard.outgoing,
         text)` first — a guard is safe to share across threads (`CP-067`).
 
-    async achat(**messages**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L847)[#](#scikitplot.cleanprompt.Guard.achat "Link to this definition")
+    async achat(**messages**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L847)[#](#scikitplot.cleanprompt.Guard.achat "Link to this definition")
     :   Guard every message, await `call` with them, and decode the reply.
 
         Parameters:
@@ -107,7 +107,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    async adecode\_stream(**chunks**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L721)[#](#scikitplot.cleanprompt.Guard.adecode_stream "Link to this definition")
+    async adecode\_stream(**chunks**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L721)[#](#scikitplot.cleanprompt.Guard.adecode_stream "Link to this definition")
     :   Decode a reply streamed by an asynchronous client.
 
         Parameters:
@@ -128,7 +128,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [**AsyncIterator**](https://docs.python.org/3/library/collections.abc.html#collections.abc.AsyncIterator "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    ask(**prompt**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L751)[#](#scikitplot.cleanprompt.Guard.ask "Link to this definition")
+    ask(**prompt**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L751)[#](#scikitplot.cleanprompt.Guard.ask "Link to this definition")
     :   Guard `prompt`, pass it to `call`, and decode the answer.
 
         Parameters:
@@ -156,7 +156,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    chat(**messages**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L817)[#](#scikitplot.cleanprompt.Guard.chat "Link to this definition")
+    chat(**messages**, **call**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L817)[#](#scikitplot.cleanprompt.Guard.chat "Link to this definition")
     :   Guard every message, pass them to `call`, and decode the reply.
 
         Parameters:
@@ -191,13 +191,13 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Type:
         :   [Cleaner](scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner "scikitplot.cleanprompt.Cleaner")
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L395)[#](#scikitplot.cleanprompt.Guard.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L395)[#](#scikitplot.cleanprompt.Guard.clear "Link to this definition")
     :   Drop every value; the guard cannot be used afterwards.
 
         Return type:
         :   None
 
-    decode\_object(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L528)[#](#scikitplot.cleanprompt.Guard.decode_object "Link to this definition")
+    decode\_object(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L528)[#](#scikitplot.cleanprompt.Guard.decode_object "Link to this definition")
     :   Return a JSON-like value with every string decoded.
 
         Parameters:
@@ -216,7 +216,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    decode\_stream(**chunks**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L684)[#](#scikitplot.cleanprompt.Guard.decode_stream "Link to this definition")
+    decode\_stream(**chunks**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L684)[#](#scikitplot.cleanprompt.Guard.decode_stream "Link to this definition")
     :   Decode a streamed reply, chunk by chunk.
 
         Parameters:
@@ -251,7 +251,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         ```
         Go BackOpen In Tab
 
-    decode\_tool\_arguments(**arguments**, **\***, **allow**, **on\_withheld='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L559)[#](#scikitplot.cleanprompt.Guard.decode_tool_arguments "Link to this definition")
+    decode\_tool\_arguments(**arguments**, **\***, **allow**, **on\_withheld='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L559)[#](#scikitplot.cleanprompt.Guard.decode_tool_arguments "Link to this definition")
     :   Restore a tool call’s arguments with only the values this tool may get.
 
         Parameters:
@@ -320,7 +320,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         ```
         Go BackOpen In Tab
 
-    encode\_object(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L443)[#](#scikitplot.cleanprompt.Guard.encode_object "Link to this definition")
+    encode\_object(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L443)[#](#scikitplot.cleanprompt.Guard.encode_object "Link to this definition")
     :   Return a JSON-like value guarded as the JSON document it will become.
 
         Parameters:
@@ -379,7 +379,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         ```
         Go BackOpen In Tab
 
-    incoming(**reply**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L508)[#](#scikitplot.cleanprompt.Guard.incoming "Link to this definition")
+    incoming(**reply**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L508)[#](#scikitplot.cleanprompt.Guard.incoming "Link to this definition")
     :   Put the values back into a model’s reply.
 
         Parameters:
@@ -400,7 +400,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    outgoing(**text**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L401)[#](#scikitplot.cleanprompt.Guard.outgoing "Link to this definition")
+    outgoing(**text**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L401)[#](#scikitplot.cleanprompt.Guard.outgoing "Link to this definition")
     :   Return `text` safe to send, or raise before anything is sent.
 
         Parameters:
@@ -428,7 +428,7 @@ class scikitplot.cleanprompt.Guard(**cleaner=None**, **format='text'**, **verify
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    stream()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_guard.py#L673)[#](#scikitplot.cleanprompt.Guard.stream "Link to this definition")
+    stream()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_guard.py#L673)[#](#scikitplot.cleanprompt.Guard.stream "Link to this definition")
     :   Return a decoder for one streamed reply.
 
         Returns:

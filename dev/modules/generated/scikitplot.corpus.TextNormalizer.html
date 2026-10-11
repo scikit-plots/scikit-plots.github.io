@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:43:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:16:52Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.TextNormalizer","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1287,6 +1287,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1459,6 +1460,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1646,7 +1648,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>TextNormalizer<a class="headerlink" href="#textnormalizer" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.TextNormalizer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">TextNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_text_normalizer.py#L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">TextNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_normalizers/_text_normalizer.py#L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer" title="Link to this definition">#</a></dt>
 <dd><p>Pipeline component that populates <code class="docutils literal notranslate"><span class="pre">normalized_text</span></code> on
 <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> instances.</p>
 <dl class="field-list simple">
@@ -1681,8 +1683,8 @@ unless <code class="docutils literal notranslate"><span class="pre">overwrite=Tr
 <p><strong>Developer note:</strong> This class is stateless and thread-safe.
 All mutable state lives in the documents being processed.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="986f524e-499b-433d-ba16-1d58115a6b29">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('986f524e-499b-433d-ba16-1d58115a6b29','1ee6f140-3315-4a53-b63b-62109b4deabd','f4894703-9c92-4f1d-86eb-6a0aef515b15','../../lite/tree/../notebooks/index.html?path=68af6b58_7454_4199_a94c_3f20d6e9ac54.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="058dab3c-bfaa-4f53-96d3-b2e5fc937226">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('058dab3c-bfaa-4f53-96d3-b2e5fc937226','c0caae30-5ab0-4b96-9df6-572e43cfcd57','bff6e95e-2996-4b9d-aca1-460e245edeff','../../lite/tree/../notebooks/index.html?path=ec4759a1_89fc_438c_962c_2cd99a7e4462.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus._normalizers._text_normalizer</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">TextNormalizer</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -1694,9 +1696,9 @@ All mutable state lives in the documents being processed.</p>
 </div>
 </div>
 </div>
-<div id="f4894703-9c92-4f1d-86eb-6a0aef515b15" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('986f524e-499b-433d-ba16-1d58115a6b29','f4894703-9c92-4f1d-86eb-6a0aef515b15')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('986f524e-499b-433d-ba16-1d58115a6b29','f4894703-9c92-4f1d-86eb-6a0aef515b15')">Open In Tab</button></div><div id="1ee6f140-3315-4a53-b63b-62109b4deabd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="bff6e95e-2996-4b9d-aca1-460e245edeff" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('058dab3c-bfaa-4f53-96d3-b2e5fc937226','bff6e95e-2996-4b9d-aca1-460e245edeff')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('058dab3c-bfaa-4f53-96d3-b2e5fc937226','bff6e95e-2996-4b9d-aca1-460e245edeff')">Open In Tab</button></div><div id="c0caae30-5ab0-4b96-9df6-572e43cfcd57" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.TextNormalizer.normalize">
-<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_text_normalizer.py#L393"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer.normalize" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_normalizers/_text_normalizer.py#L393"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer.normalize" title="Link to this definition">#</a></dt>
 <dd><p>Normalise a single string using only the steps in <code class="docutils literal notranslate"><span class="pre">config.steps</span></code>.</p>
 <p>Unlike <a class="reference internal" href="scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text" title="scikitplot.corpus.normalize_text"><code class="xref py py-func docutils literal notranslate"><span class="pre">normalize_text</span></code></a>, this method:</p>
 <ul class="simple">
@@ -1728,8 +1730,8 @@ after normalisation.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e5f0f410-ac69-45c0-b866-3f7c82803760">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e5f0f410-ac69-45c0-b866-3f7c82803760','f0b0e681-1fb2-42ea-9cd8-e336392fdda2','0c63f835-3243-4659-bd89-adb05b64f0e9','../../lite/tree/../notebooks/index.html?path=c1c291d8_3ac7_472c_af4e_524d936deb8a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9b2cbef0-cd45-4b53-bc5a-50877be5d825">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9b2cbef0-cd45-4b53-bc5a-50877be5d825','24d418a4-94de-42b5-bafe-d7d30100935a','b4ab54cc-2783-4f44-99a7-aa744d3a030c','../../lite/tree/../notebooks/index.html?path=5e7042ef_dd95_4415_b6c1_9e780976e6b6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">TextNormalizer</span><span class="p">(</span><span class="n">TextNormalizerConfig</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="s2">"unicode"</span><span class="p">]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">"</span><span class="se">\\</span><span class="s2">ufb01"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">"fi</span><span class="se">\\</span><span class="s2">ufb01rst"</span><span class="p">)</span>
 <span class="go">True</span>
@@ -1742,11 +1744,11 @@ after normalisation.</p>
 </div>
 </div>
 </div>
-<div id="0c63f835-3243-4659-bd89-adb05b64f0e9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e5f0f410-ac69-45c0-b866-3f7c82803760','0c63f835-3243-4659-bd89-adb05b64f0e9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e5f0f410-ac69-45c0-b866-3f7c82803760','0c63f835-3243-4659-bd89-adb05b64f0e9')">Open In Tab</button></div><div id="f0b0e681-1fb2-42ea-9cd8-e336392fdda2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="b4ab54cc-2783-4f44-99a7-aa744d3a030c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9b2cbef0-cd45-4b53-bc5a-50877be5d825','b4ab54cc-2783-4f44-99a7-aa744d3a030c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9b2cbef0-cd45-4b53-bc5a-50877be5d825','b4ab54cc-2783-4f44-99a7-aa744d3a030c')">Open In Tab</button></div><div id="24d418a4-94de-42b5-bafe-d7d30100935a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.TextNormalizer.normalize_documents">
-<span class="sig-name descname"><span class="pre">normalize_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_normalizers/_text_normalizer.py#L456"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer.normalize_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">normalize_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_normalizers/_text_normalizer.py#L456"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.TextNormalizer.normalize_documents" title="Link to this definition">#</a></dt>
 <dd><p>Normalise text for a batch of <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code> instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1906,7 +1908,7 @@ already set.  Default <code class="docutils literal notranslate"><span class="pr
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

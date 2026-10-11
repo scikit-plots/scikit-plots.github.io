@@ -1,6 +1,6 @@
 # Session[#](#session "Link to this heading")
 
-class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L519)[#](#scikitplot.cleanprompt.Session "Link to this definition")
+class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L519)[#](#scikitplot.cleanprompt.Session "Link to this definition")
 :   A conversation: consistent placeholders, and a vault with a lifetime.
 
     Parameters:
@@ -47,13 +47,13 @@ class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.c
     ```
     Go BackOpen In Tab
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L764)[#](#scikitplot.cleanprompt.Session.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L764)[#](#scikitplot.cleanprompt.Session.clear "Link to this definition")
     :   Drop every value this session holds.
 
         Return type:
         :   None
 
-    decode(**reply**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L650)[#](#scikitplot.cleanprompt.Session.decode "Link to this definition")
+    decode(**reply**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L650)[#](#scikitplot.cleanprompt.Session.decode "Link to this definition")
     :   Restore values in `reply` from everything seen this session.
 
         Parameters:
@@ -63,7 +63,7 @@ class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.c
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    decode\_report(**reply**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L655)[#](#scikitplot.cleanprompt.Session.decode_report "Link to this definition")
+    decode\_report(**reply**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L655)[#](#scikitplot.cleanprompt.Session.decode_report "Link to this definition")
     :   Restore `reply` and report what was and was not resolved.
 
         Returns:
@@ -73,7 +73,7 @@ class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.c
         Parameters:
         :   ****reply**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
-    encode(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L600)[#](#scikitplot.cleanprompt.Session.encode "Link to this definition")
+    encode(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L600)[#](#scikitplot.cleanprompt.Session.encode "Link to this definition")
     :   Redact `text`, keeping placeholders consistent with earlier turns.
 
         Parameters:
@@ -106,7 +106,7 @@ class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.c
         Type:
         :   [RedactionPolicy](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy")
 
-    report()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L728)[#](#scikitplot.cleanprompt.Session.report "Link to this definition")
+    report()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L728)[#](#scikitplot.cleanprompt.Session.report "Link to this definition")
     :   Return what this session has done and what it can and cannot detect.
 
         Returns:
@@ -136,7 +136,7 @@ class scikitplot.cleanprompt.Session(**\*\*options**)[[source]](https://github.c
         this submodule exists to keep out of anything that gets copied
         elsewhere.
 
-    roundtrip(**text**, **send**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_api.py#L667)[#](#scikitplot.cleanprompt.Session.roundtrip "Link to this definition")
+    roundtrip(**text**, **send**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_api.py#L667)[#](#scikitplot.cleanprompt.Session.roundtrip "Link to this definition")
     :   Encode, hand to `send`, decode the answer.
 
         Parameters:

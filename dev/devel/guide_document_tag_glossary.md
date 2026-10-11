@@ -1,9 +1,9 @@
-# Tag Glossary[#](#tag-glossary "Link to this heading")
+# [Tag Glossary](#id1)[#](#tag-glossary "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
 
-## [API tags: what content from the API reference is in the example?](#id1)[#](#api-tags-what-content-from-the-api-reference-is-in-the-example "Link to this heading")
+## API tags: what content from the API reference is in the example?[#](#api-tags-what-content-from-the-api-reference-is-in-the-example "Link to this heading")
 
 | `tag` | use case |
 | --- | --- |
@@ -55,7 +55,7 @@
 | `plot-type: specialty` |  |
 | `plot-type: scatter` |  |
 
-## [Structural tags: what format is the example? What context can we provide?](#id2)[#](#structural-tags-what-format-is-the-example-what-context-can-we-provide "Link to this heading")
+## Structural tags: what format is the example? What context can we provide?[#](#structural-tags-what-format-is-the-example-what-context-can-we-provide "Link to this heading")
 
 | `tag` | use case |
 | --- | --- |
@@ -69,7 +69,7 @@
 | `purpose: fun` | just for fun! |
 | `purpose: showcase` | good showcase example |
 
-## [Domain tags: what discipline(s) might seek this example consistently?](#id3)[#](#domain-tags-what-discipline-s-might-seek-this-example-consistently "Link to this heading")
+## Domain tags: what discipline(s) might seek this example consistently?[#](#domain-tags-what-discipline-s-might-seek-this-example-consistently "Link to this heading")
 
 It’s futile to draw fences around “who owns what”, and that’s not the point of domain
 tags. See below for a list of existing domain tags. If you don’t see the one you’re
@@ -84,7 +84,7 @@ looking for and you think it should exist, consider proposing it.
 | `domain: oceanography` |  |
 | `domain: signal-processing` |  |
 
-## [Internal tags: what information is helpful for maintainers or contributors?](#id4)[#](#internal-tags-what-information-is-helpful-for-maintainers-or-contributors "Link to this heading")
+## Internal tags: what information is helpful for maintainers or contributors?[#](#internal-tags-what-information-is-helpful-for-maintainers-or-contributors "Link to this heading")
 
 These tags should be used only for development purposes; therefore please add them
 separately behind a version guard:

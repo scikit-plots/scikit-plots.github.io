@@ -1,6 +1,6 @@
 # summarize\_selection[#](#summarize-selection "Link to this heading")
 
-scikitplot.decile.summarize\_selection(**plot\_input**, **\***, **ntile=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/decile/_decile_modelplotpy.py#L4152)[#](#scikitplot.decile.summarize_selection "Link to this definition")
+scikitplot.decile.summarize\_selection(**plot\_input**, **\***, **ntile=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/decile/_decile_modelplotpy.py#L4152)[#](#scikitplot.decile.summarize_selection "Link to this definition")
 :   Return a standardized summary row per group at a selected ntile.
 
     Parameters:

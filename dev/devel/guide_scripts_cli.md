@@ -1,4 +1,4 @@
-# Command-Line Scripts Guidelines[#](#command-line-scripts-guidelines "Link to this heading")
+# [Command-Line Scripts Guidelines](#id1)[#](#command-line-scripts-guidelines "Link to this heading")
 
 Command-line scripts in Astropy should follow a consistent scheme to promote
 readability and compatibility.
@@ -17,7 +17,7 @@ Command-line options can be parsed however desired, but the [`argparse`](https:/
 module is recommended when possible, due to its simpler and more flexible
 interface relative to the older [`optparse`](https://docs.python.org/3/library/optparse.html#module-optparse "(in Python v3.15)").
 
-## Example[#](#example "Link to this heading")
+## [Example](#id2)[#](#example "Link to this heading")
 
 Contents of `/astropy/somepackage/somemod.py`
 

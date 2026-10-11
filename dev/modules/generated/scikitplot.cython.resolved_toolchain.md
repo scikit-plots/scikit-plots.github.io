@@ -1,6 +1,6 @@
 # resolved\_toolchain[#](#resolved-toolchain "Link to this heading")
 
-scikitplot.cython.resolved\_toolchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_profiles.py#L373)[#](#scikitplot.cython.resolved_toolchain "Link to this definition")
+scikitplot.cython.resolved\_toolchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_profiles.py#L373)[#](#scikitplot.cython.resolved_toolchain "Link to this definition")
 :   Return the compiler the build backend actually selects (CYTHON-PORT-001).
 
     Returns:

@@ -1,43 +1,51 @@
-# Visualkeras[#](#visualkeras "Link to this heading")
+# Keras architecture visualization[#](#keras-architecture-visualization "Link to this heading")
 
-This module contains functions related to [`visualkeras`](../../apis/scikitplot.visualkeras.html#module-scikitplot.visualkeras "scikitplot.visualkeras").
-For visualkeras for Keras / TensorFlow Models [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)").
+`scikitplot.visualkeras` renders Keras/TensorFlow model structure as either a layered architecture diagram or a graph/connectivity diagram. It includes the vendored visualkeras behavior behind the Scikit-Plots namespace.
+
+> **Important**
+> Visualization is derived from model metadata and framework internals. Test representative models against the exact Keras/TensorFlow version you ship; a rendered diagram is not a validation of model computation or tensor correctness.
+Getting started
+
+Render a Keras model with layered\_view or graph\_view.
+
+[Getting started](getting_started.html#visualkeras-getting-started)Layered view
+
+Dimension scaling, ignored layers, text, spacing, colors, and CNN-style diagrams.
+
+[Layered view](layered_view.html#visualkeras-layered-view)Graph view
+
+Connectivity-oriented visualization for functional/branched models.
+
+[Graph view](graph_view.html#visualkeras-graph-view)Styling and spacing
+
+Color maps, labels, SpacingDummyLayer, image output, and layout trade-offs.
+
+[Styling and spacing](styling_and_spacing.html#visualkeras-styling-and-spacing)Python API
+
+The three stable top-level exports and dependency behavior.
+
+[Python API](python_api.html#visualkeras-python-api)Dependencies and limits
+
+TensorFlow/Keras/Pillow/aggdraw optionality, model-shape caveats, and current maintenance findings.
+
+[Dependencies and limits](dependencies_and_limits.html#visualkeras-dependencies-and-limits)Troubleshooting
+
+Unsupported layer shapes, Keras-version differences, fonts/output files, and large diagrams.
+
+[Troubleshooting](troubleshooting.html#visualkeras-troubleshooting)
+
+## Which page should I use?[#](#which-page-should-i-use "Link to this heading")
+
+Start with ****Getting started****. Then choose the page that owns the decision
+you are making: architecture and lifecycle, configuration, persistence,
+performance, public API, or limits. The guide intentionally separates those
+concerns so examples do not accidentally become policy.
+
+## Examples[#](#examples "Link to this heading")
+
+See [Visualkeras](../../auto_examples/visualkeras/index.html#visualkeras-examples) for executable examples that accompany this guide.
+
+## Further reading[#](#further-reading "Link to this heading")
 
 > **See also**
 > * [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras)
-
-Documentation is available in the docstrings and
-online at [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras).
-
-Examples
-
-```
-# (optionally)
-import visualkeras
-
-# (recommended) scikit-plots also include visualkeras
-import scikitplot.visualkeras as visualkeras
-from scikitplot import visualkeras
-
-```
-
-## Visualkeras Visualization[#](#visualkeras-visualization "Link to this heading")
-
-Visualkeras is a Python package to help visualize Keras (either standalone
-or included in tensorflow) neural network architectures.
-It allows easy styling to fit most needs. This module supports layered style
-architecture generation which is great for CNNs (Convolutional Neural Networks),
-and a graph style architecture, which works great for most models
-including plain feed-forward networks.
-
-## Graphical Visualization[#](#graphical-visualization "Link to this heading")
-
-This module contains functions related to [`graph_view`](../../modules/generated/scikitplot.visualkeras.graph_view.html#scikitplot.visualkeras.graph_view "scikitplot.visualkeras.graph_view").
-
-## Layered Visualization[#](#layered-visualization "Link to this heading")
-
-This module contains functions related to [`layered_view`](../../modules/generated/scikitplot.visualkeras.layered_view.html#scikitplot.visualkeras.layered_view "scikitplot.visualkeras.layered_view").
-
-## Visualization Helper[#](#visualization-helper "Link to this heading")
-
-This module contains functions related to [`SpacingDummyLayer`](../../modules/generated/scikitplot.visualkeras.SpacingDummyLayer.html#scikitplot.visualkeras.SpacingDummyLayer "scikitplot.visualkeras.SpacingDummyLayer").

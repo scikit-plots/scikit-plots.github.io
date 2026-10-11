@@ -1,6 +1,6 @@
 # CJKCharacterStrategy[#](#cjkcharacterstrategy "Link to this heading")
 
-class scikitplot.corpus.CJKCharacterStrategy(**\***, **prefer\_jieba=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L483)[#](#scikitplot.corpus.CJKCharacterStrategy "Link to this definition")
+class scikitplot.corpus.CJKCharacterStrategy(**\***, **prefer\_jieba=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L483)[#](#scikitplot.corpus.CJKCharacterStrategy "Link to this definition")
 :   Character-level segmentation for Han (Chinese logograph) script.
 
     Each Han ideograph is its own token. Non-Han runs (Latin digits,
@@ -16,7 +16,7 @@ class scikitplot.corpus.CJKCharacterStrategy(**\***, **prefer\_jieba=True**)[[so
     Parameters:
     :   ****prefer\_jieba**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_writing_system.py#L519)[#](#scikitplot.corpus.CJKCharacterStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_writing_system.py#L519)[#](#scikitplot.corpus.CJKCharacterStrategy.segment "Link to this definition")
     :   Segment Han **span** at character or word level.
 
         Parameters:

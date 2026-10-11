@@ -1,8 +1,8 @@
-# How to Add `scikit-plots` to conda-forge Guidelines[#](#how-to-add-scikit-plots-to-conda-forge-guidelines "Link to this heading")
+# [How to Add `scikit-plots` to conda-forge Guidelines](#id8)[#](#how-to-add-scikit-plots-to-conda-forge-guidelines "Link to this heading")
 
 This guide provides a ****comprehensive, beginner-friendly walkthrough**** for adding `scikit-plots` to conda-forge, including best practices, important notes, and maintenance instructions.
 
-## Prerequisites[#](#prerequisites "Link to this heading")
+## [Prerequisites](#id9)[#](#prerequisites "Link to this heading")
 
 Ensure you have:
 
@@ -32,7 +32,7 @@ pip install grayskull
 
 ```
 
-## Choosing a Source Distribution[#](#choosing-a-source-distribution "Link to this heading")
+## [Choosing a Source Distribution](#id10)[#](#choosing-a-source-distribution "Link to this heading")
 
 When updating the recipe (`meta.yaml`), you must choose ****one**** of the valid source distribution types. Conda-forge supports four typical options:
 
@@ -82,7 +82,7 @@ When updating the recipe (`meta.yaml`), you must choose ****one**** of the valid
 > **Hint**
 > Use `grayskull pypi scikit-plots` to auto-generate a `meta.yaml` based on your latest PyPI release, then modify the `source` field if needed.
 
-## Publishing to PyPI[#](#publishing-to-pypi "Link to this heading")
+## [Publishing to PyPI](#id11)[#](#publishing-to-pypi "Link to this heading")
 
 If you use PyPI:
 
@@ -94,7 +94,7 @@ Before proceeding, confirm that `scikit-plots` is correctly published on PyPI.
 > If you need help publishing, check out the official
 [PyPI packaging tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
 
-## Creating the Recipe with Grayskull[#](#creating-the-recipe-with-grayskull "Link to this heading")
+## [Creating the Recipe with Grayskull](#id12)[#](#creating-the-recipe-with-grayskull "Link to this heading")
 
 Use `grayskull` to generate the initial conda recipe:
 
@@ -154,7 +154,7 @@ openssl sha256 v0.4.0rc4.tar.gz
 
 ```
 
-## Submitting to Staged-Recipes[#](#submitting-to-staged-recipes "Link to this heading")
+## [Submitting to Staged-Recipes](#id13)[#](#submitting-to-staged-recipes "Link to this heading")
 
 1. Fork the [conda-forge/staged-recipes](https://github.com/conda-forge/staged-recipes) repository.
 2. Clone your fork locally:
@@ -190,7 +190,7 @@ openssl sha256 v0.4.0rc4.tar.gz
 > **Hint**
 > Your PR title should follow the format: `Add package: scikit-plots`.
 
-## Post-Merge: Feedstock Creation[#](#post-merge-feedstock-creation "Link to this heading")
+## [Post-Merge: Feedstock Creation](#id14)[#](#post-merge-feedstock-creation "Link to this heading")
 
 After your PR is merged:
 
@@ -204,7 +204,7 @@ Build errors may still appear even after the staged-recipes PR is merged.
 > **Hint**
 > Add the feedstock repo to your GitHub notifications (watch → participating) to stay informed!
 
-## Maintaining the Package[#](#maintaining-the-package "Link to this heading")
+## [Maintaining the Package](#id15)[#](#maintaining-the-package "Link to this heading")
 
 Future updates for `scikit-plots`:
 
@@ -214,7 +214,7 @@ Future updates for `scikit-plots`:
 > **Hint**
 > Regularly check your feedstock repository for pending bot PRs!
 
-## Manual Updates[#](#manual-updates "Link to this heading")
+## [Manual Updates](#id16)[#](#manual-updates "Link to this heading")
 
 If the bot ****fails**** to update your package or if you need to make manual changes:
 
@@ -240,7 +240,7 @@ If the bot ****fails**** to update your package or if you need to make manual ch
 > **Important**
 > Always ****let CI finish**** before merging. Merging broken recipes can cause major issues across conda-forge!
 
-## Congratulations 🎉[#](#congratulations "Link to this heading")
+## [Congratulations 🎉](#id17)[#](#congratulations "Link to this heading")
 
 After the update PR is merged:
 
@@ -254,7 +254,7 @@ conda install -c conda-forge scikit-plots
 
 You are now officially maintaining a package on conda-forge!
 
-## Quick Reference Summary[#](#quick-reference-summary "Link to this heading")
+## [Quick Reference Summary](#id18)[#](#quick-reference-summary "Link to this heading")
 
 Follow these steps to successfully add and maintain `scikit-plots` on conda-forge.
 

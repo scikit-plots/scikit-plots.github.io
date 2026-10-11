@@ -1,4 +1,4 @@
-# Quick Start Guide[#](#quick-start-guide "Link to this heading")
+# [Quick Start Guide](#id8)[#](#quick-start-guide "Link to this heading")
 
 This guide provides a quick introduction to plotting with scikit-plots.
 
@@ -13,7 +13,7 @@ This guide provides a quick introduction to plotting with scikit-plots.
 
   ```
 
-## A Simple Example[#](#a-simple-example "Link to this heading")
+## [A Simple Example](#id9)[#](#a-simple-example "Link to this heading")
 
 Let’s start with a basic example where we use a Random Forest classifier to evaluate the digits dataset provided by Scikit-learn.
 
@@ -85,7 +85,7 @@ This shows how to quickly generate a plot using Scikit-plots.[#](#id4 "Link to t
 
 The resulting confusion matrix shows how well the classifier performs. In this case, it struggles with digits 1, 8, and 9. Fine-tuning the Random Forest’s hyperparameters might improve performance.
 
-## One More Example[#](#one-more-example "Link to this heading")
+## [One More Example](#id10)[#](#one-more-example "Link to this heading")
 
 ****Maximum flexibility. Compatibility with non-scikit-learn objects.****
 
@@ -182,7 +182,7 @@ This method is flexible and works with any classifier that produces predicted pr
 from Keras classifiers to NLTK Naive Bayes to XGBoost as long as you pass in the predicted probabilities
 in the correct format.
 
-## Now what?[#](#now-what "Link to this heading")
+## [Now what?](#id11)[#](#now-what "Link to this heading")
 
 The recommended way to start using Scikit-plot is to just go through the documentation for the various modules and choose which plots you think would be useful for your work.
 

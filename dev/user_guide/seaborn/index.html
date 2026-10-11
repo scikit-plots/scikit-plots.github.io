@@ -7,25 +7,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Seaborn" />
+<meta property="og:title" content="Seaborn-style model plots" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/seaborn/index.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Examples relevant to the seaborn module. AUC Plot (experimental): Examples relevant to the aucplot module. Eval Plot (experimental): Examples relevant to the evalplot module. Decile Plot (experimen..." />
+<meta property="og:description" content="scikitplot.seaborn provides a small seaborn-like high-level plotting API for model evaluation and decile analysis. It is a Scikit-Plots wrapper layer, not a replacement for upstream seaborn. Gettin..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Examples relevant to the seaborn module. AUC Plot (experimental): Examples relevant to the aucplot module. Eval Plot (experimental): Examples relevant to the evalplot module. Decile Plot (experimen..." />
+<meta name="description" content="scikitplot.seaborn provides a small seaborn-like high-level plotting API for model evaluation and decile analysis. It is a Scikit-Plots wrapper layer, not a replacement for upstream seaborn. Gettin..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:46Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:18:18Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/seaborn/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
-    <title>Seaborn &#8212; scikit-plots 0.5.dev0 documentation</title>
+    <title>Seaborn-style model plots &#8212; scikit-plots 0.5.dev0 documentation</title>
   
   
   
@@ -110,8 +110,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Stats" href="../stats/index.html" />
-    <link rel="prev" title="Rank-BM25 user guide" href="../rank_bm25/index.html" />
+    <link rel="next" title="Getting started" href="getting_started.html" />
+    <link rel="prev" title="Rank-BM25 Usage Scenarios" href="../rank_bm25/usage_scenarios.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -645,8 +645,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/annoy_index_vector_database.html">Vector Similarity Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/annoy_index_inheritance_diagrams.html">Index Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/persistence_and_io.html">Persistence and I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/performance_and_threads.html">Performance and threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/annoy_index_vector_database.html">Vector Similarity Search and Vector Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/annoy_index_inheritance_diagrams.html">Annoy <code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code> class Inheritance Diagrams (MRO)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/_annoy.html">ANNoy Cython</a></li>
 </ul>
 </details></li>
@@ -691,19 +697,59 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cython/_templates/templates_index.html">Cython templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/trust_and_security.html">Trust and security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/build_cache_import.html">Build, cache, and import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/profiles_and_toolchains.html">Profiles and toolchains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/packages_templates_workflows.html">Packages, templates, and workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/cache_pins_gc.html">Cache, pins, and garbage collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cython/_templates/templates_index.html">Cython templates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_basic_cython.html">basic_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_basic_python.html">basic_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_complex_cython.html">complex_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_complex_python.html">complex_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_cython.html">devel_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_numcpp_cpp_api_cython.html">devel_numcpp_cpp_api_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_numcpp_cpp_api_python.html">devel_numcpp_cpp_api_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_numpy_c_api_cython.html">devel_numpy_c_api_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_numpy_c_api_python.html">devel_numpy_c_api_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_devel_python.html">devel_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_easy_cython.html">easy_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_easy_python.html">easy_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_hard_cython.html">hard_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_hard_python.html">hard_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_medium_cython.html">medium_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_medium_python.html">medium_python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_mixed.html">mixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_module_cython.html">module_cython</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cython/_templates/templates_module_python.html">module_python</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile-Wise Performance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KeyToDataScience</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/kds.html">KDS functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../decile/modelplotpy.html">ModelPlotPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/business_plots_and_financial.html">Business and financial plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/compatibility_and_limits.html">Compatibility and limits</a></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../impute/index.html">Impute</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Missing-value imputation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/standard_imputers.html">Standard imputers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/ann_imputer.html">ANNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/index_access_and_privacy.html">Index access and privacy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -712,44 +758,136 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.distance.html">scikitplot.levenshtein.distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.similarity.html">scikitplot.levenshtein.similarity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.normalized_distance.html">scikitplot.levenshtein.normalized_distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.normalized_similarity.html">scikitplot.levenshtein.normalized_similarity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.rank.html">scikitplot.levenshtein.rank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.closest.html">scikitplot.levenshtein.closest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.Match.html">scikitplot.levenshtein.Match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.backend_info.html">scikitplot.levenshtein.backend_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.available_backends.html">scikitplot.levenshtein.available_backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.BackendInfo.html">scikitplot.levenshtein.BackendInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../levenshtein/generated/scikitplot.levenshtein.make_corpus_scorer.html">scikitplot.levenshtein.make_corpus_scorer</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../logging/index.html">Logging</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../logging/index.html">Logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../logging/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/levels_and_loggers.html">Levels and loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/formatting_and_helpers.html">Formatting and helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../memmap/index.html">MemMap</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/lifecycle_and_io.html">Lifecycle and I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/protection_sync_locking.html">Protection, sync, and locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/platform_and_limits.html">Platform and limits</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mcp/index.html">Mcp</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/retrieval_and_fusion.html">Retrieval and fusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/corpus_and_annoy.html">Corpus and Annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/capabilities_and_runtime.html">Capabilities and runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/server_cli_security.html">Server, CLI, and security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/deployment_and_operations.html">Deployment and operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/usage_scenarios.html">Model Context Protocol (MCP)</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mlflow/index.html">MLflow</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/project_configuration.html">Project configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/sessions_and_facades.html">Sessions and facades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/server_and_cli.html">Server and CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/providers_and_workflows.html">Providers and workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/security_and_readiness.html">Security and readiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../nc/index.html">Nc</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Categorical preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/get_dummies.html">GetDummies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/dummy_code_encoder.html">DummyCodeEncoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/sklearn_integration.html">Scikit-learn integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preprocessing/known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../random/index.html">Random</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../random/index.html">KISS random number generation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random/generators_and_seeding.html">Generators and seeding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random/state_and_serialization.html">State and serialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random/numpy_interop_and_reproducibility.html">NumPy interop and reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random/limits_and_troubleshooting.html">Limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../rank_bm25/index.html">Rank-BM25</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rank_bm25/index.html">Rank-BM25</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/recipes_and_tokenization.html">Recipes and tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/retrieval_and_identity.html">Retrieval and identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/persistence_and_reproducibility.html">Persistence and reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/performance_and_scaling.html">Performance and scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/usage_scenarios.html">Rank-BM25 Usage Scenarios</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Seaborn</a></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Seaborn</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auc_and_evaluation.html">AUC and evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decile_and_model_plots.html">Decile and model plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_semantics_and_styling.html">Data semantics and styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known_limits_and_troubleshooting.html">Known limits and troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../stats/index.html">Stats</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Keras architecture visualization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/getting_started.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/layered_view.html">Layered view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/graph_view.html">Graph view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/styling_and_spacing.html">Styling and spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/dependencies_and_limits.html">Dependencies and limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../_lib/index.html">Array API support</a></li>
@@ -787,7 +925,23 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../_externals/index.html">Externals (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../_externals/_sphinx_ext/index.html">Sphinx Ext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_externals/_jupyter_ext/index.html">Jupyter Ext</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../_externals/_sphinx_ext/index.html">Sphinx Ext</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_ansi_sanitizer/index.html">ANSI Sanitizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_pydata_component_list/index.html">PyData Component List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_ai_assistant/index.html">Sphinx AI Assistant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_ai_learn/index.html">Sphinx AI Learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_collection/index.html">Sphinx Collection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_feedback/index.html">Sphinx Feedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_gallery_grid/index.html">Sphinx Gallery Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_gallery_jupyterlite/index.html">Sphinx-Gallery JupyterLite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_jinja_render/index.html">Sphinx Jinja Render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_llm/index.html">Sphinx LLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_youtube_core/index.html">Sphinx YouTube Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinx_youtube_gallery/index.html">Sphinx YouTube Gallery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../_externals/_sphinx_ext/_sphinxcontrib_youtube/index.html">Sphinx Video Directives</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -834,7 +988,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Seaborn</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Seaborn-style model plots</span></li>
   </ul>
 </nav>
 </div>
@@ -851,25 +1005,92 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="seaborn-index">
-<span id="id1"></span><h1>Seaborn<a class="headerlink" href="#seaborn-index" title="Link to this heading">#</a></h1>
-<p>Examples relevant to the <a class="reference internal" href="../../apis/scikitplot.seaborn.html#module-scikitplot.seaborn" title="scikitplot.seaborn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">seaborn</span></code></a> module.</p>
-<section id="auc-plot-experimental">
-<span id="aucplot-index"></span><h2>AUC Plot (experimental)<a class="headerlink" href="#auc-plot-experimental" title="Link to this heading">#</a></h2>
-<p>Examples relevant to the <a class="reference internal" href="../../modules/generated/scikitplot.seaborn.aucplot.html#scikitplot.seaborn.aucplot" title="scikitplot.seaborn.aucplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">aucplot</span></code></a> module.</p>
+  <section id="seaborn-style-model-plots">
+<span id="seaborn-index"></span><h1>Seaborn-style model plots<a class="headerlink" href="#seaborn-style-model-plots" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">scikitplot.seaborn</span></code> provides a small seaborn-like high-level plotting API for model evaluation and decile analysis. It is a Scikit-Plots wrapper layer, not a replacement for upstream seaborn.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The repository maintenance snapshot currently marks this submodule as not release-ready. Treat these plotting wrappers as experimental and pin/test the exact dependency versions used by your application.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Getting started</div>
+<p class="sd-card-text">Choose the high-level plotting wrapper that matches the evaluation question.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="getting_started.html#seaborn-getting-started"><span class="std std-ref">Getting started</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+AUC and evaluation</div>
+<p class="sd-card-text">Use aucplot/evalplot with explicit data, x/y/hue, and classification semantics.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="auc_and_evaluation.html#seaborn-auc-and-evaluation"><span class="std std-ref">AUC and evaluation</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Decile and model plots</div>
+<p class="sd-card-text">Use decileplot/modelplot and interpret lift/gain-style outputs.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="decile_and_model_plots.html#seaborn-decile-and-model-plots"><span class="std std-ref">Decile and model plots</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Data semantics and styling</div>
+<p class="sd-card-text">Long-form data, hue/grouping, kind selection, Axes return values, and plotting side effects.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="data_semantics_and_styling.html#seaborn-data-semantics-and-styling"><span class="std std-ref">Data semantics and styling</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Python API</div>
+<p class="sd-card-text">aucplot, evalplot, decileplot, modelplot, and print_labels.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="python_api.html#seaborn-python-api"><span class="std std-ref">Python API</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Known limits and troubleshooting</div>
+<p class="sd-card-text">Experimental status, upstream-private compatibility, and current open maintenance findings.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="known_limits_and_troubleshooting.html#seaborn-known-limits-and-troubleshooting"><span class="std std-ref">Known limits and troubleshooting</span></a></div>
+</div>
+</div>
+</div>
+<section id="which-page-should-i-use">
+<h2>Which page should I use?<a class="headerlink" href="#which-page-should-i-use" title="Link to this heading">#</a></h2>
+<p>Start with <strong>Getting started</strong>. Then choose the page that owns the decision
+you are making: architecture and lifecycle, configuration, persistence,
+performance, public API, or limits. The guide intentionally separates those
+concerns so examples do not accidentally become policy.</p>
 </section>
-<section id="eval-plot-experimental">
-<span id="evalplot-index"></span><h2>Eval Plot (experimental)<a class="headerlink" href="#eval-plot-experimental" title="Link to this heading">#</a></h2>
-<p>Examples relevant to the <a class="reference internal" href="../../modules/generated/scikitplot.seaborn.evalplot.html#scikitplot.seaborn.evalplot" title="scikitplot.seaborn.evalplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">evalplot</span></code></a> module.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<p>See <a class="reference internal" href="../../auto_examples/seaborn/index.html#seaborn-examples"><span class="std std-ref">Seaborn</span></a> for executable examples that accompany this guide.</p>
 </section>
-<section id="decile-plot-experimental">
-<span id="decileplot-index"></span><h2>Decile Plot (experimental)<a class="headerlink" href="#decile-plot-experimental" title="Link to this heading">#</a></h2>
-<p>Examples relevant to the <a class="reference internal" href="../../modules/generated/scikitplot.seaborn.decileplot.html#scikitplot.seaborn.decileplot" title="scikitplot.seaborn.decileplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">decileplot</span></code></a> module.</p>
-<p class="rubric">Examples</p>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../auto_examples/seaborn/plot_decileplot_script.html#sphx-glr-auto-examples-seaborn-plot-decileplot-script-py"><span class="std std-ref">plot_decileplot_script with examples</span></a>: Example usage of
-<a class="reference internal" href="../../modules/generated/scikitplot.seaborn.decileplot.html#scikitplot.seaborn.decileplot" title="scikitplot.seaborn.decileplot"><code class="xref py py-func docutils literal notranslate"><span class="pre">decileplot</span></code></a> using template.</p></li>
+<li><p><a class="reference internal" href="../decile/index.html#decile-index"><span class="std std-ref">Decile analysis</span></a></p></li>
 </ul>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -884,20 +1105,20 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../rank_bm25/index.html"
+       href="../rank_bm25/usage_scenarios.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Rank-BM25 user guide</p>
+        <p class="prev-next-title">Rank-BM25 Usage Scenarios</p>
       </div>
     </a>
     <a class="right-next"
-       href="../stats/index.html"
+       href="getting_started.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Stats</p>
+        <p class="prev-next-title">Getting started</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -924,9 +1145,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auc-plot-experimental">AUC Plot (experimental)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-plot-experimental">Eval Plot (experimental)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decile-plot-experimental">Decile Plot (experimental)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-page-should-i-use">Which page should I use?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
   </nav></div>
 
@@ -985,7 +1207,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

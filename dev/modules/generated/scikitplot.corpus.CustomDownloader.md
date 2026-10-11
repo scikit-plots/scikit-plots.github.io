@@ -1,6 +1,6 @@
 # CustomDownloader[#](#customdownloader "Link to this heading")
 
-class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **handler=<object object>**, **handler\_kwargs=None**, **allow\_external\_output=False**, **enforce\_max\_bytes=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_downloader/_downloader.py#L533)[#](#scikitplot.corpus.CustomDownloader "Link to this definition")
+class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **handler=<object object>**, **handler\_kwargs=None**, **allow\_external\_output=False**, **enforce\_max\_bytes=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_downloader/_downloader.py#L533)[#](#scikitplot.corpus.CustomDownloader "Link to this definition")
 :   Wraps a user-supplied callable as a [`BaseDownloader`](scikitplot.corpus.BaseDownloader.html#scikitplot.corpus.BaseDownloader "scikitplot.corpus.BaseDownloader").
 
     Parameters:
@@ -78,7 +78,7 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
 
     block\_private\_ips: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CustomDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.CustomDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.CustomDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -87,7 +87,7 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_downloader/_downloader.py#L603)[#](#scikitplot.corpus.CustomDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_downloader/_downloader.py#L603)[#](#scikitplot.corpus.CustomDownloader.download "Link to this definition")
     :   Invoke the user-supplied `handler` and return a [`DownloadResult`](scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult "scikitplot.corpus.DownloadResult").
 
         Returns:
@@ -113,7 +113,7 @@ class scikitplot.corpus.CustomDownloader(**input\_url**, **output\_path=None**, 
 
     handler\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CustomDownloader.handler_kwargs "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_downloader/_downloader.py#L533)[#](#scikitplot.corpus.CustomDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_downloader/_downloader.py#L533)[#](#scikitplot.corpus.CustomDownloader.input_url "Link to this definition")
 
     max\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 104857600[#](#scikitplot.corpus.CustomDownloader.max_bytes "Link to this definition")
 

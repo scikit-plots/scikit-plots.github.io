@@ -1,6 +1,6 @@
 # meta\_schema\_version[#](#meta-schema-version "Link to this heading")
 
-scikitplot.cython.meta\_schema\_version(**meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_cache.py#L75)[#](#scikitplot.cython.meta_schema_version "Link to this definition")
+scikitplot.cython.meta\_schema\_version(**meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_cache.py#L75)[#](#scikitplot.cython.meta_schema_version "Link to this definition")
 :   Return the schema version recorded in `meta` (0 if absent/legacy).
 
     Parameters:

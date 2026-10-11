@@ -1,6 +1,6 @@
 # ScriptSegmenter[#](#scriptsegmenter "Link to this heading")
 
-class scikitplot.corpus.ScriptSegmenter(**\***, **min\_span\_chars=1**, **inherit\_direction=True**, **unknown\_script\_warning=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1538)[#](#scikitplot.corpus.ScriptSegmenter "Link to this definition")
+class scikitplot.corpus.ScriptSegmenter(**\***, **min\_span\_chars=1**, **inherit\_direction=True**, **unknown\_script\_warning=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1538)[#](#scikitplot.corpus.ScriptSegmenter "Link to this definition")
 :   Segment NFC-normalised text into contiguous Unicode script spans.
 
     Uses `regex` Unicode Script property matching (`\p{Script=X}`)
@@ -70,7 +70,7 @@ class scikitplot.corpus.ScriptSegmenter(**\***, **min\_span\_chars=1**, **inheri
 
     SCRIPT\_PROPERTY\_MAP: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]] = {'Arabic': 'arabic', 'Armenian': 'armenian', 'Common': '\_common', 'Coptic': 'egyptian', 'Cyrillic': 'cyrillic', 'Devanagari': 'devanagari', 'Egyptian\_Hieroglyphs': 'egyptian\_hieroglyphs', 'Ethiopic': 'ethiopic', 'Georgian': 'georgian', 'Greek': 'greek', 'Han': 'han', 'Hangul': 'hangul', 'Hebrew': 'hebrew', 'Hiragana': 'hiragana', 'Inherited': '\_inherited', 'Katakana': 'katakana', 'Khmer': 'khmer', 'Latin': 'latin', 'Mongolian': 'mongolian', 'Myanmar': 'myanmar', 'Thai': 'thai', 'Tibetan': 'tibetan'}[#](#scikitplot.corpus.ScriptSegmenter.SCRIPT_PROPERTY_MAP "Link to this definition")
 
-    segment(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1719)[#](#scikitplot.corpus.ScriptSegmenter.segment "Link to this definition")
+    segment(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1719)[#](#scikitplot.corpus.ScriptSegmenter.segment "Link to this definition")
     :   Segment **text** into contiguous [`ScriptSpan`](scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan "scikitplot.corpus.ScriptSpan") objects.
 
         Parameters:

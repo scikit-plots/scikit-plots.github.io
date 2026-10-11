@@ -1,4 +1,4 @@
-# Python Implementations and Free-Threading (No-GIL) Support[#](#python-implementations-and-free-threading-no-gil-support "Link to this heading")
+# [Python Implementations and Free-Threading (No-GIL) Support](#id1)[#](#python-implementations-and-free-threading-no-gil-support "Link to this heading")
 
 [`"Download This Page as .pdf"`](../_downloads/cac06aa2456734a4b7de9b87cc718010/python_nogil.pdf).
 
@@ -7,14 +7,14 @@
 special builds of CPython (starting with version 3.13). Compatibility with
 third-party packages, particularly C extensions, is limited.
 
-## Overview[#](#overview "Link to this heading")
+## [Overview](#id2)[#](#overview "Link to this heading")
 
 Python can be executed using multiple interpreters:
 
 * ****CPython**** - the reference implementation. It now offers an ****experimental free-threaded (No-GIL) mode****.
 * ****PyPy**** - a JIT-compiled alternative optimized for long-running pure Python code, still using the GIL.
 
-## Comparison Table[#](#comparison-table "Link to this heading")
+## [Comparison Table](#id3)[#](#comparison-table "Link to this heading")
 
 | Feature | CPython | PyPy | Notes |
 | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ Python can be executed using multiple interpreters:
 | C Extension Support | ✅ Full (legacy CPython API) | ⚠ Partial (via CFFI) | Free-threaded mode requires API updates |
 | Memory Model | Reference counting + GIL | Tracing GC + JIT | Affects concurrency behavior |
 
-## Timeline of No-GIL Development[#](#timeline-of-no-gil-development "Link to this heading")
+## [Timeline of No-GIL Development](#id4)[#](#timeline-of-no-gil-development "Link to this heading")
 
 | Year | Event |
 | --- | --- |
@@ -34,7 +34,7 @@ Python can be executed using multiple interpreters:
 | 2025 (planned) | CPython 3.14 expands free-threading and extension support |
 | 2026+ (planned) | CPython 3.15+ may stabilize No-GIL execution |
 
-## Future CPython Feature Matrix[#](#future-cpython-feature-matrix "Link to this heading")
+## [Future CPython Feature Matrix](#id5)[#](#future-cpython-feature-matrix "Link to this heading")
 
 | Version | GIL Support | Free-Threaded Mode | Status | Notes |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Python can be executed using multiple interpreters:
 | 3.14 | ✅ Yes | ✅ Yes | Experimental / Early Adoption | Improved extension support |
 | 3.15+ | ✅ Yes | ✅ Yes | Future | No-GIL may become standard |
 
-## Tabbed View (CPython vs PyPy)[#](#tabbed-view-cpython-vs-pypy "Link to this heading")
+## [Tabbed View (CPython vs PyPy)](#id6)[#](#tabbed-view-cpython-vs-pypy "Link to this heading")
 
 CPythonPyPy
 
@@ -76,7 +76,7 @@ PyPy uses JIT compilation but ****does not support No-GIL execution****.
 * [PyPy Repository](https://github.com/pypy/pypy)
 * [CPython vs PyPy Differences](https://doc.pypy.org/en/latest/cpython_differences.html)
 
-## Critical and Essential Knowledge[#](#critical-and-essential-knowledge "Link to this heading")
+## [Critical and Essential Knowledge](#id7)[#](#critical-and-essential-knowledge "Link to this heading")
 
 > **Important**
 > Misunderstanding these points may lead to performance or correctness issues:
@@ -91,7 +91,7 @@ PyPy uses JIT compilation but ****does not support No-GIL execution****.
 > **Caution**
 > Code that runs correctly under GIL may be ****unsafe under No-GIL****.
 
-## Risks vs Benefits Matrix[#](#risks-vs-benefits-matrix "Link to this heading")
+## [Risks vs Benefits Matrix](#id8)[#](#risks-vs-benefits-matrix "Link to this heading")
 
 | Category | Benefits | Risks |
 | --- | --- | --- |
@@ -100,7 +100,7 @@ PyPy uses JIT compilation but ****does not support No-GIL execution****.
 | C Extension Compatibility | Can write No-GIL-safe extensions | Legacy extensions may crash or misbehave |
 | Future-Proofing | Prepares code for upcoming GIL-free CPython | Still experimental; behavior may change |
 
-## Migration Checklist[#](#migration-checklist "Link to this heading")
+## [Migration Checklist](#id9)[#](#migration-checklist "Link to this heading")
 
 1. Install Free-Threaded Python.
 2. Audit all C extensions.
@@ -110,7 +110,7 @@ PyPy uses JIT compilation but ****does not support No-GIL execution****.
 6. Monitor performance carefully.
 7. Document interpreter requirements.
 
-## Who Should Not Use Free-Threaded Python Yet[#](#who-should-not-use-free-threaded-python-yet "Link to this heading")
+## [Who Should Not Use Free-Threaded Python Yet](#id10)[#](#who-should-not-use-free-threaded-python-yet "Link to this heading")
 
 * Projects heavily dependent on legacy C extensions.
 * Applications stable under standard CPython.

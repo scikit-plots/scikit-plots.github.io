@@ -1,21 +1,21 @@
 # StopReason[#](#stopreason "Link to this heading")
 
-class scikitplot.corpus.StopReason(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L91)[#](#scikitplot.corpus.StopReason "Link to this definition")
+class scikitplot.corpus.StopReason(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L91)[#](#scikitplot.corpus.StopReason "Link to this definition")
 :   Why the loop stopped. Always set – a loop that stops silently is a bug.
 
-    BUDGET\_EXHAUSTED = 'budget\_exhausted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.BUDGET_EXHAUSTED "Link to this definition")
+    BUDGET\_EXHAUSTED = 'budget\_exhausted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.BUDGET_EXHAUSTED "Link to this definition")
     :   A declared budget ran out.
 
-    NOT\_RETRIEVED = 'not\_retrieved'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.NOT_RETRIEVED "Link to this definition")
+    NOT\_RETRIEVED = 'not\_retrieved'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.NOT_RETRIEVED "Link to this definition")
     :   Routing determined no retrieval was warranted.
 
-    NO\_PROGRESS = 'no\_progress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.NO_PROGRESS "Link to this definition")
+    NO\_PROGRESS = 'no\_progress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.NO_PROGRESS "Link to this definition")
     :   A refinement round added nothing new.
 
-    RETRIEVAL\_FAILED = 'retrieval\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.RETRIEVAL_FAILED "Link to this definition")
+    RETRIEVAL\_FAILED = 'retrieval\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.RETRIEVAL_FAILED "Link to this definition")
     :   Every retrieval leg failed.
 
-    SUFFICIENT = 'sufficient'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.SUFFICIENT "Link to this definition")
+    SUFFICIENT = 'sufficient'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.StopReason.SUFFICIENT "Link to this definition")
     :   The deterministic signals were satisfied.
 
     capitalize(**/**)[#](#scikitplot.corpus.StopReason.capitalize "Link to this definition")

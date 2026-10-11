@@ -1,6 +1,6 @@
 # Rank-BM25[#](#rank-bm25 "Link to this heading")
 
-Examples for `rank_bm25` are arranged as a learning path for
+Examples for [`rank_bm25`](../../apis/scikitplot.rank_bm25.html#module-scikitplot.rank_bm25 "scikitplot.rank_bm25") are arranged as a learning path for
 lexical retrieval rather than as isolated API demonstrations. They use only
 small in-memory corpora, make no network requests, and keep result identities
 bound to the index whenever a result could leave the process.
@@ -79,11 +79,11 @@ not performance benchmarks or evidence that an in-process NumPy index is the
 right backend for every corpus size.
 
 > **See also**
-> * [Rank-BM25 user guide](../../user_guide/rank_bm25/index.html#rank-bm25-index) — concepts,
+> * [BM25 lexical ranking](../../user_guide/rank_bm25/index.html#rank-bm25-index) — concepts,
   contracts, failure modes, persistence boundaries, and performance choices.
 * [Corpus User Guide](../../user_guide/corpus/index.html#corpus-index) — corpus ingestion and
   retrieval workflows.
-* [ANNoy Vector Database](../../user_guide/annoy/index.html#annoy-index) — approximate
+* [Annoy vector search](../../user_guide/annoy/index.html#annoy-index) — approximate
   nearest-neighbor vector retrieval.
 ![](../../_images/sphx_glr_plot_rank_bm25_persistence_script_thumb.png)
 

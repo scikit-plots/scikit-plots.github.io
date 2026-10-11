@@ -1,6 +1,6 @@
 # LegStatus[#](#legstatus "Link to this heading")
 
-class scikitplot.corpus.LegStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L104)[#](#scikitplot.corpus.LegStatus "Link to this definition")
+class scikitplot.corpus.LegStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L104)[#](#scikitplot.corpus.LegStatus "Link to this definition")
 :   Outcome of one evidence path.
 
     Notes
@@ -11,19 +11,19 @@ class scikitplot.corpus.LegStatus(**\*values**)[[source]](https://github.com/sci
     not run must. Without the distinction, either every non-hybrid search would
     report `DEGRADED`, or F-R09-01 would stay invisible.
 
-    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.DEGRADED "Link to this definition")
+    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.DEGRADED "Link to this definition")
     :   The leg ran at reduced capability.
 
-    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.EMPTY "Link to this definition")
+    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.EMPTY "Link to this definition")
     :   The leg ran fully and contributed no hits.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.FAILED "Link to this definition")
     :   The leg was requested but could not run.
 
-    SKIPPED = 'skipped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.SKIPPED "Link to this definition")
+    SKIPPED = 'skipped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.SKIPPED "Link to this definition")
     :   The leg was not requested by this query.
 
-    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.SUCCESS "Link to this definition")
+    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LegStatus.SUCCESS "Link to this definition")
     :   The leg ran and contributed hits.
 
     capitalize(**/**)[#](#scikitplot.corpus.LegStatus.capitalize "Link to this definition")

@@ -1,11 +1,11 @@
-# Docker Desktop WSL Recovery Guidelines[#](#docker-desktop-wsl-recovery-guidelines "Link to this heading")
+# [Docker Desktop WSL Recovery Guidelines](#id1)[#](#docker-desktop-wsl-recovery-guidelines "Link to this heading")
 
-## Windows WSL + Cross-Platform Notes[#](#windows-wsl-cross-platform-notes "Link to this heading")
+## [Windows WSL + Cross-Platform Notes](#id2)[#](#windows-wsl-cross-platform-notes "Link to this heading")
 
 Canonical, safe, production-grade recovery procedure for restoring Docker
 environments when backend storage is intact but runtime layer is broken.
 
-## 1. Situation Overview (Windows WSL2 Case)[#](#situation-overview-windows-wsl2-case "Link to this heading")
+## [1. Situation Overview (Windows WSL2 Case)](#id3)[#](#situation-overview-windows-wsl2-case "Link to this heading")
 
 This guide applies when:
 
@@ -23,7 +23,7 @@ Interpretation:
 * UI cannot attach backend
 * Container data still exists on disk
 
-## 2. Architecture Model (Critical Understanding)[#](#architecture-model-critical-understanding "Link to this heading")
+## [2. Architecture Model (Critical Understanding)](#id4)[#](#architecture-model-critical-understanding "Link to this heading")
 
 Docker Desktop WSL2 stores state in virtual disks:
 
@@ -34,7 +34,7 @@ Docker Desktop WSL2 stores state in virtual disks:
 
 These are full filesystem images (not archives).
 
-## 3. Critical Safety Rules[#](#critical-safety-rules "Link to this heading")
+## [3. Critical Safety Rules](#id5)[#](#critical-safety-rules "Link to this heading")
 
 DO NOT:
 
@@ -49,7 +49,7 @@ DO:
 * Use WSL import mechanisms only
 * Verify before restarting Docker
 
-## 4. Pre-check (System Validation)[#](#pre-check-system-validation "Link to this heading")
+## [4. Pre-check (System Validation)](#id6)[#](#pre-check-system-validation "Link to this heading")
 
 ```
 wsl --version
@@ -62,7 +62,7 @@ Expected:
 * WSL installed
 * Virtualization enabled
 
-## 5. Recovery Strategy (Preferred Method)[#](#recovery-strategy-preferred-method "Link to this heading")
+## [5. Recovery Strategy (Preferred Method)](#id7)[#](#recovery-strategy-preferred-method "Link to this heading")
 
 Step 1 — Stop services
 
@@ -86,7 +86,7 @@ wsl --import-in-place docker-desktop-data "E:\DockerDesktopWSL\DockerDesktopWSL\
 
 ```
 
-## 6. Fallback Method (Compatibility Mode)[#](#fallback-method-compatibility-mode "Link to this heading")
+## [6. Fallback Method (Compatibility Mode)](#id8)[#](#fallback-method-compatibility-mode "Link to this heading")
 
 If import-in-place is not available:
 
@@ -106,7 +106,7 @@ wsl --import docker-desktop-data E:\DockerDesktopWSL\recovery\docker-desktop-dat
 
 ```
 
-## 7. Verification[#](#verification "Link to this heading")
+## [7. Verification](#id9)[#](#verification "Link to this heading")
 
 ```
 wsl -l -v
@@ -118,7 +118,7 @@ Expected:
 * docker-desktop
 * docker-desktop-data
 
-## 8. Restart Docker[#](#restart-docker "Link to this heading")
+## [8. Restart Docker](#id10)[#](#restart-docker "Link to this heading")
 
 ```
 Start-Service com.docker.service
@@ -127,7 +127,7 @@ Start-Service com.docker.service
 
 Then open Docker Desktop UI.
 
-## 9. Root Causes[#](#root-causes "Link to this heading")
+## [9. Root Causes](#id11)[#](#root-causes "Link to this heading")
 
 Typical failures:
 
@@ -137,7 +137,7 @@ Typical failures:
 
 .vhdx files remain intact unless deleted manually.
 
-## 10. Failure Handling[#](#failure-handling "Link to this heading")
+## [10. Failure Handling](#id12)[#](#failure-handling "Link to this heading")
 
 File in use:
 
@@ -153,7 +153,7 @@ wsl --install
 
 ```
 
-## 11. Recovery Outcome[#](#recovery-outcome "Link to this heading")
+## [11. Recovery Outcome](#id13)[#](#recovery-outcome "Link to this heading")
 
 If .vhdx intact:
 
@@ -162,7 +162,7 @@ If .vhdx intact:
 * Volumes preserved
 * No data loss
 
-## 12. Key Principle[#](#key-principle "Link to this heading")
+## [12. Key Principle](#id14)[#](#key-principle "Link to this heading")
 
 Docker Desktop = WSL control layer + VHDX storage layer
 
@@ -171,7 +171,7 @@ If storage exists:
 * Data is safe
 * Only mapping must be rebuilt
 
-## 13. Summary Flow[#](#summary-flow "Link to this heading")
+## [13. Summary Flow](#id15)[#](#summary-flow "Link to this heading")
 
 1. Stop WSL + Docker
 2. Import ext4.vhdx
@@ -179,7 +179,7 @@ If storage exists:
 4. Verify WSL distros
 5. Restart Docker Desktop
 
-## 14. Linux Recovery Notes[#](#linux-recovery-notes "Link to this heading")
+## [14. Linux Recovery Notes](#id16)[#](#linux-recovery-notes "Link to this heading")
 
 Storage:
 
@@ -199,7 +199,7 @@ sudo du -sh /var/lib/docker
 
 ```
 
-## 15. macOS Recovery Notes[#](#macos-recovery-notes "Link to this heading")
+## [15. macOS Recovery Notes](#id17)[#](#macos-recovery-notes "Link to this heading")
 
 Storage:
 
@@ -219,6 +219,6 @@ Cross-platform model:
 | --- | --- |
 | Windows Linux macOS | WSL2 + VHDX Native filesystem VM disk image |
 
-## Final Warning[#](#final-warning "Link to this heading")
+## [Final Warning](#id18)[#](#final-warning "Link to this heading")
 
 Do not reinstall or clean Docker before recovery is confirmed.

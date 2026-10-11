@@ -1,4 +1,4 @@
-# 📦 Python Env Manager Guidelines[#](#python-env-manager-guidelines "Link to this heading")
+# [📦 Python Env Manager Guidelines](#id3)[#](#python-env-manager-guidelines "Link to this heading")
 
 > **See also**
 > 🔎 Run the latest scikit-plots container — with full or partial preinstallation — interactively:
@@ -6,7 +6,7 @@
 * [“Scikit-plots Runtime Docker Images”](https://hub.docker.com/r/scikitplot/scikit-plots)
 * [scikit-plots/scikit-plots](https://github.com/scikit-plots/scikit-plots)
 
-## 📦 Conda/Anaconda Environment Guidelines[#](#conda-anaconda-environment-guidelines "Link to this heading")
+## [📦 Conda/Anaconda Environment Guidelines](#id4)[#](#conda-anaconda-environment-guidelines "Link to this heading")
 
 > **See also**
 > * [“Conda Documentation”](https://docs.conda.io/en/latest/)
@@ -85,7 +85,7 @@ conda install --name py311 --file environment.yml --group extended
 
 ```
 
-## 📦 Pipenv Environment Guidelines[#](#pipenv-environment-guidelines "Link to this heading")
+## [📦 Pipenv Environment Guidelines](#id5)[#](#pipenv-environment-guidelines "Link to this heading")
 
 > **See also**
 > * [“pipenv”](https://pypi.org/project/pipenv/)

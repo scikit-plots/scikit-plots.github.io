@@ -5,7 +5,7 @@ consume user scorers through [`CustomRetrievalIndex`](../../modules/generated/sc
 
 ## Levenshtein facade[#](#levenshtein-facade "Link to this heading")
 
-`scikitplot.levenshtein` is intentionally independent from Corpus and is
+[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") is intentionally independent from Corpus and is
 always importable. The automatic backend preference is:
 
 ```
@@ -48,7 +48,7 @@ index = CustomRetrievalIndex(
 
 ```
 
-Importing `scikitplot.levenshtein` alone does not import Corpus.
+Importing [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") alone does not import Corpus.
 
 `score_cutoff` uses the same normalized similarity scale `[0, 1]` for every
 backend, so switching between bundled, RapidFuzz and pure-Python implementations

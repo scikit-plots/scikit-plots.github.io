@@ -14,7 +14,7 @@ Annoy library. It is gated behind the experimental switch
 
 to follow scikit-learn’s experimental API conventions.
 
-****User guide.**** See the [Impute](../user_guide/impute/index.html#impute-index) section for further details.
+****User guide.**** See the [Missing-value imputation](../user_guide/impute/index.html#impute-index) section for further details.
 
 ## Approximate K-nearest-neighbours (KNN) imputation.[#](#module-scikitplot.impute._ann "Link to this heading")
 
@@ -42,7 +42,7 @@ References
 
 [spotify/voyager](https://github.com/spotify/voyager)
 
-****User guide.**** See the [ANNImputer](../user_guide/impute/index.html#ann-imputer-index) section for further details.
+****User guide.**** See the ann\_imputer-index section for further details.
 
 Class inheritance
 

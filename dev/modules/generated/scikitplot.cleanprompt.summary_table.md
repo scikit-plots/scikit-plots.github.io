@@ -1,6 +1,6 @@
 # summary\_table[#](#summary-table "Link to this heading")
 
-scikitplot.cleanprompt.summary\_table(**result**, **reveal=False**, **color=None**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cleanprompt/_render.py#L138)[#](#scikitplot.cleanprompt.summary_table "Link to this definition")
+scikitplot.cleanprompt.summary\_table(**result**, **reveal=False**, **color=None**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cleanprompt/_render.py#L138)[#](#scikitplot.cleanprompt.summary_table "Link to this definition")
 :   Render a table of what was redacted.
 
     Parameters:

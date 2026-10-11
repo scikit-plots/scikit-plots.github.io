@@ -1,6 +1,6 @@
 # check\_runtime\_supported[#](#check-runtime-supported "Link to this heading")
 
-scikitplot.cython.check\_runtime\_supported(**\***, **allow\_free\_threaded=False**, **allow\_subinterpreter=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_profiles.py#L489)[#](#scikitplot.cython.check_runtime_supported "Link to this definition")
+scikitplot.cython.check\_runtime\_supported(**\***, **allow\_free\_threaded=False**, **allow\_subinterpreter=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_profiles.py#L489)[#](#scikitplot.cython.check_runtime_supported "Link to this definition")
 :   Fail fast on an unsupported runtime configuration (CYTHON-ABI-001).
 
     Safe default: raise [`UnsupportedRuntimeError`](scikitplot.cython.UnsupportedRuntimeError.html#scikitplot.cython.UnsupportedRuntimeError "scikitplot.cython.UnsupportedRuntimeError") on a free-threaded

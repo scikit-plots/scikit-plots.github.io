@@ -17,84 +17,6 @@ fail-soft operation can continue while still recording structured degradation.
 `strict=False` may keep ingestion alive; it does not mean failures are
 invisible.
 
-## The whole idea in one picture[#](#the-whole-idea-in-one-picture "Link to this heading")
-
-```
-source
-   |
-   v
-downloader / local path
-   |
-   v
-DocumentReader ---- capability/readiness ---- optional backends
-   |                                      \
-   |                                       +-- fallback policy + reports
-   v
-filter -> normalize -> chunk -> enrich -> embed -> store -> index
-                                                  |
-                                                  v
-                                       retrieve / adapt / export
-
-```
-
-There are three complementary configuration levels:
-
-`CorpusPipeline`
-:   Direct control of one execution pipeline.
-
-`CorpusBuilder`
-:   High-level heterogeneous ingestion, downloading, search and adaptation.
-
-`FluentCorpus`
-:   Immutable declarative plans that can be generated, branched, compared and
-    materialized explicitly.
-
-## Thirty seconds[#](#thirty-seconds "Link to this heading")
-
-```
-from scikitplot.corpus import FluentCorpus
-
-plan = FluentCorpus.from_config({
-    "chunker": "paragraph",
-    "storage": "memory",
-})
-plan.explain()["configured"]
-# ['chunker', 'storage']
-
-```
-
-Inspect optional component readiness without importing heavy models:
-
-```
-from scikitplot.corpus import component_capabilities
-
-status = component_capabilities(["asr:faster-whisper", "ocr:pytesseract"])
-status["asr:faster-whisper"]["installed"]
-# True or False depending on the environment
-
-```
-
-## Which surface should I use?[#](#which-surface-should-i-use "Link to this heading")
-
-| Goal | Start with |
-| --- | --- |
-| Process one source with explicit stages | [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") |
-| Ingest heterogeneous local/remote sources | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") |
-| Generate reusable configuration variants | [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
-| Supply a custom reader/filter/downloader/component | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") with [`BuilderFactories`](../../modules/generated/scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories "scikitplot.corpus.BuilderFactories") ([Customization](customization.html#corpus-customization)) |
-| Inspect optional package/model/binary readiness | `component_capabilities` ([Readers, backends, and readiness](readers_and_backends.html#corpus-readers-backends)) |
-| Preview the exact ASR chain without running models | [`AudioReader.plan_asr_backends`](../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends "scikitplot.corpus.AudioReader.plan_asr_backends") / `BackendPlan` |
-| Control backend order/fallback/offline behavior | `BackendPolicy` |
-| Reuse one typed policy family across runtime/reader/builder seams | `CorpusPolicyBundle` ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
-| Control transfer TLS/SSRF/size/retry budgets | `DownloadPolicy` ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
-| Add a private/local ASR implementation | `ASRBackend` |
-| Download HTTP/GDrive/GitHub/YouTube inputs | [`AnyDownloader`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader "scikitplot.corpus.AnyDownloader") ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
-| Do fuzzy lexical ranking without requiring Corpus | `scikitplot.levenshtein` ([Retrieval and similarity](retrieval_and_similarity.html#corpus-retrieval-similarity)) |
-| Search vectors/lexical/hybrid indexes | [`RetrievalIndex`](../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex "scikitplot.corpus.RetrievalIndex") |
-| Export/adapt documents | the export and adapter APIs ([Formats, structured evidence, and export](formats_and_export.html#corpus-formats-export)) |
-
-## How this guide is organised[#](#how-this-guide-is-organised "Link to this heading")
-
 Read the first two pages first. After that, choose the page for the task in
 front of you.
 
@@ -185,3 +107,79 @@ marked.
 > * [Corpus](../../auto_examples/corpus/index.html#corpus-examples)
 * [CleanPrompt User Guide](../cleanprompt/index.html#cleanprompt-index)
 * [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus")
+
+## The whole idea in one picture[#](#the-whole-idea-in-one-picture "Link to this heading")
+
+```
+source
+   |
+   v
+downloader / local path
+   |
+   v
+DocumentReader ---- capability/readiness ---- optional backends
+   |                                      \
+   |                                       +-- fallback policy + reports
+   v
+filter -> normalize -> chunk -> enrich -> embed -> store -> index
+                                                  |
+                                                  v
+                                       retrieve / adapt / export
+
+```
+
+There are three complementary configuration levels:
+
+`CorpusPipeline`
+:   Direct control of one execution pipeline.
+
+`CorpusBuilder`
+:   High-level heterogeneous ingestion, downloading, search and adaptation.
+
+`FluentCorpus`
+:   Immutable declarative plans that can be generated, branched, compared and
+    materialized explicitly.
+
+## Thirty seconds[#](#thirty-seconds "Link to this heading")
+
+```
+from scikitplot.corpus import FluentCorpus
+
+plan = FluentCorpus.from_config({
+    "chunker": "paragraph",
+    "storage": "memory",
+})
+plan.explain()["configured"]
+# ['chunker', 'storage']
+
+```
+
+Inspect optional component readiness without importing heavy models:
+
+```
+from scikitplot.corpus import component_capabilities
+
+status = component_capabilities(["asr:faster-whisper", "ocr:pytesseract"])
+status["asr:faster-whisper"]["installed"]
+# True or False depending on the environment
+
+```
+
+## Which surface should I use?[#](#which-surface-should-i-use "Link to this heading")
+
+| Goal | Start with |
+| --- | --- |
+| Process one source with explicit stages | [`CorpusPipeline`](../../modules/generated/scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") |
+| Ingest heterogeneous local/remote sources | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") |
+| Generate reusable configuration variants | [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
+| Supply a custom reader/filter/downloader/component | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") with [`BuilderFactories`](../../modules/generated/scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories "scikitplot.corpus.BuilderFactories") ([Customization](customization.html#corpus-customization)) |
+| Inspect optional package/model/binary readiness | `component_capabilities` ([Readers, backends, and readiness](readers_and_backends.html#corpus-readers-backends)) |
+| Preview the exact ASR chain without running models | [`AudioReader.plan_asr_backends`](../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends "scikitplot.corpus.AudioReader.plan_asr_backends") / `BackendPlan` |
+| Control backend order/fallback/offline behavior | `BackendPolicy` |
+| Reuse one typed policy family across runtime/reader/builder seams | `CorpusPolicyBundle` ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
+| Control transfer TLS/SSRF/size/retry budgets | `DownloadPolicy` ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
+| Add a private/local ASR implementation | `ASRBackend` |
+| Download HTTP/GDrive/GitHub/YouTube inputs | [`AnyDownloader`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader "scikitplot.corpus.AnyDownloader") ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
+| Do fuzzy lexical ranking without requiring Corpus | [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") ([Retrieval and similarity](retrieval_and_similarity.html#corpus-retrieval-similarity)) |
+| Search vectors/lexical/hybrid indexes | [`RetrievalIndex`](../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex "scikitplot.corpus.RetrievalIndex") |
+| Export/adapt documents | the export and adapter APIs ([Formats, structured evidence, and export](formats_and_export.html#corpus-formats-export)) |

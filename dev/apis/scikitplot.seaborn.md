@@ -7,11 +7,11 @@ Seaborn-style scikit-plots plotting.
 This submodule provides a seaborn-like, high-level plotting API for
 machine-learning model exploration.
 
-****User guide.**** See the [Seaborn](../user_guide/seaborn/index.html#seaborn-index) section for further details.
+****User guide.**** See the [Seaborn-style model plots](../user_guide/seaborn/index.html#seaborn-index) section for further details.
 
 ## .api into .seaborn[#](#api-into-seaborn "Link to this heading")
 
-****User guide.**** See the [AUC Plot (experimental)](../user_guide/seaborn/index.html#aucplot-index) and [Eval Plot (experimental)](../user_guide/seaborn/index.html#evalplot-index) sections for further details.
+****User guide.**** See the aucplot-index and evalplot-index sections for further details.
 
 |  |  |
 | --- | --- |
@@ -46,7 +46,7 @@ References
 “Decile”
 Wikipedia. https://en.wikipedia.org/wiki/Decile](https://en.wikipedia.org/wiki/Decile)
 
-****User guide.**** See the [Decile Plot (experimental)](../user_guide/seaborn/index.html#decileplot-index) section for further details.
+****User guide.**** See the decileplot-index section for further details.
 
 |  |  |
 | --- | --- |

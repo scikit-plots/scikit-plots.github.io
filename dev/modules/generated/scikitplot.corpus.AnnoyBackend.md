@@ -1,6 +1,6 @@
 # AnnoyBackend[#](#annoybackend "Link to this heading")
 
-class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10**, **search\_k=-1**, **impl='auto'**, **dtype=None**, **index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L357)[#](#scikitplot.corpus.AnnoyBackend "Link to this definition")
+class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10**, **search\_k=-1**, **impl='auto'**, **dtype=None**, **index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L357)[#](#scikitplot.corpus.AnnoyBackend "Link to this definition")
 :   ANN backend over a scikit-plots Annoy `Index` (default backend).
 
     Works with ****both**** shipped Annoy index classes, which expose the same
@@ -51,7 +51,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
     reported distance is `d = sqrt(2 * (1 - c))`. Cosine is recovered exactly
     as `c = 1 - d**2 / 2` — the correct inverse (a plain `1 - d/2` is not).
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L470)[#](#scikitplot.corpus.AnnoyBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L470)[#](#scikitplot.corpus.AnnoyBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -66,7 +66,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.AnnoyBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.AnnoyBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -93,7 +93,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.AnnoyBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L435)[#](#scikitplot.corpus.AnnoyBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L435)[#](#scikitplot.corpus.AnnoyBackend.is_available "Link to this definition")
     :   Return whether this backend’s optional dependencies are discoverable.
 
         Return type:
@@ -107,7 +107,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'annoy'[#](#scikitplot.corpus.AnnoyBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L488)[#](#scikitplot.corpus.AnnoyBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L488)[#](#scikitplot.corpus.AnnoyBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

@@ -18,7 +18,7 @@ import time.
 > * [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
 * [semantica-agi/semantica](https://github.com/semantica-agi/semantica)
 
-****User guide.**** See the [Model Context Protocol (MCP)](../user_guide/mcp/index.html#mcp-index) section for further details.
+****User guide.**** See the [Model Context Protocol Retrieval](../user_guide/mcp/index.html#mcp-index) section for further details.
 
 ## MCP: Capabilities[#](#mcp-capabilities "Link to this heading")
 

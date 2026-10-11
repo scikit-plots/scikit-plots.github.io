@@ -1,6 +1,6 @@
 # CitationOutput[#](#citationoutput "Link to this heading")
 
-class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, **anchor**, **doc\_id**, **score**, **also\_in=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_server.py#L78)[#](#scikitplot.mcp.CitationOutput "Link to this definition")
+class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, **anchor**, **doc\_id**, **score**, **also\_in=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_server.py#L78)[#](#scikitplot.mcp.CitationOutput "Link to this definition")
 :   Stable source metadata for one returned passage.
 
     Parameters:
@@ -18,7 +18,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
 
     anchor: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.mcp.CitationOutput.anchor "Link to this definition")
 
-    classmethod construct(**\_fields\_set=None**, **\*\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1559)[#](#scikitplot.mcp.CitationOutput.construct "Link to this definition")
+    classmethod construct(**\_fields\_set=None**, **\*\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1559)[#](#scikitplot.mcp.CitationOutput.construct "Link to this definition")
     :   Parameters:
         :   * ****\_fields\_set**** ([**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
             * ****values**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
@@ -26,7 +26,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    copy(**\***, **include=None**, **exclude=None**, **update=None**, **deep=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1569)[#](#scikitplot.mcp.CitationOutput.copy "Link to this definition")
+    copy(**\***, **include=None**, **exclude=None**, **update=None**, **deep=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1569)[#](#scikitplot.mcp.CitationOutput.copy "Link to this definition")
     :   Returns a copy of the model.
 
         !!! warning “Deprecated”
@@ -52,7 +52,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   Self
 
-    dict(**\***, **include=None**, **exclude=None**, **by\_alias=False**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1385)[#](#scikitplot.mcp.CitationOutput.dict "Link to this definition")
+    dict(**\***, **include=None**, **exclude=None**, **by\_alias=False**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1385)[#](#scikitplot.mcp.CitationOutput.dict "Link to this definition")
     :   Parameters:
         :   * ****include**** ([**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** **None**)
             * ****exclude**** ([**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** **None**)
@@ -66,14 +66,14 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
 
     doc\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.mcp.CitationOutput.doc_id "Link to this definition")
 
-    classmethod from\_orm(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1540)[#](#scikitplot.mcp.CitationOutput.from_orm "Link to this definition")
+    classmethod from\_orm(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1540)[#](#scikitplot.mcp.CitationOutput.from_orm "Link to this definition")
     :   Parameters:
         :   ****obj**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    json(**\***, **include=None**, **exclude=None**, **by\_alias=False**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **encoder=PydanticUndefined**, **models\_as\_dict=PydanticUndefined**, **\*\*dumps\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1410)[#](#scikitplot.mcp.CitationOutput.json "Link to this definition")
+    json(**\***, **include=None**, **exclude=None**, **by\_alias=False**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **encoder=PydanticUndefined**, **models\_as\_dict=PydanticUndefined**, **\*\*dumps\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1410)[#](#scikitplot.mcp.CitationOutput.json "Link to this definition")
     :   Parameters:
         :   * ****include**** ([**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** **None**)
             * ****exclude**** ([**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]** **|** [**set**](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **IncEx** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]** **|** **None**)
@@ -93,7 +93,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
     model\_config = {'extra': 'forbid'}[#](#scikitplot.mcp.CitationOutput.model_config "Link to this definition")
     :   Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
-    classmethod model\_construct(**\_fields\_set=None**, **\*\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L333)[#](#scikitplot.mcp.CitationOutput.model_construct "Link to this definition")
+    classmethod model\_construct(**\_fields\_set=None**, **\*\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L333)[#](#scikitplot.mcp.CitationOutput.model_construct "Link to this definition")
     :   Creates a new instance of the `Model` class with validated data.
 
         Creates a new model setting `__dict__` and `__pydantic_fields_set__` from trusted or pre-validated data.
@@ -118,7 +118,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    model\_copy(**\***, **update=None**, **deep=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L410)[#](#scikitplot.mcp.CitationOutput.model_copy "Link to this definition")
+    model\_copy(**\***, **update=None**, **deep=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L410)[#](#scikitplot.mcp.CitationOutput.model_copy "Link to this definition")
     :   !!! abstract “Usage Documentation”
         :   [`model_copy`](../concepts/models.md#model-copy)
 
@@ -143,7 +143,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    model\_dump(**\***, **mode='python'**, **include=None**, **exclude=None**, **context=None**, **by\_alias=None**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **exclude\_computed\_fields=False**, **round\_trip=False**, **warnings=True**, **fallback=None**, **serialize\_as\_any=False**, **polymorphic\_serialization=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L472)[#](#scikitplot.mcp.CitationOutput.model_dump "Link to this definition")
+    model\_dump(**\***, **mode='python'**, **include=None**, **exclude=None**, **context=None**, **by\_alias=None**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **exclude\_computed\_fields=False**, **round\_trip=False**, **warnings=True**, **fallback=None**, **serialize\_as\_any=False**, **polymorphic\_serialization=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L472)[#](#scikitplot.mcp.CitationOutput.model_dump "Link to this definition")
     :   !!! abstract “Usage Documentation”
         :   [`model_dump`](../concepts/serialization.md#python-mode)
 
@@ -177,7 +177,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    model\_dump\_json(**\***, **indent=None**, **ensure\_ascii=False**, **include=None**, **exclude=None**, **context=None**, **by\_alias=None**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **exclude\_computed\_fields=False**, **round\_trip=False**, **warnings=True**, **fallback=None**, **serialize\_as\_any=False**, **polymorphic\_serialization=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L538)[#](#scikitplot.mcp.CitationOutput.model_dump_json "Link to this definition")
+    model\_dump\_json(**\***, **indent=None**, **ensure\_ascii=False**, **include=None**, **exclude=None**, **context=None**, **by\_alias=None**, **exclude\_unset=False**, **exclude\_defaults=False**, **exclude\_none=False**, **exclude\_computed\_fields=False**, **round\_trip=False**, **warnings=True**, **fallback=None**, **serialize\_as\_any=False**, **polymorphic\_serialization=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L538)[#](#scikitplot.mcp.CitationOutput.model_dump_json "Link to this definition")
     :   !!! abstract “Usage Documentation”
         :   [`model_dump_json`](../concepts/serialization.md#json-mode)
 
@@ -226,7 +226,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         :   A set of strings representing the fields that have been set,
             :   i.e. that were not filled from defaults.
 
-    classmethod model\_json\_schema(**by\_alias=True**, **ref\_template='#/$defs/{model}'**, **schema\_generator=<class 'pydantic.json\_schema.GenerateJsonSchema'>**, **mode='validation'**, **\***, **union\_format='any\_of'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L606)[#](#scikitplot.mcp.CitationOutput.model_json_schema "Link to this definition")
+    classmethod model\_json\_schema(**by\_alias=True**, **ref\_template='#/$defs/{model}'**, **schema\_generator=<class 'pydantic.json\_schema.GenerateJsonSchema'>**, **mode='validation'**, **\***, **union\_format='any\_of'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L606)[#](#scikitplot.mcp.CitationOutput.model_json_schema "Link to this definition")
     :   Generates a JSON schema for a model class.
 
         Parameters:
@@ -253,7 +253,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    classmethod model\_parametrized\_name(**params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L645)[#](#scikitplot.mcp.CitationOutput.model_parametrized_name "Link to this definition")
+    classmethod model\_parametrized\_name(**params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L645)[#](#scikitplot.mcp.CitationOutput.model_parametrized_name "Link to this definition")
     :   Compute the class name for parametrizations of generic classes.
 
         This method can be overridden to achieve a custom naming scheme for generic BaseModels.
@@ -272,7 +272,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    model\_post\_init(**context**, **/**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L672)[#](#scikitplot.mcp.CitationOutput.model_post_init "Link to this definition")
+    model\_post\_init(**context**, **/**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L672)[#](#scikitplot.mcp.CitationOutput.model_post_init "Link to this definition")
     :   Override this method to perform additional initialization after `__init__` and `model_construct`.
         This is useful if you want to do some validation that requires the entire model to be initialized.
 
@@ -282,7 +282,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   None
 
-    classmethod model\_rebuild(**\***, **force=False**, **raise\_errors=True**, **\_parent\_namespace\_depth=2**, **\_types\_namespace=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L677)[#](#scikitplot.mcp.CitationOutput.model_rebuild "Link to this definition")
+    classmethod model\_rebuild(**\***, **force=False**, **raise\_errors=True**, **\_parent\_namespace\_depth=2**, **\_types\_namespace=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L677)[#](#scikitplot.mcp.CitationOutput.model_rebuild "Link to this definition")
     :   Try to rebuild the pydantic-core schema for the model.
 
         This may be necessary when one of the annotations is a ForwardRef which could not be resolved during
@@ -301,7 +301,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | None
 
-    classmethod model\_validate(**obj**, **\***, **strict=None**, **extra=None**, **from\_attributes=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L746)[#](#scikitplot.mcp.CitationOutput.model_validate "Link to this definition")
+    classmethod model\_validate(**obj**, **\***, **strict=None**, **extra=None**, **from\_attributes=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L746)[#](#scikitplot.mcp.CitationOutput.model_validate "Link to this definition")
     :   Validate a pydantic model instance.
 
         If validation fails, the resulting [`ValidationError`][pydantic\_core.ValidationError] reports the
@@ -328,7 +328,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    classmethod model\_validate\_json(**json\_data**, **\***, **strict=None**, **extra=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L800)[#](#scikitplot.mcp.CitationOutput.model_validate_json "Link to this definition")
+    classmethod model\_validate\_json(**json\_data**, **\***, **strict=None**, **extra=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L800)[#](#scikitplot.mcp.CitationOutput.model_validate_json "Link to this definition")
     :   !!! abstract “Usage Documentation”
         :   [JSON Parsing](../concepts/json.md#json-parsing)
 
@@ -357,7 +357,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    classmethod model\_validate\_strings(**obj**, **\***, **strict=None**, **extra=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L849)[#](#scikitplot.mcp.CitationOutput.model_validate_strings "Link to this definition")
+    classmethod model\_validate\_strings(**obj**, **\***, **strict=None**, **extra=None**, **context=None**, **by\_alias=None**, **by\_name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L849)[#](#scikitplot.mcp.CitationOutput.model_validate_strings "Link to this definition")
     :   Validate the given object with string data against the Pydantic model.
 
         Parameters:
@@ -377,7 +377,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
 
     n: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.mcp.CitationOutput.n "Link to this definition")
 
-    classmethod parse\_file(**path**, **\***, **content\_type=None**, **encoding='utf8'**, **proto=None**, **allow\_pickle=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1508)[#](#scikitplot.mcp.CitationOutput.parse_file "Link to this definition")
+    classmethod parse\_file(**path**, **\***, **content\_type=None**, **encoding='utf8'**, **proto=None**, **allow\_pickle=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1508)[#](#scikitplot.mcp.CitationOutput.parse_file "Link to this definition")
     :   Parameters:
         :   * ****path**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **Path**)
             * ****content\_type**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
@@ -388,14 +388,14 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   Self
 
-    classmethod parse\_obj(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1444)[#](#scikitplot.mcp.CitationOutput.parse_obj "Link to this definition")
+    classmethod parse\_obj(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1444)[#](#scikitplot.mcp.CitationOutput.parse_obj "Link to this definition")
     :   Parameters:
         :   ****obj**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   [**Self**](https://docs.python.org/3/library/typing.html#typing.Self "(in Python v3.15)")
 
-    classmethod parse\_raw(**b**, **\***, **content\_type=None**, **encoding='utf8'**, **proto=None**, **allow\_pickle=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1454)[#](#scikitplot.mcp.CitationOutput.parse_raw "Link to this definition")
+    classmethod parse\_raw(**b**, **\***, **content\_type=None**, **encoding='utf8'**, **proto=None**, **allow\_pickle=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1454)[#](#scikitplot.mcp.CitationOutput.parse_raw "Link to this definition")
     :   Parameters:
         :   * ****b**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**bytes**](https://docs.python.org/3/builtins/stdtypes.html#bytes "(in Python v3.15)"))
             * ****content\_type**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
@@ -406,7 +406,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   Self
 
-    classmethod schema(**by\_alias=True**, **ref\_template='#/$defs/{model}'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1646)[#](#scikitplot.mcp.CitationOutput.schema "Link to this definition")
+    classmethod schema(**by\_alias=True**, **ref\_template='#/$defs/{model}'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1646)[#](#scikitplot.mcp.CitationOutput.schema "Link to this definition")
     :   Parameters:
         :   * ****by\_alias**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
             * ****ref\_template**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
@@ -414,7 +414,7 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
         Return type:
         :   [**Dict**](https://docs.python.org/3/library/typing.html#typing.Dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    classmethod schema\_json(**\***, **by\_alias=True**, **ref\_template='#/$defs/{model}'**, **\*\*dumps\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1658)[#](#scikitplot.mcp.CitationOutput.schema_json "Link to this definition")
+    classmethod schema\_json(**\***, **by\_alias=True**, **ref\_template='#/$defs/{model}'**, **\*\*dumps\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1658)[#](#scikitplot.mcp.CitationOutput.schema_json "Link to this definition")
     :   Parameters:
         :   * ****by\_alias**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
             * ****ref\_template**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
@@ -429,14 +429,14 @@ class scikitplot.mcp.CitationOutput(**\***, **n**, **source\_uri**, **title**, *
 
     title: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.mcp.CitationOutput.title "Link to this definition")
 
-    classmethod update\_forward\_refs(**\*\*localns**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1691)[#](#scikitplot.mcp.CitationOutput.update_forward_refs "Link to this definition")
+    classmethod update\_forward\_refs(**\*\*localns**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1691)[#](#scikitplot.mcp.CitationOutput.update_forward_refs "Link to this definition")
     :   Parameters:
         :   ****localns**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   None
 
-    classmethod validate(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/../pydantic/main.py#L1681)[#](#scikitplot.mcp.CitationOutput.validate "Link to this definition")
+    classmethod validate(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/../pydantic/main.py#L1681)[#](#scikitplot.mcp.CitationOutput.validate "Link to this definition")
     :   Parameters:
         :   ****value**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 

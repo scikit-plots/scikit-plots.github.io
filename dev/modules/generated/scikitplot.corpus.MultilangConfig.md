@@ -1,6 +1,6 @@
 # MultilangConfig[#](#multilangconfig "Link to this heading")
 
-class scikitplot.corpus.MultilangConfig(**\***, **enabled=True**, **include\_raw\_text=False**, **include\_preprocessing\_trace=False**, **include\_semantemes=True**, **include\_script\_spans=True**, **include\_grapheme\_counts=True**, **include\_embedding\_hook=True**, **embedding\_model\_name=None**, **embedding\_model\_version=None**, **language\_hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_chunkers/_multilang_mixin.py#L105)[#](#scikitplot.corpus.MultilangConfig "Link to this definition")
+class scikitplot.corpus.MultilangConfig(**\***, **enabled=True**, **include\_raw\_text=False**, **include\_preprocessing\_trace=False**, **include\_semantemes=True**, **include\_script\_spans=True**, **include\_grapheme\_counts=True**, **include\_embedding\_hook=True**, **embedding\_model\_name=None**, **embedding\_model\_version=None**, **language\_hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_chunkers/_multilang_mixin.py#L105)[#](#scikitplot.corpus.MultilangConfig "Link to this definition")
 :   Multilang feature flags for any chunker.
 
     Passed as a constructor parameter to the five chunker classes. All

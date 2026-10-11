@@ -1,15 +1,15 @@
 # DenseRetriever[#](#denseretriever "Link to this heading")
 
-class scikitplot.corpus.DenseRetriever(**index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrievers.py#L176)[#](#scikitplot.corpus.DenseRetriever "Link to this definition")
+class scikitplot.corpus.DenseRetriever(**index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L176)[#](#scikitplot.corpus.DenseRetriever "Link to this definition")
 :   Vector-similarity evidence path.
 
     Parameters:
     :   ****index**** (**Any**)
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'dense'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.DenseRetriever.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'dense'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.DenseRetriever.leg "Link to this definition")
     :   Which evidence path this retriever represents.
 
-    retrieve(**query**, **config**, **\***, **query\_embedding=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrievers.py#L184)[#](#scikitplot.corpus.DenseRetriever.retrieve "Link to this definition")
+    retrieve(**query**, **config**, **\***, **query\_embedding=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L184)[#](#scikitplot.corpus.DenseRetriever.retrieve "Link to this definition")
     :   Run dense retrieval, reporting why it could not run when it cannot.
 
         Parameters:

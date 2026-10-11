@@ -1,6 +1,6 @@
 # VisibleDeprecationWarning[#](#visibledeprecationwarning "Link to this heading")
 
-exception scikitplot.exceptions.VisibleDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/exceptions.py#L314)[#](#scikitplot.exceptions.VisibleDeprecationWarning "Link to this definition")
+exception scikitplot.exceptions.VisibleDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/exceptions.py#L314)[#](#scikitplot.exceptions.VisibleDeprecationWarning "Link to this definition")
 :   Visible deprecation warning.
 
     By default, python will not show deprecation warnings, so this class

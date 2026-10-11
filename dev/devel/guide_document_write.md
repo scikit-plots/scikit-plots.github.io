@@ -1,4 +1,4 @@
-# Documentation Writing Guidelines[#](#documentation-writing-guidelines "Link to this heading")
+# [Documentation Writing Guidelines](#id3)[#](#documentation-writing-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -13,7 +13,7 @@ restructuredtext References:[#](#restructuredtext-references: "Link to this drop
 * <https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html>
 * <https://sphinxdocs.ansys.com/version/stable/examples/sphinx-design.html>
 
-## Getting started[#](#getting-started "Link to this heading")
+## [Getting started](#id4)[#](#getting-started "Link to this heading")
 
 ### General file structure[#](#general-file-structure "Link to this heading")
 
@@ -126,7 +126,7 @@ make show
 
 ```
 
-## Write ReST pages[#](#write-rest-pages "Link to this heading")
+## [Write ReST pages](#id5)[#](#write-rest-pages "Link to this heading")
 
 Most documentation is either in the docstrings of individual
 classes and methods, in explicit `.rst` files, or in examples and tutorials.
@@ -412,7 +412,7 @@ expression in the Matplotlib figure. In these cases, you can use the
 `matplotlib.sphinxext.mathmpl` Sphinx extension (See also the
 [Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)") tutorial.)
 
-## Write docstrings[#](#write-docstrings "Link to this heading")
+## [Write docstrings](#id6)[#](#write-docstrings "Link to this heading")
 
 Most of the API documentation is written in docstrings. These are comment
 blocks in source code that explain how the code works.
@@ -887,7 +887,7 @@ Examples
 An advantage of this style over referencing an example script is that the
 code will also appear in interactive docstrings.
 
-## Write examples and tutorials[#](#write-examples-and-tutorials "Link to this heading")
+## [Write examples and tutorials](#id7)[#](#write-examples-and-tutorials "Link to this heading")
 
 Examples and tutorials are Python scripts that are run by [sphinx-gallery](https://sphinx-gallery.readthedocs.io/en/latest/).
 Sphinx Gallery finds `*.py` files in source directories and runs the files to
@@ -1127,7 +1127,7 @@ The current width limit (induced by **pydata-sphinx-theme**) is 720px, i.e.
 `figsize=(7.2, ...)`, or 896px if the page does not have subsections and
 thus does not have the “On this page” navigation on the right-hand side.
 
-## Miscellaneous[#](#miscellaneous "Link to this heading")
+## [Miscellaneous](#id8)[#](#miscellaneous "Link to this heading")
 
 ### Move documentation[#](#move-documentation "Link to this heading")
 

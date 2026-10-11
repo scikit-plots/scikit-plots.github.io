@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-10T21:44:19Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T05:17:41Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.mcp.RetrievalOutcome","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1285,6 +1285,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.logging.html">scikitplot.logging</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.CRITICAL.html">CRITICAL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.DEBUG.html">DEBUG</a></li>
@@ -1457,6 +1458,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.random.uniform.html">uniform</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.rank_bm25.html">scikitplot.rank_bm25</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.aucplot.html">aucplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.seaborn.evalplot.html">evalplot</a></li>
@@ -1644,7 +1646,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>RetrievalOutcome<a class="headerlink" href="#retrievaloutcome" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.mcp.RetrievalOutcome">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.mcp.</span></span><span class="sig-name descname"><span class="pre">RetrievalOutcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_outcome.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.mcp.</span></span><span class="sig-name descname"><span class="pre">RetrievalOutcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">legs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_outcome.py#L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome" title="Link to this definition">#</a></dt>
 <dd><p>Ranked hits plus the story of how they were obtained.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1686,8 +1688,8 @@ The derivation order mirrors
 (<a class="reference internal" href="scikitplot.mcp.EMPTY.html#scikitplot.mcp.EMPTY" title="scikitplot.mcp.EMPTY"><code class="xref py py-data docutils literal notranslate"><span class="pre">EMPTY</span></code></a> when there are no hits, <a class="reference internal" href="scikitplot.mcp.SUCCESS.html#scikitplot.mcp.SUCCESS" title="scikitplot.mcp.SUCCESS"><code class="xref py py-data docutils literal notranslate"><span class="pre">SUCCESS</span></code></a> otherwise), so a
 retriever that has not yet been updated keeps its previous meaning.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8fba4ab7-6324-42b3-bb33-3af3b25bf2d4">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8fba4ab7-6324-42b3-bb33-3af3b25bf2d4','2c850d6b-9df9-4ed6-8925-841017145e47','4cafe947-e29c-4089-bcaf-a78636f8c218','../../lite/tree/../notebooks/index.html?path=39a6ff84_c344_4ece_b60c_7b0278139c65.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ae437b04-5c93-420c-b4eb-64940c4becbb">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ae437b04-5c93-420c-b4eb-64940c4becbb','cb2635df-a3b7-45e8-9ce6-20ffe7e2f706','04520ad9-747c-4749-811d-d499f202479a','../../lite/tree/../notebooks/index.html?path=2d9ad49b_9b43_40a4_b208_0a88d50639e4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RetrievalOutcome</span><span class="p">([])</span><span class="o">.</span><span class="n">status</span>
 <span class="go">'empty'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">failed</span> <span class="o">=</span> <span class="n">LegRecord</span><span class="p">(</span><span class="s2">"dense"</span><span class="p">,</span> <span class="n">FAILED</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="s2">"index unavailable"</span><span class="p">)</span>
@@ -1700,7 +1702,7 @@ retriever that has not yet been updated keeps its previous meaning.</p>
 </div>
 </div>
 </div>
-<div id="4cafe947-e29c-4089-bcaf-a78636f8c218" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8fba4ab7-6324-42b3-bb33-3af3b25bf2d4','4cafe947-e29c-4089-bcaf-a78636f8c218')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8fba4ab7-6324-42b3-bb33-3af3b25bf2d4','4cafe947-e29c-4089-bcaf-a78636f8c218')">Open In Tab</button></div><div id="2c850d6b-9df9-4ed6-8925-841017145e47" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="04520ad9-747c-4749-811d-d499f202479a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ae437b04-5c93-420c-b4eb-64940c4becbb','04520ad9-747c-4749-811d-d499f202479a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ae437b04-5c93-420c-b4eb-64940c4becbb','04520ad9-747c-4749-811d-d499f202479a')">Open In Tab</button></div><div id="cb2635df-a3b7-45e8-9ce6-20ffe7e2f706" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.mcp.RetrievalOutcome.append">
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome.append" title="Link to this definition">#</a></dt>
 <dd><p>Append object to the end of the list.</p>
@@ -1708,7 +1710,7 @@ retriever that has not yet been updated keeps its previous meaning.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.mcp.RetrievalOutcome.as_dict">
-<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_outcome.py#L252"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome.as_dict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_outcome.py#L252"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome.as_dict" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-safe mapping describing the outcome, without the hits.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1754,7 +1756,7 @@ retriever that has not yet been updated keeps its previous meaning.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.mcp.RetrievalOutcome.errors">
-<span class="sig-name descname"><span class="pre">errors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_outcome.py#L242"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome.errors" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">errors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_outcome.py#L242"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.mcp.RetrievalOutcome.errors" title="Link to this definition">#</a></dt>
 <dd><p>Return the explanations from every leg that did not run cleanly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1978,7 +1980,7 @@ ascending or descending, according to their function values.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261010.c24961d 2026-10-10T21:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.d2447a3 2026-10-11T05:09Z.
       <br/>
     
   </p>

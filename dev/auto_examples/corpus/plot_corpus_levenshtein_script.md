@@ -4,7 +4,7 @@ to download the full example code or to run this example in your browser via Jup
 
 # Use Levenshtein distance with Corpus retrieval[#](#use-levenshtein-distance-with-corpus-retrieval "Link to this heading")
 
-`scikitplot.levenshtein` is an always-importable facade for edit distance.
+[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") is an always-importable facade for edit distance.
 It prefers the bundled Scikit-Plots implementation, can use the MIT-licensed
 RapidFuzz package when available, and retains a dependency-free Python
 fallback. The separately licensed `Levenshtein` package is available only
@@ -67,7 +67,7 @@ science plots 0.692 4
 
 ## Adapt the scorer to Corpus[#](#adapt-the-scorer-to-corpus "Link to this heading")
 
-The adapter is lazy: importing `scikitplot.levenshtein` does not import
+The adapter is lazy: importing [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") does not import
 Corpus. When used with Corpus it returns normal `RetrievalHit` records
 with explicit lexical provenance.
 

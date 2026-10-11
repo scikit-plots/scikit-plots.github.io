@@ -1,6 +1,6 @@
 # security\_policy[#](#security-policy "Link to this heading")
 
-scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
+scikitplot.mlflow.security\_policy(**policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mlflow/_security.py#L724)[#](#scikitplot.mlflow.security_policy "Link to this definition")
 :   Temporarily activate a [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy") for a context block.
 
     Parameters:

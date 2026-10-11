@@ -22,11 +22,11 @@ file contents into memory. It is intended for efficient random access to large,
 stable binary data stored on disk with explicit and deterministic lifetime
 management.
 
-****User guide.**** See the [MemMap: file-backed or anonymous memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
+****User guide.**** See the [Memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
 
 ## MemMap: file-backed or anonymous memory mapping.[#](#memmap-file-backed-or-anonymous-memory-mapping "Link to this heading")
 
-****User guide.**** See the [MemMap: file-backed or anonymous memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
+****User guide.**** See the [Memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
 
 Class inheritance
 

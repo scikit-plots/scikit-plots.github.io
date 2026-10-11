@@ -1,6 +1,6 @@
 # ArchiveNestingError[#](#archivenestingerror "Link to this heading")
 
-exception scikitplot.corpus.ArchiveNestingError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_readers/_zip.py#L91)[#](#scikitplot.corpus.ArchiveNestingError "Link to this definition")
+exception scikitplot.corpus.ArchiveNestingError[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_readers/_zip.py#L91)[#](#scikitplot.corpus.ArchiveNestingError "Link to this definition")
 :   Raised when archive nesting exceeds `max_depth` (nested-archive bomb).
 
     A subclass of [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)") (so existing handlers still catch it), but

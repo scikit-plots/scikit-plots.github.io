@@ -1,4 +1,4 @@
-# Dependency Version Policy Guidelines[#](#dependency-version-policy-guidelines "Link to this heading")
+# [Dependency Version Policy Guidelines](#id18)[#](#dependency-version-policy-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -10,7 +10,7 @@ versioning, every release is a ‘minor version’.
 
 Matplotlib follows [NEP 29](https://numpy.org/neps/nep-0029-deprecation_policy.html).
 
-## Python and NumPy[#](#python-and-numpy "Link to this heading")
+## [Python and NumPy](#id19)[#](#python-and-numpy "Link to this heading")
 
 Matplotlib supports:
 
@@ -29,7 +29,7 @@ on every major and minor release, but never on a patch release.
 
 See also the [List of dependency versions](#list-of-dependency-min-versions).
 
-## Python dependencies[#](#python-dependencies "Link to this heading")
+## [Python dependencies](#id20)[#](#python-dependencies "Link to this heading")
 
 For Python dependencies we should support at least:
 
@@ -53,7 +53,7 @@ versions of IPython and IPykernel released in the 24 months prior to our
 planned release date. Matplotlib may or may not work with older versions and
 we will not warn if used with IPython or IPykernel outside of this window.
 
-## Test and documentation dependencies[#](#test-and-documentation-dependencies "Link to this heading")
+## [Test and documentation dependencies](#id21)[#](#test-and-documentation-dependencies "Link to this heading")
 
 As these packages are only needed for testing or building the docs and
 not needed by end-users, we can be more aggressive about dropping
@@ -69,7 +69,7 @@ filtering that is practical.
 We will only bump these as needed or versions no longer support our
 minimum Python and NumPy.
 
-## System and C-dependencies[#](#system-and-c-dependencies "Link to this heading")
+## [System and C-dependencies](#id22)[#](#system-and-c-dependencies "Link to this heading")
 
 For system or C-dependencies (FreeType, GUI frameworks, LaTeX,
 Ghostscript, FFmpeg) support as old as practical. These can be difficult to
@@ -80,7 +80,7 @@ In the case of GUI frameworks for which we rely on Python bindings being
 available, we will also drop support for bindings so old that they don’t
 support any Python version that we support.
 
-## Security issues in dependencies[#](#security-issues-in-dependencies "Link to this heading")
+## [Security issues in dependencies](#id23)[#](#security-issues-in-dependencies "Link to this heading")
 
 Generally, we do not adjust the supported versions of dependencies based on
 security vulnerabilities. We are a library not an application
@@ -93,7 +93,7 @@ for a user to override our judgment.
 If Matplotlib aids in exploiting the underlying vulnerability we should treat
 that as a critical bug in Matplotlib.
 
-## List of dependency versions[#](#list-of-dependency-versions "Link to this heading")
+## [List of dependency versions](#id24)[#](#list-of-dependency-versions "Link to this heading")
 
 The following list shows the minimal versions of Python and NumPy dependencies
 for different versions of Matplotlib. Follow the links for the full

@@ -1,6 +1,6 @@
 # GraphRetriever[#](#graphretriever "Link to this heading")
 
-class scikitplot.corpus.GraphRetriever(**graph**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrievers.py#L199)[#](#scikitplot.corpus.GraphRetriever "Link to this definition")
+class scikitplot.corpus.GraphRetriever(**graph**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L199)[#](#scikitplot.corpus.GraphRetriever "Link to this definition")
 :   Relationship-traversal evidence path.
 
     Notes
@@ -14,10 +14,10 @@ class scikitplot.corpus.GraphRetriever(**graph**)[[source]](https://github.com/s
     Parameters:
     :   ****graph**** (**Any**)
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'graph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.GraphRetriever.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'graph'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.GraphRetriever.leg "Link to this definition")
     :   Which evidence path this retriever represents.
 
-    retrieve(**query**, **config**, **\***, **graph\_query=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_retrievers.py#L216)[#](#scikitplot.corpus.GraphRetriever.retrieve "Link to this definition")
+    retrieve(**query**, **config**, **\***, **graph\_query=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_retrievers.py#L216)[#](#scikitplot.corpus.GraphRetriever.retrieve "Link to this definition")
     :   Traverse the graph from the supplied seeds.
 
         Parameters:

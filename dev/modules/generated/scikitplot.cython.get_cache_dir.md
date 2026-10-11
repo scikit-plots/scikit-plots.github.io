@@ -1,6 +1,6 @@
 # get\_cache\_dir[#](#get-cache-dir "Link to this heading")
 
-scikitplot.cython.get\_cache\_dir(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_public.py#L289)[#](#scikitplot.cython.get_cache_dir "Link to this definition")
+scikitplot.cython.get\_cache\_dir(**cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_public.py#L289)[#](#scikitplot.cython.get_cache_dir "Link to this definition")
 :   Resolve (and create) the cache root directory.
 
     Parameters:

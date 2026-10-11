@@ -1,7 +1,7 @@
 # Corpus integration[#](#corpus-integration "Link to this heading")
 
 The Levenshtein facade is independently importable. Corpus integration is an
-optional adapter created by `make_corpus_scorer`.
+optional adapter created by [`make_corpus_scorer`](generated/scikitplot.levenshtein.make_corpus_scorer.html#scikitplot.levenshtein.make_corpus_scorer "scikitplot.levenshtein.make_corpus_scorer").
 
 ## Create a scorer[#](#create-a-scorer "Link to this heading")
 

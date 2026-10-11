@@ -1,4 +1,4 @@
-# Documentation Styling Guidelines[#](#documentation-styling-guidelines "Link to this heading")
+# [Documentation Styling Guidelines](#id1)[#](#documentation-styling-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
@@ -9,7 +9,7 @@ documentation.
 > **See also**
 > * For more information about contributing, see the [Write documentation](https://matplotlib.org/devdocs/devel/document.html#documenting-matplotlib "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)") section.
 
-## Expository language[#](#expository-language "Link to this heading")
+## [Expository language](#id2)[#](#expository-language "Link to this heading")
 
 For explanatory writing, the following guidelines are for clear and concise
 language use.
@@ -71,7 +71,7 @@ subordinating conjunctive phrases.
 | The `plot` function plots data to the respective Axes. The Axes corresponds to the respective Figure. | The `plot` function plots data within its respective Axes for its respective Figure. |
 | The implicit approach is a convenient shortcut for generating simple plots. | Users that wish to have convenient shortcuts for generating plots use the implicit approach. |
 
-## Formatting[#](#formatting "Link to this heading")
+## [Formatting](#id3)[#](#formatting "Link to this heading")
 
 The following guidelines specify how to incorporate code and use appropriate
 formatting for Matplotlib documentation.
@@ -133,7 +133,7 @@ Markdown tables and the csv-table directive are not accepted.
 | ``` +----------+----------+ | Correct  | Incorrect| +==========+==========+ | OK       | Not OK   | +----------+----------+  ``` | ``` .. csv-table::    :header: "correct", "incorrect"    :widths: 10, 10     "OK   ", "Not OK"  ``` |
 | ``` ===========  ===========   Correct     Incorrect ===========  =========== OK           Not OK ===========  ===========  ``` |
 
-## Additional resources[#](#additional-resources "Link to this heading")
+## [Additional resources](#id4)[#](#additional-resources "Link to this heading")
 
 This style guide is not a comprehensive standard. For a more thorough
 reference of how to contribute to documentation, see the links below. These

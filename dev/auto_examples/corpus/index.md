@@ -31,7 +31,7 @@ pip install scikit-plots[corpus]
 3. ****Customize optional backends safely**** — preflight the exact reader chain,
    inspect readiness, order backends with `BackendPolicy`, and plug in a
    user-side `ASRBackend` without model downloads.
-4. ****Use lexical edit distance**** — use `scikitplot.levenshtein` directly
+4. ****Use lexical edit distance**** — use [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") directly
    and as a deterministic Corpus retrieval scorer.
 5. ****Build and search a real Hamlet corpus**** — use
    `RuntimeCorpus` end to end: `run()`, `add()`, storage, retrieval,

@@ -1,6 +1,6 @@
 # VectorIndexBackend[#](#vectorindexbackend "Link to this heading")
 
-class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L181)[#](#scikitplot.corpus.VectorIndexBackend "Link to this definition")
+class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L181)[#](#scikitplot.corpus.VectorIndexBackend "Link to this definition")
 :   Uniform contract for a dense vector index.
 
     Subclasses build an index from a 2-D embedding matrix and answer
@@ -11,7 +11,7 @@ class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-p
     :   ****name****str
         :   Stable backend identifier (e.g. `"annoy"`).
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L283)[#](#scikitplot.corpus.VectorIndexBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L283)[#](#scikitplot.corpus.VectorIndexBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -26,7 +26,7 @@ class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-p
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.VectorIndexBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.VectorIndexBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -44,7 +44,7 @@ class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-p
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.VectorIndexBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.VectorIndexBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.VectorIndexBackend.is_available "Link to this definition")
     :   Return whether this backend’s optional dependencies are discoverable.
 
         Return type:
@@ -58,7 +58,7 @@ class scikitplot.corpus.VectorIndexBackend[[source]](https://github.com/scikit-p
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'base'[#](#scikitplot.corpus.VectorIndexBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_similarity/_backends.py#L295)[#](#scikitplot.corpus.VectorIndexBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_similarity/_backends.py#L295)[#](#scikitplot.corpus.VectorIndexBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

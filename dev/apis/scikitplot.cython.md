@@ -13,7 +13,7 @@ low-level Cython packages and modules for immediate use and testing.
 * <https://cython.readthedocs.io/en/latest/index.html>
 * <https://doc.sagemath.org/html/en/reference/misc/sage/misc/cython.html>
 
-****User guide.**** See the [Cython User Guide](../user_guide/cython/index.html#cython-index) section for further details.
+****User guide.**** See the [Runtime Cython compilation](../user_guide/cython/index.html#cython-index) section for further details.
 
 ## API Stability[#](#api-stability "Link to this heading")
 

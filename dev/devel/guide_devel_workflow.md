@@ -1,9 +1,9 @@
-# Development Workflow Guidelines[#](#development-workflow-guidelines "Link to this heading")
+# [Development Workflow Guidelines](#id2)[#](#development-workflow-guidelines "Link to this heading")
 
 > **Template**
 > Template for further usage, template belong to matplotlib.
 
-## Workflow summary[#](#workflow-summary "Link to this heading")
+## [Workflow summary](#id3)[#](#workflow-summary "Link to this heading")
 
 To keep your work well organized, with readable history, and in turn make it
 easier for project maintainers (that might be you) to see what you’ve done, and
@@ -52,7 +52,7 @@ workflow is:
 
    ```
 
-## Update the `main` branch[#](#update-the-main-branch "Link to this heading")
+## [Update the `main` branch](#id4)[#](#update-the-main-branch "Link to this heading")
 
 First make sure you have followed [Development Setup Guidelines](guide_devel_setup.html#installing-for-devs).
 
@@ -66,7 +66,7 @@ git fetch upstream
 This will pull down any commits you don’t have, and set the remote branches to
 point to the right commit.
 
-## Make a new feature branch[#](#make-a-new-feature-branch "Link to this heading")
+## [Make a new feature branch](#id5)[#](#make-a-new-feature-branch "Link to this heading")
 
 When you are ready to make some changes to the code, you should start a new
 branch. Branches that are for a collection of related edits are often called
@@ -107,7 +107,7 @@ git push origin my-new-feature
 
 ```
 
-## The editing workflow[#](#the-editing-workflow "Link to this heading")
+## [The editing workflow](#id6)[#](#the-editing-workflow "Link to this heading")
 
 1. Make some changes
 2. Save the changes
@@ -146,7 +146,7 @@ git push origin my-new-feature
 7. To push the changes up to your forked repo on GitHub, do a `git
    push`.
 
-## Verify your changes[#](#verify-your-changes "Link to this heading")
+## [Verify your changes](#id7)[#](#verify-your-changes "Link to this heading")
 
 Check that your change does what you intend. For code changes:
 
@@ -163,7 +163,7 @@ it renders how you intended and that any new links work correctly. See
 This is also a good time to look through the [Summary for pull request authors](guide_pr.html#pr-author-guidelines) and
 address as many of the relevant points as you can.
 
-## Open a pull request[#](#open-a-pull-request "Link to this heading")
+## [Open a pull request](#id8)[#](#open-a-pull-request "Link to this heading")
 
 When you are ready to ask for someone to review your code and consider a merge,
 [submit your Pull Request (PR)](https://docs.github.com/pull-requests).
@@ -184,7 +184,7 @@ getting some preliminary code review.
 For more guidance on the mechanics of making a pull request, see GitHub’s
 [pull request tutorial](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 
-## Update a pull request[#](#update-a-pull-request "Link to this heading")
+## [Update a pull request](#id9)[#](#update-a-pull-request "Link to this heading")
 
 When updating your pull request after making revisions, instead of adding new
 commits, please consider amending your initial commit(s) to keep the commit
@@ -214,7 +214,7 @@ git push
 
 ```
 
-## Manage commit history[#](#manage-commit-history "Link to this heading")
+## [Manage commit history](#id10)[#](#manage-commit-history "Link to this heading")
 
 ### Explore your repository[#](#explore-your-repository "Link to this heading")
 
@@ -515,7 +515,7 @@ Be judicious with force-pushing. It is effectively re-writing published
 history, and if anyone has fetched the old commits, it will have a different view
 of history which can cause confusion.
 
-## Automated tests[#](#automated-tests "Link to this heading")
+## [Automated tests](#id11)[#](#automated-tests "Link to this heading")
 
 Whenever a pull request is created or updated, various automated test tools
 will run on all supported platforms and versions of Python.

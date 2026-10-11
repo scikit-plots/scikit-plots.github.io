@@ -14,7 +14,7 @@ To install the latest version (with pip):
 ```
 
 This exercise is used in [`scikitplot.decile.modelplotpy.ModelPlotPy`](../../modules/generated/scikitplot.decile.modelplotpy.ModelPlotPy.html#scikitplot.decile.modelplotpy.ModelPlotPy "scikitplot.decile.modelplotpy.ModelPlotPy") class the part of the
-[ModelPlotPy](../../user_guide/decile/modelplotpy.html#decile-modelplotpy-index) and [modelplotpy financial](../../user_guide/decile/modelplotpy.html#decile-modelplotpy-financial-index) sections.
+decile-modelplotpy-index and decile-modelplotpy-financial-index sections.
 
 References
 

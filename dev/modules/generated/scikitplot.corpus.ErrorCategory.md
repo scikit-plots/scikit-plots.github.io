@@ -1,6 +1,6 @@
 # ErrorCategory[#](#errorcategory "Link to this heading")
 
-class scikitplot.corpus.ErrorCategory(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L62)[#](#scikitplot.corpus.ErrorCategory "Link to this definition")
+class scikitplot.corpus.ErrorCategory(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L62)[#](#scikitplot.corpus.ErrorCategory "Link to this definition")
 :   Coarse classification of a diagnostic, for counting and filtering.
 
     Notes
@@ -20,31 +20,31 @@ class scikitplot.corpus.ErrorCategory(**\*values**)[[source]](https://github.com
     ```
     Go BackOpen In Tab
 
-    CAPABILITY = 'capability'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.CAPABILITY "Link to this definition")
+    CAPABILITY = 'capability'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.CAPABILITY "Link to this definition")
     :   A required component was absent, broken or misconfigured.
 
-    INTERNAL = 'internal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.INTERNAL "Link to this definition")
+    INTERNAL = 'internal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.INTERNAL "Link to this definition")
     :   An unexpected failure inside Corpus itself.
 
-    PARSE = 'parse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.PARSE "Link to this definition")
+    PARSE = 'parse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.PARSE "Link to this definition")
     :   The input was obtained but could not be interpreted.
 
-    RESOURCE = 'resource'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.RESOURCE "Link to this definition")
+    RESOURCE = 'resource'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.RESOURCE "Link to this definition")
     :   bytes, files, time, retries.
 
         Type:
         :   A declared budget or limit was exhausted
 
-    SECURITY = 'security'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.SECURITY "Link to this definition")
+    SECURITY = 'security'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.SECURITY "Link to this definition")
     :   The input was refused by a security control (traversal, SSRF, integrity).
 
-    SOURCE = 'source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.SOURCE "Link to this definition")
+    SOURCE = 'source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.SOURCE "Link to this definition")
     :   missing file, refused URL, bad archive.
 
         Type:
         :   The input could not be obtained
 
-    VALIDATION = 'validation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.VALIDATION "Link to this definition")
+    VALIDATION = 'validation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/corpus/_diagnostics.py#L)[#](#scikitplot.corpus.ErrorCategory.VALIDATION "Link to this definition")
     :   The input was interpreted but violated a schema or contract.
 
     capitalize(**/**)[#](#scikitplot.corpus.ErrorCategory.capitalize "Link to this definition")

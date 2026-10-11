@@ -1,6 +1,6 @@
 # import\_cached\_result[#](#import-cached-result "Link to this heading")
 
-scikitplot.cython.import\_cached\_result(**key**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/cython/_public.py#L682)[#](#scikitplot.cython.import_cached_result "Link to this definition")
+scikitplot.cython.import\_cached\_result(**key**, **\***, **cache\_dir=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/cython/_public.py#L682)[#](#scikitplot.cython.import_cached_result "Link to this definition")
 :   Import a cached **module** entry by cache key.
 
     Parameters:

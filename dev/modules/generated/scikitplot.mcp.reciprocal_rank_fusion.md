@@ -1,6 +1,6 @@
 # reciprocal\_rank\_fusion[#](#reciprocal-rank-fusion "Link to this heading")
 
-scikitplot.mcp.reciprocal\_rank\_fusion(**ranked\_lists**, **\***, **k=60**, **key=<function \_chunk\_key>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c24961db/scikitplot/mcp/_hybrid.py#L92)[#](#scikitplot.mcp.reciprocal_rank_fusion "Link to this definition")
+scikitplot.mcp.reciprocal\_rank\_fusion(**ranked\_lists**, **\***, **k=60**, **key=<function \_chunk\_key>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d2447a31/scikitplot/mcp/_hybrid.py#L92)[#](#scikitplot.mcp.reciprocal_rank_fusion "Link to this definition")
 :   Fuse weighted ranked lists into a single `key -> score` map.
 
     Parameters:

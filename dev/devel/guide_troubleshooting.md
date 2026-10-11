@@ -1,8 +1,8 @@
-# Troubleshooting Guidelines[#](#troubleshooting-guidelines "Link to this heading")
+# [Troubleshooting Guidelines](#id1)[#](#troubleshooting-guidelines "Link to this heading")
 
 For guidance on debugging an installation, see [Frequently asked questions](../install/index.html#installing-faq).
 
-## Problems with git[#](#problems-with-git "Link to this heading")
+## [Problems with git](#id2)[#](#problems-with-git "Link to this heading")
 
 First, make sure you have a clean build and install (see [How to completely remove Matplotlib](../install/index.html#clean-install)),
 get the latest git update, install it and run a simple test script in debug
@@ -24,7 +24,7 @@ Of course, you will want to clearly describe your problem, what you
 are expecting and what you are getting, but often a clean build and
 install will help. See also [Get help](https://matplotlib.org/devdocs/users/faq.html#reporting-problems "(in Matplotlib v3.12.0.dev731+g2fb04d1a6)").
 
-## Unlink of file `*/_c_internal_utils.cp311-win_amd64.pyd` failed[#](#unlink-of-file-c-internal-utils-cp311-win-amd64-pyd-failed "Link to this heading")
+## [Unlink of file `*/_c_internal_utils.cp311-win_amd64.pyd` failed](#id3)[#](#unlink-of-file-c-internal-utils-cp311-win-amd64-pyd-failed "Link to this heading")
 
 The DLL files may be loaded by multiple running instances of Matplotlib; therefore
 check that Matplotlib is not running in any other application before trying to
@@ -33,7 +33,7 @@ for example a development version installed in a development conda environment
 and a stable version running in a Jupyter notebook. To resolve this error, fully
 close all running instances of Matplotlib.
 
-## Windows compilation errors[#](#windows-compilation-errors "Link to this heading")
+## [Windows compilation errors](#id4)[#](#windows-compilation-errors "Link to this heading")
 
 If the compiled extensions are not building on Windows due to errors in linking to
 Windows’ header files, for example `../../src/_tkagg.cpp:133:10: error: 'WM_DPICHANGED' was not declared in this scope`,
