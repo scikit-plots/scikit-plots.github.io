@@ -1,6 +1,6 @@
 # effective\_server\_capabilities[#](#effective-server-capabilities "Link to this heading")
 
-scikitplot.mcp.effective\_server\_capabilities(**\***, **document\_reader\_enabled=False**, **transport='stdio'**, **health\_path='/healthz'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_capabilities.py#L240)[#](#scikitplot.mcp.effective_server_capabilities "Link to this definition")
+scikitplot.mcp.effective\_server\_capabilities(**\***, **document\_reader\_enabled=False**, **transport='stdio'**, **health\_path='/healthz'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_capabilities.py#L240)[#](#scikitplot.mcp.effective_server_capabilities "Link to this definition")
 :   Return the ****effective**** surface for a specific server configuration.
 
     Unlike [`server_capabilities`](scikitplot.mcp.server_capabilities.html#scikitplot.mcp.server_capabilities "scikitplot.mcp.server_capabilities") (which lists **potential** capabilities), this

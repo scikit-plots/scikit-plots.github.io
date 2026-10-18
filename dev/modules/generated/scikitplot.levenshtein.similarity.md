@@ -1,6 +1,6 @@
 # similarity[#](#similarity "Link to this heading")
 
-scikitplot.levenshtein.similarity(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/levenshtein/_core.py#L393)[#](#scikitplot.levenshtein.similarity "Link to this definition")
+scikitplot.levenshtein.similarity(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/levenshtein/_core.py#L502)[#](#scikitplot.levenshtein.similarity "Link to this definition")
 :   Return `max(len(a), len(b)) - distance(a, b)`.
 
     Parameters:

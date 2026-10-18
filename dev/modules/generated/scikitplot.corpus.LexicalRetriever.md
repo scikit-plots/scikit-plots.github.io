@@ -1,15 +1,15 @@
 # LexicalRetriever[#](#lexicalretriever "Link to this heading")
 
-class scikitplot.corpus.LexicalRetriever(**index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrievers.py#L162)[#](#scikitplot.corpus.LexicalRetriever "Link to this definition")
+class scikitplot.corpus.LexicalRetriever(**index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_retrievers.py#L164)[#](#scikitplot.corpus.LexicalRetriever "Link to this definition")
 :   Keyword / BM25 evidence path.
 
     Parameters:
     :   ****index**** (**Any**)
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LexicalRetriever.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind") = 'lexical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.LexicalRetriever.leg "Link to this definition")
     :   Which evidence path this retriever represents.
 
-    retrieve(**query**, **config**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrievers.py#L170)[#](#scikitplot.corpus.LexicalRetriever.retrieve "Link to this definition")
+    retrieve(**query**, **config**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_retrievers.py#L172)[#](#scikitplot.corpus.LexicalRetriever.retrieve "Link to this definition")
     :   Run keyword retrieval against the index.
 
         Parameters:

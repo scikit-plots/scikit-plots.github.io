@@ -1,6 +1,6 @@
 # RetrievalIndex[#](#retrievalindex "Link to this heading")
 
-class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L425)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
+class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L478)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -8,7 +8,8 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         :   Default search configuration. Can be overridden per query.
 
     Parameters:
-    :   ****config**** ([**RetrievalConfig**](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") **|** **None**)
+    :   * ****config**** ([**RetrievalConfig**](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") **|** **None**)
+        * ****security\_filter**** ([**SecurityFilter**](scikitplot.corpus.SecurityFilter.html#scikitplot.corpus.SecurityFilter "scikitplot.corpus.SecurityFilter") **|** **None**)
 
     > **See also**
     > [`scikitplot.corpus._schema.MatchMode`](scikitplot.corpus.MatchMode.html#scikitplot.corpus.MatchMode "scikitplot.corpus._schema.MatchMode")
@@ -46,7 +47,18 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
     property backend\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.backend_name "Link to this definition")
     :   Name of the active dense ANN backend, or `None` if unbuilt.
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L478)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
+    property backend\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.backend_provenance "Link to this definition")
+    :   What the dense backend was asked to be, what runs, and why (R2-5).
+
+        Returns:
+        :   dict or None
+            :   [`VectorIndexBackend.provenance`](scikitplot.corpus.VectorIndexBackend.html#scikitplot.corpus.VectorIndexBackend.provenance "scikitplot.corpus.VectorIndexBackend.provenance") of the active backend
+                (`requested_backend`, `backend`, `fallback_reason`,
+                `allow_fallback`, plus Annoy’s binding); `None` when no dense
+                index is built. A backend object without `provenance()` (one
+                assigned directly rather than selected) requested itself.
+
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L542)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -64,7 +76,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         Return type:
         :   None
 
-    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L1053)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
+    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L1328)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
     :   Whether score-space fusion is defensible for these hits.
 
         Parameters:
@@ -128,7 +140,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
     property n\_documents: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L1196)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
+    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L1517)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
     :   Vector-level ANN query returning `(doc_id, score)` pairs.
 
         This is the vector-index seam consumed by
@@ -160,7 +172,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L715)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L828)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:
@@ -174,6 +186,16 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
             :   Pre-computed query embedding. Required for SEMANTIC
                 mode if no embedding engine is attached.
 
+            ****filter****Filter, mapping or None, optional
+            :   Restrict the search to documents this expression matches (R2-2):
+                a [`Filter`](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus.Filter") or its JSON form
+                ([`filter_from_dict`](scikitplot.corpus.filter_from_dict.html#scikitplot.corpus.filter_from_dict "scikitplot.corpus.filter_from_dict")). It is AND-ed with
+                the index’s [`security_filter`](#scikitplot.corpus.RetrievalIndex.security_filter "scikitplot.corpus.RetrievalIndex.security_filter"), so it can narrow but never
+                widen what a caller sees. Every leg applies it before ranking, so a
+                filtered query returns the best `top_k` matching documents; each
+                leg that ran reports its `filter_capability` (every operator
+                `EMULATED`: evaluated in Python over the indexed documents).
+
         Returns:
         :   RetrievalResponse
             :   Hits sorted by descending score, plus a per-leg account of how the
@@ -186,6 +208,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         :   * ****query**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****config**** ([**RetrievalConfig**](scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus._similarity._similarity.RetrievalConfig") **|** **None**)
             * ****query\_embedding**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
+            * ****filter**** ([**Filter**](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus._filters.Filter") **|** [**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
 
         Return type:
         :   [**RetrievalResponse**](scikitplot.corpus.RetrievalResponse.html#scikitplot.corpus.RetrievalResponse "scikitplot.corpus._retrieval.RetrievalResponse")
@@ -198,6 +221,9 @@ class scikitplot.corpus.RetrievalIndex(**config=None**)[[source]](https://github
         hits, every score halved by the missing `hybrid_alpha` contribution,
         and no signal (finding F-R09-01). That outcome is now `DEGRADED` with
         the dense leg marked `FAILED`.
+
+    property security\_filter: [SecurityFilter](scikitplot.corpus.SecurityFilter.html#scikitplot.corpus.SecurityFilter "scikitplot.corpus._filters.SecurityFilter") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.security_filter "Link to this definition")
+    :   The scope every query is restricted to, or `None` (read-only).
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

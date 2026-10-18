@@ -1,6 +1,6 @@
 # SimpleEnricherSpec[#](#simpleenricherspec "Link to this heading")
 
-class scikitplot.corpus.SimpleEnricherSpec(**min\_token\_length=3**, **max\_keywords=8**, **lowercase=True**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_enrichers/_simple.py#L25)[#](#scikitplot.corpus.SimpleEnricherSpec "Link to this definition")
+class scikitplot.corpus.SimpleEnricherSpec(**min\_token\_length=3**, **max\_keywords=8**, **lowercase=True**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_enrichers/_simple.py#L25)[#](#scikitplot.corpus.SimpleEnricherSpec "Link to this definition")
 :   Declarative configuration for [`SimpleFrequencyEnricher`](scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher").
 
     Parameters:

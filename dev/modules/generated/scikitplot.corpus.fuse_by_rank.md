@@ -1,24 +1,34 @@
 # fuse\_by\_rank[#](#fuse-by-rank "Link to this heading")
 
-scikitplot.corpus.fuse\_by\_rank(**results**, **\***, **rrf\_k=60**, **weights=None**, **top\_k=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_retrievers.py#L246)[#](#scikitplot.corpus.fuse_by_rank "Link to this definition")
-:   Combine leg results by reciprocal rank fusion.
+scikitplot.corpus.fuse\_by\_rank(**results**, **\***, **rrf\_k=60**, **weights=None**, **top\_k=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_retrievers.py#L265)[#](#scikitplot.corpus.fuse_by_rank "Link to this definition")
+:   Combine leg results by weighted reciprocal rank fusion.
 
     Parameters:
     :   ****results****iterable of LegResult
         :   One entry per leg. Failed legs contribute nothing but are harmless.
 
         ****rrf\_k****int, optional
-        :   The standard RRF constant. Default 60.
+        :   The standard RRF constant, at least 1. Default 60.
 
         ****weights****dict, optional
-        :   Per-leg weight; unlisted legs weigh `1.0`.
+        :   Per-leg weight, finite and non-negative; unlisted legs weigh `1.0`.
+            A weight-0 leg contributes nothing and adds no document.
 
         ****top\_k****int, optional
         :   Number of fused hits to return.
 
     Returns:
     :   list of (hit, fused\_score, contributions)
-        :   Sorted by descending fused score.
+        :   Descending fused score; ties by ascending identity (`doc_id` or
+            `node_id`). `hit` is the first hit seen for that identity.
+
+    Raises:
+    :   ValueError
+        :   If a hit has neither a `doc_id` nor a `node_id`, or a weight or
+            `rrf_k` is out of range.
+
+        TypeError
+        :   If a weight or `rrf_k` has the wrong type.
 
     Parameters:
     :   * ****results**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**LegResult**](scikitplot.corpus.LegResult.html#scikitplot.corpus.LegResult "scikitplot.corpus._retrievers.LegResult")**]**)
@@ -31,12 +41,14 @@ scikitplot.corpus.fuse\_by\_rank(**results**, **\***, **rrf\_k=60**, **weights=N
 
     Notes
 
-    ****Developer.**** Rank fusion is the default combiner because score-space
-    fusion needs a validated normalization that does not exist for most metrics
-    (ADR-R07-003). The arithmetic is unchanged from the implementation review
-    run R09 verified; what is new is that each hit’s contributions are
-    ****returned**** rather than discarded, so the fused score can be recomputed and
+    ****Developer.**** R2-1: the arithmetic and the tie-break are
+    [`FusionPolicy`](scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy "scikitplot.corpus.FusionPolicy"), the one rule shared with
+    [`RetrievalIndex.search`](scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.search "scikitplot.corpus.RetrievalIndex.search") and the MCP hybrid retriever. Rank fusion is
+    the default combiner because score-space fusion needs a validated
+    normalization that does not exist for most metrics (ADR-R07-003). Each
+    hit’s contributions are returned, so the fused score can be recomputed and
     explained from the result.
 
     Fusion keys on `doc_id`, never on a row offset – the property that kept
-    F-R01-07’s positional coupling out of the fusion path.
+    F-R01-07’s positional coupling out of the fusion path. A hit without an
+    identity is refused: an object address is not stable across processes.

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/formats_and_export","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -111,7 +111,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Security and limits" href="security_and_limits.html" />
-    <link rel="prev" title="Retrieval and similarity" href="retrieval_and_similarity.html" />
+    <link rel="prev" title="Judging answers with language models" href="llm_evaluation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1001,6 +1007,67 @@ than making exporters understand every original file format.</p>
 <p>Important provenance fields include the source path/URI, chunk identity,
 section/type metadata and reader-specific metadata such as timecodes or archive
 member paths.</p>
+<section id="document-identity">
+<h2>Document identity<a class="headerlink" href="#document-identity" title="Link to this heading">#</a></h2>
+<p>Every durable identity is a full SHA-256 digest of 64 lowercase hex characters:
+<code class="docutils literal notranslate"><span class="pre">doc_id</span></code>, <code class="docutils literal notranslate"><span class="pre">content_hash</span></code>, the <a class="reference internal" href="../../modules/generated/scikitplot.corpus.EmbeddingManifest.html#scikitplot.corpus.EmbeddingManifest" title="scikitplot.corpus.EmbeddingManifest"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmbeddingManifest</span></code></a> fingerprint and
+the <a class="reference internal" href="../../modules/generated/scikitplot.corpus.IndexGeneration.html#scikitplot.corpus.IndexGeneration" title="scikitplot.corpus.IndexGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexGeneration</span></code></a> fingerprint. A document can be named by one of two
+schemes (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.DocIdScheme.html#scikitplot.corpus.DocIdScheme" title="scikitplot.corpus.DocIdScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocIdScheme</span></code></a>):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scheme</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">doc_id</span></code></p></th>
+<th class="head"><p>The same source built twice</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;sha256&quot;</span></code></p></td>
+<td><p>SHA-256 of source type, path,</p></td>
+<td><p>the same ids: rebuilds replace,</p></td>
+</tr>
+<tr class="row-odd"><td><p>(default)</p></td>
+<td><p>chunk index and the full content</p></td>
+<td><p>qrels and checkpoints stay valid</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;uuid7&quot;</span></code></p></td>
+<td><p>an RFC 9562 UUIDv7, minted per
+source in reading order (36 chars)</p></td>
+<td><p>new ids: deduplicate by
+<code class="docutils literal notranslate"><span class="pre">content_hash</span></code>, never <code class="docutils literal notranslate"><span class="pre">doc_id</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Choose <code class="docutils literal notranslate"><span class="pre">&quot;uuid7&quot;</span></code> when the store that receives the documents wants
+time-ordered keys: ids sort by creation and carry the millisecond they were
+minted. They are not secrets: the time is readable by anyone who sees the id.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BuilderConfig</span><span class="p">,</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">DocIdScheme</span><span class="p">,</span> <span class="n">assign_doc_ids</span><span class="p">,</span>
+    <span class="n">doc_id_scheme_of</span><span class="p">,</span> <span class="n">uuid7_unix_ms</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"notes.txt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Hello world."</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span><span class="p">),</span> <span class="n">doc_id_scheme_of</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span><span class="p">)</span>  <span class="c1"># (64, &lt;DocIdScheme.SHA256: 'sha256'&gt;)</span>
+
+<span class="p">(</span><span class="n">named</span><span class="p">,)</span> <span class="o">=</span> <span class="n">assign_doc_ids</span><span class="p">([</span><span class="n">doc</span><span class="p">],</span> <span class="s2">"uuid7"</span><span class="p">)</span>
+<span class="n">doc_id_scheme_of</span><span class="p">(</span><span class="n">named</span><span class="o">.</span><span class="n">doc_id</span><span class="p">)</span> <span class="ow">is</span> <span class="n">DocIdScheme</span><span class="o">.</span><span class="n">UUID7</span>  <span class="c1"># True</span>
+<span class="n">named</span><span class="o">.</span><span class="n">content_hash</span> <span class="o">==</span> <span class="n">doc</span><span class="o">.</span><span class="n">content_hash</span>               <span class="c1"># True</span>
+<span class="n">uuid7_unix_ms</span><span class="p">(</span><span class="n">named</span><span class="o">.</span><span class="n">doc_id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>                      <span class="c1"># True: milliseconds since 1970</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">BuilderConfig</span><span class="p">(</span><span class="n">doc_id_scheme</span><span class="o">=</span><span class="s2">"uuid7"</span><span class="p">)</span>  <span class="c1"># CorpusPipeline takes the same</span>
+<span class="c1"># FluentCorpus: .identity("uuid7"); create_corpus(..., doc_id_scheme="uuid7")</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.assign_doc_ids.html#scikitplot.corpus.assign_doc_ids" title="scikitplot.corpus.assign_doc_ids"><code class="xref py py-func docutils literal notranslate"><span class="pre">assign_doc_ids</span></code></a> keeps parent links: a child’s <code class="docutils literal notranslate"><span class="pre">parent_doc_id</span></code> follows
+its parent to the new id, and a link to a document outside the batch is kept as
+it is. Within one process every <a class="reference internal" href="../../modules/generated/scikitplot.corpus.uuid7.html#scikitplot.corpus.uuid7" title="scikitplot.corpus.uuid7"><code class="xref py py-func docutils literal notranslate"><span class="pre">uuid7</span></code></a> is greater than the one before,
+even when the clock steps back; across processes ids are unique, not ordered.</p>
+<p>Data written before identities were widened carries 16-character ids: document
+exports, <code class="docutils literal notranslate"><span class="pre">JSONLStorage</span></code> and <code class="docutils literal notranslate"><span class="pre">SQLiteStorage</span></code> stores, pickle and joblib
+exports, <code class="docutils literal notranslate"><span class="pre">PipelineGuard</span></code> checkpoints, embedding manifests and index
+artifacts. Each is refused with <a class="reference internal" href="../../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html#scikitplot.corpus.IncompatibleSchemaError" title="scikitplot.corpus.IncompatibleSchemaError"><code class="xref py py-class docutils literal notranslate"><span class="pre">IncompatibleSchemaError</span></code></a> or a “rebuild”
+message, never read as empty or as current: rebuild it with this version.</p>
+</section>
 <section id="archives">
 <h2>Archives<a class="headerlink" href="#archives" title="Link to this heading">#</a></h2>
 <p>Archive extraction is bounded by file-count and total-size limits. Extracted
@@ -1017,6 +1084,131 @@ LangChain/LangGraph/MCP and data exports.</p>
 <p>When adding a new reader or exporter, keep source decoding and destination
 serialization separate so a new output format cannot alter ingestion semantics.</p>
 </section>
+<section id="export-and-load-back">
+<h2>Export and load back<a class="headerlink" href="#export-and-load-back" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.export_documents.html#scikitplot.corpus.export_documents" title="scikitplot.corpus.export_documents"><code class="xref py py-func docutils literal notranslate"><span class="pre">export_documents</span></code></a> writes a document list in one <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat" title="scikitplot.corpus.ExportFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExportFormat</span></code></a>.
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.load_documents.html#scikitplot.corpus.load_documents" title="scikitplot.corpus.load_documents"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_documents</span></code></a> reads it back. Only some formats keep every field, and
+only some are safe to load:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Embeddings</p></th>
+<th class="head"><p>Load back</p></th>
+<th class="head"><p>Needs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">JSON</span></code>, <code class="docutils literal notranslate"><span class="pre">JSONL</span></code></p></td>
+<td><p>yes, with dtype</p></td>
+<td><p>yes, safe</p></td>
+<td><p>nothing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">YAML</span></code></p></td>
+<td><p>yes, with dtype</p></td>
+<td><p>yes, safe</p></td>
+<td><p>PyYAML</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TOML</span></code></p></td>
+<td><p>yes, with dtype</p></td>
+<td><p>yes, safe</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tomli-w</span></code> (<code class="docutils literal notranslate"><span class="pre">tomli</span></code> to read before Python 3.11)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PICKLE</span></code>, <code class="docutils literal notranslate"><span class="pre">JOBLIB</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trusted</span></code></p></td>
+<td><p>nothing / joblib</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CSV</span></code>, <code class="docutils literal notranslate"><span class="pre">PANDAS</span></code></p></td>
+<td><p>no</p></td>
+<td><p>refused</p></td>
+<td><p>nothing / pandas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PARQUET</span></code>, <code class="docutils literal notranslate"><span class="pre">POLARS</span></code></p></td>
+<td><p>no</p></td>
+<td><p>refused</p></td>
+<td><p>pandas + pyarrow / polars</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NUMPY</span></code></p></td>
+<td><p>only embeddings</p></td>
+<td><p>refused</p></td>
+<td><p>nothing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HUGGINGFACE</span></code></p></td>
+<td><p>yes</p></td>
+<td><p>refused</p></td>
+<td><p>datasets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MLFLOW</span></code></p></td>
+<td><p>yes</p></td>
+<td><p>see below</p></td>
+<td><p>mlflow</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The four text formats share one contract with the evaluation reports:</p>
+<ul class="simple">
+<li><p><strong>Strict JSON.</strong> <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is written as <code class="docutils literal notranslate"><span class="pre">null</span></code>, because JSON has no
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code>, and an infinity is refused.</p></li>
+<li><p><strong>Escaped line breaks.</strong> The characters U+0085, U+2028 and U+2029 are
+written escaped, so a line-splitting reader never breaks a JSON Lines
+record in two.</p></li>
+<li><p><strong>No YAML aliases.</strong> A YAML file that uses them is refused on load.</p></li>
+<li><p><strong>TOML.</strong> TOML has no top-level array, so a TOML export keeps the
+documents under the key <code class="docutils literal notranslate"><span class="pre">documents</span></code>.</p></li>
+<li><p><strong>Exact embeddings.</strong> Each embedding is stored as a list of numbers with
+its <code class="docutils literal notranslate"><span class="pre">embedding_dtype</span></code>, so it comes back with the same values and dtype,
+<code class="docutils literal notranslate"><span class="pre">NaN</span></code> included. Only one-dimensional <code class="docutils literal notranslate"><span class="pre">float16</span></code>, <code class="docutils literal notranslate"><span class="pre">float32</span></code> and
+<code class="docutils literal notranslate"><span class="pre">float64</span></code> arrays can be written this way; an integer, boolean, complex
+or 2-D array is refused, naming the document. A plain Python list counts
+as <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p></li>
+<li><p><strong>Checked records.</strong> Every record is checked field by field on load. A
+wrong type (<code class="docutils literal notranslate"><span class="pre">chunk_index:</span> <span class="pre">&quot;7&quot;</span></code>), an unknown key, an unquoted YAML or
+TOML date where a string belongs, or an embedding value that overflows its
+dtype is refused, and the error names the file and the record. A file
+that breaks the contract never loads as plausible documents.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">ExportFormat</span><span class="p">,</span> <span class="n">export_documents</span><span class="p">,</span> <span class="n">load_documents</span>
+
+<span class="n">docs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"notes.txt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"First paragraph."</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                          <span class="n">embedding</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)),</span>
+    <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"notes.txt"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Second paragraph."</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"page"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">2</span><span class="p">)}),</span>
+<span class="p">]</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">export_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">out</span> <span class="o">/</span> <span class="s2">"corpus.jsonl"</span><span class="p">,</span> <span class="n">ExportFormat</span><span class="o">.</span><span class="n">JSONL</span><span class="p">)</span>
+<span class="n">back</span> <span class="o">=</span> <span class="n">load_documents</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>              <span class="c1"># the format comes from the suffix (or format="jsonl")</span>
+<span class="n">back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">embedding</span>                        <span class="c1"># array([0.25,  nan], dtype=float32)</span>
+<span class="n">back</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">metadata</span>                         <span class="c1"># {'page': 2}</span>
+</pre></div>
+</div>
+<p>Metadata must hold JSON-like values: strings, numbers, booleans, <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+lists, and mappings with string keys. NumPy scalars are converted. Anything
+else, such as a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> or a <code class="docutils literal notranslate"><span class="pre">set</span></code>, is refused, and the error names
+the document. Tuples come back as lists.</p>
+<p>Each format has limits of its own:</p>
+<ul class="simple">
+<li><p><strong>JSON.</strong> A <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in metadata reads back as <code class="docutils literal notranslate"><span class="pre">None</span></code>. A <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in
+any other field (<code class="docutils literal notranslate"><span class="pre">bbox</span></code>, a timecode) is refused, because it would not
+come back.</p></li>
+<li><p><strong>TOML.</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code> inside metadata or inside a list is refused, because
+TOML would silently drop it.</p></li>
+<li><p><strong>JSON and TOML.</strong> A string with a lone surrogate is refused, because
+these formats cannot encode it. YAML keeps it.</p></li>
+</ul>
+<p>Loading a CSV, Parquet, NumPy or HuggingFace export raises
+<a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a> and names the formats to use instead. Those formats
+flatten metadata or drop embeddings, so they cannot rebuild every field, and
+an empty or partial result would look like real data. An MLflow export is a
+JSON Lines artifact of a run: download its <code class="docutils literal notranslate"><span class="pre">corpus_documents.jsonl</span></code> and
+load that file. A pickle or joblib file
+can run code when it is loaded, so it needs <code class="docutils literal notranslate"><span class="pre">trusted=True</span></code>. Every format
+accepts <code class="docutils literal notranslate"><span class="pre">expected_sha256</span></code>, which checks the file before it is parsed.</p>
+</section>
 </section>
 
 
@@ -1030,12 +1222,12 @@ serialization separate so a new output format cannot alter ingestion semantics.<
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="retrieval_and_similarity.html"
+       href="llm_evaluation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Retrieval and similarity</p>
+        <p class="prev-next-title">Judging answers with language models</p>
       </div>
     </a>
     <a class="right-next"
@@ -1070,8 +1262,10 @@ serialization separate so a new output format cannot alter ingestion semantics.<
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-identity">Document identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archives">Archives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-and-adapters">Export and adapters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-and-load-back">Export and load back</a></li>
 </ul>
   </nav></div>
 
@@ -1130,7 +1324,7 @@ serialization separate so a new output format cannot alter ingestion semantics.<
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

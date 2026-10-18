@@ -1,6 +1,6 @@
 # bridge\_chunker[#](#bridge-chunker "Link to this heading")
 
-scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_chunker_bridge.py#L469)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
+scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_chunker_bridge.py#L523)[#](#scikitplot.corpus.bridge_chunker "Link to this definition")
 :   Wrap **chunker** in a bridge if it is a new-style chunker.
 
     Parameters:
@@ -26,8 +26,11 @@ scikitplot.corpus.bridge\_chunker(**chunker**)[[source]](https://github.com/scik
     >>> bridged = bridge_chunker(SentenceChunker())
     >>> hasattr(bridged, "strategy")
     True
-    >>> isinstance(bridged.chunk("Hello world. Goodbye.", metadata={}), list)
-    True
+    >>> [
+    ...     chunk.text
+    ...     for chunk in bridged.chunk("Hello world. Goodbye.", metadata={}).chunks
+    ... ]
+    ['Hello world.', 'Goodbye.']
 
     ```
     Go BackOpen In Tab

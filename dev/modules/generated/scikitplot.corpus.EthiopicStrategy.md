@@ -1,6 +1,6 @@
 # EthiopicStrategy[#](#ethiopicstrategy "Link to this heading")
 
-class scikitplot.corpus.EthiopicStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L1127)[#](#scikitplot.corpus.EthiopicStrategy "Link to this definition")
+class scikitplot.corpus.EthiopicStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L1173)[#](#scikitplot.corpus.EthiopicStrategy "Link to this definition")
 :   Ethiopic (Amharic, Tigrinya) segmentation strategy.
 
     Sentence boundary: `።` (U+1362 Ethiopic Full Stop).
@@ -9,7 +9,7 @@ class scikitplot.corpus.EthiopicStrategy[[source]](https://github.com/scikit-plo
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L1140)[#](#scikitplot.corpus.EthiopicStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L1186)[#](#scikitplot.corpus.EthiopicStrategy.segment "Link to this definition")
     :   Segment Ethiopic **span** by sentence or word.
 
         Parameters:

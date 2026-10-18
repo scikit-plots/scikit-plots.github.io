@@ -1,6 +1,6 @@
 # registry[#](#registry "Link to this heading")
 
-scikitplot.corpus.registry = ComponentRegistry(chunkers=0, filters=0, readers=0, normalizers=0)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_registry/_registry.py#L)[#](#scikitplot.corpus.registry "Link to this definition")
+scikitplot.corpus.registry = ComponentRegistry(chunkers=0, filters=0, readers=0, normalizers=0)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_registry/_registry.py#L)[#](#scikitplot.corpus.registry "Link to this definition")
 :   Central look-up table for corpus pipeline components.
 
     Stores class references (not instances) for four component types:
@@ -19,8 +19,9 @@ scikitplot.corpus.registry = ComponentRegistry(chunkers=0, filters=0, readers=0,
     ```
     >>> from scikitplot.corpus._registry import registry
     >>> registry.register_builtins()
-    >>> cls = registry.get_chunker("paragraph")
-    >>> chunker = cls(min_chars=20)
+    >>> chunker = registry.build_chunker("paragraph", min_length=20)
+    >>> type(chunker).__name__, chunker.config.min_length
+    ('ParagraphChunker', 20)
 
     ```
     Go BackOpen In Tab

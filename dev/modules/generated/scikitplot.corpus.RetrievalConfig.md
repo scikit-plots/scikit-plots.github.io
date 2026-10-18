@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -18,11 +18,14 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
         :   Minimum keyword overlap for KEYWORD results.
 
         ****hybrid\_alpha****float
-        :   Weight for semantic scores in HYBRID mode (0 = pure keyword,
-            1 = pure semantic). Default 0.5 (equal weight).
+        :   Dense share in HYBRID mode, shorthand for the two leg weights
+            `{lexical: 1 - alpha, dense: alpha}` of
+            [`FusionPolicy`](scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy "scikitplot.corpus.FusionPolicy") (R2-1): `0` returns the
+            lexical leg alone and `1` the dense leg alone, exactly. Default 0.5.
 
         ****rrf\_k****int
-        :   Reciprocal rank fusion constant. Default 60 (standard).
+        :   Reciprocal rank fusion constant, an `int` of at least 1. Default 60
+            (standard).
 
         ****use\_normalized\_text****bool
         :   Use `normalized_text` for matching when available.
@@ -55,18 +58,28 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
         :   Annoy query-time node budget. `-1` (default) lets Annoy choose.
 
         ****annoy\_impl****str
-        :   Which Annoy index class to use: `"auto"` (default; high-level
+        :   Which Annoy index class to use: `"auto"` (default; a class that
+            accepts every requested option, the high-level
             `scikitplot.annoy.Index` first, else the Cython
             `scikitplot.annoy._annoy.Index`), `"highlevel"`, or `"cython"`.
 
         ****annoy\_dtype****str or None
         :   Embedding precision for the Cython Annoy class (e.g. `"float32"`,
-            `"float64"`). Ignored by the high-level class. Default `None`.
+            `"float64"`); `annoy_impl="auto"` picks that class when it is set.
+            The high-level class cannot honour it (see `allow_fallback`).
+            Default `None`.
 
         ****annoy\_index\_dtype****str or None
         :   Item-id integer width for the Cython Annoy class (e.g. `"int32"`,
-            `"uint64"`) for very large corpora. Ignored otherwise. Default
-            `None`.
+            `"uint64"`) for very large corpora. Default `None`.
+
+        ****allow\_fallback****bool
+        :   What happens when the dense backend cannot run as configured (R2-5):
+            under `backend="auto"` an installed backend that fails to load is
+            skipped, and an Annoy option the running binding cannot honour is
+            dropped, both reported on the dense leg (`requested_backend`,
+            `fallback_reason`) and in [`RetrievalIndex.backend_provenance`](scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.backend_provenance "scikitplot.corpus.RetrievalIndex.backend_provenance")
+            (`True`, default); `False` raises at build instead.
 
     Parameters:
     :   * ****top\_k**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
@@ -85,6 +98,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
         * ****annoy\_impl**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
+        * ****allow\_fallback**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Notes
 
@@ -92,6 +106,8 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
     default settings provides a good balance. For exact citation
     matching, use `match_mode="strict"`. To force a specific ANN
     library, set e.g. `backend="annoy"` and tune `annoy_n_trees`.
+
+    allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.RetrievalConfig.allow_fallback "Link to this definition")
 
     annoy\_dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalConfig.annoy_dtype "Link to this definition")
 
@@ -111,7 +127,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
     hybrid\_alpha: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_similarity.py#L143)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
     keyword\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 

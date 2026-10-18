@@ -1,6 +1,6 @@
 # runtime\_capabilities[#](#runtime-capabilities "Link to this heading")
 
-scikitplot.cython.runtime\_capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_profiles.py#L465)[#](#scikitplot.cython.runtime_capabilities "Link to this definition")
+scikitplot.cython.runtime\_capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_profiles.py#L465)[#](#scikitplot.cython.runtime_capabilities "Link to this definition")
 :   Return the [`RuntimeCapabilities`](scikitplot.cython.RuntimeCapabilities.html#scikitplot.cython.RuntimeCapabilities "scikitplot.cython.RuntimeCapabilities") contract for this process.
 
     Return type:

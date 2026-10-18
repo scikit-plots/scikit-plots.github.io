@@ -11,17 +11,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/levenshtein/corpus_integration.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="The Levenshtein facade is independently importable. Corpus integration is an optional adapter created by make_corpus_scorer. Create a scorer: The import of scikitplot.corpus happens only when score..." />
+<meta property="og:description" content="The Levenshtein facade is independently importable and never imports Corpus. Corpus owns the adapter: make_levenshtein_ranker returns a ranker for CustomRetrievalIndex. Create a ranker: scikitplot...." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="The Levenshtein facade is independently importable. Corpus integration is an optional adapter created by make_corpus_scorer. Create a scorer: The import of scikitplot.corpus happens only when score..." />
+<meta name="description" content="The Levenshtein facade is independently importable and never imports Corpus. Corpus owns the adapter: make_levenshtein_ranker returns a ranker for CustomRetrievalIndex. Create a ranker: scikitplot...." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:08Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:13Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/levenshtein/corpus_integration","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Performance and limits" href="performance_and_limits.html" />
+    <link rel="next" title="Python API" href="python_api.html" />
     <link rel="prev" title="Ranking and matching" href="ranking_and_matching.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../corpus/customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../corpus/downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../corpus/retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../corpus/llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../corpus/formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../corpus/security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../corpus/troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -996,24 +1002,29 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                   
   <section id="corpus-integration">
 <span id="levenshtein-corpus"></span><h1>Corpus integration<a class="headerlink" href="#corpus-integration" title="Link to this heading">#</a></h1>
-<p>The Levenshtein facade is independently importable. Corpus integration is an
-optional adapter created by <a class="reference internal" href="../../modules/generated/scikitplot.levenshtein.make_corpus_scorer.html#scikitplot.levenshtein.make_corpus_scorer" title="scikitplot.levenshtein.make_corpus_scorer"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_corpus_scorer</span></code></a>.</p>
-<section id="create-a-scorer">
-<h2>Create a scorer<a class="headerlink" href="#create-a-scorer" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.levenshtein</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_corpus_scorer</span>
+<p>The Levenshtein facade is independently importable and never imports Corpus.
+Corpus owns the adapter: <a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_levenshtein_ranker.html#scikitplot.corpus.make_levenshtein_ranker" title="scikitplot.corpus.make_levenshtein_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_levenshtein_ranker</span></code></a> returns a ranker for
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex" title="scikitplot.corpus.CustomRetrievalIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code></a>.</p>
+<section id="create-a-ranker">
+<h2>Create a ranker<a class="headerlink" href="#create-a-ranker" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomRetrievalIndex</span><span class="p">,</span> <span class="n">make_levenshtein_ranker</span>
 
-<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_corpus_scorer</span><span class="p">(</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
-    <span class="n">score_cutoff</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">CustomRetrievalIndex</span><span class="p">(</span>
+    <span class="n">custom_scorer_fn</span><span class="o">=</span><span class="n">make_levenshtein_ranker</span><span class="p">(</span>
+        <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+        <span class="n">score_cutoff</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>The import of <a class="reference internal" href="../../apis/scikitplot.corpus.html#module-scikitplot.corpus" title="scikitplot.corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.corpus</span></code></a> happens only when <code class="docutils literal notranslate"><span class="pre">scorer</span></code> is called.</p>
+<p><a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> is imported when the ranker is built; a Corpus
+installation without it raises <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> there, with
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker" title="scikitplot.corpus.make_pairwise_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_pairwise_ranker</span></code></a> and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity" title="scikitplot.corpus.edit_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">edit_similarity</span></code></a> named as the
+dependency-free alternative.</p>
 </section>
 <section id="use-corpus-documents">
 <h2>Use Corpus documents<a class="headerlink" href="#use-corpus-documents" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">RetrievalConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.levenshtein</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_corpus_scorer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusDocument</span><span class="p">,</span> <span class="n">RetrievalConfig</span><span class="p">,</span> <span class="n">make_levenshtein_ranker</span>
 
 <span class="n">docs</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"a.txt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"kitten"</span><span class="p">),</span>
@@ -1021,8 +1032,8 @@ optional adapter created by <a class="reference internal" href="../../modules/ge
     <span class="n">CorpusDocument</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"c.txt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"bitten"</span><span class="p">),</span>
 <span class="p">]</span>
 
-<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_corpus_scorer</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">"python"</span><span class="p">)</span>
-<span class="n">hits</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="s2">"kitten"</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">RetrievalConfig</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ranker</span> <span class="o">=</span> <span class="n">make_levenshtein_ranker</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">"python"</span><span class="p">)</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">ranker</span><span class="p">(</span><span class="s2">"kitten"</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">RetrievalConfig</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="k">assert</span> <span class="p">[</span><span class="n">hit</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">hit</span> <span class="ow">in</span> <span class="n">hits</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"kitten"</span><span class="p">,</span> <span class="s2">"bitten"</span><span class="p">]</span>
 </pre></div>
@@ -1030,20 +1041,39 @@ optional adapter created by <a class="reference internal" href="../../modules/ge
 </section>
 <section id="retrieval-metadata">
 <h2>Retrieval metadata<a class="headerlink" href="#retrieval-metadata" title="Link to this heading">#</a></h2>
-<p>The adapter records:</p>
+<p>The ranker records:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">match_mode=&quot;levenshtein&quot;</span></code>;</p></li>
 <li><p>normalized similarity as the score;</p></li>
-<li><p>the actual Levenshtein backend in <code class="docutils literal notranslate"><span class="pre">backend</span></code>;</p></li>
+<li><p>the actual Levenshtein backend in <code class="docutils literal notranslate"><span class="pre">backend</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;levenshtein:&lt;name&gt;&quot;</span></code>),
+which differs from the requested one after a runtime fallback;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">native_metric=&quot;normalized_levenshtein_similarity&quot;</span></code>.</p></li>
 </ul>
 </section>
 <section id="normalized-versus-original-text">
 <h2>Normalized versus original text<a class="headerlink" href="#normalized-versus-original-text" title="Link to this heading">#</a></h2>
-<p>By default the scorer prefers <code class="docutils literal notranslate"><span class="pre">doc.normalized_text</span></code> when present and falls
+<p>By default the ranker prefers <code class="docutils literal notranslate"><span class="pre">doc.normalized_text</span></code> when present and falls
 back to <code class="docutils literal notranslate"><span class="pre">doc.text</span></code>.</p>
 <p>Pass <code class="docutils literal notranslate"><span class="pre">use_normalized_text=False</span></code> when the original document text is the
 retrieval contract.</p>
+</section>
+<section id="any-pairwise-function">
+<h2>Any pairwise function<a class="headerlink" href="#any-pairwise-function" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker" title="scikitplot.corpus.make_pairwise_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_pairwise_ranker</span></code></a> accepts any <code class="docutils literal notranslate"><span class="pre">score_func(query,</span> <span class="pre">text)</span></code>. Pass
+<code class="docutils literal notranslate"><span class="pre">greater_is_better=False</span></code> for a distance, which is negated so that higher is
+better, as <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="(in scikit-learn v1.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.metrics.make_scorer</span></code></a> does for a loss:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">levenshtein</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pairwise_ranker</span>
+
+<span class="n">ranker</span> <span class="o">=</span> <span class="n">make_pairwise_ranker</span><span class="p">(</span><span class="n">levenshtein</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="measuring-retrieval-quality">
+<h2>Measuring retrieval quality<a class="headerlink" href="#measuring-retrieval-quality" title="Link to this heading">#</a></h2>
+<p>To compare this ranker with BM25 or dense retrieval, run
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval" title="scikitplot.corpus.evaluate_retrieval"><code class="xref py py-func docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code></a> on a query set with relevance judgments; see
+<a class="reference internal" href="../corpus/evaluation.html#corpus-evaluation"><span class="std std-ref">Evaluating retrieval and answers</span></a>.</p>
 </section>
 <section id="when-to-use-it">
 <h2>When to use it<a class="headerlink" href="#when-to-use-it" title="Link to this heading">#</a></h2>
@@ -1080,11 +1110,11 @@ distance as a reranker when appropriate.</p>
       </div>
     </a>
     <a class="right-next"
-       href="performance_and_limits.html"
+       href="python_api.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Performance and limits</p>
+        <p class="prev-next-title">Python API</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1111,10 +1141,12 @@ distance as a reranker when appropriate.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-scorer">Create a scorer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-ranker">Create a ranker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-corpus-documents">Use Corpus documents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-metadata">Retrieval metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-versus-original-text">Normalized versus original text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#any-pairwise-function">Any pairwise function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-retrieval-quality">Measuring retrieval quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-it">When to use it</a></li>
 </ul>
   </nav></div>
@@ -1174,7 +1206,7 @@ distance as a reranker when appropriate.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

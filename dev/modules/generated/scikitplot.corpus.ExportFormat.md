@@ -1,6 +1,6 @@
 # ExportFormat[#](#exportformat "Link to this heading")
 
-class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L436)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
+class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L446)[#](#scikitplot.corpus.ExportFormat "Link to this definition")
 :   Supported serialisation targets for a completed corpus.
 
     Notes
@@ -19,38 +19,50 @@ class scikitplot.corpus.ExportFormat(**\*values**)[[source]](https://github.com/
     ```
     Go BackOpen In Tab
 
-    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
-    :   Comma-separated values; universal but loses numpy embedding arrays.
+    CSV = 'csv'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.CSV "Link to this definition")
+    :   Comma-separated values; metadata flattened into columns, no embeddings. Not loadable back.
 
-    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
-    :   HuggingFace `datasets.Dataset` object or saved dataset directory.
+    HUGGINGFACE = 'huggingface'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.HUGGINGFACE "Link to this definition")
+    :   HuggingFace `datasets` dataset saved to a directory (needs `datasets`).
 
-    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
-    :   joblib dump — efficient for large numpy arrays inside documents.
+    JOBLIB = 'joblib'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JOBLIB "Link to this definition")
+    :   joblib dump; loadable back only with `trusted=True` (it can run code).
 
-    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
-    :   JSON-lines (one document per line) for maximum interoperability.
+    JSON = 'json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSON "Link to this definition")
+    :   one array of document objects. Loadable back.
 
-    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
-    :   Alias for JSON-lines format.
+        Type:
+        :   Strict JSON (RFC 8259)
 
-    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
-    :   MLflow artifact (logs corpus + metadata to active or specified run).
+    JSONL = 'jsonl'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.JSONL "Link to this definition")
+    :   one document object per line. Loadable back.
 
-    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
-    :   `numpy.savez_compressed` — embeddings only, loses text/metadata.
+        Type:
+        :   JSON Lines
 
-    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
-    :   In-memory `pandas.DataFrame`; returned, not written to disk.
+    MLFLOW = 'mlflow'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.MLFLOW "Link to this definition")
+    :   JSON Lines logged as an artifact of the active MLflow run (needs `mlflow`).
 
-    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
-    :   Column-oriented binary format via `pyarrow` or `polars`.
+    NUMPY = 'numpy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.NUMPY "Link to this definition")
+    :   `numpy.save` of the embedding matrix (`.npy`); embeddings only.
 
-    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
-    :   Python pickle — fastest round-trip; not portable across Python versions.
+    PANDAS = 'pandas'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PANDAS "Link to this definition")
+    :   CSV written through `pandas`; no embeddings. Not loadable back.
 
-    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
-    :   In-memory `polars.DataFrame`; returned, not written to disk.
+    PARQUET = 'parquet'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PARQUET "Link to this definition")
+    :   Apache Parquet via `pandas` (`pyarrow` or `fastparquet`); no embeddings. Not loadable back.
+
+    PICKLE = 'pickle'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.PICKLE "Link to this definition")
+    :   Python pickle; loadable back only with `trusted=True` (it can run code).
+
+    POLARS = 'polars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.POLARS "Link to this definition")
+    :   Apache Parquet written through `polars`; no embeddings. Not loadable back.
+
+    TOML = 'toml'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.TOML "Link to this definition")
+    :   TOML table `documents` holding an array of document tables (needs `tomli-w`). Loadable back.
+
+    YAML = 'yaml'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ExportFormat.YAML "Link to this definition")
+    :   YAML sequence of document mappings (needs PyYAML). Loadable back.
 
     capitalize(**/**)[#](#scikitplot.corpus.ExportFormat.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

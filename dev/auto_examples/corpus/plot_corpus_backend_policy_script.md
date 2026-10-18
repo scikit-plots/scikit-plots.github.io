@@ -187,15 +187,15 @@ Related examples
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
-
-Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
 
 [Compose Corpus policies without hiding boundaries](plot_corpus_policy_bundle_script.html)
 
-Compose Corpus policies without hiding boundaries![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Compose Corpus policies without hiding boundaries![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+
+[Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
+
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 

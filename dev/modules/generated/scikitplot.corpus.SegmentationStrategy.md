@@ -1,6 +1,6 @@
 # SegmentationStrategy[#](#segmentationstrategy "Link to this heading")
 
-class scikitplot.corpus.SegmentationStrategy(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L97)[#](#scikitplot.corpus.SegmentationStrategy "Link to this definition")
+class scikitplot.corpus.SegmentationStrategy(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L98)[#](#scikitplot.corpus.SegmentationStrategy "Link to this definition")
 :   Protocol for per-script text segmentation strategies.
 
     All implementations MUST be stateless with respect to [`segment`](#scikitplot.corpus.SegmentationStrategy.segment "scikitplot.corpus.SegmentationStrategy.segment")
@@ -20,7 +20,7 @@ class scikitplot.corpus.SegmentationStrategy(**\*args**, **\*\*kwargs**)[[source
     ```
     Go BackOpen In Tab
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L114)[#](#scikitplot.corpus.SegmentationStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L115)[#](#scikitplot.corpus.SegmentationStrategy.segment "Link to this definition")
     :   Segment **span** into [`Chunk`](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk") objects.
 
         Parameters:

@@ -293,6 +293,7 @@ Class inheritance
 | [`ChunkerBridge`](../modules/generated/scikitplot.corpus.ChunkerBridge.html#scikitplot.corpus.ChunkerBridge "scikitplot.corpus.ChunkerBridge") | Adapter that wraps a new-style chunker as a `ChunkerBase`- compatible object. |
 | [`FixedWindowChunkerBridge`](../modules/generated/scikitplot.corpus.FixedWindowChunkerBridge.html#scikitplot.corpus.FixedWindowChunkerBridge "scikitplot.corpus.FixedWindowChunkerBridge") | Bridge for `FixedWindowChunker` → `ChunkerBase` contract. |
 | [`ParagraphChunkerBridge`](../modules/generated/scikitplot.corpus.ParagraphChunkerBridge.html#scikitplot.corpus.ParagraphChunkerBridge "scikitplot.corpus.ParagraphChunkerBridge") | Bridge for `ParagraphChunker` → `ChunkerBase` contract. |
+| [`ProtocolChunkerBridge`](../modules/generated/scikitplot.corpus.ProtocolChunkerBridge.html#scikitplot.corpus.ProtocolChunkerBridge "scikitplot.corpus.ProtocolChunkerBridge") | Bridge for any chunker satisfying `ChunkerProtocol` (R3-1). |
 | [`SemanticChunkerBridge`](../modules/generated/scikitplot.corpus.SemanticChunkerBridge.html#scikitplot.corpus.SemanticChunkerBridge "scikitplot.corpus.SemanticChunkerBridge") | Bridge for `SemanticChunker` → `ChunkerBase` contract. |
 | [`SentenceChunkerBridge`](../modules/generated/scikitplot.corpus.SentenceChunkerBridge.html#scikitplot.corpus.SentenceChunkerBridge "scikitplot.corpus.SentenceChunkerBridge") | Bridge for `SentenceChunker` → `ChunkerBase` contract. |
 | [`WordChunkerBridge`](../modules/generated/scikitplot.corpus.WordChunkerBridge.html#scikitplot.corpus.WordChunkerBridge "scikitplot.corpus.WordChunkerBridge") | Bridge for `WordChunker` → `ChunkerBase` contract. |
@@ -341,6 +342,10 @@ Class inheritance
 | [`MultilangMixin`](../modules/generated/scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin "scikitplot.corpus.MultilangMixin") | Shared multilang analysis mixin for all five chunkers. |
 | [`ParagraphChunker`](../modules/generated/scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker "scikitplot.corpus.ParagraphChunker") | Split a document into paragraph-level `Chunk` objects. |
 | [`ParagraphChunkerConfig`](../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html#scikitplot.corpus.ParagraphChunkerConfig "scikitplot.corpus.ParagraphChunkerConfig") | Configuration for [`ParagraphChunker`](../modules/generated/scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker "scikitplot.corpus.ParagraphChunker"). |
+| [`ParentChildChunker`](../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker "scikitplot.corpus.ParentChildChunker") | Large parents for context, small children for retrieval, linked. |
+| [`ParentChildChunkerConfig`](../modules/generated/scikitplot.corpus.ParentChildChunkerConfig.html#scikitplot.corpus.ParentChildChunkerConfig "scikitplot.corpus.ParentChildChunkerConfig") | Configuration for [`ParentChildChunker`](../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker "scikitplot.corpus.ParentChildChunker"). |
+| [`RecursiveChunker`](../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker "scikitplot.corpus.RecursiveChunker") | Split text by a separator hierarchy until each piece fits a budget. |
+| [`RecursiveChunkerConfig`](../modules/generated/scikitplot.corpus.RecursiveChunkerConfig.html#scikitplot.corpus.RecursiveChunkerConfig "scikitplot.corpus.RecursiveChunkerConfig") | Configuration for [`RecursiveChunker`](../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker "scikitplot.corpus.RecursiveChunker"). |
 | [`SemanticBackend`](../modules/generated/scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus.SemanticBackend") | Semantic chunking backend selector. |
 | [`SemanticChunker`](../modules/generated/scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker "scikitplot.corpus.SemanticChunker") | Embedding-aware, writing-system-aware semantic chunker (Layer 3). |
 | [`SemanticChunkerConfig`](../modules/generated/scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig "scikitplot.corpus.SemanticChunkerConfig") | Configuration for [`SemanticChunker`](../modules/generated/scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker "scikitplot.corpus.SemanticChunker"). |
@@ -348,6 +353,8 @@ Class inheritance
 | [`SentenceChunker`](../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker") | Split a document into sentence-level `Chunk` objects. |
 | [`SentenceChunkerConfig`](../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig "scikitplot.corpus.SentenceChunkerConfig") | Configuration for [`SentenceChunker`](../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker"). |
 | [`_validate_text_input`](../modules/generated/scikitplot.corpus._validate_text_input.html#scikitplot.corpus._validate_text_input "scikitplot.corpus._validate_text_input") | Validate chunker text input for NUL bytes and lone surrogates. |
+| [`StructureChunker`](../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker "scikitplot.corpus.StructureChunker") | Chunk Markdown or reStructuredText by its headings and code blocks. |
+| [`StructureChunkerConfig`](../modules/generated/scikitplot.corpus.StructureChunkerConfig.html#scikitplot.corpus.StructureChunkerConfig "scikitplot.corpus.StructureChunkerConfig") | Configuration for [`StructureChunker`](../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker "scikitplot.corpus.StructureChunker"). |
 | [`LemmatizationBackend`](../modules/generated/scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus.LemmatizationBackend") | Lemmatization backend. |
 | [`StemmingBackend`](../modules/generated/scikitplot.corpus.StemmingBackend.html#scikitplot.corpus.StemmingBackend "scikitplot.corpus.StemmingBackend") | Stemming algorithm. |
 | [`StopwordSource`](../modules/generated/scikitplot.corpus.StopwordSource.html#scikitplot.corpus.StopwordSource "scikitplot.corpus.StopwordSource") | Stopword list source. |
@@ -436,6 +443,10 @@ Class inheritance
 
 |  |  |
 | --- | --- |
+| [`CachePolicy`](../modules/generated/scikitplot.corpus.CachePolicy.html#scikitplot.corpus.CachePolicy "scikitplot.corpus.CachePolicy") | How [`EmbeddingEngine`](../modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine "scikitplot.corpus.EmbeddingEngine") uses its disk cache. |
+| [`CacheStatus`](../modules/generated/scikitplot.corpus.CacheStatus.html#scikitplot.corpus.CacheStatus "scikitplot.corpus.CacheStatus") | What one cached embedding call did. |
+| [`CachedEmbeddings`](../modules/generated/scikitplot.corpus.CachedEmbeddings.html#scikitplot.corpus.CachedEmbeddings "scikitplot.corpus.CachedEmbeddings") | The result of [`EmbeddingEngine.embed_cached`](../modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine.embed_cached "scikitplot.corpus.EmbeddingEngine.embed_cached"). |
+| [`resolve_hub_revision`](../modules/generated/scikitplot.corpus.resolve_hub_revision.html#scikitplot.corpus.resolve_hub_revision "scikitplot.corpus.resolve_hub_revision") | Return the Hugging Face Hub commit a model id currently points to. |
 | [`DEFAULT_CACHE_DIR`](../modules/generated/scikitplot.corpus.DEFAULT_CACHE_DIR.html#scikitplot.corpus.DEFAULT_CACHE_DIR "scikitplot.corpus.DEFAULT_CACHE_DIR") | Path subclass for non-Windows systems. |
 | [`DEFAULT_MODEL`](../modules/generated/scikitplot.corpus.DEFAULT_MODEL.html#scikitplot.corpus.DEFAULT_MODEL "scikitplot.corpus.DEFAULT_MODEL") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
 | [`EmbeddingEngine`](../modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine "scikitplot.corpus.EmbeddingEngine") | Multi-backend sentence embedding engine with SHA-256 file caching. |
@@ -463,6 +474,82 @@ Class inheritance
 | [`SimpleEnricherSpec`](../modules/generated/scikitplot.corpus.SimpleEnricherSpec.html#scikitplot.corpus.SimpleEnricherSpec "scikitplot.corpus.SimpleEnricherSpec") | Declarative configuration for [`SimpleFrequencyEnricher`](../modules/generated/scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher"). |
 | [`SimpleFrequencyEnricher`](../modules/generated/scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher") | Populate tokens and deterministic frequency-ranked keywords. |
 
+## Evaluation: Retrieval and Answer Metrics, Scorers[#](#evaluation-retrieval-and-answer-metrics-scorers "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of EvaluationComparison, MetricComparison, QueryEvaluation, RetrievalEvaluation, ScorerBackendInfo](../_images/inheritance-440e038864e8ec88d7926c7dbbc5604d9d47b350.png)
+
+
+
+
+
+
+
+|  |  |
+| --- | --- |
+| [`hit_rate_at_k`](../modules/generated/scikitplot.corpus.hit_rate_at_k.html#scikitplot.corpus.hit_rate_at_k "scikitplot.corpus.hit_rate_at_k") | Fraction of queries with at least one relevant identifier in the first `k`. |
+| [`mean_average_precision`](../modules/generated/scikitplot.corpus.mean_average_precision.html#scikitplot.corpus.mean_average_precision "scikitplot.corpus.mean_average_precision") | Mean average precision (MAP), normalised by all relevant identifiers. |
+| [`mean_reciprocal_rank`](../modules/generated/scikitplot.corpus.mean_reciprocal_rank.html#scikitplot.corpus.mean_reciprocal_rank "scikitplot.corpus.mean_reciprocal_rank") | Mean of `1 / rank` of the first relevant identifier (MRR). |
+| [`ndcg_at_k`](../modules/generated/scikitplot.corpus.ndcg_at_k.html#scikitplot.corpus.ndcg_at_k "scikitplot.corpus.ndcg_at_k") | Normalised discounted cumulative gain (nDCG@k) over graded judgments. |
+| [`precision_at_k`](../modules/generated/scikitplot.corpus.precision_at_k.html#scikitplot.corpus.precision_at_k "scikitplot.corpus.precision_at_k") | Fraction of the first `k` ranked identifiers that are relevant. |
+| [`r_precision`](../modules/generated/scikitplot.corpus.r_precision.html#scikitplot.corpus.r_precision "scikitplot.corpus.r_precision") | Precision at `|R|`, the number of relevant identifiers of each query. |
+| [`ranking_metrics`](../modules/generated/scikitplot.corpus.ranking_metrics.html#scikitplot.corpus.ranking_metrics "scikitplot.corpus.ranking_metrics") | Compute several ranking metrics in one validated pass. |
+| [`recall_at_k`](../modules/generated/scikitplot.corpus.recall_at_k.html#scikitplot.corpus.recall_at_k "scikitplot.corpus.recall_at_k") | Fraction of the relevant identifiers found in the first `k`. |
+| [`anls_score`](../modules/generated/scikitplot.corpus.anls_score.html#scikitplot.corpus.anls_score "scikitplot.corpus.anls_score") | Average normalised Levenshtein similarity (ANLS). |
+| [`edit_similarity`](../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity "scikitplot.corpus.edit_similarity") | Return `1 - levenshtein(a, b) / max(len(a), len(b))`. |
+| [`edit_similarity_score`](../modules/generated/scikitplot.corpus.edit_similarity_score.html#scikitplot.corpus.edit_similarity_score "scikitplot.corpus.edit_similarity_score") | Mean normalised edit similarity between predictions and references. |
+| [`exact_match_score`](../modules/generated/scikitplot.corpus.exact_match_score.html#scikitplot.corpus.exact_match_score "scikitplot.corpus.exact_match_score") | Fraction of predicted answers equal to a reference after normalisation. |
+| [`normalize_answer`](../modules/generated/scikitplot.corpus.normalize_answer.html#scikitplot.corpus.normalize_answer "scikitplot.corpus.normalize_answer") | Normalise an answer string for comparison. |
+| [`token_f1_score`](../modules/generated/scikitplot.corpus.token_f1_score.html#scikitplot.corpus.token_f1_score "scikitplot.corpus.token_f1_score") | Token-overlap F1 between predicted and reference answers (SQuAD style). |
+| [`ScorerBackendInfo`](../modules/generated/scikitplot.corpus.ScorerBackendInfo.html#scikitplot.corpus.ScorerBackendInfo "scikitplot.corpus.ScorerBackendInfo") | Which base class the corpus scorers use in this process. |
+| [`get_corpus_scorer`](../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer "scikitplot.corpus.get_corpus_scorer") | Return a new scorer for a metric name. |
+| [`get_corpus_scorer_names`](../modules/generated/scikitplot.corpus.get_corpus_scorer_names.html#scikitplot.corpus.get_corpus_scorer_names "scikitplot.corpus.get_corpus_scorer_names") | Return the names [`get_corpus_scorer`](../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer "scikitplot.corpus.get_corpus_scorer") accepts. |
+| [`make_corpus_scorer`](../modules/generated/scikitplot.corpus.make_corpus_scorer.html#scikitplot.corpus.make_corpus_scorer "scikitplot.corpus.make_corpus_scorer") | Make a scikit-learn compatible scorer from a corpus metric. |
+| [`scorer_backend_info`](../modules/generated/scikitplot.corpus.scorer_backend_info.html#scikitplot.corpus.scorer_backend_info "scikitplot.corpus.scorer_backend_info") | Report which base class corpus scorers use in this process. |
+| [`EvaluationComparison`](../modules/generated/scikitplot.corpus.EvaluationComparison.html#scikitplot.corpus.EvaluationComparison "scikitplot.corpus.EvaluationComparison") | Paired comparison of two evaluations of the same queries. |
+| [`MetricComparison`](../modules/generated/scikitplot.corpus.MetricComparison.html#scikitplot.corpus.MetricComparison "scikitplot.corpus.MetricComparison") | One metric of an [`EvaluationComparison`](../modules/generated/scikitplot.corpus.EvaluationComparison.html#scikitplot.corpus.EvaluationComparison "scikitplot.corpus.EvaluationComparison"). |
+| [`QueryEvaluation`](../modules/generated/scikitplot.corpus.QueryEvaluation.html#scikitplot.corpus.QueryEvaluation "scikitplot.corpus.QueryEvaluation") | One query of a [`RetrievalEvaluation`](../modules/generated/scikitplot.corpus.RetrievalEvaluation.html#scikitplot.corpus.RetrievalEvaluation "scikitplot.corpus.RetrievalEvaluation"). |
+| [`RetrievalEvaluation`](../modules/generated/scikitplot.corpus.RetrievalEvaluation.html#scikitplot.corpus.RetrievalEvaluation "scikitplot.corpus.RetrievalEvaluation") | Result of [`evaluate_retrieval`](../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval "scikitplot.corpus.evaluate_retrieval"). |
+| [`evaluate_retrieval`](../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval "scikitplot.corpus.evaluate_retrieval") | Run `retriever` on every query and score the rankings. |
+| [`UndefinedMetricWarning`](../modules/generated/scikitplot.corpus.UndefinedMetricWarning.html#scikitplot.corpus.UndefinedMetricWarning "scikitplot.corpus.UndefinedMetricWarning") | A metric is undefined for some queries and was scored by `zero_division`. |
+| [`ranked_ids`](../modules/generated/scikitplot.corpus.ranked_ids.html#scikitplot.corpus.ranked_ids "scikitplot.corpus.ranked_ids") | Return the identifiers of retrieval results, in rank order. |
+
+## Evaluation: LLM Judges, Answer Harness, Agreement[#](#evaluation-llm-judges-answer-harness-agreement "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of AnswerEvaluation, AnswerItem, Completion, JudgeResult, LLM, LLMJudge, PreferenceEvaluation](../_images/inheritance-f9282e4329cd79a5bab4c410c155ff147b64572f.png)
+
+
+
+
+
+
+
+
+
+|  |  |
+| --- | --- |
+| [`CacheError`](../modules/generated/scikitplot.corpus.CacheError.html#scikitplot.corpus.CacheError "scikitplot.corpus.CacheError") | The response cache failed (a configuration problem, not a model failure). |
+| [`Completion`](../modules/generated/scikitplot.corpus.Completion.html#scikitplot.corpus.Completion "scikitplot.corpus.Completion") | One model response. |
+| [`IncompleteCompletionError`](../modules/generated/scikitplot.corpus.IncompleteCompletionError.html#scikitplot.corpus.IncompleteCompletionError "scikitplot.corpus.IncompleteCompletionError") | A completion that did not end normally (cut off, filtered, refused). |
+| [`LLM`](../modules/generated/scikitplot.corpus.LLM.html#scikitplot.corpus.LLM "scikitplot.corpus.LLM") | A language model behind one call shape; made by [`make_llm`](../modules/generated/scikitplot.corpus.make_llm.html#scikitplot.corpus.make_llm "scikitplot.corpus.make_llm"). |
+| [`make_llm`](../modules/generated/scikitplot.corpus.make_llm.html#scikitplot.corpus.make_llm "scikitplot.corpus.make_llm") | Make an [`LLM`](../modules/generated/scikitplot.corpus.LLM.html#scikitplot.corpus.LLM "scikitplot.corpus.LLM") for OpenAI, Anthropic, Gemini or a callable. |
+| [`JudgeParseError`](../modules/generated/scikitplot.corpus.JudgeParseError.html#scikitplot.corpus.JudgeParseError "scikitplot.corpus.JudgeParseError") | A judge's response that is not a valid verdict. |
+| [`JudgeResult`](../modules/generated/scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus.JudgeResult") | One judged score. |
+| [`LLMJudge`](../modules/generated/scikitplot.corpus.LLMJudge.html#scikitplot.corpus.LLMJudge "scikitplot.corpus.LLMJudge") | Judge answers and contexts with a language model. |
+| [`context_texts`](../modules/generated/scikitplot.corpus.context_texts.html#scikitplot.corpus.context_texts "scikitplot.corpus.context_texts") | Return the texts of retrieved contexts, in order. |
+| [`parse_verdict`](../modules/generated/scikitplot.corpus.parse_verdict.html#scikitplot.corpus.parse_verdict "scikitplot.corpus.parse_verdict") | Parse a judge response strictly. |
+| [`AnswerEvaluation`](../modules/generated/scikitplot.corpus.AnswerEvaluation.html#scikitplot.corpus.AnswerEvaluation "scikitplot.corpus.AnswerEvaluation") | Result of [`evaluate_answers`](../modules/generated/scikitplot.corpus.evaluate_answers.html#scikitplot.corpus.evaluate_answers "scikitplot.corpus.evaluate_answers"). |
+| [`AnswerItem`](../modules/generated/scikitplot.corpus.AnswerItem.html#scikitplot.corpus.AnswerItem "scikitplot.corpus.AnswerItem") | One item of an [`AnswerEvaluation`](../modules/generated/scikitplot.corpus.AnswerEvaluation.html#scikitplot.corpus.AnswerEvaluation "scikitplot.corpus.AnswerEvaluation"). |
+| [`PreferenceEvaluation`](../modules/generated/scikitplot.corpus.PreferenceEvaluation.html#scikitplot.corpus.PreferenceEvaluation "scikitplot.corpus.PreferenceEvaluation") | Result of [`evaluate_preference`](../modules/generated/scikitplot.corpus.evaluate_preference.html#scikitplot.corpus.evaluate_preference "scikitplot.corpus.evaluate_preference"). |
+| [`evaluate_answers`](../modules/generated/scikitplot.corpus.evaluate_answers.html#scikitplot.corpus.evaluate_answers "scikitplot.corpus.evaluate_answers") | Evaluate a system's answers with text metrics and LLM judges. |
+| [`evaluate_preference`](../modules/generated/scikitplot.corpus.evaluate_preference.html#scikitplot.corpus.evaluate_preference "scikitplot.corpus.evaluate_preference") | Judge two systems' answers head to head, in both orders. |
+| [`cohen_kappa`](../modules/generated/scikitplot.corpus.cohen_kappa.html#scikitplot.corpus.cohen_kappa "scikitplot.corpus.cohen_kappa") | Cohen's kappa between two raters of the same items. |
+| [`fleiss_kappa`](../modules/generated/scikitplot.corpus.fleiss_kappa.html#scikitplot.corpus.fleiss_kappa "scikitplot.corpus.fleiss_kappa") | Fleiss' kappa for any number of raters with nominal labels. |
+| [`krippendorff_alpha`](../modules/generated/scikitplot.corpus.krippendorff_alpha.html#scikitplot.corpus.krippendorff_alpha "scikitplot.corpus.krippendorff_alpha") | Krippendorff's alpha for any number of raters, with missing ratings. |
+
 ## Export[#](#export "Link to this heading")
 
 |  |  |
@@ -485,7 +572,12 @@ Class inheritance
 | [`NotIn`](../modules/generated/scikitplot.corpus.NotIn.html#scikitplot.corpus.NotIn "scikitplot.corpus.NotIn") | `field not in values`; a missing field does not match. |
 | [`Or`](../modules/generated/scikitplot.corpus.Or.html#scikitplot.corpus.Or "scikitplot.corpus.Or") | At least one sub-expression must match. |
 | [`Range`](../modules/generated/scikitplot.corpus.Range.html#scikitplot.corpus.Range "scikitplot.corpus.Range") | `lo <= field <= hi`, with either bound optional. |
+| [`SecurityFilter`](../modules/generated/scikitplot.corpus.SecurityFilter.html#scikitplot.corpus.SecurityFilter "scikitplot.corpus.SecurityFilter") | A scope bound to an index and AND-ed with every query's own filter. |
 | [`UnsupportedOperatorError`](../modules/generated/scikitplot.corpus.UnsupportedOperatorError.html#scikitplot.corpus.UnsupportedOperatorError "scikitplot.corpus.UnsupportedOperatorError") | Raised when a backend is asked to evaluate an operator it rejects. |
+| [`filter_from_dict`](../modules/generated/scikitplot.corpus.filter_from_dict.html#scikitplot.corpus.filter_from_dict "scikitplot.corpus.filter_from_dict") | Rebuild a filter expression from its JSON form, refusing anything off contract. |
+| [`filter_to_dict`](../modules/generated/scikitplot.corpus.filter_to_dict.html#scikitplot.corpus.filter_to_dict "scikitplot.corpus.filter_to_dict") | Return the JSON form of a filter expression. |
+| [`filterable_fields`](../modules/generated/scikitplot.corpus.filterable_fields.html#scikitplot.corpus.filterable_fields "scikitplot.corpus.filterable_fields") | Return the document fields a filter may name. |
+| [`validate_filter`](../modules/generated/scikitplot.corpus.validate_filter.html#scikitplot.corpus.validate_filter "scikitplot.corpus.validate_filter") | Return `expression` checked and frozen to the JSON-able form. |
 
 ## Generator Index[#](#generator-index "Link to this heading")
 
@@ -493,6 +585,18 @@ Class inheritance
 | --- | --- |
 | [`IndexGeneration`](../modules/generated/scikitplot.corpus.IndexGeneration.html#scikitplot.corpus.IndexGeneration "scikitplot.corpus.IndexGeneration") | Identity of one built index. |
 | [`derive_generation`](../modules/generated/scikitplot.corpus.derive_generation.html#scikitplot.corpus.derive_generation "scikitplot.corpus.derive_generation") | Derive the generation identity for a set of documents. |
+
+## Document Identity[#](#document-identity "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`DocIdScheme`](../modules/generated/scikitplot.corpus.DocIdScheme.html#scikitplot.corpus.DocIdScheme "scikitplot.corpus.DocIdScheme") | How a corpus build names its documents. |
+| [`IncompatibleSchemaError`](../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html#scikitplot.corpus.IncompatibleSchemaError "scikitplot.corpus.IncompatibleSchemaError") | Raised for data written by another generation of the document schema. |
+| [`UUID7Generator`](../modules/generated/scikitplot.corpus.UUID7Generator.html#scikitplot.corpus.UUID7Generator "scikitplot.corpus.UUID7Generator") | Monotonic generator of RFC 9562 UUID version 7 identifiers. |
+| [`assign_doc_ids`](../modules/generated/scikitplot.corpus.assign_doc_ids.html#scikitplot.corpus.assign_doc_ids "scikitplot.corpus.assign_doc_ids") | Return `documents` named by `scheme`, with parent links kept intact. |
+| [`doc_id_scheme_of`](../modules/generated/scikitplot.corpus.doc_id_scheme_of.html#scikitplot.corpus.doc_id_scheme_of "scikitplot.corpus.doc_id_scheme_of") | Return the scheme that produced `doc_id`, judged by its exact form. |
+| [`uuid7`](../modules/generated/scikitplot.corpus.uuid7.html#scikitplot.corpus.uuid7 "scikitplot.corpus.uuid7") | Return a new RFC 9562 UUID version 7 from this process's generator. |
+| [`uuid7_unix_ms`](../modules/generated/scikitplot.corpus.uuid7_unix_ms.html#scikitplot.corpus.uuid7_unix_ms "scikitplot.corpus.uuid7_unix_ms") | Return the Unix time in milliseconds that a UUID version 7 carries. |
 
 ## Graph Node[#](#graph-node "Link to this heading")
 
@@ -627,12 +731,41 @@ Class inheritance
 |  |  |
 | --- | --- |
 | [`DenseRetriever`](../modules/generated/scikitplot.corpus.DenseRetriever.html#scikitplot.corpus.DenseRetriever "scikitplot.corpus.DenseRetriever") | Vector-similarity evidence path. |
+| [`FusedItem`](../modules/generated/scikitplot.corpus.FusedItem.html#scikitplot.corpus.FusedItem "scikitplot.corpus.FusedItem") | One item of a fused ranking. |
+| [`FusionContribution`](../modules/generated/scikitplot.corpus.FusionContribution.html#scikitplot.corpus.FusionContribution "scikitplot.corpus.FusionContribution") | One leg's share of a fused item's score. |
+| [`FusionPolicy`](../modules/generated/scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy "scikitplot.corpus.FusionPolicy") | Weighted reciprocal rank fusion with one tie-break and returned contributions. |
 | [`GraphRetriever`](../modules/generated/scikitplot.corpus.GraphRetriever.html#scikitplot.corpus.GraphRetriever "scikitplot.corpus.GraphRetriever") | Relationship-traversal evidence path. |
 | [`LegContribution`](../modules/generated/scikitplot.corpus.LegContribution.html#scikitplot.corpus.LegContribution "scikitplot.corpus.LegContribution") | One leg's contribution to a fused hit. |
 | [`LegResult`](../modules/generated/scikitplot.corpus.LegResult.html#scikitplot.corpus.LegResult "scikitplot.corpus.LegResult") | What one leg produced, and how it went. |
 | [`LexicalRetriever`](../modules/generated/scikitplot.corpus.LexicalRetriever.html#scikitplot.corpus.LexicalRetriever "scikitplot.corpus.LexicalRetriever") | Keyword / BM25 evidence path. |
 | [`Retriever`](../modules/generated/scikitplot.corpus.Retriever.html#scikitplot.corpus.Retriever "scikitplot.corpus.Retriever") | Base class for an independent evidence path. |
-| [`fuse_by_rank`](../modules/generated/scikitplot.corpus.fuse_by_rank.html#scikitplot.corpus.fuse_by_rank "scikitplot.corpus.fuse_by_rank") | Combine leg results by reciprocal rank fusion. |
+| [`fuse_by_rank`](../modules/generated/scikitplot.corpus.fuse_by_rank.html#scikitplot.corpus.fuse_by_rank "scikitplot.corpus.fuse_by_rank") | Combine leg results by weighted reciprocal rank fusion. |
+
+## Retrieval Execution Plan[#](#retrieval-execution-plan "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`CharBudgetCompressor`](../modules/generated/scikitplot.corpus.CharBudgetCompressor.html#scikitplot.corpus.CharBudgetCompressor "scikitplot.corpus.CharBudgetCompressor") | Keep each hit's text, best first, until a character budget is spent. |
+| [`ContextPassage`](../modules/generated/scikitplot.corpus.ContextPassage.html#scikitplot.corpus.ContextPassage "scikitplot.corpus.ContextPassage") | The context a compressor kept from one hit. |
+| [`ExecutionResult`](../modules/generated/scikitplot.corpus.ExecutionResult.html#scikitplot.corpus.ExecutionResult "scikitplot.corpus.ExecutionResult") | Ranked hits plus the account of every stage. |
+| [`PlannedHit`](../modules/generated/scikitplot.corpus.PlannedHit.html#scikitplot.corpus.PlannedHit "scikitplot.corpus.PlannedHit") | One ranked hit of a plan, with the score of each stage that ranked it. |
+| [`RetrievalExecutionPlan`](../modules/generated/scikitplot.corpus.RetrievalExecutionPlan.html#scikitplot.corpus.RetrievalExecutionPlan "scikitplot.corpus.RetrievalExecutionPlan") | Run retrieval through typed, bounded stages. |
+| [`StageBudget`](../modules/generated/scikitplot.corpus.StageBudget.html#scikitplot.corpus.StageBudget "scikitplot.corpus.StageBudget") | Deterministic limits on the `retrieve` stage. |
+| [`StageKind`](../modules/generated/scikitplot.corpus.StageKind.html#scikitplot.corpus.StageKind "scikitplot.corpus.StageKind") | One stage of a plan, in execution order. |
+| [`StageOutcome`](../modules/generated/scikitplot.corpus.StageOutcome.html#scikitplot.corpus.StageOutcome "scikitplot.corpus.StageOutcome") | How one stage fared. |
+| [`StageStatus`](../modules/generated/scikitplot.corpus.StageStatus.html#scikitplot.corpus.StageStatus "scikitplot.corpus.StageStatus") | Outcome of one stage. |
+
+## Corrective Retrieval[#](#corrective-retrieval "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`CorrectionResult`](../modules/generated/scikitplot.corpus.CorrectionResult.html#scikitplot.corpus.CorrectionResult "scikitplot.corpus.CorrectionResult") | The returned hits, the verdict, and every round. |
+| [`CorrectionRound`](../modules/generated/scikitplot.corpus.CorrectionRound.html#scikitplot.corpus.CorrectionRound "scikitplot.corpus.CorrectionRound") | One round: the query run, how it was graded, what came back. |
+| [`CorrectionVerdict`](../modules/generated/scikitplot.corpus.CorrectionVerdict.html#scikitplot.corpus.CorrectionVerdict "scikitplot.corpus.CorrectionVerdict") | What the corrective retrieval came to. |
+| [`CorrectiveRetrieval`](../modules/generated/scikitplot.corpus.CorrectiveRetrieval.html#scikitplot.corpus.CorrectiveRetrieval "scikitplot.corpus.CorrectiveRetrieval") | Grade, then accept, retry with a rewritten query, or abstain (CRAG). |
+| [`EvidenceGrade`](../modules/generated/scikitplot.corpus.EvidenceGrade.html#scikitplot.corpus.EvidenceGrade "scikitplot.corpus.EvidenceGrade") | How a grader judged one round's hits. |
+| [`GradeResult`](../modules/generated/scikitplot.corpus.GradeResult.html#scikitplot.corpus.GradeResult "scikitplot.corpus.GradeResult") | One grader's judgement of one round. |
+| [`TermCoverageGrader`](../modules/generated/scikitplot.corpus.TermCoverageGrader.html#scikitplot.corpus.TermCoverageGrader "scikitplot.corpus.TermCoverageGrader") | Grade hits by the share of the query's words their text contains. |
 
 ## Runtime Policy[#](#runtime-policy "Link to this heading")
 
@@ -665,12 +798,20 @@ Class inheritance
 
 ## Similarity Backend[#](#similarity-backend "Link to this heading")
 
+Class inheritance
+
+![Inheritance diagram of LevenshteinRanker, PairwiseRanker](../_images/inheritance-2fb6b57679702c976d5da45ba56f7784432b49ce.png)
+
+
+
+
 |  |  |
 | --- | --- |
 | [`DEFAULT_BACKEND_ORDER`](../modules/generated/scikitplot.corpus.DEFAULT_BACKEND_ORDER.html#scikitplot.corpus.DEFAULT_BACKEND_ORDER "scikitplot.corpus.DEFAULT_BACKEND_ORDER") | Built-in immutable sequence. |
 | [`AnnoyBackend`](../modules/generated/scikitplot.corpus.AnnoyBackend.html#scikitplot.corpus.AnnoyBackend "scikitplot.corpus.AnnoyBackend") | ANN backend over a scikit-plots Annoy `Index` (default backend). |
 | [`BruteForceBackend`](../modules/generated/scikitplot.corpus.BruteForceBackend.html#scikitplot.corpus.BruteForceBackend "scikitplot.corpus.BruteForceBackend") | Exact cosine similarity via a normalised dot product. |
 | [`FaissBackend`](../modules/generated/scikitplot.corpus.FaissBackend.html#scikitplot.corpus.FaissBackend "scikitplot.corpus.FaissBackend") | ANN backend over a FAISS `IndexFlatIP` on normalised vectors. |
+| [`FallbackRefusedError`](../modules/generated/scikitplot.corpus.FallbackRefusedError.html#scikitplot.corpus.FallbackRefusedError "scikitplot.corpus.FallbackRefusedError") | A fallback was needed and `allow_fallback=False` refused it (R2-5). |
 | [`VectorIndexBackend`](../modules/generated/scikitplot.corpus.VectorIndexBackend.html#scikitplot.corpus.VectorIndexBackend "scikitplot.corpus.VectorIndexBackend") | Uniform contract for a dense vector index. |
 | [`VoyagerBackend`](../modules/generated/scikitplot.corpus.VoyagerBackend.html#scikitplot.corpus.VoyagerBackend "scikitplot.corpus.VoyagerBackend") | ANN backend over a Voyager cosine-space index. |
 | [`list_available_backends`](../modules/generated/scikitplot.corpus.list_available_backends.html#scikitplot.corpus.list_available_backends "scikitplot.corpus.list_available_backends") | Return the canonical names of currently importable backends. |
@@ -678,6 +819,10 @@ Class inheritance
 | [`RetrievalConfig`](../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig "scikitplot.corpus.RetrievalConfig") | Configuration for similarity search. |
 | [`RetrievalHit`](../modules/generated/scikitplot.corpus.RetrievalHit.html#scikitplot.corpus.RetrievalHit "scikitplot.corpus.RetrievalHit") | A single search result. |
 | [`RetrievalIndex`](../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex "scikitplot.corpus.RetrievalIndex") | Multi-mode similarity index over `CorpusDocument` collections. |
+| [`LevenshteinRanker`](../modules/generated/scikitplot.corpus.LevenshteinRanker.html#scikitplot.corpus.LevenshteinRanker "scikitplot.corpus.LevenshteinRanker") | Ranker by normalised Levenshtein similarity, with backend provenance. |
+| [`PairwiseRanker`](../modules/generated/scikitplot.corpus.PairwiseRanker.html#scikitplot.corpus.PairwiseRanker "scikitplot.corpus.PairwiseRanker") | Ranker built from a pairwise relevance function. |
+| [`make_levenshtein_ranker`](../modules/generated/scikitplot.corpus.make_levenshtein_ranker.html#scikitplot.corpus.make_levenshtein_ranker "scikitplot.corpus.make_levenshtein_ranker") | Make a [`CustomRetrievalIndex`](../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") ranker by Levenshtein similarity. |
+| [`make_pairwise_ranker`](../modules/generated/scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker "scikitplot.corpus.make_pairwise_ranker") | Make a [`CustomRetrievalIndex`](../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") ranker from a pairwise function. |
 
 ## Source[#](#source "Link to this heading")
 

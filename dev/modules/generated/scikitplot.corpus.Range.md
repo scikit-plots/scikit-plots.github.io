@@ -1,6 +1,6 @@
 # Range[#](#range "Link to this heading")
 
-class scikitplot.corpus.Range(**field**, **lo=None**, **hi=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_filters.py#L208)[#](#scikitplot.corpus.Range "Link to this definition")
+class scikitplot.corpus.Range(**field**, **lo=None**, **hi=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L288)[#](#scikitplot.corpus.Range "Link to this definition")
 :   `lo <= field <= hi`, with either bound optional.
 
     Parameters:
@@ -18,19 +18,19 @@ class scikitplot.corpus.Range(**field**, **lo=None**, **hi=None**)[[source]](htt
         * ****lo**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
         * ****hi**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
-    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_filters.py#L115)[#](#scikitplot.corpus.Range.describe "Link to this definition")
+    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L179)[#](#scikitplot.corpus.Range.describe "Link to this definition")
     :   Return a readable rendering of the expression.
 
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    field: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_filters.py#L208)[#](#scikitplot.corpus.Range.field "Link to this definition")
+    field: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L288)[#](#scikitplot.corpus.Range.field "Link to this definition")
 
     hi: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.corpus.Range.hi "Link to this definition")
 
     lo: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.corpus.Range.lo "Link to this definition")
 
-    matches(**document**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_filters.py#L225)[#](#scikitplot.corpus.Range.matches "Link to this definition")
+    matches(**document**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L305)[#](#scikitplot.corpus.Range.matches "Link to this definition")
     :   Whether the field lies within the bounds.
 
         Notes
@@ -45,8 +45,14 @@ class scikitplot.corpus.Range(**field**, **lo=None**, **hi=None**)[[source]](htt
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    operators()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_filters.py#L247)[#](#scikitplot.corpus.Range.operators "Link to this definition")
+    operators()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L327)[#](#scikitplot.corpus.Range.operators "Link to this definition")
     :   Return `{'Range'}`.
 
         Return type:
         :   [set](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
+
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L183)[#](#scikitplot.corpus.Range.to_dict "Link to this definition")
+    :   Return the JSON form; see [`filter_to_dict`](scikitplot.corpus.filter_to_dict.html#scikitplot.corpus.filter_to_dict "scikitplot.corpus.filter_to_dict").
+
+        Return type:
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]

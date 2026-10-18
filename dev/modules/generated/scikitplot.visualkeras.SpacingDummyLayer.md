@@ -1,6 +1,6 @@
 # SpacingDummyLayer[#](#spacingdummylayer "Link to this heading")
 
-class scikitplot.visualkeras.SpacingDummyLayer(**\*args**, **spacing=50**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/visualkeras/_layer_utils.py#L183)[#](#scikitplot.visualkeras.SpacingDummyLayer "Link to this definition")
+class scikitplot.visualkeras.SpacingDummyLayer(**\*args**, **spacing=50**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/visualkeras/_layer_utils.py#L185)[#](#scikitplot.visualkeras.SpacingDummyLayer "Link to this definition")
 :   A factory class for dynamically generating a dummy Keras layer with custom spacing.
 
     This is useful in model visualization pipelines where visual gaps or structural separation

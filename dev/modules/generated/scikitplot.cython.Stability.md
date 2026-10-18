@@ -1,13 +1,13 @@
 # Stability[#](#stability "Link to this heading")
 
-class scikitplot.cython.Stability(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_api.py#L46)[#](#scikitplot.cython.Stability "Link to this definition")
+class scikitplot.cython.Stability(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_api.py#L46)[#](#scikitplot.cython.Stability "Link to this definition")
 :   Stability tier of a public API symbol.
 
-    ADVANCED = 'advanced'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.ADVANCED "Link to this definition")
+    ADVANCED = 'advanced'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.ADVANCED "Link to this definition")
 
-    EXPERIMENTAL = 'experimental'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.EXPERIMENTAL "Link to this definition")
+    EXPERIMENTAL = 'experimental'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.EXPERIMENTAL "Link to this definition")
 
-    STABLE = 'stable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.STABLE "Link to this definition")
+    STABLE = 'stable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_api.py#L)[#](#scikitplot.cython.Stability.STABLE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.cython.Stability.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

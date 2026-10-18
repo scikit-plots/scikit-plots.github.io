@@ -1,6 +1,6 @@
 # is\_meta\_schema\_compatible[#](#is-meta-schema-compatible "Link to this heading")
 
-scikitplot.cython.is\_meta\_schema\_compatible(**meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_cache.py#L83)[#](#scikitplot.cython.is_meta_schema_compatible "Link to this definition")
+scikitplot.cython.is\_meta\_schema\_compatible(**meta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_cache.py#L83)[#](#scikitplot.cython.is_meta_schema_compatible "Link to this definition")
 :   Return whether `meta` can be trusted by the current reader.
 
     Compatible means the entry’s schema version is a version this library knows

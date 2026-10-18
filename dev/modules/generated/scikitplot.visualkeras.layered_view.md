@@ -1,6 +1,6 @@
 # layered\_view[#](#layered-view "Link to this heading")
 
-scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/visualkeras/_layered.py#L58)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
+scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**, **min\_xy=20**, **max\_z=400**, **max\_xy=2000**, **scale\_z=0.1**, **scale\_xy=4**, **type\_ignore=None**, **index\_ignore=None**, **color\_map=None**, **one\_dim\_orientation='z'**, **index\_2d=None**, **background\_fill='white'**, **draw\_volume=True**, **draw\_reversed=False**, **padding=10**, **text\_callable=None**, **text\_vspacing=4**, **spacing=10**, **draw\_funnel=True**, **shade\_step=10**, **legend=False**, **legend\_text\_spacing\_offset=15**, **font=None**, **font\_color='black'**, **show\_dimension=False**, **backend=None**, **show\_os\_viewer=False**, **show\_fig=True**, **save\_fig=False**, **save\_fig\_filename=''**, **overwrite=True**, **add\_timestamp=False**, **verbose=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/visualkeras/_layered.py#L62)[#](#scikitplot.visualkeras.layered_view "Link to this definition")
 :   Generates an architectural visualization for a given linear Keras
     [`tf.keras.Model`](https://www.tensorflow.org/api_docs/python/tf/keras/Model "(in TensorFlow v2.8)") model
     (i.e., one input and output tensor for each layer) in a layered style,
@@ -195,12 +195,12 @@ scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**
         * ****draw\_volume**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****draw\_reversed**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****padding**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
-        * ****text\_callable**** (**Optional****[****Union****[****Callable****[****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **Layer****]****,** [**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]****]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
+        * ****text\_callable**** (**Optional****[****\n Union****[****Callable****[****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** **Layer****]****,** [**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]****]****,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****\n** **]**)
         * ****text\_vspacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****spacing**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****draw\_funnel**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****legend**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
-        * ****font**** (**Optional****[****Union****[****ImageFont.ImageFont****,** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **"any"****]****]****]**)
+        * ****font**** (**Optional****[****\n Union****[****ImageFont.ImageFont****,** [**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **"any"****]****]****\n** **]**)
         * ****font\_color**** (**any**)
         * ****backend**** (**Optional****[****Union****[**[**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**,**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****]**)
         * ****show\_os\_viewer**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
@@ -211,7 +211,7 @@ scikitplot.visualkeras.layered\_view(**model**, **to\_file=None**, **min\_z=20**
         * ****verbose**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Return type:
-    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v12.3.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev733+gcc7d47175)")
+    :   [PIL.Image.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image "(in Pillow (PIL Fork) v13.0.0)") | [matplotlib.image.AxesImage](https://matplotlib.org/devdocs/api/image_api.html#matplotlib.image.AxesImage "(in Matplotlib v3.12.0.dev804+g493abb1b6)")
 
     Notes
 

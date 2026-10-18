@@ -1,6 +1,6 @@
 # PlatformCapabilities[#](#platformcapabilities "Link to this heading")
 
-class scikitplot.cython.PlatformCapabilities(**platform**, **is\_browser\_wasm**, **can\_compile\_at\_runtime**, **prebuilt\_only**, **wasm\_package\_suffix**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_profiles.py#L212)[#](#scikitplot.cython.PlatformCapabilities "Link to this definition")
+class scikitplot.cython.PlatformCapabilities(**platform**, **is\_browser\_wasm**, **can\_compile\_at\_runtime**, **prebuilt\_only**, **wasm\_package\_suffix**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_profiles.py#L212)[#](#scikitplot.cython.PlatformCapabilities "Link to this definition")
 :   Declarative contract describing what the current platform supports.
 
     Runtime Cython compilation requires an out-of-process C/C++ compiler. In a
@@ -52,7 +52,7 @@ class scikitplot.cython.PlatformCapabilities(**platform**, **is\_browser\_wasm**
     ```
     Go BackOpen In Tab
 
-    can\_compile\_at\_runtime: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.can_compile_at_runtime "Link to this definition")
+    can\_compile\_at\_runtime: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.can_compile_at_runtime "Link to this definition")
     :   Alias for field number 2
 
     count(**value**, **/**)[#](#scikitplot.cython.PlatformCapabilities.count "Link to this definition")
@@ -63,14 +63,14 @@ class scikitplot.cython.PlatformCapabilities(**platform**, **is\_browser\_wasm**
 
         Raises ValueError if the value is not present.
 
-    is\_browser\_wasm: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.is_browser_wasm "Link to this definition")
+    is\_browser\_wasm: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.is_browser_wasm "Link to this definition")
     :   Alias for field number 1
 
-    platform: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.platform "Link to this definition")
+    platform: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.platform "Link to this definition")
     :   Alias for field number 0
 
-    prebuilt\_only: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.prebuilt_only "Link to this definition")
+    prebuilt\_only: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.prebuilt_only "Link to this definition")
     :   Alias for field number 3
 
-    wasm\_package\_suffix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.wasm_package_suffix "Link to this definition")
+    wasm\_package\_suffix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.PlatformCapabilities.wasm_package_suffix "Link to this definition")
     :   Alias for field number 4

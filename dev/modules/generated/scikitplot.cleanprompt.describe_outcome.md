@@ -1,6 +1,6 @@
 # describe\_outcome[#](#describe-outcome "Link to this heading")
 
-scikitplot.cleanprompt.describe\_outcome(**result**, **diagnosis**, **suggestions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_diagnostics.py#L609)[#](#scikitplot.cleanprompt.describe_outcome "Link to this definition")
+scikitplot.cleanprompt.describe\_outcome(**result**, **diagnosis**, **suggestions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_diagnostics.py#L609)[#](#scikitplot.cleanprompt.describe_outcome "Link to this definition")
 :   Explain a redaction outcome, especially an empty one.
 
     Parameters:

@@ -1,6 +1,6 @@
 # SemanticChunker[#](#semanticchunker "Link to this heading")
 
-class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L182)[#](#scikitplot.corpus.SemanticChunker "Link to this definition")
+class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L213)[#](#scikitplot.corpus.SemanticChunker "Link to this definition")
 :   Embedding-aware, writing-system-aware semantic chunker (Layer 3).
 
     Combines Layer 1 ([`ScriptSegmenter`](scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter "scikitplot.corpus._chunkers._custom_tokenizer.ScriptSegmenter")) and
@@ -75,7 +75,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L784)[#](#scikitplot.corpus.SemanticChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L788)[#](#scikitplot.corpus.SemanticChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -120,7 +120,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_multilang_mixin.py#L841)[#](#scikitplot.corpus.SemanticChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L845)[#](#scikitplot.corpus.SemanticChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -154,7 +154,7 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L492)[#](#scikitplot.corpus.SemanticChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L577)[#](#scikitplot.corpus.SemanticChunker.chunk "Link to this definition")
     :   Segment **text** using Layer 1 → Layer 2 → optional Layer 3.
 
         Parameters:
@@ -179,6 +179,18 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
             :   If **text** is empty or whitespace-only, or contains NUL bytes
                 or lone surrogates.
 
+            ImportError
+            :   If EMBEDDING or HYBRID is configured, `sentence-transformers`
+                is not installed and `allow_fallback=False`.
+
+            RuntimeError
+            :   If the model failed to load and `allow_fallback=False` (chained
+                from the load error).
+
+            Exception
+            :   Whatever the embedding model raised while encoding, when
+                `allow_fallback=False`.
+
         Parameters:
         :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****doc\_id**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
@@ -196,10 +208,14 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
         3. Layer 1: ScriptSegmenter → ScriptSpan list.
         4. Layer 2: WritingSystemAdapter → per-script Chunk list.
         5. Min/max token filtering and enforcement.
-        6. EMBEDDING / HYBRID: boundary refinement via cosine similarity.
-        7. MultilangMixin: enrich each chunk with MultilangChunkMeta.
+        6. EMBEDDING / HYBRID: boundary refinement via cosine similarity; a
+           missing package, a model that fails to load or a model that fails
+           to encode falls back to MORPHOLOGICAL (see
+           `SemanticChunkerConfig.allow_fallback`).
+        7. MultilangMixin: enrich each chunk with MultilangChunkMeta; the
+           model is recorded only when it was called for this text.
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L732)[#](#scikitplot.corpus.SemanticChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L908)[#](#scikitplot.corpus.SemanticChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -230,6 +246,15 @@ class scikitplot.corpus.SemanticChunker(**config=None**, **\***, **adapter=None*
 
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")]
+
+    property config: [SemanticChunkerConfig](scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig "scikitplot.corpus._chunkers._semantic.SemanticChunkerConfig")[#](#scikitplot.corpus.SemanticChunker.config "Link to this definition")
+    :   The resolved [`SemanticChunkerConfig`](scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig "scikitplot.corpus.SemanticChunkerConfig") for this instance (read-only).
+
+    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L121)[#](#scikitplot.corpus.SemanticChunker.config_class "Link to this definition")
+    :   alias of [`SemanticChunkerConfig`](scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig "scikitplot.corpus._chunkers._semantic.SemanticChunkerConfig")
+
+    text\_is\_source\_slice = True[#](#scikitplot.corpus.SemanticChunker.text_is_source_slice "Link to this definition")
+    :   Whether each chunk’s text is `source[context_span]` (R3-3).
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

@@ -1,6 +1,6 @@
 # KissRandomState[#](#kissrandomstate "Link to this heading")
 
-class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
+class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissRandomState "Link to this definition")
 :   NumPy RandomState-compatible interface with complete serialization.
 
     KissRandomState : Inherites from KissGenerator.
@@ -231,6 +231,22 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         :   int or ndarray
             :   Random integers
 
+        Raises:
+        :   TypeError
+            :   If a bound is not an integer (a Python or numpy integer; `bool`
+                is refused, as in `index`).
+
+            ValueError
+            :   If `low >= high`, or the range holds more than `2**64` values
+                (more than one 64-bit draw can reach).
+
+        Notes
+
+        Unbiased (R6-1): a raw draw below `2**64 mod (high - low)` is
+        rejected before the modulo. A seeded stream equals the plain modulo’s
+        until the first rejection (probability below `(high - low) / 2**64`
+        per draw); every later output is then shifted by one draw.
+
         Examples
 
         Try it in your browser!
@@ -371,6 +387,14 @@ class scikitplot.random.KissRandomState(**seed=None**)[[source]](https://github.
         Returns:
         :   int or ndarray
             :   Random integers
+
+        Raises:
+        :   TypeError
+            :   If a bound is not an integer (or is a `bool`); array bounds are
+                not supported.
+
+            ValueError
+            :   As [`KissGenerator.integers`](scikitplot.random.KissGenerator.html#scikitplot.random.KissGenerator.integers "scikitplot.random.KissGenerator.integers").
 
         Examples
 

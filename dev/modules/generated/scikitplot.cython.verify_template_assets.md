@@ -1,6 +1,6 @@
 # verify\_template\_assets[#](#verify-template-assets "Link to this heading")
 
-scikitplot.cython.verify\_template\_assets()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_templates_api.py#L1205)[#](#scikitplot.cython.verify_template_assets "Link to this definition")
+scikitplot.cython.verify\_template\_assets()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_templates_api.py#L1205)[#](#scikitplot.cython.verify_template_assets "Link to this definition")
 :   Verify every referenced template support asset is actually shipped.
 
     Walks all `*.meta.json` template descriptors and confirms that each file

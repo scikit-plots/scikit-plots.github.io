@@ -1,6 +1,6 @@
 # distribution\_version[#](#distribution-version "Link to this heading")
 
-scikitplot.corpus.distribution\_version(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_capabilities.py#L109)[#](#scikitplot.corpus.distribution_version "Link to this definition")
+scikitplot.corpus.distribution\_version(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_capabilities.py#L111)[#](#scikitplot.corpus.distribution_version "Link to this definition")
 :   Return the installed version of a distribution, or `None` if absent.
 
     Parameters:

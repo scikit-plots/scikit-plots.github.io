@@ -1,6 +1,6 @@
 # encrypt\_mapping[#](#encrypt-mapping "Link to this heading")
 
-scikitplot.cleanprompt.encrypt\_mapping(**mapping**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_crypto.py#L114)[#](#scikitplot.cleanprompt.encrypt_mapping "Link to this definition")
+scikitplot.cleanprompt.encrypt\_mapping(**mapping**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_crypto.py#L114)[#](#scikitplot.cleanprompt.encrypt_mapping "Link to this definition")
 :   Encrypt every value of `mapping`, leaving the labels in the clear.
 
     Parameters:

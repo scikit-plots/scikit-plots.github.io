@@ -1,6 +1,6 @@
 # PipelineGuard[#](#pipelineguard "Link to this heading")
 
-class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_base.py#L2818)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
+class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L2923)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
 :   Wrap any document stream with resilience, deduplication, and checkpointing.
 
     [`PipelineGuard`](#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") is a thin, composable layer you place around
@@ -29,7 +29,13 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         ****checkpoint\_path****pathlib.Path or None, optional
         :   Path to a JSONL file for checkpoint/resume. When set, every
             `checkpoint_every` documents are written; on restart, already-seen
-            `doc_id` values are skipped. Default: `None` (no checkpoint).
+            `doc_id` values are skipped. Each line records the document
+            `schema_version`; a checkpoint written by another generation (or
+            before lines carried one) raises `IncompatibleSchemaError` on load,
+            because its ids would match nothing. Under `doc_id_scheme="uuid7"`
+            the ids are new on every build, so apply the guard to documents
+            before ids are minted, or resume by `content_hash` (`dedup`).
+            Default: `None` (no checkpoint).
 
         ****checkpoint\_every****int, optional
         :   Flush checkpoint every N yielded documents. Default: 500.
@@ -106,7 +112,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_base.py#L3077)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L3188)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
     :   Flush and close the checkpoint file handle.
 
         Notes
@@ -117,7 +123,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         Return type:
         :   None
 
-    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_base.py#L2971)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
+    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L3082)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
     :   Iterate **source** with resilience, dedup, and checkpoint.
 
         Parameters:

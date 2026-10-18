@@ -1,6 +1,6 @@
 # MlflowIntegrationError[#](#mlflowintegrationerror "Link to this heading")
 
-exception scikitplot.mlflow.MlflowIntegrationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mlflow/_errors.py#L12)[#](#scikitplot.mlflow.MlflowIntegrationError "Link to this definition")
+exception scikitplot.mlflow.MlflowIntegrationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mlflow/_errors.py#L12)[#](#scikitplot.mlflow.MlflowIntegrationError "Link to this definition")
 :   Base exception for scikitplot.mlflow errors.
 
     Annotation:

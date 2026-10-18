@@ -1,6 +1,6 @@
 # BatchBuildResult[#](#batchbuildresult "Link to this heading")
 
-class scikitplot.cython.BatchBuildResult(**successes**, **failures**, **committed**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult "Link to this definition")
+class scikitplot.cython.BatchBuildResult(**successes**, **failures**, **committed**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult "Link to this definition")
 :   Structured result of a batch compile/import (CYTHON-BATCH-001).
 
     `cython_import_all` was fail-fast: a mid-batch failure left earlier
@@ -38,9 +38,9 @@ class scikitplot.cython.BatchBuildResult(**successes**, **failures**, **committe
     * `resume_token` is the sorted tuple of keys still to attempt after a
       fail-fast stop; feed it back via the `only` argument to resume.
 
-    committed: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.committed "Link to this definition")
+    committed: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.committed "Link to this definition")
 
-    failures: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[BatchFailure](scikitplot.cython.BatchFailure.html#scikitplot.cython.BatchFailure "scikitplot.cython._result.BatchFailure")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.failures "Link to this definition")
+    failures: [Sequence](https://docs.python.org/3/library/typing.html#typing.Sequence "(in Python v3.15)")[[BatchFailure](scikitplot.cython.BatchFailure.html#scikitplot.cython.BatchFailure "scikitplot.cython._result.BatchFailure")][[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.failures "Link to this definition")
 
     property n\_failed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cython.BatchBuildResult.n_failed "Link to this definition")
     :   Number of items that failed.
@@ -51,6 +51,6 @@ class scikitplot.cython.BatchBuildResult(**successes**, **failures**, **committe
     property ok: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.cython.BatchBuildResult.ok "Link to this definition")
     :   Whether the batch completed with no failures.
 
-    policy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.policy "Link to this definition")
+    policy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.policy "Link to this definition")
 
-    successes: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [BuildResult](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.successes "Link to this definition")
+    successes: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [BuildResult](scikitplot.cython.BuildResult.html#scikitplot.cython.BuildResult "scikitplot.cython._result.BuildResult")][[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_result.py#L405)[#](#scikitplot.cython.BatchBuildResult.successes "Link to this definition")

@@ -1,48 +1,58 @@
 # load\_documents[#](#load-documents "Link to this heading")
 
-scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=False**, **expected\_sha256=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_export/_export.py#L989)[#](#scikitplot.corpus.load_documents "Link to this definition")
+scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=False**, **expected\_sha256=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_export/_export.py#L1263)[#](#scikitplot.corpus.load_documents "Link to this definition")
 :   Load [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances
     from a previously exported file.
 
-    Supported round-trip formats: [`ExportFormat.PICKLE`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.PICKLE "scikitplot.corpus.ExportFormat.PICKLE"),
-    [`ExportFormat.JOBLIB`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.JOBLIB "scikitplot.corpus.ExportFormat.JOBLIB"). For all other formats, returns an empty
-    list with a warning (full deserialization from CSV/JSON/Parquet is
-    handled separately by the pipeline).
-
     Parameters:
-    :   ****path****pathlib.Path
+    :   ****path****pathlib.Path or str
         :   Path to the exported file.
 
-        ****format****ExportFormat or None, optional
-        :   Format hint. When `None`, the format is inferred from the
-            file extension (`.pkl` → PICKLE, `.joblib` → JOBLIB).
+        ****format****ExportFormat, str or None, optional
+        :   The export format, or its string value (`"jsonl"`). When `None`,
+            it is inferred from the suffix:
+            `.json`, `.jsonl`/`.ndjson`, `.yaml`/`.yml`, `.toml`,
+            `.pkl`/`.pickle`, `.joblib`.
 
-        ****trusted****bool
-        :   Whether the user has explicitly opted in to unsafe loading.
+        ****trusted****bool, default=False
+        :   Required for pickle and joblib, whose loading can execute code.
+            JSON, JSON Lines, YAML and TOML never need it.
 
         ****expected\_sha256****str or None, optional
-        :   When provided, the artifact’s SHA-256 is verified ****before****
-            deserialization; a mismatch raises [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)") before any
-            pickle code runs (tamper/wrong-artifact detection). Default `None`.
+        :   When provided, the file’s SHA-256 is verified ****before**** it is
+            parsed or deserialized; a mismatch raises [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)").
 
     Returns:
     :   list of CorpusDocument
+        :   In file order. Embeddings come back as NumPy arrays of the recorded
+            `embedding_dtype` (`float64` when a record names none).
 
     Raises:
-    :   ImportError
-        :   If `joblib` is not installed and the file is a joblib dump.
+    :   ValueError
+        :   If the format cannot be inferred or cannot be loaded back (CSV,
+            pandas, Parquet, polars, NumPy, HuggingFace; for MLflow, load the
+            downloaded `corpus_documents.jsonl`); if loading pickle or joblib
+            is not `trusted`; if `expected_sha256` does not match; if the
+            file is not valid in its format (the message names the file); or if
+            a record breaks the record contract: an unknown key, a field of the
+            wrong type, a YAML or TOML date where a string belongs, an embedding
+            value that overflows its dtype (the message names the record).
+
+        IncompatibleSchemaError
+        :   A subclass of [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)"), if the file was written by another
+            major generation of the document schema: a text record or a pickle or
+            joblib mapping with another `schema_version`, or a pickle or joblib
+            bare list (written before schema 3.0). Rebuild and export again.
+
+        ImportError
+        :   If the library a format needs is not installed.
 
         OSError
         :   If the file cannot be read.
 
-        ValueError
-        :   If loading is not `trusted` for a pickle/joblib file, or if
-            `expected_sha256` does not match the artifact.
-
         TypeError
-        :   If the deserialized object is not a list of
-            [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") (a trusted-but-wrong
-            artifact is rejected rather than returned).
+        :   If a trusted pickle or joblib file does not hold a list of
+            [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument").
 
     Parameters:
     :   * ****path**** ([**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
@@ -53,23 +63,37 @@ scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=F
     Return type:
     :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
 
+    > **See also**
+    > [`export_documents`](scikitplot.corpus.export_documents.html#scikitplot.corpus.export_documents "scikitplot.corpus.export_documents")
+    :   The writer.
+
+    Notes
+
+    ****User note.**** Text formats are the safe way to keep a corpus: loading
+    runs no code, the files are diffable, and every field the exporter wrote
+    comes back. Tabular and directory formats cannot rebuild every field
+    (metadata is flattened, embeddings are dropped), so loading them is
+    refused instead of returning a partial or empty result.
+
     Examples
 
     Try it in your browser!
+    ```
+    >>> import tempfile
+    >>> from pathlib import Path
+    >>> from scikitplot.corpus import CorpusDocument, ExportFormat, export_documents
+    >>> doc = CorpusDocument.create("notes.txt", 0, "Hello.")
+    >>> out = export_documents(
+    ...     [doc], Path(tempfile.mkdtemp()) / "corpus.jsonl", ExportFormat.JSONL
+    ... )
+    >>> [d.text for d in load_documents(out)]
+    ['Hello.']
+
+    ```
 
     Loading a pickle/joblib export requires an explicit trust decision, because
-    deserialization can execute arbitrary code. By default it is refused:
-
-    ```
-    >>> load_documents(Path("corpus.pkl"))
-    Traceback (most recent call last):
-        ...
-    ValueError: Loading pickle files is disabled by default ...
-
-    ```
-
-    Opt in only for a source you trust — and, when you have a known-good digest,
-    pin it so a tampered artifact is rejected before it is deserialized:
+    deserialization can execute arbitrary code. Pin a known digest when you
+    have one:
 
     ```
     >>> docs = load_documents(
@@ -77,12 +101,6 @@ scikitplot.corpus.load\_documents(**path**, **format=None**, **\***, **trusted=F
     ...     trusted=True,
     ...     expected_sha256="e3b0c44298fc1c149afbf4c8996fb924...",
     ... )
-    >>> len(docs)
-    312
 
     ```
-
-    Prefer a safe, code-execution-free format (Parquet or JSON) whenever you
-    control the export.
-
     Go BackOpen In Tab

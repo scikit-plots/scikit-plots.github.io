@@ -1,6 +1,6 @@
 # closest[#](#closest "Link to this heading")
 
-scikitplot.levenshtein.closest(**query**, **choices**, **\***, **key=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/levenshtein/_core.py#L465)[#](#scikitplot.levenshtein.closest "Link to this definition")
+scikitplot.levenshtein.closest(**query**, **choices**, **\***, **key=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/levenshtein/_core.py#L581)[#](#scikitplot.levenshtein.closest "Link to this definition")
 :   Return the closest choice, or `None` for an empty iterable.
 
     Parameters:

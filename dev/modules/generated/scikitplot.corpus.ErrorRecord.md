@@ -1,6 +1,6 @@
 # ErrorRecord[#](#errorrecord "Link to this heading")
 
-class scikitplot.corpus.ErrorRecord(**code**, **category**, **message**, **stage=None**, **source\_id=None**, **exception\_type=None**, **traceback\_text=None**, **details=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord "Link to this definition")
+class scikitplot.corpus.ErrorRecord(**code**, **category**, **message**, **stage=None**, **source\_id=None**, **exception\_type=None**, **traceback\_text=None**, **details=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord "Link to this definition")
 :   One structured, serialisable diagnostic.
 
     Parameters:
@@ -81,15 +81,15 @@ class scikitplot.corpus.ErrorRecord(**code**, **category**, **message**, **stage
     ```
     Go BackOpen In Tab
 
-    category: [ErrorCategory](scikitplot.corpus.ErrorCategory.html#scikitplot.corpus.ErrorCategory "scikitplot.corpus._diagnostics.ErrorCategory")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.category "Link to this definition")
+    category: [ErrorCategory](scikitplot.corpus.ErrorCategory.html#scikitplot.corpus.ErrorCategory "scikitplot.corpus._diagnostics.ErrorCategory")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.category "Link to this definition")
 
-    code: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.code "Link to this definition")
+    code: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.code "Link to this definition")
 
-    details: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.details "Link to this definition")
+    details: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.details "Link to this definition")
 
     exception\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ErrorRecord.exception_type "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L245)[#](#scikitplot.corpus.ErrorRecord.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L245)[#](#scikitplot.corpus.ErrorRecord.from_dict "Link to this definition")
     :   Rebuild a record from [`to_dict`](#scikitplot.corpus.ErrorRecord.to_dict "scikitplot.corpus.ErrorRecord.to_dict") output.
 
         Parameters:
@@ -105,7 +105,7 @@ class scikitplot.corpus.ErrorRecord(**code**, **category**, **message**, **stage
         Return type:
         :   [**ErrorRecord**](#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord")
 
-    classmethod from\_exception(**exc**, **\***, **code**, **category**, **stage=None**, **source\_id=None**, **include\_traceback=False**, **details=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L169)[#](#scikitplot.corpus.ErrorRecord.from_exception "Link to this definition")
+    classmethod from\_exception(**exc**, **\***, **code**, **category**, **stage=None**, **source\_id=None**, **include\_traceback=False**, **details=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L169)[#](#scikitplot.corpus.ErrorRecord.from_exception "Link to this definition")
     :   Build a record from `exc` ****without retaining the exception****.
 
         Parameters:
@@ -154,13 +154,13 @@ class scikitplot.corpus.ErrorRecord(**code**, **category**, **message**, **stage
         F-R11-02 does not recur: the exception is read and dropped inside this
         call, so no frame locals survive it.
 
-    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.message "Link to this definition")
+    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L101)[#](#scikitplot.corpus.ErrorRecord.message "Link to this definition")
 
     source\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ErrorRecord.source_id "Link to this definition")
 
     stage: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ErrorRecord.stage "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_diagnostics.py#L227)[#](#scikitplot.corpus.ErrorRecord.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_diagnostics.py#L227)[#](#scikitplot.corpus.ErrorRecord.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Returns:

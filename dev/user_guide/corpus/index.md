@@ -37,6 +37,7 @@ front of you.
 * [Readers, backends, and readiness](readers_and_backends.html)
   * [Reader dispatch](readers_and_backends.html#reader-dispatch)
   * [Backend outcome is not a boolean](readers_and_backends.html#backend-outcome-is-not-a-boolean)
+  * [What ran, what was asked, and why they differ](readers_and_backends.html#what-ran-what-was-asked-and-why-they-differ)
   * [Readiness vocabulary](readers_and_backends.html#readiness-vocabulary)
   * [Role-based discovery](readers_and_backends.html#role-based-discovery)
   * [Plan the exact reader backend chain before running](readers_and_backends.html#plan-the-exact-reader-backend-chain-before-running)
@@ -57,6 +58,9 @@ front of you.
 * [Customization](customization.html)
   * [Reader-level extractor](customization.html#reader-level-extractor)
   * [Builder factories](customization.html#builder-factories)
+  * [Chunkers and normalisers by name](customization.html#chunkers-and-normalisers-by-name)
+  * [Chunk spans](customization.html#chunk-spans)
+  * [Recursive and parent-child chunking](customization.html#recursive-and-parent-child-chunking)
   * [Custom downloader](customization.html#custom-downloader)
   * [Custom retrieval](customization.html#custom-retrieval)
   * [Custom registries](customization.html#custom-registries)
@@ -72,13 +76,38 @@ front of you.
 **retrieval**
 
 * [Retrieval and similarity](retrieval_and_similarity.html)
+  * [Hybrid fusion](retrieval_and_similarity.html#hybrid-fusion)
+  * [Filtering a search](retrieval_and_similarity.html#filtering-a-search)
   * [Levenshtein facade](retrieval_and_similarity.html#levenshtein-facade)
   * [Choosing a metric](retrieval_and_similarity.html#choosing-a-metric)
+  * [Embedding cache](retrieval_and_similarity.html#embedding-cache)
+  * [Retrieval execution plan](retrieval_and_similarity.html#retrieval-execution-plan)
+  * [Corrective retrieval](retrieval_and_similarity.html#corrective-retrieval)
+**evaluate**
+
+* [Evaluating retrieval and answers](evaluation.html)
+  * [Inputs](evaluation.html#inputs)
+  * [Ranking metrics](evaluation.html#ranking-metrics)
+  * [Undefined values](evaluation.html#undefined-values)
+  * [Evaluate a retriever](evaluation.html#evaluate-a-retriever)
+  * [Reports](evaluation.html#reports)
+  * [Compare two systems](evaluation.html#compare-two-systems)
+  * [Answer metrics](evaluation.html#answer-metrics)
+  * [scikit-learn scorers](evaluation.html#scikit-learn-scorers)
+* [Judging answers with language models](llm_evaluation.html)
+  * [Connect a model](llm_evaluation.html#connect-a-model)
+  * [Judge one answer](llm_evaluation.html#judge-one-answer)
+  * [Evaluate a system](llm_evaluation.html#evaluate-a-system)
+  * [Head to head](llm_evaluation.html#head-to-head)
+  * [Agreement statistics](llm_evaluation.html#agreement-statistics)
+  * [Limits](llm_evaluation.html#limits)
 **format**
 
 * [Formats, structured evidence, and export](formats_and_export.html)
+  * [Document identity](formats_and_export.html#document-identity)
   * [Archives](formats_and_export.html#archives)
   * [Export and adapters](formats_and_export.html#export-and-adapters)
+  * [Export and load back](formats_and_export.html#export-and-load-back)
 **security**
 
 * [Security and limits](security_and_limits.html)
@@ -98,6 +127,8 @@ front of you.
   * [A URL works in a browser but Corpus refuses it](troubleshooting.html#a-url-works-in-a-browser-but-corpus-refuses-it)
   * [A Levenshtein backend is missing](troubleshooting.html#a-levenshtein-backend-is-missing)
   * [Offline policy says unavailable, not empty](troubleshooting.html#offline-policy-says-unavailable-not-empty)
+  * [A segmenter warning appears once, then never again](troubleshooting.html#a-segmenter-warning-appears-once-then-never-again)
+  * [`ResourceWarning: unclosed database`](troubleshooting.html#resourcewarning-unclosed-database)
 
 The executable gallery, [Corpus](../../auto_examples/corpus/index.html#corpus-examples), follows the same architecture
 with deterministic local examples first and optional live/model paths clearly

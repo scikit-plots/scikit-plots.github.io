@@ -1,6 +1,6 @@
 # session[#](#session "Link to this heading")
 
-scikitplot.cleanprompt.session(**\*\*options**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L788)[#](#scikitplot.cleanprompt.session "Link to this definition")
+scikitplot.cleanprompt.session(**\*\*options**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L788)[#](#scikitplot.cleanprompt.session "Link to this definition")
 :   Open a [`Session`](scikitplot.cleanprompt.Session.html#scikitplot.cleanprompt.Session "scikitplot.cleanprompt.Session").
 
     Parameters:

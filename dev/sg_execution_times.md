@@ -1,6 +1,6 @@
 # Computation times[#](#computation-times "Link to this heading")
 
-****14:07.788**** total execution time for 91 files ****from all galleries****:
+****14:07.791**** total execution time for 91 files ****from all galleries****:
 
 | Example | Time | Mem (MB) |
 | --- | --- | --- |
@@ -82,15 +82,15 @@
 | [Cache and restart reuse](auto_examples/cython/plot_03_cache_and_restart_reuse.html#sphx-glr-auto-examples-cython-plot-03-cache-and-restart-reuse-py) (`../../galleries/examples/cython/plot_03_cache_and_restart_reuse.py`) | 00:00.029 | 0.0 |
 | [Customize Corpus backends and readiness policies](auto_examples/corpus/plot_corpus_backend_policy_script.html#sphx-glr-auto-examples-corpus-plot-corpus-backend-policy-script-py) (`../../galleries/examples/corpus/plot_corpus_backend_policy_script.py`) | 00:00.009 | 0.0 |
 | [Backend discovery and safe fallback](auto_examples/levenshtein/plot_levenshtein_backends_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-backends-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_backends_script.py`) | 00:00.007 | 0.0 |
+| [Use Levenshtein distance with Corpus retrieval](auto_examples/corpus/plot_corpus_levenshtein_script.html#sphx-glr-auto-examples-corpus-plot-corpus-levenshtein-script-py) (`../../galleries/examples/corpus/plot_corpus_levenshtein_script.py`) | 00:00.007 | 0.0 |
 | [Compose Corpus policies without hiding boundaries](auto_examples/corpus/plot_corpus_policy_bundle_script.html#sphx-glr-auto-examples-corpus-plot-corpus-policy-bundle-script-py) (`../../galleries/examples/corpus/plot_corpus_policy_bundle_script.py`) | 00:00.007 | 0.0 |
-| [Use Levenshtein distance with Corpus retrieval](auto_examples/corpus/plot_corpus_levenshtein_script.html#sphx-glr-auto-examples-corpus-plot-corpus-levenshtein-script-py) (`../../galleries/examples/corpus/plot_corpus_levenshtein_script.py`) | 00:00.005 | 0.0 |
 | [Persist and Reload a Rank-BM25 Index](auto_examples/rank_bm25/plot_rank_bm25_persistence_script.html#sphx-glr-auto-examples-rank-bm25-plot-rank-bm25-persistence-script-py) (`../../galleries/examples/rank_bm25/plot_rank_bm25_persistence_script.py`) | 00:00.004 | 0.0 |
 | [Compare the Three Rank-BM25 Scoring Recipes](auto_examples/rank_bm25/plot_rank_bm25_recipes_script.html#sphx-glr-auto-examples-rank-bm25-plot-rank-bm25-recipes-script-py) (`../../galleries/examples/rank_bm25/plot_rank_bm25_recipes_script.py`) | 00:00.003 | 0.0 |
 | [Multi-module package builds (5 package examples)](auto_examples/cython/plot_05_package_examples_multimodule.html#sphx-glr-auto-examples-cython-plot-05-package-examples-multimodule-py) (`../../galleries/examples/cython/plot_05_package_examples_multimodule.py`) | 00:00.003 | 0.0 |
 | [Sparse Retrieval and Dense BM25 Diagnostics](auto_examples/rank_bm25/plot_rank_bm25_sparse_dense_script.html#sphx-glr-auto-examples-rank-bm25-plot-rank-bm25-sparse-dense-script-py) (`../../galleries/examples/rank_bm25/plot_rank_bm25_sparse_dense_script.py`) | 00:00.003 | 0.0 |
+| [Use Levenshtein with Corpus](auto_examples/levenshtein/plot_levenshtein_corpus_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-corpus-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_corpus_script.py`) | 00:00.003 | 0.0 |
 | [Rank-BM25 Quick Start with Stable Document IDs](auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.html#sphx-glr-auto-examples-rank-bm25-plot-rank-bm25-quickstart-script-py) (`../../galleries/examples/rank_bm25/plot_rank_bm25_quickstart_script.py`) | 00:00.003 | 0.0 |
 | [Rank fuzzy matches](auto_examples/levenshtein/plot_levenshtein_ranking_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-ranking-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_ranking_script.py`) | 00:00.002 | 0.0 |
-| [Use Levenshtein with Corpus](auto_examples/levenshtein/plot_levenshtein_corpus_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-corpus-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_corpus_script.py`) | 00:00.002 | 0.0 |
 | [Levenshtein basics](auto_examples/levenshtein/plot_levenshtein_basics_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-basics-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_basics_script.py`) | 00:00.002 | 0.0 |
 | [Sequences and explicit normalization](auto_examples/levenshtein/plot_levenshtein_sequences_script.html#sphx-glr-auto-examples-levenshtein-plot-levenshtein-sequences-script-py) (`../../galleries/examples/levenshtein/plot_levenshtein_sequences_script.py`) | 00:00.001 | 0.0 |
 | [nc with examples](auto_examples/nc/plot_nc_test.html#sphx-glr-auto-examples-nc-plot-nc-test-py) (`../../galleries/examples/nc/plot_nc_test.py`) | 00:00.001 | 0.0 |

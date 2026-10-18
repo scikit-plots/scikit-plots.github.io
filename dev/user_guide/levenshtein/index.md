@@ -2,7 +2,7 @@
 
 [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") provides one small, stable facade for exact
 unit-cost Levenshtein edit distance, normalized similarity, deterministic
-ranking and optional Corpus retrieval.
+ranking. Corpus ranks documents with it through its own adapter.
 
 The base behavior never depends on a third-party package. Optional
 accelerators are discovered lazily.
@@ -25,9 +25,13 @@ Stable ties, `limit`, `key` and `score_cutoff`.
 
 [Ranking and matching](ranking_and_matching.html#levenshtein-ranking)Corpus integration
 
-Use normalized edit similarity as a retrieval scorer.
+Rank Corpus documents by normalized edit similarity.
 
-[Corpus integration](corpus_integration.html#levenshtein-corpus)Performance and limits
+[Corpus integration](corpus_integration.html#levenshtein-corpus)Python API
+
+Every public name and what it is for.
+
+[Python API](python_api.html#levenshtein-python-api)Performance and limits
 
 Complexity, streaming choices and what cutoff does today.
 

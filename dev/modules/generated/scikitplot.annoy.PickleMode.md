@@ -1,6 +1,6 @@
 # PickleMode[#](#picklemode "Link to this heading")
 
-scikitplot.annoy.PickleMode[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/../../typing.py#L)[#](#scikitplot.annoy.PickleMode "Link to this definition")
+scikitplot.annoy.PickleMode[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../typing.py#L)[#](#scikitplot.annoy.PickleMode "Link to this definition")
 :   !! processed by numpydoc !!
 
     alias of [`Literal`](https://docs.python.org/3/library/typing.html#typing.Literal "(in Python v3.15)")[‘auto’, ‘disk’, ‘byte’]

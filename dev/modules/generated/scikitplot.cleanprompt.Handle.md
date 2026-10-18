@@ -1,6 +1,6 @@
 # Handle[#](#handle "Link to this heading")
 
-class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle "Link to this definition")
+class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle "Link to this definition")
 :   Everything needed to decode a reply. ****Holds the removed values****.
 
     Parameters:
@@ -31,7 +31,7 @@ class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[sour
     secrets, which is the mistake the upstream web tier made by putting the
     mapping in a cookie.
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L253)[#](#scikitplot.cleanprompt.Handle.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L253)[#](#scikitplot.cleanprompt.Handle.clear "Link to this definition")
     :   Drop every value this handle holds.
 
         Return type:
@@ -39,7 +39,7 @@ class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[sour
 
     entries: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[Entry, ...] = ()[#](#scikitplot.cleanprompt.Handle.entries "Link to this definition")
 
-    export()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L181)[#](#scikitplot.cleanprompt.Handle.export "Link to this definition")
+    export()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L181)[#](#scikitplot.cleanprompt.Handle.export "Link to this definition")
     :   Return a JSON-safe document containing the values.
 
         Returns:
@@ -66,7 +66,7 @@ class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[sour
         Type:
         :   Tuple of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    classmethod load(**document**, **policy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L208)[#](#scikitplot.cleanprompt.Handle.load "Link to this definition")
+    classmethod load(**document**, **policy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L208)[#](#scikitplot.cleanprompt.Handle.load "Link to this definition")
     :   Rebuild a handle from [`export`](#scikitplot.cleanprompt.Handle.export "scikitplot.cleanprompt.Handle.export") output.
 
         Parameters:
@@ -94,6 +94,6 @@ class scikitplot.cleanprompt.Handle(**vault**, **policy**, **entries=()**)[[sour
         Return type:
         :   [**Handle**](#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt._api.Handle")
 
-    policy: [RedactionPolicy](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle.policy "Link to this definition")
+    policy: [RedactionPolicy](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle.policy "Link to this definition")
 
-    vault: [Vault](scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault "scikitplot.cleanprompt._vault.Vault")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle.vault "Link to this definition")
+    vault: [Vault](scikitplot.cleanprompt.Vault.html#scikitplot.cleanprompt.Vault "scikitplot.cleanprompt._vault.Vault")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L138)[#](#scikitplot.cleanprompt.Handle.vault "Link to this definition")

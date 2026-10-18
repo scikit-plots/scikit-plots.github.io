@@ -1,12 +1,15 @@
 # FaissBackend[#](#faissbackend "Link to this heading")
 
-class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L534)[#](#scikitplot.corpus.FaissBackend "Link to this definition")
+class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L798)[#](#scikitplot.corpus.FaissBackend "Link to this definition")
 :   ANN backend over a FAISS `IndexFlatIP` on normalised vectors.
 
     Inner product on unit-normalised vectors equals cosine similarity, so the
     raw FAISS score already satisfies the unified contract.
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L548)[#](#scikitplot.corpus.FaissBackend.build "Link to this definition")
+    property allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.FaissBackend.allow_fallback "Link to this definition")
+    :   Whether a fallback was allowed (`False` raises instead).
+
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L814)[#](#scikitplot.corpus.FaissBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -21,7 +24,7 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L264)[#](#scikitplot.corpus.FaissBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L403)[#](#scikitplot.corpus.FaissBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -39,11 +42,35 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
     dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'float32'[#](#scikitplot.corpus.FaissBackend.dtype "Link to this definition")
     :   Element type of the indexed vectors.
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L201)[#](#scikitplot.corpus.FaissBackend.is_available "Link to this definition")
-    :   Return whether this backend’s optional dependencies are discoverable.
+    property fallback\_reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.FaissBackend.fallback_reason "Link to this definition")
+    :   Why the backend that runs is not the one requested, or `None`.
+
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L316)[#](#scikitplot.corpus.FaissBackend.is_available "Link to this definition")
+    :   Return whether this backend can be used now: installed and loading.
 
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
+
+    classmethod is\_installed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L340)[#](#scikitplot.corpus.FaissBackend.is_installed "Link to this definition")
+    :   Return whether this backend’s packages can be found, importing none.
+
+        Return type:
+        :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
+
+    classmethod load\_error()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L321)[#](#scikitplot.corpus.FaissBackend.load_error "Link to this definition")
+    :   Return the exception that stops this backend loading, or `None`.
+
+        Imports [`dependency_modules`](#scikitplot.corpus.FaissBackend.dependency_modules "scikitplot.corpus.FaissBackend.dependency_modules") (when installed) and returns the
+        first failure. An installed backend with a load error is **broken**,
+        never **absent**.
+
+        Return type:
+        :   [BaseException](https://docs.python.org/3/builtins/exceptions.html#BaseException "(in Python v3.15)") | None
+
+    loads\_on\_probe: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")] = True[#](#scikitplot.corpus.FaissBackend.loads_on_probe "Link to this definition")
+    :   Whether answering [`is_available`](#scikitplot.corpus.FaissBackend.is_available "scikitplot.corpus.FaissBackend.is_available") imports the backend’s packages
+        (a native library); `capability_snapshot(load=False)` then asks only
+        once the modules in [`probe_modules`](#scikitplot.corpus.FaissBackend.probe_modules "scikitplot.corpus.FaissBackend.probe_modules") are already loaded (F-50).
 
     memory\_profile: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'in\_memory'[#](#scikitplot.corpus.FaissBackend.memory_profile "Link to this definition")
     :   `"in_memory"`, `"mmap"` or `"hybrid"`.
@@ -53,7 +80,20 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
 
     name: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = 'faiss'[#](#scikitplot.corpus.FaissBackend.name "Link to this definition")
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_similarity/_backends.py#L563)[#](#scikitplot.corpus.FaissBackend.query "Link to this definition")
+    probe\_modules: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...]] = ('faiss',)[#](#scikitplot.corpus.FaissBackend.probe_modules "Link to this definition")
+
+    provenance()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L458)[#](#scikitplot.corpus.FaissBackend.provenance "Link to this definition")
+    :   Return what was requested, what runs, and why they differ (R2-5).
+
+        Returns:
+        :   dict
+            :   `requested_backend`, `backend`, `fallback_reason` and
+                `allow_fallback`; JSON-compatible.
+
+        Return type:
+        :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
+
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L829)[#](#scikitplot.corpus.FaissBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with
@@ -66,6 +106,12 @@ class scikitplot.corpus.FaissBackend[[source]](https://github.com/scikit-plots/s
 
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]
+
+    property requested\_backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.FaissBackend.requested_backend "Link to this definition")
+    :   `"auto"`, a name or a class.
+
+        Type:
+        :   What the configuration asked for
 
     score\_semantics: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'cosine\_similarity'[#](#scikitplot.corpus.FaissBackend.score_semantics "Link to this definition")
     :   Meaning of the `score` in [`query`](#scikitplot.corpus.FaissBackend.query "scikitplot.corpus.FaissBackend.query") results.

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1062,6 +1068,7 @@ front of you.</p>
 <li class="toctree-l1"><a class="reference internal" href="readers_and_backends.html">Readers, backends, and readiness</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#reader-dispatch">Reader dispatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#backend-outcome-is-not-a-boolean">Backend outcome is not a boolean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#what-ran-what-was-asked-and-why-they-differ">What ran, what was asked, and why they differ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#readiness-vocabulary">Readiness vocabulary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#role-based-discovery">Role-based discovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readers_and_backends.html#plan-the-exact-reader-backend-chain-before-running">Plan the exact reader backend chain before running</a></li>
@@ -1108,6 +1115,9 @@ front of you.</p>
 <li class="toctree-l1"><a class="reference internal" href="customization.html">Customization</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="customization.html#reader-level-extractor">Reader-level extractor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="customization.html#builder-factories">Builder factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html#chunkers-and-normalisers-by-name">Chunkers and normalisers by name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html#chunk-spans">Chunk spans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customization.html#recursive-and-parent-child-chunking">Recursive and parent-child chunking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="customization.html#custom-downloader">Custom downloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="customization.html#custom-retrieval">Custom retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="customization.html#custom-registries">Custom registries</a></li>
@@ -1149,8 +1159,46 @@ front of you.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#hybrid-fusion">Hybrid fusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#filtering-a-search">Filtering a search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#levenshtein-facade">Levenshtein facade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#choosing-a-metric">Choosing a metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#embedding-cache">Embedding cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#retrieval-execution-plan">Retrieval execution plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html#corrective-retrieval">Corrective retrieval</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-6 sd-col-lg-6 sd-p-2 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><strong>evaluate</strong></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#ranking-metrics">Ranking metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#undefined-values">Undefined values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#evaluate-a-retriever">Evaluate a retriever</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#reports">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#compare-two-systems">Compare two systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#answer-metrics">Answer metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html#scikit-learn-scorers">scikit-learn scorers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#connect-a-model">Connect a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#judge-one-answer">Judge one answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#evaluate-a-system">Evaluate a system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#head-to-head">Head to head</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#agreement-statistics">Agreement statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html#limits">Limits</a></li>
 </ul>
 </li>
 </ul>
@@ -1167,8 +1215,10 @@ front of you.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="formats_and_export.html#document-identity">Document identity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html#archives">Archives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html#export-and-adapters">Export and adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formats_and_export.html#export-and-load-back">Export and load back</a></li>
 </ul>
 </li>
 </ul>
@@ -1214,6 +1264,8 @@ front of you.</p>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#a-url-works-in-a-browser-but-corpus-refuses-it">A URL works in a browser but Corpus refuses it</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#a-levenshtein-backend-is-missing">A Levenshtein backend is missing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#offline-policy-says-unavailable-not-empty">Offline policy says unavailable, not empty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#a-segmenter-warning-appears-once-then-never-again">A segmenter warning appears once, then never again</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#resourcewarning-unclosed-database"><code class="docutils literal notranslate"><span class="pre">ResourceWarning:</span> <span class="pre">unclosed</span> <span class="pre">database</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1458,7 +1510,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

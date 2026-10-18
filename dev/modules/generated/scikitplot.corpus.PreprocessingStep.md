@@ -1,6 +1,6 @@
 # PreprocessingStep[#](#preprocessingstep "Link to this heading")
 
-class scikitplot.corpus.PreprocessingStep(**name**, **description**, **changed**, **char\_delta**, **grapheme\_delta=None**, **params=None**, **input\_hash=None**, **output\_hash=None**, **duration\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1249)[#](#scikitplot.corpus.PreprocessingStep "Link to this definition")
+class scikitplot.corpus.PreprocessingStep(**name**, **description**, **changed**, **char\_delta**, **grapheme\_delta=None**, **params=None**, **input\_hash=None**, **output\_hash=None**, **duration\_s=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1324)[#](#scikitplot.corpus.PreprocessingStep "Link to this definition")
 :   Record of a single preprocessing transformation applied to raw text.
 
     Used to build a [`PreprocessingTrace`](scikitplot.corpus.PreprocessingTrace.html#scikitplot.corpus.PreprocessingTrace "scikitplot.corpus.PreprocessingTrace") that makes the
@@ -34,11 +34,11 @@ class scikitplot.corpus.PreprocessingStep(**name**, **description**, **changed**
             JSON-serialisable. `None` if the step has no parameters.
 
         ****input\_hash****str or None
-        :   MD5 hex of the text **before** this step. Allows exact change
+        :   SHA-256 hex (64 characters) of the text **before** this step. Allows exact change
             detection without storing the full text. `None` if not tracked.
 
         ****output\_hash****str or None
-        :   MD5 hex of the text **after** this step.
+        :   SHA-256 hex (64 characters) of the text **after** this step.
 
     Parameters:
     :   * ****name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
@@ -56,13 +56,13 @@ class scikitplot.corpus.PreprocessingStep(**name**, **description**, **changed**
     ****Developer note:**** Hash all PreprocessingStep objects into a stable
     fingerprint to build a preprocessing fingerprint for idempotency
     verification on pipeline re-runs. The fingerprint is:
-    `hashlib.md5(",".join(s.name for s in trace.steps).encode()).hexdigest()`
+    `hashlib.sha256(",".join(s.name for s in trace.steps).encode()).hexdigest()`
 
-    changed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1249)[#](#scikitplot.corpus.PreprocessingStep.changed "Link to this definition")
+    changed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1324)[#](#scikitplot.corpus.PreprocessingStep.changed "Link to this definition")
 
-    char\_delta: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1249)[#](#scikitplot.corpus.PreprocessingStep.char_delta "Link to this definition")
+    char\_delta: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1324)[#](#scikitplot.corpus.PreprocessingStep.char_delta "Link to this definition")
 
-    description: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1249)[#](#scikitplot.corpus.PreprocessingStep.description "Link to this definition")
+    description: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1324)[#](#scikitplot.corpus.PreprocessingStep.description "Link to this definition")
 
     duration\_s: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PreprocessingStep.duration_s "Link to this definition")
     :   Wall-clock seconds this step took. `None` when not timed.
@@ -71,13 +71,13 @@ class scikitplot.corpus.PreprocessingStep(**name**, **description**, **changed**
 
     input\_hash: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PreprocessingStep.input_hash "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1249)[#](#scikitplot.corpus.PreprocessingStep.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1324)[#](#scikitplot.corpus.PreprocessingStep.name "Link to this definition")
 
     output\_hash: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PreprocessingStep.output_hash "Link to this definition")
 
     params: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PreprocessingStep.params "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_types.py#L1304)[#](#scikitplot.corpus.PreprocessingStep.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L1379)[#](#scikitplot.corpus.PreprocessingStep.to_dict "Link to this definition")
     :   Serialise to a JSON-safe dict.
 
         Returns:

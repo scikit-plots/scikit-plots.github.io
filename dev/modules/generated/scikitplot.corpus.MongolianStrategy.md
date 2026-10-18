@@ -1,6 +1,6 @@
 # MongolianStrategy[#](#mongolianstrategy "Link to this heading")
 
-class scikitplot.corpus.MongolianStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L1235)[#](#scikitplot.corpus.MongolianStrategy "Link to this definition")
+class scikitplot.corpus.MongolianStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L1281)[#](#scikitplot.corpus.MongolianStrategy "Link to this definition")
 :   Traditional Mongolian segmentation strategy.
 
     Traditional Mongolian is stored left-to-right and rendered top-to-bottom.
@@ -9,7 +9,7 @@ class scikitplot.corpus.MongolianStrategy[[source]](https://github.com/scikit-pl
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L1246)[#](#scikitplot.corpus.MongolianStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L1292)[#](#scikitplot.corpus.MongolianStrategy.segment "Link to this definition")
     :   Segment Mongolian **span** by whitespace.
 
         Parameters:

@@ -1,6 +1,6 @@
 # create\_corpus[#](#create-corpus "Link to this heading")
 
-scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_pipeline.py#L1185)[#](#scikitplot.corpus.create_corpus "Link to this definition")
+scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_pipeline.py#L1209)[#](#scikitplot.corpus.create_corpus "Link to this definition")
 :   Create and export a corpus from a single source file.
 
     Convenience wrapper around [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") for the common
@@ -43,6 +43,10 @@ scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **ch
             cannot detect language. Accepts `"en"`, `"english"`,
             `["en", "ar"]`, or `None` (auto-detect). Default: `None`.
 
+        ****doc\_id\_scheme****DocIdScheme or str, optional
+        :   How documents are named: `"sha256"` (default) or `"uuid7"`; see
+            [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline").
+
     Returns:
     :   PipelineResult
         :   Immutable summary including the document list, counts, timing, and
@@ -58,6 +62,7 @@ scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **ch
         * ****filename\_override**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****format**** ([**ExportFormat**](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat "scikitplot.corpus._schema.ExportFormat"))
         * ****default\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)") **|** **None**)
+        * ****doc\_id\_scheme**** ([**DocIdScheme**](scikitplot.corpus.DocIdScheme.html#scikitplot.corpus.DocIdScheme "scikitplot.corpus._identity.DocIdScheme") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
     Return type:
     :   [**PipelineResult**](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus._pipeline.PipelineResult")

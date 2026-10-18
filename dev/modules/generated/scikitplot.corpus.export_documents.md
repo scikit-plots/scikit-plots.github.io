@@ -1,6 +1,6 @@
 # export\_documents[#](#export-documents "Link to this heading")
 
-scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_export/_export.py#L146)[#](#scikitplot.corpus.export_documents "Link to this definition")
+scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**, **\***, **include\_embedding=True**, **json\_indent=2**, **parquet\_compression='snappy'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_export/_export.py#L216)[#](#scikitplot.corpus.export_documents "Link to this definition")
 :   Export a list of documents to `output_path` in the given format.
 
     Parameters:
@@ -15,8 +15,8 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**,
             * Directory formats (HuggingFace, MLflow): path to the root
               directory / artifact path.
 
-        ****format****ExportFormat
-        :   Target export format.
+        ****format****ExportFormat or str
+        :   Target export format, or its string value (`"jsonl"`).
 
         ****include\_embedding****bool, optional
         :   When `True` (default), embedding vectors are included in the
@@ -40,7 +40,15 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**,
     Raises:
     :   ValueError
         :   If `format` is [`ExportFormat.NUMPY`](scikitplot.corpus.ExportFormat.html#scikitplot.corpus.ExportFormat.NUMPY "scikitplot.corpus.ExportFormat.NUMPY") and no documents have
-            embeddings, or if the embedding dimensions are inconsistent.
+            embeddings, or if the embedding dimensions are inconsistent; for a
+            text format, if a value cannot be represented (an infinity in JSON,
+            `None` in a TOML array or in metadata for TOML). The message names
+            the document.
+
+        TypeError
+        :   For a text format, if a metadata value is not serialisable (a
+            `set`, a `datetime`, a custom object); the message names the
+            document.
 
         ImportError
         :   If the required optional library for the format is not installed.
@@ -72,38 +80,55 @@ scikitplot.corpus.export\_documents(**documents**, **output\_path**, **format**,
 
     ****Embedding in tabular formats:**** CSV and Parquet omit embeddings
     because storing a float32 vector per row in a tabular cell is
-    impractical. Use PICKLE, JOBLIB, or NUMPY to preserve embeddings.
+    impractical. Use JSON, JSON Lines, YAML or TOML (safe to load back) or
+    PICKLE/JOBLIB to preserve embeddings.
+
+    ****Text formats:**** metadata must hold JSON-like values (`str`,
+    numbers, `bool`, `None`, lists, string-keyed mappings; NumPy scalars
+    are converted). Tuples come back as lists. JSON has no `NaN`: a `NaN`
+    in metadata is written as `null` and reads back as `None` (YAML and
+    TOML keep `NaN`; embeddings restore it in every format).
 
     Examples
 
     Try it in your browser!
-
-    CSV export (zero dependencies):
-
     ```
+    >>> import tempfile
     >>> from pathlib import Path
-    >>> export_documents(docs, Path("corpus.csv"), ExportFormat.CSV)
-    PosixPath('corpus.csv')
+    >>> import numpy as np
+    >>> from scikitplot.corpus import CorpusDocument, ExportFormat
+    >>> docs = [
+    ...     CorpusDocument.create(
+    ...         "notes.txt", i, f"Paragraph {i}.", embedding=np.full(3, i, np.float32)
+    ...     )
+    ...     for i in range(2)
+    ... ]
+    >>> out = Path(tempfile.mkdtemp())
 
     ```
 
-    JSONL with embeddings:
+    CSV (zero dependencies; no embeddings):
 
     ```
-    >>> export_documents(
-    ...     docs,
-    ...     Path("corpus.jsonl"),
-    ...     ExportFormat.JSONL,
-    ...     include_embedding=True,
-    ... )
+    >>> export_documents(docs, out / "corpus.csv", ExportFormat.CSV).name
+    'corpus.csv'
+
+    ```
+
+    JSON Lines with embeddings, loadable back exactly:
+
+    ```
+    >>> path = export_documents(docs, out / "corpus.jsonl", ExportFormat.JSONL)
+    >>> load_documents(path)[1].embedding
+    array([1., 1., 1.], dtype=float32)
 
     ```
 
     NumPy embedding matrix:
 
     ```
-    >>> export_documents(docs, Path("embeddings.npy"), ExportFormat.NUMPY)
-    PosixPath('embeddings.npy')
+    >>> export_documents(docs, out / "embeddings.npy", ExportFormat.NUMPY).name
+    'embeddings.npy'
 
     ```
     Go BackOpen In Tab

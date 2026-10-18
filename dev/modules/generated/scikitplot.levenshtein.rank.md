@@ -1,11 +1,17 @@
 # rank[#](#rank "Link to this heading")
 
-scikitplot.levenshtein.rank(**query**, **choices**, **\***, **key=None**, **limit=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/levenshtein/_core.py#L408)[#](#scikitplot.levenshtein.rank "Link to this definition")
+scikitplot.levenshtein.rank(**query**, **choices**, **\***, **key=None**, **limit=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/levenshtein/_core.py#L517)[#](#scikitplot.levenshtein.rank "Link to this definition")
 :   Rank choices from most to least similar to **query**.
 
     `score_cutoff` is backend-neutral normalized similarity in `[0, 1]`.
     It is applied after exact distance computation so every backend preserves
     identical ranking semantics and provenance.
+
+    The backend is resolved once per call. A backend that fails at runtime
+    warns once and is replaced, for the rest of the call, by the next available
+    one of `internal`, `rapidfuzz`, `python`; each match records the
+    backend that computed it. An unknown or (with `strict=True`) unavailable
+    backend raises even when `choices` is empty.
 
     Parameters:
     :   * ****query**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))

@@ -50,15 +50,15 @@ print("auto selected:", auto.name)
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
-
-[Use Levenshtein distance with Corpus retrieval](../corpus/plot_corpus_levenshtein_script.html)
-
-Use Levenshtein distance with Corpus retrieval![](../../_images/sphx_glr_plot_levenshtein_sequences_script_thumb.png)
+![](../../_images/sphx_glr_plot_levenshtein_sequences_script_thumb.png)
 
 [Sequences and explicit normalization](plot_levenshtein_sequences_script.html)
 
-Sequences and explicit normalization![](../../_images/sphx_glr_plot_levenshtein_ranking_script_thumb.png)
+Sequences and explicit normalization![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
+
+[Use Levenshtein distance with Corpus retrieval](../corpus/plot_corpus_levenshtein_script.html)
+
+Use Levenshtein distance with Corpus retrieval![](../../_images/sphx_glr_plot_levenshtein_ranking_script_thumb.png)
 
 [Rank fuzzy matches](plot_levenshtein_ranking_script.html)
 

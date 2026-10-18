@@ -1,12 +1,13 @@
 # WritingSystemAdapterConfig[#](#writingsystemadapterconfig "Link to this heading")
 
-class scikitplot.corpus.WritingSystemAdapterConfig(**unit='word'**, **max\_chunk\_size=None**, **overlap=0**, **strip\_whitespace=True**, **min\_chunk\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_writing_system.py#L142)[#](#scikitplot.corpus.WritingSystemAdapterConfig "Link to this definition")
+class scikitplot.corpus.WritingSystemAdapterConfig(**unit='word'**, **max\_chunk\_size=None**, **overlap=0**, **strip\_whitespace=True**, **min\_chunk\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L143)[#](#scikitplot.corpus.WritingSystemAdapterConfig "Link to this definition")
 :   Configuration for [`WritingSystemAdapter`](scikitplot.corpus.WritingSystemAdapter.html#scikitplot.corpus.WritingSystemAdapter "scikitplot.corpus.WritingSystemAdapter").
 
     Parameters:
-    :   ****unit****{“word”, “sentence”, “grapheme\_cluster”}, optional
-        :   Segmentation granularity requested from each strategy.
-            Default `"word"`.
+    :   ****unit****{“word”, “sentence”, “grapheme\_cluster”, “morpheme”}, optional
+        :   Segmentation granularity requested from each strategy (a strategy
+            without morphological analysis treats `"morpheme"` as `"word"`).
+            Any other value raises `ValueError`. Default `"word"`.
 
         ****max\_chunk\_size****int or None, optional
         :   Hard cap on chunk length in grapheme clusters. Chunks exceeding

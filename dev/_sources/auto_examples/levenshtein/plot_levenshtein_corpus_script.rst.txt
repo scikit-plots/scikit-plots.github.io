@@ -21,10 +21,11 @@
 Use Levenshtein with Corpus
 ===========================
 
-Build a local deterministic retrieval scorer without making Corpus an import
-requirement of the Levenshtein facade.
+Rank Corpus documents by edit distance. Corpus owns the adapter,
+:func:`scikitplot.corpus.make_levenshtein_ranker`, so the Levenshtein facade
+never imports Corpus.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-35
+.. GENERATED FROM PYTHON SOURCE LINES 9-35
 
 
 
@@ -47,8 +48,7 @@ requirement of the Levenshtein facade.
 .. code-block:: Python
 
 
-    from scikitplot.corpus import CorpusDocument, RetrievalConfig
-    from scikitplot.levenshtein import make_corpus_scorer
+    from scikitplot.corpus import CorpusDocument, RetrievalConfig, make_levenshtein_ranker
 
     documents = [
         CorpusDocument.create("a.txt", 0, "kitten"),
@@ -57,11 +57,11 @@ requirement of the Levenshtein facade.
         CorpusDocument.create("d.txt", 0, "unrelated"),
     ]
 
-    scorer = make_corpus_scorer(
+    ranker = make_levenshtein_ranker(
         backend="python",
         score_cutoff=0.5,
     )
-    hits = scorer("kitten", documents, RetrievalConfig(top_k=3))
+    hits = ranker("kitten", documents, RetrievalConfig(top_k=3))
 
     assert [hit.doc.text for hit in hits] == ["kitten", "bitten", "sitting"]
     assert all(hit.match_mode == "levenshtein" for hit in hits)
@@ -77,7 +77,7 @@ requirement of the Levenshtein facade.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.002 seconds)
+   **Total running time of the script:** (0 minutes 0.003 seconds)
 
 
 .. _sphx_glr_download_auto_examples_levenshtein_plot_levenshtein_corpus_script.py:

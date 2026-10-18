@@ -1,6 +1,6 @@
 # KissGenerator[#](#kissgenerator "Link to this heading")
 
-class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
+class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/random/__init__.py#L)[#](#scikitplot.random.KissGenerator "Link to this definition")
 :   High-level random number generator using KISS algorithm.
 
     Provides NumPy-compatible interface for common distributions
@@ -240,6 +240,22 @@ class scikitplot.random.KissGenerator(**bit\_generator=None**)[[source]](https:/
         Returns:
         :   int or ndarray
             :   Random integers
+
+        Raises:
+        :   TypeError
+            :   If a bound is not an integer (a Python or numpy integer; `bool`
+                is refused, as in `index`).
+
+            ValueError
+            :   If `low >= high`, or the range holds more than `2**64` values
+                (more than one 64-bit draw can reach).
+
+        Notes
+
+        Unbiased (R6-1): a raw draw below `2**64 mod (high - low)` is
+        rejected before the modulo. A seeded stream equals the plain modulo’s
+        until the first rejection (probability below `(high - low) / 2**64`
+        per draw); every later output is then shifted by one draw.
 
         Examples
 

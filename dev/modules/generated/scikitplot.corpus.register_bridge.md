@@ -1,6 +1,6 @@
 # register\_bridge[#](#register-bridge "Link to this heading")
 
-scikitplot.corpus.register\_bridge(**chunker\_class**, **bridge\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_chunker_bridge.py#L393)[#](#scikitplot.corpus.register_bridge "Link to this definition")
+scikitplot.corpus.register\_bridge(**chunker\_class**, **bridge\_class**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_chunker_bridge.py#L434)[#](#scikitplot.corpus.register_bridge "Link to this definition")
 :   Register a custom bridge for a user-defined chunker class.
 
     After registration, [`bridge_chunker`](scikitplot.corpus.bridge_chunker.html#scikitplot.corpus.bridge_chunker "scikitplot.corpus.bridge_chunker") will automatically wrap
@@ -8,9 +8,9 @@ scikitplot.corpus.register\_bridge(**chunker\_class**, **bridge\_class**)[[sourc
 
     Parameters:
     :   ****chunker\_class****type
-        :   The user-defined chunker class to register. Matched by exact
-            `type(chunker).__name__` string so subclasses must be registered
-            separately if needed.
+        :   The user-defined chunker class to register. Matched by class name
+            along the chunker’s MRO, so a subclass uses its nearest registered
+            base’s bridge unless it is registered itself.
 
         ****bridge\_class****type[ChunkerBridge]
         :   A [`ChunkerBridge`](scikitplot.corpus.ChunkerBridge.html#scikitplot.corpus.ChunkerBridge "scikitplot.corpus.ChunkerBridge") subclass that wraps **chunker\_class**.

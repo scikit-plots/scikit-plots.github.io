@@ -1,9 +1,18 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261011.0ec25c0 - October 11, 2026 11:42 UTC
+ 0.5.dev0+git.20261017.ba33a1a - October 17, 2026 23:59 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
+**bounded, audited tool use**
+
+* [Agent](agent/index.html)
+  * [A first run](agent/index.html#a-first-run)
+  * [Limits and how a run ends](agent/index.html#limits-and-how-a-run-ends)
+  * [Approval, pause and resume](agent/index.html#approval-pause-and-resume)
+  * [The audit trail](agent/index.html#the-audit-trail)
+  * [Measured](agent/index.html#measured)
+  * [Writing a planner](agent/index.html#writing-a-planner)
 **nearest neighbor**
 
 * [ANNoy](annoy/index.html)
@@ -44,6 +53,8 @@
   * [Customization](corpus/customization.html)
   * [Downloads and network boundaries](corpus/downloads_and_network.html)
   * [Retrieval and similarity](corpus/retrieval_and_similarity.html)
+  * [Evaluating retrieval and answers](corpus/evaluation.html)
+  * [Judging answers with language models](corpus/llm_evaluation.html)
   * [Formats, structured evidence, and export](corpus/formats_and_export.html)
   * [Security and limits](corpus/security_and_limits.html)
   * [Troubleshooting](corpus/troubleshooting.html)

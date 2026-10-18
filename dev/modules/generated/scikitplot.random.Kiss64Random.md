@@ -1,6 +1,6 @@
 # Kiss64Random[#](#kiss64random "Link to this heading")
 
-class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
+class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss64Random "Link to this definition")
 :   Low-level 64-bit KISS RNG with context manager support.
 
     This class provides direct access to the C++ Kiss64Random implementation.
@@ -153,8 +153,30 @@ class scikitplot.random.Kiss64Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    index(**self**, **size\_t n**) → size\_t[#](#scikitplot.random.Kiss64Random.index "Link to this definition")
+    index(**self**, **n**) → size\_t[#](#scikitplot.random.Kiss64Random.index "Link to this definition")
     :   Generate random index in range [0, n-1].
+
+        Parameters:
+        :   ****n****int
+            :   Upper bound (exclusive). Must be >= 0; `0` returns 0.
+
+        Returns:
+        :   int
+
+        Raises:
+        :   ValueError
+            :   If n < 0
+
+            TypeError
+            :   If n is not an integer
+
+            OverflowError
+            :   If n is larger than the platform’s `size_t`
+
+        Notes
+
+        Unbiased: a draw below `2**64 mod n` is rejected before the modulo
+        (see [`Kiss32Random.index`](scikitplot.random.Kiss32Random.html#scikitplot.random.Kiss32Random.index "scikitplot.random.Kiss32Random.index")).
 
     kiss(**self**) → uint64\_t[#](#scikitplot.random.Kiss64Random.kiss "Link to this definition")
     :   Generate next random 64-bit unsigned integer.

@@ -1,6 +1,6 @@
 # PatternSpec[#](#patternspec "Link to this heading")
 
-class scikitplot.cleanprompt.PatternSpec(**kind**, **pattern**, **intent**, **priority=50**, **flags=0**, **validate=None**, **confidence=1.0**, **enabled\_by\_default=True**, **examples\_yes=()**, **examples\_no=()**, **risk\_reason=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec "Link to this definition")
+class scikitplot.cleanprompt.PatternSpec(**kind**, **pattern**, **intent**, **priority=50**, **flags=0**, **validate=None**, **confidence=1.0**, **enabled\_by\_default=True**, **examples\_yes=()**, **examples\_no=()**, **risk\_reason=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec "Link to this definition")
 :   One named structural pattern.
 
     Parameters:
@@ -59,7 +59,7 @@ class scikitplot.cleanprompt.PatternSpec(**kind**, **pattern**, **intent**, **pr
         * ****examples\_no**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
         * ****risk\_reason**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
-    compiled()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_patterns.py#L123)[#](#scikitplot.cleanprompt.PatternSpec.compiled "Link to this definition")
+    compiled()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_patterns.py#L123)[#](#scikitplot.cleanprompt.PatternSpec.compiled "Link to this definition")
     :   Return the compiled expression.
 
         Returns:
@@ -86,11 +86,11 @@ class scikitplot.cleanprompt.PatternSpec(**kind**, **pattern**, **intent**, **pr
 
     flags: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.cleanprompt.PatternSpec.flags "Link to this definition")
 
-    intent: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.intent "Link to this definition")
+    intent: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.intent "Link to this definition")
 
-    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.kind "Link to this definition")
+    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.kind "Link to this definition")
 
-    pattern: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.pattern "Link to this definition")
+    pattern: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_patterns.py#L57)[#](#scikitplot.cleanprompt.PatternSpec.pattern "Link to this definition")
 
     priority: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 50[#](#scikitplot.cleanprompt.PatternSpec.priority "Link to this definition")
 

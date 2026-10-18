@@ -1,6 +1,6 @@
 # RelationType[#](#relationtype "Link to this heading")
 
-class scikitplot.corpus.RelationType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L105)[#](#scikitplot.corpus.RelationType "Link to this definition")
+class scikitplot.corpus.RelationType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L105)[#](#scikitplot.corpus.RelationType "Link to this definition")
 :   The kind of relationship an edge asserts.
 
     Notes
@@ -8,19 +8,19 @@ class scikitplot.corpus.RelationType(**\*values**)[[source]](https://github.com/
     A generic `related` relation is deliberately absent: an edge that does not
     say **how** two things relate cannot be filtered, explained or trusted.
 
-    CONTAINS = 'contains'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.CONTAINS "Link to this definition")
+    CONTAINS = 'contains'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.CONTAINS "Link to this definition")
     :   Parent to child, from `parent_doc_id`.
 
-    PARENT\_OF = 'parent\_of'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.PARENT_OF "Link to this definition")
+    PARENT\_OF = 'parent\_of'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.PARENT_OF "Link to this definition")
     :   Alias direction of [`CONTAINS`](#scikitplot.corpus.RelationType.CONTAINS "scikitplot.corpus.RelationType.CONTAINS"), kept explicit for readability.
 
-    PRECEDES = 'precedes'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.PRECEDES "Link to this definition")
+    PRECEDES = 'precedes'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.PRECEDES "Link to this definition")
     :   Sequential order within one parent, from the index fields.
 
-    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.REFERENCES "Link to this definition")
+    REFERENCES = 'references'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.REFERENCES "Link to this definition")
     :   Outbound reference. Requires G1 body-link extraction; not derived at G0.
 
-    SAME\_SOURCE = 'same\_source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.SAME_SOURCE "Link to this definition")
+    SAME\_SOURCE = 'same\_source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.RelationType.SAME_SOURCE "Link to this definition")
     :   Document to the source it was read from.
 
     capitalize(**/**)[#](#scikitplot.corpus.RelationType.capitalize "Link to this definition")

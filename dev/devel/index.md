@@ -1,6 +1,6 @@
 Scikit-plots Contributing
   
- 0.5.dev0+git.20261011.0ec25c0 - October 11, 2026 11:42 UTC
+ 0.5.dev0+git.20261017.ba33a1a - October 17, 2026 23:59 UTC
 
 # [Contributing Guidelines to scikit-plots](#id1)[#](#contributing-guidelines-to-scikit-plots "Link to this heading")
 

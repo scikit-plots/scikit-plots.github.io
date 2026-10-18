@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/customization","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1040,6 +1046,177 @@ free from optional model imports. Reader, filter and downloader factories are
 used for local files, downloaded files and archive members rather than being
 patched onto one call path after construction.</p>
 </section>
+<section id="chunkers-and-normalisers-by-name">
+<h2>Chunkers and normalisers by name<a class="headerlink" href="#chunkers-and-normalisers-by-name" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BuilderConfig(chunker=&quot;...&quot;)</span></code> and <code class="docutils literal notranslate"><span class="pre">normalizer_steps</span></code> resolve names through
+one table, the component <code class="docutils literal notranslate"><span class="pre">registry</span></code> (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.ComponentRegistry.html#scikitplot.corpus.ComponentRegistry" title="scikitplot.corpus.ComponentRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComponentRegistry</span></code></a>). The
+built-in chunkers are <code class="docutils literal notranslate"><span class="pre">sentence</span></code>, <code class="docutils literal notranslate"><span class="pre">paragraph</span></code>, <code class="docutils literal notranslate"><span class="pre">fixed_window</span></code>, <code class="docutils literal notranslate"><span class="pre">word</span></code>,
+<code class="docutils literal notranslate"><span class="pre">semantic</span></code>, <code class="docutils literal notranslate"><span class="pre">recursive</span></code>, <code class="docutils literal notranslate"><span class="pre">parent_child</span></code> and <code class="docutils literal notranslate"><span class="pre">structure</span></code>, each
+registered with its configuration dataclass;
+<code class="docutils literal notranslate"><span class="pre">chunker_kwargs</span></code> are that config’s fields, plus any option the chunker’s
+constructor takes itself (<code class="docutils literal notranslate"><span class="pre">gensim_dictionary</span></code> for <code class="docutils literal notranslate"><span class="pre">word</span></code>), and an unknown
+key raises <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> naming the valid ones. <code class="docutils literal notranslate"><span class="pre">normalizer_kwargs</span></code> maps a
+step name to that step’s options. A chunker you register becomes reachable by
+name (from the builder and from plans alike) and is never replaced by a
+built-in of the same name; any class whose <code class="docutils literal notranslate"><span class="pre">chunk</span></code> takes <code class="docutils literal notranslate"><span class="pre">extra_metadata</span></code>
+runs in the pipeline (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.ProtocolChunkerBridge.html#scikitplot.corpus.ProtocolChunkerBridge" title="scikitplot.corpus.ProtocolChunkerBridge"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtocolChunkerBridge</span></code></a>). An unknown chunker name
+or normaliser step raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> when the build starts, before any
+source is read.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuilderConfig</span><span class="p">,</span> <span class="n">registry</span>
+
+<span class="n">registry</span><span class="o">.</span><span class="n">register_builtins</span><span class="p">()</span>
+<span class="n">registry</span><span class="o">.</span><span class="n">build_chunker</span><span class="p">(</span><span class="s2">"sentence"</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">overlap</span>  <span class="c1"># 1</span>
+<span class="c1"># registry.register_chunker("mine", MyChunker, config=MyChunkerConfig)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BuilderConfig</span><span class="p">(</span><span class="n">chunker</span><span class="o">=</span><span class="s2">"sentence"</span><span class="p">,</span> <span class="n">chunker_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"overlap"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                       <span class="n">normalizer_steps</span><span class="o">=</span><span class="p">[</span><span class="s2">"unicode"</span><span class="p">,</span> <span class="s2">"lowercase"</span><span class="p">],</span>
+                       <span class="n">normalizer_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"unicode"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"form"</span><span class="p">:</span> <span class="s2">"NFKC"</span><span class="p">}})</span>
+</pre></div>
+</div>
+<p>An enum option of a chunker config accepts the member or its value
+(<code class="docutils literal notranslate"><span class="pre">SentenceChunkerConfig(backend=&quot;regex&quot;)</span></code>); anything else raises when the
+config is constructed. <code class="docutils literal notranslate"><span class="pre">registry.snapshot()</span></code> records each chunker’s config
+class, and <code class="docutils literal notranslate"><span class="pre">ComponentRegistry.load_from_snapshot</span></code> restores every built-in.</p>
+</section>
+<section id="chunk-spans">
+<h2>Chunk spans<a class="headerlink" href="#chunk-spans" title="Link to this heading">#</a></h2>
+<p>A chunk’s <code class="docutils literal notranslate"><span class="pre">start_char</span></code>/<code class="docutils literal notranslate"><span class="pre">end_char</span></code> are its <em>anchor</em>: the region it stands
+for. Its <code class="docutils literal notranslate"><span class="pre">context_start</span></code>/<code class="docutils literal notranslate"><span class="pre">context_end</span></code> (<code class="docutils literal notranslate"><span class="pre">context_span</span></code>) are the region its
+text is taken from, which covers the anchor and includes any overlap: for every
+built-in chunker whose <code class="docutils literal notranslate"><span class="pre">text_is_source_slice</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chunk.text</span> <span class="pre">==</span> <span class="pre">source[context_start:context_end]</span></code>. Overlap, merged and split
+chunks are slices of the source, not parts re-joined with a space.
+<code class="docutils literal notranslate"><span class="pre">WordChunker</span></code> derives its text (tokens, case, stems), so its
+<code class="docutils literal notranslate"><span class="pre">text_is_source_slice</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code> and its context span is the region the
+text came from. A sentence splitter that returns text the source does not
+contain raises when offsets are enabled. A document built from a chunk spans
+the chunk’s context (<code class="docutils literal notranslate"><span class="pre">char_start</span></code>/<code class="docutils literal notranslate"><span class="pre">char_end</span></code>, with <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> that slice)
+and records the anchor in <code class="docutils literal notranslate"><span class="pre">metadata[&quot;anchor_span&quot;]</span></code> when the two differ.
+An overlap chunk’s context runs from its first overlapped unit to its anchor,
+so it includes a unit <code class="docutils literal notranslate"><span class="pre">min_length</span></code> dropped in between.</p>
+<p>Spans index the text the chunker split. When multilang preprocessing (NFC,
+BOM and control-character stripping) changed it, the chunk result’s
+<code class="docutils literal notranslate"><span class="pre">metadata[&quot;span_basis&quot;]</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;preprocessed&quot;</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&quot;input&quot;</span></code>, every
+document built from it records the same in <code class="docutils literal notranslate"><span class="pre">metadata[&quot;span_basis&quot;]</span></code>, and no
+<code class="docutils literal notranslate"><span class="pre">raw_text</span></code> is sliced with those spans. A document’s <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> is its
+region of the reader’s raw text, and <code class="docutils literal notranslate"><span class="pre">None</span></code> whenever that region is unknown:
+text that preprocessing changed, or a reader <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> that is not the
+chunked text (HTML or XML markup) unless one chunk covers the whole of it. It
+is never the whole parent for a chunk that covers only part of it.
+<code class="docutils literal notranslate"><span class="pre">WordChunker</span></code> reports offsets only with <code class="docutils literal notranslate"><span class="pre">include_offsets=True</span></code>; without
+them its <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> is the segment it took its tokens from.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">SentenceChunker</span><span class="p">,</span> <span class="n">SentenceChunkerConfig</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="s2">"Alpha one. Beta two."</span>
+<span class="n">chunk</span> <span class="o">=</span> <span class="n">SentenceChunker</span><span class="p">(</span><span class="n">SentenceChunkerConfig</span><span class="p">(</span><span class="n">overlap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">chunks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">chunk</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">source</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">chunk</span><span class="o">.</span><span class="n">context_span</span><span class="p">)]</span>  <span class="c1"># True: "Alpha one. Beta two."</span>
+<span class="n">source</span><span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="n">chunk</span><span class="o">.</span><span class="n">anchor_span</span><span class="p">)]</span>                 <span class="c1"># "Beta two."</span>
+</pre></div>
+</div>
+</section>
+<section id="recursive-and-parent-child-chunking">
+<h2>Recursive and parent-child chunking<a class="headerlink" href="#recursive-and-parent-child-chunking" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker" title="scikitplot.corpus.RecursiveChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveChunker</span></code></a> cuts a text by a hierarchy of separators (blank
+line, line, sentence end, space, character) only as far as needed for each
+piece to fit <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> characters (not counting the whitespace around
+it). <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker" title="scikitplot.corpus.ParentChildChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParentChildChunker</span></code></a> applies the same rule at two sizes: parents
+that give context, and children inside each parent that are retrieved. Each
+parent is followed by its children; a document built from a child carries
+<code class="docutils literal notranslate"><span class="pre">parent_doc_id</span></code>, its parent’s <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>, so a hit on a child can return the
+parent (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.children.html#scikitplot.corpus.children" title="scikitplot.corpus.children"><code class="xref py py-func docutils literal notranslate"><span class="pre">children</span></code></a> and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ancestors.html#scikitplot.corpus.ancestors" title="scikitplot.corpus.ancestors"><code class="xref py py-func docutils literal notranslate"><span class="pre">ancestors</span></code></a> traverse them). Neither is a
+default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">BuilderConfig</span><span class="p">,</span> <span class="n">CorpusBuilder</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">BuilderConfig</span><span class="p">(</span><span class="n">chunker</span><span class="o">=</span><span class="s2">"parent_child"</span><span class="p">,</span>
+                       <span class="n">chunker_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"parent_size"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span> <span class="s2">"child_size"</span><span class="p">:</span> <span class="mi">200</span><span class="p">})</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">CorpusBuilder</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">"guide.txt"</span><span class="p">)</span><span class="o">.</span><span class="n">documents</span>
+<span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">docs</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"chunk_role"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"child"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Measured on the pages of this user guide as they were before this section was
+added (82 one-paragraph sentences as queries, BM25 over the retrievable units;
+for <code class="docutils literal notranslate"><span class="pre">parent_child</span></code> the children are indexed and a hit returns its parent),
+a hit counts when the returned context covers the whole sentence:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Chunker</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Recall&#64;1</p></th>
+<th class="head"><p>Context chars (top)</p></th>
+<th class="head"><p>Paragraph coverage (top)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sentence</p></td>
+<td><p>303</p></td>
+<td><p>0.96</p></td>
+<td><p>384</p></td>
+<td><p>0.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>paragraph</p></td>
+<td><p>540</p></td>
+<td><p>1.00</p></td>
+<td><p>504</p></td>
+<td><p>1.00</p></td>
+</tr>
+<tr class="row-even"><td><p>fixed_window (500 / 400)</p></td>
+<td><p>228</p></td>
+<td><p>0.95</p></td>
+<td><p>485</p></td>
+<td><p>0.76</p></td>
+</tr>
+<tr class="row-odd"><td><p>recursive (500)</p></td>
+<td><p>235</p></td>
+<td><p>0.95</p></td>
+<td><p>422</p></td>
+<td><p>0.84</p></td>
+</tr>
+<tr class="row-even"><td><p>recursive (200)</p></td>
+<td><p>610</p></td>
+<td><p>0.59</p></td>
+<td><p>150</p></td>
+<td><p>0.46</p></td>
+</tr>
+<tr class="row-odd"><td><p>parent_child (1500 / 200)</p></td>
+<td><p>614</p></td>
+<td><p>1.00</p></td>
+<td><p>1263</p></td>
+<td><p>0.98</p></td>
+</tr>
+<tr class="row-even"><td><p>structure (rst, 500)</p></td>
+<td><p>301</p></td>
+<td><p>0.95</p></td>
+<td><p>380</p></td>
+<td><p>0.84</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The queries are verbatim sentences, so this measures whether a chunker keeps
+a sentence and its surroundings together, not semantic retrieval. The guide’s
+lines are hard-wrapped, so <code class="docutils literal notranslate"><span class="pre">recursive</span> <span class="pre">(200)</span></code> cuts at line ends before
+sentence ends, which is why it splits so many sentences.</p>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker" title="scikitplot.corpus.StructureChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">StructureChunker</span></code></a> chunks Markdown or reStructuredText by its headings
+and code blocks (<code class="docutils literal notranslate"><span class="pre">markup</span></code> is given, never guessed): code blocks are chunks
+of their own, the prose of each section is split by the recursive rule, and
+every chunk’s metadata holds <code class="docutils literal notranslate"><span class="pre">heading_path</span></code> (a tuple of the titles above
+it, outermost first), <code class="docutils literal notranslate"><span class="pre">section_level</span></code> and <code class="docutils literal notranslate"><span class="pre">block</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;prose&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;code&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;heading&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;front_matter&quot;</span></code>); documents built from the
+chunks carry all three. With <code class="docutils literal notranslate"><span class="pre">include_heading</span></code> (the default) a heading
+directly followed by prose begins the context of that prose’s first chunk;
+any other heading is a chunk of its own, so no heading is lost (unless
+<code class="docutils literal notranslate"><span class="pre">min_length</span></code> drops it). Markdown: ATX and setext headings, fenced code,
+thematic breaks and YAML front matter (<code class="docutils literal notranslate"><span class="pre">front_matter</span></code>); indented code is
+prose. reStructuredText: section titles,
+<code class="docutils literal notranslate"><span class="pre">code-block</span></code>/<code class="docutils literal notranslate"><span class="pre">code</span></code>/<code class="docutils literal notranslate"><span class="pre">sourcecode</span></code> directives and <code class="docutils literal notranslate"><span class="pre">::</span></code> literal blocks
+(a directive such as <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">note::</span></code> is not one; its body is prose).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructureChunker</span><span class="p">,</span> <span class="n">StructureChunkerConfig</span>
+
+<span class="n">chunker</span> <span class="o">=</span> <span class="n">StructureChunker</span><span class="p">(</span><span class="n">StructureChunkerConfig</span><span class="p">(</span><span class="n">markup</span><span class="o">=</span><span class="s2">"rst"</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">chunk</span> <span class="o">=</span> <span class="n">chunker</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">chunks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"heading_path"</span><span class="p">],</span> <span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"block"</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
 <section id="custom-downloader">
 <h2>Custom downloader<a class="headerlink" href="#custom-downloader" title="Link to this heading">#</a></h2>
 <p>Use <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CustomDownloader.html#scikitplot.corpus.CustomDownloader" title="scikitplot.corpus.CustomDownloader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomDownloader</span></code></a> when the transfer itself is special, or provide a
@@ -1049,10 +1226,14 @@ reader dispatch separate.</p>
 </section>
 <section id="custom-retrieval">
 <h2>Custom retrieval<a class="headerlink" href="#custom-retrieval" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex" title="scikitplot.corpus.CustomRetrievalIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code></a> accepts a scorer callback. The independent
-<a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> facade provides <a class="reference internal" href="../../modules/generated/scikitplot.levenshtein.make_corpus_scorer.html#scikitplot.levenshtein.make_corpus_scorer" title="scikitplot.levenshtein.make_corpus_scorer"><code class="xref py py-func docutils literal notranslate"><span class="pre">scikitplot.levenshtein.make_corpus_scorer</span></code></a>
-for edit-distance ranking without coupling the Levenshtein module back to
-Corpus.</p>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex" title="scikitplot.corpus.CustomRetrievalIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code></a> accepts a ranking callback
+(<code class="docutils literal notranslate"><span class="pre">custom_scorer_fn</span></code>). <a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker" title="scikitplot.corpus.make_pairwise_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_pairwise_ranker</span></code></a> builds one from any
+pairwise function, such as <a class="reference internal" href="../../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity" title="scikitplot.corpus.edit_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">edit_similarity</span></code></a> or a cross-encoder, with
+scikit-learn’s <code class="docutils literal notranslate"><span class="pre">greater_is_better</span></code> sign convention, and
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_levenshtein_ranker.html#scikitplot.corpus.make_levenshtein_ranker" title="scikitplot.corpus.make_levenshtein_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_levenshtein_ranker</span></code></a> ranks by <a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> similarity
+with the backend that ran recorded on each hit. The Levenshtein module itself
+does not import Corpus.</p>
+<p>To <em>evaluate</em> any retriever, see <a class="reference internal" href="evaluation.html#corpus-evaluation"><span class="std std-ref">Evaluating retrieval and answers</span></a>.</p>
 </section>
 <section id="custom-registries">
 <h2>Custom registries<a class="headerlink" href="#custom-registries" title="Link to this heading">#</a></h2>
@@ -1115,6 +1296,9 @@ refuses accidental replacement unless <code class="docutils literal notranslate"
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reader-level-extractor">Reader-level extractor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builder-factories">Builder factories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chunkers-and-normalisers-by-name">Chunkers and normalisers by name</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-spans">Chunk spans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-and-parent-child-chunking">Recursive and parent-child chunking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-downloader">Custom downloader</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-retrieval">Custom retrieval</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-registries">Custom registries</a></li>
@@ -1176,7 +1360,7 @@ refuses accidental replacement unless <code class="docutils literal notranslate"
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

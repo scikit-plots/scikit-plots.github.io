@@ -1,6 +1,6 @@
 # DownloadResult[#](#downloadresult "Link to this heading")
 
-class scikitplot.corpus.DownloadResult(**input\_url**, **output\_path**, **suffix**, **content\_type=''**, **suggested\_filename=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult "Link to this definition")
+class scikitplot.corpus.DownloadResult(**input\_url**, **output\_path**, **suffix**, **content\_type=''**, **suggested\_filename=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult "Link to this definition")
 :   Immutable result object returned by every [`BaseDownloader`](scikitplot.corpus.BaseDownloader.html#scikitplot.corpus.BaseDownloader "scikitplot.corpus.BaseDownloader").
 
     Parameters:
@@ -62,10 +62,10 @@ class scikitplot.corpus.DownloadResult(**input\_url**, **output\_path**, **suffi
 
     content\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.corpus.DownloadResult.content_type "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.input_url "Link to this definition")
 
-    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.output_path "Link to this definition")
+    output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.output_path "Link to this definition")
 
-    suffix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.suffix "Link to this definition")
+    suffix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_base.py#L78)[#](#scikitplot.corpus.DownloadResult.suffix "Link to this definition")
 
     suggested\_filename: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.corpus.DownloadResult.suggested_filename "Link to this definition")

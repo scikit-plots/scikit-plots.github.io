@@ -1,6 +1,6 @@
 # logsumexp[#](#logsumexp "Link to this heading")
 
-scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
+scikitplot.cexperimental.\_logsumexp.logsumexp(**a**, **axis=None**, **b=None**, **keepdims=False**, **return\_sign=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cexperimental/_logsumexp.py#L58)[#](#scikitplot.cexperimental._logsumexp.logsumexp "Link to this definition")
 :   Compute the log of the sum of exponentials of input elements.
 
     Parameters:

@@ -1,6 +1,6 @@
 # AnyDownloader[#](#anydownloader "Link to this heading")
 
-class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **youtube\_mode='transcript'**, **youtube\_language='en'**, **youtube\_include\_auto=True**, **github\_token=None**, **headers=None**, **max\_retries=3**, **retry\_backoff=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L91)[#](#scikitplot.corpus.AnyDownloader "Link to this definition")
+class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **timeout=30.0**, **max\_bytes=104857600**, **verify\_ssl=True**, **block\_private\_ips=True**, **max\_redirects=5**, **user\_agent='Mozilla/5.0 (compatible; scikitplot-corpus/1.0; +https://github.com/scikit-plots/scikit-plots)'**, **youtube\_mode='transcript'**, **youtube\_language='en'**, **youtube\_include\_auto=True**, **github\_token=None**, **headers=None**, **max\_retries=3**, **retry\_backoff=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L91)[#](#scikitplot.corpus.AnyDownloader "Link to this definition")
 :   Auto-dispatching downloader with multi-URL and per-parameter list support.
 
     Accepts one URL ****or**** a list of URLs. All parameters support
@@ -140,7 +140,7 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
 
     block\_private\_ips: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.AnyDownloader.block_private_ips "Link to this definition")
 
-    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.AnyDownloader.cleanup "Link to this definition")
+    cleanup()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_base.py#L482)[#](#scikitplot.corpus.AnyDownloader.cleanup "Link to this definition")
     :   Remove the temporary directory owned by this instance, if any.
 
         Safe to call multiple times. If `output_path` was supplied at
@@ -149,7 +149,7 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
         Return type:
         :   None
 
-    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L480)[#](#scikitplot.corpus.AnyDownloader.download "Link to this definition")
+    download()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L480)[#](#scikitplot.corpus.AnyDownloader.download "Link to this definition")
     :   Download one URL or all URLs and return the result(s).
 
         Returns:
@@ -164,7 +164,7 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
         Batch downloads are sequential. For parallel execution, call
         `download_single` per URL in your own thread/process pool.
 
-    download\_all()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L500)[#](#scikitplot.corpus.AnyDownloader.download_all "Link to this definition")
+    download\_all()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L500)[#](#scikitplot.corpus.AnyDownloader.download_all "Link to this definition")
     :   Download all URLs and always return `list[DownloadResult]`.
 
         Normalises the return type so callers never need to branch on
@@ -186,7 +186,7 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
         ```
         Go BackOpen In Tab
 
-    classmethod from\_policy(**input\_url**, **policy='secure'**, **/**, **\*\*overrides**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L200)[#](#scikitplot.corpus.AnyDownloader.from_policy "Link to this definition")
+    classmethod from\_policy(**input\_url**, **policy='secure'**, **/**, **\*\*overrides**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L200)[#](#scikitplot.corpus.AnyDownloader.from_policy "Link to this definition")
     :   Construct with a `DownloadPolicy` plus explicit overrides.
 
         Credentials, headers, destination paths and service-specific options are
@@ -197,7 +197,7 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
 
     headers: [object](https://docs.python.org/3/builtins/functions.html#object "(in Python v3.15)") = None[#](#scikitplot.corpus.AnyDownloader.headers "Link to this definition")
 
-    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L91)[#](#scikitplot.corpus.AnyDownloader.input_url "Link to this definition")
+    input\_url: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L91)[#](#scikitplot.corpus.AnyDownloader.input_url "Link to this definition")
 
     max\_bytes: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 104857600[#](#scikitplot.corpus.AnyDownloader.max_bytes "Link to this definition")
 
@@ -207,14 +207,14 @@ class scikitplot.corpus.AnyDownloader(**input\_url**, **output\_path=None**, **t
 
     output\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.AnyDownloader.output_path "Link to this definition")
 
-    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L406)[#](#scikitplot.corpus.AnyDownloader.plan "Link to this definition")
+    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L406)[#](#scikitplot.corpus.AnyDownloader.plan "Link to this definition")
     :   Return side-effect-free dispatch plan(s) matching [`download`](#scikitplot.corpus.AnyDownloader.download "scikitplot.corpus.AnyDownloader.download").
 
         This is a string/classification preflight only. It intentionally does
         not perform SSRF DNS resolution or content-type probing because those
         operations can touch external state.
 
-    plan\_all()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_downloader/_downloader.py#L417)[#](#scikitplot.corpus.AnyDownloader.plan_all "Link to this definition")
+    plan\_all()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_downloader/_downloader.py#L417)[#](#scikitplot.corpus.AnyDownloader.plan_all "Link to this definition")
     :   Return one `DownloadPlan` per input URL, always as a list.
 
         Return type:

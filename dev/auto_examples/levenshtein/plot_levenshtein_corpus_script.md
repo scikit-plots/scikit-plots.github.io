@@ -4,8 +4,9 @@ to download the full example code or to run this example in your browser via Jup
 
 # Use Levenshtein with Corpus[#](#use-levenshtein-with-corpus "Link to this heading")
 
-Build a local deterministic retrieval scorer without making Corpus an import
-requirement of the Levenshtein facade.
+Rank Corpus documents by edit distance. Corpus owns the adapter,
+[`scikitplot.corpus.make_levenshtein_ranker`](../../modules/generated/scikitplot.corpus.make_levenshtein_ranker.html#scikitplot.corpus.make_levenshtein_ranker "scikitplot.corpus.make_levenshtein_ranker"), so the Levenshtein facade
+never imports Corpus.
 
 ```
 kitten     score=1.000 backend=levenshtein:python
@@ -15,8 +16,7 @@ sitting    score=0.571 backend=levenshtein:python
 ```
   
 ```
-from scikitplot.corpus import CorpusDocument, RetrievalConfig
-from scikitplot.levenshtein import make_corpus_scorer
+from scikitplot.corpus import CorpusDocument, RetrievalConfig, make_levenshtein_ranker
 
 documents = [
     CorpusDocument.create("a.txt", 0, "kitten"),
@@ -25,11 +25,11 @@ documents = [
     CorpusDocument.create("d.txt", 0, "unrelated"),
 ]
 
-scorer = make_corpus_scorer(
+ranker = make_levenshtein_ranker(
     backend="python",
     score_cutoff=0.5,
 )
-hits = scorer("kitten", documents, RetrievalConfig(top_k=3))
+hits = ranker("kitten", documents, RetrievalConfig(top_k=3))
 
 assert [hit.doc.text for hit in hits] == ["kitten", "bitten", "sitting"]
 assert all(hit.match_mode == "levenshtein" for hit in hits)
@@ -44,7 +44,7 @@ for hit in hits:
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.002 seconds)
+****Total running time of the script:**** (0 minutes 0.003 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/levenshtein/plot_levenshtein_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/levenshtein/plot_levenshtein_corpus_script.ipynb)
 

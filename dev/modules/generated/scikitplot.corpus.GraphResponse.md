@@ -1,6 +1,6 @@
 # GraphResponse[#](#graphresponse "Link to this heading")
 
-class scikitplot.corpus.GraphResponse(**nodes=()**, **edges=()**, **errors=()**, **hops\_completed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L247)[#](#scikitplot.corpus.GraphResponse "Link to this definition")
+class scikitplot.corpus.GraphResponse(**nodes=()**, **edges=()**, **errors=()**, **hops\_completed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L247)[#](#scikitplot.corpus.GraphResponse "Link to this definition")
 :   The outcome of a traversal, including why it stopped.
 
     Notes
@@ -31,7 +31,7 @@ class scikitplot.corpus.GraphResponse(**nodes=()**, **edges=()**, **errors=()**,
     property status: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.GraphResponse.status "Link to this definition")
     :   `"success"`, `"empty"` or `"degraded"`.
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_graph.py#L277)[#](#scikitplot.corpus.GraphResponse.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_graph.py#L277)[#](#scikitplot.corpus.GraphResponse.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

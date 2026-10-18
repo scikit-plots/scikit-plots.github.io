@@ -1,6 +1,6 @@
 # SemanticChunkerConfig[#](#semanticchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**, **model\_name='paraphrase-multilingual-mpnet-base-v2'**, **model\_version=None**, **similarity\_threshold=0.85**, **max\_chunk\_tokens=None**, **min\_chunk\_tokens=1**, **include\_offsets=True**, **adapter\_unit='word'**, **multilang\_config=None**, **device='cpu'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L117)[#](#scikitplot.corpus.SemanticChunkerConfig "Link to this definition")
+class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**, **model\_name='paraphrase-multilingual-mpnet-base-v2'**, **model\_version=None**, **similarity\_threshold=0.85**, **max\_chunk\_tokens=None**, **min\_chunk\_tokens=1**, **include\_offsets=True**, **adapter\_unit='word'**, **multilang\_config=None**, **device='cpu'**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L121)[#](#scikitplot.corpus.SemanticChunkerConfig "Link to this definition")
 :   Configuration for [`SemanticChunker`](scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker "scikitplot.corpus.SemanticChunker").
 
     Parameters:
@@ -46,6 +46,19 @@ class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**
         :   Torch device for embeddings: `"cpu"`, `"cuda"`, `"mps"`.
             Default `"cpu"`.
 
+        ****allow\_fallback****bool
+        :   When `sentence-transformers` is unavailable, the model fails to
+            load, or the model fails while refining boundaries, EMBEDDING and
+            HYBRID fall back to MORPHOLOGICAL (`True`, default) or raise
+            (`False`): `ImportError` for the missing package, `RuntimeError`
+            (chained from the cause) for a load failure, the model’s own exception
+            for an encode failure. Either way the result reports what actually
+            ran: `metadata["backend"]` is the **effective** backend,
+            `metadata["requested_backend"]` the configured one, and
+            `metadata["fallback_reason"]` why they differ
+            (`"sentence_transformers_unavailable"`, `"model_load_failed"` or
+            `"embedding_failed"`).
+
     Parameters:
     :   * ****backend**** ([**SemanticBackend**](scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus._chunkers._semantic.SemanticBackend"))
         * ****model\_name**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
@@ -57,18 +70,30 @@ class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**
         * ****adapter\_unit**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****multilang\_config**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
         * ****device**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****allow\_fallback**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
     Notes
 
-    ****Developer note:**** `model_name` and `model_version` populate
-    `CorpusDocument.script_model_version` via `MultilangChunkMeta`.
-    This is the idempotency verification field — always set it when
-    running EMBEDDING or HYBRID to detect model-version drift across
-    pipeline re-runs.
+    ****Developer note:**** `model_name` and `model_version` are recorded
+    only when the model was called for the text: in the result metadata
+    (`model_name`, `model_version`, and `model_invoked`) and in each
+    chunk’s `metadata["multilang"]` (`model_name`,
+    `script_model_version` = `"name@version"` or `"name"`).
+    `script_model_version` is the idempotency verification field – set
+    `model_version` when running EMBEDDING or HYBRID to detect
+    model-version drift across pipeline re-runs. A MORPHOLOGICAL run,
+    requested or fallen back to, calls no model, and neither does a text
+    with a single unit (nothing to refine: the requested backend is
+    reported, `model_invoked` is `False`). A model you declare yourself in
+    `multilang_config.embedding_model_name` is recorded on every chunk as
+    declared, as in every chunker with multilang metadata; when the semantic
+    model is called, its name replaces the declared one.
 
     adapter\_unit: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'word'[#](#scikitplot.corpus.SemanticChunkerConfig.adapter_unit "Link to this definition")
 
-    backend: [SemanticBackend](scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus._chunkers._semantic.SemanticBackend") = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticChunkerConfig.backend "Link to this definition")
+    allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.SemanticChunkerConfig.allow_fallback "Link to this definition")
+
+    backend: [SemanticBackend](scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus._chunkers._semantic.SemanticBackend") = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticChunkerConfig.backend "Link to this definition")
 
     device: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'cpu'[#](#scikitplot.corpus.SemanticChunkerConfig.device "Link to this definition")
 

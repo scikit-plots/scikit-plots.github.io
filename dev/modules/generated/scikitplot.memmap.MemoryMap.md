@@ -28,6 +28,36 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
     * Always use factory methods (create\_\*) to create instances
     * Use as context manager for automatic cleanup
     * Accessing closed mapping raises ValueError
+    * The mapping exports its bytes through the buffer protocol, so
+      `memoryview(m)` views it without copying. A `memoryview` and an
+      array from [`as_numpy_array`](#scikitplot.memmap.MemoryMap.as_numpy_array "scikitplot.memmap.MemoryMap.as_numpy_array") each hold an export, which keeps the
+      mapped region alive: [`close`](#scikitplot.memmap.MemoryMap.close "scikitplot.memmap.MemoryMap.close") ends this object’s own API at once,
+      and the region is unmapped when the last export is released. Using such
+      a view after `close()` is therefore safe.
+    * `numpy.frombuffer(m)` called directly holds an export from NumPy
+      1.23 on (NumPy keeps a memoryview of its own as the array’s base);
+      older NumPy, still allowed on Python 3.8, releases it at once, and
+      `close()` may then unmap under the array. [`as_numpy_array`](#scikitplot.memmap.MemoryMap.as_numpy_array "scikitplot.memmap.MemoryMap.as_numpy_array")
+      holds one with every NumPy.
+    * An array’s `base` memoryview is its export: calling
+      `arr.base.release()` while the array is still used invalidates the
+      array, as it does for any NumPy array over a released buffer.
+    * A mapping without `PROT_READ` exports nothing (`BufferError`) and
+      cannot be read; access through it would crash the process.
+    * Methods that release the GIL around a system call or a copy
+      ([`read`](#scikitplot.memmap.MemoryMap.read "scikitplot.memmap.MemoryMap.read"), [`write`](#scikitplot.memmap.MemoryMap.write "scikitplot.memmap.MemoryMap.write"), [`msync`](#scikitplot.memmap.MemoryMap.msync "scikitplot.memmap.MemoryMap.msync"), [`mlock`](#scikitplot.memmap.MemoryMap.mlock "scikitplot.memmap.MemoryMap.mlock"),
+      [`munlock`](#scikitplot.memmap.MemoryMap.munlock "scikitplot.memmap.MemoryMap.munlock")) hold the same kind of export while they run, so a
+      [`close`](#scikitplot.memmap.MemoryMap.close "scikitplot.memmap.MemoryMap.close") from another thread defers the unmap instead of unmapping
+      under them. [`mprotect`](#scikitplot.memmap.MemoryMap.mprotect "scikitplot.memmap.MemoryMap.mprotect") keeps the GIL for its system call, so the
+      protection and the recorded flags change together, and it refuses to
+      remove a protection bit while exports are alive (`BufferError`): a
+      view exported as writable would crash the process on its next write.
+    * Threads may share one mapping, on free-threaded CPython builds too:
+      the open/closed state, the export count and the protection flags
+      change under a lock of the mapping, so an export or a method never
+      starts on a closed mapping, and the region is unmapped once, after
+      the last export. What the threads write into the mapped bytes is
+      theirs to order, as for any shared memory.
 
     Examples
 
@@ -59,9 +89,9 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
     as\_numpy\_array(**self**, **dtype=None**)[#](#scikitplot.memmap.MemoryMap.as_numpy_array "Link to this definition")
     :   Return a NumPy array that shares memory with this mapping.
 
-        No data is copied. The returned array’s lifetime is tied to
-        this `MemoryMap` instance: using the array after the mapping
-        is closed is undefined behaviour.
+        No data is copied. The array holds a buffer export of this mapping,
+        so the mapped region stays alive as long as the array (or any view of
+        it) does, even after [`close`](#scikitplot.memmap.MemoryMap.close "scikitplot.memmap.MemoryMap.close").
 
         Parameters:
         :   ****dtype****numpy.dtype or None, optional
@@ -72,9 +102,8 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Returns:
         :   numpy.ndarray
-            :   A 1-D array viewing the mapped memory. The `WRITEABLE`
-                flag is set only when the mapping was created with
-                `PROT_WRITE`.
+            :   A 1-D array viewing the mapped memory. It is writeable only when
+                the mapping was created with `PROT_WRITE`.
 
         Raises:
         :   ValueError
@@ -86,19 +115,13 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Notes
 
-        Lifetime management follows the same pattern used by
-        `numpy.memmap`: a ctypes buffer object is created from the
-        raw pointer via `from_address` (zero-copy), then passed as
-        the `buffer=` argument to `numpy.ndarray`. NumPy sets
-        `arr.base` to that buffer object, which in turn holds a
-        `_mmap_ref` back-reference to this `MemoryMap`. The chain
-        `arr  →  arr.base (ctypes buf)  →  buf._mmap_ref (MemoryMap)`
-        keeps everything alive as long as the array exists.
-
-        Plain `numpy.ndarray` is a C-extension type with ****no****
-        `__dict__`; you cannot attach arbitrary attributes to it.
-        The ctypes array **does** have a `__dict__`, which is why the
-        back-reference is stored there and not on the ndarray itself.
+        ****Developer.**** The array is built with `numpy.frombuffer` over this
+        object’s buffer protocol, which counts exports; `close` defers the
+        `munmap` while any export is alive. The previous implementation
+        wrapped the raw address in a `ctypes` buffer: that kept this object
+        alive but not the region, because `close` (called by every `with`
+        block) unmapped it regardless, and touching the array afterwards
+        dereferenced unmapped memory (SIGSEGV).
 
         Examples
 
@@ -110,6 +133,8 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         ...     arr[:5] = [72, 101, 108, 108, 111]
         ...     print(m.read(5))
         b'Hello'
+        >>> int(arr[0])  # still valid after the with block closed m
+        72
 
         ```
 
@@ -129,11 +154,8 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         Unmaps the region and releases resources.
 
         Raises:
-        :   ValueError
-            :   If mapping is already closed
-
-            MMapError
-            :   If munmap() fails
+        :   MMapError
+            :   If munmap() fails; the mapping then stays open.
 
         Return type:
         :   None
@@ -143,6 +165,15 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         * After closing, the mapping cannot be used
         * Called automatically by \_\_dealloc\_\_ or context manager
         * Safe to call multiple times (idempotent)
+        * If views (`as_numpy_array`, `memoryview`) are still alive, or
+          another thread is inside a method that runs without the GIL
+          (`read`, `write`, …), the unmap is deferred until the last of
+          them is released. It used to unmap at once: reading such a view –
+          for instance an array returned from a `with` block – or a
+          `read` running on another thread killed the process with SIGSEGV.
+        * If `munmap` fails, the mapping is open again when this raises.
+          Until then other threads see it closed: their exports and methods
+          are refused, and a second `close()` returns at once.
 
         Examples
 
@@ -335,6 +366,14 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         :   ValueError
             :   If mapping is closed or flags invalid
 
+            BufferError
+            :   If **prot** removes a protection bit while views of the mapping
+                (`memoryview`, [`as_numpy_array`](#scikitplot.memmap.MemoryMap.as_numpy_array "scikitplot.memmap.MemoryMap.as_numpy_array")) are alive, or while
+                another thread runs [`read`](#scikitplot.memmap.MemoryMap.read "scikitplot.memmap.MemoryMap.read"), [`write`](#scikitplot.memmap.MemoryMap.write "scikitplot.memmap.MemoryMap.write"), [`msync`](#scikitplot.memmap.MemoryMap.msync "scikitplot.memmap.MemoryMap.msync"),
+                [`mlock`](#scikitplot.memmap.MemoryMap.mlock "scikitplot.memmap.MemoryMap.mlock") or [`munlock`](#scikitplot.memmap.MemoryMap.munlock "scikitplot.memmap.MemoryMap.munlock") on it: a view exported as writable
+                or readable, or the running copy, would crash the process on its
+                next access. Adding bits is always allowed.
+
             MMapError
             :   If mprotect() fails
 
@@ -462,7 +501,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
 
         Raises:
         :   ValueError
-            :   If mapping is closed or parameters are invalid
+            :   If mapping is closed, not readable, or parameters are invalid
 
         Parameters:
         :   * ****size**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
@@ -476,7 +515,7 @@ class scikitplot.memmap.MemoryMap[#](#scikitplot.memmap.MemoryMap "Link to this 
         Try it in your browser!
         ```
         >>> with MemoryMap.create_anonymous(4096) as m:
-        ...     m.write(b"Hello")
+        ...     _ = m.write(b"Hello")
         ...     data = m.read(5)
         ...     print(data)
         b'Hello'

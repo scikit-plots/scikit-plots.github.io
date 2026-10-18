@@ -22,7 +22,7 @@ so low-quality candidates can be rejected consistently across accelerators.
 from __future__ import annotations
 
 from scikitplot import levenshtein
-from scikitplot.corpus import CorpusDocument, RetrievalConfig
+from scikitplot.corpus import CorpusDocument, RetrievalConfig, make_levenshtein_ranker
 
 ```
 
@@ -65,11 +65,12 @@ science plots 0.692 4
 
 ```
 
-## Adapt the scorer to Corpus[#](#adapt-the-scorer-to-corpus "Link to this heading")
+## Rank Corpus documents[#](#rank-corpus-documents "Link to this heading")
 
-The adapter is lazy: importing [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") does not import
-Corpus. When used with Corpus it returns normal `RetrievalHit` records
-with explicit lexical provenance.
+Corpus owns the adapter, [`make_levenshtein_ranker`](../../modules/generated/scikitplot.corpus.make_levenshtein_ranker.html#scikitplot.corpus.make_levenshtein_ranker "scikitplot.corpus.make_levenshtein_ranker");
+[`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") never imports Corpus. The ranker returns normal
+`RetrievalHit` records with explicit lexical provenance, and is what
+`CustomRetrievalIndex(custom_scorer_fn=...)` expects.
 
 ```
 documents = [
@@ -96,8 +97,8 @@ documents = [
     ),
 ]
 
-scorer = levenshtein.make_corpus_scorer(score_cutoff=0.60)
-hits = scorer(
+ranker = make_levenshtein_ranker(score_cutoff=0.60)
+hits = ranker(
     "hemoglobin concentration",
     documents,
     RetrievalConfig(top_k=3),
@@ -116,7 +117,7 @@ assert hits[0].backend.startswith("levenshtein:")
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.005 seconds)
+****Total running time of the script:**** (0 minutes 0.007 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_levenshtein_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_levenshtein_script.ipynb)
 

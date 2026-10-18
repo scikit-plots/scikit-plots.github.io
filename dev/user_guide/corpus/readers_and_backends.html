@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/readers_and_backends","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1029,6 +1035,63 @@ records contain safe error metadata, not live exception/traceback objects.
 capability status, readiness) so an <code class="docutils literal notranslate"><span class="pre">unavailable</span></code> result is diagnosable without
 replaying the operation or scraping debug logs.</p>
 </section>
+<section id="what-ran-what-was-asked-and-why-they-differ">
+<h2>What ran, what was asked, and why they differ<a class="headerlink" href="#what-ran-what-was-asked-and-why-they-differ" title="Link to this heading">#</a></h2>
+<p>The components that choose between implementations – reader backend chains
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code>), vector backends and their Annoy bindings, and
+<code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code> – report the same four names:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">requested_backend</span></code></dt><dd><p>What the configuration asked for (<code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>, a backend name, a binding).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">backend</span></code></dt><dd><p>What actually ran.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fallback_reason</span></code></dt><dd><p>Why they differ, from a closed vocabulary per component; <code class="docutils literal notranslate"><span class="pre">None</span></code> when they
+do not. Reader chains (<code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code>) use <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;no_result&quot;</span></code> (a candidate the policy skips was never eligible, as an
+absent backend is not a fallback under <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>); vector backends use
+<code class="docutils literal notranslate"><span class="pre">&quot;&lt;name&gt;_broken&quot;</span></code> (installed but failing to load, skipped under
+<code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>), <code class="docutils literal notranslate"><span class="pre">&quot;option_unsupported&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;&lt;binding&gt;_unavailable&quot;</span></code>;
+<code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code> uses <code class="docutils literal notranslate"><span class="pre">&quot;sentence_transformers_unavailable&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;model_load_failed&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;embedding_failed&quot;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">allow_fallback</span></code></dt><dd><p>The switch: <code class="docutils literal notranslate"><span class="pre">True</span></code> (default) runs the fallback and reports it, <code class="docutils literal notranslate"><span class="pre">False</span></code>
+raises instead (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.FallbackRefusedError.html#scikitplot.corpus.FallbackRefusedError" title="scikitplot.corpus.FallbackRefusedError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FallbackRefusedError</span></code></a> for vector backends; a
+strict chain attempts only its first eligible candidate). An unknown
+option name raises in both modes, and an explicitly named vector backend
+is never replaced. An Annoy <code class="docutils literal notranslate"><span class="pre">dtype</span></code> value is checked by the binding that
+honours it; one dropped by a fallback is reported verbatim.</p>
+</dd>
+</dl>
+<p>For the dense index, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.backend_provenance" title="scikitplot.corpus.RetrievalIndex.backend_provenance"><code class="xref py py-attr docutils literal notranslate"><span class="pre">RetrievalIndex.backend_provenance</span></code></a> reports the four
+names (and, for Annoy, the binding and any <code class="docutils literal notranslate"><span class="pre">discarded_options</span></code>), and every
+dense leg (<code class="docutils literal notranslate"><span class="pre">RetrievalIndex</span></code> and <code class="docutils literal notranslate"><span class="pre">DenseRetriever</span></code>) carries
+<code class="docutils literal notranslate"><span class="pre">requested_backend</span></code> and <code class="docutils literal notranslate"><span class="pre">fallback_reason</span></code>. Invalid embeddings (non-finite,
+not two-dimensional) still disable the dense index with a warning; a backend
+error, a refused fallback included, propagates from <code class="docutils literal notranslate"><span class="pre">build</span></code>.
+<code class="docutils literal notranslate"><span class="pre">AnnoyBackend(impl=&quot;auto&quot;)</span></code> picks a binding that accepts every requested
+option, so <code class="docutils literal notranslate"><span class="pre">annoy_dtype=&quot;float64&quot;</span></code> runs on the Cython class rather than being
+dropped by the high-level one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetrievalConfig</span><span class="p">,</span> <span class="n">RetrievalIndex</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RetrievalConfig</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">"annoy"</span><span class="p">,</span> <span class="n">annoy_dtype</span><span class="o">=</span><span class="s2">"float64"</span><span class="p">)</span>
+<span class="n">strict</span> <span class="o">=</span> <span class="n">RetrievalConfig</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">"annoy"</span><span class="p">,</span> <span class="n">annoy_impl</span><span class="o">=</span><span class="s2">"highlevel"</span><span class="p">,</span>
+                         <span class="n">annoy_dtype</span><span class="o">=</span><span class="s2">"float64"</span><span class="p">,</span> <span class="n">allow_fallback</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># index = RetrievalIndex(config); index.build(documents)</span>
+<span class="c1"># index.backend_provenance</span>
+<span class="c1">#   -&gt; {"requested_backend": "annoy", "backend": "annoy", "impl": "cython",</span>
+<span class="c1">#       "fallback_reason": None, ...}</span>
+<span class="c1"># RetrievalIndex(strict).build(documents) raises FallbackRefusedError: the</span>
+<span class="c1">#   high-level binding cannot honour dtype.</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.capability_snapshot.html#scikitplot.corpus.capability_snapshot" title="scikitplot.corpus.capability_snapshot"><code class="xref py py-func docutils literal notranslate"><span class="pre">capability_snapshot</span></code></a> loads no backend by default, so it does not import
+Annoy (or, through it, scikit-learn and SciPy): Annoy reports <code class="docutils literal notranslate"><span class="pre">unknown</span></code>
+(<code class="docutils literal notranslate"><span class="pre">not_loaded</span></code>, and so <code class="docutils literal notranslate"><span class="pre">available</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>) until this process has
+loaded it; an installed FAISS or Voyager likewise. <code class="docutils literal notranslate"><span class="pre">capability_snapshot(load=True)</span></code> loads
+them to tell <code class="docutils literal notranslate"><span class="pre">available</span></code> from <code class="docutils literal notranslate"><span class="pre">broken</span></code>. <a class="reference internal" href="../../modules/generated/scikitplot.corpus.probe_backend.html#scikitplot.corpus.probe_backend" title="scikitplot.corpus.probe_backend"><code class="xref py py-func docutils literal notranslate"><span class="pre">probe_backend</span></code></a> reports a
+backend that is installed but fails to load as <code class="docutils literal notranslate"><span class="pre">broken</span></code>, never as
+<code class="docutils literal notranslate"><span class="pre">absent</span></code>; one with no evidence of a failed load stays <code class="docutils literal notranslate"><span class="pre">absent</span></code>.</p>
+</section>
 <section id="readiness-vocabulary">
 <h2>Readiness vocabulary<a class="headerlink" href="#readiness-vocabulary" title="Link to this heading">#</a></h2>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityReport</span></code> separates five facts that are commonly conflated:</p>
@@ -1265,6 +1328,7 @@ imply one universal fallback policy.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reader-dispatch">Reader dispatch</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-outcome-is-not-a-boolean">Backend outcome is not a boolean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-ran-what-was-asked-and-why-they-differ">What ran, what was asked, and why they differ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readiness-vocabulary">Readiness vocabulary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#role-based-discovery">Role-based discovery</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-the-exact-reader-backend-chain-before-running">Plan the exact reader backend chain before running</a></li>
@@ -1330,7 +1394,7 @@ imply one universal fallback policy.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

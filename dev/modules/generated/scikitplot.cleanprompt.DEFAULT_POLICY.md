@@ -1,6 +1,6 @@
 # DEFAULT\_POLICY[#](#default-policy "Link to this heading")
 
-scikitplot.cleanprompt.DEFAULT\_POLICY = RedactionPolicy(kinds=None, allow=(), tag\_style=TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None), overlap=<OverlapStrategy.LONGEST\_WINS: 'LONGEST\_WINS'>, limits=Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096), case\_insensitive=False, min\_confidence=0.0, preserve\_placeholders=True)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_POLICY "Link to this definition")
+scikitplot.cleanprompt.DEFAULT\_POLICY = RedactionPolicy(kinds=None, allow=(), tag\_style=TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None), overlap=<OverlapStrategy.LONGEST\_WINS: 'LONGEST\_WINS'>, limits=Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096), case\_insensitive=False, min\_confidence=0.0, preserve\_placeholders=True)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_POLICY "Link to this definition")
 :   Complete, declarative configuration for a redaction pass.
 
     Parameters:

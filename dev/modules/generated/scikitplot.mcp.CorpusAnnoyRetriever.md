@@ -1,6 +1,6 @@
 # CorpusAnnoyRetriever[#](#corpusannoyretriever "Link to this heading")
 
-class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_corpus_annoy.py#L323)[#](#scikitplot.mcp.CorpusAnnoyRetriever "Link to this definition")
+class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L440)[#](#scikitplot.mcp.CorpusAnnoyRetriever "Link to this definition")
 :   Docs dense retriever backed by an embedder + a vector index + a document lookup.
 
     Parameters:
@@ -26,7 +26,7 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
     Read-only. Retrieved text is untrusted and is sanitised downstream by
     `build_search_docs_result`.
 
-    classmethod from\_corpus\_annoy(**docs\_path**, **\***, **metric='angular'**, **n\_trees=10**, **embedding\_model='all-MiniLM-L6-v2'**, **embedder=None**, **backend='annoy'**, **strict=False**, **mode='semantic'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_corpus_annoy.py#L454)[#](#scikitplot.mcp.CorpusAnnoyRetriever.from_corpus_annoy "Link to this definition")
+    classmethod from\_corpus\_annoy(**docs\_path**, **\***, **metric='angular'**, **n\_trees=10**, **embedding\_model='all-MiniLM-L6-v2'**, **embedder=None**, **backend='annoy'**, **strict=False**, **mode='semantic'**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L571)[#](#scikitplot.mcp.CorpusAnnoyRetriever.from_corpus_annoy "Link to this definition")
     :   Build the real retriever from a docs directory (import-guarded).
 
         Wires [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") end to end. A single
@@ -73,6 +73,13 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
                 already holds a BM25 leg: hybrid fuses BM25 and dense by rank
                 inside the corpus (finding CX-04).
 
+            ****filter****Filter, mapping or None, optional
+            :   A corpus filter applied to every query (see
+                [`CorpusIndexRetriever`](scikitplot.mcp.CorpusIndexRetriever.html#scikitplot.mcp.CorpusIndexRetriever "scikitplot.mcp.CorpusIndexRetriever")). The vector seam the `semantic`
+                retriever reads takes no filter, so with a filter every mode
+                returns a [`CorpusIndexRetriever`](scikitplot.mcp.CorpusIndexRetriever.html#scikitplot.mcp.CorpusIndexRetriever "scikitplot.mcp.CorpusIndexRetriever") (`semantic` runs the
+                corpus’s dense leg through `search`). Checked before any build.
+
         Returns:
         :   CorpusAnnoyRetriever or CorpusIndexRetriever
 
@@ -81,9 +88,12 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
             :   If [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") is unavailable, or the build produced
                 no queryable semantic index (e.g. embeddings were unavailable).
 
+            TypeError
+            :   If **filter** is neither a filter expression nor a mapping.
+
             ValueError
-            :   If **mode** is not one of the accepted values (checked before any
-                build), or propagated from [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder")
+            :   If **mode** is not one of the accepted values, or **filter** is
+                malformed (both checked before any build), or propagated from [`CorpusBuilder`](scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder")
                 when **docs\_path** contains no valid input sources.
 
         Parameters:
@@ -95,11 +105,12 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
             * ****backend**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
             * ****mode**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+            * ****filter**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
         Return type:
         :   [**DocsRetriever**](scikitplot.mcp.DocsRetriever.html#scikitplot.mcp.DocsRetriever "scikitplot.mcp._core.DocsRetriever")
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_corpus_annoy.py#L357)[#](#scikitplot.mcp.CorpusAnnoyRetriever.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L474)[#](#scikitplot.mcp.CorpusAnnoyRetriever.get "Link to this definition")
     :   Return one indexed document by stable id for the MCP resource surface.
 
         Parameters:
@@ -108,7 +119,7 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
         Return type:
         :   [**RetrievedChunk**](scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp._core.RetrievedChunk") | None
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_corpus_annoy.py#L379)[#](#scikitplot.mcp.CorpusAnnoyRetriever.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L496)[#](#scikitplot.mcp.CorpusAnnoyRetriever.search "Link to this definition")
     :   Embed `query`, ANN-search, and map hits to [`RetrievedChunk`](scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp.RetrievedChunk").
 
         Parameters:

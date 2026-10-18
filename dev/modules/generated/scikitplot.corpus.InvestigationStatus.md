@@ -1,15 +1,15 @@
 # InvestigationStatus[#](#investigationstatus "Link to this heading")
 
-class scikitplot.corpus.InvestigationStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_agentic.py#L77)[#](#scikitplot.corpus.InvestigationStatus "Link to this definition")
+class scikitplot.corpus.InvestigationStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_agentic.py#L77)[#](#scikitplot.corpus.InvestigationStatus "Link to this definition")
 :   How an investigation finished.
 
-    ABSTAIN = 'abstain'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.ABSTAIN "Link to this definition")
+    ABSTAIN = 'abstain'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.ABSTAIN "Link to this definition")
     :   Stopped with no usable evidence.
 
-    ANSWERED = 'answered'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.ANSWERED "Link to this definition")
+    ANSWERED = 'answered'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.ANSWERED "Link to this definition")
     :   Evidence was judged sufficient.
 
-    PARTIAL = 'partial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.PARTIAL "Link to this definition")
+    PARTIAL = 'partial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_agentic.py#L)[#](#scikitplot.corpus.InvestigationStatus.PARTIAL "Link to this definition")
     :   Stopped with evidence, but short of sufficiency.
 
     capitalize(**/**)[#](#scikitplot.corpus.InvestigationStatus.capitalize "Link to this definition")

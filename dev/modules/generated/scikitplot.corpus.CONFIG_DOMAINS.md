@@ -1,6 +1,6 @@
 # CONFIG\_DOMAINS[#](#config-domains "Link to this heading")
 
-scikitplot.corpus.CONFIG\_DOMAINS = ('source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')[#](#scikitplot.corpus.CONFIG_DOMAINS "Link to this definition")
+scikitplot.corpus.CONFIG\_DOMAINS = ('source', 'reader', 'identity', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')[#](#scikitplot.corpus.CONFIG_DOMAINS "Link to this definition")
 :   Built-in immutable sequence.
 
     If no argument is given, the constructor returns an empty tuple.

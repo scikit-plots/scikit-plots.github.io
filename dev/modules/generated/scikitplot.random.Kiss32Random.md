@@ -1,6 +1,6 @@
 # Kiss32Random[#](#kiss32random "Link to this heading")
 
-class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
+class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/random/__init__.py#L)[#](#scikitplot.random.Kiss32Random "Link to this definition")
 :   32-bit KISS RNG with complete serialization support.
 
     Period: ~2^121 (suitable for <16M data points)
@@ -199,7 +199,7 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
         ```
         Go BackOpen In Tab
 
-    index(**self**, **size\_t n**) → size\_t[#](#scikitplot.random.Kiss32Random.index "Link to this definition")
+    index(**self**, **n**) → size\_t[#](#scikitplot.random.Kiss32Random.index "Link to this definition")
     :   Generate random index in range [0, n-1].
 
         Parameters:
@@ -217,11 +217,21 @@ class scikitplot.random.Kiss32Random(**int seed: [int](https://docs.python.org/3
             TypeError
             :   If n not an integer
 
+            OverflowError
+            :   If n is larger than the platform’s `size_t`
+
         Notes
 
         * Handles n==0 gracefully (returns 0)
-        * Uses modulo for simplicity (suitable for non-crypto use)
-        * Slight modulo bias exists but negligible for non-crypto applications
+        * Unbiased: a draw below `2**32 mod n` is rejected before the
+          modulo, so every index is equally likely. For `n <= 2**32` a
+          seeded stream equals the plain modulo’s until the first rejection
+          (probability below `n / 2**32` per draw); every later output is
+          then shifted by one draw.
+        * For `n > 2**32` two 32-bit draws make one 64-bit value, so every
+          index below `n` is reachable; such a stream differs from the old
+          one, which drew once.
+        * `n` is any integer except `bool`.
 
         Examples
 

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:04Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:09Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/troubleshooting","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_similarity.html">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -1043,6 +1049,48 @@ produced a valid empty result. For faster-whisper, the offline policy forces a
 local-files-only load so a cached model may still work even when preflight
 readiness is <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code>.</p>
 </section>
+<section id="a-segmenter-warning-appears-once-then-never-again">
+<h2>A segmenter warning appears once, then never again<a class="headerlink" href="#a-segmenter-warning-appears-once-then-never-again" title="Link to this heading">#</a></h2>
+<p>A missing optional segmenter (<code class="docutils literal notranslate"><span class="pre">jieba</span></code>, MeCab/fugashi/SudachiPy, <code class="docutils literal notranslate"><span class="pre">kss</span></code>,
+PyThaiNLP, <code class="docutils literal notranslate"><span class="pre">khmer-nltk</span></code>, <code class="docutils literal notranslate"><span class="pre">camel-tools</span></code>, or <code class="docutils literal notranslate"><span class="pre">regex</span></code> for script detection)
+is a fact about the environment, so its warning is logged once per process,
+not once per text or per chunker; so is an installed analyser that fails to
+start (MeCab without a dictionary). A warning suppressed by the logger’s level
+or by <code class="docutils literal notranslate"><span class="pre">logging.disable</span></code> when it first occurs is not used up (one dropped by
+a handler’s level or a filter is). To see every optional segmenter and whether it is
+importable, ask for the report instead of reading the log:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">component_capabilities</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">component_capabilities</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s2">"segmentation"</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">record</span><span class="p">[</span><span class="s2">"status"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"remedy"</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">regex</span></code> installed, <code class="docutils literal notranslate"><span class="pre">ScriptSegmenter</span></code> detects the script of each span
+that <code class="docutils literal notranslate"><span class="pre">ScriptSegmenter.SCRIPT_PROPERTY_MAP</span></code> names (Latin, Han, Arabic, …),
+and its <code class="docutils literal notranslate"><span class="pre">start</span></code>/<code class="docutils literal notranslate"><span class="pre">end</span></code> are character offsets into the text. Han next to
+kana stays in one Japanese span, and Han next to Hangul in one Korean span,
+when they meet letter to letter (a space or punctuation separates them).
+Text with no script at all (digits, punctuation) is <code class="docutils literal notranslate"><span class="pre">ScriptType.UNKNOWN</span></code>
+without a warning; a script the map does not name (Bengali, for example) is
+its own <code class="docutils literal notranslate"><span class="pre">UNKNOWN</span></code> span, noted once per process for each such script (as
+its Unicode character names call it; characters without a name, such as
+private-use icons, share one notice per general category).</p>
+</section>
+<section id="resourcewarning-unclosed-database">
+<h2><code class="docutils literal notranslate"><span class="pre">ResourceWarning:</span> <span class="pre">unclosed</span> <span class="pre">database</span></code><a class="headerlink" href="#resourcewarning-unclosed-database" title="Link to this heading">#</a></h2>
+<p>Python 3.13 and later report a SQLite connection that is garbage-collected
+while open. Close every store you open, preferably with <code class="docutils literal notranslate"><span class="pre">with</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">SQLiteStorage</span>
+
+<span class="k">with</span> <span class="n">SQLiteStorage</span><span class="p">(</span><span class="s2">"corpus.db"</span><span class="p">)</span> <span class="k">as</span> <span class="n">store</span><span class="p">:</span>
+    <span class="n">store</span><span class="o">.</span><span class="n">save_batch</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Every storage backend supports <code class="docutils literal notranslate"><span class="pre">with</span></code> and an idempotent <code class="docutils literal notranslate"><span class="pre">close()</span></code>. A
+<code class="docutils literal notranslate"><span class="pre">RuntimeCorpus</span></code> closes the store it created itself when it is closed
+(<code class="docutils literal notranslate"><span class="pre">close()</span></code> or <code class="docutils literal notranslate"><span class="pre">with</span></code>), and a materialisation that fails closes it at once;
+a <code class="docutils literal notranslate"><span class="pre">HybridRetriever</span></code> closes its legs the same way.</p>
+</section>
 </section>
 
 
@@ -1103,6 +1151,8 @@ readiness is <code class="docutils literal notranslate"><span class="pre">UNKNOW
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-url-works-in-a-browser-but-corpus-refuses-it">A URL works in a browser but Corpus refuses it</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-levenshtein-backend-is-missing">A Levenshtein backend is missing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-policy-says-unavailable-not-empty">Offline policy says unavailable, not empty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-segmenter-warning-appears-once-then-never-again">A segmenter warning appears once, then never again</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resourcewarning-unclosed-database"><code class="docutils literal notranslate"><span class="pre">ResourceWarning:</span> <span class="pre">unclosed</span> <span class="pre">database</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -1161,7 +1211,7 @@ readiness is <code class="docutils literal notranslate"><span class="pre">UNKNOW
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>

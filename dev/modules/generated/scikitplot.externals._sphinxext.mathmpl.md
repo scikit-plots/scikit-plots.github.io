@@ -1,11 +1,11 @@
-# scikitplot.externals.\_sphinxext.mathmpl[#](#scikitplot-externals-sphinxext-mathmpl "Link to this heading")
+# mathmpl[#](#mathmpl "Link to this heading")
 
 A role and directive to display mathtext in Sphinx.
 
 The `mathmpl` Sphinx extension creates a mathtext image in Matplotlib and
 shows it in html output. Thus, it is a true and faithful representation of what
 you will see if you pass a given LaTeX string to Matplotlib (see
-[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html#mathtext "(in Matplotlib v3.12.0.dev733+gcc7d47175)")).
+[Writing mathematical expressions](https://matplotlib.org/devdocs/users/explain/text/mathtext.html#mathtext "(in Matplotlib v3.12.0.dev804+g493abb1b6)")).
 
 > **Warning**
 > In most cases, you will likely want to use one of [Sphinx’s builtin Math

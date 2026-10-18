@@ -1,6 +1,6 @@
 # SimpleFrequencyEnricher[#](#simplefrequencyenricher "Link to this heading")
 
-class scikitplot.corpus.SimpleFrequencyEnricher(**spec=None**, **\***, **min\_token\_length=None**, **max\_keywords=None**, **lowercase=None**, **token\_pattern=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_enrichers/_simple.py#L80)[#](#scikitplot.corpus.SimpleFrequencyEnricher "Link to this definition")
+class scikitplot.corpus.SimpleFrequencyEnricher(**spec=None**, **\***, **min\_token\_length=None**, **max\_keywords=None**, **lowercase=None**, **token\_pattern=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_enrichers/_simple.py#L80)[#](#scikitplot.corpus.SimpleFrequencyEnricher "Link to this definition")
 :   Populate tokens and deterministic frequency-ranked keywords.
 
     The implementation is intentionally small and dependency-free. It uses
@@ -43,7 +43,7 @@ class scikitplot.corpus.SimpleFrequencyEnricher(**spec=None**, **\***, **min\_to
     ```
     Go BackOpen In Tab
 
-    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_enrichers/_simple.py#L181)[#](#scikitplot.corpus.SimpleFrequencyEnricher.enrich_documents "Link to this definition")
+    enrich\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_enrichers/_simple.py#L181)[#](#scikitplot.corpus.SimpleFrequencyEnricher.enrich_documents "Link to this definition")
     :   Return copy-on-write documents with tokens and keywords populated.
 
         Parameters:
@@ -59,7 +59,7 @@ class scikitplot.corpus.SimpleFrequencyEnricher(**spec=None**, **\***, **min\_to
     property min\_token\_length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.SimpleFrequencyEnricher.min_token_length "Link to this definition")
     :   Minimum token length from [`spec`](#scikitplot.corpus.SimpleFrequencyEnricher.spec "scikitplot.corpus.SimpleFrequencyEnricher.spec").
 
-    spec: [SimpleEnricherSpec](scikitplot.corpus.SimpleEnricherSpec.html#scikitplot.corpus.SimpleEnricherSpec "scikitplot.corpus._enrichers._simple.SimpleEnricherSpec")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/corpus/_enrichers/_simple.py#L80)[#](#scikitplot.corpus.SimpleFrequencyEnricher.spec "Link to this definition")
+    spec: [SimpleEnricherSpec](scikitplot.corpus.SimpleEnricherSpec.html#scikitplot.corpus.SimpleEnricherSpec "scikitplot.corpus._enrichers._simple.SimpleEnricherSpec")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_enrichers/_simple.py#L80)[#](#scikitplot.corpus.SimpleFrequencyEnricher.spec "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

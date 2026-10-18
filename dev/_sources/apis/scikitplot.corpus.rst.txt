@@ -154,6 +154,7 @@ Chunkers
   ChunkerBridge  
   FixedWindowChunkerBridge  
   ParagraphChunkerBridge  
+  ProtocolChunkerBridge  
   SemanticChunkerBridge  
   SentenceChunkerBridge  
   WordChunkerBridge  
@@ -202,6 +203,10 @@ Chunkers
   MultilangMixin  
   ParagraphChunker  
   ParagraphChunkerConfig  
+  ParentChildChunker  
+  ParentChildChunkerConfig  
+  RecursiveChunker  
+  RecursiveChunkerConfig  
   SemanticBackend  
   SemanticChunker  
   SemanticChunkerConfig  
@@ -209,6 +214,8 @@ Chunkers
   SentenceChunker  
   SentenceChunkerConfig  
   _validate_text_input  
+  StructureChunker  
+  StructureChunkerConfig  
   LemmatizationBackend  
   StemmingBackend  
   StopwordSource  
@@ -322,6 +329,10 @@ Embeddings
   :toctree: ../modules/generated/
   :template: base.rst
     
+  CachePolicy  
+  CacheStatus  
+  CachedEmbeddings  
+  resolve_hub_revision  
   DEFAULT_CACHE_DIR  
   DEFAULT_MODEL  
   EmbeddingEngine  
@@ -361,6 +372,86 @@ Enricher
   SimpleEnricherSpec  
   SimpleFrequencyEnricher
 
+.. _corpus_ref-evaluation--retrieval-and-answer-metrics--scorers:
+
+Evaluation: Retrieval and Answer Metrics, Scorers
+-------------------------------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: EvaluationComparison MetricComparison QueryEvaluation RetrievalEvaluation ScorerBackendInfo
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  hit_rate_at_k  
+  mean_average_precision  
+  mean_reciprocal_rank  
+  ndcg_at_k  
+  precision_at_k  
+  r_precision  
+  ranking_metrics  
+  recall_at_k  
+  anls_score  
+  edit_similarity  
+  edit_similarity_score  
+  exact_match_score  
+  normalize_answer  
+  token_f1_score  
+  ScorerBackendInfo  
+  get_corpus_scorer  
+  get_corpus_scorer_names  
+  make_corpus_scorer  
+  scorer_backend_info  
+  EvaluationComparison  
+  MetricComparison  
+  QueryEvaluation  
+  RetrievalEvaluation  
+  evaluate_retrieval  
+  UndefinedMetricWarning  
+  ranked_ids
+
+.. _corpus_ref-evaluation--llm-judges--answer-harness--agreement:
+
+Evaluation: LLM Judges, Answer Harness, Agreement
+-------------------------------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: AnswerEvaluation AnswerItem Completion JudgeResult LLM LLMJudge PreferenceEvaluation
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CacheError  
+  Completion  
+  IncompleteCompletionError  
+  LLM  
+  make_llm  
+  JudgeParseError  
+  JudgeResult  
+  LLMJudge  
+  context_texts  
+  parse_verdict  
+  AnswerEvaluation  
+  AnswerItem  
+  PreferenceEvaluation  
+  evaluate_answers  
+  evaluate_preference  
+  cohen_kappa  
+  fleiss_kappa  
+  krippendorff_alpha
+
 .. _corpus_ref-export:
 
 Export
@@ -395,7 +486,12 @@ Filter (backend-neutral) Expressions
   NotIn  
   Or  
   Range  
-  UnsupportedOperatorError
+  SecurityFilter  
+  UnsupportedOperatorError  
+  filter_from_dict  
+  filter_to_dict  
+  filterable_fields  
+  validate_filter
 
 .. _corpus_ref-generator-index:
 
@@ -409,6 +505,24 @@ Generator Index
     
   IndexGeneration  
   derive_generation
+
+.. _corpus_ref-document-identity:
+
+Document Identity
+-----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  DocIdScheme  
+  IncompatibleSchemaError  
+  UUID7Generator  
+  assign_doc_ids  
+  doc_id_scheme_of  
+  uuid7  
+  uuid7_unix_ms
 
 .. _corpus_ref-graph-node:
 
@@ -600,12 +714,53 @@ Retriever
   :template: base.rst
     
   DenseRetriever  
+  FusedItem  
+  FusionContribution  
+  FusionPolicy  
   GraphRetriever  
   LegContribution  
   LegResult  
   LexicalRetriever  
   Retriever  
   fuse_by_rank
+
+.. _corpus_ref-retrieval-execution-plan:
+
+Retrieval Execution Plan
+------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CharBudgetCompressor  
+  ContextPassage  
+  ExecutionResult  
+  PlannedHit  
+  RetrievalExecutionPlan  
+  StageBudget  
+  StageKind  
+  StageOutcome  
+  StageStatus
+
+.. _corpus_ref-corrective-retrieval:
+
+Corrective Retrieval
+--------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CorrectionResult  
+  CorrectionRound  
+  CorrectionVerdict  
+  CorrectiveRetrieval  
+  EvidenceGrade  
+  GradeResult  
+  TermCoverageGrader
 
 .. _corpus_ref-runtime-policy:
 
@@ -659,6 +814,13 @@ Schema
 Similarity Backend
 ------------------
 
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: LevenshteinRanker PairwiseRanker
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
 .. autosummary::
   :nosignatures:
   :toctree: ../modules/generated/
@@ -668,13 +830,18 @@ Similarity Backend
   AnnoyBackend  
   BruteForceBackend  
   FaissBackend  
+  FallbackRefusedError  
   VectorIndexBackend  
   VoyagerBackend  
   list_available_backends  
   select_backend  
   RetrievalConfig  
   RetrievalHit  
-  RetrievalIndex
+  RetrievalIndex  
+  LevenshteinRanker  
+  PairwiseRanker  
+  make_levenshtein_ranker  
+  make_pairwise_ranker
 
 .. _corpus_ref-source:
 

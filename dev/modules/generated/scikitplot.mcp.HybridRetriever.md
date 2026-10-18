@@ -1,6 +1,6 @@
 # HybridRetriever[#](#hybridretriever "Link to this heading")
 
-class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, **rrf\_k=60**, **fanout=4**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L145)[#](#scikitplot.mcp.HybridRetriever "Link to this definition")
+class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, **rrf\_k=60**, **fanout=4**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_hybrid.py#L161)[#](#scikitplot.mcp.HybridRetriever "Link to this definition")
 :   Fuse several retrievers into one via Reciprocal Rank Fusion.
 
     Parameters:
@@ -33,7 +33,21 @@ class scikitplot.mcp.HybridRetriever(**retrievers**, **\***, **weights=None**, *
     not take down retrieval. Read-only; results are sanitised downstream by
     `build_search_docs_result`.
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mcp/_hybrid.py#L202)[#](#scikitplot.mcp.HybridRetriever.search "Link to this definition")
+    ****User.**** [`close`](#scikitplot.mcp.HybridRetriever.close "scikitplot.mcp.HybridRetriever.close") (or `with`) closes every leg that has a
+    `close` (a [`Bm25Retriever`](scikitplot.mcp.Bm25Retriever.html#scikitplot.mcp.Bm25Retriever "scikitplot.mcp.Bm25Retriever") built on a SQLite store, R3-8).
+
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_hybrid.py#L189)[#](#scikitplot.mcp.HybridRetriever.close "Link to this definition")
+    :   Close every leg that has a `close`; safe to call more than once.
+
+        Notes
+
+        ****Developer.**** Every leg is closed even when one raises; the first
+        error is then re-raised.
+
+        Return type:
+        :   None
+
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_hybrid.py#L257)[#](#scikitplot.mcp.HybridRetriever.search "Link to this definition")
     :   Query every leg, fuse by RRF, and return the top-`k` fused chunks.
 
         Parameters:

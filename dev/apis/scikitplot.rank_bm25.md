@@ -83,7 +83,7 @@ Go BackOpen In Tab
 |  |  |
 | --- | --- |
 | [`BM25`](../modules/generated/scikitplot.rank_bm25.BM25.html#scikitplot.rank_bm25.BM25 "scikitplot.rank_bm25.BM25") |  |
-| [`BM25Okapi`](../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") |  |
+| [`BM25Okapi`](../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") | Okapi BM25 with an epsilon floor on negative IDFs (ATIRE-style IDF). |
 | [`BM25L`](../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L "scikitplot.rank_bm25.BM25L") |  |
 | [`BM25Plus`](../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus") |  |
 

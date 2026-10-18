@@ -1,6 +1,6 @@
 # load\_project\_config[#](#load-project-config "Link to this heading")
 
-scikitplot.mlflow.load\_project\_config(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0ec25c01/scikitplot/mlflow/_project.py#L857)[#](#scikitplot.mlflow.load_project_config "Link to this definition")
+scikitplot.mlflow.load\_project\_config(**path**, **\***, **profile='local'**, **project\_root=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mlflow/_project.py#L857)[#](#scikitplot.mlflow.load_project_config "Link to this definition")
 :   Load project MLflow config from TOML or YAML based on file extension.
 
     Parameters:

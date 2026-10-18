@@ -11,17 +11,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/corpus/retrieval_and_similarity.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Corpus supports its existing lexical/vector/hybrid retrieval stack and can also consume user scorers through CustomRetrievalIndex. Levenshtein facade: scikitplot.levenshtein is intentionally indepe..." />
+<meta property="og:description" content="Corpus supports its existing lexical/vector/hybrid retrieval stack and can also consume user scorers through CustomRetrievalIndex. Hybrid fusion: Every hybrid path fuses ranks by one rule, FusionPo..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Corpus supports its existing lexical/vector/hybrid retrieval stack and can also consume user scorers through CustomRetrievalIndex. Levenshtein facade: scikitplot.levenshtein is intentionally indepe..." />
+<meta name="description" content="Corpus supports its existing lexical/vector/hybrid retrieval stack and can also consume user scorers through CustomRetrievalIndex. Hybrid fusion: Every hybrid path fuses ranks by one rule, FusionPo..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-11T12:06:04Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/retrieval_and_similarity","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Formats, structured evidence, and export" href="formats_and_export.html" />
+    <link rel="next" title="Evaluating retrieval and answers" href="evaluation.html" />
     <link rel="prev" title="Downloads and network boundaries" href="downloads_and_network.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -644,6 +644,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../agent/index.html">Agent</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">ANNoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/getting_started.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../annoy/architecture.html">Architecture</a></li>
@@ -689,6 +692,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="customization.html">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="downloads_and_network.html">Downloads and network boundaries</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Retrieval and similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating retrieval and answers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llm_evaluation.html">Judging answers with language models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formats_and_export.html">Formats, structured evidence, and export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="security_and_limits.html">Security and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -758,6 +763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/backends_and_fallbacks.html">Backends and fallback</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/ranking_and_matching.html">Ranking and matching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/corpus_integration.html">Corpus integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../levenshtein/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/performance_and_limits.html">Performance and limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../levenshtein/troubleshooting.html">Troubleshooting</a></li>
 </ul>
@@ -998,6 +1004,73 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="corpus-retrieval-similarity"></span><h1>Retrieval and similarity<a class="headerlink" href="#retrieval-and-similarity" title="Link to this heading">#</a></h1>
 <p>Corpus supports its existing lexical/vector/hybrid retrieval stack and can also
 consume user scorers through <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex" title="scikitplot.corpus.CustomRetrievalIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code></a>.</p>
+<section id="hybrid-fusion">
+<h2>Hybrid fusion<a class="headerlink" href="#hybrid-fusion" title="Link to this heading">#</a></h2>
+<p>Every hybrid path fuses ranks by one rule, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy" title="scikitplot.corpus.FusionPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">FusionPolicy</span></code></a> (weighted
+reciprocal rank fusion): <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.search" title="scikitplot.corpus.RetrievalIndex.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RetrievalIndex.search</span></code></a> with
+<code class="docutils literal notranslate"><span class="pre">match_mode=&quot;hybrid&quot;</span></code>, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.fuse_by_rank.html#scikitplot.corpus.fuse_by_rank" title="scikitplot.corpus.fuse_by_rank"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_by_rank</span></code></a>, and the MCP hybrid retriever,
+which carries a byte-identical copy of the contract. A document scores the sum
+of <code class="docutils literal notranslate"><span class="pre">weight</span> <span class="pre">/</span> <span class="pre">(k</span> <span class="pre">+</span> <span class="pre">rank)</span></code> over the legs that list it, ranks counted from 1.</p>
+<ul class="simple">
+<li><p>A document counts once per leg, at its best rank.</p></li>
+<li><p>A weight-0 leg contributes nothing and adds no document, so
+<code class="docutils literal notranslate"><span class="pre">hybrid_alpha=0</span></code> returns the lexical leg alone and <code class="docutils literal notranslate"><span class="pre">1</span></code> the dense leg
+alone, exactly; the other leg is not run and is reported <code class="docutils literal notranslate"><span class="pre">SKIPPED</span></code>.
+<code class="docutils literal notranslate"><span class="pre">hybrid_alpha</span></code> is shorthand for the weights
+<code class="docutils literal notranslate"><span class="pre">{lexical:</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">alpha,</span> <span class="pre">dense:</span> <span class="pre">alpha}</span></code>.</p></li>
+<li><p>Scores are compared exactly; a tie falls to the lower <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>.</p></li>
+<li><p>Each corpus hybrid hit carries its per-leg <code class="docutils literal notranslate"><span class="pre">contributions</span></code>; MCP results
+carry only the fused score.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">FusionPolicy</span>
+
+<span class="n">fused</span> <span class="o">=</span> <span class="n">FusionPolicy</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">fuse</span><span class="p">(</span>
+    <span class="p">[(</span><span class="s2">"lexical"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]),</span> <span class="p">(</span><span class="s2">"dense"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"C"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">])]</span>
+<span class="p">)</span>
+<span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fused</span><span class="p">]</span>                       <span class="c1"># ['A', 'C', 'B', 'D']</span>
+<span class="p">[(</span><span class="n">c</span><span class="o">.</span><span class="n">leg</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">fused</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contributions</span><span class="p">]</span>  <span class="c1"># [('lexical', 1), ('dense', 2)]</span>
+<span class="nb">dict</span><span class="p">(</span><span class="n">FusionPolicy</span><span class="o">.</span><span class="n">from_alpha</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>         <span class="c1"># {'lexical': 0.0, 'dense': 1.0}</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-a-search">
+<h2>Filtering a search<a class="headerlink" href="#filtering-a-search" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.search" title="scikitplot.corpus.RetrievalIndex.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RetrievalIndex.search</span></code></a> takes <code class="docutils literal notranslate"><span class="pre">filter=</span></code>: a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.Filter.html#scikitplot.corpus.Filter" title="scikitplot.corpus.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a> expression
+of the nine operators (<code class="docutils literal notranslate"><span class="pre">Eq</span></code>, <code class="docutils literal notranslate"><span class="pre">NotEq</span></code>, <code class="docutils literal notranslate"><span class="pre">In</span></code>, <code class="docutils literal notranslate"><span class="pre">NotIn</span></code>, <code class="docutils literal notranslate"><span class="pre">Range</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Exists</span></code>, <code class="docutils literal notranslate"><span class="pre">And</span></code>, <code class="docutils literal notranslate"><span class="pre">Or</span></code>, <code class="docutils literal notranslate"><span class="pre">Not</span></code>) or its JSON form. Every leg applies it
+before ranking, so a filtered query returns the best <code class="docutils literal notranslate"><span class="pre">top_k</span></code> matching
+documents, not the best <code class="docutils literal notranslate"><span class="pre">top_k</span></code> documents minus the excluded ones. Each leg
+that ran reports <code class="docutils literal notranslate"><span class="pre">filter_capability</span></code>: here every operator is <code class="docutils literal notranslate"><span class="pre">EMULATED</span></code>,
+evaluated in Python over the indexed documents. A filter is never dropped.</p>
+<p>A filter names scalar <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a> fields (<code class="docutils literal notranslate"><span class="pre">language</span></code>,
+<code class="docutils literal notranslate"><span class="pre">source_type</span></code>, <code class="docutils literal notranslate"><span class="pre">collection_id</span></code>, <code class="docutils literal notranslate"><span class="pre">chunk_index</span></code> …) or one metadata key as
+<code class="docutils literal notranslate"><span class="pre">&quot;metadata.&lt;key&gt;&quot;</span></code>; any other name is refused, so a misspelt field cannot
+silently read as missing. A value that cannot be compared (an array, a list in
+<code class="docutils literal notranslate"><span class="pre">In</span></code>) does not match, and <code class="docutils literal notranslate"><span class="pre">True</span></code> does not equal <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>A <a class="reference internal" href="../../modules/generated/scikitplot.corpus.SecurityFilter.html#scikitplot.corpus.SecurityFilter" title="scikitplot.corpus.SecurityFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecurityFilter</span></code></a> is bound to the index when it is built
+(<code class="docutils literal notranslate"><span class="pre">RetrievalIndex(security_filter=...)</span></code>, <code class="docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">BuilderConfig(security_filter=...)</span></code> for every index a builder builds) and
+AND-ed with every query’s filter, on <code class="docutils literal notranslate"><span class="pre">search</span></code> and on the vector seam
+<code class="docutils literal notranslate"><span class="pre">query</span></code>: a caller can narrow what it sees, never widen it. Keyword (BM25)
+statistics are computed over the scope only, so documents outside it cannot
+change a score, and a response reports the scope by its <code class="docutils literal notranslate"><span class="pre">label</span></code>, not its
+expression. <code class="docutils literal notranslate"><span class="pre">n_documents</span></code> still counts every indexed document.
+<code class="docutils literal notranslate"><span class="pre">RuntimeCorpus</span></code> and the MCP corpus factory do not take a scope yet. <a class="reference internal" href="../../modules/generated/scikitplot.corpus.filter_to_dict.html#scikitplot.corpus.filter_to_dict" title="scikitplot.corpus.filter_to_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_to_dict</span></code></a> and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.filter_from_dict.html#scikitplot.corpus.filter_from_dict" title="scikitplot.corpus.filter_from_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_from_dict</span></code></a> carry a filter
+through JSON (an MCP tool call, an agent’s tool arguments); reading refuses
+unknown operators, keys and fields, non-scalar values, strings over 4096
+characters, integers beyond 2**63, and trees deeper than 32 levels or larger
+than 256 nodes (filter cost grows with nodes times documents).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">And</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">RetrievalIndex</span><span class="p">,</span> <span class="n">SecurityFilter</span><span class="p">,</span> <span class="n">filter_from_dict</span><span class="p">,</span> <span class="n">filter_to_dict</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">RetrievalIndex</span><span class="p">(</span><span class="n">security_filter</span><span class="o">=</span><span class="n">SecurityFilter</span><span class="p">(</span><span class="n">Eq</span><span class="p">(</span><span class="s2">"collection_id"</span><span class="p">,</span> <span class="s2">"public"</span><span class="p">)))</span>
+<span class="n">query_filter</span> <span class="o">=</span> <span class="n">filter_from_dict</span><span class="p">({</span><span class="s2">"op"</span><span class="p">:</span> <span class="s2">"eq"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"language"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">})</span>
+<span class="n">filter_to_dict</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Eq</span><span class="p">(</span><span class="s2">"collection_id"</span><span class="p">,</span> <span class="s2">"public"</span><span class="p">),</span> <span class="n">query_filter</span><span class="p">))[</span><span class="s2">"op"</span><span class="p">]</span>  <span class="c1"># 'and'</span>
+<span class="c1"># index.build(documents); index.search("...", filter=query_filter)</span>
+</pre></div>
+</div>
+</section>
 <section id="levenshtein-facade">
 <h2>Levenshtein facade<a class="headerlink" href="#levenshtein-facade" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> is intentionally independent from Corpus and is
@@ -1023,18 +1096,19 @@ automatic chain.</p>
 </pre></div>
 </div>
 <p>Corpus compatibility is lazy:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.levenshtein</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_corpus_scorer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomRetrievalIndex</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomRetrievalIndex</span><span class="p">,</span> <span class="n">make_levenshtein_ranker</span>
 
 <span class="n">index</span> <span class="o">=</span> <span class="n">CustomRetrievalIndex</span><span class="p">(</span>
-    <span class="n">custom_scorer_fn</span><span class="o">=</span><span class="n">make_corpus_scorer</span><span class="p">(</span>
+    <span class="n">custom_scorer_fn</span><span class="o">=</span><span class="n">make_levenshtein_ranker</span><span class="p">(</span>
         <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
         <span class="n">score_cutoff</span><span class="o">=</span><span class="mf">0.70</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Importing <a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> alone does not import Corpus.</p>
+<p>Corpus owns the adapter: importing <a class="reference internal" href="../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein" title="scikitplot.levenshtein"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.levenshtein</span></code></a> never imports
+Corpus. <a class="reference internal" href="../../modules/generated/scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker" title="scikitplot.corpus.make_pairwise_ranker"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_pairwise_ranker</span></code></a> does the same for any pairwise function,
+<code class="docutils literal notranslate"><span class="pre">make_pairwise_ranker(edit_similarity)</span></code> included.</p>
 <p><code class="docutils literal notranslate"><span class="pre">score_cutoff</span></code> uses the same normalized similarity scale <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> for every
 backend, so switching between bundled, RapidFuzz and pure-Python implementations
 does not change the filtering contract. <code class="docutils literal notranslate"><span class="pre">top_k</span></code> is therefore an upper bound:
@@ -1047,6 +1121,235 @@ too dissimilar.</p>
 embedding model. It is useful for spelling variants, OCR noise, identifiers,
 near-duplicate labels and fuzzy lexical matching. Do not present edit-distance
 similarity as semantic equivalence.</p>
+</section>
+<section id="embedding-cache">
+<h2>Embedding cache<a class="headerlink" href="#embedding-cache" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine" title="scikitplot.corpus.EmbeddingEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmbeddingEngine</span></code></a> caches vectors on disk under a key that names the
+texts, the model and its revision, the backend, the provider and the output
+settings. A sentence-transformers model that is not pinned to a commit
+(<code class="docutils literal notranslate"><span class="pre">model_revision=&quot;&quot;</span></code>, or a branch or tag such as <code class="docutils literal notranslate"><span class="pre">&quot;main&quot;</span></code>, which can move)
+names whatever the hub serves today, so by default its embeddings are computed
+and not cached; the call says so (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine.embed_cached" title="scikitplot.corpus.EmbeddingEngine.embed_cached"><code class="xref py py-meth docutils literal notranslate"><span class="pre">EmbeddingEngine.embed_cached</span></code></a> returns
+a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CacheStatus.html#scikitplot.corpus.CacheStatus" title="scikitplot.corpus.CacheStatus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CacheStatus</span></code></a>). Pin <code class="docutils literal notranslate"><span class="pre">model_revision</span></code> to a commit hash (40 or 64
+lowercase hex characters), or choose a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CachePolicy.html#scikitplot.corpus.CachePolicy" title="scikitplot.corpus.CachePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachePolicy</span></code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CachePolicy(unpinned=&quot;resolve&quot;,</span> <span class="pre">revision_resolver=resolve_hub_revision)</span></code>
+resolves the commit once per engine (a full Hub id <code class="docutils literal notranslate"><span class="pre">&quot;owner/name&quot;</span></code>, not a
+local directory), then loads and keys exactly that commit; when resolution
+fails the model loads unpinned and the cache is bypassed (a branch or tag
+given in <code class="docutils literal notranslate"><span class="pre">model_revision</span></code> is not resolved);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CachePolicy(unpinned=&quot;allow&quot;)</span></code> caches under the name given, as before:
+an entry can outlive an upstream change of the model.</p></li>
+</ul>
+<p>Other backends do not load a revision: for them a non-empty
+<code class="docutils literal notranslate"><span class="pre">model_revision</span></code> is your statement of the model version, and it enables the
+cache. A custom provider is cached when it has a <code class="docutils literal notranslate"><span class="pre">custom_fn_id</span></code>. <code class="docutils literal notranslate"><span class="pre">max_entries</span></code>
+and <code class="docutils literal notranslate"><span class="pre">max_bytes</span></code> bound the cache directory: a hit marks its entry as used,
+and after a store the least recently used entries are evicted (only
+<code class="docutils literal notranslate"><span class="pre">&lt;64</span> <span class="pre">hex&gt;.npy</span></code> files are counted or removed); one result larger than
+<code class="docutils literal notranslate"><span class="pre">max_bytes</span></code> is not kept, and evicts nothing. There is no time-to-live:
+whether an entry is stale is a question of which revision produced it, which
+the key answers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachePolicy</span><span class="p">,</span> <span class="n">EmbeddingEngine</span><span class="p">,</span> <span class="n">resolve_hub_revision</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">"sentence-transformers/all-MiniLM-L6-v2"</span>
+<span class="n">commit</span> <span class="o">=</span> <span class="n">resolve_hub_revision</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># once; record it with your corpus</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">EmbeddingEngine</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">model_revision</span><span class="o">=</span><span class="n">commit</span><span class="p">,</span>
+    <span class="n">cache_policy</span><span class="o">=</span><span class="n">CachePolicy</span><span class="p">(</span><span class="n">max_entries</span><span class="o">=</span><span class="mi">10_000</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="c1"># engine.embed_cached(texts).status -&gt; CacheStatus.STORED, then HIT</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.MultimodalEmbeddingEngine.html#scikitplot.corpus.MultimodalEmbeddingEngine" title="scikitplot.corpus.MultimodalEmbeddingEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultimodalEmbeddingEngine</span></code></a> keys its cache on the content (every
+backend and model, the fusion, projection and normalisation, and each
+document’s modality, text and <code class="docutils literal notranslate"><span class="pre">raw_tensor</span></code>), not on the source path and its
+modification time. Its image and audio models have no revision, so it caches
+only with <code class="docutils literal notranslate"><span class="pre">CachePolicy(unpinned=&quot;allow&quot;)</span></code>; a custom backend or projection is
+never cached.</p>
+</section>
+<section id="retrieval-execution-plan">
+<h2>Retrieval execution plan<a class="headerlink" href="#retrieval-execution-plan" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalExecutionPlan.html#scikitplot.corpus.RetrievalExecutionPlan" title="scikitplot.corpus.RetrievalExecutionPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">RetrievalExecutionPlan</span></code></a> runs a query through typed stages, always in
+this order: <code class="docutils literal notranslate"><span class="pre">transform</span></code> (the query to one or more queries), <code class="docutils literal notranslate"><span class="pre">retrieve</span></code>
+(<code class="docutils literal notranslate"><span class="pre">index.search</span></code> for each, unchanged), <code class="docutils literal notranslate"><span class="pre">fuse</span></code> (the queries’ rankings, by
+the same <a class="reference internal" href="../../modules/generated/scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy" title="scikitplot.corpus.FusionPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">FusionPolicy</span></code></a>), <code class="docutils literal notranslate"><span class="pre">rerank</span></code> (new scores for the first
+<code class="docutils literal notranslate"><span class="pre">rerank_depth</span></code> hits) and <code class="docutils literal notranslate"><span class="pre">compress</span></code> (character spans of each hit’s text,
+so the context stays a citation of its source). Only <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> is
+required; an empty plan returns exactly what <code class="docutils literal notranslate"><span class="pre">index.search</span></code> returns.</p>
+<p>Each stage reports a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.StageOutcome.html#scikitplot.corpus.StageOutcome" title="scikitplot.corpus.StageOutcome"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageOutcome</span></code></a>: its <a class="reference internal" href="../../modules/generated/scikitplot.corpus.StageStatus.html#scikitplot.corpus.StageStatus" title="scikitplot.corpus.StageStatus"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageStatus</span></code></a>
+(<code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">empty</span></code>, <code class="docutils literal notranslate"><span class="pre">degraded</span></code>, <code class="docutils literal notranslate"><span class="pre">failed</span></code>, <code class="docutils literal notranslate"><span class="pre">skipped</span></code> or
+<code class="docutils literal notranslate"><span class="pre">cancelled</span></code>), the component that ran, items in and out, calls, seconds and
+budget, and an error record whenever it did not finish. Limits are checked
+before each call, so a spent limit stops the next call and says which limit
+stopped it; a running call is not interrupted. That bounds only a stage of
+several calls: a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.StageBudget.html#scikitplot.corpus.StageBudget" title="scikitplot.corpus.StageBudget"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageBudget</span></code></a> limits the calls and seconds of
+<code class="docutils literal notranslate"><span class="pre">retrieve</span></code> (one call per query) and is refused for any other stage, and
+<code class="docutils literal notranslate"><span class="pre">deadline_seconds</span></code> stops any stage or query from starting after it.
+<code class="docutils literal notranslate"><span class="pre">fuse</span></code>, an in-process computation, always runs; a single call is bounded by
+the component’s own timeout. With
+<code class="docutils literal notranslate"><span class="pre">on_error=&quot;degrade&quot;</span></code> (the default) a component that raises, or returns
+something malformed, fails its stage and the previous stage’s output is kept;
+<code class="docutils literal notranslate"><span class="pre">on_error=&quot;raise&quot;</span></code> propagates the error. The result’s status is derived from
+the stages and the responses, as for a search.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CharBudgetCompressor</span><span class="p">,</span>
+    <span class="n">RetrievalConfig</span><span class="p">,</span>
+    <span class="n">RetrievalExecutionPlan</span><span class="p">,</span>
+    <span class="n">StageBudget</span><span class="p">,</span>
+    <span class="n">evaluate_retrieval</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plan</span> <span class="o">=</span> <span class="n">RetrievalExecutionPlan</span><span class="p">(</span>
+    <span class="n">retrieval</span><span class="o">=</span><span class="n">RetrievalConfig</span><span class="p">(</span><span class="n">match_mode</span><span class="o">=</span><span class="s2">"hybrid"</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+    <span class="n">transform</span><span class="o">=</span><span class="k">lambda</span> <span class="n">q</span><span class="p">:</span> <span class="p">[</span><span class="n">q</span> <span class="o">+</span> <span class="s2">" definition"</span><span class="p">],</span>  <span class="c1"># run with the original query</span>
+    <span class="n">rerank</span><span class="o">=</span><span class="n">my_cross_encoder</span><span class="p">,</span>  <span class="c1"># (query, hits) -&gt; one score per hit</span>
+    <span class="n">rerank_depth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">compress</span><span class="o">=</span><span class="n">CharBudgetCompressor</span><span class="p">(</span><span class="mi">4000</span><span class="p">),</span>
+    <span class="n">budgets</span><span class="o">=</span><span class="p">{</span><span class="s2">"retrieve"</span><span class="p">:</span> <span class="n">StageBudget</span><span class="p">(</span><span class="n">max_calls</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_seconds</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)},</span>
+    <span class="n">deadline_seconds</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>  <span class="c1"># no stage starts after 10 s</span>
+<span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s2">"what is a span?"</span><span class="p">,</span> <span class="n">embed_query</span><span class="o">=</span><span class="n">embedder</span><span class="o">.</span><span class="n">embed_query</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stage</span><span class="p">(</span><span class="s2">"rerank"</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">passages</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">evaluate_retrieval</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">embed_query</span><span class="o">=</span><span class="n">embedder</span><span class="o">.</span><span class="n">embed_query</span><span class="p">),</span> <span class="n">queries</span><span class="p">,</span> <span class="n">qrels</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A plan is measured by the same harness as an index. On the pinned corpus of
+the chunking table above (<code class="docutils literal notranslate"><span class="pre">recursive</span> <span class="pre">(500)</span></code>, keyword search, 82 queries made
+of the first half of a guide sentence), with a deterministic reranker that
+scores the longest run of query words a chunk contains. The queries are
+verbatim prefixes of the guide, so that reranker is close to an oracle: the
+table shows the stages compose and are measured, not what a learned reranker
+gains. The multi-query plan runs the half sentence and its two halves:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Plan</p></th>
+<th class="head"><p>Recall&#64;1</p></th>
+<th class="head"><p>Recall&#64;5</p></th>
+<th class="head"><p><a class="reference external" href="mailto:MRR&#37;&#52;&#48;10">MRR<span>&#64;</span>10</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>search</p></td>
+<td><p>0.91</p></td>
+<td><p>0.94</p></td>
+<td><p>0.93</p></td>
+</tr>
+<tr class="row-odd"><td><p>empty plan</p></td>
+<td><p>0.91</p></td>
+<td><p>0.94</p></td>
+<td><p>0.93</p></td>
+</tr>
+<tr class="row-even"><td><p>rerank</p></td>
+<td><p>0.94</p></td>
+<td><p>0.94</p></td>
+<td><p>0.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>multi-query (and halves)</p></td>
+<td><p>0.90</p></td>
+<td><p>0.94</p></td>
+<td><p>0.92</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>With whole sentences as queries no stage changes these numbers: every miss
+there is a sentence that no chunk contains, which no ranking stage can
+recover. <code class="docutils literal notranslate"><span class="pre">CharBudgetCompressor(1500)</span></code> kept on average 1492 characters; the
+context held the sentence for 0.94 of the queries, against 0.95 whose ten hits
+held it: a budget drops the evidence that ranks too low to fit. No stage is a
+default.</p>
+</section>
+<section id="corrective-retrieval">
+<h2>Corrective retrieval<a class="headerlink" href="#corrective-retrieval" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorrectiveRetrieval.html#scikitplot.corpus.CorrectiveRetrieval" title="scikitplot.corpus.CorrectiveRetrieval"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorrectiveRetrieval</span></code></a> grades what a search returned and decides what to
+do with it: <code class="docutils literal notranslate"><span class="pre">correct</span></code> evidence is <code class="docutils literal notranslate"><span class="pre">accepted</span></code> (<code class="docutils literal notranslate"><span class="pre">corrected</span></code> when a later
+round’s is); <code class="docutils literal notranslate"><span class="pre">incorrect</span></code> or <code class="docutils literal notranslate"><span class="pre">ambiguous</span></code>
+evidence is retried with a rewritten query while rounds remain
+(<code class="docutils literal notranslate"><span class="pre">max_rounds</span></code>, the call budget, and <code class="docutils literal notranslate"><span class="pre">deadline_seconds</span></code>, checked before
+each rewrite and again before each further round); when no round is accepted, the ambiguous rounds are fused by the
+same <a class="reference internal" href="../../modules/generated/scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy" title="scikitplot.corpus.FusionPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">FusionPolicy</span></code></a> and returned as <code class="docutils literal notranslate"><span class="pre">partial</span></code> evidence, or, when
+there are none, the retrieval <code class="docutils literal notranslate"><span class="pre">abstained</span></code> and returns no hit. Every round
+is graded against the original query, so a rewrite that drifts from it is
+not accepted for it. Each round is one <code class="docutils literal notranslate"><span class="pre">index.search</span></code> (or one
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalExecutionPlan.html#scikitplot.corpus.RetrievalExecutionPlan" title="scikitplot.corpus.RetrievalExecutionPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">RetrievalExecutionPlan</span></code></a> run, with <code class="docutils literal notranslate"><span class="pre">plan=</span></code>), and the result reads
+like a search response, so <code class="docutils literal notranslate"><span class="pre">evaluate_retrieval(corrective.bind(index),</span> <span class="pre">...)</span></code>
+measures it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorrectiveRetrieval</span><span class="p">,</span> <span class="n">TermCoverageGrader</span>
+
+<span class="n">corrective</span> <span class="o">=</span> <span class="n">CorrectiveRetrieval</span><span class="p">(</span>
+    <span class="n">grader</span><span class="o">=</span><span class="n">TermCoverageGrader</span><span class="p">(</span><span class="n">top_k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">accept</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">reject</span><span class="o">=</span><span class="mf">0.6</span><span class="p">),</span>
+    <span class="n">rewrite</span><span class="o">=</span><span class="n">my_rewriter</span><span class="p">,</span>  <span class="c1"># (query, rounds) -&gt; next query, or None</span>
+    <span class="n">max_rounds</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">corrective</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s2">"what keeps a chunk's span?"</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">verdict</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">grade</span><span class="o">.</span><span class="n">grade</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">rounds</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.TermCoverageGrader.html#scikitplot.corpus.TermCoverageGrader" title="scikitplot.corpus.TermCoverageGrader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TermCoverageGrader</span></code></a> is a deterministic rule: the share of the query’s
+words that the top hits contain, against two thresholds. It measures overlap,
+not truth: a hit can hold every word and not answer the question. A model
+grader is any callable <code class="docutils literal notranslate"><span class="pre">grader(query,</span> <span class="pre">hits)</span> <span class="pre">-&gt;</span> <span class="pre">GradeResult</span></code>, and its name
+is recorded with each grade. On the corpus of the tables above, with the
+82 half-sentence queries (answerable), the same queries with three words of
+an unrelated page appended (noisy), and 14 half sentences of the Levenshtein
+guide, which is not indexed (off-corpus: the right answer is none):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Retrieval</p></th>
+<th class="head"><p>Answerable
+Recall&#64;1</p></th>
+<th class="head"><p>Noisy
+R&#64;1</p></th>
+<th class="head"><p>Noisy
+answered</p></th>
+<th class="head"><p>Off-corpus
+abstained</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>search</p></td>
+<td><p>0.91</p></td>
+<td><p>0.91</p></td>
+<td><p>1.00</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>graded, top 3, 0.8 / 0.3</p></td>
+<td><p>0.91</p></td>
+<td><p>0.91</p></td>
+<td><p>1.00</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-even"><td><p>graded, top 1, 0.9 / 0.6</p></td>
+<td><p>0.91</p></td>
+<td><p>0.82</p></td>
+<td><p>0.89</p></td>
+<td><p>0.71</p></td>
+</tr>
+<tr class="row-odd"><td><p>graded, top 1, 1.0 / 0.8</p></td>
+<td><p>0.91</p></td>
+<td><p>0.29</p></td>
+<td><p>0.33</p></td>
+<td><p>0.79</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The default grader reads three hits, where some hit holds most words of any
+query, so it never abstains. Reading the first hit only, a strict grader
+abstains on most off-corpus queries and keeps every answerable one, at the
+price of noisy queries it no longer answers. Retrying with the halves of the
+query (up to three rounds) did not help: noisy recall went from 0.91 to 0.88
+with the default grader, from 0.82 to 0.80 with the middle one (and
+off-corpus abstention from 0.71 to 0.57), and barely changed with the
+strictest (0.29 to 0.30), because a half query finds partial evidence that is
+then returned. The rewrite, not the loop, decides whether correction helps;
+the benchmark is <code class="docutils literal notranslate"><span class="pre">maintenances/corpus/_maintenance/evidence/bench_r5b.py</span></code>.
+The grader by default is <code class="docutils literal notranslate"><span class="pre">TermCoverageGrader()</span></code>, the table’s second row
+(<code class="docutils literal notranslate"><span class="pre">graded,</span> <span class="pre">top</span> <span class="pre">3,</span> <span class="pre">0.8</span> <span class="pre">/</span> <span class="pre">0.3</span></code>), which never abstains here; no rewrite is a
+default.</p>
 </section>
 </section>
 
@@ -1070,11 +1373,11 @@ similarity as semantic equivalence.</p>
       </div>
     </a>
     <a class="right-next"
-       href="formats_and_export.html"
+       href="evaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Formats, structured evidence, and export</p>
+        <p class="prev-next-title">Evaluating retrieval and answers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1101,8 +1404,13 @@ similarity as semantic equivalence.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-fusion">Hybrid fusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-a-search">Filtering a search</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-facade">Levenshtein facade</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-metric">Choosing a metric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-cache">Embedding cache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-execution-plan">Retrieval execution plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corrective-retrieval">Corrective retrieval</a></li>
 </ul>
   </nav></div>
 
@@ -1161,7 +1469,7 @@ similarity as semantic equivalence.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261011.0ec25c0 2026-10-11T11:42Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
       <br/>
     
   </p>
