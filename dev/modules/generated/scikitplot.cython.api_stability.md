@@ -1,6 +1,6 @@
 # api\_stability[#](#api-stability "Link to this heading")
 
-scikitplot.cython.api\_stability(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_api.py#L183)[#](#scikitplot.cython.api_stability "Link to this definition")
+scikitplot.cython.api\_stability(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_api.py#L183)[#](#scikitplot.cython.api_stability "Link to this definition")
 :   Return the [`Stability`](scikitplot.cython.Stability.html#scikitplot.cython.Stability "scikitplot.cython.Stability") tier of a public API symbol.
 
     Parameters:

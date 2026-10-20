@@ -1,6 +1,6 @@
 # doc\_id\_scheme\_of[#](#doc-id-scheme-of "Link to this heading")
 
-scikitplot.corpus.doc\_id\_scheme\_of(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L442)[#](#scikitplot.corpus.doc_id_scheme_of "Link to this definition")
+scikitplot.corpus.doc\_id\_scheme\_of(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_identity.py#L442)[#](#scikitplot.corpus.doc_id_scheme_of "Link to this definition")
 :   Return the scheme that produced `doc_id`, judged by its exact form.
 
     Parameters:

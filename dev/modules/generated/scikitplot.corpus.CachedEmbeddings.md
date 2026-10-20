@@ -1,6 +1,6 @@
 # CachedEmbeddings[#](#cachedembeddings "Link to this heading")
 
-class scikitplot.corpus.CachedEmbeddings(**embeddings**, **status**, **key**, **revision**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_embeddings/_cache_policy.py#L123)[#](#scikitplot.corpus.CachedEmbeddings "Link to this definition")
+class scikitplot.corpus.CachedEmbeddings(**embeddings**, **status**, **key**, **revision**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L123)[#](#scikitplot.corpus.CachedEmbeddings "Link to this definition")
 :   The result of [`EmbeddingEngine.embed_cached`](scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine.embed_cached "scikitplot.corpus.EmbeddingEngine.embed_cached").
 
     Attributes:
@@ -27,7 +27,7 @@ class scikitplot.corpus.CachedEmbeddings(**embeddings**, **status**, **key**, **
     count(**value**, **/**)[#](#scikitplot.corpus.CachedEmbeddings.count "Link to this definition")
     :   Return number of occurrences of value.
 
-    embeddings: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.embeddings "Link to this definition")
+    embeddings: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.embeddings "Link to this definition")
     :   Alias for field number 0
 
     index(**value**, **start=0**, **stop=sys.maxsize**, **/**)[#](#scikitplot.corpus.CachedEmbeddings.index "Link to this definition")
@@ -35,11 +35,11 @@ class scikitplot.corpus.CachedEmbeddings(**embeddings**, **status**, **key**, **
 
         Raises ValueError if the value is not present.
 
-    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.key "Link to this definition")
+    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.key "Link to this definition")
     :   Alias for field number 2
 
-    revision: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.revision "Link to this definition")
+    revision: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.revision "Link to this definition")
     :   Alias for field number 3
 
-    status: [CacheStatus](scikitplot.corpus.CacheStatus.html#scikitplot.corpus.CacheStatus "scikitplot.corpus._embeddings._cache_policy.CacheStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.status "Link to this definition")
+    status: [CacheStatus](scikitplot.corpus.CacheStatus.html#scikitplot.corpus.CacheStatus "scikitplot.corpus._embeddings._cache_policy.CacheStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.corpus.CachedEmbeddings.status "Link to this definition")
     :   Alias for field number 1

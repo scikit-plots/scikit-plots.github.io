@@ -2,7 +2,7 @@
 
 ## Route columns by what they are[#](#route-columns-by-what-they-are "Link to this heading")
 
-`FeatureColumnSelector` is a `ColumnTransformer` column selector. It
+[`FeatureColumnSelector`](../../modules/generated/scikitplot.feature_selection.FeatureColumnSelector.html#scikitplot.feature_selection.FeatureColumnSelector "scikitplot.feature_selection.FeatureColumnSelector") is a `ColumnTransformer` column selector. It
 profiles the frame it is given at fit time, which inside cross-validation is
 the training fold, and `ColumnTransformer` keeps the selection for later
 data:
@@ -30,10 +30,10 @@ model = Pipeline([("filter", FeatureFilter()), ("pre", pre),
 
 ```
 
-`FeatureFilter` removes constant and identifier-like columns and every
+[`FeatureFilter`](../../modules/generated/scikitplot.feature_selection.FeatureFilter.html#scikitplot.feature_selection.FeatureFilter "scikitplot.feature_selection.FeatureFilter") removes constant and identifier-like columns and every
 column whose role is not `feature` (so a target column cannot leak), with
-`get_support` and a `report_` of reasons. `FeatureProfiler` keeps the
-training schema inside the pipeline, and `FeatureRenamer` applies a
+`get_support` and a `report_` of reasons. [`FeatureProfiler`](../../modules/generated/scikitplot.feature_selection.FeatureProfiler.html#scikitplot.feature_selection.FeatureProfiler "scikitplot.feature_selection.FeatureProfiler") keeps the
+training schema inside the pipeline, and [`FeatureRenamer`](../../modules/generated/scikitplot.feature_selection.FeatureRenamer.html#scikitplot.feature_selection.FeatureRenamer "scikitplot.feature_selection.FeatureRenamer") applies a
 rename plan (mapping, list, callable or `"col-{index}"` template) frozen at
 fit time.
 
@@ -56,7 +56,7 @@ lineage.dropped()                # {'customer_id': 'filter'}
 ```
 
 Passing `X=` runs every stage on the sample and checks its real output width
-against the traced count; a disagreement raises `LineageError`.
+against the traced count; a disagreement raises [`LineageError`](../../modules/generated/scikitplot.feature_selection.LineageError.html#scikitplot.feature_selection.LineageError "scikitplot.feature_selection.LineageError").
 
 Lineage quality is explicit. Edges taken from fitted attributes or
 column-wise class contracts are `exact`. Steps whose outputs combine
@@ -68,7 +68,7 @@ columns; their missing indicators stay exact). Steps without any contract are
 pipeline the last step with `predict` is the model and is not traced, even
 if it also has `transform`; pass `trace_final=True` to trace it. Give your own transformer
 a `get_feature_lineage(input_features)` method returning a
-`FeatureMapping` to make it exact.
+[`FeatureMapping`](../../modules/generated/scikitplot.feature_selection.FeatureMapping.html#scikitplot.feature_selection.FeatureMapping "scikitplot.feature_selection.FeatureMapping") to make it exact.
 
 ## Importances per raw column[#](#importances-per-raw-column "Link to this heading")
 

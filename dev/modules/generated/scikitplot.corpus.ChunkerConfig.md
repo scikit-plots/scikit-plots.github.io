@@ -1,6 +1,6 @@
 # ChunkerConfig[#](#chunkerconfig "Link to this heading")
 
-class scikitplot.corpus.ChunkerConfig[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L482)[#](#scikitplot.corpus.ChunkerConfig "Link to this definition")
+class scikitplot.corpus.ChunkerConfig[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L482)[#](#scikitplot.corpus.ChunkerConfig "Link to this definition")
 :   Abstract base configuration for all chunker implementations.
 
     Concrete subclasses (e.g. `SentenceChunkerConfig`) must inherit

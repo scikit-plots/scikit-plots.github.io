@@ -1,6 +1,6 @@
 # RecursiveChunker[#](#recursivechunker "Link to this heading")
 
-class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L346)[#](#scikitplot.corpus.RecursiveChunker "Link to this definition")
+class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L346)[#](#scikitplot.corpus.RecursiveChunker "Link to this definition")
 :   Split text by a separator hierarchy until each piece fits a budget.
 
     Parameters:
@@ -38,7 +38,7 @@ class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://gith
     ```
     Go BackOpen In Tab
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L426)[#](#scikitplot.corpus.RecursiveChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L426)[#](#scikitplot.corpus.RecursiveChunker.chunk "Link to this definition")
     :   Split **text** into chunks of at most `chunk_size` characters.
 
         Parameters:
@@ -71,7 +71,7 @@ class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://gith
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.RecursiveChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.RecursiveChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -106,10 +106,10 @@ class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://gith
     property config: [RecursiveChunkerConfig](scikitplot.corpus.RecursiveChunkerConfig.html#scikitplot.corpus.RecursiveChunkerConfig "scikitplot.corpus._chunkers._recursive.RecursiveChunkerConfig")[#](#scikitplot.corpus.RecursiveChunker.config "Link to this definition")
     :   The configuration (read-only).
 
-    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L288)[#](#scikitplot.corpus.RecursiveChunker.config_class "Link to this definition")
+    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L288)[#](#scikitplot.corpus.RecursiveChunker.config_class "Link to this definition")
     :   alias of [`RecursiveChunkerConfig`](scikitplot.corpus.RecursiveChunkerConfig.html#scikitplot.corpus.RecursiveChunkerConfig "scikitplot.corpus._chunkers._recursive.RecursiveChunkerConfig")
 
-    spans(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L395)[#](#scikitplot.corpus.RecursiveChunker.spans "Link to this definition")
+    spans(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L395)[#](#scikitplot.corpus.RecursiveChunker.spans "Link to this definition")
     :   Return the anchor span of every chunk `chunk` would produce.
 
         Parameters:
@@ -130,6 +130,6 @@ class scikitplot.corpus.RecursiveChunker(**config=None**)[[source]](https://gith
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")]]
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.RecursiveChunker.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.RecursiveChunker.strategy "Link to this definition")
 
     text\_is\_source\_slice = True[#](#scikitplot.corpus.RecursiveChunker.text_is_source_slice "Link to this definition")

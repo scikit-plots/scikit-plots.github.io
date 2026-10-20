@@ -1,6 +1,6 @@
 # installed\_models[#](#installed-models "Link to this heading")
 
-scikitplot.cleanprompt.installed\_models()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_languages.py#L272)[#](#scikitplot.cleanprompt.installed_models "Link to this definition")
+scikitplot.cleanprompt.installed\_models()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_languages.py#L272)[#](#scikitplot.cleanprompt.installed_models "Link to this definition")
 :   Return the spaCy models installed here, mapped to their versions.
 
     Returns:

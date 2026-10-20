@@ -1,6 +1,6 @@
 # TermCoverageGrader[#](#termcoveragegrader "Link to this heading")
 
-class scikitplot.corpus.TermCoverageGrader(**top\_k=3**, **accept=0.8**, **reject=0.3**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_correction.py#L177)[#](#scikitplot.corpus.TermCoverageGrader "Link to this definition")
+class scikitplot.corpus.TermCoverageGrader(**top\_k=3**, **accept=0.8**, **reject=0.3**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L177)[#](#scikitplot.corpus.TermCoverageGrader "Link to this definition")
 :   Grade hits by the share of the query’s words their text contains.
 
     `coverage = |query words found in the top hits| / |query words|`, with
@@ -44,7 +44,7 @@ class scikitplot.corpus.TermCoverageGrader(**top\_k=3**, **accept=0.8**, **rejec
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**query**, **hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_correction.py#L236)[#](#scikitplot.corpus.TermCoverageGrader.__call__ "Link to this definition")
+    \_\_call\_\_(**query**, **hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L236)[#](#scikitplot.corpus.TermCoverageGrader.__call__ "Link to this definition")
     :   Grade `hits` for `query`.
 
         Parameters:

@@ -32,7 +32,7 @@ it to every query; the MCP server takes the same filter (`--corpus-filter`).
 
 A tool is a Python function with a JSON Schema of its keyword arguments. The
 planner receives a copy of the run’s state and the tools’ descriptions, and
-returns a `Decision`.
+returns a [`Decision`](../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision "scikitplot.agent.Decision").
 
 ```
 from scikitplot.agent import Agent, Decision, Limits, Policy, Tool, verify_audit
@@ -77,7 +77,7 @@ nothing else.
 
 ## Limits and how a run ends[#](#limits-and-how-a-run-ends "Link to this heading")
 
-`Limits` holds the stopping conditions. Each is checked before the
+[`Limits`](../../modules/generated/scikitplot.agent.Limits.html#scikitplot.agent.Limits "scikitplot.agent.Limits") holds the stopping conditions. Each is checked before the
 call it bounds, so a call already running is not interrupted; a tool’s own
 timeout bounds one call.
 
@@ -86,7 +86,7 @@ timeout bounds one call.
 | `max_steps` | No further decision is asked for (`stopped`, `max_steps`). Required: it is what ends every run. |
 | `max_tool_calls` | A call beyond it is denied at the Budget gate. |
 | `max_cost` | A call whose `Tool.cost` would pass it is denied; at or past it no further decision is asked for. The planner’s reported cost counts too. |
-| `max_tokens` | No further decision is asked for. The planner must then report `Usage` with every decision, or the run fails (`usage_not_reported`): a limit that cannot be enforced is refused, not ignored. |
+| `max_tokens` | No further decision is asked for. The planner must then report [`Usage`](../../modules/generated/scikitplot.agent.Usage.html#scikitplot.agent.Usage "scikitplot.agent.Usage") with every decision, or the run fails (`usage_not_reported`): a limit that cannot be enforced is refused, not ignored. |
 | `max_seconds` | Running time, summed over the run’s sessions; time spent waiting for an approval does not count. |
 
 A run ends `completed` (the planner finished and the `done` criterion, if
@@ -157,13 +157,13 @@ tool is not repeated, because whether it took effect is unknown: the step is
 ## The audit trail[#](#the-audit-trail "Link to this heading")
 
 Each record names its run, a sequence number from 0, the event and its data,
-and the digest of the record before it. `verify_audit` finds a record
+and the digest of the record before it. [`verify_audit`](../../modules/generated/scikitplot.agent.verify_audit.html#scikitplot.agent.verify_audit "scikitplot.agent.verify_audit") finds a record
 that was changed, removed or reordered. `JsonlAuditSink(path)` appends one
 line per record (`fsync=True` to survive a machine crash), and
-`read_audit` reads the file back. The chain cannot show a trail cut
+[`read_audit`](../../modules/generated/scikitplot.agent.read_audit.html#scikitplot.agent.read_audit "scikitplot.agent.read_audit") reads the file back. The chain cannot show a trail cut
 after its last record, but the state can: it keeps `audit_head`, the last
 record’s number and digest, and a resume whose trail does not hold that
-record is refused with `StateError`.
+record is refused with [`StateError`](../../modules/generated/scikitplot.agent.StateError.html#scikitplot.agent.StateError "scikitplot.agent.StateError").
 
 ## Measured[#](#measured "Link to this heading")
 
@@ -191,13 +191,13 @@ paused before writing.
 
 A planner is any callable `planner(state, tools) -> Decision`:
 
-* `state` is a copy of the `RunState`, rebuilt from its saved form:
+* `state` is a copy of the [`RunState`](../../modules/generated/scikitplot.agent.RunState.html#scikitplot.agent.RunState "scikitplot.agent.RunState"), rebuilt from its saved form:
   `state.goal`, `state.steps` (each with its decision, outcome, result
   or error) and `state.observations()` (the same as plain JSON, ready for a
   prompt); changing it changes nothing;
-* `tools` is `Toolset.describe`: names, descriptions, JSON Schemas,
+* `tools` is [`Toolset.describe`](../../modules/generated/scikitplot.agent.Toolset.html#scikitplot.agent.Toolset.describe "scikitplot.agent.Toolset.describe"): names, descriptions, JSON Schemas,
   effects, scopes and costs, ready for a model’s tool-calling interface;
-* return `Decision.act` or `Decision.finish`, with
+* return [`Decision.act`](../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.act "scikitplot.agent.Decision.act") or [`Decision.finish`](../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.finish "scikitplot.agent.Decision.finish"), with
   `usage=Usage(tokens, cost)` when a model produced it.
 
 A planner that raises, or returns anything else, fails the run with

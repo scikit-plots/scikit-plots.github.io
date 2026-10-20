@@ -1,25 +1,25 @@
 # StageStatus[#](#stagestatus "Link to this heading")
 
-class scikitplot.corpus.StageStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L122)[#](#scikitplot.corpus.StageStatus "Link to this definition")
+class scikitplot.corpus.StageStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L122)[#](#scikitplot.corpus.StageStatus "Link to this definition")
 :   Outcome of one stage.
 
-    CANCELLED = 'cancelled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.CANCELLED "Link to this definition")
+    CANCELLED = 'cancelled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.CANCELLED "Link to this definition")
     :   A budget or the plan’s deadline stopped the stage before it ran, or
         (`retrieve`) the index cancelled every query that ran.
 
-    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.DEGRADED "Link to this definition")
+    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.DEGRADED "Link to this definition")
     :   The stage ran on part of its input, or produced part of its output.
 
-    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.EMPTY "Link to this definition")
+    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.EMPTY "Link to this definition")
     :   The stage ran on all of its input and produced nothing.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.FAILED "Link to this definition")
     :   The stage was configured but did not produce output.
 
-    SKIPPED = 'skipped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.SKIPPED "Link to this definition")
+    SKIPPED = 'skipped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.SKIPPED "Link to this definition")
     :   The stage was not configured, or had nothing to do.
 
-    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.SUCCESS "Link to this definition")
+    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageStatus.SUCCESS "Link to this definition")
     :   The stage ran on all of its input and produced output.
 
     capitalize(**/**)[#](#scikitplot.corpus.StageStatus.capitalize "Link to this definition")

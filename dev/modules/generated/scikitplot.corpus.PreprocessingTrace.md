@@ -1,6 +1,6 @@
 # PreprocessingTrace[#](#preprocessingtrace "Link to this heading")
 
-class scikitplot.corpus.PreprocessingTrace(**raw\_text**, **steps**, **final\_text**, **pipeline\_fingerprint**, **total\_char\_delta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace "Link to this definition")
+class scikitplot.corpus.PreprocessingTrace(**raw\_text**, **steps**, **final\_text**, **pipeline\_fingerprint**, **total\_char\_delta**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace "Link to this definition")
 :   Ordered audit trail of all preprocessing transformations.
 
     Provides full retrospective visibility into how raw text was
@@ -67,7 +67,7 @@ class scikitplot.corpus.PreprocessingTrace(**raw\_text**, **steps**, **final\_te
     ```
     Go BackOpen In Tab
 
-    static build(**raw\_text**, **steps**, **final\_text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1465)[#](#scikitplot.corpus.PreprocessingTrace.build "Link to this definition")
+    static build(**raw\_text**, **steps**, **final\_text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1465)[#](#scikitplot.corpus.PreprocessingTrace.build "Link to this definition")
     :   Construct a [`PreprocessingTrace`](#scikitplot.corpus.PreprocessingTrace "scikitplot.corpus.PreprocessingTrace") from parts.
 
         Parameters:
@@ -91,15 +91,15 @@ class scikitplot.corpus.PreprocessingTrace(**raw\_text**, **steps**, **final\_te
         Return type:
         :   [**PreprocessingTrace**](#scikitplot.corpus.PreprocessingTrace "scikitplot.corpus._types.PreprocessingTrace")
 
-    final\_text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.final_text "Link to this definition")
+    final\_text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.final_text "Link to this definition")
 
-    pipeline\_fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.pipeline_fingerprint "Link to this definition")
+    pipeline\_fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.pipeline_fingerprint "Link to this definition")
 
-    raw\_text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.raw_text "Link to this definition")
+    raw\_text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.raw_text "Link to this definition")
 
-    steps: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[PreprocessingStep](scikitplot.corpus.PreprocessingStep.html#scikitplot.corpus.PreprocessingStep "scikitplot.corpus._types.PreprocessingStep")][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.steps "Link to this definition")
+    steps: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[PreprocessingStep](scikitplot.corpus.PreprocessingStep.html#scikitplot.corpus.PreprocessingStep "scikitplot.corpus._types.PreprocessingStep")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.steps "Link to this definition")
 
-    to\_dict(**\***, **include\_raw\_text=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1499)[#](#scikitplot.corpus.PreprocessingTrace.to_dict "Link to this definition")
+    to\_dict(**\***, **include\_raw\_text=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1499)[#](#scikitplot.corpus.PreprocessingTrace.to_dict "Link to this definition")
     :   Serialise to a JSON-safe dict for chunk metadata storage.
 
         Parameters:
@@ -116,4 +116,4 @@ class scikitplot.corpus.PreprocessingTrace(**raw\_text**, **steps**, **final\_te
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    total\_char\_delta: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.total_char_delta "Link to this definition")
+    total\_char\_delta: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1405)[#](#scikitplot.corpus.PreprocessingTrace.total_char_delta "Link to this definition")

@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:11:40Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:40:34Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.agent","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="scikitplot.annoy" href="scikitplot.annoy.html" />
+    <link rel="next" title="Agent" href="../modules/generated/scikitplot.agent.Agent.html" />
     <link rel="prev" title="logger" href="../modules/generated/scikitplot.logger.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -653,7 +653,40 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logger.html">logger</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">scikitplot.agent</a></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot.agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Agent.html">Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Decision.html">Decision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Action.html">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Usage.html">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Tool.html">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ToolEffect.html">ToolEffect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Toolset.html">Toolset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Policy.html">Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Limits.html">Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.GateKind.html">GateKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.GateResult.html">GateResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.RunState.html">RunState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.RunStatus.html">RunStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StopReason.html">StopReason</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Step.html">Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StepOutcome.html">StepOutcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Spent.html">Spent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ApprovalRequest.html">ApprovalRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Approval.html">Approval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StateStore.html">StateStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.MemoryStore.html">MemoryStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.JsonFileStore.html">JsonFileStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.AuditSink.html">AuditSink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.MemoryAuditSink.html">MemoryAuditSink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.JsonlAuditSink.html">JsonlAuditSink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.read_audit.html">read_audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.verify_audit.html">verify_audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.AgentError.html">AgentError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ErrorCode.html">ErrorCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.SchemaError.html">SchemaError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StateError.html">StateError</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy._annoy.Index.html">Index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.annoy.Annoy.html">Annoy</a></li>
@@ -1370,7 +1403,59 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.feature_selection.html">scikitplot.feature_selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.profile_features.html">profile_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureSchema.html">FeatureSchema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureSpec.html">FeatureSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureStats.html">FeatureStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeaturePolicy.html">FeaturePolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.ColumnRule.html">ColumnRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentSpec.html">AssessmentSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.BinningPolicy.html">BinningPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.DriftPolicy.html">DriftPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.DEFAULT_ASSESSMENTS.html">DEFAULT_ASSESSMENTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.load_policy.html">load_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.dump_policy.html">dump_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.Assessment.html">Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentContext.html">AssessmentContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentOutcome.html">AssessmentOutcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentProvider.html">AssessmentProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentRegistry.html">AssessmentRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.default_registry.html">default_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.register_assessment.html">register_assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.list_assessment_providers.html">list_assessment_providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.BinningRecommendation.html">BinningRecommendation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.knuth_bin_count.html">knuth_bin_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.make_kbins_discretizer.html">make_kbins_discretizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureProfiler.html">FeatureProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureFilter.html">FeatureFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureColumnSelector.html">FeatureColumnSelector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureRenamer.html">FeatureRenamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.RenamePlan.html">RenamePlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.trace_pipeline.html">trace_pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureLineage.html">FeatureLineage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureMapping.html">FeatureMapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.Attribution.html">Attribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.ReferenceProfile.html">ReferenceProfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureReference.html">FeatureReference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.analysis_plan.html">analysis_plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.recommend_treatments.html">recommend_treatments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.treatment_groups.html">treatment_groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.DEFAULT_ANALYSIS_RULES.html">DEFAULT_ANALYSIS_RULES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.AssessmentState.html">AssessmentState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.DtypeFamily.html">DtypeFamily</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureKind.html">FeatureKind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureRole.html">FeatureRole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.LineageQuality.html">LineageQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.Relation.html">Relation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.FeatureSelectionError.html">FeatureSelectionError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.PolicyError.html">PolicyError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.SchemaMismatchError.html">SchemaMismatchError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.SchemaMismatchWarning.html">SchemaMismatchWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.IncompatibleSchemaError.html">IncompatibleSchemaError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.feature_selection.LineageError.html">LineageError</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1561,10 +1646,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.rank_bm25.html">scikitplot.rank_bm25</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.RECIPES.html">RECIPES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.Analyzer.html">Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.Recipe.html">Recipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.lexical_identity.html">lexical_identity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25.html">BM25</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Okapi.html">BM25Okapi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25L.html">BM25L</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Plus.html">BM25Plus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.require_count.html">require_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.require_index.html">require_index</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.seaborn.html">scikitplot.seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1750,9 +1841,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   <section id="module-scikitplot.agent">
 <span id="scikitplot-agent"></span><span id="agent-ref"></span><h1>scikitplot.agent<a class="headerlink" href="#module-scikitplot.agent" title="Link to this heading">#</a></h1>
 <p>Bounded, audited tool use: a planner proposes, the runtime disposes.</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Agent</span></code> runs a goal with a caller-supplied planner (a model adapter or
-a rule) and a <code class="xref py py-class docutils literal notranslate"><span class="pre">Toolset</span></code>. The planner reads the run’s state and returns
-a <code class="xref py py-class docutils literal notranslate"><span class="pre">Decision</span></code>; the runtime alone decides whether it runs. Every action
+<p><a class="reference internal" href="../modules/generated/scikitplot.agent.Agent.html#scikitplot.agent.Agent" title="scikitplot.agent.Agent"><code class="xref py py-class docutils literal notranslate"><span class="pre">Agent</span></code></a> runs a goal with a caller-supplied planner (a model adapter or
+a rule) and a <a class="reference internal" href="../modules/generated/scikitplot.agent.Toolset.html#scikitplot.agent.Toolset" title="scikitplot.agent.Toolset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Toolset</span></code></a>. The planner reads the run’s state and returns
+a <a class="reference internal" href="../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision" title="scikitplot.agent.Decision"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decision</span></code></a>; the runtime alone decides whether it runs. Every action
 passes five gates, in order – Validation, Permissions, Scope, Budget,
 Approval – and every decision, denial, approval and tool call is written to
 a hash-chained audit trail. The state is saved after every step, so a run
@@ -1797,16 +1888,16 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 <span id="agent-ref-agent-loop"></span><h2>Agent loop<a class="headerlink" href="#agent-loop" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Agent</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Agent.html#scikitplot.agent.Agent" title="scikitplot.agent.Agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Agent</span></code></a></p></td>
 <td><p>Run a goal with a planner and tools, within a policy and limits.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Decision</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision" title="scikitplot.agent.Decision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Decision</span></code></a></p></td>
 <td><p>What the planner decided: call a tool, or finish with an answer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Action</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Action.html#scikitplot.agent.Action" title="scikitplot.agent.Action"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Action</span></code></a></p></td>
 <td><p>A call the planner proposes: a tool name and its arguments.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Usage</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Usage.html#scikitplot.agent.Usage" title="scikitplot.agent.Usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Usage</span></code></a></p></td>
 <td><p>What producing one decision cost, as the planner reports it.</p></td>
 </tr>
 </tbody>
@@ -1817,25 +1908,25 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 <span id="agent-ref-tools-policy-and-limits"></span><h2>Tools, policy and limits<a class="headerlink" href="#tools-policy-and-limits" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tool</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Tool.html#scikitplot.agent.Tool" title="scikitplot.agent.Tool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tool</span></code></a></p></td>
 <td><p>One callable tool and the facts the gate chain decides on.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ToolEffect</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.ToolEffect.html#scikitplot.agent.ToolEffect" title="scikitplot.agent.ToolEffect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ToolEffect</span></code></a></p></td>
 <td><p>The kind of effect a tool has, which the policy permits or not.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Toolset</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Toolset.html#scikitplot.agent.Toolset" title="scikitplot.agent.Toolset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Toolset</span></code></a></p></td>
 <td><p>The tools one agent may call, by name.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Policy</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Policy.html#scikitplot.agent.Policy" title="scikitplot.agent.Policy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Policy</span></code></a></p></td>
 <td><p>What an agent may do: least privilege unless stated otherwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Limits</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Limits.html#scikitplot.agent.Limits" title="scikitplot.agent.Limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Limits</span></code></a></p></td>
 <td><p>Stopping conditions: when a run stops, whatever the planner proposes.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GateKind</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.GateKind.html#scikitplot.agent.GateKind" title="scikitplot.agent.GateKind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GateKind</span></code></a></p></td>
 <td><p>The five gates, in the order an action passes them.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">GateResult</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.GateResult.html#scikitplot.agent.GateResult" title="scikitplot.agent.GateResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GateResult</span></code></a></p></td>
 <td><p>One gate's answer for one action.</p></td>
 </tr>
 </tbody>
@@ -1846,37 +1937,37 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 <span id="agent-ref-run-state-and-approval"></span><h2>Run state and approval<a class="headerlink" href="#run-state-and-approval" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunState</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.RunState.html#scikitplot.agent.RunState" title="scikitplot.agent.RunState"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunState</span></code></a></p></td>
 <td><p>The whole of one run, saved after every step.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunStatus</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.RunStatus.html#scikitplot.agent.RunStatus" title="scikitplot.agent.RunStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunStatus</span></code></a></p></td>
 <td><p>Where a run is.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StopReason</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.StopReason.html#scikitplot.agent.StopReason" title="scikitplot.agent.StopReason"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StopReason</span></code></a></p></td>
 <td><p>Why a run is no longer running.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Step</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Step.html#scikitplot.agent.Step" title="scikitplot.agent.Step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Step</span></code></a></p></td>
 <td><p>One completed step: a decision and what came of it.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepOutcome</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.StepOutcome.html#scikitplot.agent.StepOutcome" title="scikitplot.agent.StepOutcome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepOutcome</span></code></a></p></td>
 <td><p>What one step came to.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spent</span></code></p></td>
-<td><p>What a run has used so far, against its <code class="xref py py-class docutils literal notranslate"><span class="pre">Limits</span></code>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Spent.html#scikitplot.agent.Spent" title="scikitplot.agent.Spent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Spent</span></code></a></p></td>
+<td><p>What a run has used so far, against its <a class="reference internal" href="../modules/generated/scikitplot.agent.Limits.html#scikitplot.agent.Limits" title="scikitplot.agent.Limits"><code class="xref py py-class docutils literal notranslate"><span class="pre">Limits</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApprovalRequest</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.ApprovalRequest.html#scikitplot.agent.ApprovalRequest" title="scikitplot.agent.ApprovalRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ApprovalRequest</span></code></a></p></td>
 <td><p>An action waiting at the Approval gate.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Approval</span></code></p></td>
-<td><p>A person's answer to an <code class="xref py py-class docutils literal notranslate"><span class="pre">ApprovalRequest</span></code>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.Approval.html#scikitplot.agent.Approval" title="scikitplot.agent.Approval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Approval</span></code></a></p></td>
+<td><p>A person's answer to an <a class="reference internal" href="../modules/generated/scikitplot.agent.ApprovalRequest.html#scikitplot.agent.ApprovalRequest" title="scikitplot.agent.ApprovalRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApprovalRequest</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateStore</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.StateStore.html#scikitplot.agent.StateStore" title="scikitplot.agent.StateStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateStore</span></code></a></p></td>
 <td><p>Saves and loads run states.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemoryStore</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.MemoryStore.html#scikitplot.agent.MemoryStore" title="scikitplot.agent.MemoryStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemoryStore</span></code></a></p></td>
 <td><p>Keep states in memory, as their JSON text (so a load is a real round trip).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonFileStore</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.JsonFileStore.html#scikitplot.agent.JsonFileStore" title="scikitplot.agent.JsonFileStore"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonFileStore</span></code></a></p></td>
 <td><p>Keep each run's state in <code class="docutils literal notranslate"><span class="pre">&lt;directory&gt;/&lt;run_id&gt;.json</span></code>.</p></td>
 </tr>
 </tbody>
@@ -1887,19 +1978,19 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 <span id="agent-ref-audit-trail"></span><h2>Audit trail<a class="headerlink" href="#audit-trail" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">AuditSink</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.AuditSink.html#scikitplot.agent.AuditSink" title="scikitplot.agent.AuditSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AuditSink</span></code></a></p></td>
 <td><p>Where audit records go.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemoryAuditSink</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.MemoryAuditSink.html#scikitplot.agent.MemoryAuditSink" title="scikitplot.agent.MemoryAuditSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MemoryAuditSink</span></code></a></p></td>
 <td><p>Keep records in a list, <code class="xref py py-attr docutils literal notranslate"><span class="pre">records</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonlAuditSink</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.JsonlAuditSink.html#scikitplot.agent.JsonlAuditSink" title="scikitplot.agent.JsonlAuditSink"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonlAuditSink</span></code></a></p></td>
 <td><p>Append records to a JSON Lines file, one canonical line each.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_audit</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.read_audit.html#scikitplot.agent.read_audit" title="scikitplot.agent.read_audit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_audit</span></code></a></p></td>
 <td><p>Read a JSON Lines audit file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">verify_audit</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.verify_audit.html#scikitplot.agent.verify_audit" title="scikitplot.agent.verify_audit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">verify_audit</span></code></a></p></td>
 <td><p>Check every run's hash chain in <code class="docutils literal notranslate"><span class="pre">records</span></code>.</p></td>
 </tr>
 </tbody>
@@ -1910,16 +2001,16 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 <span id="agent-ref-errors"></span><h2>Errors<a class="headerlink" href="#errors" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">AgentError</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.AgentError.html#scikitplot.agent.AgentError" title="scikitplot.agent.AgentError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AgentError</span></code></a></p></td>
 <td><p>One error, as recorded in a run's state and audit trail.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorCode</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.ErrorCode.html#scikitplot.agent.ErrorCode" title="scikitplot.agent.ErrorCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ErrorCode</span></code></a></p></td>
 <td><p>What went wrong, as a stable code a caller may branch on.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SchemaError</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.SchemaError.html#scikitplot.agent.SchemaError" title="scikitplot.agent.SchemaError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SchemaError</span></code></a></p></td>
 <td><p>A tool's parameter schema uses something outside the supported subset.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateError</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.agent.StateError.html#scikitplot.agent.StateError" title="scikitplot.agent.StateError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateError</span></code></a></p></td>
 <td><p>A saved run state is malformed, or of a schema version not supported.</p></td>
 </tr>
 </tbody>
@@ -1948,11 +2039,11 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot.annoy.html"
+       href="../modules/generated/scikitplot.agent.Agent.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot.annoy</p>
+        <p class="prev-next-title">Agent</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1996,7 +2087,7 @@ I1-I9 are listed in <code class="docutils literal notranslate"><span class="pre"
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
       <br/>
     
   </p>

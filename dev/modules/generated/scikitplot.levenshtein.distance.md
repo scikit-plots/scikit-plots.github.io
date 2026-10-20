@@ -1,6 +1,6 @@
 # distance[#](#distance "Link to this heading")
 
-scikitplot.levenshtein.distance(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/levenshtein/_core.py#L430)[#](#scikitplot.levenshtein.distance "Link to this definition")
+scikitplot.levenshtein.distance(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/levenshtein/_core.py#L430)[#](#scikitplot.levenshtein.distance "Link to this definition")
 :   Return the Levenshtein edit distance between two sequences.
 
     Parameters:

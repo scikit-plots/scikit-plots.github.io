@@ -1,6 +1,6 @@
 # UUID7Generator[#](#uuid7generator "Link to this heading")
 
-class scikitplot.corpus.UUID7Generator(**\***, **clock\_ns=None**, **random\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L178)[#](#scikitplot.corpus.UUID7Generator "Link to this definition")
+class scikitplot.corpus.UUID7Generator(**\***, **clock\_ns=None**, **random\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_identity.py#L178)[#](#scikitplot.corpus.UUID7Generator "Link to this definition")
 :   Monotonic generator of RFC 9562 UUID version 7 identifiers.
 
     Parameters:
@@ -45,7 +45,7 @@ class scikitplot.corpus.UUID7Generator(**\***, **clock\_ns=None**, **random\_byt
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L262)[#](#scikitplot.corpus.UUID7Generator.__call__ "Link to this definition")
+    \_\_call\_\_()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_identity.py#L262)[#](#scikitplot.corpus.UUID7Generator.__call__ "Link to this definition")
     :   Return the next identifier.
 
         Returns:
@@ -67,7 +67,7 @@ class scikitplot.corpus.UUID7Generator(**\***, **clock\_ns=None**, **random\_byt
         Return type:
         :   [**UUID**](https://docs.python.org/3/library/uuid.html#uuid.UUID "(in Python v3.15)")
 
-    reset()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L229)[#](#scikitplot.corpus.UUID7Generator.reset "Link to this definition")
+    reset()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_identity.py#L229)[#](#scikitplot.corpus.UUID7Generator.reset "Link to this definition")
     :   Forget the sequence, so the next identifier starts a new one.
 
         Notes

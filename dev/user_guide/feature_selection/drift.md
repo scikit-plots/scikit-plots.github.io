@@ -1,6 +1,6 @@
 # Drift[#](#drift "Link to this heading")
 
-`ReferenceProfile` freezes, per feature, the buckets of the training
+[`ReferenceProfile`](../../modules/generated/scikitplot.feature_selection.ReferenceProfile.html#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection.ReferenceProfile") freezes, per feature, the buckets of the training
 data: quantile bins for continuous numbers, the most frequent values for
 binary, discrete and categorical features, and one bucket for missing values.
 Later data is put into the **same** buckets.
@@ -23,4 +23,4 @@ Statuses are `stable`, `warn`, `drift` (population stability index at
 `not_applicable` (datetime, text, other kinds).
 
 For transformed features, fit a reference on `pipeline[:-1].transform(X_train)`
-and map findings back to raw columns with `FeatureLineage.origins`.
+and map findings back to raw columns with [`FeatureLineage.origins`](../../modules/generated/scikitplot.feature_selection.FeatureLineage.html#scikitplot.feature_selection.FeatureLineage.origins "scikitplot.feature_selection.FeatureLineage.origins").

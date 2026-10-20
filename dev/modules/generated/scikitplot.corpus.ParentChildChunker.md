@@ -1,6 +1,6 @@
 # ParentChildChunker[#](#parentchildchunker "Link to this heading")
 
-class scikitplot.corpus.ParentChildChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L542)[#](#scikitplot.corpus.ParentChildChunker "Link to this definition")
+class scikitplot.corpus.ParentChildChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L542)[#](#scikitplot.corpus.ParentChildChunker "Link to this definition")
 :   Large parents for context, small children for retrieval, linked.
 
     Parameters:
@@ -46,7 +46,7 @@ class scikitplot.corpus.ParentChildChunker(**config=None**)[[source]](https://gi
     ```
     Go BackOpen In Tab
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L597)[#](#scikitplot.corpus.ParentChildChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L597)[#](#scikitplot.corpus.ParentChildChunker.chunk "Link to this definition")
     :   Split **text** into parents and the children inside each.
 
         Parameters:
@@ -79,7 +79,7 @@ class scikitplot.corpus.ParentChildChunker(**config=None**)[[source]](https://gi
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.ParentChildChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.ParentChildChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -114,9 +114,9 @@ class scikitplot.corpus.ParentChildChunker(**config=None**)[[source]](https://gi
     property config: [ParentChildChunkerConfig](scikitplot.corpus.ParentChildChunkerConfig.html#scikitplot.corpus.ParentChildChunkerConfig "scikitplot.corpus._chunkers._recursive.ParentChildChunkerConfig")[#](#scikitplot.corpus.ParentChildChunker.config "Link to this definition")
     :   The configuration (read-only).
 
-    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L491)[#](#scikitplot.corpus.ParentChildChunker.config_class "Link to this definition")
+    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L491)[#](#scikitplot.corpus.ParentChildChunker.config_class "Link to this definition")
     :   alias of [`ParentChildChunkerConfig`](scikitplot.corpus.ParentChildChunkerConfig.html#scikitplot.corpus.ParentChildChunkerConfig "scikitplot.corpus._chunkers._recursive.ParentChildChunkerConfig")
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParentChildChunker.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'recursive'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ParentChildChunker.strategy "Link to this definition")
 
     text\_is\_source\_slice = True[#](#scikitplot.corpus.ParentChildChunker.text_is_source_slice "Link to this definition")

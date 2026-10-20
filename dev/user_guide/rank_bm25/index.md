@@ -49,3 +49,4 @@ See [Rank-BM25](../../auto_examples/rank_bm25/index.html#rank-bm25-examples) for
 
 * [Model Context Protocol Retrieval](../mcp/index.html#mcp-index)
 * [Corpus User Guide](../corpus/index.html#corpus-index)
+* [dorianbrown/rank\_bm25](https://github.com/dorianbrown/rank_bm25)

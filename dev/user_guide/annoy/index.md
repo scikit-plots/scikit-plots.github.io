@@ -1,6 +1,6 @@
 # Annoy vector search[#](#annoy-vector-search "Link to this heading")
 
-`scikitplot.annoy` wraps Spotify Annoy-style approximate nearest-neighbor
+`scikitplot.annoy` wraps Spotify [[1]](#id2) Annoy-style approximate nearest-neighbor
 search with a higher-level `Index` facade. It is designed for immutable or
 build-once vector indexes where memory-mapped persistence, predictable query
 semantics, and process sharing matter more than online mutation.
@@ -77,7 +77,7 @@ See [Annoy](../../auto_examples/annoy/index.html#annoy-examples) for executable 
 
 ## References[#](#references "Link to this heading")
 
-[1]
+[[1](#id1)]
 
 [Spotify AB. (2013, Feb 20). “Approximate Nearest Neighbors Oh Yeah”
 Github. https://pypi.org/project/annoy](https://pypi.org/project/annoy)

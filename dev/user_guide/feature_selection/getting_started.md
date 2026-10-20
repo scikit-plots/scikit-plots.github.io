@@ -21,7 +21,7 @@ schema = profile_features(X_train, {"roles": {"target": ["churn"]}})
 
 ```
 
-Every column is now a `FeatureSpec` that can be asked about itself:
+Every column is now a [`FeatureSpec`](../../modules/generated/scikitplot.feature_selection.FeatureSpec.html#scikitplot.feature_selection.FeatureSpec "scikitplot.feature_selection.FeatureSpec") that can be asked about itself:
 
 ```
 spec = schema["income"]

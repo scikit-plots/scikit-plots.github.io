@@ -1,6 +1,6 @@
 # StreamDecoder[#](#streamdecoder "Link to this heading")
 
-class scikitplot.cleanprompt.StreamDecoder(**guard**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L124)[#](#scikitplot.cleanprompt.StreamDecoder "Link to this definition")
+class scikitplot.cleanprompt.StreamDecoder(**guard**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_guard.py#L124)[#](#scikitplot.cleanprompt.StreamDecoder "Link to this definition")
 :   Decode a model’s reply as it streams in, never splitting a label.
 
     Parameters:
@@ -38,7 +38,7 @@ class scikitplot.cleanprompt.StreamDecoder(**guard**)[[source]](https://github.c
     whole. A stream that is abandoned without [`flush`](#scikitplot.cleanprompt.StreamDecoder.flush "scikitplot.cleanprompt.StreamDecoder.flush")
     records no event; [`flush`](#scikitplot.cleanprompt.StreamDecoder.flush "scikitplot.cleanprompt.StreamDecoder.flush") is what ends a reply.
 
-    feed(**chunk**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L270)[#](#scikitplot.cleanprompt.StreamDecoder.feed "Link to this definition")
+    feed(**chunk**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_guard.py#L270)[#](#scikitplot.cleanprompt.StreamDecoder.feed "Link to this definition")
     :   Add a chunk and return the decoded text that is now certain.
 
         Parameters:
@@ -59,7 +59,7 @@ class scikitplot.cleanprompt.StreamDecoder(**guard**)[[source]](https://github.c
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L311)[#](#scikitplot.cleanprompt.StreamDecoder.flush "Link to this definition")
+    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_guard.py#L311)[#](#scikitplot.cleanprompt.StreamDecoder.flush "Link to this definition")
     :   Return the decoded remainder, record the reply, and reset.
 
         Returns:

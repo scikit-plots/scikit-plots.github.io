@@ -1,6 +1,6 @@
 # LLMJudge[#](#llmjudge "Link to this heading")
 
-class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L548)[#](#scikitplot.corpus.LLMJudge "Link to this definition")
+class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L548)[#](#scikitplot.corpus.LLMJudge "Link to this definition")
 :   Judge answers and contexts with a language model.
 
     Parameters:
@@ -46,7 +46,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
     ```
     Go BackOpen In Tab
 
-    answer\_correctness(**question**, **answer**, **reference**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L857)[#](#scikitplot.corpus.LLMJudge.answer_correctness "Link to this definition")
+    answer\_correctness(**question**, **answer**, **reference**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L857)[#](#scikitplot.corpus.LLMJudge.answer_correctness "Link to this definition")
     :   Statement-level F1 of the answer against the reference.
 
         Parameters:
@@ -66,7 +66,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [**JudgeResult**](scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus._metrics._judge.JudgeResult")
 
-    answer\_relevance(**question**, **answer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L702)[#](#scikitplot.corpus.LLMJudge.answer_relevance "Link to this definition")
+    answer\_relevance(**question**, **answer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L702)[#](#scikitplot.corpus.LLMJudge.answer_relevance "Link to this definition")
     :   How directly the answer addresses the question: `(rating - 1) / 4`.
 
         Parameters:
@@ -84,7 +84,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [**JudgeResult**](scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus._metrics._judge.JudgeResult")
 
-    context\_precision(**question**, **contexts**, **reference=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L732)[#](#scikitplot.corpus.LLMJudge.context_precision "Link to this definition")
+    context\_precision(**question**, **contexts**, **reference=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L732)[#](#scikitplot.corpus.LLMJudge.context_precision "Link to this definition")
     :   Average precision of the relevant contexts, in retrieval order.
 
         Parameters:
@@ -117,7 +117,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         The verdict must hold exactly one entry per context index (1-based);
         a missing, repeated or out-of-range index is an invalid verdict.
 
-    context\_recall(**question**, **contexts**, **reference**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L809)[#](#scikitplot.corpus.LLMJudge.context_recall "Link to this definition")
+    context\_recall(**question**, **contexts**, **reference**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L809)[#](#scikitplot.corpus.LLMJudge.context_recall "Link to this definition")
     :   Fraction of the reference’s statements attributable to the contexts.
 
         Parameters:
@@ -143,7 +143,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [**JudgeResult**](scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus._metrics._judge.JudgeResult")
 
-    criteria\_score(**question**, **answer**, **criteria**, **\***, **scale=5**, **reference=None**, **contexts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L897)[#](#scikitplot.corpus.LLMJudge.criteria_score "Link to this definition")
+    criteria\_score(**question**, **answer**, **criteria**, **\***, **scale=5**, **reference=None**, **contexts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L897)[#](#scikitplot.corpus.LLMJudge.criteria_score "Link to this definition")
     :   Rate the answer against a caller’s rubric: `(rating - 1) / (scale - 1)`.
 
         Parameters:
@@ -177,7 +177,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [**JudgeResult**](scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus._metrics._judge.JudgeResult")
 
-    faithfulness(**question**, **answer**, **contexts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L663)[#](#scikitplot.corpus.LLMJudge.faithfulness "Link to this definition")
+    faithfulness(**question**, **answer**, **contexts**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L663)[#](#scikitplot.corpus.LLMJudge.faithfulness "Link to this definition")
     :   Fraction of the answer’s claims that the contexts support.
 
         Parameters:
@@ -201,7 +201,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [**JudgeResult**](scikitplot.corpus.JudgeResult.html#scikitplot.corpus.JudgeResult "scikitplot.corpus._metrics._judge.JudgeResult")
 
-    identity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L604)[#](#scikitplot.corpus.LLMJudge.identity "Link to this definition")
+    identity()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L604)[#](#scikitplot.corpus.LLMJudge.identity "Link to this definition")
     :   Return the judge’s identity: the model’s, the prompt version and hash.
 
         Returns:
@@ -210,7 +210,7 @@ class scikitplot.corpus.LLMJudge(**llm**, **\***, **on\_error='raise'**)[[source
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    preference(**question**, **answer\_a**, **answer\_b**, **\***, **reference=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L964)[#](#scikitplot.corpus.LLMJudge.preference "Link to this definition")
+    preference(**question**, **answer\_a**, **answer\_b**, **\***, **reference=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L964)[#](#scikitplot.corpus.LLMJudge.preference "Link to this definition")
     :   Which of two answers is better, asked in both orders.
 
         Parameters:

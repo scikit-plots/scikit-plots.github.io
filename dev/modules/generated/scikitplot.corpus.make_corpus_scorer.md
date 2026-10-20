@@ -1,6 +1,6 @@
 # make\_corpus\_scorer[#](#make-corpus-scorer "Link to this heading")
 
-scikitplot.corpus.make\_corpus\_scorer(**score\_func**, **\***, **response\_method='predict'**, **greater\_is\_better=True**, **id\_getter=None**, **on\_degraded='raise'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_scorer.py#L407)[#](#scikitplot.corpus.make_corpus_scorer "Link to this definition")
+scikitplot.corpus.make\_corpus\_scorer(**score\_func**, **\***, **response\_method='predict'**, **greater\_is\_better=True**, **id\_getter=None**, **on\_degraded='raise'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_scorer.py#L407)[#](#scikitplot.corpus.make_corpus_scorer "Link to this definition")
 :   Make a scikit-learn compatible scorer from a corpus metric.
 
     Parameters:

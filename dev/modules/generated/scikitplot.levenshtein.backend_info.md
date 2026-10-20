@@ -1,6 +1,6 @@
 # backend\_info[#](#backend-info "Link to this heading")
 
-scikitplot.levenshtein.backend\_info(**name='auto'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/levenshtein/_core.py#L176)[#](#scikitplot.levenshtein.backend_info "Link to this definition")
+scikitplot.levenshtein.backend\_info(**name='auto'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/levenshtein/_core.py#L176)[#](#scikitplot.levenshtein.backend_info "Link to this definition")
 :   Return capability information for one backend.
 
     `auto` returns information for the backend that would currently be used.

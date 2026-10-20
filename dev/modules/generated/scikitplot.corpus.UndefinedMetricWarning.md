@@ -1,6 +1,6 @@
 # UndefinedMetricWarning[#](#undefinedmetricwarning "Link to this heading")
 
-exception scikitplot.corpus.UndefinedMetricWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_inputs.py#L61)[#](#scikitplot.corpus.UndefinedMetricWarning "Link to this definition")
+exception scikitplot.corpus.UndefinedMetricWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_inputs.py#L61)[#](#scikitplot.corpus.UndefinedMetricWarning "Link to this definition")
 :   A metric is undefined for some queries and was scored by `zero_division`.
 
     Notes

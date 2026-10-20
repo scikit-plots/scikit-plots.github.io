@@ -1,6 +1,6 @@
 # list\_api[#](#list-api "Link to this heading")
 
-scikitplot.cython.list\_api(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_api.py#L210)[#](#scikitplot.cython.list_api "Link to this definition")
+scikitplot.cython.list\_api(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_api.py#L210)[#](#scikitplot.cython.list_api "Link to this definition")
 :   Return the sorted public symbol names in a given stability `tier`.
 
     Parameters:

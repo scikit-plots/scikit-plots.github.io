@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:14:53Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:44:13Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/agent/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1039,7 +1039,7 @@ it to every query; the MCP server takes the same filter (<code class="docutils l
 <h2>A first run<a class="headerlink" href="#a-first-run" title="Link to this heading">#</a></h2>
 <p>A tool is a Python function with a JSON Schema of its keyword arguments. The
 planner receives a copy of the run’s state and the tools’ descriptions, and
-returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">Decision</span></code>.</p>
+returns a <a class="reference internal" href="../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision" title="scikitplot.agent.Decision"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decision</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">Decision</span><span class="p">,</span> <span class="n">Limits</span><span class="p">,</span> <span class="n">Policy</span><span class="p">,</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">verify_audit</span>
 
 <span class="n">PAGES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"spans"</span><span class="p">:</span> <span class="s2">"A chunk's text is a slice of its source."</span><span class="p">,</span> <span class="s2">"ids"</span><span class="p">:</span> <span class="s2">"64 hex digits."</span><span class="p">}</span>
@@ -1081,7 +1081,7 @@ nothing else.</p>
 </section>
 <section id="limits-and-how-a-run-ends">
 <h2>Limits and how a run ends<a class="headerlink" href="#limits-and-how-a-run-ends" title="Link to this heading">#</a></h2>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Limits</span></code> holds the stopping conditions. Each is checked before the
+<p><a class="reference internal" href="../../modules/generated/scikitplot.agent.Limits.html#scikitplot.agent.Limits" title="scikitplot.agent.Limits"><code class="xref py py-class docutils literal notranslate"><span class="pre">Limits</span></code></a> holds the stopping conditions. Each is checked before the
 call it bounds, so a call already running is not interrupted; a tool’s own
 timeout bounds one call.</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1105,7 +1105,7 @@ planner’s reported cost counts too.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_tokens</span></code></p></td>
 <td><p>No further decision is asked for. The planner must then
-report <code class="xref py py-class docutils literal notranslate"><span class="pre">Usage</span></code> with every decision, or the run
+report <a class="reference internal" href="../../modules/generated/scikitplot.agent.Usage.html#scikitplot.agent.Usage" title="scikitplot.agent.Usage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Usage</span></code></a> with every decision, or the run
 fails (<code class="docutils literal notranslate"><span class="pre">usage_not_reported</span></code>): a limit that cannot be
 enforced is refused, not ignored.</p></td>
 </tr>
@@ -1180,13 +1180,13 @@ tool is not repeated, because whether it took effect is unknown: the step is
 <section id="the-audit-trail">
 <h2>The audit trail<a class="headerlink" href="#the-audit-trail" title="Link to this heading">#</a></h2>
 <p>Each record names its run, a sequence number from 0, the event and its data,
-and the digest of the record before it. <code class="xref py py-func docutils literal notranslate"><span class="pre">verify_audit</span></code> finds a record
+and the digest of the record before it. <a class="reference internal" href="../../modules/generated/scikitplot.agent.verify_audit.html#scikitplot.agent.verify_audit" title="scikitplot.agent.verify_audit"><code class="xref py py-func docutils literal notranslate"><span class="pre">verify_audit</span></code></a> finds a record
 that was changed, removed or reordered. <code class="docutils literal notranslate"><span class="pre">JsonlAuditSink(path)</span></code> appends one
 line per record (<code class="docutils literal notranslate"><span class="pre">fsync=True</span></code> to survive a machine crash), and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">read_audit</span></code> reads the file back. The chain cannot show a trail cut
+<a class="reference internal" href="../../modules/generated/scikitplot.agent.read_audit.html#scikitplot.agent.read_audit" title="scikitplot.agent.read_audit"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_audit</span></code></a> reads the file back. The chain cannot show a trail cut
 after its last record, but the state can: it keeps <code class="docutils literal notranslate"><span class="pre">audit_head</span></code>, the last
 record’s number and digest, and a resume whose trail does not hold that
-record is refused with <code class="xref py py-class docutils literal notranslate"><span class="pre">StateError</span></code>.</p>
+record is refused with <a class="reference internal" href="../../modules/generated/scikitplot.agent.StateError.html#scikitplot.agent.StateError" title="scikitplot.agent.StateError"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateError</span></code></a>.</p>
 </section>
 <section id="measured">
 <h2>Measured<a class="headerlink" href="#measured" title="Link to this heading">#</a></h2>
@@ -1238,13 +1238,13 @@ paused before writing.</p>
 <h2>Writing a planner<a class="headerlink" href="#writing-a-planner" title="Link to this heading">#</a></h2>
 <p>A planner is any callable <code class="docutils literal notranslate"><span class="pre">planner(state,</span> <span class="pre">tools)</span> <span class="pre">-&gt;</span> <span class="pre">Decision</span></code>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code> is a copy of the <code class="xref py py-class docutils literal notranslate"><span class="pre">RunState</span></code>, rebuilt from its saved form:
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code> is a copy of the <a class="reference internal" href="../../modules/generated/scikitplot.agent.RunState.html#scikitplot.agent.RunState" title="scikitplot.agent.RunState"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunState</span></code></a>, rebuilt from its saved form:
 <code class="docutils literal notranslate"><span class="pre">state.goal</span></code>, <code class="docutils literal notranslate"><span class="pre">state.steps</span></code> (each with its decision, outcome, result
 or error) and <code class="docutils literal notranslate"><span class="pre">state.observations()</span></code> (the same as plain JSON, ready for a
 prompt); changing it changes nothing;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tools</span></code> is <code class="xref py py-meth docutils literal notranslate"><span class="pre">Toolset.describe</span></code>: names, descriptions, JSON Schemas,
+<li><p><code class="docutils literal notranslate"><span class="pre">tools</span></code> is <a class="reference internal" href="../../modules/generated/scikitplot.agent.Toolset.html#scikitplot.agent.Toolset.describe" title="scikitplot.agent.Toolset.describe"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Toolset.describe</span></code></a>: names, descriptions, JSON Schemas,
 effects, scopes and costs, ready for a model’s tool-calling interface;</p></li>
-<li><p>return <code class="xref py py-meth docutils literal notranslate"><span class="pre">Decision.act</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Decision.finish</span></code>, with
+<li><p>return <a class="reference internal" href="../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.act" title="scikitplot.agent.Decision.act"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Decision.act</span></code></a> or <a class="reference internal" href="../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.finish" title="scikitplot.agent.Decision.finish"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Decision.finish</span></code></a>, with
 <code class="docutils literal notranslate"><span class="pre">usage=Usage(tokens,</span> <span class="pre">cost)</span></code> when a model produced it.</p></li>
 </ul>
 <p>A planner that raises, or returns anything else, fails the run with
@@ -1367,7 +1367,7 @@ effects, scopes and costs, ready for a model’s tool-calling interface;</p></li
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
       <br/>
     
   </p>

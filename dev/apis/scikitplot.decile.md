@@ -18,7 +18,7 @@ kds is the result of a data scientist’s humble effort to provide an easy way o
 visualizing metrics. So that one can focus on the analysis rather than hassling
 with copy/paste of various visialization functions.
 
-****User guide.**** See the decile-kds-index section for further details.
+****User guide.**** See the [KDS functions](../user_guide/decile/kds.html#decile-kds-index) section for further details.
 
 |  |  |
 | --- | --- |
@@ -59,7 +59,7 @@ References
 * [modelplot/modelplotpy](https://github.com/modelplot/modelplotpy/blob/master/modelplotpy/functions.py)
 * <https://modelplot.github.io/intro_modelplotpy.html>
 
-****User guide.**** See the decile-modelplotpy-index and decile-modelplotpy-financial-index sections for further details.
+****User guide.**** See the [ModelPlotPy](../user_guide/decile/modelplotpy.html#decile-modelplotpy-index) and [ModelPlotPy](../user_guide/decile/modelplotpy.html#decile-modelplotpy-financial-index) sections for further details.
 
 |  |  |
 | --- | --- |
@@ -68,7 +68,7 @@ References
 
 ## (Cumulative) Gains, Lift and Response Plots[#](#cumulative-gains-lift-and-response-plots "Link to this heading")
 
-****User guide.**** See the decile-modelplotpy-index section for further details.
+****User guide.**** See the [ModelPlotPy](../user_guide/decile/modelplotpy.html#decile-modelplotpy-index) section for further details.
 
 |  |  |
 | --- | --- |
@@ -80,7 +80,7 @@ References
 
 ## Business-savvy Financial Insight Plots[#](#business-savvy-financial-insight-plots "Link to this heading")
 
-****User guide.**** See the decile-modelplotpy-financial-index section for further details.
+****User guide.**** See the [ModelPlotPy](../user_guide/decile/modelplotpy.html#decile-modelplotpy-financial-index) section for further details.
 
 |  |  |
 | --- | --- |

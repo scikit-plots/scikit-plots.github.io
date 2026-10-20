@@ -1,6 +1,6 @@
 # CorpusBuilder[#](#corpusbuilder "Link to this heading")
 
-class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L499)[#](#scikitplot.corpus.CorpusBuilder "Link to this definition")
+class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L499)[#](#scikitplot.corpus.CorpusBuilder "Link to this definition")
 :   Unified corpus builder — end-to-end pipeline orchestrator.
 
     Parameters:
@@ -72,7 +72,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
     ```
     Go BackOpen In Tab
 
-    add(**input\_path**, **\***, **source\_title=None**, **source\_author=None**, **source\_type=None**, **collection\_id=None**, **rebuild\_index=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L866)[#](#scikitplot.corpus.CorpusBuilder.add "Link to this definition")
+    add(**input\_path**, **\***, **source\_title=None**, **source\_author=None**, **source\_type=None**, **collection\_id=None**, **rebuild\_index=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L866)[#](#scikitplot.corpus.CorpusBuilder.add "Link to this definition")
     :   Add sources to an existing corpus without re-processing.
 
         Incrementally ingests new sources and appends their documents to
@@ -142,7 +142,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         from scratch over all documents because incremental index
         updates are not supported by all backends.
 
-    build(**input\_path**, **\***, **source\_title=None**, **source\_author=None**, **collection\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L676)[#](#scikitplot.corpus.CorpusBuilder.build "Link to this definition")
+    build(**input\_path**, **\***, **source\_title=None**, **source\_author=None**, **collection\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L676)[#](#scikitplot.corpus.CorpusBuilder.build "Link to this definition")
     :   Build a corpus from one or more sources.
 
         Parameters:
@@ -180,7 +180,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [BuildResult](scikitplot.corpus.BuildResult.html#scikitplot.corpus.BuildResult "scikitplot.corpus.BuildResult")
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L644)[#](#scikitplot.corpus.CorpusBuilder.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L644)[#](#scikitplot.corpus.CorpusBuilder.close "Link to this definition")
     :   Clean up temporary files created during downloads/extraction.
 
         Notes
@@ -192,7 +192,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   None
 
-    export(**path**, **\***, **format='parquet'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1237)[#](#scikitplot.corpus.CorpusBuilder.export "Link to this definition")
+    export(**path**, **\***, **format='parquet'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1237)[#](#scikitplot.corpus.CorpusBuilder.export "Link to this definition")
     :   Export documents to a file.
 
         Parameters:
@@ -218,7 +218,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   Path
 
-    search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**, **filter=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L999)[#](#scikitplot.corpus.CorpusBuilder.search "Link to this definition")
+    search(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**, **filter=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L999)[#](#scikitplot.corpus.CorpusBuilder.search "Link to this definition")
     :   Search the built corpus.
 
         Parameters:
@@ -261,7 +261,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[Any]
 
-    to\_huggingface()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1204)[#](#scikitplot.corpus.CorpusBuilder.to_huggingface "Link to this definition")
+    to\_huggingface()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1204)[#](#scikitplot.corpus.CorpusBuilder.to_huggingface "Link to this definition")
     :   Export as HuggingFace Dataset.
 
         Returns:
@@ -270,7 +270,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   Any
 
-    to\_jsonl()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1226)[#](#scikitplot.corpus.CorpusBuilder.to_jsonl "Link to this definition")
+    to\_jsonl()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1226)[#](#scikitplot.corpus.CorpusBuilder.to_jsonl "Link to this definition")
     :   Export as JSONL lines.
 
         Yields:
@@ -279,7 +279,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   Iterator[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    to\_langchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1077)[#](#scikitplot.corpus.CorpusBuilder.to_langchain "Link to this definition")
+    to\_langchain()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1077)[#](#scikitplot.corpus.CorpusBuilder.to_langchain "Link to this definition")
     :   Export documents as LangChain `Document` objects.
 
         Returns:
@@ -288,7 +288,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[Any]
 
-    to\_langchain\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1183)[#](#scikitplot.corpus.CorpusBuilder.to_langchain_retriever "Link to this definition")
+    to\_langchain\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1183)[#](#scikitplot.corpus.CorpusBuilder.to_langchain_retriever "Link to this definition")
     :   Create a LangChain-compatible retriever.
 
         Returns:
@@ -297,7 +297,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   Any
 
-    to\_langgraph\_state(**query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1088)[#](#scikitplot.corpus.CorpusBuilder.to_langgraph_state "Link to this definition")
+    to\_langgraph\_state(**query=''**, **match\_mode=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1088)[#](#scikitplot.corpus.CorpusBuilder.to_langgraph_state "Link to this definition")
     :   Export as LangGraph-compatible state dict.
 
         Returns:
@@ -310,7 +310,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
-    to\_mcp\_resources(**uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1107)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_resources "Link to this definition")
+    to\_mcp\_resources(**uri\_prefix='corpus://'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1107)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_resources "Link to this definition")
     :   Export as MCP resources.
 
         Returns:
@@ -322,7 +322,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]]
 
-    to\_mcp\_server(**server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1156)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_server "Link to this definition")
+    to\_mcp\_server(**server\_name='corpus-search'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1156)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_server "Link to this definition")
     :   Create an MCP server adapter.
 
         Parameters:
@@ -338,7 +338,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   Any
 
-    to\_mcp\_tool\_result(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1124)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_tool_result "Link to this definition")
+    to\_mcp\_tool\_result(**query**, **\***, **top\_k=10**, **match\_mode='hybrid'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1124)[#](#scikitplot.corpus.CorpusBuilder.to_mcp_tool_result "Link to this definition")
     :   Search and format result as MCP tool response.
 
         Parameters:
@@ -363,7 +363,7 @@ class scikitplot.corpus.CorpusBuilder(**config=None**, **\***, **factories=None*
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), Any]
 
-    to\_rag\_tuples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_corpus_builder.py#L1215)[#](#scikitplot.corpus.CorpusBuilder.to_rag_tuples "Link to this definition")
+    to\_rag\_tuples()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_corpus_builder.py#L1215)[#](#scikitplot.corpus.CorpusBuilder.to_rag_tuples "Link to this definition")
     :   Export as `(text, metadata, embedding)` tuples.
 
         Returns:

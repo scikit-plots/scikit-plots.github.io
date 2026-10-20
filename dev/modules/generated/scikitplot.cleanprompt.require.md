@@ -1,6 +1,6 @@
 # require[#](#require "Link to this heading")
 
-scikitplot.cleanprompt.require(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L380)[#](#scikitplot.cleanprompt.require "Link to this definition")
+scikitplot.cleanprompt.require(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L380)[#](#scikitplot.cleanprompt.require "Link to this definition")
 :   Return the report for `tier`, raising when it is not usable.
 
     Parameters:

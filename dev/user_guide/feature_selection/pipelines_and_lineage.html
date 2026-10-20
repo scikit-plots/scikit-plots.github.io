@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:15:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:44:21Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/feature_selection/pipelines_and_lineage","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1013,7 +1013,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <span id="feature-selection-lineage"></span><h1>Pipelines and lineage<a class="headerlink" href="#pipelines-and-lineage" title="Link to this heading">#</a></h1>
 <section id="route-columns-by-what-they-are">
 <h2>Route columns by what they are<a class="headerlink" href="#route-columns-by-what-they-are" title="Link to this heading">#</a></h2>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureColumnSelector</span></code> is a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> column selector. It
+<p><a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureColumnSelector.html#scikitplot.feature_selection.FeatureColumnSelector" title="scikitplot.feature_selection.FeatureColumnSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureColumnSelector</span></code></a> is a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> column selector. It
 profiles the frame it is given at fit time, which inside cross-validation is
 the training fold, and <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> keeps the selection for later
 data:</p>
@@ -1038,10 +1038,10 @@ data:</p>
                   <span class="p">(</span><span class="s2">"lr"</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">))])</span>
 </pre></div>
 </div>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureFilter</span></code> removes constant and identifier-like columns and every
+<p><a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureFilter.html#scikitplot.feature_selection.FeatureFilter" title="scikitplot.feature_selection.FeatureFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureFilter</span></code></a> removes constant and identifier-like columns and every
 column whose role is not <code class="docutils literal notranslate"><span class="pre">feature</span></code> (so a target column cannot leak), with
-<code class="docutils literal notranslate"><span class="pre">get_support</span></code> and a <code class="docutils literal notranslate"><span class="pre">report_</span></code> of reasons. <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureProfiler</span></code> keeps the
-training schema inside the pipeline, and <code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureRenamer</span></code> applies a
+<code class="docutils literal notranslate"><span class="pre">get_support</span></code> and a <code class="docutils literal notranslate"><span class="pre">report_</span></code> of reasons. <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureProfiler.html#scikitplot.feature_selection.FeatureProfiler" title="scikitplot.feature_selection.FeatureProfiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureProfiler</span></code></a> keeps the
+training schema inside the pipeline, and <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureRenamer.html#scikitplot.feature_selection.FeatureRenamer" title="scikitplot.feature_selection.FeatureRenamer"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureRenamer</span></code></a> applies a
 rename plan (mapping, list, callable or <code class="docutils literal notranslate"><span class="pre">&quot;col-{index}&quot;</span></code> template) frozen at
 fit time.</p>
 </section>
@@ -1062,7 +1062,7 @@ fit time.</p>
 </pre></div>
 </div>
 <p>Passing <code class="docutils literal notranslate"><span class="pre">X=</span></code> runs every stage on the sample and checks its real output width
-against the traced count; a disagreement raises <code class="xref py py-class docutils literal notranslate"><span class="pre">LineageError</span></code>.</p>
+against the traced count; a disagreement raises <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.LineageError.html#scikitplot.feature_selection.LineageError" title="scikitplot.feature_selection.LineageError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineageError</span></code></a>.</p>
 <p>Lineage quality is explicit. Edges taken from fitted attributes or
 column-wise class contracts are <code class="docutils literal notranslate"><span class="pre">exact</span></code>. Steps whose outputs combine
 several inputs are <code class="docutils literal notranslate"><span class="pre">mixed</span></code> even when the names stay one-to-one: PCA,
@@ -1073,7 +1073,7 @@ columns; their missing indicators stay exact). Steps without any contract are
 pipeline the last step with <code class="docutils literal notranslate"><span class="pre">predict</span></code> is the model and is not traced, even
 if it also has <code class="docutils literal notranslate"><span class="pre">transform</span></code>; pass <code class="docutils literal notranslate"><span class="pre">trace_final=True</span></code> to trace it. Give your own transformer
 a <code class="docutils literal notranslate"><span class="pre">get_feature_lineage(input_features)</span></code> method returning a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureMapping</span></code> to make it exact.</p>
+<a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureMapping.html#scikitplot.feature_selection.FeatureMapping" title="scikitplot.feature_selection.FeatureMapping"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureMapping</span></code></a> to make it exact.</p>
 </section>
 <section id="importances-per-raw-column">
 <h2>Importances per raw column<a class="headerlink" href="#importances-per-raw-column" title="Link to this heading">#</a></h2>
@@ -1201,7 +1201,7 @@ per sample) as long as they are aligned with <code class="docutils literal notra
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
       <br/>
     
   </p>

@@ -11,7 +11,7 @@ machine-learning model exploration.
 
 ## .api into .seaborn[#](#api-into-seaborn "Link to this heading")
 
-****User guide.**** See the aucplot-index and evalplot-index sections for further details.
+****User guide.**** See the [AUC and evaluation](../user_guide/seaborn/auc_and_evaluation.html#aucplot-index) and [AUC and evaluation](../user_guide/seaborn/auc_and_evaluation.html#evalplot-index) sections for further details.
 
 |  |  |
 | --- | --- |
@@ -46,7 +46,7 @@ References
 “Decile”
 Wikipedia. https://en.wikipedia.org/wiki/Decile](https://en.wikipedia.org/wiki/Decile)
 
-****User guide.**** See the decileplot-index section for further details.
+****User guide.**** See the [Decile and model plots](../user_guide/seaborn/decile_and_model_plots.html#decileplot-index) section for further details.
 
 |  |  |
 | --- | --- |

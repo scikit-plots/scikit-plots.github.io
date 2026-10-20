@@ -1,6 +1,6 @@
 # LevenshteinRanker[#](#levenshteinranker "Link to this heading")
 
-class scikitplot.corpus.LevenshteinRanker(**\***, **backend='auto'**, **strict=False**, **use\_normalized\_text=True**, **score\_cutoff=0.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_pairwise.py#L298)[#](#scikitplot.corpus.LevenshteinRanker "Link to this definition")
+class scikitplot.corpus.LevenshteinRanker(**\***, **backend='auto'**, **strict=False**, **use\_normalized\_text=True**, **score\_cutoff=0.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_pairwise.py#L298)[#](#scikitplot.corpus.LevenshteinRanker "Link to this definition")
 :   Ranker by normalised Levenshtein similarity, with backend provenance.
 
     Parameters:
@@ -28,7 +28,7 @@ class scikitplot.corpus.LevenshteinRanker(**\***, **backend='auto'**, **strict=F
     `backend="levenshtein:<name>"`, the backend that computed its distance,
     which can differ from the requested one after a runtime fallback.
 
-    \_\_call\_\_(**query**, **documents**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_pairwise.py#L333)[#](#scikitplot.corpus.LevenshteinRanker.__call__ "Link to this definition")
+    \_\_call\_\_(**query**, **documents**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_pairwise.py#L333)[#](#scikitplot.corpus.LevenshteinRanker.__call__ "Link to this definition")
     :   Return the best `config.top_k` documents for `query`.
 
         Parameters:

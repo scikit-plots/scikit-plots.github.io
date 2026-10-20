@@ -1,6 +1,6 @@
 # fleiss\_kappa[#](#fleiss-kappa "Link to this heading")
 
-scikitplot.corpus.fleiss\_kappa(**ratings**, **\***, **labels=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_agreement.py#L204)[#](#scikitplot.corpus.fleiss_kappa "Link to this definition")
+scikitplot.corpus.fleiss\_kappa(**ratings**, **\***, **labels=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_agreement.py#L204)[#](#scikitplot.corpus.fleiss_kappa "Link to this definition")
 :   Fleiss’ kappa for any number of raters with nominal labels.
 
     Parameters:

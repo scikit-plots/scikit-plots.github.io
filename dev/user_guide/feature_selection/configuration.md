@@ -1,8 +1,8 @@
 # Configuration[#](#configuration "Link to this heading")
 
-A `FeaturePolicy` is the complete, declarative description of how to
+A [`FeaturePolicy`](../../modules/generated/scikitplot.feature_selection.FeaturePolicy.html#scikitplot.feature_selection.FeaturePolicy "scikitplot.feature_selection.FeaturePolicy") is the complete, declarative description of how to
 profile a table. Every section is optional. The same policy can be written in
-TOML, YAML or JSON; `dump_policy` reads its output back before writing
+TOML, YAML or JSON; [`dump_policy`](../../modules/generated/scikitplot.feature_selection.dump_policy.html#scikitplot.feature_selection.dump_policy "scikitplot.feature_selection.dump_policy") reads its output back before writing
 and refuses anything the format cannot hold.
 
 ```
@@ -50,13 +50,13 @@ policy.digest   # recorded in every schema fitted with it
 ## Rules of the policy[#](#rules-of-the-policy "Link to this heading")
 
 * `assessments` merge over the built-in ones by name. Default parameters are
-  defined once, on the providers; `list_assessment_providers` shows them.
+  defined once, on the providers; [`list_assessment_providers`](../../modules/generated/scikitplot.feature_selection.list_assessment_providers.html#scikitplot.feature_selection.list_assessment_providers "scikitplot.feature_selection.list_assessment_providers") shows them.
   `None` means “provider default”.
 * `kinds` replace inference. `text` is never inferred, only declared.
 * `overrides` set an answer by hand; the inferred answer is kept next to it
   (`Assessment.inferred_state`), and kinds follow the overridden answers.
 * A column with two roles, an unknown key, `true` where a number is expected,
-  or a YAML date where a name is expected are refused with `PolicyError`.
+  or a YAML date where a name is expected are refused with [`PolicyError`](../../modules/generated/scikitplot.feature_selection.PolicyError.html#scikitplot.feature_selection.PolicyError "scikitplot.feature_selection.PolicyError").
 
 ## Custom questions[#](#custom-questions "Link to this heading")
 

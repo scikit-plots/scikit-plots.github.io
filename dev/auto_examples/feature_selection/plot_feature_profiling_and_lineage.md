@@ -7,13 +7,13 @@ to download the full example code or to run this example in your browser via Jup
 A walk through the three questions [`scikitplot.feature_selection`](../../apis/scikitplot.feature_selection.html#module-scikitplot.feature_selection "scikitplot.feature_selection")
 answers for a table with many columns:
 
-1. **What is each feature?** – `profile_features` fits a
-   `FeatureSchema` on the training split.
+1. **What is each feature?** – [`profile_features`](../../modules/generated/scikitplot.feature_selection.profile_features.html#scikitplot.feature_selection.profile_features "scikitplot.feature_selection.profile_features") fits a
+   [`FeatureSchema`](../../modules/generated/scikitplot.feature_selection.FeatureSchema.html#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection.FeatureSchema") on the training split.
 2. **What happened to each feature in the pipeline?** –
-   `trace_pipeline` reads the fitted pipeline, and
-   `FeatureLineage.attribute` sums one-hot importances back to raw
+   [`trace_pipeline`](../../modules/generated/scikitplot.feature_selection.trace_pipeline.html#scikitplot.feature_selection.trace_pipeline "scikitplot.feature_selection.trace_pipeline") reads the fitted pipeline, and
+   [`FeatureLineage.attribute`](../../modules/generated/scikitplot.feature_selection.FeatureLineage.html#scikitplot.feature_selection.FeatureLineage.attribute "scikitplot.feature_selection.FeatureLineage.attribute") sums one-hot importances back to raw
    columns.
-3. **Has it drifted?** – `ReferenceProfile` freezes the training
+3. **Has it drifted?** – [`ReferenceProfile`](../../modules/generated/scikitplot.feature_selection.ReferenceProfile.html#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection.ReferenceProfile") freezes the training
    distribution and compares later data with it.
 
 ```

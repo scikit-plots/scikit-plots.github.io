@@ -1,6 +1,6 @@
 # iter\_package\_entries[#](#iter-package-entries "Link to this heading")
 
-scikitplot.cython.iter\_package\_entries(**cache\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_cache.py#L619)[#](#scikitplot.cython.iter_package_entries "Link to this definition")
+scikitplot.cython.iter\_package\_entries(**cache\_dir**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_cache.py#L619)[#](#scikitplot.cython.iter_package_entries "Link to this definition")
 :   List **package** cache entries found under the cache directory.
 
     Parameters:

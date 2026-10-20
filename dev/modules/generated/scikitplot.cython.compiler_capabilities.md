@@ -1,6 +1,6 @@
 # compiler\_capabilities[#](#compiler-capabilities "Link to this heading")
 
-scikitplot.cython.compiler\_capabilities(**compiler**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_custom_compiler.py#L286)[#](#scikitplot.cython.compiler_capabilities "Link to this definition")
+scikitplot.cython.compiler\_capabilities(**compiler**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_custom_compiler.py#L286)[#](#scikitplot.cython.compiler_capabilities "Link to this definition")
 :   Return the [`CompilerCapabilities`](scikitplot.cython.CompilerCapabilities.html#scikitplot.cython.CompilerCapabilities "scikitplot.cython.CompilerCapabilities") a compiler declares.
 
     A compiler may declare capabilities via a `capabilities` attribute (a

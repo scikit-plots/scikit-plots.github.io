@@ -1,6 +1,6 @@
 # RetrievalResponse[#](#retrievalresponse "Link to this heading")
 
-class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**, **query=None**, **status=None**, **filter=None**, **scope=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse "Link to this definition")
+class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**, **query=None**, **status=None**, **filter=None**, **scope=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse "Link to this definition")
 :   Hits plus the story of how they were obtained.
 
     Parameters:
@@ -76,7 +76,7 @@ class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**
     property degraded\_legs: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[LegOutcome](scikitplot.corpus.LegOutcome.html#scikitplot.corpus.LegOutcome "scikitplot.corpus._retrieval.LegOutcome")][#](#scikitplot.corpus.RetrievalResponse.degraded_legs "Link to this definition")
     :   Legs that were requested but did not run normally.
 
-    error\_records()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L372)[#](#scikitplot.corpus.RetrievalResponse.error_records "Link to this definition")
+    error\_records()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L372)[#](#scikitplot.corpus.RetrievalResponse.error_records "Link to this definition")
     :   Return every diagnostic attached to a leg.
 
         Return type:
@@ -84,9 +84,9 @@ class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**
 
     filter: [Filter](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus._filters.Filter") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalResponse.filter "Link to this definition")
 
-    hits: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse.hits "Link to this definition")
+    hits: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse.hits "Link to this definition")
 
-    leg(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L364)[#](#scikitplot.corpus.RetrievalResponse.leg "Link to this definition")
+    leg(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L364)[#](#scikitplot.corpus.RetrievalResponse.leg "Link to this definition")
     :   Return the outcome for one evidence path, if present.
 
         Parameters:
@@ -95,7 +95,7 @@ class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**
         Return type:
         :   [**LegOutcome**](scikitplot.corpus.LegOutcome.html#scikitplot.corpus.LegOutcome "scikitplot.corpus._retrieval.LegOutcome") | None
 
-    legs: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[LegOutcome](scikitplot.corpus.LegOutcome.html#scikitplot.corpus.LegOutcome "scikitplot.corpus._retrieval.LegOutcome")][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse.legs "Link to this definition")
+    legs: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[LegOutcome](scikitplot.corpus.LegOutcome.html#scikitplot.corpus.LegOutcome "scikitplot.corpus._retrieval.LegOutcome")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L240)[#](#scikitplot.corpus.RetrievalResponse.legs "Link to this definition")
 
     query: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalResponse.query "Link to this definition")
 
@@ -103,7 +103,7 @@ class scikitplot.corpus.RetrievalResponse(**hits=<factory>**, **legs=<factory>**
 
     status: [RetrievalStatus](scikitplot.corpus.RetrievalStatus.html#scikitplot.corpus.RetrievalStatus "scikitplot.corpus._retrieval.RetrievalStatus") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalResponse.status "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_retrieval.py#L385)[#](#scikitplot.corpus.RetrievalResponse.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L385)[#](#scikitplot.corpus.RetrievalResponse.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping of the outcome (not the hits).
 
         Return type:

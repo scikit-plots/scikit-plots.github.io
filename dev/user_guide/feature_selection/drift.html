@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:15:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:44:21Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/feature_selection/drift","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1011,7 +1011,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                   
   <section id="drift">
 <span id="feature-selection-drift"></span><h1>Drift<a class="headerlink" href="#drift" title="Link to this heading">#</a></h1>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ReferenceProfile</span></code> freezes, per feature, the buckets of the training
+<p><a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.ReferenceProfile.html#scikitplot.feature_selection.ReferenceProfile" title="scikitplot.feature_selection.ReferenceProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReferenceProfile</span></code></a> freezes, per feature, the buckets of the training
 data: quantile bins for continuous numbers, the most frequent values for
 binary, discrete and categorical features, and one bucket for missing values.
 Later data is put into the <em>same</em> buckets.</p>
@@ -1030,7 +1030,7 @@ Later data is put into the <em>same</em> buckets.</p>
 (fewer than <code class="docutils literal notranslate"><span class="pre">drift.min_count</span></code> values), <code class="docutils literal notranslate"><span class="pre">missing_column</span></code>, <code class="docutils literal notranslate"><span class="pre">type_changed</span></code> and
 <code class="docutils literal notranslate"><span class="pre">not_applicable</span></code> (datetime, text, other kinds).</p>
 <p>For transformed features, fit a reference on <code class="docutils literal notranslate"><span class="pre">pipeline[:-1].transform(X_train)</span></code>
-and map findings back to raw columns with <code class="xref py py-meth docutils literal notranslate"><span class="pre">FeatureLineage.origins</span></code>.</p>
+and map findings back to raw columns with <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeatureLineage.html#scikitplot.feature_selection.FeatureLineage.origins" title="scikitplot.feature_selection.FeatureLineage.origins"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FeatureLineage.origins</span></code></a>.</p>
 </section>
 
 
@@ -1131,7 +1131,7 @@ and map findings back to raw columns with <code class="xref py py-meth docutils 
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
       <br/>
     
   </p>

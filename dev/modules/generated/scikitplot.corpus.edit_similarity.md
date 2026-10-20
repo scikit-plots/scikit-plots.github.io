@@ -1,6 +1,6 @@
 # edit\_similarity[#](#edit-similarity "Link to this heading")
 
-scikitplot.corpus.edit\_similarity(**a**, **b**, **\***, **normalize=None**, **backend='auto'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_text.py#L171)[#](#scikitplot.corpus.edit_similarity "Link to this definition")
+scikitplot.corpus.edit\_similarity(**a**, **b**, **\***, **normalize=None**, **backend='auto'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_text.py#L171)[#](#scikitplot.corpus.edit_similarity "Link to this definition")
 :   Return `1 - levenshtein(a, b) / max(len(a), len(b))`.
 
     Parameters:

@@ -1,6 +1,6 @@
 # StageBudget[#](#stagebudget "Link to this heading")
 
-class scikitplot.corpus.StageBudget(**max\_calls=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L166)[#](#scikitplot.corpus.StageBudget "Link to this definition")
+class scikitplot.corpus.StageBudget(**max\_calls=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L166)[#](#scikitplot.corpus.StageBudget "Link to this definition")
 :   Deterministic limits on the `retrieve` stage.
 
     Parameters:
@@ -28,7 +28,7 @@ class scikitplot.corpus.StageBudget(**max\_calls=None**, **max\_seconds=None**)[
 
     max\_seconds: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.StageBudget.max_seconds "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L206)[#](#scikitplot.corpus.StageBudget.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L206)[#](#scikitplot.corpus.StageBudget.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

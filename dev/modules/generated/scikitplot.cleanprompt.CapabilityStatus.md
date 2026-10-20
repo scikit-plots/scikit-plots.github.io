@@ -1,6 +1,6 @@
 # CapabilityStatus[#](#capabilitystatus "Link to this heading")
 
-class scikitplot.cleanprompt.CapabilityStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L57)[#](#scikitplot.cleanprompt.CapabilityStatus "Link to this definition")
+class scikitplot.cleanprompt.CapabilityStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L57)[#](#scikitplot.cleanprompt.CapabilityStatus "Link to this definition")
 :   Seven-state usability vocabulary for an optional dependency tier.
 
     This is a by-value copy of the project’s canonical vocabulary. Members are
@@ -30,19 +30,19 @@ class scikitplot.cleanprompt.CapabilityStatus(**\*values**)[[source]](https://gi
         ****UNKNOWN****str
         :   Not determined.
 
-    ABSENT = 'ABSENT'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.ABSENT "Link to this definition")
+    ABSENT = 'ABSENT'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.ABSENT "Link to this definition")
 
-    AVAILABLE = 'AVAILABLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.AVAILABLE "Link to this definition")
+    AVAILABLE = 'AVAILABLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.AVAILABLE "Link to this definition")
 
-    BROKEN = 'BROKEN'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.BROKEN "Link to this definition")
+    BROKEN = 'BROKEN'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.BROKEN "Link to this definition")
 
-    INCOMPATIBLE = 'INCOMPATIBLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.INCOMPATIBLE "Link to this definition")
+    INCOMPATIBLE = 'INCOMPATIBLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.INCOMPATIBLE "Link to this definition")
 
-    MISCONFIGURED = 'MISCONFIGURED'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.MISCONFIGURED "Link to this definition")
+    MISCONFIGURED = 'MISCONFIGURED'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.MISCONFIGURED "Link to this definition")
 
-    UNKNOWN = 'UNKNOWN'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.UNKNOWN "Link to this definition")
+    UNKNOWN = 'UNKNOWN'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.UNKNOWN "Link to this definition")
 
-    UNREACHABLE = 'UNREACHABLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.UNREACHABLE "Link to this definition")
+    UNREACHABLE = 'UNREACHABLE'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_capabilities.py#L)[#](#scikitplot.cleanprompt.CapabilityStatus.UNREACHABLE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.cleanprompt.CapabilityStatus.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

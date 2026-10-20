@@ -1,6 +1,6 @@
 # CorrectiveRetrieval[#](#correctiveretrieval "Link to this heading")
 
-class scikitplot.corpus.CorrectiveRetrieval(**plan=None**, **grader=None**, **rewrite=None**, **max\_rounds=2**, **fusion=None**, **deadline\_seconds=None**, **on\_error='degrade'**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_correction.py#L407)[#](#scikitplot.corpus.CorrectiveRetrieval "Link to this definition")
+class scikitplot.corpus.CorrectiveRetrieval(**plan=None**, **grader=None**, **rewrite=None**, **max\_rounds=2**, **fusion=None**, **deadline\_seconds=None**, **on\_error='degrade'**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L407)[#](#scikitplot.corpus.CorrectiveRetrieval "Link to this definition")
 :   Grade, then accept, retry with a rewritten query, or abstain (CRAG).
 
     Parameters:
@@ -92,7 +92,7 @@ class scikitplot.corpus.CorrectiveRetrieval(**plan=None**, **grader=None**, **re
     ```
     Go BackOpen In Tab
 
-    bind(**index**, **\*\*search\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_correction.py#L523)[#](#scikitplot.corpus.CorrectiveRetrieval.bind "Link to this definition")
+    bind(**index**, **\*\*search\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L523)[#](#scikitplot.corpus.CorrectiveRetrieval.bind "Link to this definition")
     :   Return `query -> self.run(index, query, **search_kwargs)`.
 
         Parameters:
@@ -129,7 +129,7 @@ class scikitplot.corpus.CorrectiveRetrieval(**plan=None**, **grader=None**, **re
 
     rewrite: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[CorrectionRound](scikitplot.corpus.CorrectionRound.html#scikitplot.corpus.CorrectionRound "scikitplot.corpus._correction.CorrectionRound"), ...]], [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CorrectiveRetrieval.rewrite "Link to this definition")
 
-    run(**index**, **query**, **\*\*search\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_correction.py#L548)[#](#scikitplot.corpus.CorrectiveRetrieval.run "Link to this definition")
+    run(**index**, **query**, **\*\*search\_kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L548)[#](#scikitplot.corpus.CorrectiveRetrieval.run "Link to this definition")
     :   Run up to `max_rounds` graded rounds for `query`.
 
         Parameters:

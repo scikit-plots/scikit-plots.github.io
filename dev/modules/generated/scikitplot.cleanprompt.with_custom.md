@@ -1,6 +1,6 @@
 # with\_custom[#](#with-custom "Link to this heading")
 
-scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_custom.py#L220)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
+scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_custom.py#L220)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
 :   Return the built-in catalog with custom definitions merged in.
 
     Parameters:

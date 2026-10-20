@@ -1,6 +1,6 @@
 # CustomRetrievalIndex[#](#customretrievalindex "Link to this heading")
 
-class scikitplot.corpus.CustomRetrievalIndex(**config=None**, **\***, **custom\_scorer\_fn=None**, **security\_filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_custom_hooks.py#L1625)[#](#scikitplot.corpus.CustomRetrievalIndex "Link to this definition")
+class scikitplot.corpus.CustomRetrievalIndex(**config=None**, **\***, **custom\_scorer\_fn=None**, **security\_filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_custom_hooks.py#L1625)[#](#scikitplot.corpus.CustomRetrievalIndex "Link to this definition")
 :   `RetrievalIndex` extended with a
     fully-replaceable custom scorer callable.
 
@@ -77,7 +77,7 @@ class scikitplot.corpus.CustomRetrievalIndex(**config=None**, **\***, **custom\_
     ```
     Go BackOpen In Tab
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_custom_hooks.py#L1744)[#](#scikitplot.corpus.CustomRetrievalIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_custom_hooks.py#L1744)[#](#scikitplot.corpus.CustomRetrievalIndex.build "Link to this definition")
     :   Build the index from documents.
 
         Parameters:
@@ -100,7 +100,7 @@ class scikitplot.corpus.CustomRetrievalIndex(**config=None**, **\***, **custom\_
     property n\_documents: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.CustomRetrievalIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_custom_hooks.py#L1764)[#](#scikitplot.corpus.CustomRetrievalIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_custom_hooks.py#L1764)[#](#scikitplot.corpus.CustomRetrievalIndex.search "Link to this definition")
     :   Search the index using the custom scorer or built-in modes.
 
         When `custom_scorer_fn` is set it is called with

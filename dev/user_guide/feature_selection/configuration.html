@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:15:02Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:44:20Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/feature_selection/configuration","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1011,9 +1011,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                   
   <section id="configuration">
 <span id="feature-selection-configuration"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h1>
-<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">FeaturePolicy</span></code> is the complete, declarative description of how to
+<p>A <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.FeaturePolicy.html#scikitplot.feature_selection.FeaturePolicy" title="scikitplot.feature_selection.FeaturePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeaturePolicy</span></code></a> is the complete, declarative description of how to
 profile a table. Every section is optional. The same policy can be written in
-TOML, YAML or JSON; <code class="xref py py-func docutils literal notranslate"><span class="pre">dump_policy</span></code> reads its output back before writing
+TOML, YAML or JSON; <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.dump_policy.html#scikitplot.feature_selection.dump_policy" title="scikitplot.feature_selection.dump_policy"><code class="xref py py-func docutils literal notranslate"><span class="pre">dump_policy</span></code></a> reads its output back before writing
 and refuses anything the format cannot hold.</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
@@ -1058,13 +1058,13 @@ and refuses anything the format cannot hold.</p>
 <h2>Rules of the policy<a class="headerlink" href="#rules-of-the-policy" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">assessments</span></code> merge over the built-in ones by name. Default parameters are
-defined once, on the providers; <code class="xref py py-func docutils literal notranslate"><span class="pre">list_assessment_providers</span></code> shows them.
+defined once, on the providers; <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.list_assessment_providers.html#scikitplot.feature_selection.list_assessment_providers" title="scikitplot.feature_selection.list_assessment_providers"><code class="xref py py-func docutils literal notranslate"><span class="pre">list_assessment_providers</span></code></a> shows them.
 <code class="docutils literal notranslate"><span class="pre">None</span></code> means “provider default”.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kinds</span></code> replace inference. <code class="docutils literal notranslate"><span class="pre">text</span></code> is never inferred, only declared.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">overrides</span></code> set an answer by hand; the inferred answer is kept next to it
 (<code class="docutils literal notranslate"><span class="pre">Assessment.inferred_state</span></code>), and kinds follow the overridden answers.</p></li>
 <li><p>A column with two roles, an unknown key, <code class="docutils literal notranslate"><span class="pre">true</span></code> where a number is expected,
-or a YAML date where a name is expected are refused with <code class="xref py py-class docutils literal notranslate"><span class="pre">PolicyError</span></code>.</p></li>
+or a YAML date where a name is expected are refused with <a class="reference internal" href="../../modules/generated/scikitplot.feature_selection.PolicyError.html#scikitplot.feature_selection.PolicyError" title="scikitplot.feature_selection.PolicyError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PolicyError</span></code></a>.</p></li>
 </ul>
 </section>
 <section id="custom-questions">
@@ -1204,7 +1204,7 @@ validate them without an extra model; the dataclass checks still run.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
       <br/>
     
   </p>

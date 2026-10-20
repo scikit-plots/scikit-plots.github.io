@@ -42,7 +42,7 @@ References
 
 [spotify/voyager](https://github.com/spotify/voyager)
 
-****User guide.**** See the ann\_imputer-index section for further details.
+****User guide.**** See the [ANNImputer](../user_guide/impute/ann_imputer.html#ann-imputer-index) section for further details.
 
 Class inheritance
 

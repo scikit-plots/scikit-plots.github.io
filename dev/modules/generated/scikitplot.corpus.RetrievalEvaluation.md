@@ -1,6 +1,6 @@
 # RetrievalEvaluation[#](#retrievalevaluation "Link to this heading")
 
-class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings**, **metadata=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation "Link to this definition")
+class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings**, **metadata=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation "Link to this definition")
 :   Result of [`evaluate_retrieval`](scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval "scikitplot.corpus.evaluate_retrieval").
 
     Parameters:
@@ -29,7 +29,7 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
     `.json`, `.jsonl`/`.ndjson` (one row per query), `.yaml`/`.yml`
     or `.toml`. [`read`](#scikitplot.corpus.RetrievalEvaluation.read "scikitplot.corpus.RetrievalEvaluation.read") restores a report from JSON, YAML or TOML.
 
-    compare(**baseline**, **\***, **n\_resamples=10000**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L486)[#](#scikitplot.corpus.RetrievalEvaluation.compare "Link to this definition")
+    compare(**baseline**, **\***, **n\_resamples=10000**, **seed=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L486)[#](#scikitplot.corpus.RetrievalEvaluation.compare "Link to this definition")
     :   Compare this evaluation with `baseline` over the same queries.
 
         Parameters:
@@ -73,7 +73,7 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         it, so flips equal for the values the metrics represent are not lost to
         floating-point rounding; the p-value errs on the conservative side.
 
-    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L433)[#](#scikitplot.corpus.RetrievalEvaluation.dumps "Link to this definition")
+    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L433)[#](#scikitplot.corpus.RetrievalEvaluation.dumps "Link to this definition")
     :   Serialise to `"json"`, `"jsonl"`, `"yaml"` or `"toml"`.
 
         Parameters:
@@ -82,7 +82,7 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L406)[#](#scikitplot.corpus.RetrievalEvaluation.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L406)[#](#scikitplot.corpus.RetrievalEvaluation.from_dict "Link to this definition")
     :   Rebuild a report from [`to_dict`](#scikitplot.corpus.RetrievalEvaluation.to_dict "scikitplot.corpus.RetrievalEvaluation.to_dict") output.
 
         Raises:
@@ -101,14 +101,14 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         Type:
         :   Latency summary in seconds
 
-    metadata: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.metadata "Link to this definition")
+    metadata: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.metadata "Link to this definition")
 
-    metrics: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.metrics "Link to this definition")
+    metrics: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.metrics "Link to this definition")
 
     property n\_queries: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalEvaluation.n_queries "Link to this definition")
     :   Number of evaluated queries.
 
-    per\_query(**metric**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L355)[#](#scikitplot.corpus.RetrievalEvaluation.per_query "Link to this definition")
+    per\_query(**metric**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L355)[#](#scikitplot.corpus.RetrievalEvaluation.per_query "Link to this definition")
     :   Return one metric’s per-query values, in evaluation order.
 
         Raises:
@@ -121,9 +121,9 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    queries: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.queries "Link to this definition")
+    queries: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.queries "Link to this definition")
 
-    classmethod read(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L463)[#](#scikitplot.corpus.RetrievalEvaluation.read "Link to this definition")
+    classmethod read(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L463)[#](#scikitplot.corpus.RetrievalEvaluation.read "Link to this definition")
     :   Read a report written by [`write`](#scikitplot.corpus.RetrievalEvaluation.write "scikitplot.corpus.RetrievalEvaluation.write") in JSON, YAML or TOML.
 
         Raises:
@@ -137,18 +137,18 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         Return type:
         :   [**RetrievalEvaluation**](#scikitplot.corpus.RetrievalEvaluation "scikitplot.corpus._metrics._evaluate.RetrievalEvaluation")
 
-    settings: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.settings "Link to this definition")
+    settings: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L292)[#](#scikitplot.corpus.RetrievalEvaluation.settings "Link to this definition")
 
     property status\_counts: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][#](#scikitplot.corpus.RetrievalEvaluation.status_counts "Link to this definition")
     :   Number of queries per response status (`"unreported"` for none).
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L368)[#](#scikitplot.corpus.RetrievalEvaluation.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L368)[#](#scikitplot.corpus.RetrievalEvaluation.to_dict "Link to this definition")
     :   Return the full report as a mapping (schema versioned).
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    to\_rows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L382)[#](#scikitplot.corpus.RetrievalEvaluation.to_rows "Link to this definition")
+    to\_rows()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L382)[#](#scikitplot.corpus.RetrievalEvaluation.to_rows "Link to this definition")
     :   Return one flat row per query: identifier, each metric, counts, status.
 
         Returns:
@@ -158,7 +158,7 @@ class scikitplot.corpus.RetrievalEvaluation(**metrics**, **queries**, **settings
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
-    write(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L445)[#](#scikitplot.corpus.RetrievalEvaluation.write "Link to this definition")
+    write(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_evaluate.py#L445)[#](#scikitplot.corpus.RetrievalEvaluation.write "Link to this definition")
     :   Write the report atomically.
 
         Parameters:

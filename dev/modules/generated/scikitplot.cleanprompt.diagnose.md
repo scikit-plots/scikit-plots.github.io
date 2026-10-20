@@ -1,6 +1,6 @@
 # diagnose[#](#diagnose "Link to this heading")
 
-scikitplot.cleanprompt.diagnose(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_diagnostics.py#L215)[#](#scikitplot.cleanprompt.diagnose "Link to this definition")
+scikitplot.cleanprompt.diagnose(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_diagnostics.py#L215)[#](#scikitplot.cleanprompt.diagnose "Link to this definition")
 :   Report what a configuration can and cannot detect.
 
     Parameters:

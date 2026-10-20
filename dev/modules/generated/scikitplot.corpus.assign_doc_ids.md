@@ -1,6 +1,6 @@
 # assign\_doc\_ids[#](#assign-doc-ids "Link to this heading")
 
-scikitplot.corpus.assign\_doc\_ids(**documents**, **scheme=DocIdScheme.SHA256**, **\***, **generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L479)[#](#scikitplot.corpus.assign_doc_ids "Link to this definition")
+scikitplot.corpus.assign\_doc\_ids(**documents**, **scheme=DocIdScheme.SHA256**, **\***, **generator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_identity.py#L479)[#](#scikitplot.corpus.assign_doc_ids "Link to this definition")
 :   Return `documents` named by `scheme`, with parent links kept intact.
 
     Parameters:

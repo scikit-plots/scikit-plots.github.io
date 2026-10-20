@@ -1,6 +1,6 @@
 # hit\_rate\_at\_k[#](#hit-rate-at-k "Link to this heading")
 
-scikitplot.corpus.hit\_rate\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_ranking.py#L570)[#](#scikitplot.corpus.hit_rate_at_k "Link to this definition")
+scikitplot.corpus.hit\_rate\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_ranking.py#L570)[#](#scikitplot.corpus.hit_rate_at_k "Link to this definition")
 :   Fraction of queries with at least one relevant identifier in the first `k`.
 
     Parameters:

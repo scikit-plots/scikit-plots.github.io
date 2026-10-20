@@ -1,6 +1,6 @@
 # validate\_template\_info[#](#validate-template-info "Link to this heading")
 
-scikitplot.cython.validate\_template\_info(**info**, **\***, **raw=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_templates_api.py#L364)[#](#scikitplot.cython.validate_template_info "Link to this definition")
+scikitplot.cython.validate\_template\_info(**info**, **\***, **raw=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_templates_api.py#L364)[#](#scikitplot.cython.validate_template_info "Link to this definition")
 :   Strictly validate template metadata against the schema (CYTHON-TPL-002).
 
     Unlike the permissive default read path (which silently coerces), this

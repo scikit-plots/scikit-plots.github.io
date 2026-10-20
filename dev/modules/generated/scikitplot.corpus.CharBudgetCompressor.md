@@ -1,6 +1,6 @@
 # CharBudgetCompressor[#](#charbudgetcompressor "Link to this heading")
 
-class scikitplot.corpus.CharBudgetCompressor(**max\_chars**, **whole\_words=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L523)[#](#scikitplot.corpus.CharBudgetCompressor "Link to this definition")
+class scikitplot.corpus.CharBudgetCompressor(**max\_chars**, **whole\_words=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L523)[#](#scikitplot.corpus.CharBudgetCompressor "Link to this definition")
 :   Keep each hit’s text, best first, until a character budget is spent.
 
     Parameters:
@@ -39,7 +39,7 @@ class scikitplot.corpus.CharBudgetCompressor(**max\_chars**, **whole\_words=True
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**query**, **hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L564)[#](#scikitplot.corpus.CharBudgetCompressor.__call__ "Link to this definition")
+    \_\_call\_\_(**query**, **hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L564)[#](#scikitplot.corpus.CharBudgetCompressor.__call__ "Link to this definition")
     :   Return one tuple of spans per hit.
 
         Parameters:
@@ -49,6 +49,6 @@ class scikitplot.corpus.CharBudgetCompressor(**max\_chars**, **whole\_words=True
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")], …]]
 
-    max\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L523)[#](#scikitplot.corpus.CharBudgetCompressor.max_chars "Link to this definition")
+    max\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_execution.py#L523)[#](#scikitplot.corpus.CharBudgetCompressor.max_chars "Link to this definition")
 
     whole\_words: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.CharBudgetCompressor.whole_words "Link to this definition")

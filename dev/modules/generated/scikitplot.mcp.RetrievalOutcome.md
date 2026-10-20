@@ -1,6 +1,6 @@
 # RetrievalOutcome[#](#retrievaloutcome "Link to this heading")
 
-class scikitplot.mcp.RetrievalOutcome(**hits=()**, **\***, **legs=None**, **status=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L151)[#](#scikitplot.mcp.RetrievalOutcome "Link to this definition")
+class scikitplot.mcp.RetrievalOutcome(**hits=()**, **\***, **legs=None**, **status=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_outcome.py#L151)[#](#scikitplot.mcp.RetrievalOutcome "Link to this definition")
 :   Ranked hits plus the story of how they were obtained.
 
     Parameters:
@@ -60,7 +60,7 @@ class scikitplot.mcp.RetrievalOutcome(**hits=()**, **\***, **legs=None**, **stat
     append(**object**, **/**)[#](#scikitplot.mcp.RetrievalOutcome.append "Link to this definition")
     :   Append object to the end of the list.
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L252)[#](#scikitplot.mcp.RetrievalOutcome.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_outcome.py#L252)[#](#scikitplot.mcp.RetrievalOutcome.as_dict "Link to this definition")
     :   Return a JSON-safe mapping describing the outcome, without the hits.
 
         Returns:
@@ -85,7 +85,7 @@ class scikitplot.mcp.RetrievalOutcome(**hits=()**, **\***, **legs=None**, **stat
         Type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    errors()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L242)[#](#scikitplot.mcp.RetrievalOutcome.errors "Link to this definition")
+    errors()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_outcome.py#L242)[#](#scikitplot.mcp.RetrievalOutcome.errors "Link to this definition")
     :   Return the explanations from every leg that did not run cleanly.
 
         Returns:

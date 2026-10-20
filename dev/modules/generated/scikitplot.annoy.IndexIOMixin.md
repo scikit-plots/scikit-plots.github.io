@@ -1,6 +1,6 @@
 # IndexIOMixin[#](#indexiomixin "Link to this heading")
 
-class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L194)[#](#scikitplot.annoy.IndexIOMixin "Link to this definition")
+class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L194)[#](#scikitplot.annoy.IndexIOMixin "Link to this definition")
 :   Mixin adding explicit Annoy-native persistence helpers.
 
     The concrete class must provide low-level Annoy methods, typically from the
@@ -18,7 +18,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
     * [`save_bundle`](#scikitplot.annoy.IndexIOMixin.save_bundle "scikitplot.annoy.IndexIOMixin.save_bundle") / [`load_bundle`](#scikitplot.annoy.IndexIOMixin.load_bundle "scikitplot.annoy.IndexIOMixin.load_bundle") require `to_json` /
       `from_json` (compose with [`MetaMixin`](scikitplot.annoy.MetaMixin.html#scikitplot.annoy.MetaMixin "scikitplot.annoy._mixins._meta.MetaMixin")).
 
-    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L626)[#](#scikitplot.annoy.IndexIOMixin.from_bytes "Link to this definition")
+    classmethod from\_bytes(**data**, **\***, **f=None**, **metric=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L626)[#](#scikitplot.annoy.IndexIOMixin.from_bytes "Link to this definition")
     :   Construct a new index and load it from serialized bytes.
 
         Parameters:
@@ -66,7 +66,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         For `data` if fed `to_bytes(format='native') required params
         ``f``, `metric`.
 
-    classmethod load\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L481)[#](#scikitplot.annoy.IndexIOMixin.load_bundle "Link to this definition")
+    classmethod load\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename=None**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L481)[#](#scikitplot.annoy.IndexIOMixin.load_bundle "Link to this definition")
     :   Load a bundle published by [`save_bundle`](#scikitplot.annoy.IndexIOMixin.save_bundle "scikitplot.annoy.IndexIOMixin.save_bundle").
 
         Parameters:
@@ -128,7 +128,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         `load=False`, so a location recorded by an older writer is never
         opened; such a location is reported at INFO and otherwise ignored.
 
-    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L256)[#](#scikitplot.annoy.IndexIOMixin.load_index "Link to this definition")
+    classmethod load\_index(**f**, **metric**, **path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L256)[#](#scikitplot.annoy.IndexIOMixin.load_index "Link to this definition")
     :   Load (mmap) an Annoy index file into this object.
 
         Parameters:
@@ -161,7 +161,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   Self
 
-    save\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L311)[#](#scikitplot.annoy.IndexIOMixin.save_bundle "Link to this definition")
+    save\_bundle(**directory**, **\***, **manifest\_filename='manifest.json'**, **index\_filename='index.ann'**, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L311)[#](#scikitplot.annoy.IndexIOMixin.save_bundle "Link to this definition")
     :   Publish a **directory bundle** holding the metadata and the index.
 
         Parameters:
@@ -231,7 +231,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         `scikitplot.annoy._mixins._io`: DEBUG for each step, WARNING when a
         failed publication is undone.
 
-    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L217)[#](#scikitplot.annoy.IndexIOMixin.save_index "Link to this definition")
+    save\_index(**path**, **\***, **prefault=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L217)[#](#scikitplot.annoy.IndexIOMixin.save_index "Link to this definition")
     :   Persist the Annoy index to disk.
 
         Parameters:
@@ -255,7 +255,7 @@ class scikitplot.annoy.IndexIOMixin[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   Self
 
-    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/annoy/_mixins/_io.py#L571)[#](#scikitplot.annoy.IndexIOMixin.to_bytes "Link to this definition")
+    to\_bytes(**format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_mixins/_io.py#L571)[#](#scikitplot.annoy.IndexIOMixin.to_bytes "Link to this definition")
     :   Serialize the built index to bytes (backend `serialize`).
 
         Parameters:

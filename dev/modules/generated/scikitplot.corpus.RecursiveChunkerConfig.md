@@ -1,6 +1,6 @@
 # RecursiveChunkerConfig[#](#recursivechunkerconfig "Link to this heading")
 
-class scikitplot.corpus.RecursiveChunkerConfig(**chunk\_size=1000**, **chunk\_overlap=0**, **separators=('\n\n', '\n', '. ', ' ', '')**, **strip\_whitespace=True**, **min\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L288)[#](#scikitplot.corpus.RecursiveChunkerConfig "Link to this definition")
+class scikitplot.corpus.RecursiveChunkerConfig(**chunk\_size=1000**, **chunk\_overlap=0**, **separators=('\n\n', '\n', '. ', ' ', '')**, **strip\_whitespace=True**, **min\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L288)[#](#scikitplot.corpus.RecursiveChunkerConfig "Link to this definition")
 :   Configuration for [`RecursiveChunker`](scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker "scikitplot.corpus.RecursiveChunker").
 
     Parameters:

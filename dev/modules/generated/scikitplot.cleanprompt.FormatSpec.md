@@ -1,6 +1,6 @@
 # FormatSpec[#](#formatspec "Link to this heading")
 
-class scikitplot.cleanprompt.FormatSpec(**name**, **version**, **summary**, **extensions**, **splitter**, **round\_trip**, **options=()**, **packs=()**, **source='<builtin>'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec "Link to this definition")
+class scikitplot.cleanprompt.FormatSpec(**name**, **version**, **summary**, **extensions**, **splitter**, **round\_trip**, **options=()**, **packs=()**, **source='<builtin>'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec "Link to this definition")
 :   One validated file format.
 
     Parameters:
@@ -42,11 +42,11 @@ class scikitplot.cleanprompt.FormatSpec(**name**, **version**, **summary**, **ex
         * ****packs**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** **...****]**)
         * ****source**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
-    extensions: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.extensions "Link to this definition")
+    extensions: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.extensions "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.name "Link to this definition")
 
-    option\_map()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L104)[#](#scikitplot.cleanprompt.FormatSpec.option_map "Link to this definition")
+    option\_map()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L104)[#](#scikitplot.cleanprompt.FormatSpec.option_map "Link to this definition")
     :   Return the splitter options as a dictionary.
 
         Returns:
@@ -60,12 +60,12 @@ class scikitplot.cleanprompt.FormatSpec(**name**, **version**, **summary**, **ex
 
     packs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.FormatSpec.packs "Link to this definition")
 
-    round\_trip: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.round_trip "Link to this definition")
+    round\_trip: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.round_trip "Link to this definition")
 
     source: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '<builtin>'[#](#scikitplot.cleanprompt.FormatSpec.source "Link to this definition")
 
-    splitter: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.splitter "Link to this definition")
+    splitter: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.splitter "Link to this definition")
 
-    summary: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.summary "Link to this definition")
+    summary: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.summary "Link to this definition")
 
-    version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.version "Link to this definition")
+    version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_formats.py#L67)[#](#scikitplot.cleanprompt.FormatSpec.version "Link to this definition")

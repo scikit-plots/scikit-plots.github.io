@@ -370,7 +370,7 @@ scikitplot -V
 
 Next you may want to try running some or all of the `scikitplot` unit tests.
 Running the full test suite can take a few minutes, so you may want to start with a
-single sub-package (e.g. decile-kds-index):
+single sub-package (e.g. [KDS functions](../user_guide/decile/kds.html#decile-kds-index)):
 
 ```
 >>> ## python -m pytest -p vscode_pytest --collect-only --rootdir=.

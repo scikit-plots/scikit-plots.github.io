@@ -78,6 +78,13 @@ Go BackOpen In Tab
 
 ## Identities for a lexical build[#](#rank-bm25-ref-identities-for-a-lexical-build "Link to this heading")
 
+|  |  |
+| --- | --- |
+| [`RECIPES`](../modules/generated/scikitplot.rank_bm25.RECIPES.html#scikitplot.rank_bm25.RECIPES "scikitplot.rank_bm25.RECIPES") |  |
+| [`Analyzer`](../modules/generated/scikitplot.rank_bm25.Analyzer.html#scikitplot.rank_bm25.Analyzer "scikitplot.rank_bm25.Analyzer") | How text becomes tokens, declared so a build can record it. |
+| [`Recipe`](../modules/generated/scikitplot.rank_bm25.Recipe.html#scikitplot.rank_bm25.Recipe "scikitplot.rank_bm25.Recipe") | A named, versioned scoring formula. |
+| [`lexical_identity`](../modules/generated/scikitplot.rank_bm25.lexical_identity.html#scikitplot.rank_bm25.lexical_identity "scikitplot.rank_bm25.lexical_identity") | Return the identity of a lexical build. |
+
 ## BM25 Variations[#](#bm25-variations "Link to this heading")
 
 |  |  |
@@ -88,3 +95,8 @@ Go BackOpen In Tab
 | [`BM25Plus`](../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus") |  |
 
 ## Validation[#](#validation "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`require_count`](../modules/generated/scikitplot.rank_bm25.require_count.html#scikitplot.rank_bm25.require_count "scikitplot.rank_bm25.require_count") | Return `value` as a non-negative count within its declared maximum. |
+| [`require_index`](../modules/generated/scikitplot.rank_bm25.require_index.html#scikitplot.rank_bm25.require_index "scikitplot.rank_bm25.require_index") | Return `value` as a position valid in `[0, count)`. |

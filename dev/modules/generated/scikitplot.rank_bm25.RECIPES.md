@@ -1,0 +1,4 @@
+# RECIPES[#](#recipes "Link to this heading")
+
+scikitplot.rank\_bm25.RECIPES = {'bm25l-delta/1': Recipe(name='bm25l-delta', version='1', notes='BM25L: a delta is added to the normalised term frequency, which lifts long documents relative to Okapi.'), 'bm25plus-delta/1': Recipe(name='bm25plus-delta', version='1', notes='BM25+: a delta is added to the whole term contribution, so a document containing the term always outscores one that does not.'), 'okapi-epsilon-floor/1': Recipe(name='okapi-epsilon-floor', version='1', notes='Okapi BM25 with the idf floored at epsilon \* average\_idf, so a term appearing in most documents cannot contribute a negative score; a repeated query term is accumulated, not saturated.')}[#](#scikitplot.rank_bm25.RECIPES "Link to this definition")
+:   !! processed by numpydoc !!

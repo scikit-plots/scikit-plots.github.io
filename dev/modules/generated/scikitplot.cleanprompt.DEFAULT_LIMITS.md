@@ -1,6 +1,6 @@
 # DEFAULT\_LIMITS[#](#default-limits "Link to this heading")
 
-scikitplot.cleanprompt.DEFAULT\_LIMITS = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_LIMITS "Link to this definition")
+scikitplot.cleanprompt.DEFAULT\_LIMITS = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_LIMITS "Link to this definition")
 :   Hard bounds on one redaction pass.
 
     Parameters:

@@ -1,6 +1,6 @@
 # mean\_average\_precision[#](#mean-average-precision "Link to this heading")
 
-scikitplot.corpus.mean\_average\_precision(**y\_true**, **y\_pred**, **\***, **k=None**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_ranking.py#L692)[#](#scikitplot.corpus.mean_average_precision "Link to this definition")
+scikitplot.corpus.mean\_average\_precision(**y\_true**, **y\_pred**, **\***, **k=None**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_ranking.py#L692)[#](#scikitplot.corpus.mean_average_precision "Link to this definition")
 :   Mean average precision (MAP), normalised by all relevant identifiers.
 
     Parameters:

@@ -1,6 +1,6 @@
 # CacheStats[#](#cachestats "Link to this heading")
 
-class scikitplot.cython.CacheStats(**cache\_root=<factory>**, **n\_modules=0**, **n\_packages=0**, **total\_bytes=0**, **pinned\_aliases=0**, **pinned\_keys=0**, **newest\_mtime\_utc=None**, **oldest\_mtime\_utc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_result.py#L286)[#](#scikitplot.cython.CacheStats "Link to this definition")
+class scikitplot.cython.CacheStats(**cache\_root=<factory>**, **n\_modules=0**, **n\_packages=0**, **total\_bytes=0**, **pinned\_aliases=0**, **pinned\_keys=0**, **newest\_mtime\_utc=None**, **oldest\_mtime\_utc=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_result.py#L286)[#](#scikitplot.cython.CacheStats "Link to this definition")
 :   Cache statistics for the compiled-artifact cache root.
 
     Parameters:

@@ -43,7 +43,7 @@ if (ENVIRONMENT_IS_NODE) {}
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmpavq96ipu.js
+// include: /tmp/tmpauryxzmb.js
 Module["expectedDataFileDownloads"] ??= 0;
 
 Module["expectedDataFileDownloads"]++;
@@ -197,7 +197,7 @@ Module["expectedDataFileDownloads"]++;
   });
 })();
 
-// end include: /tmp/tmpavq96ipu.js
+// end include: /tmp/tmpauryxzmb.js
 var arguments_ = [];
 
 var thisProgram = "./this.program";
@@ -1714,6 +1714,9 @@ var PROXYFS = {
     rename(oldNode, newDir, newName) {
       var oldPath = PROXYFS.realPath(oldNode);
       var newPath = PATH.join2(PROXYFS.realPath(newDir), newName);
+      try {
+        FS.unlink(newPath);
+      } catch (e) {}
       try {
         oldNode.mount.opts.fs.rename(oldPath, newPath);
         oldNode.name = newName;

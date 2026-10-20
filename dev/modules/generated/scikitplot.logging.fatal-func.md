@@ -1,6 +1,6 @@
 # fatal[#](#fatal "Link to this heading")
 
-scikitplot.logging.fatal(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/logging/_logging.py#L1442)[#](#scikitplot.logging.fatal "Link to this definition")
+scikitplot.logging.fatal(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/logging/_logging.py#L1442)[#](#scikitplot.logging.fatal "Link to this definition")
 :   Log a message at the FATAL -> CRITICAL log level.
 
     Parameters:
