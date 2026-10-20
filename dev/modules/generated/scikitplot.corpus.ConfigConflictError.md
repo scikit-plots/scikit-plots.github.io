@@ -1,6 +1,6 @@
 # ConfigConflictError[#](#configconflicterror "Link to this heading")
 
-exception scikitplot.corpus.ConfigConflictError[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_plan.py#L138)[#](#scikitplot.corpus.ConfigConflictError "Link to this definition")
+exception scikitplot.corpus.ConfigConflictError[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_plan.py#L138)[#](#scikitplot.corpus.ConfigConflictError "Link to this definition")
 :   Raised when one domain is configured twice without an explicit intent.
 
     Notes

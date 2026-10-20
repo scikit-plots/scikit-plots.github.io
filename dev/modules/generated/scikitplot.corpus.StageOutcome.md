@@ -1,6 +1,6 @@
 # StageOutcome[#](#stageoutcome "Link to this heading")
 
-class scikitplot.corpus.StageOutcome(**stage**, **status**, **component=None**, **items\_in=0**, **items\_out=0**, **calls=0**, **seconds=0.0**, **budget=None**, **error=None**, **details=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome "Link to this definition")
+class scikitplot.corpus.StageOutcome(**stage**, **status**, **component=None**, **items\_in=0**, **items\_out=0**, **calls=0**, **seconds=0.0**, **budget=None**, **error=None**, **details=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome "Link to this definition")
 :   How one stage fared.
 
     Parameters:
@@ -68,11 +68,11 @@ class scikitplot.corpus.StageOutcome(**stage**, **status**, **component=None**, 
 
     seconds: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.StageOutcome.seconds "Link to this definition")
 
-    stage: [StageKind](scikitplot.corpus.StageKind.html#scikitplot.corpus.StageKind "scikitplot.corpus._execution.StageKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome.stage "Link to this definition")
+    stage: [StageKind](scikitplot.corpus.StageKind.html#scikitplot.corpus.StageKind "scikitplot.corpus._execution.StageKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome.stage "Link to this definition")
 
-    status: [StageStatus](scikitplot.corpus.StageStatus.html#scikitplot.corpus.StageStatus "scikitplot.corpus._execution.StageStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome.status "Link to this definition")
+    status: [StageStatus](scikitplot.corpus.StageStatus.html#scikitplot.corpus.StageStatus "scikitplot.corpus._execution.StageStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L211)[#](#scikitplot.corpus.StageOutcome.status "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L268)[#](#scikitplot.corpus.StageOutcome.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L268)[#](#scikitplot.corpus.StageOutcome.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

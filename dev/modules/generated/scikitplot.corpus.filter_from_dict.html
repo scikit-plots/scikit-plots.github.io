@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:07:59Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:13:55Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.filter_from_dict","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>filter_from_dict<a class="headerlink" href="#filter-from-dict" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.filter_from_dict">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">filter_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L663"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.filter_from_dict" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">filter_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L663"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.filter_from_dict" title="Link to this definition">#</a></dt>
 <dd><p>Rebuild a filter expression from its JSON form, refusing anything off contract.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1792,15 +1793,15 @@ nodes or <code class="xref py py-data docutils literal notranslate"><span class=
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="16e423a7-94d8-433b-8be7-112af48ba5d2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('16e423a7-94d8-433b-8be7-112af48ba5d2','4c8b61e2-20e3-4371-a891-05adc1f8f78a','520c45e9-7c5a-4f3f-88fd-045c8aa5ab0f','../../lite/tree/../notebooks/index.html?path=fa85bbdf_e949_48f9_aaf8_e7c1e1c79d80.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1a623f44-1a45-4436-9381-c899981b683b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1a623f44-1a45-4436-9381-c899981b683b','4f048359-bc1a-49b7-8c91-5d9e5ebaca12','5dd2dca7-d1e9-4488-bf40-da14326c3fc5','../../lite/tree/../notebooks/index.html?path=e066a179_aa60_468c_836e_40391922639d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter_from_dict</span><span class="p">({</span><span class="s2">"op"</span><span class="p">:</span> <span class="s2">"in"</span><span class="p">,</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"language"</span><span class="p">,</span> <span class="s2">"values"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">]})</span>
 <span class="go">In(field='language', values=('en', 'de'))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="520c45e9-7c5a-4f3f-88fd-045c8aa5ab0f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('16e423a7-94d8-433b-8be7-112af48ba5d2','520c45e9-7c5a-4f3f-88fd-045c8aa5ab0f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('16e423a7-94d8-433b-8be7-112af48ba5d2','520c45e9-7c5a-4f3f-88fd-045c8aa5ab0f')">Open In Tab</button></div><div id="4c8b61e2-20e3-4371-a891-05adc1f8f78a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5dd2dca7-d1e9-4488-bf40-da14326c3fc5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1a623f44-1a45-4436-9381-c899981b683b','5dd2dca7-d1e9-4488-bf40-da14326c3fc5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1a623f44-1a45-4436-9381-c899981b683b','5dd2dca7-d1e9-4488-bf40-da14326c3fc5')">Open In Tab</button></div><div id="4f048359-bc1a-49b7-8c91-5d9e5ebaca12" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1918,7 +1919,7 @@ nodes or <code class="xref py py-data docutils literal notranslate"><span class=
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

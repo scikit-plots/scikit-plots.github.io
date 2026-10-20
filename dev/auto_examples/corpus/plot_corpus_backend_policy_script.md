@@ -171,7 +171,7 @@ strict BackendPolicy(name='strict', order=(), include_unlisted=True, allow_fallb
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.009 seconds)
+****Total running time of the script:**** (0 minutes 0.007 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)
 
@@ -187,15 +187,15 @@ Related examples
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
-
-[Compose Corpus policies without hiding boundaries](plot_corpus_policy_bundle_script.html)
-
-Compose Corpus policies without hiding boundaries![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 
-Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
+
+[Compose Corpus policies without hiding boundaries](plot_corpus_policy_bundle_script.html)
+
+Compose Corpus policies without hiding boundaries![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 

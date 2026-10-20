@@ -1,6 +1,6 @@
 # run\_investigation[#](#run-investigation "Link to this heading")
 
-scikitplot.corpus.run\_investigation(**session**, **retrieve**, **\***, **plan=None**, **min\_evidence=2**, **required\_entities=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_agentic.py#L428)[#](#scikitplot.corpus.run_investigation "Link to this definition")
+scikitplot.corpus.run\_investigation(**session**, **retrieve**, **\***, **plan=None**, **min\_evidence=2**, **required\_entities=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_agentic.py#L428)[#](#scikitplot.corpus.run_investigation "Link to this definition")
 :   Run the bounded retrieve/evaluate/refine loop (autonomy level A2).
 
     Parameters:

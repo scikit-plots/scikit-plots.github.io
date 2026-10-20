@@ -1,6 +1,6 @@
 # WritingSystemAdapterConfig[#](#writingsystemadapterconfig "Link to this heading")
 
-class scikitplot.corpus.WritingSystemAdapterConfig(**unit='word'**, **max\_chunk\_size=None**, **overlap=0**, **strip\_whitespace=True**, **min\_chunk\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L143)[#](#scikitplot.corpus.WritingSystemAdapterConfig "Link to this definition")
+class scikitplot.corpus.WritingSystemAdapterConfig(**unit='word'**, **max\_chunk\_size=None**, **overlap=0**, **strip\_whitespace=True**, **min\_chunk\_length=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L143)[#](#scikitplot.corpus.WritingSystemAdapterConfig "Link to this definition")
 :   Configuration for [`WritingSystemAdapter`](scikitplot.corpus.WritingSystemAdapter.html#scikitplot.corpus.WritingSystemAdapter "scikitplot.corpus.WritingSystemAdapter").
 
     Parameters:

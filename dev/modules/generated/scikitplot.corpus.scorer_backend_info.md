@@ -1,6 +1,6 @@
 # scorer\_backend\_info[#](#scorer-backend-info "Link to this heading")
 
-scikitplot.corpus.scorer\_backend\_info()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_scorer.py#L391)[#](#scikitplot.corpus.scorer_backend_info "Link to this definition")
+scikitplot.corpus.scorer\_backend\_info()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_scorer.py#L391)[#](#scikitplot.corpus.scorer_backend_info "Link to this definition")
 :   Report which base class corpus scorers use in this process.
 
     Returns:

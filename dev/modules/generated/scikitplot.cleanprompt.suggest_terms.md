@@ -1,6 +1,6 @@
 # suggest\_terms[#](#suggest-terms "Link to this heading")
 
-scikitplot.cleanprompt.suggest\_terms(**text**, **result=None**, **min\_tokens=1**, **max\_suggestions=40**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_diagnostics.py#L481)[#](#scikitplot.cleanprompt.suggest_terms "Link to this definition")
+scikitplot.cleanprompt.suggest\_terms(**text**, **result=None**, **min\_tokens=1**, **max\_suggestions=40**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_diagnostics.py#L481)[#](#scikitplot.cleanprompt.suggest_terms "Link to this definition")
 :   Offer candidate terms the active detectors did not claim.
 
     Parameters:

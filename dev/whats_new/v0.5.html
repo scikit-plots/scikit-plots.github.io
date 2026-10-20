@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:09:19Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:15:09Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"whats_new/v0.5","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -722,10 +722,312 @@ future; or a feature will be removed in the future.</p></li>
 </ul>
 <section id="version-0-5">
 <span id="release-notes-0-5"></span><h1>Version 0.5<a class="headerlink" href="#version-0-5" title="Link to this heading">#</a></h1>
+<section id="version-0-5-dev0-git-20261020-493b8af">
+<span id="changes-0-5-dev0-git-20261020-493b8af"></span><h2>Version 0.5.dev0+git.20261020.493b8af<a class="headerlink" href="#version-0-5-dev0-git-20261020-493b8af" title="Link to this heading">#</a></h2>
+<p><strong>October 2026</strong></p>
+<section id="scikitplot-agent">
+<h3>scikitplot.agent<a class="headerlink" href="#scikitplot-agent" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  New submodule <code class="docutils literal notranslate"><span class="pre">scikitplot.agent</span></code>: bounded, audited tool use. <code class="docutils literal notranslate"><span class="pre">Agent</span></code>
+runs a goal with a caller-supplied planner (a model adapter or a rule) that
+returns a <code class="docutils literal notranslate"><span class="pre">Decision</span></code> (call a <code class="docutils literal notranslate"><span class="pre">Tool</span></code>, or finish); the runtime alone
+decides whether an action runs, through five gates in order: Validation
+(the tool’s JSON Schema, a declared subset checked against <code class="docutils literal notranslate"><span class="pre">jsonschema</span></code>),
+Permissions and Scope (<code class="docutils literal notranslate"><span class="pre">Policy</span></code>, least privilege by default: <code class="docutils literal notranslate"><span class="pre">read</span></code>
+tools without scopes only), Budget (<code class="docutils literal notranslate"><span class="pre">Limits</span></code>: <code class="docutils literal notranslate"><span class="pre">max_steps</span></code>, which ends
+every run, tool calls, cost, tokens the planner must report, running time)
+and Approval (<code class="docutils literal notranslate"><span class="pre">write</span></code> and <code class="docutils literal notranslate"><span class="pre">external</span></code> tools need a person’s
+<code class="docutils literal notranslate"><span class="pre">Approval</span></code>, bound to the digest of the exact action and re-checked at
+resume). A denied action is the step’s outcome, not an exception. Every
+decision, denial, approval and tool call is written to a hash-chained
+audit trail (<code class="docutils literal notranslate"><span class="pre">MemoryAuditSink</span></code>, <code class="docutils literal notranslate"><span class="pre">JsonlAuditSink</span></code>, <code class="docutils literal notranslate"><span class="pre">verify_audit</span></code>),
+and the <code class="docutils literal notranslate"><span class="pre">RunState</span></code> is saved after every step (<code class="docutils literal notranslate"><span class="pre">MemoryStore</span></code>,
+<code class="docutils literal notranslate"><span class="pre">JsonFileStore</span></code>), so a paused or crashed run resumes; a non-idempotent
+call in flight at a crash is not repeated. Standard library only. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-annoy">
+<h3>scikitplot.annoy<a class="headerlink" href="#scikitplot-annoy" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The Annoy test suite writes nothing into the package: every index a test
+saves goes to <code class="docutils literal notranslate"><span class="pre">tmp_path</span></code>, and a guard fails a test module, or the
+session for a write at a module’s import, that adds or changes a file in
+the test directory (every file there is shipped in the wheel).
+<code class="docutils literal notranslate"><span class="pre">index_test.py</span></code> no longer downloads <code class="docutils literal notranslate"><span class="pre">test.tree</span></code> at import, which no
+test read; without the network the module was a collection error that
+stopped the whole directory. The fixture <code class="docutils literal notranslate"><span class="pre">test64.tree</span></code> is committed
+(its <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> negation now follows the patterns it undoes). The
+ann-benchmarks accuracy tests are opt-in: set
+<code class="docutils literal notranslate"><span class="pre">SKPLT_ANNOY_ACCURACY_DATA</span></code> to a cache directory to run them. They
+were all <code class="docutils literal notranslate"><span class="pre">xfail</span></code>, which hid that <code class="docutils literal notranslate"><span class="pre">test_lastfm_angular</span></code> builds a
+65-dimensional index from 64-dimensional rows; it is now a strict
+<code class="docutils literal notranslate"><span class="pre">xfail</span></code> on that <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-corpus">
+<h3>scikitplot.corpus<a class="headerlink" href="#scikitplot-corpus" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Corpus can now measure retrieval and answers. Ranking metrics
+(<code class="docutils literal notranslate"><span class="pre">precision_at_k</span></code>, <code class="docutils literal notranslate"><span class="pre">recall_at_k</span></code>, <code class="docutils literal notranslate"><span class="pre">hit_rate_at_k</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mean_reciprocal_rank</span></code>, <code class="docutils literal notranslate"><span class="pre">mean_average_precision</span></code>, <code class="docutils literal notranslate"><span class="pre">r_precision</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ndcg_at_k</span></code> and <code class="docutils literal notranslate"><span class="pre">ranking_metrics</span></code>) and answer metrics
+(<code class="docutils literal notranslate"><span class="pre">exact_match_score</span></code>, <code class="docutils literal notranslate"><span class="pre">token_f1_score</span></code>, <code class="docutils literal notranslate"><span class="pre">edit_similarity_score</span></code>,
+<code class="docutils literal notranslate"><span class="pre">anls_score</span></code>) take scikit-learn’s <code class="docutils literal notranslate"><span class="pre">(y_true,</span> <span class="pre">y_pred)</span></code> signature;
+<code class="docutils literal notranslate"><span class="pre">make_corpus_scorer</span></code> and <code class="docutils literal notranslate"><span class="pre">get_corpus_scorer</span></code> turn them into scorers
+for <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> and <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> that can also score a corpus
+index directly (<code class="docutils literal notranslate"><span class="pre">response_method=&quot;search&quot;</span></code>), on scikit-learn’s own
+<code class="docutils literal notranslate"><span class="pre">_BaseScorer</span></code> or a vendored copy when scikit-learn is absent;
+<code class="docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code> runs a retriever over a query set and returns a
+report of per-query and mean metrics, rankings, latency and response
+statuses, written as strict JSON, JSON Lines, YAML or TOML and compared
+with a baseline by a paired randomisation test; <code class="docutils literal notranslate"><span class="pre">make_pairwise_ranker</span></code>
+and <code class="docutils literal notranslate"><span class="pre">make_levenshtein_ranker</span></code> build <code class="docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code> rankers.
+Generated answers can be judged by language models: <code class="docutils literal notranslate"><span class="pre">make_llm</span></code> puts
+OpenAI, Anthropic, Gemini or any callable behind one call (SDKs imported
+only when used, nothing sent that was not asked for); <code class="docutils literal notranslate"><span class="pre">LLMJudge</span></code> scores
+faithfulness, answer relevance, context precision and recall, answer
+correctness, a custom rubric and order-swapped pairwise preference from
+strictly parsed JSON verdicts; <code class="docutils literal notranslate"><span class="pre">evaluate_answers</span></code> and
+<code class="docutils literal notranslate"><span class="pre">evaluate_preference</span></code> run one judge or a panel over a dataset (your
+system, or stored answers from any model) with token usage, judge
+identities and failures recorded; <code class="docutils literal notranslate"><span class="pre">cohen_kappa</span></code>, <code class="docutils literal notranslate"><span class="pre">fleiss_kappa</span></code> and
+<code class="docutils literal notranslate"><span class="pre">krippendorff_alpha</span></code> measure agreement between judges.
+Documents can be named by time-ordered RFC 9562 UUIDv7 instead of the
+content-addressed SHA-256 default:
+<code class="docutils literal notranslate"><span class="pre">BuilderConfig(doc_id_scheme=&quot;uuid7&quot;)</span></code>, <code class="docutils literal notranslate"><span class="pre">CorpusPipeline</span></code>,
+<code class="docutils literal notranslate"><span class="pre">HookableCorpusPipeline</span></code> and <code class="docutils literal notranslate"><span class="pre">create_corpus</span></code> (keyword
+<code class="docutils literal notranslate"><span class="pre">doc_id_scheme</span></code>) and <code class="docutils literal notranslate"><span class="pre">FluentCorpus().identity(&quot;uuid7&quot;)</span></code> mint one id
+per document, per source in reading order, right after the source is read,
+with parent links inside the source kept. <code class="docutils literal notranslate"><span class="pre">uuid7()</span></code>, <code class="docutils literal notranslate"><span class="pre">UUID7Generator</span></code>
+(thread-safe, monotonic within a process, reseeded in a forked child,
+injectable clock and random source), <code class="docutils literal notranslate"><span class="pre">uuid7_unix_ms</span></code>,
+<code class="docutils literal notranslate"><span class="pre">doc_id_scheme_of</span></code>, <code class="docutils literal notranslate"><span class="pre">assign_doc_ids</span></code> and <code class="docutils literal notranslate"><span class="pre">DocIdScheme</span></code> are public. A
+UUIDv7 is new on every build, so deduplicate by <code class="docutils literal notranslate"><span class="pre">content_hash</span></code> and keep
+qrels for the build that minted the ids.
+Searches can be filtered: <code class="docutils literal notranslate"><span class="pre">RetrievalIndex.search</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CorpusBuilder.search</span></code>, <code class="docutils literal notranslate"><span class="pre">RuntimeCorpus.search</span></code> and
+<code class="docutils literal notranslate"><span class="pre">CustomRetrievalIndex.search</span></code> take <code class="docutils literal notranslate"><span class="pre">filter=</span></code> (a <code class="docutils literal notranslate"><span class="pre">Filter</span></code> expression
+of scalar document fields or <code class="docutils literal notranslate"><span class="pre">metadata.&lt;key&gt;</span></code>, or its JSON form),
+applied by every leg before ranking so a filtered query returns the best
+<code class="docutils literal notranslate"><span class="pre">top_k</span></code> matching documents, and each leg reports how it answered the
+filter (<code class="docutils literal notranslate"><span class="pre">LegOutcome.filter_capability</span></code>, every operator <code class="docutils literal notranslate"><span class="pre">EMULATED</span></code>); a
+<code class="docutils literal notranslate"><span class="pre">SecurityFilter</span></code> bound to an index (<code class="docutils literal notranslate"><span class="pre">RetrievalIndex</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CustomRetrievalIndex</span></code>, <code class="docutils literal notranslate"><span class="pre">BuilderConfig(security_filter=...)</span></code>) is
+AND-ed with every query and with the vector seam <code class="docutils literal notranslate"><span class="pre">RetrievalIndex.query</span></code>,
+keeps BM25 statistics inside the scope, and is reported by its label;
+callers can narrow but never widen what they see; <code class="docutils literal notranslate"><span class="pre">filter_to_dict</span></code>,
+<code class="docutils literal notranslate"><span class="pre">filter_from_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">validate_filter</span></code> carry and check filters
+through JSON with strict validation and size limits.
+<code class="docutils literal notranslate"><span class="pre">RecursiveChunker</span></code> cuts a text by a separator hierarchy (blank line,
+line, sentence end, space, character) until every piece fits
+<code class="docutils literal notranslate"><span class="pre">chunk_size</span></code>, and <code class="docutils literal notranslate"><span class="pre">ParentChildChunker</span></code> produces large parents for
+context with small children inside them for retrieval; documents built
+from a child carry <code class="docutils literal notranslate"><span class="pre">parent_doc_id</span></code>, the first producer of that field.
+Both are registered by name (<code class="docutils literal notranslate"><span class="pre">&quot;recursive&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;parent_child&quot;</span></code>), keep
+every chunk a slice of its source, and are not defaults.
+<code class="docutils literal notranslate"><span class="pre">StructureChunker</span></code> chunks Markdown or reStructuredText by its headings
+and code blocks: code blocks are chunks of their own, the prose of each
+section is split by the recursive rule, a heading not followed by prose
+is a chunk of its own, and every chunk and its document carry
+<code class="docutils literal notranslate"><span class="pre">heading_path</span></code>, <code class="docutils literal notranslate"><span class="pre">section_level</span></code> and <code class="docutils literal notranslate"><span class="pre">block</span></code>; registered as
+<code class="docutils literal notranslate"><span class="pre">&quot;structure&quot;</span></code>, not a default.
+<code class="docutils literal notranslate"><span class="pre">RetrievalExecutionPlan</span></code> runs retrieval through typed stages, in a fixed
+order: transform (multi-query, rewrites), retrieve (<code class="docutils literal notranslate"><span class="pre">index.search</span></code> per
+query, unchanged), fuse (by <code class="docutils literal notranslate"><span class="pre">FusionPolicy</span></code>), rerank and compress
+(character spans of each hit’s text). Each stage reports a
+<code class="docutils literal notranslate"><span class="pre">StageOutcome</span></code> with its status, calls, seconds and budget; a stage that
+fails or is stopped says why, and the result’s status is derived. A
+<code class="docutils literal notranslate"><span class="pre">StageBudget</span></code> limits the calls and seconds of retrieve, the one stage of
+several calls, and <code class="docutils literal notranslate"><span class="pre">deadline_seconds</span></code> stops any later stage from
+starting. An empty plan returns exactly what <code class="docutils literal notranslate"><span class="pre">index.search</span></code>
+returns, and <code class="docutils literal notranslate"><span class="pre">evaluate_retrieval(plan.bind(index),</span> <span class="pre">...)</span></code> measures a plan.
+<code class="docutils literal notranslate"><span class="pre">CharBudgetCompressor</span></code> keeps context within a character budget.
+<code class="docutils literal notranslate"><span class="pre">CorrectiveRetrieval</span></code> grades what a search returned and then accepts it,
+retries with a caller’s rewritten query within <code class="docutils literal notranslate"><span class="pre">max_rounds</span></code> and
+<code class="docutils literal notranslate"><span class="pre">deadline_seconds</span></code>, returns the ambiguous rounds fused as partial
+evidence, or abstains with no hit; every round is graded against the
+original query, reported in a <code class="docutils literal notranslate"><span class="pre">CorrectionResult</span></code> (verdict, rounds,
+grades with the grader’s name), and measured by <code class="docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code>
+like an index. <code class="docutils literal notranslate"><span class="pre">TermCoverageGrader</span></code> is the deterministic grader (the
+share of query words in the top hits, against two thresholds); a model
+grader is any callable returning a <code class="docutils literal notranslate"><span class="pre">GradeResult</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">EmbeddingEngine</span></code> no longer serves one custom provider’s cached vectors to
+another (a custom provider is cached only under a <code class="docutils literal notranslate"><span class="pre">custom_fn_id</span></code>), loads
+the <code class="docutils literal notranslate"><span class="pre">model_revision</span></code> it records, applies <code class="docutils literal notranslate"><span class="pre">normalize=True</span></code> to every
+backend before the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> cast (<code class="docutils literal notranslate"><span class="pre">float16</span></code> rows no longer come back as
+zeros, and a non-finite vector is no longer hidden as one), returns
+<code class="docutils literal notranslate"><span class="pre">float64</span></code> cache hits without rounding, caches URL sources like files, and
+stamps every embedded document with its embedding manifest so an index
+refuses to rank vectors from two embedding generations together
+(<code class="docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> now embeds through the same path); <code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code>
+reports the backend that actually ran, with the requested one and the
+fallback reason beside it, names a model on the result and on each chunk
+only when the model was called, falls back (or, with
+<code class="docutils literal notranslate"><span class="pre">allow_fallback=False</span></code>, raises) when the model fails to load or to encode
+as well as when <code class="docutils literal notranslate"><span class="pre">sentence-transformers</span></code> is missing, and no longer encodes
+every chunk a second time.
+<code class="docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> resolves chunker names and normaliser steps through the
+shared component <code class="docutils literal notranslate"><span class="pre">registry</span></code>, the same table plans and <code class="docutils literal notranslate"><span class="pre">RuntimeCorpus</span></code>
+now use: <code class="docutils literal notranslate"><span class="pre">chunker_kwargs</span></code> now build the named chunker’s config (a config
+option used to raise <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> for every built-in chunker), go on to
+the chunker’s constructor when it takes them (<code class="docutils literal notranslate"><span class="pre">gensim_dictionary</span></code>,
+<code class="docutils literal notranslate"><span class="pre">adapter</span></code>), and an unknown key raises naming the valid ones; <code class="docutils literal notranslate"><span class="pre">&quot;word&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;semantic&quot;</span></code> are registered; a chunker added with
+<code class="docutils literal notranslate"><span class="pre">registry.register_chunker</span></code> is reachable by name and is never replaced
+by a built-in of the same name; an unknown normaliser step raises instead
+of being dropped with a warning; <code class="docutils literal notranslate"><span class="pre">normalizer_kwargs</span></code>, documented but read
+nowhere, now maps a step to its options; options given with a chunker
+instance, without a chunker, or beside a <code class="docutils literal notranslate"><span class="pre">chunker_factory</span></code> are refused,
+and so is a chunker class given instead of an instance; a configuration
+error raises from <code class="docutils literal notranslate"><span class="pre">build</span></code> before any source is read instead of failing
+once per source. <code class="docutils literal notranslate"><span class="pre">ComponentRegistry.load_from_snapshot</span></code> accepts the
+built-in chunkers and normalisers it used to refuse, a subclass of a
+built-in chunker uses that chunker’s bridge, a chunker config’s enum option
+given by value (<code class="docutils literal notranslate"><span class="pre">SentenceChunkerConfig(backend=&quot;regex&quot;)</span></code>) is converted at
+construction (an unknown value raises there) instead of failing inside
+<code class="docutils literal notranslate"><span class="pre">chunk()</span></code>, and an unknown <code class="docutils literal notranslate"><span class="pre">SemanticChunkerConfig.adapter_unit</span></code> raises.
+Chunk text is a slice of the source: overlap chunks (sentence,
+paragraph), merged and split chunks (paragraph <code class="docutils literal notranslate"><span class="pre">merge_short</span></code> /
+<code class="docutils literal notranslate"><span class="pre">max_length</span></code>, the semantic merges and splits) and fixed windows
+(<code class="docutils literal notranslate"><span class="pre">strip_whitespace</span></code>, token windows) used to re-join parts with a space
+or a newline (inserting a space into CJK text) or keep an unstripped span;
+<code class="docutils literal notranslate"><span class="pre">Chunk</span></code> gains <code class="docutils literal notranslate"><span class="pre">context_start</span></code>/<code class="docutils literal notranslate"><span class="pre">context_end</span></code> (<code class="docutils literal notranslate"><span class="pre">context_span</span></code>, the
+region its text comes from) beside the anchor <code class="docutils literal notranslate"><span class="pre">start_char</span></code>/<code class="docutils literal notranslate"><span class="pre">end_char</span></code>
+(<code class="docutils literal notranslate"><span class="pre">anchor_span</span></code>), <code class="docutils literal notranslate"><span class="pre">WordChunker</span></code> sentence chunks span their own sentence
+instead of <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">len(sentence))</span></code>, a sentence splitter whose output is not
+in the source raises when offsets are enabled instead of being placed at a
+guessed position, and a document built from a chunk spans the chunk’s
+context (it used to span the anchor start plus the text length, the wrong
+region for an overlap chunk, and its <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> with it), with the
+anchor in <code class="docutils literal notranslate"><span class="pre">metadata[&quot;anchor_span&quot;]</span></code> when they differ, and no span when
+the chunker reports no offsets. A document’s <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> when
+its region is unknown instead of the whole parent text for every chunk of a
+split parent with offsets disabled, an overlap chunk’s
+multilang <code class="docutils literal notranslate"><span class="pre">raw_text</span></code> covers its context instead of its anchor, and no
+<code class="docutils literal notranslate"><span class="pre">raw_text</span></code> is sliced by spans that do not index it (a reader’s HTML or
+XML markup, or text that multilang preprocessing changed:
+<code class="docutils literal notranslate"><span class="pre">metadata[&quot;span_basis&quot;]</span></code> is then <code class="docutils literal notranslate"><span class="pre">&quot;preprocessed&quot;</span></code>). <code class="docutils literal notranslate"><span class="pre">WordChunker</span></code>
+honours <code class="docutils literal notranslate"><span class="pre">include_offsets</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default: no span), and
+<code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code> with <code class="docutils literal notranslate"><span class="pre">include_offsets=False</span></code> reports <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>. An
+overlap chunk’s context includes a unit <code class="docutils literal notranslate"><span class="pre">min_length</span></code> dropped inside it.
+An unpinned embedding model’s cached vectors were served after an upstream
+change of the model, and the embedding cache grew without bound.
+<code class="docutils literal notranslate"><span class="pre">MultimodalEmbeddingEngine.embed_documents_with_cache</span></code> keyed its cache on
+the source path, its modification time and the document count: changed
+text, another custom function or another <code class="docutils literal notranslate"><span class="pre">normalize</span></code> setting were served
+the first vectors, and a document left without an embedding made it raise;
+the key is now the content and every setting that changes the output
+(entries written under the old key are not found again).
+<code class="docutils literal notranslate"><span class="pre">ScriptSegmenter</span></code> called <code class="docutils literal notranslate"><span class="pre">regex.get_script</span></code>, which the <code class="docutils literal notranslate"><span class="pre">regex</span></code>
+library does not have, so with <code class="docutils literal notranslate"><span class="pre">regex</span></code> installed every text came back as
+one span of unknown script (with a warning about <code class="docutils literal notranslate"><span class="pre">'_unknown'</span></code>); it now
+detects scripts with <code class="docutils literal notranslate"><span class="pre">\p{Script=...}</span></code>, its <code class="docutils literal notranslate"><span class="pre">start</span></code>/<code class="docutils literal notranslate"><span class="pre">end</span></code> are
+character offsets (they were grapheme-cluster indices, which every
+consumer read as character offsets), a script the map does not name is a
+span of its own instead of being absorbed by its neighbours, short spans
+merged by <code class="docutils literal notranslate"><span class="pre">min_span_chars</span></code> leave one span per run, Tamil, Telugu,
+Kannada, Malayalam and Sinhala map to <code class="docutils literal notranslate"><span class="pre">SOUTH_ASIAN</span></code> and Lao to
+<code class="docutils literal notranslate"><span class="pre">SOUTHEAST_ASIAN</span></code> (as documented), and Han that meets kana (Japanese)
+or Hangul (Korean) letter to letter stays in one span. With <code class="docutils literal notranslate"><span class="pre">regex</span></code> installed,
+<code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code> and <code class="docutils literal notranslate"><span class="pre">WritingSystemAdapter</span></code> therefore dispatch each
+span to its script’s strategy, so their chunks change: Chinese without
+<code class="docutils literal notranslate"><span class="pre">jieba</span></code> becomes one chunk per character, and Arabic, Hebrew,
+Devanagari, the Dravidian scripts and others use their own strategies.
+<code class="docutils literal notranslate"><span class="pre">RetrievalResponse.to_dict()</span></code> and <code class="docutils literal notranslate"><span class="pre">LegOutcome.to_dict()</span></code> now return a
+JSON-compatible mapping as documented: a leg’s <code class="docutils literal notranslate"><span class="pre">generation</span></code> is written as
+its <code class="docutils literal notranslate"><span class="pre">IndexGeneration.to_dict()</span></code>, where it used to be the object itself
+and <code class="docutils literal notranslate"><span class="pre">json.dumps</span></code> raised. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-feature-selection">
+<h3>scikitplot.feature_selection<a class="headerlink" href="#scikitplot-feature-selection" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  New <a class="reference internal" href="../apis/scikitplot.feature_selection.html#module-scikitplot.feature_selection" title="scikitplot.feature_selection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.feature_selection</span></code></a> for wide pandas tables.
+<code class="docutils literal notranslate"><span class="pre">profile_features</span></code> (or <code class="docutils literal notranslate"><span class="pre">FeatureProfiler</span></code> in a pipeline) fits a
+<code class="docutils literal notranslate"><span class="pre">FeatureSchema</span></code> on training data: every column gets a role, dtype family,
+semantic kind, user tags, a bin recommendation (Knuth, Freedman-Diaconis,
+Scott … with frozen edges) and policy-backed assessments such as
+<code class="docutils literal notranslate"><span class="pre">skewed</span></code>, <code class="docutils literal notranslate"><span class="pre">discrete</span></code>, <code class="docutils literal notranslate"><span class="pre">constant</span></code>, <code class="docutils literal notranslate"><span class="pre">binary</span></code>, <code class="docutils literal notranslate"><span class="pre">identifier_like</span></code> or
+<code class="docutils literal notranslate"><span class="pre">high_cardinality</span></code>, each with evidence and an explicit <code class="docutils literal notranslate"><span class="pre">unknown</span></code> /
+<code class="docutils literal notranslate"><span class="pre">not_applicable</span></code> state; thresholds, roles, kinds, tags and manual
+overrides live in a <code class="docutils literal notranslate"><span class="pre">FeaturePolicy</span></code> read from TOML, YAML or JSON, and new
+questions are added with <code class="docutils literal notranslate"><span class="pre">register_assessment</span></code>. <code class="docutils literal notranslate"><span class="pre">FeatureColumnSelector</span></code>
+routes columns into a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> by kind or assessment on each
+training fold, <code class="docutils literal notranslate"><span class="pre">FeatureFilter</span></code> drops constant and identifier-like columns
+and non-feature roles, and <code class="docutils literal notranslate"><span class="pre">FeatureRenamer</span></code> applies a frozen rename plan.
+<code class="docutils literal notranslate"><span class="pre">trace_pipeline</span></code> reads a fitted <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> / <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> /
+<code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code> and reports, per raw column, the steps that touched it,
+the columns it became and where it was dropped, checks every stage’s width
+against its real output, and <code class="docutils literal notranslate"><span class="pre">FeatureLineage.attribute</span></code> sums one-hot (or
+any exactly traced) importances and SHAP values back to raw columns.
+<code class="docutils literal notranslate"><span class="pre">ReferenceProfile</span></code> freezes a training reference and reports per-feature
+PSI, Jensen-Shannon distance, missingness change and unseen categories. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/867">#867</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-mcp">
+<h3>scikitplot.mcp<a class="headerlink" href="#scikitplot-mcp" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  The Corpus+Annoy retriever can be scoped by the corpus filter contract:
+<code class="docutils literal notranslate"><span class="pre">CorpusIndexRetriever(...,</span> <span class="pre">filter=...)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">CorpusAnnoyRetriever.from_corpus_annoy(...,</span> <span class="pre">filter=...)</span></code> take a
+<code class="docutils literal notranslate"><span class="pre">scikitplot.corpus</span></code> filter expression (or its JSON form), checked by
+<code class="docutils literal notranslate"><span class="pre">validate_filter</span></code> before anything is built and passed to every
+<code class="docutils literal notranslate"><span class="pre">index.search</span></code>, where the corpus applies it in every leg and AND-s it
+with the index’s <code class="docutils literal notranslate"><span class="pre">SecurityFilter</span></code>; <code class="docutils literal notranslate"><span class="pre">scikitplot</span> <span class="pre">mcp</span> <span class="pre">--corpus-filter</span>
+<span class="pre">PATH</span></code> reads it from a JSON file. With a filter, <code class="docutils literal notranslate"><span class="pre">semantic</span></code> mode runs
+the corpus’s dense leg through <code class="docutils literal notranslate"><span class="pre">search</span></code>, the seam that takes one; a
+filter that narrows nothing is refused, and the <code class="docutils literal notranslate"><span class="pre">docs://chunk/{doc_id}</span></code>
+resource serves only documents in scope. <code class="docutils literal notranslate"><span class="pre">CorpusIndexRetriever</span></code> gains
+<code class="docutils literal notranslate"><span class="pre">get</span></code> (and <code class="docutils literal notranslate"><span class="pre">documents=</span></code>), so the server also starts in <code class="docutils literal notranslate"><span class="pre">hybrid</span></code> and
+<code class="docutils literal notranslate"><span class="pre">keyword</span></code> corpus modes, where it used to stop with an <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-memmap">
+<h3>scikitplot.memmap<a class="headerlink" href="#scikitplot-memmap" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  An array from <code class="docutils literal notranslate"><span class="pre">MemoryMap.as_numpy_array</span></code> stays valid after <code class="docutils literal notranslate"><span class="pre">close()</span></code>
+(including the <code class="docutils literal notranslate"><span class="pre">with</span></code> block exit): the mapping now exports its bytes
+through the buffer protocol and unmaps only when the last view is released.
+<code class="docutils literal notranslate"><span class="pre">close()</span></code> from another thread likewise defers the unmap until the end
+of a running <code class="docutils literal notranslate"><span class="pre">read</span></code>, <code class="docutils literal notranslate"><span class="pre">write</span></code>, <code class="docutils literal notranslate"><span class="pre">msync</span></code>, <code class="docutils literal notranslate"><span class="pre">mlock</span></code> or <code class="docutils literal notranslate"><span class="pre">munlock</span></code>;
+<code class="docutils literal notranslate"><span class="pre">mprotect</span></code> refuses (<code class="docutils literal notranslate"><span class="pre">BufferError</span></code>) to remove any protection bit while a
+view is alive or such an operation is running; and
+a mapping without <code class="docutils literal notranslate"><span class="pre">PROT_READ</span></code> exports nothing and refuses <code class="docutils literal notranslate"><span class="pre">read</span></code>. Each
+of these used to crash the interpreter (SIGSEGV).</p>
+<p>Threads may share one <code class="docutils literal notranslate"><span class="pre">MemoryMap</span></code> on free-threaded Python too: its
+open/closed state, export count and protection flags change under a lock
+of the mapping (a <code class="docutils literal notranslate"><span class="pre">PyMutex</span></code>; nothing with the GIL, which already
+serialised them), so a view or a method never starts on a closed mapping
+and the region is unmapped once, after the last view. Without it, threads
+exporting views lost counts: <code class="docutils literal notranslate"><span class="pre">close()</span></code> left the region mapped, or
+unmapped it under a live view (SIGSEGV). <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p>
+</li>
+</ul>
+</section>
+<section id="scikitplot-random">
+<h3>scikitplot.random<a class="headerlink" href="#scikitplot-random" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">Kiss32Random.index</span></code>, <code class="docutils literal notranslate"><span class="pre">Kiss64Random.index</span></code> and
+<code class="docutils literal notranslate"><span class="pre">KissGenerator.integers</span></code> (with <code class="docutils literal notranslate"><span class="pre">KissRandomState.randint</span></code>) draw without
+modulo bias: a raw draw below <code class="docutils literal notranslate"><span class="pre">2**w</span> <span class="pre">mod</span> <span class="pre">n</span></code> is rejected before the modulo
+(at <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3e9</span></code> the 32-bit <code class="docutils literal notranslate"><span class="pre">index</span></code> put 60.3% of draws in the lower 43.2%
+of the range). A seeded stream equals the old one until the first
+rejection, which for small <code class="docutils literal notranslate"><span class="pre">n</span></code> practically never happens.
+<code class="docutils literal notranslate"><span class="pre">Kiss32Random.index(n)</span></code> reaches indices of <code class="docutils literal notranslate"><span class="pre">2**32</span></code> and more (two draws
+per index for <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">2**32</span></code>); <code class="docutils literal notranslate"><span class="pre">index</span></code> raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> for
+<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> as documented (it raised <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code>), <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> for
+a <code class="docutils literal notranslate"><span class="pre">bool</span></code> or a non-integer, and <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code> above <code class="docutils literal notranslate"><span class="pre">size_t</span></code>;
+<code class="docutils literal notranslate"><span class="pre">integers</span></code> refuses non-integer bounds and a range wider than <code class="docutils literal notranslate"><span class="pre">2**64</span></code>.
+<code class="docutils literal notranslate"><span class="pre">KissSeedSequence.spawn</span></code> reserves its spawn keys under a lock, so
+threads never mint the same key (identical child streams) on
+free-threaded builds. Annoy, which shares the C++ generator, is unchanged. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
 <p class="rubric">Code and documentation contributors</p>
 <p>Thanks to everyone who has contributed to the maintenance and improvement of
 the project since version 0.4, including:</p>
 <p>TODO: update at the time of the release.</p>
+</section>
+</section>
 </section>
 
 
@@ -770,6 +1072,27 @@ the project since version 0.4, including:</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261020-493b8af">Version 0.5.dev0+git.20261020.493b8af</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-agent">scikitplot.agent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-annoy">scikitplot.annoy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-corpus">scikitplot.corpus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-feature-selection">scikitplot.feature_selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-mcp">scikitplot.mcp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-memmap">scikitplot.memmap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-random">scikitplot.random</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -826,7 +1149,7 @@ the project since version 0.4, including:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

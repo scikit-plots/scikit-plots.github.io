@@ -1,6 +1,6 @@
 # CachePolicy[#](#cachepolicy "Link to this heading")
 
-class scikitplot.corpus.CachePolicy(**unpinned='bypass'**, **revision\_resolver=None**, **max\_entries=None**, **max\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_embeddings/_cache_policy.py#L146)[#](#scikitplot.corpus.CachePolicy "Link to this definition")
+class scikitplot.corpus.CachePolicy(**unpinned='bypass'**, **revision\_resolver=None**, **max\_entries=None**, **max\_bytes=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_embeddings/_cache_policy.py#L146)[#](#scikitplot.corpus.CachePolicy "Link to this definition")
 :   How [`EmbeddingEngine`](scikitplot.corpus.EmbeddingEngine.html#scikitplot.corpus.EmbeddingEngine "scikitplot.corpus.EmbeddingEngine") uses its disk cache.
 
     Parameters:

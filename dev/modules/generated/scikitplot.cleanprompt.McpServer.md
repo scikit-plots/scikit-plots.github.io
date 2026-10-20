@@ -1,6 +1,6 @@
 # McpServer[#](#mcpserver "Link to this heading")
 
-class scikitplot.cleanprompt.McpServer(**make\_guard**, **roots**, **name='cleanprompt'**, **version='1.0.0'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_mcp.py#L238)[#](#scikitplot.cleanprompt.McpServer "Link to this definition")
+class scikitplot.cleanprompt.McpServer(**make\_guard**, **roots**, **name='cleanprompt'**, **version='1.0.0'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_mcp.py#L238)[#](#scikitplot.cleanprompt.McpServer "Link to this definition")
 :   Answer MCP requests with cleanprompt tools.
 
     Parameters:
@@ -29,13 +29,13 @@ class scikitplot.cleanprompt.McpServer(**make\_guard**, **roots**, **name='clean
     the server’s state — no I/O — which is what makes the protocol testable
     without a subprocess; `serve` only moves lines.
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_mcp.py#L554)[#](#scikitplot.cleanprompt.McpServer.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_mcp.py#L554)[#](#scikitplot.cleanprompt.McpServer.close "Link to this definition")
     :   Drop every value held.
 
         Return type:
         :   None
 
-    handle(**message**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_mcp.py#L286)[#](#scikitplot.cleanprompt.McpServer.handle "Link to this definition")
+    handle(**message**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_mcp.py#L286)[#](#scikitplot.cleanprompt.McpServer.handle "Link to this definition")
     :   Return the response to one JSON-RPC message, or `None`.
 
         Parameters:

@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:08:09Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:14:04Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cython.PlatformCapabilities","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>PlatformCapabilities<a class="headerlink" href="#platformcapabilities" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">PlatformCapabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">platform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_browser_wasm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">can_compile_at_runtime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prebuilt_only</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wasm_package_suffix</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_profiles.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">PlatformCapabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">platform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_browser_wasm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">can_compile_at_runtime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prebuilt_only</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wasm_package_suffix</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_profiles.py#L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities" title="Link to this definition">#</a></dt>
 <dd><p>Declarative contract describing what the current platform supports.</p>
 <p>Runtime Cython compilation requires an out-of-process C/C++ compiler.  In a
 browser/WASM runtime (Emscripten — e.g. Pyodide / JupyterLite / xeus) there
@@ -1801,8 +1802,8 @@ on a browser runtime, else <code class="docutils literal notranslate"><span clas
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="bc29ca99-e069-4402-877f-7931614e26a5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bc29ca99-e069-4402-877f-7931614e26a5','8c5c137e-9526-4afe-84e3-e70c32b9ff12','0e124381-e508-4d52-b6f7-83d959cbbdcf','../../lite/tree/../notebooks/index.html?path=0d8ba3b2_7b30_42d9_9d9f_81b989a683dd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d6a2e08b-1a7e-49cd-bad2-3b52df02ec5a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d6a2e08b-1a7e-49cd-bad2-3b52df02ec5a','8a1d79cf-e2ce-4e61-a1ab-a8fe72e2b005','cc4b0c05-75c5-4daa-b4ac-6076e86c775b','../../lite/tree/../notebooks/index.html?path=ba1bd466_e51e_400a_8ffc_4173233213de.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">caps</span> <span class="o">=</span> <span class="n">platform_capabilities</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">caps</span><span class="o">.</span><span class="n">can_compile_at_runtime</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="o">...</span>  <span class="c1"># import a prebuilt artifact instead of compiling</span>
@@ -1810,9 +1811,9 @@ on a browser runtime, else <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 </div>
-<div id="0e124381-e508-4d52-b6f7-83d959cbbdcf" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bc29ca99-e069-4402-877f-7931614e26a5','0e124381-e508-4d52-b6f7-83d959cbbdcf')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bc29ca99-e069-4402-877f-7931614e26a5','0e124381-e508-4d52-b6f7-83d959cbbdcf')">Open In Tab</button></div><div id="8c5c137e-9526-4afe-84e3-e70c32b9ff12" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="cc4b0c05-75c5-4daa-b4ac-6076e86c775b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d6a2e08b-1a7e-49cd-bad2-3b52df02ec5a','cc4b0c05-75c5-4daa-b4ac-6076e86c775b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d6a2e08b-1a7e-49cd-bad2-3b52df02ec5a','cc4b0c05-75c5-4daa-b4ac-6076e86c775b')">Open In Tab</button></div><div id="8a1d79cf-e2ce-4e61-a1ab-a8fe72e2b005" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities.can_compile_at_runtime">
-<span class="sig-name descname"><span class="pre">can_compile_at_runtime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.can_compile_at_runtime" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">can_compile_at_runtime</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.can_compile_at_runtime" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 2</p>
 </dd></dl>
 
@@ -1831,25 +1832,25 @@ on a browser runtime, else <code class="docutils literal notranslate"><span clas
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities.is_browser_wasm">
-<span class="sig-name descname"><span class="pre">is_browser_wasm</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.is_browser_wasm" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">is_browser_wasm</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.is_browser_wasm" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 1</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities.platform">
-<span class="sig-name descname"><span class="pre">platform</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.platform" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">platform</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.platform" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 0</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities.prebuilt_only">
-<span class="sig-name descname"><span class="pre">prebuilt_only</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.prebuilt_only" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prebuilt_only</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.prebuilt_only" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 3</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cython.PlatformCapabilities.wasm_package_suffix">
-<span class="sig-name descname"><span class="pre">wasm_package_suffix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.wasm_package_suffix" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">wasm_package_suffix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.PlatformCapabilities.wasm_package_suffix" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 4</p>
 </dd></dl>
 
@@ -1980,7 +1981,7 @@ on a browser runtime, else <code class="docutils literal notranslate"><span clas
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

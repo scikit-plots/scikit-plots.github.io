@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:07:57Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:13:53Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.detect_script","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>detect_script<a class="headerlink" href="#detect-script" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.detect_script">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1036"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">detect_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">majority_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1036"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.detect_script" title="Link to this definition">#</a></dt>
 <dd><p>Detect the dominant Unicode script in <em>text</em>.</p>
 <p>Samples up to <em>sample_size</em> characters for efficiency on long documents.
 Returns <a class="reference internal" href="scikitplot.corpus.ScriptType.html#scikitplot.corpus.ScriptType.MIXED" title="scikitplot.corpus.ScriptType.MIXED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ScriptType.MIXED</span></code></a> when no single script exceeds
@@ -1807,8 +1808,8 @@ Dravidian (Tamil/Telugu/Kannada/Malayalam/Sinhala), Armenian, Tibetan.</p>
 are <em>not</em> used here because they do not map cleanly to script families.
 Code-point ranges from the Unicode Standard are used instead.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="72898217-0900-4875-aaca-510806d643da">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('72898217-0900-4875-aaca-510806d643da','27f4a06c-60fd-445f-9ea6-756e68a24d46','752e522e-a845-4e4e-87f6-47945bade33b','../../lite/tree/../notebooks/index.html?path=6e365e71_7ed7_47f4_81c4_f23059020fa9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1d6af62f-a8c4-4334-9116-8e63a95a280e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1d6af62f-a8c4-4334-9116-8e63a95a280e','51d4b049-1f02-4ced-b8e6-2868f8bf7445','a9978591-7e98-422f-bc86-e7ad44f5ea15','../../lite/tree/../notebooks/index.html?path=6cac4630_48ac_48bb_93ac_e211b18152a4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">"Hello world"</span><span class="p">)</span>
 <span class="go">&lt;ScriptType.LATIN: 'latin'&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detect_script</span><span class="p">(</span><span class="s2">"مرحبا بالعالم"</span><span class="p">)</span>
@@ -1829,7 +1830,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 </div>
 </div>
 </div>
-<div id="752e522e-a845-4e4e-87f6-47945bade33b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('72898217-0900-4875-aaca-510806d643da','752e522e-a845-4e4e-87f6-47945bade33b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('72898217-0900-4875-aaca-510806d643da','752e522e-a845-4e4e-87f6-47945bade33b')">Open In Tab</button></div><div id="27f4a06c-60fd-445f-9ea6-756e68a24d46" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a9978591-7e98-422f-bc86-e7ad44f5ea15" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1d6af62f-a8c4-4334-9116-8e63a95a280e','a9978591-7e98-422f-bc86-e7ad44f5ea15')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1d6af62f-a8c4-4334-9116-8e63a95a280e','a9978591-7e98-422f-bc86-e7ad44f5ea15')">Open In Tab</button></div><div id="51d4b049-1f02-4ced-b8e6-2868f8bf7445" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1947,7 +1948,7 @@ Code-point ranges from the Unicode Standard are used instead.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

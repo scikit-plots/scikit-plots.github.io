@@ -120,7 +120,7 @@ Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [pl
 
 ****Total running time of the script:**** (0 minutes 0.003 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo18.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo18.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_recipes_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_recipes_script.ipynb`](../../_downloads/2b15b18bde602319ca3897ec9e848ef1/plot_rank_bm25_recipes_script.ipynb)
 

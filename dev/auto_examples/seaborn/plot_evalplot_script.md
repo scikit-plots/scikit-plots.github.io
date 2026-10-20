@@ -348,9 +348,9 @@ import seaborn as sns
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: eval](../../_tags/plot-type-eval.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.408 seconds)
+****Total running time of the script:**** (0 minutes 2.283 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo20.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_evalplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo20.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_evalplot_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo19.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_evalplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo19.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_evalplot_script.ipynb)
 
 [`Download Jupyter notebook: plot_evalplot_script.ipynb`](../../_downloads/cf3db15d9889b75795312d6766bad1c6/plot_evalplot_script.ipynb)
 

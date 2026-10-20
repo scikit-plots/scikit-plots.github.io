@@ -1,6 +1,6 @@
 # PipelineGuard[#](#pipelineguard "Link to this heading")
 
-class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L2923)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
+class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, **checkpoint\_path=None**, **checkpoint\_every=500**, **max\_retries=3**, **retry\_delay=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_base.py#L2923)[#](#scikitplot.corpus.PipelineGuard "Link to this definition")
 :   Wrap any document stream with resilience, deduplication, and checkpointing.
 
     [`PipelineGuard`](#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") is a thin, composable layer you place around
@@ -112,7 +112,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
     ```
     Go BackOpen In Tab
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L3188)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_base.py#L3188)[#](#scikitplot.corpus.PipelineGuard.close "Link to this definition")
     :   Flush and close the checkpoint file handle.
 
         Notes
@@ -123,7 +123,7 @@ class scikitplot.corpus.PipelineGuard(**policy=None**, **\***, **dedup=True**, *
         Return type:
         :   None
 
-    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L3082)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
+    iter(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_base.py#L3082)[#](#scikitplot.corpus.PipelineGuard.iter "Link to this definition")
     :   Iterate **source** with resilience, dedup, and checkpoint.
 
         Parameters:

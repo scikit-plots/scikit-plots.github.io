@@ -1,6 +1,6 @@
 # FixedWindowChunkerConfig[#](#fixedwindowchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.FixedWindowChunkerConfig(**window\_size=512**, **step\_size=256**, **unit=WindowUnit.CHARS**, **min\_length=10**, **include\_offsets=True**, **strip\_whitespace=True**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L96)[#](#scikitplot.corpus.FixedWindowChunkerConfig "Link to this definition")
+class scikitplot.corpus.FixedWindowChunkerConfig(**window\_size=512**, **step\_size=256**, **unit=WindowUnit.CHARS**, **min\_length=10**, **include\_offsets=True**, **strip\_whitespace=True**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L96)[#](#scikitplot.corpus.FixedWindowChunkerConfig "Link to this definition")
 :   Configuration for [`FixedWindowChunker`](scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker "scikitplot.corpus.FixedWindowChunker").
 
     Parameters:
@@ -43,7 +43,7 @@ class scikitplot.corpus.FixedWindowChunkerConfig(**window\_size=512**, **step\_s
 
     strip\_whitespace: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.FixedWindowChunkerConfig.strip_whitespace "Link to this definition")
 
-    unit: [WindowUnit](scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit "scikitplot.corpus._chunkers._fixed_window.WindowUnit") = 'chars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.FixedWindowChunkerConfig.unit "Link to this definition")
+    unit: [WindowUnit](scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit "scikitplot.corpus._chunkers._fixed_window.WindowUnit") = 'chars'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L)[#](#scikitplot.corpus.FixedWindowChunkerConfig.unit "Link to this definition")
 
     window\_size: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 512[#](#scikitplot.corpus.FixedWindowChunkerConfig.window_size "Link to this definition")
 

@@ -1,6 +1,6 @@
 # filter\_from\_dict[#](#filter-from-dict "Link to this heading")
 
-scikitplot.corpus.filter\_from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L663)[#](#scikitplot.corpus.filter_from_dict "Link to this definition")
+scikitplot.corpus.filter\_from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L663)[#](#scikitplot.corpus.filter_from_dict "Link to this definition")
 :   Rebuild a filter expression from its JSON form, refusing anything off contract.
 
     Parameters:

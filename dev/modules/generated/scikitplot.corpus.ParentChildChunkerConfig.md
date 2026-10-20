@@ -1,6 +1,6 @@
 # ParentChildChunkerConfig[#](#parentchildchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.ParentChildChunkerConfig(**parent\_size=2000**, **child\_size=400**, **child\_overlap=0**, **separators=('\n\n', '\n', '. ', ' ', '')**, **emit\_parents=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_recursive.py#L491)[#](#scikitplot.corpus.ParentChildChunkerConfig "Link to this definition")
+class scikitplot.corpus.ParentChildChunkerConfig(**parent\_size=2000**, **child\_size=400**, **child\_overlap=0**, **separators=('\n\n', '\n', '. ', ' ', '')**, **emit\_parents=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_recursive.py#L491)[#](#scikitplot.corpus.ParentChildChunkerConfig "Link to this definition")
 :   Configuration for [`ParentChildChunker`](scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker "scikitplot.corpus.ParentChildChunker").
 
     Parameters:

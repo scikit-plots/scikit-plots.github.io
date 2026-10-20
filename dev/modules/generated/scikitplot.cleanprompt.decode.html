@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:06:33Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:12:40Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.decode","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1375,6 +1375,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1758,7 +1759,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>decode<a class="headerlink" href="#decode" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.decode">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reply</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_api.py#L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.decode" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reply</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_api.py#L467"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.decode" title="Link to this definition">#</a></dt>
 <dd><p>Put the original values back into a model’s reply.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1804,8 +1805,8 @@ placeholder that was never issued, and failing the whole reply over one
 hallucinated token is rarely what you want. Use
 <a class="reference internal" href="scikitplot.cleanprompt.Session.html#scikitplot.cleanprompt.Session.decode_report" title="scikitplot.cleanprompt.Session.decode_report"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.decode_report</span></code></a> when you need to know.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3e3b7fa8-3d10-4c96-bddf-e129d8763187">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3e3b7fa8-3d10-4c96-bddf-e129d8763187','bbd49c1a-636f-4585-b437-80c50bfe70b9','b47c0061-1c06-43cf-9a69-09a1ff374076','../../lite/tree/../notebooks/index.html?path=366abd2f_2c88_4ec0_9531_314cb4fc0e6b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="b3ed7e7e-9fe8-4be6-9cf1-d63247a4e06b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b3ed7e7e-9fe8-4be6-9cf1-d63247a4e06b','0415a025-6bbd-4a4c-adf6-b5efcbc0f2cb','1956eea5-d34d-4ac6-b7d0-a1c0209dfd93','../../lite/tree/../notebooks/index.html?path=010b2668_56f8_434b_b481_e303817e150a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">safe</span><span class="p">,</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="s2">"Call +1 555 010 4477"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">decode</span><span class="p">(</span><span class="s2">"Ring [PHONE-1] tomorrow"</span><span class="p">,</span> <span class="n">handle</span><span class="p">)</span>
 <span class="go">'Ring +1 555 010 4477 tomorrow'</span>
@@ -1813,7 +1814,7 @@ hallucinated token is rarely what you want. Use
 </div>
 </div>
 </div>
-<div id="b47c0061-1c06-43cf-9a69-09a1ff374076" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3e3b7fa8-3d10-4c96-bddf-e129d8763187','b47c0061-1c06-43cf-9a69-09a1ff374076')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3e3b7fa8-3d10-4c96-bddf-e129d8763187','b47c0061-1c06-43cf-9a69-09a1ff374076')">Open In Tab</button></div><div id="bbd49c1a-636f-4585-b437-80c50bfe70b9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1956eea5-d34d-4ac6-b7d0-a1c0209dfd93" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b3ed7e7e-9fe8-4be6-9cf1-d63247a4e06b','1956eea5-d34d-4ac6-b7d0-a1c0209dfd93')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b3ed7e7e-9fe8-4be6-9cf1-d63247a4e06b','1956eea5-d34d-4ac6-b7d0-a1c0209dfd93')">Open In Tab</button></div><div id="0415a025-6bbd-4a4c-adf6-b5efcbc0f2cb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1941,7 +1942,7 @@ hallucinated token is rarely what you want. Use
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

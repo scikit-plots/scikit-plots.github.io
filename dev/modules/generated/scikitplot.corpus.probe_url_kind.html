@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:08:03Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:13:58Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.probe_url_kind","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>probe_url_kind<a class="headerlink" href="#probe-url-kind" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.probe_url_kind">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_url_handler.py#L493"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">probe_url_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_ssrf_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_url_handler.py#L493"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.probe_url_kind" title="Link to this definition">#</a></dt>
 <dd><p>Probe a URL with a HEAD request to classify by Content-Type.</p>
 <p>Use this when <a class="reference internal" href="scikitplot.corpus.classify_url.html#scikitplot.corpus.classify_url" title="scikitplot.corpus.classify_url"><code class="xref py py-func docutils literal notranslate"><span class="pre">classify_url</span></code></a> returns <a class="reference internal" href="scikitplot.corpus.URLKind.html#scikitplot.corpus.URLKind.WEB_PAGE" title="scikitplot.corpus.URLKind.WEB_PAGE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">URLKind.WEB_PAGE</span></code></a>
 but the URL has no file extension in the path (e.g. API endpoints
@@ -1823,8 +1824,8 @@ handling).  It falls back to <code class="docutils literal notranslate"><span cl
 installed.  The SSRF check is applied before connecting when
 <code class="docutils literal notranslate"><span class="pre">skip_ssrf_check=False</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f54c9687-a693-4c9e-9087-7bcca73f6f33">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f54c9687-a693-4c9e-9087-7bcca73f6f33','94ff396c-9489-415f-9df4-4ad0409b27c8','a50a6852-1d3f-46b8-bbc3-41352b5ba7b3','../../lite/tree/../notebooks/index.html?path=69baffb9_5904_4e2b_879d_7fc67e87f545.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="48fe55c0-5004-466b-ac61-069ed5733ad7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('48fe55c0-5004-466b-ac61-069ed5733ad7','d8e4d3d5-1e2c-4e5e-a595-8e464d79618c','65cf7ccf-8337-48e5-821b-4205bac8e4b6','../../lite/tree/../notebooks/index.html?path=fc38f5e1_f63f_4445_b5e3_cd2fcb075aaf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An API endpoint returning a PDF with no extension in path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kind</span> <span class="o">=</span> <span class="n">probe_url_kind</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">"https://iris.who.int/server/api/core/bitstreams/abc/content"</span>
@@ -1841,7 +1842,7 @@ installed.  The SSRF check is applied before connecting when
 </div>
 </div>
 </div>
-<div id="a50a6852-1d3f-46b8-bbc3-41352b5ba7b3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f54c9687-a693-4c9e-9087-7bcca73f6f33','a50a6852-1d3f-46b8-bbc3-41352b5ba7b3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f54c9687-a693-4c9e-9087-7bcca73f6f33','a50a6852-1d3f-46b8-bbc3-41352b5ba7b3')">Open In Tab</button></div><div id="94ff396c-9489-415f-9df4-4ad0409b27c8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="65cf7ccf-8337-48e5-821b-4205bac8e4b6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('48fe55c0-5004-466b-ac61-069ed5733ad7','65cf7ccf-8337-48e5-821b-4205bac8e4b6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('48fe55c0-5004-466b-ac61-069ed5733ad7','65cf7ccf-8337-48e5-821b-4205bac8e4b6')">Open In Tab</button></div><div id="d8e4d3d5-1e2c-4e5e-a595-8e464d79618c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1959,7 +1960,7 @@ installed.  The SSRF check is applied before connecting when
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

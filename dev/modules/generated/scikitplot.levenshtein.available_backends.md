@@ -1,6 +1,6 @@
 # available\_backends[#](#available-backends "Link to this heading")
 
-scikitplot.levenshtein.available\_backends(**\***, **include\_gpl=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/levenshtein/_core.py#L194)[#](#scikitplot.levenshtein.available_backends "Link to this definition")
+scikitplot.levenshtein.available\_backends(**\***, **include\_gpl=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/levenshtein/_core.py#L194)[#](#scikitplot.levenshtein.available_backends "Link to this definition")
 :   Return backend capability records in preferred order.
 
     Parameters:

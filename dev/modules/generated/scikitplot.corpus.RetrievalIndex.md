@@ -1,6 +1,6 @@
 # RetrievalIndex[#](#retrievalindex "Link to this heading")
 
-class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L478)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
+class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_similarity.py#L478)[#](#scikitplot.corpus.RetrievalIndex "Link to this definition")
 :   Multi-mode similarity index over `CorpusDocument` collections.
 
     Parameters:
@@ -58,7 +58,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filt
                 index is built. A backend object without `provenance()` (one
                 assigned directly rather than selected) requested itself.
 
-    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L542)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
+    build(**documents**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_similarity.py#L542)[#](#scikitplot.corpus.RetrievalIndex.build "Link to this definition")
     :   Build the index from `CorpusDocument` instances.
 
         Parameters:
@@ -76,7 +76,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filt
         Return type:
         :   None
 
-    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L1328)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
+    static check\_score\_fusion\_allowed(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_similarity.py#L1328)[#](#scikitplot.corpus.RetrievalIndex.check_score_fusion_allowed "Link to this definition")
     :   Whether score-space fusion is defensible for these hits.
 
         Parameters:
@@ -140,7 +140,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filt
     property n\_documents: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.RetrievalIndex.n_documents "Link to this definition")
     :   Number of indexed documents.
 
-    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L1517)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
+    query(**vector**, **k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_similarity.py#L1517)[#](#scikitplot.corpus.RetrievalIndex.query "Link to this definition")
     :   Vector-level ANN query returning `(doc_id, score)` pairs.
 
         This is the vector-index seam consumed by
@@ -172,7 +172,7 @@ class scikitplot.corpus.RetrievalIndex(**config=None**, **\***, **security\_filt
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]]
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_similarity.py#L828)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_similarity.py#L828)[#](#scikitplot.corpus.RetrievalIndex.search "Link to this definition")
     :   Search the index.
 
         Parameters:

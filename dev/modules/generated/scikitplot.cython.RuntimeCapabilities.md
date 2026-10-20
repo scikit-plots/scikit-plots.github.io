@@ -1,6 +1,6 @@
 # RuntimeCapabilities[#](#runtimecapabilities "Link to this heading")
 
-class scikitplot.cython.RuntimeCapabilities(**gil\_enabled**, **free\_threaded\_build**, **in\_main\_interpreter**, **supports\_unload**, **supports\_fork\_after\_load**, **platform**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_profiles.py#L421)[#](#scikitplot.cython.RuntimeCapabilities "Link to this definition")
+class scikitplot.cython.RuntimeCapabilities(**gil\_enabled**, **free\_threaded\_build**, **in\_main\_interpreter**, **supports\_unload**, **supports\_fork\_after\_load**, **platform**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_profiles.py#L421)[#](#scikitplot.cython.RuntimeCapabilities "Link to this definition")
 :   Declared contract for native-extension runtime lifecycle (CYTHON-ABI-001).
 
     Native extensions cannot generally be unloaded safely, and behavior under a
@@ -52,13 +52,13 @@ class scikitplot.cython.RuntimeCapabilities(**gil\_enabled**, **free\_threaded\_
     count(**value**, **/**)[#](#scikitplot.cython.RuntimeCapabilities.count "Link to this definition")
     :   Return number of occurrences of value.
 
-    free\_threaded\_build: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.free_threaded_build "Link to this definition")
+    free\_threaded\_build: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.free_threaded_build "Link to this definition")
     :   Alias for field number 1
 
-    gil\_enabled: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.gil_enabled "Link to this definition")
+    gil\_enabled: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.gil_enabled "Link to this definition")
     :   Alias for field number 0
 
-    in\_main\_interpreter: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.in_main_interpreter "Link to this definition")
+    in\_main\_interpreter: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.in_main_interpreter "Link to this definition")
     :   Alias for field number 2
 
     index(**value**, **start=0**, **stop=sys.maxsize**, **/**)[#](#scikitplot.cython.RuntimeCapabilities.index "Link to this definition")
@@ -66,11 +66,11 @@ class scikitplot.cython.RuntimeCapabilities(**gil\_enabled**, **free\_threaded\_
 
         Raises ValueError if the value is not present.
 
-    platform: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.platform "Link to this definition")
+    platform: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.platform "Link to this definition")
     :   Alias for field number 5
 
-    supports\_fork\_after\_load: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.supports_fork_after_load "Link to this definition")
+    supports\_fork\_after\_load: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.supports_fork_after_load "Link to this definition")
     :   Alias for field number 4
 
-    supports\_unload: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.supports_unload "Link to this definition")
+    supports\_unload: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.RuntimeCapabilities.supports_unload "Link to this definition")
     :   Alias for field number 3

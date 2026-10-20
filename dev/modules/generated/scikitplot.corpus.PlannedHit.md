@@ -1,6 +1,6 @@
 # PlannedHit[#](#plannedhit "Link to this heading")
 
-class scikitplot.corpus.PlannedHit(**hit**, **score**, **key**, **fused\_score=None**, **rerank\_score=None**, **query\_ranks=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit "Link to this definition")
+class scikitplot.corpus.PlannedHit(**hit**, **score**, **key**, **fused\_score=None**, **rerank\_score=None**, **query\_ranks=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit "Link to this definition")
 :   One ranked hit of a plan, with the score of each stage that ranked it.
 
     Parameters:
@@ -41,12 +41,12 @@ class scikitplot.corpus.PlannedHit(**hit**, **score**, **key**, **fused\_score=N
 
     fused\_score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PlannedHit.fused_score "Link to this definition")
 
-    hit: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.hit "Link to this definition")
+    hit: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.hit "Link to this definition")
 
-    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.key "Link to this definition")
+    key: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.key "Link to this definition")
 
     query\_ranks: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)"), ...] = ()[#](#scikitplot.corpus.PlannedHit.query_ranks "Link to this definition")
 
     rerank\_score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PlannedHit.rerank_score "Link to this definition")
 
-    score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.score "Link to this definition")
+    score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L284)[#](#scikitplot.corpus.PlannedHit.score "Link to this definition")

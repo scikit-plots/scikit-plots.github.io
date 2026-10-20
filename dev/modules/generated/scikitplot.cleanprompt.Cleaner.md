@@ -1,6 +1,6 @@
 # Cleaner[#](#cleaner "Link to this heading")
 
-class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()**, **chunk\_chars=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L437)[#](#scikitplot.cleanprompt.Cleaner "Link to this definition")
+class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()**, **chunk\_chars=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L437)[#](#scikitplot.cleanprompt.Cleaner "Link to this definition")
 :   Apply one validated plan to text, files, folders and archives.
 
     Parameters:
@@ -62,13 +62,13 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
     catalog[#](#scikitplot.cleanprompt.Cleaner.catalog "Link to this definition")
     :   !! processed by numpydoc !!
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L644)[#](#scikitplot.cleanprompt.Cleaner.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L644)[#](#scikitplot.cleanprompt.Cleaner.clear "Link to this definition")
     :   Drop every value this cleaner holds. It cannot be used afterwards.
 
         Return type:
         :   None
 
-    decode(**text**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1754)[#](#scikitplot.cleanprompt.Cleaner.decode "Link to this definition")
+    decode(**text**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1754)[#](#scikitplot.cleanprompt.Cleaner.decode "Link to this definition")
     :   Put values back into `text`.
 
         Parameters:
@@ -89,7 +89,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    decode\_archive(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1797)[#](#scikitplot.cleanprompt.Cleaner.decode_archive "Link to this definition")
+    decode\_archive(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1797)[#](#scikitplot.cleanprompt.Cleaner.decode_archive "Link to this definition")
     :   Restore every member of an encoded zip into a new zip.
 
         Parameters:
@@ -114,7 +114,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         > `restore_archive`
         :   The same, given a vault instead of a cleaner.
 
-    decode\_report(**text**, **strict=False**, **kinds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1621)[#](#scikitplot.cleanprompt.Cleaner.decode_report "Link to this definition")
+    decode\_report(**text**, **strict=False**, **kinds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1621)[#](#scikitplot.cleanprompt.Cleaner.decode_report "Link to this definition")
     :   Put values back into `text` and say what was and was not restored.
 
         Parameters:
@@ -140,7 +140,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   **RestorationResult**
 
-    decode\_tree(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1772)[#](#scikitplot.cleanprompt.Cleaner.decode_tree "Link to this definition")
+    decode\_tree(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1772)[#](#scikitplot.cleanprompt.Cleaner.decode_tree "Link to this definition")
     :   Restore every UTF-8 file under a folder into a mirror folder.
 
         Parameters:
@@ -165,7 +165,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         > `restore_tree`
         :   The same, given a vault instead of a cleaner.
 
-    encode\_archive(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1505)[#](#scikitplot.cleanprompt.Cleaner.encode_archive "Link to this definition")
+    encode\_archive(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1505)[#](#scikitplot.cleanprompt.Cleaner.encode_archive "Link to this definition")
     :   Encode every readable member of a zip into a new zip.
 
         Parameters:
@@ -198,7 +198,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         cleaners gives the same bytes. It is written to a temporary name and
         moved into place, so a failure never leaves half an archive.
 
-    encode\_bytes(**data**, **name**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1203)[#](#scikitplot.cleanprompt.Cleaner.encode_bytes "Link to this definition")
+    encode\_bytes(**data**, **name**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1203)[#](#scikitplot.cleanprompt.Cleaner.encode_bytes "Link to this definition")
     :   Encode a file’s bytes, choosing the format by name unless given.
 
         Parameters:
@@ -228,7 +228,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [**Encoded**](scikitplot.cleanprompt.Encoded.html#scikitplot.cleanprompt.Encoded "scikitplot.cleanprompt._runtime.Encoded")
 
-    encode\_file(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1264)[#](#scikitplot.cleanprompt.Cleaner.encode_file "Link to this definition")
+    encode\_file(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1264)[#](#scikitplot.cleanprompt.Cleaner.encode_file "Link to this definition")
     :   Encode one file from disk.
 
         Parameters:
@@ -253,7 +253,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [**Encoded**](scikitplot.cleanprompt.Encoded.html#scikitplot.cleanprompt.Encoded "scikitplot.cleanprompt._runtime.Encoded")
 
-    encode\_files(**paths**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1306)[#](#scikitplot.cleanprompt.Cleaner.encode_files "Link to this definition")
+    encode\_files(**paths**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1306)[#](#scikitplot.cleanprompt.Cleaner.encode_files "Link to this definition")
     :   Encode several files into the one shared vault, in the order given.
 
         Parameters:
@@ -274,7 +274,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Encoded**](scikitplot.cleanprompt.Encoded.html#scikitplot.cleanprompt.Encoded "scikitplot.cleanprompt._runtime.Encoded")]
 
-    encode\_text(**text**, **format='text'**, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L796)[#](#scikitplot.cleanprompt.Cleaner.encode_text "Link to this definition")
+    encode\_text(**text**, **format='text'**, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L796)[#](#scikitplot.cleanprompt.Cleaner.encode_text "Link to this definition")
     :   Encode a string read as one format.
 
         Parameters:
@@ -308,7 +308,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [**Encoded**](scikitplot.cleanprompt.Encoded.html#scikitplot.cleanprompt.Encoded "scikitplot.cleanprompt._runtime.Encoded")
 
-    encode\_tree(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1331)[#](#scikitplot.cleanprompt.Cleaner.encode_tree "Link to this definition")
+    encode\_tree(**source**, **target**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1331)[#](#scikitplot.cleanprompt.Cleaner.encode_tree "Link to this definition")
     :   Encode every readable file under a folder into a mirror folder.
 
         Parameters:
@@ -340,7 +340,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         so wrap it in `list` to run it all. A file that is skipped or
         refused is not written, and says why.
 
-    fingerprint()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L618)[#](#scikitplot.cleanprompt.Cleaner.fingerprint "Link to this definition")
+    fingerprint()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L618)[#](#scikitplot.cleanprompt.Cleaner.fingerprint "Link to this definition")
     :   Return the plan’s content fingerprint.
 
         Returns:
@@ -356,7 +356,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Type:
         :   Tuple of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    handle()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L668)[#](#scikitplot.cleanprompt.Cleaner.handle "Link to this definition")
+    handle()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L668)[#](#scikitplot.cleanprompt.Cleaner.handle "Link to this definition")
     :   Return a [`Handle`](scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt.Handle") over every value removed.
 
         Returns:
@@ -367,7 +367,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [**Handle**](scikitplot.cleanprompt.Handle.html#scikitplot.cleanprompt.Handle "scikitplot.cleanprompt._api.Handle")
 
-    kinds\_in(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1720)[#](#scikitplot.cleanprompt.Cleaner.kinds_in "Link to this definition")
+    kinds\_in(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1720)[#](#scikitplot.cleanprompt.Cleaner.kinds_in "Link to this definition")
     :   Return the kinds of held values `text` refers to, sorted.
 
         Parameters:
@@ -392,7 +392,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         uses, so “would this text receive a value of kind K” and “does
         decoding put one there” cannot disagree (`CP-073`).
 
-    leaks(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L685)[#](#scikitplot.cleanprompt.Cleaner.leaks "Link to this definition")
+    leaks(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L685)[#](#scikitplot.cleanprompt.Cleaner.leaks "Link to this definition")
     :   Return the kinds of held values that still occur in `text`.
 
         Parameters:
@@ -431,7 +431,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Type:
         :   [RedactionPolicy](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy")
 
-    survey\_tree(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L1365)[#](#scikitplot.cleanprompt.Cleaner.survey_tree "Link to this definition")
+    survey\_tree(**source**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L1365)[#](#scikitplot.cleanprompt.Cleaner.survey_tree "Link to this definition")
     :   Report what encoding a folder would do, writing nothing.
 
         Parameters:
@@ -455,7 +455,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         of each kind each holds. No file is written and this cleaner’s vault
         is unchanged — the survey runs on a scratch copy of the plan.
 
-    text\_format(**format**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L765)[#](#scikitplot.cleanprompt.Cleaner.text_format "Link to this definition")
+    text\_format(**format**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L765)[#](#scikitplot.cleanprompt.Cleaner.text_format "Link to this definition")
     :   Return the name of the text format `format` resolves to here.
 
         Parameters:
@@ -476,7 +476,7 @@ class scikitplot.cleanprompt.Cleaner(**plan=None**, **limits=None**, **prior=()*
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    vault()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_runtime.py#L654)[#](#scikitplot.cleanprompt.Cleaner.vault "Link to this definition")
+    vault()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_runtime.py#L654)[#](#scikitplot.cleanprompt.Cleaner.vault "Link to this definition")
     :   Return a vault of every value removed so far.
 
         Returns:

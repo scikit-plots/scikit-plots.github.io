@@ -731,7 +731,7 @@ variant fingerprints: ['3e79673a12b5ff2d0b43b1d537332a1c9f1c89c699f4ba98c4085a18
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.037 seconds)
+****Total running time of the script:**** (0 minutes 0.025 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)
 

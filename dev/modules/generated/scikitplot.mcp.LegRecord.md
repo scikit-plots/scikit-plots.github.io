@@ -1,6 +1,6 @@
 # LegRecord[#](#legrecord "Link to this heading")
 
-class scikitplot.mcp.LegRecord(**leg**, **status**, **hit\_count=0**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_outcome.py#L75)[#](#scikitplot.mcp.LegRecord "Link to this definition")
+class scikitplot.mcp.LegRecord(**leg**, **status**, **hit\_count=0**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L75)[#](#scikitplot.mcp.LegRecord "Link to this definition")
 :   How one retrieval leg fared.
 
     Parameters:
@@ -36,7 +36,7 @@ class scikitplot.mcp.LegRecord(**leg**, **status**, **hit\_count=0**, **error=No
     [`scikitplot.corpus.LegOutcome`](scikitplot.corpus.LegOutcome.html#scikitplot.corpus.LegOutcome "scikitplot.corpus.LegOutcome"): an unexplained degradation is as
     unhelpful as no degradation signal at all.
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_outcome.py#L128)[#](#scikitplot.mcp.LegRecord.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L128)[#](#scikitplot.mcp.LegRecord.as_dict "Link to this definition")
     :   Return a JSON-safe mapping describing this leg.
 
         Returns:

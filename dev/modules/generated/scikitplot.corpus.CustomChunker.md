@@ -1,6 +1,6 @@
 # CustomChunker[#](#customchunker "Link to this heading")
 
-class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_custom_hooks.py#L132)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
+class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_custom_hooks.py#L132)[#](#scikitplot.corpus.CustomChunker "Link to this definition")
 :   Wrap any callable as a [`ChunkerBase`](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase").
 
     The caller provides a `chunk_fn` that accepts `(text: str,
@@ -83,7 +83,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
     ```
     Go BackOpen In Tab
 
-    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_base.py#L386)[#](#scikitplot.corpus.CustomChunker.assert_modality "Link to this definition")
+    assert\_modality(**doc\_modality**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_base.py#L386)[#](#scikitplot.corpus.CustomChunker.assert_modality "Link to this definition")
     :   Raise `ValueError` if this chunker cannot handle **doc\_modality**.
 
         Parameters:
@@ -115,7 +115,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
 
         ```
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_custom_hooks.py#L236)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_custom_hooks.py#L236)[#](#scikitplot.corpus.CustomChunker.chunk "Link to this definition")
     :   Delegate to the user-supplied `chunk_fn`.
 
         Parameters:
@@ -143,7 +143,7 @@ class scikitplot.corpus.CustomChunker(**chunk\_fn**, **\***, **name=None**)[[sou
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
+    strategy: [ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomChunker.strategy "Link to this definition")
     :   Identifies which [`ChunkingStrategy`](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")
         this implementation provides. ****Must**** be defined on every concrete subclass.
 

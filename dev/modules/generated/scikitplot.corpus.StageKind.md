@@ -1,21 +1,21 @@
 # StageKind[#](#stagekind "Link to this heading")
 
-class scikitplot.corpus.StageKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L98)[#](#scikitplot.corpus.StageKind "Link to this definition")
+class scikitplot.corpus.StageKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L98)[#](#scikitplot.corpus.StageKind "Link to this definition")
 :   One stage of a plan, in execution order.
 
-    COMPRESS = 'compress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.COMPRESS "Link to this definition")
+    COMPRESS = 'compress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.COMPRESS "Link to this definition")
     :   Spans of each hit’s text kept as context.
 
-    FUSE = 'fuse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.FUSE "Link to this definition")
+    FUSE = 'fuse'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.FUSE "Link to this definition")
     :   The queries’ rankings fused into one (only with two or more queries).
 
-    RERANK = 'rerank'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.RERANK "Link to this definition")
+    RERANK = 'rerank'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.RERANK "Link to this definition")
     :   New scores for the first `rerank_depth` hits.
 
-    RETRIEVE = 'retrieve'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.RETRIEVE "Link to this definition")
+    RETRIEVE = 'retrieve'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.RETRIEVE "Link to this definition")
     :   `index.search` for each query.
 
-    TRANSFORM = 'transform'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.TRANSFORM "Link to this definition")
+    TRANSFORM = 'transform'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L)[#](#scikitplot.corpus.StageKind.TRANSFORM "Link to this definition")
     :   Query to one or more queries (rewrite, multi-query, decomposition).
 
     capitalize(**/**)[#](#scikitplot.corpus.StageKind.capitalize "Link to this definition")

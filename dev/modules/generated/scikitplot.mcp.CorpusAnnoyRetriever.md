@@ -1,6 +1,6 @@
 # CorpusAnnoyRetriever[#](#corpusannoyretriever "Link to this heading")
 
-class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L440)[#](#scikitplot.mcp.CorpusAnnoyRetriever "Link to this definition")
+class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_corpus_annoy.py#L440)[#](#scikitplot.mcp.CorpusAnnoyRetriever "Link to this definition")
 :   Docs dense retriever backed by an embedder + a vector index + a document lookup.
 
     Parameters:
@@ -26,7 +26,7 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
     Read-only. Retrieved text is untrusted and is sanitised downstream by
     `build_search_docs_result`.
 
-    classmethod from\_corpus\_annoy(**docs\_path**, **\***, **metric='angular'**, **n\_trees=10**, **embedding\_model='all-MiniLM-L6-v2'**, **embedder=None**, **backend='annoy'**, **strict=False**, **mode='semantic'**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L571)[#](#scikitplot.mcp.CorpusAnnoyRetriever.from_corpus_annoy "Link to this definition")
+    classmethod from\_corpus\_annoy(**docs\_path**, **\***, **metric='angular'**, **n\_trees=10**, **embedding\_model='all-MiniLM-L6-v2'**, **embedder=None**, **backend='annoy'**, **strict=False**, **mode='semantic'**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_corpus_annoy.py#L571)[#](#scikitplot.mcp.CorpusAnnoyRetriever.from_corpus_annoy "Link to this definition")
     :   Build the real retriever from a docs directory (import-guarded).
 
         Wires [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") end to end. A single
@@ -110,7 +110,7 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
         Return type:
         :   [**DocsRetriever**](scikitplot.mcp.DocsRetriever.html#scikitplot.mcp.DocsRetriever "scikitplot.mcp._core.DocsRetriever")
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L474)[#](#scikitplot.mcp.CorpusAnnoyRetriever.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_corpus_annoy.py#L474)[#](#scikitplot.mcp.CorpusAnnoyRetriever.get "Link to this definition")
     :   Return one indexed document by stable id for the MCP resource surface.
 
         Parameters:
@@ -119,7 +119,7 @@ class scikitplot.mcp.CorpusAnnoyRetriever(**embedder**, **index**, **doc\_lookup
         Return type:
         :   [**RetrievedChunk**](scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp._core.RetrievedChunk") | None
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_corpus_annoy.py#L496)[#](#scikitplot.mcp.CorpusAnnoyRetriever.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_corpus_annoy.py#L496)[#](#scikitplot.mcp.CorpusAnnoyRetriever.search "Link to this definition")
     :   Embed `query`, ANN-search, and map hits to [`RetrievedChunk`](scikitplot.mcp.RetrievedChunk.html#scikitplot.mcp.RetrievedChunk "scikitplot.mcp.RetrievedChunk").
 
         Parameters:

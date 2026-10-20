@@ -1,6 +1,6 @@
 # AnnoyBackend[#](#annoybackend "Link to this heading")
 
-class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10**, **search\_k=-1**, **impl='auto'**, **dtype=None**, **index\_dtype=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L527)[#](#scikitplot.corpus.AnnoyBackend "Link to this definition")
+class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10**, **search\_k=-1**, **impl='auto'**, **dtype=None**, **index\_dtype=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L527)[#](#scikitplot.corpus.AnnoyBackend "Link to this definition")
 :   ANN backend over a scikit-plots Annoy `Index` (default backend).
 
     Works with ****both**** shipped Annoy index classes, which expose the same
@@ -66,7 +66,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
     property allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.AnnoyBackend.allow_fallback "Link to this definition")
     :   Whether a fallback was allowed (`False` raises instead).
 
-    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L687)[#](#scikitplot.corpus.AnnoyBackend.build "Link to this definition")
+    build(**embeddings**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L687)[#](#scikitplot.corpus.AnnoyBackend.build "Link to this definition")
     :   Build the index from an `(n_docs, dim)` embedding matrix.
 
         Parameters:
@@ -81,7 +81,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
         Return type:
         :   None
 
-    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L403)[#](#scikitplot.corpus.AnnoyBackend.capabilities "Link to this definition")
+    capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L403)[#](#scikitplot.corpus.AnnoyBackend.capabilities "Link to this definition")
     :   Return every declared capability as a mapping.
 
         Returns:
@@ -114,13 +114,13 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
         The selection reason (`"<backend>_broken"`) first, then the
         binding’s (`"option_unsupported"`, `"<binding>_unavailable"`).
 
-    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L316)[#](#scikitplot.corpus.AnnoyBackend.is_available "Link to this definition")
+    classmethod is\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L316)[#](#scikitplot.corpus.AnnoyBackend.is_available "Link to this definition")
     :   Return whether this backend can be used now: installed and loading.
 
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    classmethod is\_installed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L641)[#](#scikitplot.corpus.AnnoyBackend.is_installed "Link to this definition")
+    classmethod is\_installed()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L641)[#](#scikitplot.corpus.AnnoyBackend.is_installed "Link to this definition")
     :   Return whether `scikitplot.annoy` can be found, importing nothing.
 
         Notes
@@ -132,7 +132,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    classmethod load\_error()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L658)[#](#scikitplot.corpus.AnnoyBackend.load_error "Link to this definition")
+    classmethod load\_error()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L658)[#](#scikitplot.corpus.AnnoyBackend.load_error "Link to this definition")
     :   Return why no Annoy binding loads, or `None` when one does.
 
         Notes
@@ -159,7 +159,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
 
     probe\_modules: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...]] = ('scikitplot.annoy',)[#](#scikitplot.corpus.AnnoyBackend.probe_modules "Link to this definition")
 
-    provenance()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L765)[#](#scikitplot.corpus.AnnoyBackend.provenance "Link to this definition")
+    provenance()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L765)[#](#scikitplot.corpus.AnnoyBackend.provenance "Link to this definition")
     :   Return [`VectorIndexBackend.provenance`](scikitplot.corpus.VectorIndexBackend.html#scikitplot.corpus.VectorIndexBackend.provenance "scikitplot.corpus.VectorIndexBackend.provenance") plus the binding.
 
         Returns:
@@ -170,7 +170,7 @@ class scikitplot.corpus.AnnoyBackend(**\***, **metric='angular'**, **n\_trees=10
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_backends.py#L726)[#](#scikitplot.corpus.AnnoyBackend.query "Link to this definition")
+    query(**vector**, **k**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_backends.py#L726)[#](#scikitplot.corpus.AnnoyBackend.query "Link to this definition")
     :   Return up to `k` `(row_index, cosine_score)` pairs.
 
         Results are sorted by descending `cosine_score` in `[-1, 1]` with

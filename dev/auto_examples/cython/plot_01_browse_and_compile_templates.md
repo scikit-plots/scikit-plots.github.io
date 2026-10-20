@@ -175,12 +175,12 @@ def square(int n):
 
 
 BuildResult:
-  module_name: scikitplot_cython_26d569ca915842dc
-  key        : 26d569ca915842dce304089cb65edbb5c68250b9669cb1096934bb7eb005e16d
-  artifact   : /home/circleci/.cache/scikitplot/cython/26d569ca915842dce304089cb65edbb5c68250b9669cb1096934bb7eb005e16d/scikitplot_cython_26d569ca915842dc.cpython-312-x86_64-linux-gnu.so
+  module_name: scikitplot_cython_6424d2e0d8d15ade
+  key        : 6424d2e0d8d15ade4b2b6471e0302c24dea5e1057b8e5e142e115da0fc7d2ff5
+  artifact   : /home/circleci/.cache/scikitplot/cython/6424d2e0d8d15ade4b2b6471e0302c24dea5e1057b8e5e142e115da0fc7d2ff5/scikitplot_cython_6424d2e0d8d15ade.cpython-312-x86_64-linux-gnu.so
   used_cache : False
 
-Imported module: scikitplot_cython_26d569ca915842dc
+Imported module: scikitplot_cython_6424d2e0d8d15ade
 Public names: ['square']
 
 No demo_calls declared in template metadata; skipping execution.
@@ -189,7 +189,7 @@ No demo_calls declared in template metadata; skipping execution.
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.656 seconds)
+****Total running time of the script:**** (0 minutes 0.641 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_01_browse_and_compile_templates.ipynb)
 

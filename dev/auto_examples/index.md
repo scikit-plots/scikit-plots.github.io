@@ -1,6 +1,6 @@
 🤓 Scikit-plots Examples & Tutorials
   
- 0.5.dev0+git.20261017.ba33a1a - October 17, 2026 23:59 UTC
+ 0.5.dev0+git.20261020.493b8af - October 20, 2026 08:06 UTC
 
 # Examples[#](#examples "Link to this heading")
 
@@ -959,6 +959,21 @@ plot\_pca\_2d\_projection with examples![](../_images/sphx_glr_plot_pca_componen
 [plot\_pca\_component\_variance with examples](decomposition/plot_pca_component_variance_script.html)
 
 plot\_pca\_component\_variance with examples
+
+# Feature Selection[#](#feature-selection "Link to this heading")
+
+## Feature profiling, lineage and drift[#](#feature-profiling-lineage-and-drift "Link to this heading")
+
+Examples related to the [`feature_selection`](../apis/scikitplot.feature_selection.html#module-scikitplot.feature_selection "scikitplot.feature_selection") submodule with
+e.g., `profile_features`,
+`trace_pipeline` and
+`ReferenceProfile`.
+
+![](../_images/sphx_glr_plot_feature_profiling_and_lineage_thumb.png)
+
+[Profile, route, trace and monitor wide tables](feature_selection/plot_feature_profiling_and_lineage.html)
+
+Profile, route, trace and monitor wide tables
 
 ## Impute[#](#impute "Link to this heading")
 

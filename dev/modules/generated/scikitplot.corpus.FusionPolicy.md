@@ -1,6 +1,6 @@
 # FusionPolicy[#](#fusionpolicy "Link to this heading")
 
-class scikitplot.corpus.FusionPolicy(**k=60**, **weights=()**, **default\_weight=1.0**, **top\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_fusion.py#L160)[#](#scikitplot.corpus.FusionPolicy "Link to this definition")
+class scikitplot.corpus.FusionPolicy(**k=60**, **weights=()**, **default\_weight=1.0**, **top\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_fusion.py#L160)[#](#scikitplot.corpus.FusionPolicy "Link to this definition")
 :   Weighted reciprocal rank fusion with one tie-break and returned contributions.
 
     Parameters:
@@ -46,7 +46,7 @@ class scikitplot.corpus.FusionPolicy(**k=60**, **weights=()**, **default\_weight
 
     default\_weight: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 1.0[#](#scikitplot.corpus.FusionPolicy.default_weight "Link to this definition")
 
-    classmethod from\_alpha(**alpha**, **\***, **k=60**, **top\_k=None**, **lexical='lexical'**, **dense='dense'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_fusion.py#L230)[#](#scikitplot.corpus.FusionPolicy.from_alpha "Link to this definition")
+    classmethod from\_alpha(**alpha**, **\***, **k=60**, **top\_k=None**, **lexical='lexical'**, **dense='dense'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_fusion.py#L230)[#](#scikitplot.corpus.FusionPolicy.from_alpha "Link to this definition")
     :   Return the two-leg policy that `alpha` is shorthand for.
 
         Parameters:
@@ -84,7 +84,7 @@ class scikitplot.corpus.FusionPolicy(**k=60**, **weights=()**, **default\_weight
         Return type:
         :   [**FusionPolicy**](#scikitplot.corpus.FusionPolicy "scikitplot.corpus._fusion.FusionPolicy")
 
-    fuse(**legs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_fusion.py#L281)[#](#scikitplot.corpus.FusionPolicy.fuse "Link to this definition")
+    fuse(**legs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_fusion.py#L281)[#](#scikitplot.corpus.FusionPolicy.fuse "Link to this definition")
     :   Fuse ranked legs into one ranking.
 
         Parameters:
@@ -113,7 +113,7 @@ class scikitplot.corpus.FusionPolicy(**k=60**, **weights=()**, **default\_weight
 
     top\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.FusionPolicy.top_k "Link to this definition")
 
-    weight(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_fusion.py#L277)[#](#scikitplot.corpus.FusionPolicy.weight "Link to this definition")
+    weight(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_fusion.py#L277)[#](#scikitplot.corpus.FusionPolicy.weight "Link to this definition")
     :   Return the weight of the leg named `leg`.
 
         Parameters:

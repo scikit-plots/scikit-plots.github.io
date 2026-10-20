@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:06:27Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:12:33Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1375,6 +1375,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1758,7 +1759,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>DEFAULT_POLICY<a class="headerlink" href="#default-policy" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.DEFAULT_POLICY">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">RedactionPolicy(kinds=None,</span> <span class="pre">allow=(),</span> <span class="pre">tag_style=TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None),</span> <span class="pre">overlap=&lt;OverlapStrategy.LONGEST_WINS:</span> <span class="pre">'LONGEST_WINS'&gt;,</span> <span class="pre">limits=Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096),</span> <span class="pre">case_insensitive=False,</span> <span class="pre">min_confidence=0.0,</span> <span class="pre">preserve_placeholders=True)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.DEFAULT_POLICY" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_POLICY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">RedactionPolicy(kinds=None,</span> <span class="pre">allow=(),</span> <span class="pre">tag_style=TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None),</span> <span class="pre">overlap=&lt;OverlapStrategy.LONGEST_WINS:</span> <span class="pre">'LONGEST_WINS'&gt;,</span> <span class="pre">limits=Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096),</span> <span class="pre">case_insensitive=False,</span> <span class="pre">min_confidence=0.0,</span> <span class="pre">preserve_placeholders=True)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.DEFAULT_POLICY" title="Link to this definition">#</a></dt>
 <dd><p>Complete, declarative configuration for a redaction pass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1807,8 +1808,8 @@ already-redacted text back through the pipeline lets a detector tag the
 inside of a placeholder and destroy it — which is the reproduced upstream
 defect <code class="docutils literal notranslate"><span class="pre">CP-006</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="cd58f075-92ea-4642-abac-a277460c2535">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cd58f075-92ea-4642-abac-a277460c2535','651f2b1b-85e1-4058-bc69-e295e6b5caa0','c26569a7-7745-4e98-8fb9-761c86652aaa','../../lite/tree/../notebooks/index.html?path=1e47ad6f_aae2_479e_9c1b_42ed654b0bd1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="84a52d92-44ed-4057-82a3-de9ccc847628">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('84a52d92-44ed-4057-82a3-de9ccc847628','4d6d1833-cc7d-4df9-bf7c-741d3f9fba0f','2854dde5-6a17-4aa7-aa19-51913f9d052d','../../lite/tree/../notebooks/index.html?path=5fcb3b96_3fc7_4dbf_a6fd_5964eef2d070.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span> <span class="o">=</span> <span class="n">DEFAULT_POLICY</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">case_insensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span><span class="o">.</span><span class="n">case_insensitive</span>
 <span class="go">True</span>
@@ -1820,7 +1821,7 @@ defect <code class="docutils literal notranslate"><span class="pre">CP-006</span
 </div>
 </div>
 </div>
-<div id="c26569a7-7745-4e98-8fb9-761c86652aaa" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cd58f075-92ea-4642-abac-a277460c2535','c26569a7-7745-4e98-8fb9-761c86652aaa')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cd58f075-92ea-4642-abac-a277460c2535','c26569a7-7745-4e98-8fb9-761c86652aaa')">Open In Tab</button></div><div id="651f2b1b-85e1-4058-bc69-e295e6b5caa0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="2854dde5-6a17-4aa7-aa19-51913f9d052d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('84a52d92-44ed-4057-82a3-de9ccc847628','2854dde5-6a17-4aa7-aa19-51913f9d052d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('84a52d92-44ed-4057-82a3-de9ccc847628','2854dde5-6a17-4aa7-aa19-51913f9d052d')">Open In Tab</button></div><div id="4d6d1833-cc7d-4df9-bf7c-741d3f9fba0f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1951,7 +1952,7 @@ defect <code class="docutils literal notranslate"><span class="pre">CP-006</span
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

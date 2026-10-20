@@ -1,0 +1,166 @@
+:html_theme.sidebar_secondary.remove:
+
+.. _feature_selection_ref:
+
+scikitplot.feature_selection
+============================
+
+.. automodule:: scikitplot.feature_selection
+
+**User guide.** See the :ref:`feature_selection-index` section for further details.
+
+.. _feature_selection_ref-profiling-and-the-fitted-schema:
+
+Profiling and the fitted schema
+-------------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  profile_features  
+  FeatureSchema  
+  FeatureSpec  
+  FeatureStats
+
+.. _feature_selection_ref-policy-and-configuration:
+
+Policy and configuration
+------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  FeaturePolicy  
+  ColumnRule  
+  AssessmentSpec  
+  BinningPolicy  
+  DriftPolicy  
+  DEFAULT_ASSESSMENTS  
+  load_policy  
+  dump_policy
+
+.. _feature_selection_ref-assessments:
+
+Assessments
+-----------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  Assessment  
+  AssessmentContext  
+  AssessmentOutcome  
+  AssessmentProvider  
+  AssessmentRegistry  
+  default_registry  
+  register_assessment  
+  list_assessment_providers
+
+.. _feature_selection_ref-binning:
+
+Binning
+-------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  BinningRecommendation  
+  knuth_bin_count  
+  make_kbins_discretizer
+
+.. _feature_selection_ref-scikit-learn-estimators:
+
+Scikit-learn estimators
+-----------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: FeatureProfiler FeatureFilter FeatureRenamer
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  FeatureProfiler  
+  FeatureFilter  
+  FeatureColumnSelector  
+  FeatureRenamer  
+  RenamePlan
+
+.. _feature_selection_ref-pipeline-lineage:
+
+Pipeline lineage
+----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  trace_pipeline  
+  FeatureLineage  
+  FeatureMapping  
+  Attribution
+
+.. _feature_selection_ref-drift:
+
+Drift
+-----
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  ReferenceProfile  
+  FeatureReference
+
+.. _feature_selection_ref-analysis-routing:
+
+Analysis routing
+----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  analysis_plan  
+  recommend_treatments  
+  treatment_groups  
+  DEFAULT_ANALYSIS_RULES
+
+.. _feature_selection_ref-vocabularies-and-errors:
+
+Vocabularies and errors
+-----------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  AssessmentState  
+  DtypeFamily  
+  FeatureKind  
+  FeatureRole  
+  LineageQuality  
+  Relation  
+  FeatureSelectionError  
+  PolicyError  
+  SchemaMismatchError  
+  SchemaMismatchWarning  
+  IncompatibleSchemaError  
+  LineageError

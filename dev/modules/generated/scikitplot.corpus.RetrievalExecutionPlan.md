@@ -1,6 +1,6 @@
 # RetrievalExecutionPlan[#](#retrievalexecutionplan "Link to this heading")
 
-class scikitplot.corpus.RetrievalExecutionPlan(**retrieval=None**, **transform=None**, **keep\_original=True**, **max\_queries=8**, **fusion=None**, **rerank=None**, **rerank\_depth=None**, **compress=None**, **top\_k=None**, **budgets=()**, **deadline\_seconds=None**, **on\_error='degrade'**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L632)[#](#scikitplot.corpus.RetrievalExecutionPlan "Link to this definition")
+class scikitplot.corpus.RetrievalExecutionPlan(**retrieval=None**, **transform=None**, **keep\_original=True**, **max\_queries=8**, **fusion=None**, **rerank=None**, **rerank\_depth=None**, **compress=None**, **top\_k=None**, **budgets=()**, **deadline\_seconds=None**, **on\_error='degrade'**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L632)[#](#scikitplot.corpus.RetrievalExecutionPlan "Link to this definition")
 :   Run retrieval through typed, bounded stages.
 
     Parameters:
@@ -112,7 +112,7 @@ class scikitplot.corpus.RetrievalExecutionPlan(**retrieval=None**, **transform=N
     ```
     Go BackOpen In Tab
 
-    bind(**index**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L824)[#](#scikitplot.corpus.RetrievalExecutionPlan.bind "Link to this definition")
+    bind(**index**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L824)[#](#scikitplot.corpus.RetrievalExecutionPlan.bind "Link to this definition")
     :   Return `query -> self.run(index, query, **kwargs)`.
 
         Parameters:
@@ -133,7 +133,7 @@ class scikitplot.corpus.RetrievalExecutionPlan(**retrieval=None**, **transform=N
         Return type:
         :   [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [**ExecutionResult**](scikitplot.corpus.ExecutionResult.html#scikitplot.corpus.ExecutionResult "scikitplot.corpus._execution.ExecutionResult")]
 
-    budget(**stage**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L818)[#](#scikitplot.corpus.RetrievalExecutionPlan.budget "Link to this definition")
+    budget(**stage**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L818)[#](#scikitplot.corpus.RetrievalExecutionPlan.budget "Link to this definition")
     :   Return the budget of `stage`, or `None`.
 
         Parameters:
@@ -164,7 +164,7 @@ class scikitplot.corpus.RetrievalExecutionPlan(**retrieval=None**, **transform=N
 
     retrieval: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalExecutionPlan.retrieval "Link to this definition")
 
-    run(**index**, **query**, **\***, **query\_embedding=None**, **embed\_query=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_execution.py#L846)[#](#scikitplot.corpus.RetrievalExecutionPlan.run "Link to this definition")
+    run(**index**, **query**, **\***, **query\_embedding=None**, **embed\_query=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_execution.py#L846)[#](#scikitplot.corpus.RetrievalExecutionPlan.run "Link to this definition")
     :   Run the plan for `query`.
 
         Parameters:

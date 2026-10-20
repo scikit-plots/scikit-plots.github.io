@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261017.ba33a1a - October 17, 2026 23:59 UTC
+ 0.5.dev0+git.20261020.493b8af - October 20, 2026 08:06 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -71,6 +71,11 @@
 * [Decile analysis](decile/index.html)
   * [Which page should I use?](decile/index.html#which-page-should-i-use)
   * [Examples](decile/index.html#examples)
+**feature profiling, lineage and drift**
+
+* [Feature Selection](feature_selection/index.html)
+  * [Feature profiling, lineage and drift](feature_selection/index.html#feature-profiling-lineage-and-drift)
+  * [Examples](feature_selection/index.html#examples)
 **data imputation**
 
 * [Missing-value imputation](impute/index.html)

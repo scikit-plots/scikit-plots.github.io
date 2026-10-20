@@ -1,6 +1,6 @@
 # token\_f1\_score[#](#token-f1-score "Link to this heading")
 
-scikitplot.corpus.token\_f1\_score(**y\_true**, **y\_pred**, **\***, **normalize='squad'**, **tokenizer=None**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_text.py#L343)[#](#scikitplot.corpus.token_f1_score "Link to this definition")
+scikitplot.corpus.token\_f1\_score(**y\_true**, **y\_pred**, **\***, **normalize='squad'**, **tokenizer=None**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_text.py#L343)[#](#scikitplot.corpus.token_f1_score "Link to this definition")
 :   Token-overlap F1 between predicted and reference answers (SQuAD style).
 
     Parameters:

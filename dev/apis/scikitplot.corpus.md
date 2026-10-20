@@ -7,9 +7,10 @@ Tools for turning files, URLs, media, and text sources into canonical
 searched, adapted, and exported.
 
 > **See also**
-> * [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+> * <https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls>
 * [semantica-agi/semantica](https://github.com/semantica-agi/semantica)
-* <https://docs.getsemantica.ai/guides/distance-intelligence/#common-pitfalls>
+* [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)
+* [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk)
 
 ### Choose the API that matches the job[#](#choose-the-api-that-matches-the-job "Link to this heading")
 

@@ -1,6 +1,6 @@
 # DocIdScheme[#](#docidscheme "Link to this heading")
 
-class scikitplot.corpus.DocIdScheme(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_identity.py#L121)[#](#scikitplot.corpus.DocIdScheme "Link to this definition")
+class scikitplot.corpus.DocIdScheme(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L121)[#](#scikitplot.corpus.DocIdScheme "Link to this definition")
 :   How a corpus build names its documents.
 
     Notes
@@ -14,9 +14,9 @@ class scikitplot.corpus.DocIdScheme(**\*values**)[[source]](https://github.com/s
     36-character canonical text form. Time-ordered within one build process;
     a rebuild mints new ids. See the module notes for what that changes.
 
-    SHA256 = 'sha256'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_identity.py#L)[#](#scikitplot.corpus.DocIdScheme.SHA256 "Link to this definition")
+    SHA256 = 'sha256'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L)[#](#scikitplot.corpus.DocIdScheme.SHA256 "Link to this definition")
 
-    UUID7 = 'uuid7'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_identity.py#L)[#](#scikitplot.corpus.DocIdScheme.UUID7 "Link to this definition")
+    UUID7 = 'uuid7'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L)[#](#scikitplot.corpus.DocIdScheme.UUID7 "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.DocIdScheme.capitalize "Link to this definition")
     :   Return a capitalized version of the string.
@@ -32,7 +32,7 @@ class scikitplot.corpus.DocIdScheme(**\*values**)[[source]](https://github.com/s
 
         Padding is done using the specified fill character (default is a space).
 
-    classmethod coerce(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_identity.py#L140)[#](#scikitplot.corpus.DocIdScheme.coerce "Link to this definition")
+    classmethod coerce(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L140)[#](#scikitplot.corpus.DocIdScheme.coerce "Link to this definition")
     :   Return the member named by `value`.
 
         Parameters:

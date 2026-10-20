@@ -1,6 +1,6 @@
 # CacheError[#](#cacheerror "Link to this heading")
 
-exception scikitplot.corpus.CacheError[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_llm.py#L153)[#](#scikitplot.corpus.CacheError "Link to this definition")
+exception scikitplot.corpus.CacheError[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_llm.py#L153)[#](#scikitplot.corpus.CacheError "Link to this definition")
 :   The response cache failed (a configuration problem, not a model failure).
 
     Notes

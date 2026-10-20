@@ -311,9 +311,9 @@ p = sp.decileplot(
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: decile](../../_tags/plot-type-decile.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 3.038 seconds)
+****Total running time of the script:**** (0 minutes 2.680 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo20.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_decileplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo20.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_decileplot_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo19.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_decileplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo19.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_decileplot_script.ipynb)
 
 [`Download Jupyter notebook: plot_decileplot_script.ipynb`](../../_downloads/340d1be8e74b90f18131d89680f5492b/plot_decileplot_script.ipynb)
 

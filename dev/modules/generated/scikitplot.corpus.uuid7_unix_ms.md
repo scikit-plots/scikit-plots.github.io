@@ -1,6 +1,6 @@
 # uuid7\_unix\_ms[#](#uuid7-unix-ms "Link to this heading")
 
-scikitplot.corpus.uuid7\_unix\_ms(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_identity.py#L366)[#](#scikitplot.corpus.uuid7_unix_ms "Link to this definition")
+scikitplot.corpus.uuid7\_unix\_ms(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_identity.py#L366)[#](#scikitplot.corpus.uuid7_unix_ms "Link to this definition")
 :   Return the Unix time in milliseconds that a UUID version 7 carries.
 
     Parameters:

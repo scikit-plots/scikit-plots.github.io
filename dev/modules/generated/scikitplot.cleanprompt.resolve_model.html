@@ -21,7 +21,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:06:35Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:12:42Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.resolve_model","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1375,6 +1375,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1758,7 +1759,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>resolve_model<a class="headerlink" href="#resolve-model" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.resolve_model">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">resolve_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_languages.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.resolve_model" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">resolve_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explicit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_languages.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.resolve_model" title="Link to this definition">#</a></dt>
 <dd><p>Resolve a language and size into a spaCy model name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1802,8 +1803,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 substituted, and it recognises only broad categories. Treat thin results as
 a limitation of that model rather than as an empty document.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5c5d1de3-ebdf-4a46-a754-5ccb927d4ed6">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5c5d1de3-ebdf-4a46-a754-5ccb927d4ed6','47ad3e30-b176-4c81-a152-aa1900c382a6','5a53d7d1-f05a-4ae8-88d4-cdf0173bf8fc','../../lite/tree/../notebooks/index.html?path=34e5e2f9_a1d3_4ba7_9add_0d66df51f369.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fa54be63-ba8b-4cbe-8b69-9838cfff0bf3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fa54be63-ba8b-4cbe-8b69-9838cfff0bf3','cd78d021-e771-466a-94d3-8aad495e9788','78df6044-817e-4989-bcee-a3e104dfe071','../../lite/tree/../notebooks/index.html?path=9efcb5e2_5d0b_45e0_a98b_35a4a23f9e8a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_model</span><span class="p">(</span><span class="s2">"en"</span><span class="p">,</span> <span class="s2">"sm"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">'en_core_web_sm'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_model</span><span class="p">(</span><span class="s2">"de"</span><span class="p">,</span> <span class="s2">"lg"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1817,7 +1818,7 @@ a limitation of that model rather than as an empty document.</p>
 </div>
 </div>
 </div>
-<div id="5a53d7d1-f05a-4ae8-88d4-cdf0173bf8fc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5c5d1de3-ebdf-4a46-a754-5ccb927d4ed6','5a53d7d1-f05a-4ae8-88d4-cdf0173bf8fc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5c5d1de3-ebdf-4a46-a754-5ccb927d4ed6','5a53d7d1-f05a-4ae8-88d4-cdf0173bf8fc')">Open In Tab</button></div><div id="47ad3e30-b176-4c81-a152-aa1900c382a6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="78df6044-817e-4989-bcee-a3e104dfe071" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fa54be63-ba8b-4cbe-8b69-9838cfff0bf3','78df6044-817e-4989-bcee-a3e104dfe071')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fa54be63-ba8b-4cbe-8b69-9838cfff0bf3','78df6044-817e-4989-bcee-a3e104dfe071')">Open In Tab</button></div><div id="cd78d021-e771-466a-94d3-8aad495e9788" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <section id="gallery-examples">
 <h2>Gallery examples<a class="headerlink" href="#gallery-examples" title="Link to this heading">#</a></h2>
@@ -1942,7 +1943,7 @@ a limitation of that model rather than as an empty document.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

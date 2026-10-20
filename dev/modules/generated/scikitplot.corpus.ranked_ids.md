@@ -1,6 +1,6 @@
 # ranked\_ids[#](#ranked-ids "Link to this heading")
 
-scikitplot.corpus.ranked\_ids(**results**, **\***, **id\_getter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_inputs.py#L630)[#](#scikitplot.corpus.ranked_ids "Link to this definition")
+scikitplot.corpus.ranked\_ids(**results**, **\***, **id\_getter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_inputs.py#L630)[#](#scikitplot.corpus.ranked_ids "Link to this definition")
 :   Return the identifiers of retrieval results, in rank order.
 
     Parameters:

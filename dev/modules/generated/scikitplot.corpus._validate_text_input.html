@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:07:55Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:13:51Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus._validate_text_input","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>_validate_text_input<a class="headerlink" href="#validate-text-input" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus._validate_text_input">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">_validate_text_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_sentence.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._validate_text_input" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">_validate_text_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_sentence.py#L175"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus._validate_text_input" title="Link to this definition">#</a></dt>
 <dd><p>Validate chunker text input for NUL bytes and lone surrogates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1802,8 +1803,8 @@ uses Unicode Private Use Area codepoints that never appear in natural
 language.  This guard correctly ignores PUA codepoints because it only
 tests for NUL (<code class="docutils literal notranslate"><span class="pre">\x00</span></code>) and surrogates (U+D800-U+DFFF).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9888eff9-9472-4eff-96ad-ccdea886a45d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9888eff9-9472-4eff-96ad-ccdea886a45d','1903a323-0c61-47dd-b007-c72cdb6b3419','1377efbb-75f7-4039-876c-2ac011f377f3','../../lite/tree/../notebooks/index.html?path=e3da4ee4_225b_48b2_80af_17af539e5c69.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4025fa95-ad39-4b60-bd35-cd5c2a55b221">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4025fa95-ad39-4b60-bd35-cd5c2a55b221','f25ac032-007a-4f0d-b7ba-99f3555d9735','a183502f-6d7e-4cec-b579-217f42ff9882','../../lite/tree/../notebooks/index.html?path=8b0cf476_78dc_4158_9a30_fab5a5156152.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_validate_text_input</span><span class="p">(</span><span class="s2">"Hello world"</span><span class="p">,</span> <span class="s2">"SentenceChunker.chunk"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_validate_text_input</span><span class="p">(</span><span class="s2">"</span><span class="se">\x00</span><span class="s2">bad"</span><span class="p">,</span> <span class="s2">"SentenceChunker.chunk"</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -1813,7 +1814,7 @@ tests for NUL (<code class="docutils literal notranslate"><span class="pre">\x00
 </div>
 </div>
 </div>
-<div id="1377efbb-75f7-4039-876c-2ac011f377f3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9888eff9-9472-4eff-96ad-ccdea886a45d','1377efbb-75f7-4039-876c-2ac011f377f3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9888eff9-9472-4eff-96ad-ccdea886a45d','1377efbb-75f7-4039-876c-2ac011f377f3')">Open In Tab</button></div><div id="1903a323-0c61-47dd-b007-c72cdb6b3419" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="a183502f-6d7e-4cec-b579-217f42ff9882" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4025fa95-ad39-4b60-bd35-cd5c2a55b221','a183502f-6d7e-4cec-b579-217f42ff9882')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4025fa95-ad39-4b60-bd35-cd5c2a55b221','a183502f-6d7e-4cec-b579-217f42ff9882')">Open In Tab</button></div><div id="f25ac032-007a-4f0d-b7ba-99f3555d9735" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1931,7 +1932,7 @@ tests for NUL (<code class="docutils literal notranslate"><span class="pre">\x00
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # evaluate\_retrieval[#](#evaluate-retrieval "Link to this heading")
 
-scikitplot.corpus.evaluate\_retrieval(**retriever**, **queries**, **qrels**, **\***, **metrics=('hit\_rate@10', 'precision@10', 'recall@10', 'mrr@10', 'ndcg@10')**, **id\_getter=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **gain='linear'**, **on\_degraded='raise'**, **keep\_rankings=True**, **metadata=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_evaluate.py#L715)[#](#scikitplot.corpus.evaluate_retrieval "Link to this definition")
+scikitplot.corpus.evaluate\_retrieval(**retriever**, **queries**, **qrels**, **\***, **metrics=('hit\_rate@10', 'precision@10', 'recall@10', 'mrr@10', 'ndcg@10')**, **id\_getter=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **gain='linear'**, **on\_degraded='raise'**, **keep\_rankings=True**, **metadata=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_evaluate.py#L715)[#](#scikitplot.corpus.evaluate_retrieval "Link to this definition")
 :   Run `retriever` on every query and score the rankings.
 
     Parameters:

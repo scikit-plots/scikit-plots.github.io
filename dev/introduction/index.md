@@ -1,6 +1,6 @@
 🤗 Welcome to Scikit-plots 101
   
- 0.5.dev0+git.20261017.ba33a1a - October 17, 2026 23:59 UTC
+ 0.5.dev0+git.20261020.493b8af - October 20, 2026 08:06 UTC
 
 # Introduction[#](#introduction "Link to this heading")
 

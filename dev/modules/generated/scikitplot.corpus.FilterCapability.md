@@ -1,6 +1,6 @@
 # FilterCapability[#](#filtercapability "Link to this heading")
 
-class scikitplot.corpus.FilterCapability(**supported=frozenset({})**, **emulated=frozenset({})**, **rejected=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L411)[#](#scikitplot.corpus.FilterCapability "Link to this definition")
+class scikitplot.corpus.FilterCapability(**supported=frozenset({})**, **emulated=frozenset({})**, **rejected=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L411)[#](#scikitplot.corpus.FilterCapability "Link to this definition")
 :   A backend’s declared answer for the operators in one expression.
 
     Parameters:
@@ -26,7 +26,7 @@ class scikitplot.corpus.FilterCapability(**supported=frozenset({})**, **emulated
 
     emulated: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = frozenset({})[#](#scikitplot.corpus.FilterCapability.emulated "Link to this definition")
 
-    classmethod for\_expression(**expression**, **\***, **native=()**, **emulated=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L435)[#](#scikitplot.corpus.FilterCapability.for_expression "Link to this definition")
+    classmethod for\_expression(**expression**, **\***, **native=()**, **emulated=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L435)[#](#scikitplot.corpus.FilterCapability.for_expression "Link to this definition")
     :   Classify every operator in `expression`.
 
         Parameters:
@@ -55,7 +55,7 @@ class scikitplot.corpus.FilterCapability(**supported=frozenset({})**, **emulated
     property ok: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.FilterCapability.ok "Link to this definition")
     :   Whether every operator can be answered.
 
-    raise\_if\_rejected()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L474)[#](#scikitplot.corpus.FilterCapability.raise_if_rejected "Link to this definition")
+    raise\_if\_rejected()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L474)[#](#scikitplot.corpus.FilterCapability.raise_if_rejected "Link to this definition")
     :   Raise if any operator was refused.
 
         Raises:
@@ -69,7 +69,7 @@ class scikitplot.corpus.FilterCapability(**supported=frozenset({})**, **emulated
 
     supported: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = frozenset({})[#](#scikitplot.corpus.FilterCapability.supported "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L490)[#](#scikitplot.corpus.FilterCapability.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L490)[#](#scikitplot.corpus.FilterCapability.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

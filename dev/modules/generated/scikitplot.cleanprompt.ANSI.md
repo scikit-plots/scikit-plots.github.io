@@ -1,6 +1,6 @@
 # ANSI[#](#ansi "Link to this heading")
 
-class scikitplot.cleanprompt.ANSI[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_render.py#L40)[#](#scikitplot.cleanprompt.ANSI "Link to this definition")
+class scikitplot.cleanprompt.ANSI[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_render.py#L40)[#](#scikitplot.cleanprompt.ANSI "Link to this definition")
 :   Terminal escape sequences used by [`highlight_placeholders`](scikitplot.cleanprompt.highlight_placeholders.html#scikitplot.cleanprompt.highlight_placeholders "scikitplot.cleanprompt.highlight_placeholders").
 
     Attributes:

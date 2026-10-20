@@ -1,6 +1,6 @@
 # Filter[#](#filter "Link to this heading")
 
-class scikitplot.corpus.Filter[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L159)[#](#scikitplot.corpus.Filter "Link to this definition")
+class scikitplot.corpus.Filter[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L159)[#](#scikitplot.corpus.Filter "Link to this definition")
 :   Base class for filter expressions.
 
     Notes
@@ -11,13 +11,13 @@ class scikitplot.corpus.Filter[[source]](https://github.com/scikit-plots/scikit-
     operations and their precedence relative to comparisons is a classic source
     of silently wrong predicates.
 
-    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L179)[#](#scikitplot.corpus.Filter.describe "Link to this definition")
+    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L179)[#](#scikitplot.corpus.Filter.describe "Link to this definition")
     :   Return a readable rendering of the expression.
 
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    matches(**document**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L171)[#](#scikitplot.corpus.Filter.matches "Link to this definition")
+    matches(**document**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L171)[#](#scikitplot.corpus.Filter.matches "Link to this definition")
     :   Whether `document` satisfies this expression.
 
         Parameters:
@@ -26,13 +26,13 @@ class scikitplot.corpus.Filter[[source]](https://github.com/scikit-plots/scikit-
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    operators()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L175)[#](#scikitplot.corpus.Filter.operators "Link to this definition")
+    operators()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L175)[#](#scikitplot.corpus.Filter.operators "Link to this definition")
     :   Names of every operator appearing in this expression.
 
         Return type:
         :   [set](https://docs.python.org/3/builtins/stdtypes.html#set "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_filters.py#L183)[#](#scikitplot.corpus.Filter.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_filters.py#L183)[#](#scikitplot.corpus.Filter.to_dict "Link to this definition")
     :   Return the JSON form; see [`filter_to_dict`](scikitplot.corpus.filter_to_dict.html#scikitplot.corpus.filter_to_dict "scikitplot.corpus.filter_to_dict").
 
         Return type:

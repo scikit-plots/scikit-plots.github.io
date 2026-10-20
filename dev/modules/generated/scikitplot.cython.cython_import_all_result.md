@@ -1,6 +1,6 @@
 # cython\_import\_all\_result[#](#cython-import-all-result "Link to this heading")
 
-scikitplot.cython.cython\_import\_all\_result(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **collect=False**, **only=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cython/_public.py#L1280)[#](#scikitplot.cython.cython_import_all_result "Link to this definition")
+scikitplot.cython.cython\_import\_all\_result(**directory**, **\***, **pattern='\*.pyx'**, **recursive=False**, **collect=False**, **only=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cython/_public.py#L1280)[#](#scikitplot.cython.cython_import_all_result "Link to this definition")
 :   Compile and import all `.pyx` files in a directory, with a partial report.
 
     Unlike [`cython_import_all`](scikitplot.cython.cython_import_all.html#scikitplot.cython.cython_import_all "scikitplot.cython.cython_import_all"), this always returns a structured

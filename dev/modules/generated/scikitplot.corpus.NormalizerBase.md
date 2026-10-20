@@ -1,6 +1,6 @@
 # NormalizerBase[#](#normalizerbase "Link to this heading")
 
-class scikitplot.corpus.NormalizerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_normalizers/_normalizer.py#L95)[#](#scikitplot.corpus.NormalizerBase "Link to this definition")
+class scikitplot.corpus.NormalizerBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_normalizers/_normalizer.py#L95)[#](#scikitplot.corpus.NormalizerBase "Link to this definition")
 :   Abstract base class for all text normalisers.
 
     A normaliser receives a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
@@ -16,7 +16,7 @@ class scikitplot.corpus.NormalizerBase[[source]](https://github.com/scikit-plots
     call [`CorpusDocument.replace`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument.replace "scikitplot.corpus.CorpusDocument.replace") with `text=` — only
     `normalized_text=` may be modified.
 
-    abstractmethod normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_normalizers/_normalizer.py#L113)[#](#scikitplot.corpus.NormalizerBase.normalize_doc "Link to this definition")
+    abstractmethod normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_normalizers/_normalizer.py#L113)[#](#scikitplot.corpus.NormalizerBase.normalize_doc "Link to this definition")
     :   Apply normalisation to `doc`.
 
         Parameters:

@@ -1,6 +1,6 @@
 # ArabicMorphologicalStrategy[#](#arabicmorphologicalstrategy "Link to this heading")
 
-class scikitplot.corpus.ArabicMorphologicalStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L409)[#](#scikitplot.corpus.ArabicMorphologicalStrategy "Link to this definition")
+class scikitplot.corpus.ArabicMorphologicalStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L409)[#](#scikitplot.corpus.ArabicMorphologicalStrategy "Link to this definition")
 :   Arabic and Hebrew morphological segmentation strategy.
 
     Primary: camel-tools (`pip install camel-tools`) for Arabic.
@@ -19,7 +19,7 @@ class scikitplot.corpus.ArabicMorphologicalStrategy[[source]](https://github.com
     covers Ottoman Turkish. Load is deferred to first [`segment`](#scikitplot.corpus.ArabicMorphologicalStrategy.segment "scikitplot.corpus.ArabicMorphologicalStrategy.segment")
     call to keep `__init__` fast.
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L450)[#](#scikitplot.corpus.ArabicMorphologicalStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L450)[#](#scikitplot.corpus.ArabicMorphologicalStrategy.segment "Link to this definition")
     :   Segment Arabic/Hebrew **span** morphologically.
 
         Parameters:

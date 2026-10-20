@@ -1,6 +1,6 @@
 # r\_precision[#](#r-precision "Link to this heading")
 
-scikitplot.corpus.r\_precision(**y\_true**, **y\_pred**, **\***, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_ranking.py#L753)[#](#scikitplot.corpus.r_precision "Link to this definition")
+scikitplot.corpus.r\_precision(**y\_true**, **y\_pred**, **\***, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_ranking.py#L753)[#](#scikitplot.corpus.r_precision "Link to this definition")
 :   Precision at `|R|`, the number of relevant identifiers of each query.
 
     Parameters:

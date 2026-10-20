@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:07:14Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:13:12Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.JapaneseStrategy","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>JapaneseStrategy<a class="headerlink" href="#japanesestrategy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.JapaneseStrategy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">JapaneseStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tagger_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-Owakati'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sudachi_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_tokenizer_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'japanese'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L601"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JapaneseStrategy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">JapaneseStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tagger_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-Owakati'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sudachi_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_tokenizer_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'japanese'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L601"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JapaneseStrategy" title="Link to this definition">#</a></dt>
 <dd><p>Multi-tier Japanese segmentation strategy.</p>
 <p>Probe order at <code class="docutils literal notranslate"><span class="pre">__init__</span></code> time (first available wins, probed once):</p>
 <ol class="arabic simple">
@@ -1794,17 +1795,17 @@ Default <code class="docutils literal notranslate"><span class="pre">&quot;C&quo
 <code class="docutils literal notranslate"><span class="pre">__init__</span></code> time and caches the result in <code class="docutils literal notranslate"><span class="pre">self._impl</span></code>.  Per-segment
 calls are an O(1) dispatch to the cached implementation.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c5dfd5b5-c9ba-4bd6-9ce9-98f2b6fccfae">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c5dfd5b5-c9ba-4bd6-9ce9-98f2b6fccfae','764d888a-f74c-4900-a09e-923d58370e00','0659c4f5-8242-4d6b-bb36-7d83b28e8518','../../lite/tree/../notebooks/index.html?path=e8c18330_85f0_40c6_8853_c6e7e650c72d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ab6f8d74-a88d-4b4e-9724-d338720d373e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ab6f8d74-a88d-4b4e-9724-d338720d373e','a1e910da-dcb4-4283-9c25-65697d4f6dd0','4f6aaac4-997e-4406-8dce-0696885968a5','../../lite/tree/../notebooks/index.html?path=8379a645_b4e6_475f_8aee_379908a3130f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strategy</span> <span class="o">=</span> <span class="n">JapaneseStrategy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># strategy._impl is set to whichever backend was found</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="0659c4f5-8242-4d6b-bb36-7d83b28e8518" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c5dfd5b5-c9ba-4bd6-9ce9-98f2b6fccfae','0659c4f5-8242-4d6b-bb36-7d83b28e8518')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c5dfd5b5-c9ba-4bd6-9ce9-98f2b6fccfae','0659c4f5-8242-4d6b-bb36-7d83b28e8518')">Open In Tab</button></div><div id="764d888a-f74c-4900-a09e-923d58370e00" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="4f6aaac4-997e-4406-8dce-0696885968a5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ab6f8d74-a88d-4b4e-9724-d338720d373e','4f6aaac4-997e-4406-8dce-0696885968a5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ab6f8d74-a88d-4b4e-9724-d338720d373e','4f6aaac4-997e-4406-8dce-0696885968a5')">Open In Tab</button></div><div id="a1e910da-dcb4-4283-9c25-65697d4f6dd0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.JapaneseStrategy.segment">
-<span class="sig-name descname"><span class="pre">segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">span</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JapaneseStrategy.segment" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">span</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.JapaneseStrategy.segment" title="Link to this definition">#</a></dt>
 <dd><p>Segment Japanese <em>span</em> using the probed backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1954,7 +1955,7 @@ calls are an O(1) dispatch to the cached implementation.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

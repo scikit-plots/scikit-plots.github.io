@@ -435,21 +435,20 @@ else:
 ```
 ```
   0%|                                               | 0.00/461M [00:00<?, ?iB/s]
-  6%|██▏                                    | 26.3M/461M [00:00<00:01, 276MiB/s]
- 14%|█████▍                                 | 63.8M/461M [00:00<00:01, 345MiB/s]
- 21%|████████▏                              | 96.7M/461M [00:00<00:01, 318MiB/s]
- 28%|███████████                             | 127M/461M [00:00<00:01, 307MiB/s]
- 37%|██████████████▊                         | 170M/461M [00:00<00:00, 355MiB/s]
- 44%|█████████████████▋                      | 204M/461M [00:00<00:00, 342MiB/s]
- 51%|████████████████████▌                   | 237M/461M [00:00<00:00, 342MiB/s]
- 59%|███████████████████████▍                | 270M/461M [00:00<00:00, 305MiB/s]
- 65%|██████████████████████████              | 300M/461M [00:00<00:00, 294MiB/s]
- 72%|████████████████████████████▊           | 332M/461M [00:01<00:00, 304MiB/s]
- 79%|███████████████████████████████▌        | 363M/461M [00:01<00:00, 313MiB/s]
- 86%|██████████████████████████████████▎     | 395M/461M [00:01<00:00, 318MiB/s]
- 93%|█████████████████████████████████████   | 427M/461M [00:01<00:00, 322MiB/s]
- 99%|███████████████████████████████████████▋| 458M/461M [00:01<00:00, 325MiB/s]
-100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 320MiB/s]
+  7%|██▌                                    | 30.4M/461M [00:00<00:01, 319MiB/s]
+ 15%|█████▊                                 | 69.5M/461M [00:00<00:01, 372MiB/s]
+ 23%|█████████                               | 105M/461M [00:00<00:01, 325MiB/s]
+ 32%|████████████▌                           | 145M/461M [00:00<00:00, 361MiB/s]
+ 39%|███████████████▋                        | 180M/461M [00:00<00:00, 300MiB/s]
+ 46%|██████████████████▎                     | 211M/461M [00:00<00:00, 298MiB/s]
+ 52%|████████████████████▉                   | 241M/461M [00:00<00:00, 304MiB/s]
+ 59%|███████████████████████▍                | 271M/461M [00:00<00:00, 306MiB/s]
+ 66%|██████████████████████████▍             | 306M/461M [00:01<00:00, 323MiB/s]
+ 74%|█████████████████████████████▌          | 341M/461M [00:01<00:00, 337MiB/s]
+ 81%|████████████████████████████████▍       | 374M/461M [00:01<00:00, 340MiB/s]
+ 88%|███████████████████████████████████▎    | 408M/461M [00:01<00:00, 344MiB/s]
+ 96%|██████████████████████████████████████▍ | 443M/461M [00:01<00:00, 352MiB/s]
+100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 334MiB/s]
 /home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 ASR-enabled archive documents: 120
@@ -472,7 +471,7 @@ not erase evidence successfully extracted from other members.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 19.460 seconds)
+****Total running time of the script:**** (0 minutes 15.964 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

@@ -1,6 +1,6 @@
 # get\_corpus\_scorer[#](#get-corpus-scorer "Link to this heading")
 
-scikitplot.corpus.get\_corpus\_scorer(**name**, **\***, **response\_method='predict'**, **id\_getter=None**, **on\_degraded='raise'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_scorer.py#L524)[#](#scikitplot.corpus.get_corpus_scorer "Link to this definition")
+scikitplot.corpus.get\_corpus\_scorer(**name**, **\***, **response\_method='predict'**, **id\_getter=None**, **on\_degraded='raise'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_scorer.py#L524)[#](#scikitplot.corpus.get_corpus_scorer "Link to this definition")
 :   Return a new scorer for a metric name.
 
     Parameters:

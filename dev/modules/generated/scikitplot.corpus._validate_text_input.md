@@ -1,6 +1,6 @@
 # \_validate\_text\_input[#](#validate-text-input "Link to this heading")
 
-scikitplot.corpus.\_validate\_text\_input(**text**, **caller**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_sentence.py#L175)[#](#scikitplot.corpus._validate_text_input "Link to this definition")
+scikitplot.corpus.\_validate\_text\_input(**text**, **caller**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_sentence.py#L175)[#](#scikitplot.corpus._validate_text_input "Link to this definition")
 :   Validate chunker text input for NUL bytes and lone surrogates.
 
     Parameters:

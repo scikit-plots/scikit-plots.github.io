@@ -1,6 +1,6 @@
 # StorageBase[#](#storagebase "Link to this heading")
 
-class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L249)[#](#scikitplot.corpus.StorageBase "Link to this definition")
+class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L249)[#](#scikitplot.corpus.StorageBase "Link to this definition")
 :   Abstract base class for all corpus storage backends.
 
     All implementations must be safe to construct and use without holding
@@ -16,7 +16,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
     [`SQLiteStorage`](scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage "scikitplot.corpus.SQLiteStorage")
     :   SQLite with FTS5, no external dependencies.
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L329)[#](#scikitplot.corpus.StorageBase.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L329)[#](#scikitplot.corpus.StorageBase.close "Link to this definition")
     :   Release the backend’s resources; safe to call more than once.
 
         The default holds nothing and does nothing. A backend that holds a
@@ -32,7 +32,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   None
 
-    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L316)[#](#scikitplot.corpus.StorageBase.count "Link to this definition")
+    count()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L316)[#](#scikitplot.corpus.StorageBase.count "Link to this definition")
     :   Return the total number of stored documents.
 
         Default implementation uses a `StorageQuery` with no filters.
@@ -44,7 +44,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    abstractmethod get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L285)[#](#scikitplot.corpus.StorageBase.get "Link to this definition")
+    abstractmethod get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L285)[#](#scikitplot.corpus.StorageBase.get "Link to this definition")
     :   Retrieve a document by its identifier.
 
         Parameters:
@@ -61,7 +61,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") | None
 
-    abstractmethod query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L301)[#](#scikitplot.corpus.StorageBase.query "Link to this definition")
+    abstractmethod query(**q**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L301)[#](#scikitplot.corpus.StorageBase.query "Link to this definition")
     :   Retrieve documents matching the query parameters.
 
         Parameters:
@@ -77,7 +77,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   [**QueryResult**](scikitplot.corpus.QueryResult.html#scikitplot.corpus.QueryResult "scikitplot.corpus._storage._storage.QueryResult")
 
-    abstractmethod save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L263)[#](#scikitplot.corpus.StorageBase.save "Link to this definition")
+    abstractmethod save(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L263)[#](#scikitplot.corpus.StorageBase.save "Link to this definition")
     :   Persist a single document.
 
         Parameters:
@@ -90,7 +90,7 @@ class scikitplot.corpus.StorageBase[[source]](https://github.com/scikit-plots/sc
         Return type:
         :   None
 
-    abstractmethod save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_storage/_storage.py#L274)[#](#scikitplot.corpus.StorageBase.save_batch "Link to this definition")
+    abstractmethod save\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_storage/_storage.py#L274)[#](#scikitplot.corpus.StorageBase.save_batch "Link to this definition")
     :   Persist a batch of documents atomically.
 
         Parameters:

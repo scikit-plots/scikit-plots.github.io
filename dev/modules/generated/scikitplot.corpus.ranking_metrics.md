@@ -1,6 +1,6 @@
 # ranking\_metrics[#](#ranking-metrics "Link to this heading")
 
-scikitplot.corpus.ranking\_metrics(**y\_true**, **y\_pred**, **\***, **metrics=('hit\_rate@10', 'precision@10', 'recall@10', 'mrr@10', 'ndcg@10')**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **gain='linear'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_ranking.py#L883)[#](#scikitplot.corpus.ranking_metrics "Link to this definition")
+scikitplot.corpus.ranking\_metrics(**y\_true**, **y\_pred**, **\***, **metrics=('hit\_rate@10', 'precision@10', 'recall@10', 'mrr@10', 'ndcg@10')**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **gain='linear'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_ranking.py#L883)[#](#scikitplot.corpus.ranking_metrics "Link to this definition")
 :   Compute several ranking metrics in one validated pass.
 
     Parameters:

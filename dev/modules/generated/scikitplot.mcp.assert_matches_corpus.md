@@ -1,6 +1,6 @@
 # assert\_matches\_corpus[#](#assert-matches-corpus "Link to this heading")
 
-scikitplot.mcp.assert\_matches\_corpus()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_outcome.py#L337)[#](#scikitplot.mcp.assert_matches_corpus "Link to this definition")
+scikitplot.mcp.assert\_matches\_corpus()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_outcome.py#L337)[#](#scikitplot.mcp.assert_matches_corpus "Link to this definition")
 :   Verify this module’s vocabulary still matches Corpus’s.
 
     Raises:

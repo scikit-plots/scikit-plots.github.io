@@ -169,7 +169,7 @@ print("Query:", _QUERY)
 
 ```
 ```
-Corpus directory: /tmp/scikitplot-mcp-hamlet-b1g5r70o/corpus
+Corpus directory: /tmp/scikitplot-mcp-hamlet-btd6br43/corpus
 Corpus file: hamlet.txt
 Characters: 3820
 Query: sleep dream death
@@ -311,7 +311,7 @@ else:
 ```
 ```
 CLI self-test command:
-/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot mcp --corpus-annoy /tmp/scikitplot-mcp-hamlet-b1g5r70o/corpus --hash-dimension 256 --annoy-n-trees 10 --annoy-metric angular --self-test --self-test-query sleep dream death --self-test-require-match --log-level WARNING
+/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot mcp --corpus-annoy /tmp/scikitplot-mcp-hamlet-btd6br43/corpus --hash-dimension 256 --annoy-n-trees 10 --annoy-metric angular --self-test --self-test-query sleep dream death --self-test-require-match --log-level WARNING
 Self-test count: 3
   citation: 33c2b57b2ecd6ec1 score=0.1816 hamlet.txt
   citation: 9064aca2c3b3305d score=0.0940 hamlet.txt
@@ -499,7 +499,7 @@ asyncio.run(main())
 
 ```
 ```
-Server healthy: http://127.0.0.1:33925/healthz
+Server healthy: http://127.0.0.1:41973/healthz
 MCP query: sleep dream death
 MCP result count: 3
   [1] score=0.1816 doc_id=33c2b57b2ecd6ec1 source='hamlet.txt'
@@ -561,9 +561,9 @@ Temporary Hamlet MCP workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [model-workflow: mcp](../../_tags/model-workflow-mcp.html) [plot-type: text](../../_tags/plot-type-text.html) [level: advanced](../../_tags/level-advanced.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 8.938 seconds)
+****Total running time of the script:**** (0 minutes 7.871 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo11.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo11.svg)](../../lite/lab/index.html?path=auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.ipynb)
 
 [`Download Jupyter notebook: plot_mcp_corpus_annoy_hamlet_script.ipynb`](../../_downloads/3ddde17ce3380892dd600e4324b493fa/plot_mcp_corpus_annoy_hamlet_script.ipynb)
 
@@ -581,13 +581,13 @@ Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_cleanprompt_recip
 
 [Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../cleanprompt/plot_cleanprompt_recipes_script.html)
 
-Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_cleanprompt_guard_agents_script_thumb.png)
-
-[Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves](../cleanprompt/plot_cleanprompt_guard_agents_script.html)
-
-Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
+Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
 
 [Build and Search a Real Hamlet Corpus with FluentCorpus](../corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
+
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+
+[Build and Search a Real Hamlet Corpus with FluentCorpus](../corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 
 Build and Search a Real Hamlet Corpus with FluentCorpus
 

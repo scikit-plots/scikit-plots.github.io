@@ -1,6 +1,6 @@
 # tweedie[#](#tweedie "Link to this heading")
 
-scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweedie\_dist.tweedie\_gen object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/externals/_tweedie/_tweedie_dist.py#L)[#](#scikitplot.externals._tweedie.tweedie "Link to this definition")
+scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweedie\_dist.tweedie\_gen object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/externals/_tweedie/_tweedie_dist.py#L)[#](#scikitplot.externals._tweedie.tweedie "Link to this definition")
 :   An instance of [`tweedie_gen`](scikitplot.externals._tweedie.tweedie_gen.html#scikitplot.externals._tweedie.tweedie_gen "scikitplot.externals._tweedie.tweedie_gen"), providing Tweedie distribution functionality.
 
     This instance provides:
@@ -64,10 +64,10 @@ scikitplot.externals.\_tweedie.tweedie = <scikitplot.externals.\_tweedie.\_tweed
 
     ```
     ```
-    array([4.16570031e-01, 1.52596612e+00, 9.72813676e-01, 0.00000000e+00,
-           5.09973374e-01, 4.54800304e-01, 2.15155772e+00, 4.66263788e-01,
-           5.46244045e-01, 9.53250508e-01, 7.57744181e-01, 1.21914362e-01,
-           0.00000000e+00, 1.65019126e+00, 1.75120789e-03, 8.65820369e-01])
+    array([4.45143570e+00, 0.00000000e+00, 2.28986714e+00, 1.93697235e-01,
+           1.96056469e+00, 4.25377938e-01, 1.57001564e+00, 0.00000000e+00,
+           1.63269618e+00, 8.02717794e-01, 2.22560380e-03, 9.75392204e-01,
+           2.39724035e-01, 2.45418258e+00, 7.87699079e-01, 1.01745602e+00])
 
     ```
 

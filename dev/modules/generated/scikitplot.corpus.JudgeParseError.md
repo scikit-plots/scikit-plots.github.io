@@ -1,6 +1,6 @@
 # JudgeParseError[#](#judgeparseerror "Link to this heading")
 
-exception scikitplot.corpus.JudgeParseError(**reason**, **text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_judge.py#L211)[#](#scikitplot.corpus.JudgeParseError "Link to this definition")
+exception scikitplot.corpus.JudgeParseError(**reason**, **text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_judge.py#L211)[#](#scikitplot.corpus.JudgeParseError "Link to this definition")
 :   A judge’s response that is not a valid verdict.
 
     Parameters:

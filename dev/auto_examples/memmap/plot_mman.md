@@ -288,17 +288,17 @@ print("[ADVANCED] done.\n")
 [ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only
 [ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.
 [ADVANCED] 200 iterations over 1.0 MB:
-           .read()     : 0.1004 s  (2.09 GB/s)
-           arr.copy()  : 0.0415 s  (5.05 GB/s)
+           .read()     : 0.0777 s  (2.70 GB/s)
+           arr.copy()  : 0.0348 s  (6.02 GB/s)
 [ADVANCED] done.
 
 ```
 
 Tags: [plot-type: bar](../../_tags/plot-type-bar.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.184 seconds)
+****Total running time of the script:**** (0 minutes 1.099 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/memmap/plot_mman.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/memmap/plot_mman.ipynb)
+[![Launch binder](../../_images/binder_badge_logo11.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/memmap/plot_mman.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo11.svg)](../../lite/lab/index.html?path=auto_examples/memmap/plot_mman.ipynb)
 
 [`Download Jupyter notebook: plot_mman.ipynb`](../../_downloads/854848fb4d4b8e74b94d2d71304d9827/plot_mman.ipynb)
 

@@ -245,7 +245,7 @@ a gate.
           │ ... (32 more)
       exit │ 0
 
-    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'scan', '--max-findings', '5', '--in', '/tmp/scikitplot-cleanprompt-recipes-0p0dr6un/support-macros.md'], returncode=0, stdout="clean: yes\nfindings: 2\nmax_findings: 5\nby_kind:\n  EMAIL: 1\n  PHONE: 1\nplaceholders:\n  - [EMAIL-1]\n  - [PHONE-1]\nblind_spots:\n  category: Names, organisations, places and other named entities\n  reason: named-entity detection is not running, and no regular expression can recognise a person's name\n  remedy: spaCy is installed with its model; enable it for this run (--ner on the command line, or add spacy_detector() to the registry)\n  examples:\n    - a person's full name\n    - a company or institution\n    - a city or country\n  severity: high\n\n  category: Capitalised multi-word names (partial cover)\n  reason: the TITLE_CASE pattern is available but not enabled; it finds runs of capitalised words without needing spaCy, at the cost of false positives\n  remedy: add TITLE_CASE to the detection kinds (--kinds ... TITLE_CASE), or use --suggest to review candidates and hide them explicitly\n  examples:\n    - Mustafa Kemal\n    - Acme Corporation\n  severity: medium\n\n  category: Disabled structural patterns\n  reason: 1 built-in pattern(s) are not enabled: TITLE_CASE\n  remedy: drop --kinds to enable every built-in pattern\n  examples:\n    - TITLE_CASE\n  severity: medium\n\nstatus: clean\n", stderr='')
+    CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'scan', '--max-findings', '5', '--in', '/tmp/scikitplot-cleanprompt-recipes-fv7bmz9j/support-macros.md'], returncode=0, stdout="clean: yes\nfindings: 2\nmax_findings: 5\nby_kind:\n  EMAIL: 1\n  PHONE: 1\nplaceholders:\n  - [EMAIL-1]\n  - [PHONE-1]\nblind_spots:\n  category: Names, organisations, places and other named entities\n  reason: named-entity detection is not running, and no regular expression can recognise a person's name\n  remedy: spaCy is installed with its model; enable it for this run (--ner on the command line, or add spacy_detector() to the registry)\n  examples:\n    - a person's full name\n    - a company or institution\n    - a city or country\n  severity: high\n\n  category: Capitalised multi-word names (partial cover)\n  reason: the TITLE_CASE pattern is available but not enabled; it finds runs of capitalised words without needing spaCy, at the cost of false positives\n  remedy: add TITLE_CASE to the detection kinds (--kinds ... TITLE_CASE), or use --suggest to review candidates and hide them explicitly\n  examples:\n    - Mustafa Kemal\n    - Acme Corporation\n  severity: medium\n\n  category: Disabled structural patterns\n  reason: 1 built-in pattern(s) are not enabled: TITLE_CASE\n  remedy: drop --kinds to enable every built-in pattern\n  examples:\n    - TITLE_CASE\n  severity: medium\n\nstatus: clean\n", stderr='')
 
 
 
@@ -962,7 +962,7 @@ anything, which is the one moment that warning is worth reading.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 9.788 seconds)
+   **Total running time of the script:** (0 minutes 7.963 seconds)
 
 
 .. _sphx_glr_download_auto_examples_cleanprompt_plot_cleanprompt_recipes_script.py:

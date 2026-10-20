@@ -1,6 +1,6 @@
 # JapaneseStrategy[#](#japanesestrategy "Link to this heading")
 
-class scikitplot.corpus.JapaneseStrategy(**\***, **tagger\_args='-Owakati'**, **sudachi\_mode='C'**, **custom\_tokenizer\_key='japanese'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L601)[#](#scikitplot.corpus.JapaneseStrategy "Link to this definition")
+class scikitplot.corpus.JapaneseStrategy(**\***, **tagger\_args='-Owakati'**, **sudachi\_mode='C'**, **custom\_tokenizer\_key='japanese'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L601)[#](#scikitplot.corpus.JapaneseStrategy "Link to this definition")
 :   Multi-tier Japanese segmentation strategy.
 
     Probe order at `__init__` time (first available wins, probed once):
@@ -46,7 +46,7 @@ class scikitplot.corpus.JapaneseStrategy(**\***, **tagger\_args='-Owakati'**, **
     ```
     Go BackOpen In Tab
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_writing_system.py#L749)[#](#scikitplot.corpus.JapaneseStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_writing_system.py#L749)[#](#scikitplot.corpus.JapaneseStrategy.segment "Link to this definition")
     :   Segment Japanese **span** using the probed backend.
 
         Parameters:

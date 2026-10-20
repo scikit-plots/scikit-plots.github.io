@@ -144,7 +144,7 @@ Policy bundle example completed without network/model side effects.
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.007 seconds)
+****Total running time of the script:**** (0 minutes 0.006 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_policy_bundle_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_policy_bundle_script.ipynb)
 

@@ -1,6 +1,6 @@
 # edit\_similarity\_score[#](#edit-similarity-score "Link to this heading")
 
-scikitplot.corpus.edit\_similarity\_score(**y\_true**, **y\_pred**, **\***, **normalize=None**, **backend='auto'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_text.py#L408)[#](#scikitplot.corpus.edit_similarity_score "Link to this definition")
+scikitplot.corpus.edit\_similarity\_score(**y\_true**, **y\_pred**, **\***, **normalize=None**, **backend='auto'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_text.py#L408)[#](#scikitplot.corpus.edit_similarity_score "Link to this definition")
 :   Mean normalised edit similarity between predictions and references.
 
     Parameters:

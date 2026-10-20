@@ -1,6 +1,6 @@
 # create\_server[#](#create-server "Link to this heading")
 
-scikitplot.mcp.create\_server(**retriever**, **\***, **document\_reader=None**, **max\_concurrency=4**, **version='0.2.4'**, **log\_level='INFO'**, **health\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/mcp/_server.py#L293)[#](#scikitplot.mcp.create_server "Link to this definition")
+scikitplot.mcp.create\_server(**retriever**, **\***, **document\_reader=None**, **max\_concurrency=4**, **version='0.2.4'**, **log\_level='INFO'**, **health\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/mcp/_server.py#L293)[#](#scikitplot.mcp.create_server "Link to this definition")
 :   Create an official MCP Python SDK v2 `MCPServer` instance.
 
     Importing [`scikitplot.mcp`](../../apis/scikitplot.mcp.html#module-scikitplot.mcp "scikitplot.mcp") remains SDK-independent; the optional MCP

@@ -1,6 +1,6 @@
 # online\_help[#](#online-help "Link to this heading")
 
-scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/__init__.py#L551)[#](#scikitplot.online_help "Link to this definition")
+scikitplot.online\_help(**query=''**, **docs\_root\_url='https://scikit-plots.github.io/'**, **search\_page='search.html'**, **new\_window=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/__init__.py#L552)[#](#scikitplot.online_help "Link to this definition")
 :   Open the online documentation search page in the default web browser.
 
     Parameters:

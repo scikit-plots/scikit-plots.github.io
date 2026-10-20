@@ -1,6 +1,6 @@
 # make\_llm[#](#make-llm "Link to this heading")
 
-scikitplot.corpus.make\_llm(**provider**, **model=None**, **\***, **client=None**, **max\_tokens=None**, **options=None**, **cache=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_llm.py#L691)[#](#scikitplot.corpus.make_llm "Link to this definition")
+scikitplot.corpus.make\_llm(**provider**, **model=None**, **\***, **client=None**, **max\_tokens=None**, **options=None**, **cache=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_llm.py#L691)[#](#scikitplot.corpus.make_llm "Link to this definition")
 :   Make an [`LLM`](scikitplot.corpus.LLM.html#scikitplot.corpus.LLM "scikitplot.corpus.LLM") for OpenAI, Anthropic, Gemini or a callable.
 
     Parameters:

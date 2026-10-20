@@ -1,6 +1,6 @@
 # FixedWindowChunker[#](#fixedwindowchunker "Link to this heading")
 
-class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L253)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
+class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L253)[#](#scikitplot.corpus.FixedWindowChunker "Link to this definition")
 :   Produce fixed-size sliding-window chunks over a document.
 
     Handles all scripts via `detect_script` and
@@ -46,7 +46,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
     ```
     Go BackOpen In Tab
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L788)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_multilang_mixin.py#L788)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -91,7 +91,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L845)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_multilang_mixin.py#L845)[#](#scikitplot.corpus.FixedWindowChunker.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:
@@ -125,7 +125,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Chunk**](scikitplot.corpus.Chunk.html#scikitplot.corpus.Chunk "scikitplot.corpus._types.Chunk")]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L364)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L364)[#](#scikitplot.corpus.FixedWindowChunker.chunk "Link to this definition")
     :   Split **text** into fixed-window chunks.
 
         Parameters:
@@ -157,7 +157,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L476)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L476)[#](#scikitplot.corpus.FixedWindowChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -192,7 +192,7 @@ class scikitplot.corpus.FixedWindowChunker(**config=None**, **multilang\_config=
     property config: [FixedWindowChunkerConfig](scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig "scikitplot.corpus._chunkers._fixed_window.FixedWindowChunkerConfig")[#](#scikitplot.corpus.FixedWindowChunker.config "Link to this definition")
     :   The resolved [`FixedWindowChunkerConfig`](scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig "scikitplot.corpus.FixedWindowChunkerConfig") for this instance (read-only).
 
-    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_chunkers/_fixed_window.py#L96)[#](#scikitplot.corpus.FixedWindowChunker.config_class "Link to this definition")
+    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_chunkers/_fixed_window.py#L96)[#](#scikitplot.corpus.FixedWindowChunker.config_class "Link to this definition")
     :   alias of [`FixedWindowChunkerConfig`](scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig "scikitplot.corpus._chunkers._fixed_window.FixedWindowChunkerConfig")
 
     text\_is\_source\_slice = True[#](#scikitplot.corpus.FixedWindowChunker.text_is_source_slice "Link to this definition")

@@ -1,6 +1,6 @@
 # trim\_entity\_span[#](#trim-entity-span "Link to this heading")
 
-scikitplot.cleanprompt.trim\_entity\_span(**text**, **start**, **end**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_engines.py#L236)[#](#scikitplot.cleanprompt.trim_entity_span "Link to this definition")
+scikitplot.cleanprompt.trim\_entity\_span(**text**, **start**, **end**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_engines.py#L236)[#](#scikitplot.cleanprompt.trim_entity_span "Link to this definition")
 :   Shrink an entity span until it carries no unmatched bracket.
 
     Parameters:

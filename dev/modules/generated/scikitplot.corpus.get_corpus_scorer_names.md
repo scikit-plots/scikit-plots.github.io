@@ -1,6 +1,6 @@
 # get\_corpus\_scorer\_names[#](#get-corpus-scorer-names "Link to this heading")
 
-scikitplot.corpus.get\_corpus\_scorer\_names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_scorer.py#L506)[#](#scikitplot.corpus.get_corpus_scorer_names "Link to this definition")
+scikitplot.corpus.get\_corpus\_scorer\_names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_scorer.py#L506)[#](#scikitplot.corpus.get_corpus_scorer_names "Link to this definition")
 :   Return the names [`get_corpus_scorer`](scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer "scikitplot.corpus.get_corpus_scorer") accepts.
 
     Returns:

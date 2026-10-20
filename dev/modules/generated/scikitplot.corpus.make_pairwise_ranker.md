@@ -1,6 +1,6 @@
 # make\_pairwise\_ranker[#](#make-pairwise-ranker "Link to this heading")
 
-scikitplot.corpus.make\_pairwise\_ranker(**score\_func**, **\***, **greater\_is\_better=True**, **use\_normalized\_text=True**, **score\_cutoff=None**, **name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_similarity/_pairwise.py#L198)[#](#scikitplot.corpus.make_pairwise_ranker "Link to this definition")
+scikitplot.corpus.make\_pairwise\_ranker(**score\_func**, **\***, **greater\_is\_better=True**, **use\_normalized\_text=True**, **score\_cutoff=None**, **name=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_similarity/_pairwise.py#L198)[#](#scikitplot.corpus.make_pairwise_ranker "Link to this definition")
 :   Make a [`CustomRetrievalIndex`](scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") ranker from a pairwise function.
 
     Parameters:

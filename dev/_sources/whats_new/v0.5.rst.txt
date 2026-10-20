@@ -26,6 +26,305 @@ Version 0.5
 
 .. towncrier release notes start
 
+.. _changes_0_5_dev0+git_20261020_493b8af:
+
+Version 0.5.dev0+git.20261020.493b8af
+=====================================
+
+**October 2026**
+
+scikitplot.agent
+----------------
+
+- |Feature| New submodule ``scikitplot.agent``: bounded, audited tool use. ``Agent``
+  runs a goal with a caller-supplied planner (a model adapter or a rule) that
+  returns a ``Decision`` (call a ``Tool``, or finish); the runtime alone
+  decides whether an action runs, through five gates in order: Validation
+  (the tool's JSON Schema, a declared subset checked against ``jsonschema``),
+  Permissions and Scope (``Policy``, least privilege by default: ``read``
+  tools without scopes only), Budget (``Limits``: ``max_steps``, which ends
+  every run, tool calls, cost, tokens the planner must report, running time)
+  and Approval (``write`` and ``external`` tools need a person's
+  ``Approval``, bound to the digest of the exact action and re-checked at
+  resume). A denied action is the step's outcome, not an exception. Every
+  decision, denial, approval and tool call is written to a hash-chained
+  audit trail (``MemoryAuditSink``, ``JsonlAuditSink``, ``verify_audit``),
+  and the ``RunState`` is saved after every step (``MemoryStore``,
+  ``JsonFileStore``), so a paused or crashed run resumes; a non-idempotent
+  call in flight at a crash is not repeated. Standard library only. :pr:`865`
+
+scikitplot.annoy
+----------------
+
+- The Annoy test suite writes nothing into the package: every index a test
+  saves goes to ``tmp_path``, and a guard fails a test module, or the
+  session for a write at a module's import, that adds or changes a file in
+  the test directory (every file there is shipped in the wheel).
+  ``index_test.py`` no longer downloads ``test.tree`` at import, which no
+  test read; without the network the module was a collection error that
+  stopped the whole directory. The fixture ``test64.tree`` is committed
+  (its ``.gitignore`` negation now follows the patterns it undoes). The
+  ann-benchmarks accuracy tests are opt-in: set
+  ``SKPLT_ANNOY_ACCURACY_DATA`` to a cache directory to run them. They
+  were all ``xfail``, which hid that ``test_lastfm_angular`` builds a
+  65-dimensional index from 64-dimensional rows; it is now a strict
+  ``xfail`` on that ``ValueError``. :pr:`865`
+
+scikitplot.corpus
+-----------------
+
+- |Feature| Corpus can now measure retrieval and answers. Ranking metrics
+  (``precision_at_k``, ``recall_at_k``, ``hit_rate_at_k``,
+  ``mean_reciprocal_rank``, ``mean_average_precision``, ``r_precision``,
+  ``ndcg_at_k`` and ``ranking_metrics``) and answer metrics
+  (``exact_match_score``, ``token_f1_score``, ``edit_similarity_score``,
+  ``anls_score``) take scikit-learn's ``(y_true, y_pred)`` signature;
+  ``make_corpus_scorer`` and ``get_corpus_scorer`` turn them into scorers
+  for ``cross_validate`` and ``GridSearchCV`` that can also score a corpus
+  index directly (``response_method="search"``), on scikit-learn's own
+  ``_BaseScorer`` or a vendored copy when scikit-learn is absent;
+  ``evaluate_retrieval`` runs a retriever over a query set and returns a
+  report of per-query and mean metrics, rankings, latency and response
+  statuses, written as strict JSON, JSON Lines, YAML or TOML and compared
+  with a baseline by a paired randomisation test; ``make_pairwise_ranker``
+  and ``make_levenshtein_ranker`` build ``CustomRetrievalIndex`` rankers.
+  Generated answers can be judged by language models: ``make_llm`` puts
+  OpenAI, Anthropic, Gemini or any callable behind one call (SDKs imported
+  only when used, nothing sent that was not asked for); ``LLMJudge`` scores
+  faithfulness, answer relevance, context precision and recall, answer
+  correctness, a custom rubric and order-swapped pairwise preference from
+  strictly parsed JSON verdicts; ``evaluate_answers`` and
+  ``evaluate_preference`` run one judge or a panel over a dataset (your
+  system, or stored answers from any model) with token usage, judge
+  identities and failures recorded; ``cohen_kappa``, ``fleiss_kappa`` and
+  ``krippendorff_alpha`` measure agreement between judges.
+  Documents can be named by time-ordered RFC 9562 UUIDv7 instead of the
+  content-addressed SHA-256 default:
+  ``BuilderConfig(doc_id_scheme="uuid7")``, ``CorpusPipeline``,
+  ``HookableCorpusPipeline`` and ``create_corpus`` (keyword
+  ``doc_id_scheme``) and ``FluentCorpus().identity("uuid7")`` mint one id
+  per document, per source in reading order, right after the source is read,
+  with parent links inside the source kept. ``uuid7()``, ``UUID7Generator``
+  (thread-safe, monotonic within a process, reseeded in a forked child,
+  injectable clock and random source), ``uuid7_unix_ms``,
+  ``doc_id_scheme_of``, ``assign_doc_ids`` and ``DocIdScheme`` are public. A
+  UUIDv7 is new on every build, so deduplicate by ``content_hash`` and keep
+  qrels for the build that minted the ids.
+  Searches can be filtered: ``RetrievalIndex.search``,
+  ``CorpusBuilder.search``, ``RuntimeCorpus.search`` and
+  ``CustomRetrievalIndex.search`` take ``filter=`` (a ``Filter`` expression
+  of scalar document fields or ``metadata.<key>``, or its JSON form),
+  applied by every leg before ranking so a filtered query returns the best
+  ``top_k`` matching documents, and each leg reports how it answered the
+  filter (``LegOutcome.filter_capability``, every operator ``EMULATED``); a
+  ``SecurityFilter`` bound to an index (``RetrievalIndex``,
+  ``CustomRetrievalIndex``, ``BuilderConfig(security_filter=...)``) is
+  AND-ed with every query and with the vector seam ``RetrievalIndex.query``,
+  keeps BM25 statistics inside the scope, and is reported by its label;
+  callers can narrow but never widen what they see; ``filter_to_dict``,
+  ``filter_from_dict`` and ``validate_filter`` carry and check filters
+  through JSON with strict validation and size limits.
+  ``RecursiveChunker`` cuts a text by a separator hierarchy (blank line,
+  line, sentence end, space, character) until every piece fits
+  ``chunk_size``, and ``ParentChildChunker`` produces large parents for
+  context with small children inside them for retrieval; documents built
+  from a child carry ``parent_doc_id``, the first producer of that field.
+  Both are registered by name (``"recursive"``, ``"parent_child"``), keep
+  every chunk a slice of its source, and are not defaults.
+  ``StructureChunker`` chunks Markdown or reStructuredText by its headings
+  and code blocks: code blocks are chunks of their own, the prose of each
+  section is split by the recursive rule, a heading not followed by prose
+  is a chunk of its own, and every chunk and its document carry
+  ``heading_path``, ``section_level`` and ``block``; registered as
+  ``"structure"``, not a default.
+  ``RetrievalExecutionPlan`` runs retrieval through typed stages, in a fixed
+  order: transform (multi-query, rewrites), retrieve (``index.search`` per
+  query, unchanged), fuse (by ``FusionPolicy``), rerank and compress
+  (character spans of each hit's text). Each stage reports a
+  ``StageOutcome`` with its status, calls, seconds and budget; a stage that
+  fails or is stopped says why, and the result's status is derived. A
+  ``StageBudget`` limits the calls and seconds of retrieve, the one stage of
+  several calls, and ``deadline_seconds`` stops any later stage from
+  starting. An empty plan returns exactly what ``index.search``
+  returns, and ``evaluate_retrieval(plan.bind(index), ...)`` measures a plan.
+  ``CharBudgetCompressor`` keeps context within a character budget.
+  ``CorrectiveRetrieval`` grades what a search returned and then accepts it,
+  retries with a caller's rewritten query within ``max_rounds`` and
+  ``deadline_seconds``, returns the ambiguous rounds fused as partial
+  evidence, or abstains with no hit; every round is graded against the
+  original query, reported in a ``CorrectionResult`` (verdict, rounds,
+  grades with the grader's name), and measured by ``evaluate_retrieval``
+  like an index. ``TermCoverageGrader`` is the deterministic grader (the
+  share of query words in the top hits, against two thresholds); a model
+  grader is any callable returning a ``GradeResult``. :pr:`865`
+
+- |Fix| ``EmbeddingEngine`` no longer serves one custom provider's cached vectors to
+  another (a custom provider is cached only under a ``custom_fn_id``), loads
+  the ``model_revision`` it records, applies ``normalize=True`` to every
+  backend before the ``dtype`` cast (``float16`` rows no longer come back as
+  zeros, and a non-finite vector is no longer hidden as one), returns
+  ``float64`` cache hits without rounding, caches URL sources like files, and
+  stamps every embedded document with its embedding manifest so an index
+  refuses to rank vectors from two embedding generations together
+  (``CorpusBuilder`` now embeds through the same path); ``SemanticChunker``
+  reports the backend that actually ran, with the requested one and the
+  fallback reason beside it, names a model on the result and on each chunk
+  only when the model was called, falls back (or, with
+  ``allow_fallback=False``, raises) when the model fails to load or to encode
+  as well as when ``sentence-transformers`` is missing, and no longer encodes
+  every chunk a second time.
+  ``CorpusBuilder`` resolves chunker names and normaliser steps through the
+  shared component ``registry``, the same table plans and ``RuntimeCorpus``
+  now use: ``chunker_kwargs`` now build the named chunker's config (a config
+  option used to raise ``TypeError`` for every built-in chunker), go on to
+  the chunker's constructor when it takes them (``gensim_dictionary``,
+  ``adapter``), and an unknown key raises naming the valid ones; ``"word"``
+  and ``"semantic"`` are registered; a chunker added with
+  ``registry.register_chunker`` is reachable by name and is never replaced
+  by a built-in of the same name; an unknown normaliser step raises instead
+  of being dropped with a warning; ``normalizer_kwargs``, documented but read
+  nowhere, now maps a step to its options; options given with a chunker
+  instance, without a chunker, or beside a ``chunker_factory`` are refused,
+  and so is a chunker class given instead of an instance; a configuration
+  error raises from ``build`` before any source is read instead of failing
+  once per source. ``ComponentRegistry.load_from_snapshot`` accepts the
+  built-in chunkers and normalisers it used to refuse, a subclass of a
+  built-in chunker uses that chunker's bridge, a chunker config's enum option
+  given by value (``SentenceChunkerConfig(backend="regex")``) is converted at
+  construction (an unknown value raises there) instead of failing inside
+  ``chunk()``, and an unknown ``SemanticChunkerConfig.adapter_unit`` raises.
+  Chunk text is a slice of the source: overlap chunks (sentence,
+  paragraph), merged and split chunks (paragraph ``merge_short`` /
+  ``max_length``, the semantic merges and splits) and fixed windows
+  (``strip_whitespace``, token windows) used to re-join parts with a space
+  or a newline (inserting a space into CJK text) or keep an unstripped span;
+  ``Chunk`` gains ``context_start``/``context_end`` (``context_span``, the
+  region its text comes from) beside the anchor ``start_char``/``end_char``
+  (``anchor_span``), ``WordChunker`` sentence chunks span their own sentence
+  instead of ``(0, len(sentence))``, a sentence splitter whose output is not
+  in the source raises when offsets are enabled instead of being placed at a
+  guessed position, and a document built from a chunk spans the chunk's
+  context (it used to span the anchor start plus the text length, the wrong
+  region for an overlap chunk, and its ``raw_text`` with it), with the
+  anchor in ``metadata["anchor_span"]`` when they differ, and no span when
+  the chunker reports no offsets. A document's ``raw_text`` is ``None`` when
+  its region is unknown instead of the whole parent text for every chunk of a
+  split parent with offsets disabled, an overlap chunk's
+  multilang ``raw_text`` covers its context instead of its anchor, and no
+  ``raw_text`` is sliced by spans that do not index it (a reader's HTML or
+  XML markup, or text that multilang preprocessing changed:
+  ``metadata["span_basis"]`` is then ``"preprocessed"``). ``WordChunker``
+  honours ``include_offsets`` (``False`` by default: no span), and
+  ``SemanticChunker`` with ``include_offsets=False`` reports ``(0, 0)``. An
+  overlap chunk's context includes a unit ``min_length`` dropped inside it.
+  An unpinned embedding model's cached vectors were served after an upstream
+  change of the model, and the embedding cache grew without bound.
+  ``MultimodalEmbeddingEngine.embed_documents_with_cache`` keyed its cache on
+  the source path, its modification time and the document count: changed
+  text, another custom function or another ``normalize`` setting were served
+  the first vectors, and a document left without an embedding made it raise;
+  the key is now the content and every setting that changes the output
+  (entries written under the old key are not found again).
+  ``ScriptSegmenter`` called ``regex.get_script``, which the ``regex``
+  library does not have, so with ``regex`` installed every text came back as
+  one span of unknown script (with a warning about ``'_unknown'``); it now
+  detects scripts with ``\p{Script=...}``, its ``start``/``end`` are
+  character offsets (they were grapheme-cluster indices, which every
+  consumer read as character offsets), a script the map does not name is a
+  span of its own instead of being absorbed by its neighbours, short spans
+  merged by ``min_span_chars`` leave one span per run, Tamil, Telugu,
+  Kannada, Malayalam and Sinhala map to ``SOUTH_ASIAN`` and Lao to
+  ``SOUTHEAST_ASIAN`` (as documented), and Han that meets kana (Japanese)
+  or Hangul (Korean) letter to letter stays in one span. With ``regex`` installed,
+  ``SemanticChunker`` and ``WritingSystemAdapter`` therefore dispatch each
+  span to its script's strategy, so their chunks change: Chinese without
+  ``jieba`` becomes one chunk per character, and Arabic, Hebrew,
+  Devanagari, the Dravidian scripts and others use their own strategies.
+  ``RetrievalResponse.to_dict()`` and ``LegOutcome.to_dict()`` now return a
+  JSON-compatible mapping as documented: a leg's ``generation`` is written as
+  its ``IndexGeneration.to_dict()``, where it used to be the object itself
+  and ``json.dumps`` raised. :pr:`865`
+
+scikitplot.feature_selection
+----------------------------
+
+- |Feature| New :mod:`scikitplot.feature_selection` for wide pandas tables.
+  ``profile_features`` (or ``FeatureProfiler`` in a pipeline) fits a
+  ``FeatureSchema`` on training data: every column gets a role, dtype family,
+  semantic kind, user tags, a bin recommendation (Knuth, Freedman-Diaconis,
+  Scott ... with frozen edges) and policy-backed assessments such as
+  ``skewed``, ``discrete``, ``constant``, ``binary``, ``identifier_like`` or
+  ``high_cardinality``, each with evidence and an explicit ``unknown`` /
+  ``not_applicable`` state; thresholds, roles, kinds, tags and manual
+  overrides live in a ``FeaturePolicy`` read from TOML, YAML or JSON, and new
+  questions are added with ``register_assessment``. ``FeatureColumnSelector``
+  routes columns into a ``ColumnTransformer`` by kind or assessment on each
+  training fold, ``FeatureFilter`` drops constant and identifier-like columns
+  and non-feature roles, and ``FeatureRenamer`` applies a frozen rename plan.
+  ``trace_pipeline`` reads a fitted ``Pipeline`` / ``ColumnTransformer`` /
+  ``FeatureUnion`` and reports, per raw column, the steps that touched it,
+  the columns it became and where it was dropped, checks every stage's width
+  against its real output, and ``FeatureLineage.attribute`` sums one-hot (or
+  any exactly traced) importances and SHAP values back to raw columns.
+  ``ReferenceProfile`` freezes a training reference and reports per-feature
+  PSI, Jensen-Shannon distance, missingness change and unseen categories. :pr:`867`
+
+scikitplot.mcp
+--------------
+
+- |Feature| The Corpus+Annoy retriever can be scoped by the corpus filter contract:
+  ``CorpusIndexRetriever(..., filter=...)`` and
+  ``CorpusAnnoyRetriever.from_corpus_annoy(..., filter=...)`` take a
+  ``scikitplot.corpus`` filter expression (or its JSON form), checked by
+  ``validate_filter`` before anything is built and passed to every
+  ``index.search``, where the corpus applies it in every leg and AND-s it
+  with the index's ``SecurityFilter``; ``scikitplot mcp --corpus-filter
+  PATH`` reads it from a JSON file. With a filter, ``semantic`` mode runs
+  the corpus's dense leg through ``search``, the seam that takes one; a
+  filter that narrows nothing is refused, and the ``docs://chunk/{doc_id}``
+  resource serves only documents in scope. ``CorpusIndexRetriever`` gains
+  ``get`` (and ``documents=``), so the server also starts in ``hybrid`` and
+  ``keyword`` corpus modes, where it used to stop with an ``AttributeError``. :pr:`865`
+
+scikitplot.memmap
+-----------------
+
+- |Fix| An array from ``MemoryMap.as_numpy_array`` stays valid after ``close()``
+  (including the ``with`` block exit): the mapping now exports its bytes
+  through the buffer protocol and unmaps only when the last view is released.
+  ``close()`` from another thread likewise defers the unmap until the end
+  of a running ``read``, ``write``, ``msync``, ``mlock`` or ``munlock``;
+  ``mprotect`` refuses (``BufferError``) to remove any protection bit while a
+  view is alive or such an operation is running; and
+  a mapping without ``PROT_READ`` exports nothing and refuses ``read``. Each
+  of these used to crash the interpreter (SIGSEGV).
+
+  Threads may share one ``MemoryMap`` on free-threaded Python too: its
+  open/closed state, export count and protection flags change under a lock
+  of the mapping (a ``PyMutex``; nothing with the GIL, which already
+  serialised them), so a view or a method never starts on a closed mapping
+  and the region is unmapped once, after the last view. Without it, threads
+  exporting views lost counts: ``close()`` left the region mapped, or
+  unmapped it under a live view (SIGSEGV). :pr:`865`
+
+scikitplot.random
+-----------------
+
+- |Fix| ``Kiss32Random.index``, ``Kiss64Random.index`` and
+  ``KissGenerator.integers`` (with ``KissRandomState.randint``) draw without
+  modulo bias: a raw draw below ``2**w mod n`` is rejected before the modulo
+  (at ``n = 3e9`` the 32-bit ``index`` put 60.3% of draws in the lower 43.2%
+  of the range). A seeded stream equals the old one until the first
+  rejection, which for small ``n`` practically never happens.
+  ``Kiss32Random.index(n)`` reaches indices of ``2**32`` and more (two draws
+  per index for ``n > 2**32``); ``index`` raises ``ValueError`` for
+  ``n < 0`` as documented (it raised ``OverflowError``), ``TypeError`` for
+  a ``bool`` or a non-integer, and ``OverflowError`` above ``size_t``;
+  ``integers`` refuses non-integer bounds and a range wider than ``2**64``.
+  ``KissSeedSequence.spawn`` reserves its spawn keys under a lock, so
+  threads never mint the same key (identical child streams) on
+  free-threaded builds. Annoy, which shares the C++ generator, is unchanged. :pr:`865`
+
 .. rubric:: Code and documentation contributors
 
 Thanks to everyone who has contributed to the maintenance and improvement of

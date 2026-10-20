@@ -1,6 +1,6 @@
 # NormalizerConfigBase[#](#normalizerconfigbase "Link to this heading")
 
-class scikitplot.corpus.NormalizerConfigBase(**normalizer\_type=NormalizerType.CUSTOM**, **enabled=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L545)[#](#scikitplot.corpus.NormalizerConfigBase "Link to this definition")
+class scikitplot.corpus.NormalizerConfigBase(**normalizer\_type=NormalizerType.CUSTOM**, **enabled=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L545)[#](#scikitplot.corpus.NormalizerConfigBase "Link to this definition")
 :   Abstract base configuration for text normaliser implementations.
 
     Parameters:
@@ -16,4 +16,4 @@ class scikitplot.corpus.NormalizerConfigBase(**normalizer\_type=NormalizerType.C
 
     enabled: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.NormalizerConfigBase.enabled "Link to this definition")
 
-    normalizer\_type: [NormalizerType](scikitplot.corpus.NormalizerType.html#scikitplot.corpus.NormalizerType "scikitplot.corpus._types.NormalizerType") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerConfigBase.normalizer_type "Link to this definition")
+    normalizer\_type: [NormalizerType](scikitplot.corpus.NormalizerType.html#scikitplot.corpus.NormalizerType "scikitplot.corpus._types.NormalizerType") = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerConfigBase.normalizer_type "Link to this definition")

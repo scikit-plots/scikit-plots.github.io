@@ -1,6 +1,6 @@
 # krippendorff\_alpha[#](#krippendorff-alpha "Link to this heading")
 
-scikitplot.corpus.krippendorff\_alpha(**ratings**, **\***, **level='nominal'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_agreement.py#L279)[#](#scikitplot.corpus.krippendorff_alpha "Link to this definition")
+scikitplot.corpus.krippendorff\_alpha(**ratings**, **\***, **level='nominal'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_agreement.py#L279)[#](#scikitplot.corpus.krippendorff_alpha "Link to this definition")
 :   Krippendorff’s alpha for any number of raters, with missing ratings.
 
     Parameters:

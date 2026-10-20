@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:06:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:12:35Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.Guard","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>Guard<a class="headerlink" href="#guard" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Guard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cleaner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L334"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Guard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cleaner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L334"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard" title="Link to this definition">#</a></dt>
 <dd><p>Encode what goes to a model, check it, and decode what comes back.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1786,8 +1787,8 @@ placeholder for every turn, and the vault is cleared when the <code class="docut
 block ends. Nothing about the guard needs the network; you pass the
 function that calls the model.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0ce75794-e5a4-450d-8d24-9b3ce0232ce8">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0ce75794-e5a4-450d-8d24-9b3ce0232ce8','d15ef1d2-78bd-4837-8924-69c661580ca9','cfd02e71-57f9-4e38-b637-a14ded751801','../../lite/tree/../notebooks/index.html?path=5d18dc69_399d_4756_96bd_2aee8af4ac4e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f75d87a5-e893-49cf-91c2-2f3dffffadfe">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f75d87a5-e893-49cf-91c2-2f3dffffadfe','33fe970c-942e-42ad-9968-e3a5ff9fabe4','0f1359fa-731f-483e-9d31-7f82158aa27f','../../lite/tree/../notebooks/index.html?path=13d4113d_9f04_474f_97de_db840fdd9084.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluentCleanPrompt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">FluentCleanPrompt</span><span class="p">()</span><span class="o">.</span><span class="n">guard</span><span class="p">()</span> <span class="k">as</span> <span class="n">guard</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">guard</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
@@ -1798,9 +1799,9 @@ function that calls the model.</p>
 </div>
 </div>
 </div>
-<div id="cfd02e71-57f9-4e38-b637-a14ded751801" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0ce75794-e5a4-450d-8d24-9b3ce0232ce8','cfd02e71-57f9-4e38-b637-a14ded751801')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0ce75794-e5a4-450d-8d24-9b3ce0232ce8','cfd02e71-57f9-4e38-b637-a14ded751801')">Open In Tab</button></div><div id="d15ef1d2-78bd-4837-8924-69c661580ca9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="0f1359fa-731f-483e-9d31-7f82158aa27f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f75d87a5-e893-49cf-91c2-2f3dffffadfe','0f1359fa-731f-483e-9d31-7f82158aa27f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f75d87a5-e893-49cf-91c2-2f3dffffadfe','0f1359fa-731f-483e-9d31-7f82158aa27f')">Open In Tab</button></div><div id="33fe970c-942e-42ad-9968-e3a5ff9fabe4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.aask">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">aask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L776"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.aask" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">aask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L776"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.aask" title="Link to this definition">#</a></dt>
 <dd><p>Guard <code class="docutils literal notranslate"><span class="pre">prompt</span></code>, await <code class="docutils literal notranslate"><span class="pre">call</span></code> with it, and decode the answer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1845,7 +1846,7 @@ prompt. For a large document, <code class="docutils literal notranslate"><span c
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.achat">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">achat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L847"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.achat" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">achat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L847"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.achat" title="Link to this definition">#</a></dt>
 <dd><p>Guard every message, await <code class="docutils literal notranslate"><span class="pre">call</span></code> with them, and decode the reply.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1885,7 +1886,7 @@ string or a message mapping.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.adecode_stream">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">adecode_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.adecode_stream" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">adecode_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L721"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.adecode_stream" title="Link to this definition">#</a></dt>
 <dd><p>Decode a reply streamed by an asynchronous client.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1917,7 +1918,7 @@ string or a message mapping.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.ask">
-<span class="sig-name descname"><span class="pre">ask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L751"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.ask" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L751"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.ask" title="Link to this definition">#</a></dt>
 <dd><p>Guard <code class="docutils literal notranslate"><span class="pre">prompt</span></code>, pass it to <code class="docutils literal notranslate"><span class="pre">call</span></code>, and decode the answer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1956,7 +1957,7 @@ string or a message mapping.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.chat">
-<span class="sig-name descname"><span class="pre">chat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L817"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.chat" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L817"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.chat" title="Link to this definition">#</a></dt>
 <dd><p>Guard every message, pass them to <code class="docutils literal notranslate"><span class="pre">call</span></code>, and decode the reply.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2007,7 +2008,7 @@ part’s <code class="docutils literal notranslate"><span class="pre">text</span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.clear" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.clear" title="Link to this definition">#</a></dt>
 <dd><p>Drop every value; the guard cannot be used afterwards.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2018,7 +2019,7 @@ part’s <code class="docutils literal notranslate"><span class="pre">text</span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.decode_object">
-<span class="sig-name descname"><span class="pre">decode_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L528"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_object" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">decode_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L528"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_object" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-like value with every string decoded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2046,7 +2047,7 @@ the decoded JSON string.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.decode_stream">
-<span class="sig-name descname"><span class="pre">decode_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_stream" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">decode_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_stream" title="Link to this definition">#</a></dt>
 <dd><p>Decode a streamed reply, chunk by chunk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2076,8 +2077,8 @@ decoded at once.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f37cf040-49af-49f4-9592-5b3034ad5389">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f37cf040-49af-49f4-9592-5b3034ad5389','5554cee6-75f0-4e64-9cbd-3a5abf52048a','fca6f5af-dac8-4d54-a66e-1bbaf5efa197','../../lite/tree/../notebooks/index.html?path=17e9cbc0_5423_4f45_83e3_a92713037b16.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c4399df7-c42a-4380-95cf-3a8f55cf648f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c4399df7-c42a-4380-95cf-3a8f55cf648f','b60aa633-a634-4b4c-bf47-7ab1896a2412','d6bb58c5-723d-4c39-b0b2-5b16c11aaf78','../../lite/tree/../notebooks/index.html?path=35f0c8fa_4792_4697_97ac_5732377ebe48.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluentCleanPrompt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guard</span> <span class="o">=</span> <span class="n">FluentCleanPrompt</span><span class="p">()</span><span class="o">.</span><span class="n">guard</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">safe</span> <span class="o">=</span> <span class="n">guard</span><span class="o">.</span><span class="n">outgoing</span><span class="p">(</span><span class="s2">"mail ann@example.com"</span><span class="p">)</span>
@@ -2087,11 +2088,11 @@ decoded at once.</p>
 </div>
 </div>
 </div>
-<div id="fca6f5af-dac8-4d54-a66e-1bbaf5efa197" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f37cf040-49af-49f4-9592-5b3034ad5389','fca6f5af-dac8-4d54-a66e-1bbaf5efa197')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f37cf040-49af-49f4-9592-5b3034ad5389','fca6f5af-dac8-4d54-a66e-1bbaf5efa197')">Open In Tab</button></div><div id="5554cee6-75f0-4e64-9cbd-3a5abf52048a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d6bb58c5-723d-4c39-b0b2-5b16c11aaf78" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c4399df7-c42a-4380-95cf-3a8f55cf648f','d6bb58c5-723d-4c39-b0b2-5b16c11aaf78')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c4399df7-c42a-4380-95cf-3a8f55cf648f','d6bb58c5-723d-4c39-b0b2-5b16c11aaf78')">Open In Tab</button></div><div id="b60aa633-a634-4b4c-bf47-7ab1896a2412" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.decode_tool_arguments">
-<span class="sig-name descname"><span class="pre">decode_tool_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_withheld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raise'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L559"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_tool_arguments" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">decode_tool_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_withheld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raise'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L559"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.decode_tool_arguments" title="Link to this definition">#</a></dt>
 <dd><p>Restore a tool call’s arguments with only the values this tool may get.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2146,8 +2147,8 @@ network tool usually needs none.</p>
 <a class="reference internal" href="scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner.kinds_in" title="scikitplot.cleanprompt.Cleaner.kinds_in"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Cleaner.kinds_in</span></code></a>, the same restoration that decoding runs, so
 the check and the decode cannot disagree (<code class="docutils literal notranslate"><span class="pre">CP-073</span></code>).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e9297fe5-1c18-4776-a4f4-1fea8950aa3e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e9297fe5-1c18-4776-a4f4-1fea8950aa3e','1376aa6b-70ef-410f-b5c0-bc0b97d655d6','5fe22f4d-ea3d-43ce-9565-ac11efb3143e','../../lite/tree/../notebooks/index.html?path=a15a7f51_6c50_4639_b1c9_8cea8fe0e934.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="2363a4b1-ba32-4780-bce0-84e03ecad4c6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2363a4b1-ba32-4780-bce0-84e03ecad4c6','414251cb-be1d-46e9-a48b-d655450e1606','8ece01b5-6aae-4a18-b55f-0ca6d234763c','../../lite/tree/../notebooks/index.html?path=d5048193_2fca_43fa_b454_e19b50d1eb52.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluentCleanPrompt</span><span class="p">,</span> <span class="n">LeakError</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guard</span> <span class="o">=</span> <span class="n">FluentCleanPrompt</span><span class="p">()</span><span class="o">.</span><span class="n">guard</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">guard</span><span class="o">.</span><span class="n">outgoing</span><span class="p">(</span><span class="s2">"mail ann@example.com, card 4242 4242 4242 4242"</span><span class="p">)</span>
@@ -2162,11 +2163,11 @@ the check and the decode cannot disagree (<code class="docutils literal notransl
 </div>
 </div>
 </div>
-<div id="5fe22f4d-ea3d-43ce-9565-ac11efb3143e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e9297fe5-1c18-4776-a4f4-1fea8950aa3e','5fe22f4d-ea3d-43ce-9565-ac11efb3143e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e9297fe5-1c18-4776-a4f4-1fea8950aa3e','5fe22f4d-ea3d-43ce-9565-ac11efb3143e')">Open In Tab</button></div><div id="1376aa6b-70ef-410f-b5c0-bc0b97d655d6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="8ece01b5-6aae-4a18-b55f-0ca6d234763c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2363a4b1-ba32-4780-bce0-84e03ecad4c6','8ece01b5-6aae-4a18-b55f-0ca6d234763c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2363a4b1-ba32-4780-bce0-84e03ecad4c6','8ece01b5-6aae-4a18-b55f-0ca6d234763c')">Open In Tab</button></div><div id="414251cb-be1d-46e9-a48b-d655450e1606" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.encode_object">
-<span class="sig-name descname"><span class="pre">encode_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.encode_object" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">encode_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.encode_object" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-like value guarded as the JSON document it will become.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2216,8 +2217,8 @@ number under a sensitive field a numeric stand-in that keeps the JSON
 valid, reads <code class="docutils literal notranslate"><span class="pre">Key:</span> <span class="pre">value</span></code> prose inside strings (<code class="docutils literal notranslate"><span class="pre">CP-078</span></code>), and puts
 the whole document through the independent check.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="15bf8249-d33b-407e-b9ba-d28e47c3e6c5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('15bf8249-d33b-407e-b9ba-d28e47c3e6c5','1836151a-62fb-4ca2-8c56-9fcf74413518','22a49e6e-996b-41f9-a2ed-ab127b2b3c18','../../lite/tree/../notebooks/index.html?path=452d5860_b768_4124_9293_6beca71a657f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c1d0f1f6-c442-476f-98cc-80eed64376a6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c1d0f1f6-c442-476f-98cc-80eed64376a6','27beb8e8-aba5-4ac4-a23c-0ba6526ba943','bdc69dd7-5538-48b3-8d80-a4b1f551c84c','../../lite/tree/../notebooks/index.html?path=0acd1253_3c54_43eb_a1c9_befec9d53ea3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.cleanprompt</span><span class="w"> </span><span class="kn">import</span> <span class="n">FluentCleanPrompt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guard</span> <span class="o">=</span> <span class="n">FluentCleanPrompt</span><span class="p">()</span><span class="o">.</span><span class="n">guard</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">guard</span><span class="o">.</span><span class="n">encode_object</span><span class="p">({</span><span class="s2">"ann@example.com"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"card"</span><span class="p">:</span> <span class="mi">4242424242424242</span><span class="p">}})</span>
@@ -2226,11 +2227,11 @@ the whole document through the independent check.</p>
 </div>
 </div>
 </div>
-<div id="22a49e6e-996b-41f9-a2ed-ab127b2b3c18" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('15bf8249-d33b-407e-b9ba-d28e47c3e6c5','22a49e6e-996b-41f9-a2ed-ab127b2b3c18')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('15bf8249-d33b-407e-b9ba-d28e47c3e6c5','22a49e6e-996b-41f9-a2ed-ab127b2b3c18')">Open In Tab</button></div><div id="1836151a-62fb-4ca2-8c56-9fcf74413518" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="bdc69dd7-5538-48b3-8d80-a4b1f551c84c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c1d0f1f6-c442-476f-98cc-80eed64376a6','bdc69dd7-5538-48b3-8d80-a4b1f551c84c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c1d0f1f6-c442-476f-98cc-80eed64376a6','bdc69dd7-5538-48b3-8d80-a4b1f551c84c')">Open In Tab</button></div><div id="27beb8e8-aba5-4ac4-a23c-0ba6526ba943" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.incoming">
-<span class="sig-name descname"><span class="pre">incoming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reply</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.incoming" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">incoming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reply</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L508"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.incoming" title="Link to this definition">#</a></dt>
 <dd><p>Put the values back into a model’s reply.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2261,7 +2262,7 @@ the whole document through the independent check.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.outgoing">
-<span class="sig-name descname"><span class="pre">outgoing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L401"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.outgoing" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">outgoing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L401"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.outgoing" title="Link to this definition">#</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">text</span></code> safe to send, or raise before anything is sent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2300,7 +2301,7 @@ the whole document through the independent check.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Guard.stream">
-<span class="sig-name descname"><span class="pre">stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_guard.py#L673"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.stream" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">stream</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_guard.py#L673"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Guard.stream" title="Link to this definition">#</a></dt>
 <dd><p>Return a decoder for one streamed reply.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2449,7 +2450,7 @@ the whole document through the independent check.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

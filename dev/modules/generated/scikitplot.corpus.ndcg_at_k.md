@@ -1,6 +1,6 @@
 # ndcg\_at\_k[#](#ndcg-at-k "Link to this heading")
 
-scikitplot.corpus.ndcg\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **gain='linear'**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/corpus/_metrics/_ranking.py#L811)[#](#scikitplot.corpus.ndcg_at_k "Link to this definition")
+scikitplot.corpus.ndcg\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **gain='linear'**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/corpus/_metrics/_ranking.py#L811)[#](#scikitplot.corpus.ndcg_at_k "Link to this definition")
 :   Normalised discounted cumulative gain (nDCG@k) over graded judgments.
 
     Parameters:

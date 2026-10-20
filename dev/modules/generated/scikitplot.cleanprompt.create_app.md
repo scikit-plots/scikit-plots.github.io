@@ -1,6 +1,6 @@
 # create\_app[#](#create-app "Link to this heading")
 
-scikitplot.cleanprompt.create\_app(**policy=None**, **secret\_key=None**, **ephemeral\_secret\_key=False**, **store=None**, **enable\_ner=False**, **ner\_model=None**, **ner\_engine='auto'**, **language='en'**, **model\_size='sm'**, **hide\_terms=()**, **word\_boundary=False**, **session\_cookie\_secure=False**, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/cleanprompt/_app.py#L238)[#](#scikitplot.cleanprompt.create_app "Link to this definition")
+scikitplot.cleanprompt.create\_app(**policy=None**, **secret\_key=None**, **ephemeral\_secret\_key=False**, **store=None**, **enable\_ner=False**, **ner\_model=None**, **ner\_engine='auto'**, **language='en'**, **model\_size='sm'**, **hide\_terms=()**, **word\_boundary=False**, **session\_cookie\_secure=False**, **config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/cleanprompt/_app.py#L238)[#](#scikitplot.cleanprompt.create_app "Link to this definition")
 :   Build the Flask application.
 
     Parameters:

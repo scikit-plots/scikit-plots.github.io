@@ -19,7 +19,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-18T00:08:52Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T08:14:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.online_help","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -1373,6 +1373,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.feature_selection.html">scikitplot.feature_selection</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
 </ul>
@@ -1756,7 +1757,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>online_help<a class="headerlink" href="#online-help" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.online_help">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">online_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs_root_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://scikit-plots.github.io/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'search.html'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/ba33a1a0/scikitplot/__init__.py#L551"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.online_help" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.</span></span><span class="sig-name descname"><span class="pre">online_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs_root_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://scikit-plots.github.io/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'search.html'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/493b8af5/scikitplot/__init__.py#L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.online_help" title="Link to this definition">#</a></dt>
 <dd><p>Open the online documentation search page in the default web browser.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1808,8 +1809,8 @@ is independently testable and the security boundary is explicit.
 <code class="docutils literal notranslate"><span class="pre">os.getenv</span></code> is resolved <em>before</em> validation so that an unsafe env
 value is rejected with a clear error rather than silently used.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b5a53135-9120-410e-8826-f1c08ec83cd2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b5a53135-9120-410e-8826-f1c08ec83cd2','d08f31a4-3778-4c2c-93b5-b1a4000c6b9e','129159aa-0dff-4a37-a6ad-df8440ed3978','../../lite/tree/../notebooks/index.html?path=81c0abbe_86c2_4232_944e_d8c63f8fe42a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6001ea6f-31dd-44ff-b60b-c93241560712">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6001ea6f-31dd-44ff-b60b-c93241560712','dc333321-0a31-4c6e-917b-4b1bdd1e1f6e','23996cae-d529-44f7-a86c-4dd8e2851d61','../../lite/tree/../notebooks/index.html?path=32d181ee_09eb_49d8_9fe3_fd876efd5202.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scikitplot</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scikitplot</span><span class="o">.</span><span class="n">online_help</span><span class="p">(</span><span class="s2">"installation"</span><span class="p">)</span>
 <span class="go">https://scikit-plots.github.io/dev/search.html?q=installation</span>
@@ -1817,7 +1818,7 @@ value is rejected with a clear error rather than silently used.</p>
 </div>
 </div>
 </div>
-<div id="129159aa-0dff-4a37-a6ad-df8440ed3978" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b5a53135-9120-410e-8826-f1c08ec83cd2','129159aa-0dff-4a37-a6ad-df8440ed3978')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b5a53135-9120-410e-8826-f1c08ec83cd2','129159aa-0dff-4a37-a6ad-df8440ed3978')">Open In Tab</button></div><div id="d08f31a4-3778-4c2c-93b5-b1a4000c6b9e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="23996cae-d529-44f7-a86c-4dd8e2851d61" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6001ea6f-31dd-44ff-b60b-c93241560712','23996cae-d529-44f7-a86c-4dd8e2851d61')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6001ea6f-31dd-44ff-b60b-c93241560712','23996cae-d529-44f7-a86c-4dd8e2851d61')">Open In Tab</button></div><div id="dc333321-0a31-4c6e-917b-4b1bdd1e1f6e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1935,7 +1936,7 @@ value is rejected with a clear error rather than silently used.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261017.ba33a1a 2026-10-17T23:59Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.493b8af 2026-10-20T08:06Z.
       <br/>
     
   </p>

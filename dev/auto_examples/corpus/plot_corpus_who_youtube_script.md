@@ -160,7 +160,7 @@ print("Characters:", len(LOCAL_PROXY_TEXT))
 
 ```
 ```
-Local proxy: /tmp/scikitplot-youtube-gallery-00hagd87/feynman_youtube_transcript_proxy.txt
+Local proxy: /tmp/scikitplot-youtube-gallery-nz1kz0oy/feynman_youtube_transcript_proxy.txt
 Characters: 580
 
 ```
@@ -472,7 +472,7 @@ Temporary transcript-proxy workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.029 seconds)
+****Total running time of the script:**** (0 minutes 0.869 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_youtube_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_youtube_script.ipynb)
 
