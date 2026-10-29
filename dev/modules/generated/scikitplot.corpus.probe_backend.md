@@ -1,6 +1,6 @@
 # probe\_backend[#](#probe-backend "Link to this heading")
 
-scikitplot.corpus.probe\_backend(**cls**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_capabilities.py#L220)[#](#scikitplot.corpus.probe_backend "Link to this definition")
+scikitplot.corpus.probe\_backend(**cls**, **\***, **load=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_capabilities.py#L220)[#](#scikitplot.corpus.probe_backend "Link to this definition")
 :   Classify one backend’s availability.
 
     Parameters:

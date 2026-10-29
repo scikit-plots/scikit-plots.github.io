@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:41:36Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:22:57Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.NerDetector","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -64,7 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1764,6 +1763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1795,14 +1795,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1848,7 +1840,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>NerDetector<a class="headerlink" href="#nerdetector" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.NerDetector">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">NerDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">frozenset({'EVENT',</span> <span class="pre">'FAC',</span> <span class="pre">'GPE',</span> <span class="pre">'LANGUAGE',</span> <span class="pre">'LAW',</span> <span class="pre">'LOC',</span> <span class="pre">'NORP',</span> <span class="pre">'ORG',</span> <span class="pre">'PERSON',</span> <span class="pre">'PRODUCT',</span> <span class="pre">'WORK_OF_ART'})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L102"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">NerDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">frozenset({'EVENT',</span> <span class="pre">'FAC',</span> <span class="pre">'GPE',</span> <span class="pre">'LANGUAGE',</span> <span class="pre">'LAW',</span> <span class="pre">'LOC',</span> <span class="pre">'NORP',</span> <span class="pre">'ORG',</span> <span class="pre">'PERSON',</span> <span class="pre">'PRODUCT',</span> <span class="pre">'WORK_OF_ART'})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sm'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L102"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector" title="Link to this definition">#</a></dt>
 <dd><p>Detect named entities with a spaCy pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1900,8 +1892,8 @@ components irrelevant to entity recognition are disabled, because disabling
 <code class="docutils literal notranslate"><span class="pre">tok2vec</span></code> or <code class="docutils literal notranslate"><span class="pre">ner</span></code> itself would silently produce zero entities, which in
 a privacy tool reads as “nothing sensitive found”.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9cad729e-cef0-4cb6-9928-70e248aee669">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9cad729e-cef0-4cb6-9928-70e248aee669','a96e6aa9-f9fd-493f-b46b-0d2a49a266c9','5f82010e-58d6-4fec-9c54-a5631bcb0971','../../lite/tree/../notebooks/index.html?path=6f02a5a6_2fe9_44fc_b4bb_44e3ffa077aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1408128a-eb8d-4f2a-9c03-b449c8a80a1b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1408128a-eb8d-4f2a-9c03-b449c8a80a1b','7983c97d-1dde-45ae-a16f-6caa64801265','bdd99208-b858-426d-915f-8f9da16b92e2','../../lite/tree/../notebooks/index.html?path=828a537b_7a06_4fdb_a214_6f1d1cd0c930.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detector</span> <span class="o">=</span> <span class="n">NerDetector</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">detector</span><span class="o">.</span><span class="n">kind</span>
 <span class="go">'NE'</span>
@@ -1909,7 +1901,7 @@ a privacy tool reads as “nothing sensitive found”.</p>
 </div>
 </div>
 </div>
-<div id="5f82010e-58d6-4fec-9c54-a5631bcb0971" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9cad729e-cef0-4cb6-9928-70e248aee669','5f82010e-58d6-4fec-9c54-a5631bcb0971')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9cad729e-cef0-4cb6-9928-70e248aee669','5f82010e-58d6-4fec-9c54-a5631bcb0971')">Open In Tab</button></div><div id="a96e6aa9-f9fd-493f-b46b-0d2a49a266c9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="bdd99208-b858-426d-915f-8f9da16b92e2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1408128a-eb8d-4f2a-9c03-b449c8a80a1b','bdd99208-b858-426d-915f-8f9da16b92e2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1408128a-eb8d-4f2a-9c03-b449c8a80a1b','bdd99208-b858-426d-915f-8f9da16b92e2')">Open In Tab</button></div><div id="7983c97d-1dde-45ae-a16f-6caa64801265" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.NerDetector.confidence">
 <span class="sig-name descname"><span class="pre">confidence</span></span><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector.confidence" title="Link to this definition">#</a></dt>
 <dd><p>!! processed by numpydoc !!</p>
@@ -1917,7 +1909,7 @@ a privacy tool reads as “nothing sensitive found”.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.NerDetector.detect">
-<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector.detect" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector.detect" title="Link to this definition">#</a></dt>
 <dd><p>Yield one span per accepted named entity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1978,7 +1970,7 @@ detections, which is what
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.NerDetector.kinds">
-<span class="sig-name descname"><span class="pre">kinds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector.kinds" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">kinds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.NerDetector.kinds" title="Link to this definition">#</a></dt>
 <dd><p>Return the placeholder categories this detector can produce.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2157,12 +2149,6 @@ detector yields indexes the string passed to <code class="docutils literal notra
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2180,7 +2166,7 @@ detector yields indexes the string passed to <code class="docutils literal notra
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

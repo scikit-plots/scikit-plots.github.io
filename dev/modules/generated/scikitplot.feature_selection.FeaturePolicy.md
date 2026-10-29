@@ -1,6 +1,6 @@
 # FeaturePolicy[#](#featurepolicy "Link to this heading")
 
-class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **tags=()**, **assessments=()**, **overrides=()**, **binning=<factory>**, **drift=<factory>**, **on\_missing\_column='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy "Link to this definition")
+class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **tags=()**, **assessments=()**, **overrides=()**, **binning=<factory>**, **drift=<factory>**, **on\_missing\_column='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy "Link to this definition")
 :   Complete, declarative description of how to profile a table.
 
     Parameters:
@@ -89,9 +89,9 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    binning: [BinningPolicy](scikitplot.feature_selection.BinningPolicy.html#scikitplot.feature_selection.BinningPolicy "scikitplot.feature_selection._policy.BinningPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy.binning "Link to this definition")
+    binning: [BinningPolicy](scikitplot.feature_selection.BinningPolicy.html#scikitplot.feature_selection.BinningPolicy "scikitplot.feature_selection._policy.BinningPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy.binning "Link to this definition")
 
-    check\_columns(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L910)[#](#scikitplot.feature_selection.FeaturePolicy.check_columns "Link to this definition")
+    check\_columns(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L910)[#](#scikitplot.feature_selection.FeaturePolicy.check_columns "Link to this definition")
     :   Refuse `kinds`/`overrides` keys absent from `names` (unless ignored).
 
         Parameters:
@@ -114,9 +114,9 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    drift: [DriftPolicy](scikitplot.feature_selection.DriftPolicy.html#scikitplot.feature_selection.DriftPolicy "scikitplot.feature_selection._policy.DriftPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy.drift "Link to this definition")
+    drift: [DriftPolicy](scikitplot.feature_selection.DriftPolicy.html#scikitplot.feature_selection.DriftPolicy "scikitplot.feature_selection._policy.DriftPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L676)[#](#scikitplot.feature_selection.FeaturePolicy.drift "Link to this definition")
 
-    dumps(**format='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L1010)[#](#scikitplot.feature_selection.FeaturePolicy.dumps "Link to this definition")
+    dumps(**format='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L1010)[#](#scikitplot.feature_selection.FeaturePolicy.dumps "Link to this definition")
     :   Serialise the policy, verified by reading it back.
 
         Parameters:
@@ -137,7 +137,7 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L961)[#](#scikitplot.feature_selection.FeaturePolicy.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L961)[#](#scikitplot.feature_selection.FeaturePolicy.from_dict "Link to this definition")
     :   Build a policy from its config form, checking every field first.
 
         Parameters:
@@ -171,7 +171,7 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    classmethod loads(**text**, **format='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L1036)[#](#scikitplot.feature_selection.FeaturePolicy.loads "Link to this definition")
+    classmethod loads(**text**, **format='toml'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L1036)[#](#scikitplot.feature_selection.FeaturePolicy.loads "Link to this definition")
     :   Parse a policy document.
 
         Parameters:
@@ -202,7 +202,7 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    resolve\_roles(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L853)[#](#scikitplot.feature_selection.FeaturePolicy.resolve_roles "Link to this definition")
+    resolve\_roles(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L853)[#](#scikitplot.feature_selection.FeaturePolicy.resolve_roles "Link to this definition")
     :   Return the role of every column in `names`.
 
         Parameters:
@@ -224,7 +224,7 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    resolve\_tags(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L888)[#](#scikitplot.feature_selection.FeaturePolicy.resolve_tags "Link to this definition")
+    resolve\_tags(**names**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L888)[#](#scikitplot.feature_selection.FeaturePolicy.resolve_tags "Link to this definition")
     :   Return the tags of every column in `names`.
 
         Parameters:
@@ -257,7 +257,7 @@ class scikitplot.feature\_selection.FeaturePolicy(**roles=()**, **kinds=()**, **
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L940)[#](#scikitplot.feature_selection.FeaturePolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L940)[#](#scikitplot.feature_selection.FeaturePolicy.to_dict "Link to this definition")
     :   Return the canonical config form, defaults included.
 
         Returns:

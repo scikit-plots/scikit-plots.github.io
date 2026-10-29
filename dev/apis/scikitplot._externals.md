@@ -15,24 +15,24 @@ not pull in Sphinx, BeautifulSoup, markdownify, or any other heavy
 dependency. Only the specific submodule that is accessed at runtime
 triggers its own import chain.
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_gallery\_grid[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_sphinx_gallery_grid/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_gallery_grid "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_gallery\_grid[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_sphinx_gallery_grid/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_gallery_grid "Link to this definition")
 :   Theme-independent owner of the public `gallery-grid` directive.
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_collection[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_sphinx_collection/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_collection "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_collection[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_sphinx_collection/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_collection "Link to this definition")
 :   Shared filtering, grouping, browser metadata and live-control engine used
     by collection-style directives.
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_core[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_core/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_core "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_core[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_core/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_core "Link to this definition")
 :   Dependency-free YouTube URL grammar and player option primitives.
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_gallery[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_gallery/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_gallery "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinx\_youtube\_gallery[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_sphinx_youtube_gallery/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinx_youtube_gallery "Link to this definition")
 :   Typed YouTube video/channel adapter that renders through `gallery-grid`.
 
-scikitplot.\_externals.\_sphinx\_ext.\_pydata\_component\_list[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_pydata_component_list/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._pydata_component_list "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_pydata\_component\_list[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_pydata_component_list/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._pydata_component_list "Link to this definition")
 :   PyData Sphinx Theme-specific owner of the public `component-list`
     inventory directive.
 
-scikitplot.\_externals.\_sphinx\_ext.\_sphinxcontrib\_youtube[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/_externals/_sphinx_ext/_sphinxcontrib_youtube/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinxcontrib_youtube "Link to this definition")
+scikitplot.\_externals.\_sphinx\_ext.\_sphinxcontrib\_youtube[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/_externals/_sphinx_ext/_sphinxcontrib_youtube/__init__.py#L0)[#](#scikitplot._externals._sphinx_ext._sphinxcontrib_youtube "Link to this definition")
 :   Vendored standalone YouTube/Vimeo/PeerTube player directives used by the
     gallery adapter.
 

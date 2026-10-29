@@ -1,6 +1,6 @@
 # Vault[#](#vault "Link to this heading")
 
-class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L59)[#](#scikitplot.cleanprompt.Vault "Link to this definition")
+class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L71)[#](#scikitplot.cleanprompt.Vault "Link to this definition")
 :   A closed mapping from placeholder label to original secret.
 
     Parameters:
@@ -45,7 +45,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
     ```
     Go BackOpen In Tab
 
-    add(**label**, **secret**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L114)[#](#scikitplot.cleanprompt.Vault.add "Link to this definition")
+    add(**label**, **secret**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L126)[#](#scikitplot.cleanprompt.Vault.add "Link to this definition")
     :   Record one label-to-secret pair.
 
         Parameters:
@@ -75,7 +75,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
         two different secrets were given the same label, which would make
         restoration ambiguous; that is always a bug and always raises.
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L251)[#](#scikitplot.cleanprompt.Vault.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L263)[#](#scikitplot.cleanprompt.Vault.clear "Link to this definition")
     :   Drop every secret and close the vault.
 
         Notes
@@ -94,7 +94,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
         Type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    export()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L226)[#](#scikitplot.cleanprompt.Vault.export "Link to this definition")
+    export()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L238)[#](#scikitplot.cleanprompt.Vault.export "Link to this definition")
     :   Return a plain dictionary copy of the mapping, secrets included.
 
         Returns:
@@ -115,7 +115,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
         Nothing in this submodule calls it implicitly, and no serializer reaches
         it by accident.
 
-    get(**label**, **default=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L162)[#](#scikitplot.cleanprompt.Vault.get "Link to this definition")
+    get(**label**, **default=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L174)[#](#scikitplot.cleanprompt.Vault.get "Link to this definition")
     :   Return the secret for `label`, or `default`.
 
         Parameters:
@@ -142,7 +142,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
         Type:
         :   Str or None
 
-    items()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L207)[#](#scikitplot.cleanprompt.Vault.items "Link to this definition")
+    items()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L219)[#](#scikitplot.cleanprompt.Vault.items "Link to this definition")
     :   Return a live view of label-to-secret pairs.
 
         Returns:
@@ -158,7 +158,7 @@ class scikitplot.cleanprompt.Vault(**mapping=None**, **grammar\_fingerprint=None
         than hidden, because restoration needs it. Prefer [`labels`](#scikitplot.cleanprompt.Vault.labels "scikitplot.cleanprompt.Vault.labels") in any
         code path that logs, renders or serializes.
 
-    labels()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_vault.py#L196)[#](#scikitplot.cleanprompt.Vault.labels "Link to this definition")
+    labels()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_vault.py#L208)[#](#scikitplot.cleanprompt.Vault.labels "Link to this definition")
     :   Return every label in insertion order.
 
         Returns:

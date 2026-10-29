@@ -1,6 +1,6 @@
 # LegContribution[#](#legcontribution "Link to this heading")
 
-class scikitplot.corpus.LegContribution(**leg**, **rank**, **native\_score=None**, **native\_metric=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution "Link to this definition")
+class scikitplot.corpus.LegContribution(**leg**, **rank**, **native\_score=None**, **native\_metric=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution "Link to this definition")
 :   One leg’s contribution to a fused hit.
 
     Parameters:
@@ -27,15 +27,15 @@ class scikitplot.corpus.LegContribution(**leg**, **rank**, **native\_score=None*
     ****Developer.**** This is propagation, not new computation: the fusion loop
     already had all four values.
 
-    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution.leg "Link to this definition")
+    leg: [LegKind](scikitplot.corpus.LegKind.html#scikitplot.corpus.LegKind "scikitplot.corpus._retrieval.LegKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution.leg "Link to this definition")
 
     native\_metric: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.LegContribution.native_metric "Link to this definition")
 
     native\_score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.LegContribution.native_score "Link to this definition")
 
-    rank: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution.rank "Link to this definition")
+    rank: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrievers.py#L71)[#](#scikitplot.corpus.LegContribution.rank "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrievers.py#L97)[#](#scikitplot.corpus.LegContribution.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrievers.py#L97)[#](#scikitplot.corpus.LegContribution.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

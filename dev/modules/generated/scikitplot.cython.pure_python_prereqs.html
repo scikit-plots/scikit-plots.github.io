@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:43:23Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:24:51Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cython.pure_python_prereqs","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -64,7 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1764,6 +1763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1795,14 +1795,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1848,7 +1840,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>pure_python_prereqs<a class="headerlink" href="#pure-python-prereqs" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cython.pure_python_prereqs">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pure_python_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_custom_compiler.py#L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pure_python_prereqs" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cython.</span></span><span class="sig-name descname"><span class="pre">pure_python_prereqs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cython/_custom_compiler.py#L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cython.pure_python_prereqs" title="Link to this definition">#</a></dt>
 <dd><p>Check prerequisites pure Python, setuptools only.</p>
 <p>No Cython, pybind11, or NumPy is required.  Only setuptools (for
 building pure-Python packages with a <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>) is checked.</p>
@@ -1869,8 +1861,8 @@ and either <code class="docutils literal notranslate"><span class="pre">version:
 it with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">setuptools</span></code>.  No C compiler is needed for
 pure Python packages.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="b256e985-8a4c-4aaa-9145-78d1971c76c9">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b256e985-8a4c-4aaa-9145-78d1971c76c9','93173c8c-ee70-4e22-9f21-86974963c41c','6206433b-beb1-4c81-b245-299c225d529d','../../lite/tree/../notebooks/index.html?path=4f0580c5_ecac_45bc_86fb_1b78c74ee465.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="591f37f2-1277-49cd-896e-21f48f8c4163">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('591f37f2-1277-49cd-896e-21f48f8c4163','2e77a7e1-c4c1-4d08-9de4-fd855c8337e2','ff5e171b-a6a6-42d6-afba-c466c3ca35e3','../../lite/tree/../notebooks/index.html?path=845442d7_6ce2_412a_a43c_919c41d242af.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">pure_python_prereqs</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">"setuptools"</span> <span class="ow">in</span> <span class="n">result</span>
 <span class="go">True</span>
@@ -1878,7 +1870,7 @@ pure Python packages.</p>
 </div>
 </div>
 </div>
-<div id="6206433b-beb1-4c81-b245-299c225d529d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b256e985-8a4c-4aaa-9145-78d1971c76c9','6206433b-beb1-4c81-b245-299c225d529d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('b256e985-8a4c-4aaa-9145-78d1971c76c9','6206433b-beb1-4c81-b245-299c225d529d')">Open In Tab</button></div><div id="93173c8c-ee70-4e22-9f21-86974963c41c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ff5e171b-a6a6-42d6-afba-c466c3ca35e3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('591f37f2-1277-49cd-896e-21f48f8c4163','ff5e171b-a6a6-42d6-afba-c466c3ca35e3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('591f37f2-1277-49cd-896e-21f48f8c4163','ff5e171b-a6a6-42d6-afba-c466c3ca35e3')">Open In Tab</button></div><div id="2e77a7e1-c4c1-4d08-9de4-fd855c8337e2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -1973,12 +1965,6 @@ pure Python packages.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -1996,7 +1982,7 @@ pure Python packages.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

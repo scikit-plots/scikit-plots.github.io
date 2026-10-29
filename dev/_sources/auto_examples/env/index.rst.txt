@@ -1,0 +1,121 @@
+
+
+.. _sphx_glr_auto_examples_env:
+
+.. _env__examples:
+
+Env
+===
+
+.. currentmodule:: scikitplot._env
+
+Examples for :py:mod:`~scikitplot._env`, the environment builder behind
+``scikitplot env``: describe a Python environment once, then build the same
+environment on any machine with whichever tool it has (uv, ``venv`` + pip,
+pipenv, micromamba, mamba or conda).
+
+.. code-block:: text
+
+    request      arguments, a scikitplot-env.toml, or both (arguments win)
+        ↓
+    plan         reads only: every command, its network use, its approvals
+        ↓
+    approvals    asked (or refused) before the first step runs
+        ↓
+    execute      the plan's steps, under a lock on the environment
+        ↓
+    receipt      what was built; the next run with the same request is a no-op
+
+Every example runs from the command line and from Python with the same
+fields; the command line form is shown next to each Python call:
+
+.. prompt:: bash $
+
+    scikitplot env plan -n analysis --package "pandas>=2" --verify-import pandas
+    scikitplot env create -n analysis --package "pandas>=2" --verify-import pandas
+
+The examples need no network: they plan with any backend, and build only
+``venv`` environments from the standard library. Named environments go to
+``SKPLT_ENV_HOME`` (default ``~/.scikitplot/env``); the examples point it at a
+temporary folder and remove what they build.
+
+Start with the plan, then build, run and remove, then configuration files,
+policies and the errors an automation reads. See also :ref:`env-index`.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A committed scikitplot-env.toml describes the environment once; every machine runs the same command. This example covers what an automation (a CI job, a container build, an AI agent) relies on:">
+
+.. only:: html
+
+  .. image:: /auto_examples/env/images/thumb/sphx_glr_plot_env_config_policy_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/env/plot_env_config_policy_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">One Configuration File for Laptops, CI and Agents</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="create runs exactly the plan you would have seen with plan, then writes a receipt into the environment. Run it again with the same request and nothing happens. This example builds a real venv environment from the standard library (no network), and shows the whole life cycle:">
+
+.. only:: html
+
+  .. image:: /auto_examples/env/images/thumb/sphx_glr_plot_env_create_run_remove_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/env/plot_env_create_run_remove_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Build, Use and Remove an Environment, Idempotently</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The first habit with scikitplot env is to look before you build. plan reads the request and the dependency files, picks a backend by fixed rules, and returns every command it would run, which ones use the network and which need an approval. It changes nothing.">
+
+.. only:: html
+
+  .. image:: /auto_examples/env/images/thumb/sphx_glr_plot_env_plan_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/env/plot_env_plan_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plan an Environment Before Building It</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/env/plot_env_config_policy_script
+   /auto_examples/env/plot_env_create_run_remove_script
+   /auto_examples/env/plot_env_plan_script
+

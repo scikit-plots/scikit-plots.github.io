@@ -1,6 +1,6 @@
 # Recipe[#](#recipe "Link to this heading")
 
-class scikitplot.rank\_bm25.Recipe(**name**, **version**, **notes=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe "Link to this definition")
+class scikitplot.rank\_bm25.Recipe(**name**, **version**, **notes=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe "Link to this definition")
 :   A named, versioned scoring formula.
 
     Parameters:
@@ -24,8 +24,8 @@ class scikitplot.rank\_bm25.Recipe(**name**, **version**, **notes=''**)[[source]
     property identifier: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.rank_bm25.Recipe.identifier "Link to this definition")
     :   `"name/version"`, the string a build records.
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe.name "Link to this definition")
 
     notes: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.rank_bm25.Recipe.notes "Link to this definition")
 
-    version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe.version "Link to this definition")
+    version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L201)[#](#scikitplot.rank_bm25.Recipe.version "Link to this definition")

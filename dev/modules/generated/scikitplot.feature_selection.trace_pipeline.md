@@ -1,6 +1,6 @@
 # trace\_pipeline[#](#trace-pipeline "Link to this heading")
 
-scikitplot.feature\_selection.trace\_pipeline(**estimator**, **input\_features=None**, **\***, **X=None**, **trace\_final=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L778)[#](#scikitplot.feature_selection.trace_pipeline "Link to this definition")
+scikitplot.feature\_selection.trace\_pipeline(**estimator**, **input\_features=None**, **\***, **X=None**, **trace\_final=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L778)[#](#scikitplot.feature_selection.trace_pipeline "Link to this definition")
 :   Trace the feature lineage of a fitted estimator.
 
     Parameters:

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -21,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:41:08Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:22:28Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"devel/guide_code_style_write","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -65,7 +64,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -739,14 +738,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -814,7 +805,7 @@ consistency, and maintainability of the code base.</p>
 <div class="seealso admonition">
 <p class="admonition-title">API guidelines</p>
 <p>If adding new features, changing behavior or function signatures, or removing
-public interfaces, please consult the <a class="reference external" href="https://matplotlib.org/devdocs/devel/api_changes.html#api-changes" title="(in Matplotlib v3.12.0.dev813+g07832268c)"><span>API guidelines</span></a>.</p>
+public interfaces, please consult the <a class="reference external" href="https://matplotlib.org/devdocs/devel/api_changes.html#api-changes" title="(in Matplotlib v3.12.0.dev856+gf318e2855)"><span>API guidelines</span></a>.</p>
 </div>
 <section id="pep8-as-enforced-by-flake8">
 <span id="code-style-write"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">PEP8, as enforced by flake8</a><a class="headerlink" href="#pep8-as-enforced-by-flake8" title="Link to this heading">#</a></h2>
@@ -960,7 +951,7 @@ function, and let others pass through.  Instead of popping arguments to
 use off <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>, specify them as keyword-only arguments to the local
 function.  This makes it obvious at a glance which arguments will be
 consumed in the function.  For example, in
-<a class="reference external" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v3.12.0.dev813+g07832268c)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a>, <code class="docutils literal notranslate"><span class="pre">scalex</span></code> and <code class="docutils literal notranslate"><span class="pre">scaley</span></code> are
+<a class="reference external" href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot" title="(in Matplotlib v3.12.0.dev856+gf318e2855)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot</span></code></a>, <code class="docutils literal notranslate"><span class="pre">scalex</span></code> and <code class="docutils literal notranslate"><span class="pre">scaley</span></code> are
 local arguments and the rest are passed on as
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Line2D</span></code> keyword arguments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># in axes/_axes.py</span>
@@ -1252,12 +1243,6 @@ and python itself are all distributed under BSD compatible licenses.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -1275,7 +1260,7 @@ and python itself are all distributed under BSD compatible licenses.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

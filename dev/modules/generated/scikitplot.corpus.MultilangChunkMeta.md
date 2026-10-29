@@ -1,6 +1,6 @@
 # MultilangChunkMeta[#](#multilangchunkmeta "Link to this heading")
 
-class scikitplot.corpus.MultilangChunkMeta(**script=None**, **script\_direction=None**, **is\_mixed\_script=None**, **chunking\_unit=None**, **grapheme\_count=None**, **codepoint\_count=None**, **semantemes=None**, **semanteme\_count=None**, **morphemes=None**, **script\_spans=None**, **script\_model\_version=None**, **preprocessing\_trace=None**, **raw\_text=None**, **embedding=None**, **language\_hint=None**, **model\_name=None**, **chunking\_duration\_ms=None**, **preprocessing\_duration\_ms=None**, **layer2\_strategy=None**, **pipeline\_id=None**, **created\_at\_utc=None**, **char\_offset\_start=None**, **char\_offset\_end=None**, **token\_count=None**, **stopword\_count=None**, **unique\_token\_count=None**, **char\_count=None**, **avg\_token\_length=None**, **is\_rtl=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1523)[#](#scikitplot.corpus.MultilangChunkMeta "Link to this definition")
+class scikitplot.corpus.MultilangChunkMeta(**script=None**, **script\_direction=None**, **is\_mixed\_script=None**, **chunking\_unit=None**, **grapheme\_count=None**, **codepoint\_count=None**, **semantemes=None**, **semanteme\_count=None**, **morphemes=None**, **script\_spans=None**, **script\_model\_version=None**, **preprocessing\_trace=None**, **raw\_text=None**, **embedding=None**, **language\_hint=None**, **model\_name=None**, **chunking\_duration\_ms=None**, **preprocessing\_duration\_ms=None**, **layer2\_strategy=None**, **pipeline\_id=None**, **created\_at\_utc=None**, **char\_offset\_start=None**, **char\_offset\_end=None**, **token\_count=None**, **stopword\_count=None**, **unique\_token\_count=None**, **char\_count=None**, **avg\_token\_length=None**, **is\_rtl=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1523)[#](#scikitplot.corpus.MultilangChunkMeta "Link to this definition")
 :   Per-chunk multilang analysis bundle — stored in `chunk.metadata`.
 
     Collects all Layer 0-3 artefacts for a single chunk in one place
@@ -180,7 +180,7 @@ class scikitplot.corpus.MultilangChunkMeta(**script=None**, **script\_direction=
     stopword\_count: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.MultilangChunkMeta.stopword_count "Link to this definition")
     :   Number of stopwords among the tokens (if stopword analysis was run).
 
-    to\_dict(**\***, **include\_raw\_text=False**, **include\_preprocessing\_trace=False**, **include\_embedding=False**, **include\_semanteme\_detail=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1703)[#](#scikitplot.corpus.MultilangChunkMeta.to_dict "Link to this definition")
+    to\_dict(**\***, **include\_raw\_text=False**, **include\_preprocessing\_trace=False**, **include\_embedding=False**, **include\_semanteme\_detail=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1703)[#](#scikitplot.corpus.MultilangChunkMeta.to_dict "Link to this definition")
     :   Serialise to a JSON-safe dict for `chunk.metadata["multilang"]`.
 
         Parameters:
@@ -216,7 +216,7 @@ class scikitplot.corpus.MultilangChunkMeta(**script=None**, **script\_direction=
     unique\_token\_count: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.MultilangChunkMeta.unique_token_count "Link to this definition")
     :   Number of unique tokens (type count, not token count).
 
-    with\_embedding(**vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1659)[#](#scikitplot.corpus.MultilangChunkMeta.with_embedding "Link to this definition")
+    with\_embedding(**vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1659)[#](#scikitplot.corpus.MultilangChunkMeta.with_embedding "Link to this definition")
     :   Return a copy with an embedding vector and optional model metadata.
 
         Parameters:

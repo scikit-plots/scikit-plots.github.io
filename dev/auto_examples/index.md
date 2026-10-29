@@ -1,6 +1,6 @@
 🤓 Scikit-plots Examples & Tutorials
   
- 0.5.dev0+git.20261020.d6b0376 - October 20, 2026 18:35 UTC
+ 0.5.dev0+git.20261029.1037dde - October 29, 2026 06:16 UTC
 
 # Examples[#](#examples "Link to this heading")
 
@@ -960,6 +960,57 @@ plot\_pca\_2d\_projection with examples![](../_images/sphx_glr_plot_pca_componen
 
 plot\_pca\_component\_variance with examples
 
+# Env[#](#env "Link to this heading")
+
+Examples for `_env`, the environment builder behind
+`scikitplot env`: describe a Python environment once, then build the same
+environment on any machine with whichever tool it has (uv, `venv` + pip,
+pipenv, micromamba, mamba or conda).
+
+```
+request      arguments, a scikitplot-env.toml, or both (arguments win)
+    ↓
+plan         reads only: every command, its network use, its approvals
+    ↓
+approvals    asked (or refused) before the first step runs
+    ↓
+execute      the plan's steps, under a lock on the environment
+    ↓
+receipt      what was built; the next run with the same request is a no-op
+
+```
+
+Every example runs from the command line and from Python with the same
+fields; the command line form is shown next to each Python call:
+
+```
+scikitplot env plan -n analysis --package "pandas>=2" --verify-import pandas
+scikitplot env create -n analysis --package "pandas>=2" --verify-import pandas
+
+```
+
+The examples need no network: they plan with any backend, and build only
+`venv` environments from the standard library. Named environments go to
+`SKPLT_ENV_HOME` (default `~/.scikitplot/env`); the examples point it at a
+temporary folder and remove what they build.
+
+Start with the plan, then build, run and remove, then configuration files,
+policies and the errors an automation reads. See also [Environment builder](../user_guide/_env/index.html#env-index).
+
+![](../_images/sphx_glr_plot_env_config_policy_script_thumb.png)
+
+[One Configuration File for Laptops, CI and Agents](env/plot_env_config_policy_script.html)
+
+One Configuration File for Laptops, CI and Agents![](../_images/sphx_glr_plot_env_create_run_remove_script_thumb.png)
+
+[Build, Use and Remove an Environment, Idempotently](env/plot_env_create_run_remove_script.html)
+
+Build, Use and Remove an Environment, Idempotently![](../_images/sphx_glr_plot_env_plan_script_thumb.png)
+
+[Plan an Environment Before Building It](env/plot_env_plan_script.html)
+
+Plan an Environment Before Building It
+
 # Feature Selection[#](#feature-selection "Link to this heading")
 
 ## Feature profiling, lineage and drift[#](#feature-profiling-lineage-and-drift "Link to this heading")
@@ -995,6 +1046,69 @@ pip install scikitplot[core]
 [annoy impute with examples](impute/plot_impute_script.html)
 
 annoy impute with examples
+
+# IPyMagic[#](#ipymagic "Link to this heading")
+
+Examples for [`_ipymagic`](../apis/scikitplot._ipymagic.html#module-scikitplot._ipymagic "scikitplot._ipymagic"), the notebook frontend of
+scikit-plots: every `scikitplot` command and a profiler as IPython magics,
+in Jupyter, JupyterLab, VS Code, Colab or terminal IPython.
+
+```
+%load_ext scikitplot
+
+```
+
+| Magic | Does |
+| --- | --- |
+| `%scikitplot ARGS` | runs `scikitplot ARGS`; returns a `CommandResult` |
+| `%%scikitplot ARGS` + cell | the same, with the cell on standard input |
+| `%scikitplot_profile STMT` / `%%scikitplot_profile` + cell | profiles the code; returns a `ProfileResult` |
+| `%scikitplot_config key=value ...` | session settings (`MagicSettings`) |
+
+****How to read these examples.**** A gallery page runs as a plain Python script,
+where magics do not exist. Each step therefore shows the magic in an
+`ipython` block, then runs the very same thing with the Python function the
+magic calls (`run_command`, `profile_code`). In the Jupyter
+notebook download, every cell magic (`%%scikitplot`,
+`%%scikitplot_profile`) becomes a runnable cell next to its Python
+equivalent, and the first cell loads the extension; line magics stay as text
+to copy into a cell.
+
+```
+%scikitplot LINE [cell]
+    ↓
+split_line       shell-like words ("my env" stays one word)
+    ↓
+route            the CLI's own command registry; a typo is refused
+    ↓
+in the kernel    info, doctor, show-versions ...  (logging restored)
+or a subprocess  env, mcp, cleanprompt, a cell, isolate=true
+                 (streamed, timeout, interrupt, bounded capture)
+    ↓
+CommandResult    exit_code, stdout, stderr, data (--format json)
+
+```
+
+Start with the commands, then the cell form (`cleanprompt`), the delegated
+servers (`mcp`) and the profiler. See also [Notebook magics](../user_guide/_ipymagic/index.html#ipymagic-index).
+
+![](../_images/sphx_glr_plot_ipymagic_scikit-plots_thumb.png)
+
+[Run scikit-plots Commands from a Notebook](ipymagic/plot_ipymagic_scikit-plots.html)
+
+Run scikit-plots Commands from a Notebook![](../_images/sphx_glr_plot_ipymagic_scikit-plots_cleanprompt_thumb.png)
+
+[Clean a Prompt in a Notebook Cell with %%scikitplot](ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html)
+
+Clean a Prompt in a Notebook Cell with %%scikitplot![](../_images/sphx_glr_plot_ipymagic_scikit-plots_mcp_thumb.png)
+
+[Inspect and Self-test the MCP Server from a Notebook](ipymagic/plot_ipymagic_scikit-plots_mcp.html)
+
+Inspect and Self-test the MCP Server from a Notebook![](../_images/sphx_glr_plot_ipymagic_scikit-plots_profiler_thumb.png)
+
+[Profile a Notebook Cell with %%scikitplot\_profile](ipymagic/plot_ipymagic_scikit-plots_profiler.html)
+
+Profile a Notebook Cell with %%scikitplot\_profile
 
 # Levenshtein[#](#levenshtein "Link to this heading")
 

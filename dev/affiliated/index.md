@@ -1,4 +1,4 @@
-# Scikit-Plots Partial Distributions[#](#scikit-plots-partial-distributions "Link to this heading")
+# [Scikit-Plots Partial Distributions](#id1)[#](#scikit-plots-partial-distributions "Link to this heading")
 
 Scikit-Plots can be installed as the full `scikit-plots` distribution, but
 selected parts of the same `scikitplot` import package are also built as
@@ -13,7 +13,7 @@ packages, but the registry below currently contains only Scikit-Plots-owned
 partial distributions. It does not imply independent governance or third-party
 endorsement.
 
-## Why partial distributions exist[#](#why-partial-distributions-exist "Link to this heading")
+## [Why partial distributions exist](#id2)[#](#why-partial-distributions-exist "Link to this heading")
 
 The full project covers plotting, retrieval, documentation tooling, compiled
 extensions, model/agent helpers, and development utilities. A user or service
@@ -35,7 +35,7 @@ The package metadata in each `libs/<name>` directory is generated. Durable
 changes belong in `scikitplot/_distributions.py`, `libs/_tools/registry.py`,
 or the root `pyproject.toml` rather than in generated `libs/` files.
 
-## Choosing an installation[#](#choosing-an-installation "Link to this heading")
+## [Choosing an installation](#id3)[#](#choosing-an-installation "Link to this heading")
 
 Use the full `scikit-plots` distribution when you want the normal complete
 library. Use a partial distribution when you deliberately want a smaller
@@ -119,7 +119,7 @@ python -m libs._tools check
 
 ```
 
-## Where to learn the capabilities[#](#where-to-learn-the-capabilities "Link to this heading")
+## [Where to learn the capabilities](#id4)[#](#where-to-learn-the-capabilities "Link to this heading")
 
 The partial-distribution registry describes packaging boundaries; the user
 guides describe behavior. Start with the corresponding guide when one exists:
@@ -143,7 +143,7 @@ guides describe behavior. Start with the corresponding guide when one exists:
 * [Rank-BM25](../user_guide/rank_bm25/index.html) – lexical document ranking
   with Okapi BM25, BM25L, BM25+, stable result identities, and persistence.
 
-## For maintainers[#](#for-maintainers "Link to this heading")
+## [For maintainers](#id5)[#](#for-maintainers "Link to this heading")
 
 Treat `libs/` as generated packaging output plus verification tooling, not as
 another source tree. The normal maintenance cycle from the repository root is:
@@ -183,7 +183,7 @@ python tools/maint_tools/generate_affiliated_index.py sync --apply
 
 ```
 
-## Design boundary[#](#design-boundary "Link to this heading")
+## [Design boundary](#id6)[#](#design-boundary "Link to this heading")
 
 This registry is intentionally about packages owned by the Scikit-Plots
 repository. If Scikit-Plots later introduces an Astropy-style program for

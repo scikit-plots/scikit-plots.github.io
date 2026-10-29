@@ -1,6 +1,6 @@
 # ProtocolChunkerBridge[#](#protocolchunkerbridge "Link to this heading")
 
-class scikitplot.corpus.ProtocolChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_chunker_bridge.py#L388)[#](#scikitplot.corpus.ProtocolChunkerBridge "Link to this definition")
+class scikitplot.corpus.ProtocolChunkerBridge(**inner**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_chunker_bridge.py#L388)[#](#scikitplot.corpus.ProtocolChunkerBridge "Link to this definition")
 :   Bridge for any chunker satisfying `ChunkerProtocol` (R3-1).
 
     A chunker registered in the `ComponentRegistry` is checked against
@@ -18,7 +18,7 @@ class scikitplot.corpus.ProtocolChunkerBridge(**inner**)[[source]](https://githu
     Parameters:
     :   ****inner**** (**Any**)
 
-    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_chunker_bridge.py#L161)[#](#scikitplot.corpus.ProtocolChunkerBridge.chunk "Link to this definition")
+    chunk(**text**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_chunker_bridge.py#L161)[#](#scikitplot.corpus.ProtocolChunkerBridge.chunk "Link to this definition")
     :   Chunk **text** and return a `ChunkResult`.
 
         ****CRITICAL-02 (Phase 2):**** Returns `ChunkResult` directly.
@@ -51,4 +51,4 @@ class scikitplot.corpus.ProtocolChunkerBridge(**inner**)[[source]](https://githu
         Use `_to_tuples` to convert to the legacy
         `list[tuple[int, str]]` format if needed for backward compat.
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ProtocolChunkerBridge.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.ProtocolChunkerBridge.strategy "Link to this definition")

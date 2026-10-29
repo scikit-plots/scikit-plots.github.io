@@ -1,6 +1,6 @@
 # mean\_reciprocal\_rank[#](#mean-reciprocal-rank "Link to this heading")
 
-scikitplot.corpus.mean\_reciprocal\_rank(**y\_true**, **y\_pred**, **\***, **k=None**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_ranking.py#L631)[#](#scikitplot.corpus.mean_reciprocal_rank "Link to this definition")
+scikitplot.corpus.mean\_reciprocal\_rank(**y\_true**, **y\_pred**, **\***, **k=None**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_ranking.py#L631)[#](#scikitplot.corpus.mean_reciprocal_rank "Link to this definition")
 :   Mean of `1 / rank` of the first relevant identifier (MRR).
 
     Parameters:

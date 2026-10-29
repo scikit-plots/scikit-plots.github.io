@@ -1,6 +1,6 @@
 # parse\_verdict[#](#parse-verdict "Link to this heading")
 
-scikitplot.corpus.parse\_verdict(**text**, **schema**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L317)[#](#scikitplot.corpus.parse_verdict "Link to this definition")
+scikitplot.corpus.parse\_verdict(**text**, **schema**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_judge.py#L317)[#](#scikitplot.corpus.parse_verdict "Link to this definition")
 :   Parse a judge response strictly.
 
     Parameters:

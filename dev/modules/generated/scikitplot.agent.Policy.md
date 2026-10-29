@@ -1,6 +1,6 @@
 # Policy[#](#policy "Link to this heading")
 
-class scikitplot.agent.Policy(**allow\_effects=frozenset({ToolEffect.READ})**, **granted\_scopes=frozenset({})**, **allow\_tools=None**, **deny\_tools=frozenset({})**, **approval\_effects=frozenset({ToolEffect.EXTERNAL, ToolEffect.WRITE})**, **approval\_tools=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L77)[#](#scikitplot.agent.Policy "Link to this definition")
+class scikitplot.agent.Policy(**allow\_effects=frozenset({ToolEffect.READ})**, **granted\_scopes=frozenset({})**, **allow\_tools=None**, **deny\_tools=frozenset({})**, **approval\_effects=frozenset({ToolEffect.EXTERNAL, ToolEffect.WRITE})**, **approval\_tools=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L77)[#](#scikitplot.agent.Policy "Link to this definition")
 :   What an agent may do: least privilege unless stated otherwise.
 
     Parameters:
@@ -52,7 +52,7 @@ class scikitplot.agent.Policy(**allow\_effects=frozenset({ToolEffect.READ})**, *
 
     allow\_tools: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Policy.allow_tools "Link to this definition")
 
-    allows\_effect(**effect**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L139)[#](#scikitplot.agent.Policy.allows_effect "Link to this definition")
+    allows\_effect(**effect**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L139)[#](#scikitplot.agent.Policy.allows_effect "Link to this definition")
     :   Whether the policy allows `effect`.
 
         Parameters:
@@ -69,7 +69,7 @@ class scikitplot.agent.Policy(**allow\_effects=frozenset({ToolEffect.READ})**, *
 
     granted\_scopes: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = frozenset({})[#](#scikitplot.agent.Policy.granted_scopes "Link to this definition")
 
-    needs\_approval\_for(**effect**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L143)[#](#scikitplot.agent.Policy.needs_approval_for "Link to this definition")
+    needs\_approval\_for(**effect**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L143)[#](#scikitplot.agent.Policy.needs_approval_for "Link to this definition")
     :   Whether a call with `effect` needs approval.
 
         Parameters:
@@ -78,7 +78,7 @@ class scikitplot.agent.Policy(**allow\_effects=frozenset({ToolEffect.READ})**, *
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L147)[#](#scikitplot.agent.Policy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L147)[#](#scikitplot.agent.Policy.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping, every set sorted.
 
         Return type:

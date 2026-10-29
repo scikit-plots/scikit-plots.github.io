@@ -1,6 +1,6 @@
 # FeatureStats[#](#featurestats "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureStats(**name**, **dtype**, **family**, **n\_rows**, **n\_missing**, **n\_non\_null**, **n\_unique=None**, **top\_count=None**, **ordered=None**, **n\_finite=None**, **n\_inf=None**, **min=None**, **max=None**, **mean=None**, **std=None**, **q1=None**, **median=None**, **q3=None**, **skewness=None**, **kurtosis=None**, **integer\_valued=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats "Link to this definition")
+class scikitplot.feature\_selection.FeatureStats(**name**, **dtype**, **family**, **n\_rows**, **n\_missing**, **n\_non\_null**, **n\_unique=None**, **top\_count=None**, **ordered=None**, **n\_finite=None**, **n\_inf=None**, **min=None**, **max=None**, **mean=None**, **std=None**, **q1=None**, **median=None**, **q3=None**, **skewness=None**, **kurtosis=None**, **integer\_valued=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats "Link to this definition")
 :   Training statistics of one column.
 
     Parameters:
@@ -67,11 +67,11 @@ class scikitplot.feature\_selection.FeatureStats(**name**, **dtype**, **family**
     > [`FeatureSpec`](scikitplot.feature_selection.FeatureSpec.html#scikitplot.feature_selection.FeatureSpec "scikitplot.feature_selection.FeatureSpec")
     :   Holds the stats of a fitted feature.
 
-    dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.dtype "Link to this definition")
+    dtype: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.dtype "Link to this definition")
 
-    family: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.family "Link to this definition")
+    family: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.family "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L202)[#](#scikitplot.feature_selection.FeatureStats.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L202)[#](#scikitplot.feature_selection.FeatureStats.from_dict "Link to this definition")
     :   Rebuild stats from [`to_dict`](#scikitplot.feature_selection.FeatureStats.to_dict "scikitplot.feature_selection.FeatureStats.to_dict") output, checking field names and types.
 
         Parameters:
@@ -120,15 +120,15 @@ class scikitplot.feature\_selection.FeatureStats(**name**, **dtype**, **family**
 
     n\_inf: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.FeatureStats.n_inf "Link to this definition")
 
-    n\_missing: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_missing "Link to this definition")
+    n\_missing: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_missing "Link to this definition")
 
-    n\_non\_null: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_non_null "Link to this definition")
+    n\_non\_null: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_non_null "Link to this definition")
 
-    n\_rows: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_rows "Link to this definition")
+    n\_rows: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.n_rows "Link to this definition")
 
     n\_unique: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.FeatureStats.n_unique "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L114)[#](#scikitplot.feature_selection.FeatureStats.name "Link to this definition")
 
     ordered: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.FeatureStats.ordered "Link to this definition")
 
@@ -140,7 +140,7 @@ class scikitplot.feature\_selection.FeatureStats(**name**, **dtype**, **family**
 
     std: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.FeatureStats.std "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_stats.py#L198)[#](#scikitplot.feature_selection.FeatureStats.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_stats.py#L198)[#](#scikitplot.feature_selection.FeatureStats.to_dict "Link to this definition")
     :   Return the fields as a mapping of the shared data model.
 
         Return type:

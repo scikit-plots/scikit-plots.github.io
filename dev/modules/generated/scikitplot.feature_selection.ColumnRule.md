@@ -1,6 +1,6 @@
 # ColumnRule[#](#columnrule "Link to this heading")
 
-class scikitplot.feature\_selection.ColumnRule(**columns=()**, **patterns=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L255)[#](#scikitplot.feature_selection.ColumnRule "Link to this definition")
+class scikitplot.feature\_selection.ColumnRule(**columns=()**, **patterns=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L255)[#](#scikitplot.feature_selection.ColumnRule "Link to this definition")
 :   Select columns by exact name and/or shell-style pattern.
 
     Parameters:
@@ -42,7 +42,7 @@ class scikitplot.feature\_selection.ColumnRule(**columns=()**, **patterns=()**)[
 
     columns: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.ColumnRule.columns "Link to this definition")
 
-    classmethod from\_value(**value**, **\***, **field='rule'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L296)[#](#scikitplot.feature_selection.ColumnRule.from_value "Link to this definition")
+    classmethod from\_value(**value**, **\***, **field='rule'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L296)[#](#scikitplot.feature_selection.ColumnRule.from_value "Link to this definition")
     :   Build a rule from its config form: a string, a list, a mapping or a rule.
 
         Parameters:
@@ -75,7 +75,7 @@ class scikitplot.feature\_selection.ColumnRule(**columns=()**, **patterns=()**)[
 
     patterns: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.ColumnRule.patterns "Link to this definition")
 
-    resolve(**names**, **\***, **on\_missing='raise'**, **field='rule'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L334)[#](#scikitplot.feature_selection.ColumnRule.resolve "Link to this definition")
+    resolve(**names**, **\***, **on\_missing='raise'**, **field='rule'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L334)[#](#scikitplot.feature_selection.ColumnRule.resolve "Link to this definition")
     :   Return the names this rule selects, in the order of `names`.
 
         Parameters:
@@ -104,7 +104,7 @@ class scikitplot.feature\_selection.ColumnRule(**columns=()**, **patterns=()**)[
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L374)[#](#scikitplot.feature_selection.ColumnRule.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L374)[#](#scikitplot.feature_selection.ColumnRule.to_dict "Link to this definition")
     :   Return the config form `{"columns": [...], "patterns": [...]}`.
 
         Return type:

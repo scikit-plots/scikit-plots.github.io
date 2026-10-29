@@ -1,6 +1,6 @@
 # Agent[#](#agent "Link to this heading")
 
-class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **limits=None**, **approver=None**, **done=None**, **audit=None**, **store=None**, **clock=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_loop.py#L79)[#](#scikitplot.agent.Agent "Link to this definition")
+class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **limits=None**, **approver=None**, **done=None**, **audit=None**, **store=None**, **clock=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L79)[#](#scikitplot.agent.Agent "Link to this definition")
 :   Run a goal with a planner and tools, within a policy and limits.
 
     Parameters:
@@ -77,7 +77,7 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
     ```
     Go BackOpen In Tab
 
-    resume(**state**, **\***, **approvals=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_loop.py#L221)[#](#scikitplot.agent.Agent.resume "Link to this definition")
+    resume(**state**, **\***, **approvals=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L221)[#](#scikitplot.agent.Agent.resume "Link to this definition")
     :   Continue a paused or interrupted run.
 
         Parameters:
@@ -122,7 +122,7 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
         state it returns replaces the one given, even when a paused run stays
         paused: resume that one next.
 
-    run(**goal**, **\***, **run\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_loop.py#L174)[#](#scikitplot.agent.Agent.run "Link to this definition")
+    run(**goal**, **\***, **run\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L174)[#](#scikitplot.agent.Agent.run "Link to this definition")
     :   Start a run toward `goal` and drive it until it ends or pauses.
 
         Parameters:

@@ -1,6 +1,6 @@
 # ancestors[#](#ancestors "Link to this heading")
 
-scikitplot.corpus.ancestors(**documents**, **doc\_id**, **\***, **max\_depth=64**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_hierarchy.py#L309)[#](#scikitplot.corpus.ancestors "Link to this definition")
+scikitplot.corpus.ancestors(**documents**, **doc\_id**, **\***, **max\_depth=64**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_hierarchy.py#L309)[#](#scikitplot.corpus.ancestors "Link to this definition")
 :   Return the chain from `doc_id`’s parent up to the root.
 
     Parameters:

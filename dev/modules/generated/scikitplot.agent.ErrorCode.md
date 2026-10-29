@@ -1,55 +1,55 @@
 # ErrorCode[#](#errorcode "Link to this heading")
 
-class scikitplot.agent.ErrorCode(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L37)[#](#scikitplot.agent.ErrorCode "Link to this definition")
+class scikitplot.agent.ErrorCode(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L37)[#](#scikitplot.agent.ErrorCode "Link to this definition")
 :   What went wrong, as a stable code a caller may branch on.
 
-    ANSWER\_REJECTED = 'answer\_rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.ANSWER_REJECTED "Link to this definition")
+    ANSWER\_REJECTED = 'answer\_rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.ANSWER_REJECTED "Link to this definition")
     :   The done criterion refused the planner’s answer.
 
-    APPROVAL\_DENIED = 'approval\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.APPROVAL_DENIED "Link to this definition")
+    APPROVAL\_DENIED = 'approval\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.APPROVAL_DENIED "Link to this definition")
     :   An approver refused the action (Approval gate).
 
-    APPROVAL\_STALE = 'approval\_stale'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.APPROVAL_STALE "Link to this definition")
+    APPROVAL\_STALE = 'approval\_stale'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.APPROVAL_STALE "Link to this definition")
     :   The action changed since it was approved (Approval gate, at resume).
 
-    BUDGET\_EXCEEDED = 'budget\_exceeded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.BUDGET_EXCEEDED "Link to this definition")
+    BUDGET\_EXCEEDED = 'budget\_exceeded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.BUDGET_EXCEEDED "Link to this definition")
     :   One more call would pass a limit (Budget gate).
 
-    DONE\_CHECK\_FAILED = 'done\_check\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.DONE_CHECK_FAILED "Link to this definition")
+    DONE\_CHECK\_FAILED = 'done\_check\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.DONE_CHECK_FAILED "Link to this definition")
     :   The done criterion raised.
 
-    INVALID\_ARGUMENTS = 'invalid\_arguments'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.INVALID_ARGUMENTS "Link to this definition")
+    INVALID\_ARGUMENTS = 'invalid\_arguments'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.INVALID_ARGUMENTS "Link to this definition")
     :   The arguments do not match the tool’s schema (Validation gate).
 
-    INVALID\_DECISION = 'invalid\_decision'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.INVALID_DECISION "Link to this definition")
+    INVALID\_DECISION = 'invalid\_decision'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.INVALID_DECISION "Link to this definition")
     :   The planner returned something that is not a valid [`Decision`](scikitplot.agent.Decision.html#scikitplot.agent.Decision "scikitplot.agent.Decision").
 
-    LIMIT\_REACHED = 'limit\_reached'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.LIMIT_REACHED "Link to this definition")
+    LIMIT\_REACHED = 'limit\_reached'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.LIMIT_REACHED "Link to this definition")
     :   A run limit stopped the run before the next step.
 
-    PERMISSION\_DENIED = 'permission\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.PERMISSION_DENIED "Link to this definition")
+    PERMISSION\_DENIED = 'permission\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.PERMISSION_DENIED "Link to this definition")
     :   The policy does not allow the tool or its effect (Permissions gate).
 
-    PLANNER\_FAILED = 'planner\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.PLANNER_FAILED "Link to this definition")
+    PLANNER\_FAILED = 'planner\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.PLANNER_FAILED "Link to this definition")
     :   The planner raised.
 
-    SCOPE\_DENIED = 'scope\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.SCOPE_DENIED "Link to this definition")
+    SCOPE\_DENIED = 'scope\_denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.SCOPE_DENIED "Link to this definition")
     :   The tool needs a scope the policy does not grant (Scope gate).
 
-    TOOL\_FAILED = 'tool\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_FAILED "Link to this definition")
+    TOOL\_FAILED = 'tool\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_FAILED "Link to this definition")
     :   The tool raised.
 
-    TOOL\_INTERRUPTED = 'tool\_interrupted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_INTERRUPTED "Link to this definition")
+    TOOL\_INTERRUPTED = 'tool\_interrupted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_INTERRUPTED "Link to this definition")
     :   A non-idempotent call was in flight when the run stopped; whether it
         took effect is unknown, so it is not repeated.
 
-    TOOL\_RESULT\_NOT\_JSON = 'tool\_result\_not\_json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_RESULT_NOT_JSON "Link to this definition")
+    TOOL\_RESULT\_NOT\_JSON = 'tool\_result\_not\_json'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.TOOL_RESULT_NOT_JSON "Link to this definition")
     :   The tool returned a value strict JSON cannot hold.
 
-    UNKNOWN\_TOOL = 'unknown\_tool'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.UNKNOWN_TOOL "Link to this definition")
+    UNKNOWN\_TOOL = 'unknown\_tool'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.UNKNOWN_TOOL "Link to this definition")
     :   The planner named a tool the toolset does not hold (Validation gate).
 
-    USAGE\_NOT\_REPORTED = 'usage\_not\_reported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.USAGE_NOT_REPORTED "Link to this definition")
+    USAGE\_NOT\_REPORTED = 'usage\_not\_reported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L)[#](#scikitplot.agent.ErrorCode.USAGE_NOT_REPORTED "Link to this definition")
     :   A token limit is set and the planner reported no usage (invariant I7).
 
     capitalize(**/**)[#](#scikitplot.agent.ErrorCode.capitalize "Link to this definition")

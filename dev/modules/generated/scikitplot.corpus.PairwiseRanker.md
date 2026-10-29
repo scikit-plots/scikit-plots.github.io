@@ -1,6 +1,6 @@
 # PairwiseRanker[#](#pairwiseranker "Link to this heading")
 
-class scikitplot.corpus.PairwiseRanker(**score\_func**, **\***, **greater\_is\_better=True**, **use\_normalized\_text=True**, **score\_cutoff=None**, **name=None**, **kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_pairwise.py#L76)[#](#scikitplot.corpus.PairwiseRanker "Link to this definition")
+class scikitplot.corpus.PairwiseRanker(**score\_func**, **\***, **greater\_is\_better=True**, **use\_normalized\_text=True**, **score\_cutoff=None**, **name=None**, **kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_pairwise.py#L76)[#](#scikitplot.corpus.PairwiseRanker "Link to this definition")
 :   Ranker built from a pairwise relevance function.
 
     Parameters:
@@ -34,7 +34,7 @@ class scikitplot.corpus.PairwiseRanker(**score\_func**, **\***, **greater\_is\_b
 
     Build it with [`make_pairwise_ranker`](scikitplot.corpus.make_pairwise_ranker.html#scikitplot.corpus.make_pairwise_ranker "scikitplot.corpus.make_pairwise_ranker"), which validates the arguments.
 
-    \_\_call\_\_(**query**, **documents**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_pairwise.py#L117)[#](#scikitplot.corpus.PairwiseRanker.__call__ "Link to this definition")
+    \_\_call\_\_(**query**, **documents**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_pairwise.py#L117)[#](#scikitplot.corpus.PairwiseRanker.__call__ "Link to this definition")
     :   Return the best `config.top_k` documents for `query`.
 
         Parameters:

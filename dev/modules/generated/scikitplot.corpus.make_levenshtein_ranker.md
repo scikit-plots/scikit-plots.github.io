@@ -1,6 +1,6 @@
 # make\_levenshtein\_ranker[#](#make-levenshtein-ranker "Link to this heading")
 
-scikitplot.corpus.make\_levenshtein\_ranker(**\***, **backend='auto'**, **strict=False**, **use\_normalized\_text=True**, **score\_cutoff=0.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_pairwise.py#L389)[#](#scikitplot.corpus.make_levenshtein_ranker "Link to this definition")
+scikitplot.corpus.make\_levenshtein\_ranker(**\***, **backend='auto'**, **strict=False**, **use\_normalized\_text=True**, **score\_cutoff=0.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_pairwise.py#L389)[#](#scikitplot.corpus.make_levenshtein_ranker "Link to this definition")
 :   Make a [`CustomRetrievalIndex`](scikitplot.corpus.CustomRetrievalIndex.html#scikitplot.corpus.CustomRetrievalIndex "scikitplot.corpus.CustomRetrievalIndex") ranker by Levenshtein similarity.
 
     Parameters:

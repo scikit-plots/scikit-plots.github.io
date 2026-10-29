@@ -1,6 +1,6 @@
 # MultilangMixin[#](#multilangmixin "Link to this heading")
 
-class scikitplot.corpus.MultilangMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_multilang_mixin.py#L204)[#](#scikitplot.corpus.MultilangMixin "Link to this definition")
+class scikitplot.corpus.MultilangMixin[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L204)[#](#scikitplot.corpus.MultilangMixin "Link to this definition")
 :   Shared multilang analysis mixin for all five chunkers.
 
     Inherit this alongside the chunker base class:
@@ -23,7 +23,7 @@ class scikitplot.corpus.MultilangMixin[[source]](https://github.com/scikit-plots
     ****Thread safety:**** All methods are stateless per-call. The only
     shared state is `_REGEX_AVAILABLE` (module-level bool, written once).
 
-    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_multilang_mixin.py#L788)[#](#scikitplot.corpus.MultilangMixin.attach_embedding "Link to this definition")
+    attach\_embedding(**chunk**, **vector**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L788)[#](#scikitplot.corpus.MultilangMixin.attach_embedding "Link to this definition")
     :   Return a new `Chunk` with an embedding attached.
 
         Does NOT mutate the original `Chunk` (frozen dataclass).
@@ -68,7 +68,7 @@ class scikitplot.corpus.MultilangMixin[[source]](https://github.com/scikit-plots
         2. `chunk.metadata["multilang"]["embedding"]` — inside the
            multilang bundle for model provenance tracking.
 
-    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_multilang_mixin.py#L845)[#](#scikitplot.corpus.MultilangMixin.attach_embedding_batch "Link to this definition")
+    attach\_embedding\_batch(**chunks**, **vectors**, **\***, **model\_name=None**, **model\_version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_multilang_mixin.py#L845)[#](#scikitplot.corpus.MultilangMixin.attach_embedding_batch "Link to this definition")
     :   Return a new list of chunks with embeddings attached.
 
         Parameters:

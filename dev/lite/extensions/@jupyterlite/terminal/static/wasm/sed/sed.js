@@ -236,7 +236,7 @@ function initRuntime() {
   if (!Module["noFSInit"] && !FS.initialized) FS.init();
   TTY.init();
   // End ATINITS hooks
-  wasmExports["z"]();
+  wasmExports["__wasm_call_ctors"]();
   // Begin ATPOSTCTORS hooks
   FS.ignorePermissions = false;
 }
@@ -319,6 +319,17 @@ function removeRunDependency(id) {
   // definition for WebAssembly.RuntimeError claims it takes no arguments even
   // though it can.
   // TODO(https://github.com/google/closure-compiler/pull/3913): Remove if/when upstream closure gets fixed.
+  // See above, in the meantime, we resort to wasm code for trapping.
+  // In case abort() is called before the module is initialized, wasmExports
+  // and its exported '__trap' function is not available, in which case we throw
+  // a RuntimeError.
+  // We trap instead of throwing RuntimeError to prevent infinite-looping in
+  // Wasm EH code (because RuntimeError is considered as a foreign exception and
+  // caught by 'catch_all'), but in case throwing RuntimeError is fine because
+  // the module has not even been instantiated, even less running.
+  if (runtimeInitialized) {
+    ___trap();
+  }
   /** @suppress {checkTypes} */ var e = new WebAssembly.RuntimeError(what);
   readyPromiseReject(e);
   // Throw the error whether or not MODULARIZE is set because abort is used
@@ -388,7 +399,8 @@ async function instantiateAsync(binary, binaryFile, imports) {
 function getWasmImports() {
   // prepare imports
   return {
-    "a": wasmImports
+    "env": wasmImports,
+    "wasi_snapshot_preview1": wasmImports
   };
 }
 
@@ -400,7 +412,7 @@ async function createWasm() {
   // performing other necessary setup
   /** @param {WebAssembly.Module=} module*/ function receiveInstance(instance, module) {
     wasmExports = instance.exports;
-    wasmMemory = wasmExports["y"];
+    wasmMemory = wasmExports["memory"];
     updateMemoryViews();
     removeRunDependency("wasm-instantiate");
     return wasmExports;
@@ -3252,6 +3264,16 @@ function ___syscall_ioctl(fd, op, varargs) {
   }
 }
 
+function ___syscall_lstat64(path, buf) {
+  try {
+    path = SYSCALLS.getStr(path);
+    return SYSCALLS.writeStat(buf, FS.lstat(path));
+  } catch (e) {
+    if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
+    return -e.errno;
+  }
+}
+
 function ___syscall_newfstatat(dirfd, path, buf, flags) {
   try {
     path = SYSCALLS.getStr(path);
@@ -3308,6 +3330,16 @@ function ___syscall_renameat(olddirfd, oldpath, newdirfd, newpath) {
     newpath = SYSCALLS.calculateAt(newdirfd, newpath);
     FS.rename(oldpath, newpath);
     return 0;
+  } catch (e) {
+    if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
+    return -e.errno;
+  }
+}
+
+function ___syscall_stat64(path, buf) {
+  try {
+    path = SYSCALLS.getStr(path);
+    return SYSCALLS.writeStat(buf, FS.stat(path));
   } catch (e) {
     if (typeof FS == "undefined" || !(e.name === "ErrnoError")) throw e;
     return -e.errno;
@@ -3711,44 +3743,48 @@ Module["TTY"] = TTY;
 // End JS library exports
 // end include: postlibrary.js
 var wasmImports = {
-  /** @export */ b: ___assert_fail,
-  /** @export */ d: ___syscall_chmod,
-  /** @export */ i: ___syscall_fchmod,
-  /** @export */ x: ___syscall_fchown32,
-  /** @export */ c: ___syscall_fcntl64,
-  /** @export */ w: ___syscall_fstat64,
-  /** @export */ l: ___syscall_ioctl,
-  /** @export */ v: ___syscall_newfstatat,
-  /** @export */ h: ___syscall_openat,
-  /** @export */ p: ___syscall_readlinkat,
-  /** @export */ o: ___syscall_renameat,
-  /** @export */ n: ___syscall_unlinkat,
-  /** @export */ j: __abort_js,
-  /** @export */ q: __emscripten_get_progname,
-  /** @export */ r: _clock_time_get,
-  /** @export */ m: _emscripten_resize_heap,
-  /** @export */ t: _environ_get,
-  /** @export */ u: _environ_sizes_get,
-  /** @export */ a: _exit,
-  /** @export */ f: _fd_close,
-  /** @export */ g: _fd_fdstat_get,
-  /** @export */ k: _fd_read,
-  /** @export */ s: _fd_seek,
-  /** @export */ e: _fd_write
+  /** @export */ __assert_fail: ___assert_fail,
+  /** @export */ __syscall_chmod: ___syscall_chmod,
+  /** @export */ __syscall_fchmod: ___syscall_fchmod,
+  /** @export */ __syscall_fchown32: ___syscall_fchown32,
+  /** @export */ __syscall_fcntl64: ___syscall_fcntl64,
+  /** @export */ __syscall_fstat64: ___syscall_fstat64,
+  /** @export */ __syscall_ioctl: ___syscall_ioctl,
+  /** @export */ __syscall_lstat64: ___syscall_lstat64,
+  /** @export */ __syscall_newfstatat: ___syscall_newfstatat,
+  /** @export */ __syscall_openat: ___syscall_openat,
+  /** @export */ __syscall_readlinkat: ___syscall_readlinkat,
+  /** @export */ __syscall_renameat: ___syscall_renameat,
+  /** @export */ __syscall_stat64: ___syscall_stat64,
+  /** @export */ __syscall_unlinkat: ___syscall_unlinkat,
+  /** @export */ _abort_js: __abort_js,
+  /** @export */ _emscripten_get_progname: __emscripten_get_progname,
+  /** @export */ clock_time_get: _clock_time_get,
+  /** @export */ emscripten_resize_heap: _emscripten_resize_heap,
+  /** @export */ environ_get: _environ_get,
+  /** @export */ environ_sizes_get: _environ_sizes_get,
+  /** @export */ exit: _exit,
+  /** @export */ fd_close: _fd_close,
+  /** @export */ fd_fdstat_get: _fd_fdstat_get,
+  /** @export */ fd_read: _fd_read,
+  /** @export */ fd_seek: _fd_seek,
+  /** @export */ fd_write: _fd_write
 };
 
 var wasmExports = await createWasm();
 
 // Imports from the Wasm binary.
-var ___wasm_call_ctors = wasmExports["z"];
+var ___wasm_call_ctors = wasmExports["__wasm_call_ctors"];
 
-var _main = Module["_main"] = wasmExports["A"];
+var _main = Module["_main"] = wasmExports["__main_argc_argv"];
 
-var ___funcs_on_exit = wasmExports["B"];
+var ___funcs_on_exit = wasmExports["__funcs_on_exit"];
 
-var _fflush = wasmExports["C"];
+var _fflush = wasmExports["fflush"];
 
-var __emscripten_stack_alloc = wasmExports["D"];
+var ___trap = wasmExports["__trap"];
+
+var __emscripten_stack_alloc = wasmExports["_emscripten_stack_alloc"];
 
 // include: postamble.js
 // === Auto-generated postamble setup entry stuff ===

@@ -1,6 +1,6 @@
 # CustomTokenizerRegistry[#](#customtokenizerregistry "Link to this heading")
 
-class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L634)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
+class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L642)[#](#scikitplot.corpus.CustomTokenizerRegistry "Link to this definition")
 :   Thread-safe module-level registry for named custom components.
 
     Each registry holds a `dict[str, Protocol]` accessible via module-level
@@ -27,7 +27,7 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
     within a `get` callback without deadlocking. This is safe on CPython,
     PyPy, and GraalPy.
 
-    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L706)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
+    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L714)[#](#scikitplot.corpus.CustomTokenizerRegistry.get "Link to this definition")
     :   Retrieve the component registered under **name**.
 
         Parameters:
@@ -48,7 +48,7 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L733)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
+    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L741)[#](#scikitplot.corpus.CustomTokenizerRegistry.names "Link to this definition")
     :   Return all registered names.
 
         Returns:
@@ -58,7 +58,7 @@ class scikitplot.corpus.CustomTokenizerRegistry(**kind**)[[source]](https://gith
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L665)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
+    register(**name**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L673)[#](#scikitplot.corpus.CustomTokenizerRegistry.register "Link to this definition")
     :   Register **instance** under **name**.
 
         Parameters:

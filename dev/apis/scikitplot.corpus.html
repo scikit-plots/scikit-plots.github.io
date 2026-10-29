@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -21,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:40:36Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:21:57Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.corpus","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -65,7 +64,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1761,6 +1760,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1792,14 +1792,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1883,8 +1875,8 @@ runtime components; source processing starts only with <code class="docutils lit
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9567c7dd-437e-48b4-9e12-f046d70e08da">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9567c7dd-437e-48b4-9e12-f046d70e08da','c3b613e1-5a95-4ef8-90b5-f1581d48aaf9','aae0d096-44d5-460f-ba2f-dfc8f360ed50','../lite/tree/../notebooks/index.html?path=6588084c_cd91_4e1f_a435_5b929f0d2fed.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5fdbf42c-8415-4b32-a663-ed4f6ee50666">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5fdbf42c-8415-4b32-a663-ed4f6ee50666','68e9137f-0e64-46ee-a2d3-03426d9659e3','aa698e32-c903-4520-9412-5a7528cfdec1','../lite/tree/../notebooks/index.html?path=29653d78_541a_487a_98e3_b4f2e4037f54.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Direct pipeline control:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusPipeline</span><span class="p">,</span> <span class="n">ParagraphChunker</span>
@@ -1978,7 +1970,7 @@ an authoritative scholarly edition.</p>
 policy boundary, retrieval modes, and optional-capability guidance.</p>
 </div>
 </div>
-<div id="aae0d096-44d5-460f-ba2f-dfc8f360ed50" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9567c7dd-437e-48b4-9e12-f046d70e08da','aae0d096-44d5-460f-ba2f-dfc8f360ed50')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9567c7dd-437e-48b4-9e12-f046d70e08da','aae0d096-44d5-460f-ba2f-dfc8f360ed50')">Open In Tab</button></div><div id="c3b613e1-5a95-4ef8-90b5-f1581d48aaf9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<div id="aa698e32-c903-4520-9412-5a7528cfdec1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5fdbf42c-8415-4b32-a663-ed4f6ee50666','aa698e32-c903-4520-9412-5a7528cfdec1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5fdbf42c-8415-4b32-a663-ed4f6ee50666','aa698e32-c903-4520-9412-5a7528cfdec1')">Open In Tab</button></div><div id="68e9137f-0e64-46ee-a2d3-03426d9659e3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
 </section>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/corpus/index.html#corpus-index"><span class="std std-ref">Corpus User Guide</span></a> section for further details.</p>
 <section id="adapter-layer">
@@ -3671,12 +3663,6 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -3694,7 +3680,7 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

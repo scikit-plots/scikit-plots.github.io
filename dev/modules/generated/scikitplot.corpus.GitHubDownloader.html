@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:42:10Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:23:31Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.GitHubDownloader","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -64,7 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1764,6 +1763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1795,14 +1795,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1848,7 +1840,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>GitHubDownloader<a class="headerlink" href="#githubdownloader" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">GitHubDownloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">104857600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_private_ips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_redirects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Mozilla/5.0</span> <span class="pre">(compatible;</span> <span class="pre">scikitplot-corpus/1.0;</span> <span class="pre">+https://github.com/scikit-plots/scikit-plots)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_downloader/_github.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">GitHubDownloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">104857600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify_ssl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_private_ips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_redirects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Mozilla/5.0</span> <span class="pre">(compatible;</span> <span class="pre">scikitplot-corpus/1.0;</span> <span class="pre">+https://github.com/scikit-plots/scikit-plots)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_downloader/_github.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader" title="Link to this definition">#</a></dt>
 <dd><p>GitHub URL downloader with automatic blob → raw normalisation.</p>
 <p>Accepts both <code class="docutils literal notranslate"><span class="pre">github.com/.../blob/...</span></code> and
 <code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com/...</span></code> URLs.  Blob URLs are silently
@@ -1921,8 +1913,8 @@ preserved when already present in raw URLs and not added for blob URLs
 <p><strong>Private repo access:</strong> Tokens are passed as HTTP headers, never as
 URL query parameters.  Tokens are redacted from all log output.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3647ddb0-bb42-40ef-8fae-cd6d01996255">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3647ddb0-bb42-40ef-8fae-cd6d01996255','0e249e8f-dc1e-4378-ac95-66cfac371485','9c725521-e708-46b2-be0c-2aa30c492587','../../lite/tree/../notebooks/index.html?path=746fd345_5065_4d97_8deb_1c7e4e92d73b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="58a497ae-d447-47b5-a33c-c8087aabc70e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('58a497ae-d447-47b5-a33c-c8087aabc70e','18c38c47-1489-4ab5-bb87-3088e2c99555','379b6df8-592a-455e-bb5d-16a5248e5ab3','../../lite/tree/../notebooks/index.html?path=a4caf208_ccb3_4c47_8505_2973c40526d9.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Public repo — blob URL:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span> <span class="o">=</span> <span class="n">GitHubDownloader</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s2">"https://github.com/scikit-plots/scikit-plots/blob/main/README.md"</span>
@@ -1950,14 +1942,14 @@ URL query parameters.  Tokens are redacted from all log output.</p>
 </div>
 </div>
 </div>
-<div id="9c725521-e708-46b2-be0c-2aa30c492587" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3647ddb0-bb42-40ef-8fae-cd6d01996255','9c725521-e708-46b2-be0c-2aa30c492587')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3647ddb0-bb42-40ef-8fae-cd6d01996255','9c725521-e708-46b2-be0c-2aa30c492587')">Open In Tab</button></div><div id="0e249e8f-dc1e-4378-ac95-66cfac371485" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="379b6df8-592a-455e-bb5d-16a5248e5ab3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('58a497ae-d447-47b5-a33c-c8087aabc70e','379b6df8-592a-455e-bb5d-16a5248e5ab3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('58a497ae-d447-47b5-a33c-c8087aabc70e','379b6df8-592a-455e-bb5d-16a5248e5ab3')">Open In Tab</button></div><div id="18c38c47-1489-4ab5-bb87-3088e2c99555" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.block_private_ips">
 <span class="sig-name descname"><span class="pre">block_private_ips</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.block_private_ips" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.cleanup">
-<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_downloader/_base.py#L482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.cleanup" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_downloader/_base.py#L489"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.cleanup" title="Link to this definition">#</a></dt>
 <dd><p>Remove the temporary directory owned by this instance, if any.</p>
 <p>Safe to call multiple times.  If <code class="docutils literal notranslate"><span class="pre">output_path</span></code> was supplied at
 construction time (caller-owned), this method is a no-op.</p>
@@ -1970,7 +1962,7 @@ construction time (caller-owned), this method is a no-op.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.download">
-<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_downloader/_github.py#L256"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.download" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_downloader/_github.py#L256"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.download" title="Link to this definition">#</a></dt>
 <dd><p>Download the GitHub file and return a <a class="reference internal" href="scikitplot.corpus.DownloadResult.html#scikitplot.corpus.DownloadResult" title="scikitplot.corpus.DownloadResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadResult</span></code></a>.</p>
 <p>The blob URL (if given) is normalised to a raw URL first, then
 downloaded via <code class="xref py py-func docutils literal notranslate"><span class="pre">download_url</span></code>
@@ -2002,7 +1994,7 @@ URL.  This preserves the provenance label shown to end users.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.input_url">
-<span class="sig-name descname"><span class="pre">input_url</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_downloader/_github.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.input_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">input_url</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_downloader/_github.py#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.input_url" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2022,7 +2014,7 @@ URL.  This preserves the provenance label shown to end users.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.resolve_raw_url">
-<span class="sig-name descname"><span class="pre">resolve_raw_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_downloader/_github.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.resolve_raw_url" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">resolve_raw_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_downloader/_github.py#L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.GitHubDownloader.resolve_raw_url" title="Link to this definition">#</a></dt>
 <dd><p>Normalise a GitHub blob URL to its raw.githubusercontent.com equivalent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2037,8 +2029,8 @@ returned unchanged.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="028aaa90-d1df-4ac9-aa46-9a1c2d46c957">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('028aaa90-d1df-4ac9-aa46-9a1c2d46c957','8cc3907e-cb75-4a84-9fa0-362694291462','c8128668-667e-4c3b-876e-8fa291faee09','../../lite/tree/../notebooks/index.html?path=1f39ab2f_72f6_4e14_8df9_4e6eb6702a21.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="089b9672-d9f5-4237-a7b9-a3d95e73c97e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('089b9672-d9f5-4237-a7b9-a3d95e73c97e','2ab02630-6116-4a5b-b1f1-8838a9759eae','6931d1d1-a31b-47eb-8a1a-45534708d0cd','../../lite/tree/../notebooks/index.html?path=0b6f6bed_6ff7_4ca3_9b04_fb4e668c5f12.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span> <span class="o">=</span> <span class="n">GitHubDownloader</span><span class="p">(</span><span class="s2">"https://github.com/user/repo/blob/main/data.csv"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dl</span><span class="o">.</span><span class="n">resolve_raw_url</span><span class="p">()</span>
 <span class="go">'https://raw.githubusercontent.com/user/repo/main/data.csv'</span>
@@ -2053,7 +2045,7 @@ returned unchanged.</p>
 </div>
 </div>
 </div>
-<div id="c8128668-667e-4c3b-876e-8fa291faee09" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('028aaa90-d1df-4ac9-aa46-9a1c2d46c957','c8128668-667e-4c3b-876e-8fa291faee09')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('028aaa90-d1df-4ac9-aa46-9a1c2d46c957','c8128668-667e-4c3b-876e-8fa291faee09')">Open In Tab</button></div><div id="8cc3907e-cb75-4a84-9fa0-362694291462" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6931d1d1-a31b-47eb-8a1a-45534708d0cd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('089b9672-d9f5-4237-a7b9-a3d95e73c97e','6931d1d1-a31b-47eb-8a1a-45534708d0cd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('089b9672-d9f5-4237-a7b9-a3d95e73c97e','6931d1d1-a31b-47eb-8a1a-45534708d0cd')">Open In Tab</button></div><div id="2ab02630-6116-4a5b-b1f1-8838a9759eae" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.GitHubDownloader.timeout">
@@ -2184,12 +2176,6 @@ returned unchanged.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2207,7 +2193,7 @@ returned unchanged.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

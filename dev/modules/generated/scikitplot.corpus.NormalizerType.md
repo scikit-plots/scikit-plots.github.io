@@ -1,6 +1,6 @@
 # NormalizerType[#](#normalizertype "Link to this heading")
 
-class scikitplot.corpus.NormalizerType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L237)[#](#scikitplot.corpus.NormalizerType "Link to this definition")
+class scikitplot.corpus.NormalizerType(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L237)[#](#scikitplot.corpus.NormalizerType "Link to this definition")
 :   Normalisation step identifiers for pipeline ordering.
 
     Parameters:
@@ -28,21 +28,21 @@ class scikitplot.corpus.NormalizerType(**\*values**)[[source]](https://github.co
         ****CUSTOM****
         :   User-defined normaliser.
 
-    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.CUSTOM "Link to this definition")
+    CUSTOM = 'custom'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.CUSTOM "Link to this definition")
 
-    DEDUP\_LINES = 'dedup\_lines'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.DEDUP_LINES "Link to this definition")
+    DEDUP\_LINES = 'dedup\_lines'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.DEDUP_LINES "Link to this definition")
 
-    HTML\_STRIP = 'html\_strip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.HTML_STRIP "Link to this definition")
+    HTML\_STRIP = 'html\_strip'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.HTML_STRIP "Link to this definition")
 
-    LANGUAGE\_DETECT = 'language\_detect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.LANGUAGE_DETECT "Link to this definition")
+    LANGUAGE\_DETECT = 'language\_detect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.LANGUAGE_DETECT "Link to this definition")
 
-    LOWERCASE = 'lowercase'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.LOWERCASE "Link to this definition")
+    LOWERCASE = 'lowercase'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.LOWERCASE "Link to this definition")
 
-    PII\_REDACT = 'pii\_redact'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.PII_REDACT "Link to this definition")
+    PII\_REDACT = 'pii\_redact'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.PII_REDACT "Link to this definition")
 
-    UNICODE = 'unicode'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.UNICODE "Link to this definition")
+    UNICODE = 'unicode'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.UNICODE "Link to this definition")
 
-    WHITESPACE = 'whitespace'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.WHITESPACE "Link to this definition")
+    WHITESPACE = 'whitespace'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.NormalizerType.WHITESPACE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.NormalizerType.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

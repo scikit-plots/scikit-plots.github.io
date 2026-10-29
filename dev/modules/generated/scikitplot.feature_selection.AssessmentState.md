@@ -1,19 +1,19 @@
 # AssessmentState[#](#assessmentstate "Link to this heading")
 
-class scikitplot.feature\_selection.AssessmentState(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L50)[#](#scikitplot.feature_selection.AssessmentState "Link to this definition")
+class scikitplot.feature\_selection.AssessmentState(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L50)[#](#scikitplot.feature_selection.AssessmentState "Link to this definition")
 :   Outcome of one assessment of one feature.
 
     `UNKNOWN` means the evidence was insufficient (too few finite values,
     unhashable cells); `NOT_APPLICABLE` means the question has no meaning for
     the feature (skewness of a string column). Neither is `FALSE`.
 
-    FALSE = 'false'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.FALSE "Link to this definition")
+    FALSE = 'false'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.FALSE "Link to this definition")
 
-    NOT\_APPLICABLE = 'not\_applicable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.NOT_APPLICABLE "Link to this definition")
+    NOT\_APPLICABLE = 'not\_applicable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.NOT_APPLICABLE "Link to this definition")
 
-    TRUE = 'true'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.TRUE "Link to this definition")
+    TRUE = 'true'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.TRUE "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.AssessmentState.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.AssessmentState.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

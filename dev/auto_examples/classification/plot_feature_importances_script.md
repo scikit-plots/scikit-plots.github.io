@@ -90,15 +90,15 @@ Related examples
 
 [plot\_silhouette with examples](../clustering/plot_silhouette_script.html)
 
-plot\_silhouette with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png)
-
-[plot\_residuals\_distribution with examples](../stats/plot_residuals_distribution_script.html)
-
-plot\_residuals\_distribution with examples![](../../_images/sphx_glr_plot_elbow_script_thumb.png)
+plot\_silhouette with examples![](../../_images/sphx_glr_plot_elbow_script_thumb.png)
 
 [plot\_elbow with examples](../clustering/plot_elbow_script.html)
 
-plot\_elbow with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png)
+plot\_elbow with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png)
+
+[plot\_residuals\_distribution with examples](../stats/plot_residuals_distribution_script.html)
+
+plot\_residuals\_distribution with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png)
 
 [plot\_residuals\_distribution with examples](../regression/plot_residuals_distribution_script.html)
 

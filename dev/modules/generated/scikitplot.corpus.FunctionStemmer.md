@@ -1,6 +1,6 @@
 # FunctionStemmer[#](#functionstemmer "Link to this heading")
 
-class scikitplot.corpus.FunctionStemmer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L490)[#](#scikitplot.corpus.FunctionStemmer "Link to this definition")
+class scikitplot.corpus.FunctionStemmer(**fn**, **name='custom'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L498)[#](#scikitplot.corpus.FunctionStemmer "Link to this definition")
 :   Wrap any `Callable[[str], str]` as a [`StemmerProtocol`](scikitplot.corpus.StemmerProtocol.html#scikitplot.corpus.StemmerProtocol "scikitplot.corpus.StemmerProtocol").
 
     Parameters:
@@ -25,7 +25,7 @@ class scikitplot.corpus.FunctionStemmer(**fn**, **name='custom'**)[[source]](htt
     ```
     Go BackOpen In Tab
 
-    stem(**word**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L519)[#](#scikitplot.corpus.FunctionStemmer.stem "Link to this definition")
+    stem(**word**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L527)[#](#scikitplot.corpus.FunctionStemmer.stem "Link to this definition")
     :   Stem **word**.
 
         Parameters:

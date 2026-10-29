@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:42:20Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:23:43Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.MultimodalEmbeddingEngine","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -64,7 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1764,6 +1763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1795,14 +1795,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1848,7 +1840,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>MultimodalEmbeddingEngine<a class="headerlink" href="#multimodalembeddingengine" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">MultimodalEmbeddingEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence_transformers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'openai/clip-vit-base-patch32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'whisper'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'openai/whisper-base'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimodal_fusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_projection_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L643"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">MultimodalEmbeddingEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence_transformers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'openai/clip-vit-base-patch32'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'whisper'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'openai/whisper-base'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audio_custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multimodal_fusion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_projection_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L643"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine" title="Link to this definition">#</a></dt>
 <dd><p>Unified embedding engine for any <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>
 modality — text, image, audio, video, or multimodal.</p>
 <p>Routes each document to the appropriate backend by inspecting
@@ -1954,8 +1946,8 @@ another <code class="docutils literal notranslate"><span class="pre">normalize</
 <p><strong>Thread safety:</strong> Backends are lazily loaded and protected by a
 <code class="docutils literal notranslate"><span class="pre">threading.Lock</span></code> per backend. Safe for concurrent reads after warm-up.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="38349cff-0fcf-44a7-a0a0-d42b2b5ee5fc">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('38349cff-0fcf-44a7-a0a0-d42b2b5ee5fc','7e776632-ec48-40c4-86d5-9153fc44c976','b00e090d-0f95-4c34-9701-2fdabe0236b7','../../lite/tree/../notebooks/index.html?path=3c7679f0_e574_434a_8c4b_900a9ae011d7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6f443ae3-c22b-4c23-91d9-4a6108267a75">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6f443ae3-c22b-4c23-91d9-4a6108267a75','20caa400-9aad-4ce2-97b5-d41d8da93453','9bf098f1-d8e8-44bf-8d25-79867fdb3106','../../lite/tree/../notebooks/index.html?path=c084bf06_de11_4eb3_8105_6005c215208c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Text + image documents in one call:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">MultimodalEmbeddingEngine</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">projection_dim</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
@@ -1986,7 +1978,7 @@ orthonormal projection (QR decomposition).  For production fine-tuning
 replace this with a learned adapter trained on your downstream task.</p>
 </div>
 </div>
-<div id="b00e090d-0f95-4c34-9701-2fdabe0236b7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('38349cff-0fcf-44a7-a0a0-d42b2b5ee5fc','b00e090d-0f95-4c34-9701-2fdabe0236b7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('38349cff-0fcf-44a7-a0a0-d42b2b5ee5fc','b00e090d-0f95-4c34-9701-2fdabe0236b7')">Open In Tab</button></div><div id="7e776632-ec48-40c4-86d5-9153fc44c976" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="9bf098f1-d8e8-44bf-8d25-79867fdb3106" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6f443ae3-c22b-4c23-91d9-4a6108267a75','9bf098f1-d8e8-44bf-8d25-79867fdb3106')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6f443ae3-c22b-4c23-91d9-4a6108267a75','9bf098f1-d8e8-44bf-8d25-79867fdb3106')">Open In Tab</button></div><div id="20caa400-9aad-4ce2-97b5-d41d8da93453" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.VALID_AUDIO_BACKENDS">
 <span class="sig-name descname"><span class="pre">VALID_AUDIO_BACKENDS</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.15)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('whisper',</span> <span class="pre">'wav2vec',</span> <span class="pre">'custom')</span></span><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.VALID_AUDIO_BACKENDS" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2048,7 +2040,7 @@ replace this with a learned adapter trained on your downstream task.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_audio">
-<span class="sig-name descname"><span class="pre">embed_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveforms</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_audio" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_audio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveforms</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1113"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_audio" title="Link to this definition">#</a></dt>
 <dd><p>Embed a list of audio waveforms via the configured audio backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2074,7 +2066,7 @@ replace this with a learned adapter trained on your downstream task.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents">
-<span class="sig-name descname"><span class="pre">embed_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L882"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L882"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents" title="Link to this definition">#</a></dt>
 <dd><p>Embed all documents in-place (via <code class="docutils literal notranslate"><span class="pre">doc.replace(embedding=...)</span></code>)
 and return the updated list.</p>
 <p>Dispatches by <code class="docutils literal notranslate"><span class="pre">doc.modality</span></code>:</p>
@@ -2121,7 +2113,7 @@ returned unchanged and a warning is emitted.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents_with_cache">
-<span class="sig-name descname"><span class="pre">embed_documents_with_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents_with_cache" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_documents_with_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_documents_with_cache" title="Link to this definition">#</a></dt>
 <dd><p>Embed documents through the content-addressed disk cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2169,7 +2161,7 @@ computes, which is always correct.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_images">
-<span class="sig-name descname"><span class="pre">embed_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1086"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_images" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1086"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_images" title="Link to this definition">#</a></dt>
 <dd><p>Embed a list of raw image arrays via the configured image backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2201,7 +2193,7 @@ computes, which is always correct.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_texts">
-<span class="sig-name descname"><span class="pre">embed_texts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1067"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_texts" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_texts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1067"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_texts" title="Link to this definition">#</a></dt>
 <dd><p>Embed a list of strings via the configured text backend.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2227,7 +2219,7 @@ computes, which is always correct.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.MultimodalEmbeddingEngine.embed_video">
-<span class="sig-name descname"><span class="pre">embed_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sample_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1135"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_video" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_sequences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sample_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_multimodal_embedding.py#L1135"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.MultimodalEmbeddingEngine.embed_video" title="Link to this definition">#</a></dt>
 <dd><p>Embed video by sampling frames and mean-pooling CLIP embeddings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2431,12 +2423,6 @@ computes, which is always correct.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2454,7 +2440,7 @@ computes, which is always correct.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

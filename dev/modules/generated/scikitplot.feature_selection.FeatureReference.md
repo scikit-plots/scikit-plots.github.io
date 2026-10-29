@@ -1,6 +1,6 @@
 # FeatureReference[#](#featurereference "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **method**, **cuts=()**, **categories=()**, **proportions=()**, **truncated=False**, **n\_reference=0**, **note=''**, **family=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference "Link to this definition")
+class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **method**, **cuts=()**, **categories=()**, **proportions=()**, **truncated=False**, **n\_reference=0**, **note=''**, **family=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference "Link to this definition")
 :   Frozen reference buckets of one feature.
 
     Parameters:
@@ -49,7 +49,7 @@ class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **metho
         * ****note**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****family**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
 
-    bucket\_counts(**series**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L189)[#](#scikitplot.feature_selection.FeatureReference.bucket_counts "Link to this definition")
+    bucket\_counts(**series**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L189)[#](#scikitplot.feature_selection.FeatureReference.bucket_counts "Link to this definition")
     :   Count the values of `series` per reference bucket.
 
         Parameters:
@@ -76,7 +76,7 @@ class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **metho
 
     family: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.feature_selection.FeatureReference.family "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L255)[#](#scikitplot.feature_selection.FeatureReference.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L255)[#](#scikitplot.feature_selection.FeatureReference.from_dict "Link to this definition")
     :   Rebuild from [`to_dict`](#scikitplot.feature_selection.FeatureReference.to_dict "scikitplot.feature_selection.FeatureReference.to_dict") output, checking every field.
 
         Parameters:
@@ -93,19 +93,19 @@ class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **metho
         Return type:
         :   [**FeatureReference**](#scikitplot.feature_selection.FeatureReference "scikitplot.feature_selection._drift.FeatureReference")
 
-    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.kind "Link to this definition")
+    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.kind "Link to this definition")
 
-    method: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.method "Link to this definition")
+    method: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.method "Link to this definition")
 
     n\_reference: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.feature_selection.FeatureReference.n_reference "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L146)[#](#scikitplot.feature_selection.FeatureReference.name "Link to this definition")
 
     note: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.feature_selection.FeatureReference.note "Link to this definition")
 
     proportions: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.FeatureReference.proportions "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L248)[#](#scikitplot.feature_selection.FeatureReference.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L248)[#](#scikitplot.feature_selection.FeatureReference.to_dict "Link to this definition")
     :   Return the shared-data-model form.
 
         Return type:
@@ -113,7 +113,7 @@ class scikitplot.feature\_selection.FeatureReference(**name**, **kind**, **metho
 
     truncated: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.feature_selection.FeatureReference.truncated "Link to this definition")
 
-    unseen\_ratio(**series**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L225)[#](#scikitplot.feature_selection.FeatureReference.unseen_ratio "Link to this definition")
+    unseen\_ratio(**series**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L225)[#](#scikitplot.feature_selection.FeatureReference.unseen_ratio "Link to this definition")
     :   Return the share of non-missing values never seen in training.
 
         Parameters:

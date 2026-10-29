@@ -55,5 +55,5 @@ extensions += ["sphinx.ext.inheritance_diagram"]
 
 ### See Also[#](#see-also "Link to this heading")
 
-* [`sphinx.ext.inheritance_diagram`](https://www.sphinx-doc.org/en/master/usage/extensions/inheritance.html#module-sphinx.ext.inheritance_diagram "(in Sphinx v9.1.1)")
+* [`sphinx.ext.inheritance_diagram`](https://www.sphinx-doc.org/en/master/usage/extensions/inheritance.html#module-sphinx.ext.inheritance_diagram "(in Sphinx v9.3.0)")
 * Graphviz (`dot`) documentation

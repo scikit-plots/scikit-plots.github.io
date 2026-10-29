@@ -1,6 +1,6 @@
 # Attribution[#](#attribution "Link to this heading")
 
-class scikitplot.feature\_selection.Attribution(**by\_input**, **unattributed**, **how**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L979)[#](#scikitplot.feature_selection.Attribution "Link to this definition")
+class scikitplot.feature\_selection.Attribution(**by\_input**, **unattributed**, **how**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L979)[#](#scikitplot.feature_selection.Attribution "Link to this definition")
 :   Values of transformed features summed back onto raw input features.
 
     Attributes:

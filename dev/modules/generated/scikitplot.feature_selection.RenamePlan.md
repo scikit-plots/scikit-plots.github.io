@@ -1,6 +1,6 @@
 # RenamePlan[#](#renameplan "Link to this heading")
 
-class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L71)[#](#scikitplot.feature_selection.RenamePlan "Link to this definition")
+class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L71)[#](#scikitplot.feature_selection.RenamePlan "Link to this definition")
 :   A complete, frozen `old -> new` name mapping.
 
     Parameters:
@@ -32,7 +32,7 @@ class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://gith
     ```
     Go BackOpen In Tab
 
-    apply(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L274)[#](#scikitplot.feature_selection.RenamePlan.apply "Link to this definition")
+    apply(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L274)[#](#scikitplot.feature_selection.RenamePlan.apply "Link to this definition")
     :   Rename the columns of `X`, which must equal [`names_in`](#scikitplot.feature_selection.RenamePlan.names_in "scikitplot.feature_selection.RenamePlan.names_in") in order.
 
         Parameters:
@@ -54,7 +54,7 @@ class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://gith
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    classmethod build(**names**, **rule**, **\***, **start=0**, **on\_collision='raise'**, **on\_missing='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L110)[#](#scikitplot.feature_selection.RenamePlan.build "Link to this definition")
+    classmethod build(**names**, **rule**, **\***, **start=0**, **on\_collision='raise'**, **on\_missing='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L110)[#](#scikitplot.feature_selection.RenamePlan.build "Link to this definition")
     :   Apply `rule` to `names` once and freeze the result.
 
         Parameters:
@@ -102,7 +102,7 @@ class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://gith
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L307)[#](#scikitplot.feature_selection.RenamePlan.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L307)[#](#scikitplot.feature_selection.RenamePlan.from_dict "Link to this definition")
     :   Rebuild a plan from [`to_dict`](#scikitplot.feature_selection.RenamePlan.to_dict "scikitplot.feature_selection.RenamePlan.to_dict") output.
 
         Parameters:
@@ -119,7 +119,7 @@ class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://gith
         Return type:
         :   [**RenamePlan**](#scikitplot.feature_selection.RenamePlan "scikitplot.feature_selection._rename.RenamePlan")
 
-    inverse()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L263)[#](#scikitplot.feature_selection.RenamePlan.inverse "Link to this definition")
+    inverse()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L263)[#](#scikitplot.feature_selection.RenamePlan.inverse "Link to this definition")
     :   Return the plan that undoes this one.
 
         Returns:
@@ -147,9 +147,9 @@ class scikitplot.feature\_selection.RenamePlan(**pairs**)[[source]](https://gith
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    pairs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L71)[#](#scikitplot.feature_selection.RenamePlan.pairs "Link to this definition")
+    pairs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L71)[#](#scikitplot.feature_selection.RenamePlan.pairs "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_rename.py#L303)[#](#scikitplot.feature_selection.RenamePlan.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_rename.py#L303)[#](#scikitplot.feature_selection.RenamePlan.to_dict "Link to this definition")
     :   Return `{"pairs": [[old, new], ...]}`.
 
         Return type:

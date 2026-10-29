@@ -1,6 +1,6 @@
 # anls\_score[#](#anls-score "Link to this heading")
 
-scikitplot.corpus.anls\_score(**y\_true**, **y\_pred**, **\***, **threshold=0.5**, **normalize='basic'**, **backend='auto'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_text.py#L460)[#](#scikitplot.corpus.anls_score "Link to this definition")
+scikitplot.corpus.anls\_score(**y\_true**, **y\_pred**, **\***, **threshold=0.5**, **normalize='basic'**, **backend='auto'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_text.py#L460)[#](#scikitplot.corpus.anls_score "Link to this definition")
 :   Average normalised Levenshtein similarity (ANLS).
 
     Per item, `s = 1 - NL` when the normalised Levenshtein distance `NL`

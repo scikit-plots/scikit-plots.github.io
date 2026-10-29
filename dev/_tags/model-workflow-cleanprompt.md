@@ -11,3 +11,4 @@ With this tag
 * [Cleanprompt Packs and Formats: Records, Configs and Whole Folders](../auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.html)
 * [Cleanprompt from Python: Single Calls and Edge Cases](../auto_examples/cleanprompt/plot_cleanprompt_python_api_script.html)
 * [Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../auto_examples/cleanprompt/plot_cleanprompt_recipes_script.html)
+* [Clean a Prompt in a Notebook Cell with `%%scikitplot`](../auto_examples/ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html)

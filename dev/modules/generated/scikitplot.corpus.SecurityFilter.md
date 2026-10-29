@@ -1,6 +1,6 @@
 # SecurityFilter[#](#securityfilter "Link to this heading")
 
-class scikitplot.corpus.SecurityFilter(**expression**, **label='security'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_filters.py#L810)[#](#scikitplot.corpus.SecurityFilter "Link to this definition")
+class scikitplot.corpus.SecurityFilter(**expression**, **label='security'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L810)[#](#scikitplot.corpus.SecurityFilter "Link to this definition")
 :   A scope bound to an index and AND-ed with every query’s own filter.
 
     Parameters:
@@ -39,7 +39,7 @@ class scikitplot.corpus.SecurityFilter(**expression**, **label='security'**)[[so
     ```
     Go BackOpen In Tab
 
-    combine(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_filters.py#L857)[#](#scikitplot.corpus.SecurityFilter.combine "Link to this definition")
+    combine(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L857)[#](#scikitplot.corpus.SecurityFilter.combine "Link to this definition")
     :   Return the security expression AND-ed with `expression`.
 
         Parameters:
@@ -48,6 +48,6 @@ class scikitplot.corpus.SecurityFilter(**expression**, **label='security'**)[[so
         Return type:
         :   [**Filter**](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus._filters.Filter")
 
-    expression: [Filter](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus._filters.Filter")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_filters.py#L810)[#](#scikitplot.corpus.SecurityFilter.expression "Link to this definition")
+    expression: [Filter](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus._filters.Filter")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L810)[#](#scikitplot.corpus.SecurityFilter.expression "Link to this definition")
 
     label: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'security'[#](#scikitplot.corpus.SecurityFilter.label "Link to this definition")

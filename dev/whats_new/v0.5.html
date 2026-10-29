@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -21,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:44:27Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:25:59Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"whats_new/v0.5","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -65,7 +64,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -662,14 +661,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -722,9 +713,127 @@ future; or a feature will be removed in the future.</p></li>
 </ul>
 <section id="version-0-5">
 <span id="release-notes-0-5"></span><h1>Version 0.5<a class="headerlink" href="#version-0-5" title="Link to this heading">#</a></h1>
-<section id="version-0-5-dev0-git-20261020-d6b0376">
-<span id="changes-0-5-dev0-git-20261020-d6b0376"></span><h2>Version 0.5.dev0+git.20261020.d6b0376<a class="headerlink" href="#version-0-5-dev0-git-20261020-d6b0376" title="Link to this heading">#</a></h2>
+<section id="version-0-5-dev0-git-20261029-1037dde">
+<span id="changes-0-5-dev0-git-20261029-1037dde"></span><h2>Version 0.5.dev0+git.20261029.1037dde<a class="headerlink" href="#version-0-5-dev0-git-20261029-1037dde" title="Link to this heading">#</a></h2>
 <p><strong>October 2026</strong></p>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>New gallery sections for the notebook magics (<code class="docutils literal notranslate"><span class="pre">galleries/examples/ipymagic</span></code>:
+commands, a <code class="docutils literal notranslate"><span class="pre">cleanprompt</span></code> cell, the MCP server, the profiler) and for the
+environment builder (<code class="docutils literal notranslate"><span class="pre">galleries/examples/env</span></code>: plan, build and remove,
+configuration files, policies and error codes), and <code class="docutils literal notranslate"><span class="pre">scikitplot._ipymagic</span></code>
+in the API reference. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/891">#891</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-build-utils">
+<h3>scikitplot._build_utils<a class="headerlink" href="#scikitplot-build-utils" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scikitplot._build_utils.generate_apis_reference</span> <span class="pre">imports</span></code> checks
+only that the documentation build can import what the API reference names:
+every <code class="docutils literal notranslate"><span class="pre">_get_submodule</span></code> target (imported when <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> loads
+<code class="docutils literal notranslate"><span class="pre">apis_reference.py</span></code>), every documented module and every <code class="docutils literal notranslate"><span class="pre">autosummary</span></code>
+and deprecated name. A target that needs an absent optional dependency is
+reported as unavailable and fails only with <code class="docutils literal notranslate"><span class="pre">--strict</span></code>; coverage of public
+names is not checked. CircleCI runs it right after building the package,
+before the documentation build, and it is the <code class="docutils literal notranslate"><span class="pre">check-apis-reference</span></code>
+pre-push hook. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/891">#891</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">generate_apis_reference</span> <span class="pre">check</span></code> no longer reports a documented submodule
+that the package does not import itself (such as
+<code class="docutils literal notranslate"><span class="pre">scikitplot.experimental.enable_ann_imputer</span></code>) as stale: a simple name is
+resolved as autosummary resolves it, the attribute or else the submodule of
+that name, so <code class="docutils literal notranslate"><span class="pre">check</span></code> passes on a complete build. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/891">#891</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-env">
+<h3>scikitplot._env<a class="headerlink" href="#scikitplot-env" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">scikitplot</span> <span class="pre">env</span></code> (also <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scikitplot._env</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">scikitplot._env</span></code> functions <code class="docutils literal notranslate"><span class="pre">plan</span></code>, <code class="docutils literal notranslate"><span class="pre">create</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code>, <code class="docutils literal notranslate"><span class="pre">run</span></code>,
+<code class="docutils literal notranslate"><span class="pre">doctor</span></code>, <code class="docutils literal notranslate"><span class="pre">shell_init</span></code> and <code class="docutils literal notranslate"><span class="pre">batch</span></code>) builds one described environment
+with whichever tool the machine has: uv, <code class="docutils literal notranslate"><span class="pre">venv</span></code> + pip, pipenv (a
+<code class="docutils literal notranslate"><span class="pre">Pipfile.lock</span></code> installed exactly), micromamba, mamba or conda. The request
+comes from arguments or a TOML, JSON or YAML file (<code class="docutils literal notranslate"><span class="pre">scikitplot-env.toml</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">[tool.scikitplot.env]</span></code> in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>; JSON Lines for batches)
+and names PyPI and Conda packages and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>,
+<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (extras and dependency groups) and
+<code class="docutils literal notranslate"><span class="pre">Pipfile</span></code> sources. <code class="docutils literal notranslate"><span class="pre">plan</span></code> prints every command before anything runs;
+<code class="docutils literal notranslate"><span class="pre">create</span></code> runs exactly that plan under a per-environment lock, writes a
+receipt, and does nothing the next time unless the request or a dependency
+file changed. Installing micromamba (the conda-forge build, checked against
+a pinned SHA-256; from a cached archive offline) or uv, editing a shell
+start-up file and deleting an environment each need an approval given on
+the command line, in Python or at a terminal, never by a configuration
+file. <code class="docutils literal notranslate"><span class="pre">--offline</span></code> plans only steps that need no network, <code class="docutils literal notranslate"><span class="pre">--target</span></code>
+cross-builds for another Conda platform or the browser
+(<code class="docutils literal notranslate"><span class="pre">emscripten-wasm32</span></code>, and <code class="docutils literal notranslate"><span class="pre">pyodide</span></code> as a <code class="docutils literal notranslate"><span class="pre">micropip</span></code> script), and
+Android and iOS are refused with the reason. <code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">json</span></code> and
+<code class="docutils literal notranslate"><span class="pre">--events</span> <span class="pre">FILE</span></code> (JSON Lines) give results and errors, each with a stable
+<code class="docutils literal notranslate"><span class="pre">code</span></code> and a <code class="docutils literal notranslate"><span class="pre">hint</span></code>, to CI jobs and agents. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/869">#869</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  The JupyterLite Xeus add-on in <code class="docutils literal notranslate"><span class="pre">scikitplot._env</span></code> now builds its browser
+environments through the environment builder: micromamba is looked up when
+a build starts instead of once at import, an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> without
+<code class="docutils literal notranslate"><span class="pre">name</span></code> uses its file name instead of raising <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>, a <code class="docutils literal notranslate"><span class="pre">prefix</span></code>
+given as a <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> no longer raises <code class="docutils literal notranslate"><span class="pre">UnboundLocalError</span></code>, a
+malformed <code class="docutils literal notranslate"><span class="pre">conda-meta/history</span></code> line raises instead of being printed and
+skipped, the empack configuration is downloaded with a timeout and an HTTP
+status check, and a PyPI package with a compiled file is refused before any
+of its files is copied into the prefix. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/869">#869</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-ipymagic">
+<h3>scikitplot._ipymagic<a class="headerlink" href="#scikitplot-ipymagic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">%load_ext</span> <span class="pre">scikitplot</span></code> adds IPython magics that bring the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code>
+command line and a profiler into Jupyter, JupyterLab, VS Code, Colab and
+terminal IPython. <code class="docutils literal notranslate"><span class="pre">%scikitplot</span> <span class="pre">ARGS</span></code> runs any command (<code class="docutils literal notranslate"><span class="pre">info</span></code>,
+<code class="docutils literal notranslate"><span class="pre">doctor</span></code>, <code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">cleanprompt</span></code>, <code class="docutils literal notranslate"><span class="pre">mcp</span></code> …) with the same options,
+output and exit status as in a terminal, and returns a <code class="docutils literal notranslate"><span class="pre">CommandResult</span></code>
+(exit status, captured output and, for <code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">json</span></code>, the parsed data
+in <code class="docutils literal notranslate"><span class="pre">.data</span></code>); <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span> <span class="pre">ARGS</span></code> gives the cell to the command on
+standard input. Short native commands run in the kernel and leave its
+logging configuration as it was; delegated ones run in a subprocess of the
+kernel’s Python, show their output as it comes, and are stopped together
+with the processes they started by the interrupt button or the
+<code class="docutils literal notranslate"><span class="pre">timeout</span></code> setting. A mistyped command is refused with the closest names
+(<code class="docutils literal notranslate"><span class="pre">did</span> <span class="pre">you</span> <span class="pre">mean</span> <span class="pre">'env'?</span></code>) instead of being guessed, <code class="docutils literal notranslate"><span class="pre">&lt;TAB&gt;</span></code> completes
+commands and options from the CLI’s own command model, and errors are
+shown in two lines instead of a traceback. <code class="docutils literal notranslate"><span class="pre">%scikitplot_profile</span></code> /
+<code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code> profile a statement or cell and show the slowest
+functions as a table (<code class="docutils literal notranslate"><span class="pre">-s</span></code>, <code class="docutils literal notranslate"><span class="pre">-l</span></code>, <code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">FILE</span></code>), refuse to start while
+another profiler records the kernel, and with <code class="docutils literal notranslate"><span class="pre">--snakeviz</span></code> open the
+profile in snakeviz served on 127.0.0.1 only and stopped when the
+extension is unloaded. <code class="docutils literal notranslate"><span class="pre">%scikitplot_config</span></code> sets <code class="docutils literal notranslate"><span class="pre">raise_on_error</span></code> (for
+notebooks run in CI), <code class="docutils literal notranslate"><span class="pre">timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">isolate</span></code> and <code class="docutils literal notranslate"><span class="pre">stream</span></code>. The engine is
+also a plain function, <code class="docutils literal notranslate"><span class="pre">scikitplot._ipymagic.run_command</span></code>, for scripts
+and agents. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-plots[ipymagic]</span></code> installs IPython and
+snakeviz. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/870">#870</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">%load_ext</span> <span class="pre">scikitplot._magic</span></code> now loads the new magics with a
+<code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code>. Its old <code class="docutils literal notranslate"><span class="pre">%scikitplot</span></code> ran a fuzzy-matched guess
+when a command was mistyped (so a typo could run another command), called
+plotting functions that do not exist, imported matplotlib and NumPy and
+created <code class="docutils literal notranslate"><span class="pre">~/.scikitplot</span></code> as soon as it was loaded. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/870">#870</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-testing">
+<h3>scikitplot._testing<a class="headerlink" href="#scikitplot-testing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  The test-performance recorder counts the program of one subprocess launch
+once on Python 3.13 and newer, where <code class="docutils literal notranslate"><span class="pre">subprocess.Popen</span></code> raises a second
+audit event (<code class="docutils literal notranslate"><span class="pre">os.posix_spawn</span></code>) for the same launch; its tests now run their
+child pytest sessions without autoloading installed plugins, so they no
+longer fail under pytest 9.2 when a plugin warns while it is configured. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/891">#891</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-utils">
+<h3>scikitplot._utils<a class="headerlink" href="#scikitplot-utils" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">run_with_timeout</span></code> accepts fractional seconds (<code class="docutils literal notranslate"><span class="pre">run_with_timeout(0.5)</span></code>
+raised <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>), refuses a limit that is not a finite number above
+zero, refuses to cancel a real-time timer already armed in the process, and
+puts back the <code class="docutils literal notranslate"><span class="pre">SIGALRM</span></code> handler it replaced <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/867">#867</a></p></li>
+</ul>
+</section>
 <section id="scikitplot-agent">
 <h3>scikitplot.agent<a class="headerlink" href="#scikitplot-agent" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -964,6 +1073,15 @@ any exactly traced) importances and SHAP values back to raw columns.
 PSI, Jensen-Shannon distance, missingness change and unseen categories. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/867">#867</a></p></li>
 </ul>
 </section>
+<section id="scikitplot-logging">
+<h3>scikitplot.logging<a class="headerlink" href="#scikitplot-logging" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  The notebook check behind the default log stream calls
+<code class="docutils literal notranslate"><span class="pre">IPython.get_ipython()</span></code> and inspects the shell it returns; it read an
+attribute of the function instead, so a running Jupyter kernel without
+<code class="docutils literal notranslate"><span class="pre">JPY_PARENT_PID</span></code> or a loaded <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> was taken for a terminal <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/867">#867</a></p></li>
+</ul>
+</section>
 <section id="scikitplot-mcp">
 <h3>scikitplot.mcp<a class="headerlink" href="#scikitplot-mcp" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -1021,6 +1139,19 @@ a <code class="docutils literal notranslate"><span class="pre">bool</span></code
 <code class="docutils literal notranslate"><span class="pre">KissSeedSequence.spawn</span></code> reserves its spawn keys under a lock, so
 threads never mint the same key (identical child streams) on
 free-threaded builds. Annoy, which shares the C++ generator, is unchanged. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/865">#865</a></p></li>
+</ul>
+</section>
+<section id="tools-citation">
+<h3>tools/citation<a class="headerlink" href="#tools-citation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">CITATION.bib</span></code> and <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> now name the version they were
+generated for next to the all-versions DOI: the public version (for example
+<code class="docutils literal notranslate"><span class="pre">0.5.dev0</span></code>), its kind, the build version with its commit
+(<code class="docutils literal notranslate"><span class="pre">0.5.dev0+git.20261028.b656b70</span></code>), a link to that exact source tree, and a
+release’s own DOI when Zenodo archived it. The first BibTeX entry keeps its
+key. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tools/citation/citation_ref.py</span></code> renders, checks
+(<code class="docutils literal notranslate"><span class="pre">check</span></code>, run by a pull-request workflow) and writes
+(<code class="docutils literal notranslate"><span class="pre">sync</span> <span class="pre">--apply</span></code>) both files. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/891">#891</a></p></li>
 </ul>
 <p class="rubric">Code and documentation contributors</p>
 <p>Thanks to everyone who has contributed to the maintenance and improvement of
@@ -1081,14 +1212,22 @@ the project since version 0.4, including:</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261020-d6b0376">Version 0.5.dev0+git.20261020.d6b0376</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261029-1037dde">Version 0.5.dev0+git.20261029.1037dde</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-build-utils">scikitplot._build_utils</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-env">scikitplot._env</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-ipymagic">scikitplot._ipymagic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-testing">scikitplot._testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-utils">scikitplot._utils</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-agent">scikitplot.agent</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-annoy">scikitplot.annoy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-corpus">scikitplot.corpus</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-feature-selection">scikitplot.feature_selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-logging">scikitplot.logging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-mcp">scikitplot.mcp</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-memmap">scikitplot.memmap</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-random">scikitplot.random</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-citation">tools/citation</a></li>
 </ul>
 </li>
 </ul>
@@ -1126,12 +1265,6 @@ the project since version 0.4, including:</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -1149,7 +1282,7 @@ the project since version 0.4, including:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

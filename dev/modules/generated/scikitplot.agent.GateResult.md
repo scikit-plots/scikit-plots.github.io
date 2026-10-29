@@ -1,6 +1,6 @@
 # GateResult[#](#gateresult "Link to this heading")
 
-class scikitplot.agent.GateResult(**gate**, **passed**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult "Link to this definition")
+class scikitplot.agent.GateResult(**gate**, **passed**, **error=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult "Link to this definition")
 :   One gate’s answer for one action.
 
     Parameters:
@@ -10,11 +10,11 @@ class scikitplot.agent.GateResult(**gate**, **passed**, **error=None**)[[source]
 
     error: [AgentError](scikitplot.agent.AgentError.html#scikitplot.agent.AgentError "scikitplot.agent._errors.AgentError") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.GateResult.error "Link to this definition")
 
-    gate: [GateKind](scikitplot.agent.GateKind.html#scikitplot.agent.GateKind "scikitplot.agent._policy.GateKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult.gate "Link to this definition")
+    gate: [GateKind](scikitplot.agent.GateKind.html#scikitplot.agent.GateKind "scikitplot.agent._policy.GateKind")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult.gate "Link to this definition")
 
-    passed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult.passed "Link to this definition")
+    passed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L235)[#](#scikitplot.agent.GateResult.passed "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L243)[#](#scikitplot.agent.GateResult.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L243)[#](#scikitplot.agent.GateResult.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

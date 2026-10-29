@@ -1,6 +1,6 @@
 # FeatureColumnSelector[#](#featurecolumnselector "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureColumnSelector(**kind=None**, **family=None**, **role='feature'**, **tag=None**, **is\_=()**, **is\_not=()**, **names=None**, **policy=None**, **schema=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L484)[#](#scikitplot.feature_selection.FeatureColumnSelector "Link to this definition")
+class scikitplot.feature\_selection.FeatureColumnSelector(**kind=None**, **family=None**, **role='feature'**, **tag=None**, **is\_=()**, **is\_not=()**, **names=None**, **policy=None**, **schema=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L484)[#](#scikitplot.feature_selection.FeatureColumnSelector "Link to this definition")
 :   Column selector for `ColumnTransformer` driven by a feature schema.
 
     Called with the training frame when the `ColumnTransformer` is fitted, it
@@ -85,7 +85,7 @@ class scikitplot.feature\_selection.FeatureColumnSelector(**kind=None**, **famil
     ```
     Go BackOpen In Tab
 
-    \_\_call\_\_(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L573)[#](#scikitplot.feature_selection.FeatureColumnSelector.__call__ "Link to this definition")
+    \_\_call\_\_(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L573)[#](#scikitplot.feature_selection.FeatureColumnSelector.__call__ "Link to this definition")
     :   Return the matching columns of `X`.
 
         Parameters:

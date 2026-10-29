@@ -1,6 +1,6 @@
 # load\_policy[#](#load-policy "Link to this heading")
 
-scikitplot.feature\_selection.load\_policy(**source**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L1074)[#](#scikitplot.feature_selection.load_policy "Link to this definition")
+scikitplot.feature\_selection.load\_policy(**source**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L1074)[#](#scikitplot.feature_selection.load_policy "Link to this definition")
 :   Load a [`FeaturePolicy`](scikitplot.feature_selection.FeaturePolicy.html#scikitplot.feature_selection.FeaturePolicy "scikitplot.feature_selection.FeaturePolicy") from a file, a mapping or a policy.
 
     Parameters:

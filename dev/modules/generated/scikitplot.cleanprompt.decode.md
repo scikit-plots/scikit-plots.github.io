@@ -1,6 +1,6 @@
 # decode[#](#decode "Link to this heading")
 
-scikitplot.cleanprompt.decode(**reply**, **handle**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_api.py#L467)[#](#scikitplot.cleanprompt.decode "Link to this definition")
+scikitplot.cleanprompt.decode(**reply**, **handle**, **\***, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_api.py#L478)[#](#scikitplot.cleanprompt.decode "Link to this definition")
 :   Put the original values back into a model’s reply.
 
     Parameters:

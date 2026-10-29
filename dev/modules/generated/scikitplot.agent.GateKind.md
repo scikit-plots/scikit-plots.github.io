@@ -1,17 +1,17 @@
 # GateKind[#](#gatekind "Link to this heading")
 
-class scikitplot.agent.GateKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L47)[#](#scikitplot.agent.GateKind "Link to this definition")
+class scikitplot.agent.GateKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L47)[#](#scikitplot.agent.GateKind "Link to this definition")
 :   The five gates, in the order an action passes them.
 
-    APPROVAL = 'approval'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.APPROVAL "Link to this definition")
+    APPROVAL = 'approval'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.APPROVAL "Link to this definition")
 
-    BUDGET = 'budget'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.BUDGET "Link to this definition")
+    BUDGET = 'budget'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.BUDGET "Link to this definition")
 
-    PERMISSIONS = 'permissions'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.PERMISSIONS "Link to this definition")
+    PERMISSIONS = 'permissions'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.PERMISSIONS "Link to this definition")
 
-    SCOPE = 'scope'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.SCOPE "Link to this definition")
+    SCOPE = 'scope'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.SCOPE "Link to this definition")
 
-    VALIDATION = 'validation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.VALIDATION "Link to this definition")
+    VALIDATION = 'validation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L)[#](#scikitplot.agent.GateKind.VALIDATION "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.agent.GateKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

@@ -22,6 +22,9 @@ file contents into memory. It is intended for efficient random access to large,
 stable binary data stored on disk with explicit and deterministic lifetime
 management.
 
+> **See also**
+> * <https://docs.python.org/3/library/multiprocessing.shared_memory.html>
+
 ****User guide.**** See the [Memory mapping](../user_guide/memmap/index.html#memmap-index) section for further details.
 
 ## MemMap: file-backed or anonymous memory mapping.[#](#memmap-file-backed-or-anonymous-memory-mapping "Link to this heading")

@@ -1,6 +1,6 @@
 # normalize\_answer[#](#normalize-answer "Link to this heading")
 
-scikitplot.corpus.normalize\_answer(**text**, **\***, **mode='squad'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_text.py#L82)[#](#scikitplot.corpus.normalize_answer "Link to this definition")
+scikitplot.corpus.normalize\_answer(**text**, **\***, **mode='squad'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_text.py#L82)[#](#scikitplot.corpus.normalize_answer "Link to this definition")
 :   Normalise an answer string for comparison.
 
     Parameters:

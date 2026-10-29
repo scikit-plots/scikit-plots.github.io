@@ -1,6 +1,6 @@
 # FeatureLineage[#](#featurelineage "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stages**, **stage\_inputs**, **input\_ids**, **output\_ids**, **estimator**, **final\_estimator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage "Link to this definition")
+class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stages**, **stage\_inputs**, **input\_ids**, **output\_ids**, **estimator**, **final\_estimator=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage "Link to this definition")
 :   Traced feature graph of a fitted pipeline.
 
     Parameters:
@@ -34,7 +34,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
     > [`trace_pipeline`](scikitplot.feature_selection.trace_pipeline.html#scikitplot.feature_selection.trace_pipeline "scikitplot.feature_selection.trace_pipeline")
     :   Build a lineage.
 
-    attribute(**values**, **\***, **how='sum'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1432)[#](#scikitplot.feature_selection.FeatureLineage.attribute "Link to this definition")
+    attribute(**values**, **\***, **how='sum'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1432)[#](#scikitplot.feature_selection.FeatureLineage.attribute "Link to this definition")
     :   Aggregate per-output values (importances, SHAP values) onto raw inputs.
 
         Parameters:
@@ -69,7 +69,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         PCA components and unknown steps are reported in
         `Attribution.unattributed` instead of being split by a guess.
 
-    children(**name**, **stage='input'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1191)[#](#scikitplot.feature_selection.FeatureLineage.children "Link to this definition")
+    children(**name**, **stage='input'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1191)[#](#scikitplot.feature_selection.FeatureLineage.children "Link to this definition")
     :   Return the immediate successors of a feature.
 
         Parameters:
@@ -90,7 +90,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    descendants(**name**, **stage='input'**, **\***, **to='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1237)[#](#scikitplot.feature_selection.FeatureLineage.descendants "Link to this definition")
+    descendants(**name**, **stage='input'**, **\***, **to='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1237)[#](#scikitplot.feature_selection.FeatureLineage.descendants "Link to this definition")
     :   Return the features at stage `to` computed from `name`.
 
         Parameters:
@@ -115,7 +115,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    dropped()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1353)[#](#scikitplot.feature_selection.FeatureLineage.dropped "Link to this definition")
+    dropped()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1353)[#](#scikitplot.feature_selection.FeatureLineage.dropped "Link to this definition")
     :   Return the raw inputs that reach no output, with the stage that removed them.
 
         Returns:
@@ -128,7 +128,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]
 
-    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1690)[#](#scikitplot.feature_selection.FeatureLineage.dumps "Link to this definition")
+    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1690)[#](#scikitplot.feature_selection.FeatureLineage.dumps "Link to this definition")
     :   Serialise the lineage; `"jsonl"` writes one edge record per line.
 
         Parameters:
@@ -147,13 +147,13 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    edges: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[LineageEdge, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.edges "Link to this definition")
+    edges: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[LineageEdge, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.edges "Link to this definition")
 
-    estimator: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.estimator "Link to this definition")
+    estimator: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.estimator "Link to this definition")
 
     final\_estimator: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.FeatureLineage.final_estimator "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1585)[#](#scikitplot.feature_selection.FeatureLineage.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1585)[#](#scikitplot.feature_selection.FeatureLineage.from_dict "Link to this definition")
     :   Rebuild a lineage from [`to_dict`](#scikitplot.feature_selection.FeatureLineage.to_dict "scikitplot.feature_selection.FeatureLineage.to_dict") output.
 
         Parameters:
@@ -177,7 +177,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [**FeatureLineage**](#scikitplot.feature_selection.FeatureLineage "scikitplot.feature_selection._lineage.FeatureLineage")
 
-    history(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1278)[#](#scikitplot.feature_selection.FeatureLineage.history "Link to this definition")
+    history(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1278)[#](#scikitplot.feature_selection.FeatureLineage.history "Link to this definition")
     :   Return every leaf stage that touched the descendants of input `name`.
 
         Parameters:
@@ -197,7 +197,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    input\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.input_ids "Link to this definition")
+    input\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.input_ids "Link to this definition")
 
     property input\_names: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][#](#scikitplot.feature_selection.FeatureLineage.input_names "Link to this definition")
     :   Raw input names.
@@ -205,7 +205,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1713)[#](#scikitplot.feature_selection.FeatureLineage.loads "Link to this definition")
+    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1713)[#](#scikitplot.feature_selection.FeatureLineage.loads "Link to this definition")
     :   Parse a document written by [`dumps`](#scikitplot.feature_selection.FeatureLineage.dumps "scikitplot.feature_selection.FeatureLineage.dumps") with `json` or `yaml`.
 
         Parameters:
@@ -226,9 +226,9 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [**FeatureLineage**](#scikitplot.feature_selection.FeatureLineage "scikitplot.feature_selection._lineage.FeatureLineage")
 
-    nodes: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[FeatureNode, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.nodes "Link to this definition")
+    nodes: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[FeatureNode, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.nodes "Link to this definition")
 
-    origins(**name**, **stage='output'**, **\***, **to='input'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1211)[#](#scikitplot.feature_selection.FeatureLineage.origins "Link to this definition")
+    origins(**name**, **stage='output'**, **\***, **to='input'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1211)[#](#scikitplot.feature_selection.FeatureLineage.origins "Link to this definition")
     :   Return the features at stage `to` that `name` is computed from.
 
         Parameters:
@@ -253,7 +253,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    output\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.output_ids "Link to this definition")
+    output\_ids: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.output_ids "Link to this definition")
 
     property output\_names: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][#](#scikitplot.feature_selection.FeatureLineage.output_names "Link to this definition")
     :   Final output names (what the model sees), in column order.
@@ -261,7 +261,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    parents(**name**, **stage='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1171)[#](#scikitplot.feature_selection.FeatureLineage.parents "Link to this definition")
+    parents(**name**, **stage='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1171)[#](#scikitplot.feature_selection.FeatureLineage.parents "Link to this definition")
     :   Return the immediate predecessors of a feature.
 
         Parameters:
@@ -282,7 +282,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    quality(**name**, **stage='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1260)[#](#scikitplot.feature_selection.FeatureLineage.quality "Link to this definition")
+    quality(**name**, **stage='output'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1260)[#](#scikitplot.feature_selection.FeatureLineage.quality "Link to this definition")
     :   Return the weakest lineage quality on any path from the inputs to `name`.
 
         Parameters:
@@ -303,7 +303,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    stage\_inputs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...]], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.stage_inputs "Link to this definition")
+    stage\_inputs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), ...]], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.stage_inputs "Link to this definition")
 
     property stage\_paths: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][#](#scikitplot.feature_selection.FeatureLineage.stage_paths "Link to this definition")
     :   Paths of every traced stage, in trace order.
@@ -311,7 +311,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    stage\_summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1387)[#](#scikitplot.feature_selection.FeatureLineage.stage_summary "Link to this definition")
+    stage\_summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1387)[#](#scikitplot.feature_selection.FeatureLineage.stage_summary "Link to this definition")
     :   Return one row per traced stage.
 
         Returns:
@@ -323,9 +323,9 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    stages: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[StageRecord, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.stages "Link to this definition")
+    stages: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[StageRecord, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1027)[#](#scikitplot.feature_selection.FeatureLineage.stages "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1563)[#](#scikitplot.feature_selection.FeatureLineage.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1563)[#](#scikitplot.feature_selection.FeatureLineage.to_dict "Link to this definition")
     :   Return the persisted form.
 
         Returns:
@@ -335,7 +335,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    to\_frame()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1404)[#](#scikitplot.feature_selection.FeatureLineage.to_frame "Link to this definition")
+    to\_frame()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1404)[#](#scikitplot.feature_selection.FeatureLineage.to_frame "Link to this definition")
     :   Return every edge as a row.
 
         Returns:
@@ -346,7 +346,7 @@ class scikitplot.feature\_selection.FeatureLineage(**nodes**, **edges**, **stage
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    treatments()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_lineage.py#L1319)[#](#scikitplot.feature_selection.FeatureLineage.treatments "Link to this definition")
+    treatments()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_lineage.py#L1319)[#](#scikitplot.feature_selection.FeatureLineage.treatments "Link to this definition")
     :   Return, per raw input, the chain of leaf transformers applied to it.
 
         Returns:

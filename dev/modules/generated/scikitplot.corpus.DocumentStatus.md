@@ -1,6 +1,6 @@
 # DocumentStatus[#](#documentstatus "Link to this heading")
 
-class scikitplot.corpus.DocumentStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L138)[#](#scikitplot.corpus.DocumentStatus "Link to this definition")
+class scikitplot.corpus.DocumentStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L138)[#](#scikitplot.corpus.DocumentStatus "Link to this definition")
 :   Lifecycle state of a [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus.CorpusDocument") in the corpus pipeline.
 
     Parameters:
@@ -19,15 +19,15 @@ class scikitplot.corpus.DocumentStatus(**\*values**)[[source]](https://github.co
         ****ARCHIVED****
         :   Document retained for audit but excluded from active retrieval.
 
-    ARCHIVED = 'archived'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.ARCHIVED "Link to this definition")
+    ARCHIVED = 'archived'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.ARCHIVED "Link to this definition")
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.FAILED "Link to this definition")
 
-    PENDING = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.PENDING "Link to this definition")
+    PENDING = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.PENDING "Link to this definition")
 
-    PROCESSING = 'processing'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.PROCESSING "Link to this definition")
+    PROCESSING = 'processing'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.PROCESSING "Link to this definition")
 
-    READY = 'ready'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.READY "Link to this definition")
+    READY = 'ready'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L)[#](#scikitplot.corpus.DocumentStatus.READY "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.DocumentStatus.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

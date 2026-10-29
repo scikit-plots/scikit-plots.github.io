@@ -1,6 +1,6 @@
 # AssessmentOutcome[#](#assessmentoutcome "Link to this heading")
 
-class scikitplot.feature\_selection.AssessmentOutcome(**state**, **reasons=()**, **evidence=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L109)[#](#scikitplot.feature_selection.AssessmentOutcome "Link to this definition")
+class scikitplot.feature\_selection.AssessmentOutcome(**state**, **reasons=()**, **evidence=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L109)[#](#scikitplot.feature_selection.AssessmentOutcome "Link to this definition")
 :   What a provider returns: a state, reason codes and evidence.
 
     Parameters:
@@ -22,4 +22,4 @@ class scikitplot.feature\_selection.AssessmentOutcome(**state**, **reasons=()**,
 
     reasons: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.AssessmentOutcome.reasons "Link to this definition")
 
-    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L109)[#](#scikitplot.feature_selection.AssessmentOutcome.state "Link to this definition")
+    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L109)[#](#scikitplot.feature_selection.AssessmentOutcome.state "Link to this definition")

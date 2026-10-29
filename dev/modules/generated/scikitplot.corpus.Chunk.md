@@ -1,6 +1,6 @@
 # Chunk[#](#chunk "Link to this heading")
 
-class scikitplot.corpus.Chunk(**text**, **start\_char**, **end\_char**, **metadata=<factory>**, **context\_start=None**, **context\_end=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk "Link to this definition")
+class scikitplot.corpus.Chunk(**text**, **start\_char**, **end\_char**, **metadata=<factory>**, **context\_start=None**, **context\_end=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk "Link to this definition")
 :   A single unit of text produced by a chunker.
 
     Parameters:
@@ -57,7 +57,7 @@ class scikitplot.corpus.Chunk(**text**, **start\_char**, **end\_char**, **metada
         Type:
         :   `(start_char, end_char)`
 
-    char\_length()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L366)[#](#scikitplot.corpus.Chunk.char_length "Link to this definition")
+    char\_length()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L366)[#](#scikitplot.corpus.Chunk.char_length "Link to this definition")
     :   Return the character span length of this chunk.
 
         Returns:
@@ -68,7 +68,7 @@ class scikitplot.corpus.Chunk(**text**, **start\_char**, **end\_char**, **metada
         Return type:
         :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    content\_hash()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L377)[#](#scikitplot.corpus.Chunk.content_hash "Link to this definition")
+    content\_hash()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L377)[#](#scikitplot.corpus.Chunk.content_hash "Link to this definition")
     :   Return a stable SHA-256 hex digest of `text`.
 
         Useful as a deduplication key in storage backends.
@@ -87,15 +87,15 @@ class scikitplot.corpus.Chunk(**text**, **start\_char**, **end\_char**, **metada
 
     context\_start: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.Chunk.context_start "Link to this definition")
 
-    end\_char: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.end_char "Link to this definition")
+    end\_char: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.end_char "Link to this definition")
 
-    metadata: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.metadata "Link to this definition")
+    metadata: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.metadata "Link to this definition")
 
-    start\_char: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.start_char "Link to this definition")
+    start\_char: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.start_char "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L276)[#](#scikitplot.corpus.Chunk.text "Link to this definition")
 
-    with\_metadata(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L391)[#](#scikitplot.corpus.Chunk.with_metadata "Link to this definition")
+    with\_metadata(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L391)[#](#scikitplot.corpus.Chunk.with_metadata "Link to this definition")
     :   Return a new [`Chunk`](#scikitplot.corpus.Chunk "scikitplot.corpus.Chunk") with additional metadata keys.
 
         Parameters:

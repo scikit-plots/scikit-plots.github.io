@@ -1,6 +1,6 @@
 # profile\_features[#](#profile-features "Link to this heading")
 
-scikitplot.feature\_selection.profile\_features(**X**, **policy=None**, **\***, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L1115)[#](#scikitplot.feature_selection.profile_features "Link to this definition")
+scikitplot.feature\_selection.profile\_features(**X**, **policy=None**, **\***, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L1115)[#](#scikitplot.feature_selection.profile_features "Link to this definition")
 :   Fit a [`FeatureSchema`](scikitplot.feature_selection.FeatureSchema.html#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection.FeatureSchema") on training data.
 
     Parameters:

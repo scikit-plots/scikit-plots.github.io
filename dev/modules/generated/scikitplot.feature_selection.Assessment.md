@@ -1,6 +1,6 @@
 # Assessment[#](#assessment "Link to this heading")
 
-class scikitplot.feature\_selection.Assessment(**name**, **state**, **provider**, **version**, **params=()**, **reasons=()**, **evidence=()**, **origin='inferred'**, **inferred\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment "Link to this definition")
+class scikitplot.feature\_selection.Assessment(**name**, **state**, **provider**, **version**, **params=()**, **reasons=()**, **evidence=()**, **origin='inferred'**, **inferred\_state=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment "Link to this definition")
 :   The recorded answer to one assessment for one feature.
 
     Parameters:
@@ -69,7 +69,7 @@ class scikitplot.feature\_selection.Assessment(**name**, **state**, **provider**
         Type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L206)[#](#scikitplot.feature_selection.Assessment.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L206)[#](#scikitplot.feature_selection.Assessment.from_dict "Link to this definition")
     :   Rebuild an assessment from [`to_dict`](#scikitplot.feature_selection.Assessment.to_dict "scikitplot.feature_selection.Assessment.to_dict") output, checking every field.
 
         Parameters:
@@ -98,22 +98,22 @@ class scikitplot.feature\_selection.Assessment(**name**, **state**, **provider**
         Type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.name "Link to this definition")
 
     origin: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'inferred'[#](#scikitplot.feature_selection.Assessment.origin "Link to this definition")
 
     params: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], ...] = ()[#](#scikitplot.feature_selection.Assessment.params "Link to this definition")
 
-    provider: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.provider "Link to this definition")
+    provider: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.provider "Link to this definition")
 
     reasons: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.Assessment.reasons "Link to this definition")
 
-    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.state "Link to this definition")
+    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.state "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L190)[#](#scikitplot.feature_selection.Assessment.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L190)[#](#scikitplot.feature_selection.Assessment.to_dict "Link to this definition")
     :   Return the shared-data-model form.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.version "Link to this definition")
+    version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L129)[#](#scikitplot.feature_selection.Assessment.version "Link to this definition")

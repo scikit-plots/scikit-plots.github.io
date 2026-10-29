@@ -1,6 +1,6 @@
 # Analyzer[#](#analyzer "Link to this heading")
 
-class scikitplot.rank\_bm25.Analyzer(**name**, **version='1'**, **language=None**, **stopwords=frozenset({})**, **stemmer=None**, **lowercase=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L72)[#](#scikitplot.rank_bm25.Analyzer "Link to this definition")
+class scikitplot.rank\_bm25.Analyzer(**name**, **version='1'**, **language=None**, **stopwords=frozenset({})**, **stemmer=None**, **lowercase=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L72)[#](#scikitplot.rank_bm25.Analyzer "Link to this definition")
 :   How text becomes tokens, declared so a build can record it.
 
     Parameters:
@@ -51,13 +51,13 @@ class scikitplot.rank\_bm25.Analyzer(**name**, **version='1'**, **language=None*
 
     lowercase: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.rank_bm25.Analyzer.lowercase "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L72)[#](#scikitplot.rank_bm25.Analyzer.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L72)[#](#scikitplot.rank_bm25.Analyzer.name "Link to this definition")
 
     stemmer: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.rank_bm25.Analyzer.stemmer "Link to this definition")
 
     stopwords: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] = frozenset({})[#](#scikitplot.rank_bm25.Analyzer.stopwords "Link to this definition")
 
-    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_identity.py#L170)[#](#scikitplot.rank_bm25.Analyzer.tokenize "Link to this definition")
+    tokenize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_identity.py#L170)[#](#scikitplot.rank_bm25.Analyzer.tokenize "Link to this definition")
     :   Split `text` into tokens, applying what this analyzer declares.
 
         Parameters:

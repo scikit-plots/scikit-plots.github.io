@@ -1,6 +1,6 @@
 # Limits[#](#limits "Link to this heading")
 
-class scikitplot.agent.Limits(**max\_steps=16**, **max\_tool\_calls=None**, **max\_cost=None**, **max\_tokens=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L173)[#](#scikitplot.agent.Limits "Link to this definition")
+class scikitplot.agent.Limits(**max\_steps=16**, **max\_tool\_calls=None**, **max\_cost=None**, **max\_tokens=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L173)[#](#scikitplot.agent.Limits "Link to this definition")
 :   Stopping conditions: when a run stops, whatever the planner proposes.
 
     Parameters:
@@ -57,7 +57,7 @@ class scikitplot.agent.Limits(**max\_steps=16**, **max\_tool\_calls=None**, **ma
 
     max\_tool\_calls: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Limits.max_tool_calls "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_policy.py#L230)[#](#scikitplot.agent.Limits.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_policy.py#L230)[#](#scikitplot.agent.Limits.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

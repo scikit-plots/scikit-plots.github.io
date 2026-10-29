@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -21,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:43:54Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:25:23Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.memmap.MemoryMap","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -66,7 +65,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1766,6 +1765,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1797,14 +1797,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1911,8 +1903,8 @@ the last export. What the threads write into the mapped bytes is
 theirs to order, as for any shared memory.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="2e3907a0-64c4-4f67-ac60-cf54e9898d4b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2e3907a0-64c4-4f67-ac60-cf54e9898d4b','266efe7a-f555-4485-ae28-1b22a94f9449','0d6658dc-2614-4d5c-a196-6de59023bea8','../../lite/tree/../notebooks/index.html?path=0ee7b5bc_a76a_4a1d_8e5d_c96af960cc04.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="23760261-9665-4253-af53-ae64e2a3d33b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('23760261-9665-4253-af53-ae64e2a3d33b','855cbc98-45ba-48e5-82d3-6af806172ca8','921f73a1-cd9c-4083-adf6-e8f0b237c5ac','../../lite/tree/../notebooks/index.html?path=dc97df34_6580_4f03_bdcb_c4413b8b2b9f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"test"</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">data</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -1920,7 +1912,7 @@ theirs to order, as for any shared memory.</p></li>
 </div>
 </div>
 </div>
-<div id="0d6658dc-2614-4d5c-a196-6de59023bea8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2e3907a0-64c4-4f67-ac60-cf54e9898d4b','0d6658dc-2614-4d5c-a196-6de59023bea8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2e3907a0-64c4-4f67-ac60-cf54e9898d4b','0d6658dc-2614-4d5c-a196-6de59023bea8')">Open In Tab</button></div><div id="266efe7a-f555-4485-ae28-1b22a94f9449" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="921f73a1-cd9c-4083-adf6-e8f0b237c5ac" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('23760261-9665-4253-af53-ae64e2a3d33b','921f73a1-cd9c-4083-adf6-e8f0b237c5ac')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('23760261-9665-4253-af53-ae64e2a3d33b','921f73a1-cd9c-4083-adf6-e8f0b237c5ac')">Open In Tab</button></div><div id="855cbc98-45ba-48e5-82d3-6af806172ca8" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.addr">
 <span class="sig-name descname"><span class="pre">addr</span></span><a class="headerlink" href="#scikitplot.memmap.MemoryMap.addr" title="Link to this definition">#</a></dt>
 <dd><p>int</p>
@@ -1989,8 +1981,8 @@ alive but not the region, because <code class="docutils literal notranslate"><sp
 block) unmapped it regardless, and touching the array afterwards
 dereferenced unmapped memory (SIGSEGV).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5095ee59-e861-4e46-b0be-9e7c0a48e395">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5095ee59-e861-4e46-b0be-9e7c0a48e395','f9523317-0655-44de-ba7b-6bb40e033144','f68016c1-6f18-4a40-962e-8303c5a62ced','../../lite/tree/../notebooks/index.html?path=6de3f35f_5acf_43b6_bc7a_a2dda5f188c2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="923e4832-ae6a-4503-a73d-f46b81e8a248">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('923e4832-ae6a-4503-a73d-f46b81e8a248','218df8ba-57cb-46fc-92d5-bd6aceb44345','7ad77d1a-7b13-4efa-9fc5-50576be8ff28','../../lite/tree/../notebooks/index.html?path=fdcc8878_1d82_421c_9632_5d35acc731af.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">arr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">as_numpy_array</span><span class="p">()</span>          <span class="c1"># uint8 view</span>
@@ -2009,7 +2001,7 @@ dereferenced unmapped memory (SIGSEGV).</p>
 </div>
 </div>
 </div>
-<div id="f68016c1-6f18-4a40-962e-8303c5a62ced" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5095ee59-e861-4e46-b0be-9e7c0a48e395','f68016c1-6f18-4a40-962e-8303c5a62ced')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5095ee59-e861-4e46-b0be-9e7c0a48e395','f68016c1-6f18-4a40-962e-8303c5a62ced')">Open In Tab</button></div><div id="f9523317-0655-44de-ba7b-6bb40e033144" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7ad77d1a-7b13-4efa-9fc5-50576be8ff28" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('923e4832-ae6a-4503-a73d-f46b81e8a248','7ad77d1a-7b13-4efa-9fc5-50576be8ff28')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('923e4832-ae6a-4503-a73d-f46b81e8a248','7ad77d1a-7b13-4efa-9fc5-50576be8ff28')">Open In Tab</button></div><div id="218df8ba-57cb-46fc-92d5-bd6aceb44345" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.close">
@@ -2043,8 +2035,8 @@ Until then other threads see it closed: their exports and methods
 are refused, and a second <code class="docutils literal notranslate"><span class="pre">close()</span></code> returns at once.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="93919ef0-2042-4aef-8b48-2a3b55c365a7">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('93919ef0-2042-4aef-8b48-2a3b55c365a7','cf945ff3-115b-4cf7-b0ef-4b676bd5f1d2','15fe0bda-8a74-4818-a637-0f8a6bd90ee2','../../lite/tree/../notebooks/index.html?path=ca89bb98_87d2_4115_a281_52a11d71226c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="5f8bc05e-cb46-4fcd-9377-b292aa946bf1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5f8bc05e-cb46-4fcd-9377-b292aa946bf1','6ef4397c-6d1a-4c1a-8f55-f8c39b530028','932f55f5-62af-40cc-aadf-5716875561c9','../../lite/tree/../notebooks/index.html?path=d7cabac7_ff38_49b6_b413_92986895042e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">is_valid</span>
@@ -2053,7 +2045,7 @@ are refused, and a second <code class="docutils literal notranslate"><span class
 </div>
 </div>
 </div>
-<div id="15fe0bda-8a74-4818-a637-0f8a6bd90ee2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('93919ef0-2042-4aef-8b48-2a3b55c365a7','15fe0bda-8a74-4818-a637-0f8a6bd90ee2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('93919ef0-2042-4aef-8b48-2a3b55c365a7','15fe0bda-8a74-4818-a637-0f8a6bd90ee2')">Open In Tab</button></div><div id="cf945ff3-115b-4cf7-b0ef-4b676bd5f1d2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="932f55f5-62af-40cc-aadf-5716875561c9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5f8bc05e-cb46-4fcd-9377-b292aa946bf1','932f55f5-62af-40cc-aadf-5716875561c9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5f8bc05e-cb46-4fcd-9377-b292aa946bf1','932f55f5-62af-40cc-aadf-5716875561c9')">Open In Tab</button></div><div id="6ef4397c-6d1a-4c1a-8f55-f8c39b530028" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.create_anonymous">
@@ -2104,8 +2096,8 @@ Default: MAP_PRIVATE</p>
 <li><p>Useful for inter-process communication with MAP_SHARED</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="88f75518-b9ba-44a8-9666-48ca17b11aa5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('88f75518-b9ba-44a8-9666-48ca17b11aa5','7b2d95b7-fa66-4a28-87f9-02e7b6acbb28','04bb71a9-7158-4aa8-82e4-cded55f463e4','../../lite/tree/../notebooks/index.html?path=0367990e_db88_4b67_88ac_931c3d9c14c1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f5f4e2b0-d7cb-44a7-b8f1-8afc56cbe2a6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f5f4e2b0-d7cb-44a7-b8f1-8afc56cbe2a6','99b89572-8e15-46cc-99f8-609cd622467f','0a2351a1-7367-4734-bd84-b097a27281b1','../../lite/tree/../notebooks/index.html?path=317b18ce_50d8_46a6_b0df_78b8f3c617b4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Hello"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -2118,7 +2110,7 @@ Default: MAP_PRIVATE</p>
 </div>
 </div>
 </div>
-<div id="04bb71a9-7158-4aa8-82e4-cded55f463e4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('88f75518-b9ba-44a8-9666-48ca17b11aa5','04bb71a9-7158-4aa8-82e4-cded55f463e4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('88f75518-b9ba-44a8-9666-48ca17b11aa5','04bb71a9-7158-4aa8-82e4-cded55f463e4')">Open In Tab</button></div><div id="7b2d95b7-fa66-4a28-87f9-02e7b6acbb28" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="0a2351a1-7367-4734-bd84-b097a27281b1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f5f4e2b0-d7cb-44a7-b8f1-8afc56cbe2a6','0a2351a1-7367-4734-bd84-b097a27281b1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f5f4e2b0-d7cb-44a7-b8f1-8afc56cbe2a6','0a2351a1-7367-4734-bd84-b097a27281b1')">Open In Tab</button></div><div id="99b89572-8e15-46cc-99f8-609cd622467f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.create_file_mapping">
@@ -2176,8 +2168,8 @@ Default: MAP_PRIVATE</p>
 <li><p>MAP_PRIVATE creates copy-on-write mapping</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f4dbbdbe-c426-4e57-a8a3-de7752864bbf">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f4dbbdbe-c426-4e57-a8a3-de7752864bbf','f66a225f-404f-4586-9ded-bc9c12f6dc85','7a621743-b537-4fe1-ba6d-0f78575dcb30','../../lite/tree/../notebooks/index.html?path=bd451c1d_a21d_47b3_b7a4_bd998449e3aa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="68364510-7b11-4884-bd19-7e0508554371">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('68364510-7b11-4884-bd19-7e0508554371','39ba81a8-e6be-4578-b8c9-714e604b66ac','f3f93f1a-1de3-435e-bd04-e6a0e3fc8b04','../../lite/tree/../notebooks/index.html?path=40623abb_424a_4d32_9df4_f391927013fd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data.bin"</span><span class="p">,</span> <span class="s2">"r+b"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span> <span class="o">=</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_file_mapping</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">data</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -2186,7 +2178,7 @@ Default: MAP_PRIVATE</p>
 </div>
 </div>
 </div>
-<div id="7a621743-b537-4fe1-ba6d-0f78575dcb30" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f4dbbdbe-c426-4e57-a8a3-de7752864bbf','7a621743-b537-4fe1-ba6d-0f78575dcb30')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f4dbbdbe-c426-4e57-a8a3-de7752864bbf','7a621743-b537-4fe1-ba6d-0f78575dcb30')">Open In Tab</button></div><div id="f66a225f-404f-4586-9ded-bc9c12f6dc85" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="f3f93f1a-1de3-435e-bd04-e6a0e3fc8b04" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('68364510-7b11-4884-bd19-7e0508554371','f3f93f1a-1de3-435e-bd04-e6a0e3fc8b04')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('68364510-7b11-4884-bd19-7e0508554371','f3f93f1a-1de3-435e-bd04-e6a0e3fc8b04')">Open In Tab</button></div><div id="39ba81a8-e6be-4578-b8c9-714e604b66ac" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.is_valid">
@@ -2235,8 +2227,8 @@ Remember to call <a class="reference internal" href="#scikitplot.memmap.MemoryMa
 longer needed; otherwise the locked pages count against the
 process resource limit for the lifetime of the mapping.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f071f859-407c-4b08-b0cc-2c1294d1779d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f071f859-407c-4b08-b0cc-2c1294d1779d','eefb2e61-194a-4f74-b494-0ba3a8a24578','8d527b7c-83b3-4be2-895f-aea965e3f3e6','../../lite/tree/../notebooks/index.html?path=5ae91bc9_6e88_44ba_b2a8_9def5537f855.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="73916626-0ae3-4426-a230-e93220ceef55">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('73916626-0ae3-4426-a230-e93220ceef55','27f06dd7-3e04-4d6d-bd1f-ea19482dbffa','e2b5b092-e97c-4b02-80a5-87f9ab1e2c31','../../lite/tree/../notebooks/index.html?path=4ee37965_773f_4072_9e98_e16cc3eb11f1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">mlock</span><span class="p">()</span>       <span class="c1"># pages will not be swapped out</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"latency-critical data"</span><span class="p">)</span>
@@ -2245,7 +2237,7 @@ process resource limit for the lifetime of the mapping.</p>
 </div>
 </div>
 </div>
-<div id="8d527b7c-83b3-4be2-895f-aea965e3f3e6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f071f859-407c-4b08-b0cc-2c1294d1779d','8d527b7c-83b3-4be2-895f-aea965e3f3e6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f071f859-407c-4b08-b0cc-2c1294d1779d','8d527b7c-83b3-4be2-895f-aea965e3f3e6')">Open In Tab</button></div><div id="eefb2e61-194a-4f74-b494-0ba3a8a24578" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e2b5b092-e97c-4b02-80a5-87f9ab1e2c31" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('73916626-0ae3-4426-a230-e93220ceef55','e2b5b092-e97c-4b02-80a5-87f9ab1e2c31')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('73916626-0ae3-4426-a230-e93220ceef55','e2b5b092-e97c-4b02-80a5-87f9ab1e2c31')">Open In Tab</button></div><div id="27f06dd7-3e04-4d6d-bd1f-ea19482dbffa" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.mprotect">
@@ -2281,8 +2273,8 @@ next access. Adding bits is always allowed.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5d0c4ce8-9e2d-4193-b284-39c418b9dc7d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5d0c4ce8-9e2d-4193-b284-39c418b9dc7d','2ce7ca03-7bc7-47a0-9db8-eaeeaf773e3e','d81d49f4-b3e5-4b22-9ea2-8d49394e3185','../../lite/tree/../notebooks/index.html?path=d8d0a902_a406_4acc_bcea_fb1701b3c24d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="46088834-4b33-4f9e-a9ae-176891e10472">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('46088834-4b33-4f9e-a9ae-176891e10472','094b1062-1a2e-4f80-8991-7cc82e39db3b','19addcb4-2556-438e-a0ca-9d2358fd3c87','../../lite/tree/../notebooks/index.html?path=dd21beeb_54f2_43dc_b51d_d1e14c7d89cd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">mprotect</span><span class="p">(</span><span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Now writable!"</span><span class="p">)</span>
@@ -2290,7 +2282,7 @@ next access. Adding bits is always allowed.</p>
 </div>
 </div>
 </div>
-<div id="d81d49f4-b3e5-4b22-9ea2-8d49394e3185" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5d0c4ce8-9e2d-4193-b284-39c418b9dc7d','d81d49f4-b3e5-4b22-9ea2-8d49394e3185')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5d0c4ce8-9e2d-4193-b284-39c418b9dc7d','d81d49f4-b3e5-4b22-9ea2-8d49394e3185')">Open In Tab</button></div><div id="2ce7ca03-7bc7-47a0-9db8-eaeeaf773e3e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="19addcb4-2556-438e-a0ca-9d2358fd3c87" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('46088834-4b33-4f9e-a9ae-176891e10472','19addcb4-2556-438e-a0ca-9d2358fd3c87')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('46088834-4b33-4f9e-a9ae-176891e10472','19addcb4-2556-438e-a0ca-9d2358fd3c87')">Open In Tab</button></div><div id="094b1062-1a2e-4f80-8991-7cc82e39db3b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.msync">
@@ -2326,8 +2318,8 @@ Default: MS_SYNC</p>
 <li><p>MS_ASYNC returns immediately</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="343b995e-f10e-47e2-8269-509af7803f9f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('343b995e-f10e-47e2-8269-509af7803f9f','a5d32b79-e26d-4332-b12a-f2e807db397c','c1456807-9977-4cbe-9d1c-88085c160674','../../lite/tree/../notebooks/index.html?path=3ac9cbca_7769_462b_b1db_be2ca17d6b9d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0b90f7c0-1a5e-46bb-b405-1e7de038118a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0b90f7c0-1a5e-46bb-b405-1e7de038118a','7e3c7606-878a-48b2-9130-ff01ef487749','ad6565c6-979f-48d0-be22-491e3fed7f1e','../../lite/tree/../notebooks/index.html?path=bc1cca4e_e3db_410c_89b3_6b5425238f0d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_file_mapping</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_WRITE</span><span class="p">,</span> <span class="n">MAP_SHARED</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Data"</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">msync</span><span class="p">(</span><span class="n">MS_SYNC</span><span class="p">)</span>  <span class="c1"># Ensure written to disk</span>
@@ -2335,7 +2327,7 @@ Default: MS_SYNC</p>
 </div>
 </div>
 </div>
-<div id="c1456807-9977-4cbe-9d1c-88085c160674" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('343b995e-f10e-47e2-8269-509af7803f9f','c1456807-9977-4cbe-9d1c-88085c160674')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('343b995e-f10e-47e2-8269-509af7803f9f','c1456807-9977-4cbe-9d1c-88085c160674')">Open In Tab</button></div><div id="a5d32b79-e26d-4332-b12a-f2e807db397c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ad6565c6-979f-48d0-be22-491e3fed7f1e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0b90f7c0-1a5e-46bb-b405-1e7de038118a','ad6565c6-979f-48d0-be22-491e3fed7f1e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0b90f7c0-1a5e-46bb-b405-1e7de038118a','ad6565c6-979f-48d0-be22-491e3fed7f1e')">Open In Tab</button></div><div id="7e3c7606-878a-48b2-9130-ff01ef487749" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.munlock">
@@ -2359,8 +2351,8 @@ Default: MS_SYNC</p>
 on pages that were never locked is a no-op on most platforms
 but the behaviour is technically undefined by POSIX; avoid it.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="5952e323-c551-45a3-9ee9-4ab92f467950">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('5952e323-c551-45a3-9ee9-4ab92f467950','24d3a48d-ffc7-4c58-a71d-d6b3fbb417f3','3e2bf75d-9603-41f5-8598-9500a9b02848','../../lite/tree/../notebooks/index.html?path=bdccaef0_7321_4f0e_99a8_c542addce286.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="c079edb6-9bbc-4b60-a238-ea8fc8abe39a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c079edb6-9bbc-4b60-a238-ea8fc8abe39a','6ceb2277-0863-48d9-9b54-68f5efc8da91','28ca420f-854c-4044-8d99-afc4818bdb2f','../../lite/tree/../notebooks/index.html?path=bbe31f34_34f7_47af_a519_70b2603349d8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">mlock</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1"># … do latency-critical work …</span>
@@ -2369,7 +2361,7 @@ but the behaviour is technically undefined by POSIX; avoid it.</p>
 </div>
 </div>
 </div>
-<div id="3e2bf75d-9603-41f5-8598-9500a9b02848" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('5952e323-c551-45a3-9ee9-4ab92f467950','3e2bf75d-9603-41f5-8598-9500a9b02848')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('5952e323-c551-45a3-9ee9-4ab92f467950','3e2bf75d-9603-41f5-8598-9500a9b02848')">Open In Tab</button></div><div id="24d3a48d-ffc7-4c58-a71d-d6b3fbb417f3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="28ca420f-854c-4044-8d99-afc4818bdb2f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c079edb6-9bbc-4b60-a238-ea8fc8abe39a','28ca420f-854c-4044-8d99-afc4818bdb2f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c079edb6-9bbc-4b60-a238-ea8fc8abe39a','28ca420f-854c-4044-8d99-afc4818bdb2f')">Open In Tab</button></div><div id="6ceb2277-0863-48d9-9b54-68f5efc8da91" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.page_size">
@@ -2433,8 +2425,8 @@ multiples of this value.  Use it for manual alignment:</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="52819736-dafa-46a2-99c9-0d2802b66ae2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('52819736-dafa-46a2-99c9-0d2802b66ae2','4ca3cb23-598b-4513-a2e7-c498a7bfc879','83aeaaff-c8fc-4c3d-a36c-3e7ae8b5e0e3','../../lite/tree/../notebooks/index.html?path=36d4834a_4520_4a3e_a859_3463e1133c85.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="dcb82908-8e90-478f-bca7-48b323dd46e6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('dcb82908-8e90-478f-bca7-48b323dd46e6','a2e0eb95-2018-4537-a2b0-67fb19539fbd','c68b938a-418f-43e3-8a0b-a59fa3456570','../../lite/tree/../notebooks/index.html?path=38ace2ba_c1d1_4a3f_b87c_938e8dc9ceee.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">_</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Hello"</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">data</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -2444,7 +2436,7 @@ multiples of this value.  Use it for manual alignment:</p>
 </div>
 </div>
 </div>
-<div id="83aeaaff-c8fc-4c3d-a36c-3e7ae8b5e0e3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('52819736-dafa-46a2-99c9-0d2802b66ae2','83aeaaff-c8fc-4c3d-a36c-3e7ae8b5e0e3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('52819736-dafa-46a2-99c9-0d2802b66ae2','83aeaaff-c8fc-4c3d-a36c-3e7ae8b5e0e3')">Open In Tab</button></div><div id="4ca3cb23-598b-4513-a2e7-c498a7bfc879" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c68b938a-418f-43e3-8a0b-a59fa3456570" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('dcb82908-8e90-478f-bca7-48b323dd46e6','c68b938a-418f-43e3-8a0b-a59fa3456570')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('dcb82908-8e90-478f-bca7-48b323dd46e6','c68b938a-418f-43e3-8a0b-a59fa3456570')">Open In Tab</button></div><div id="a2e0eb95-2018-4537-a2b0-67fb19539fbd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.memmap.MemoryMap.size">
@@ -2508,8 +2500,8 @@ multiples of this value.  Use it for manual alignment:</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9d5c8d7e-60f9-43e2-b08e-40d4b65dae09">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9d5c8d7e-60f9-43e2-b08e-40d4b65dae09','ca0878fb-6c49-4a01-a9dc-1ec60e2c8308','1cc4127b-7c72-4e7b-a304-323a52e50f1b','../../lite/tree/../notebooks/index.html?path=d2905e40_9460_4e2b_8277_7e30397664e0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e9c9d0d7-4a47-4a05-933d-7d1907880850">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e9c9d0d7-4a47-4a05-933d-7d1907880850','9686ba64-82da-43d2-b289-b5f579a3206a','31312d6f-5434-43c5-938a-17df6d560544','../../lite/tree/../notebooks/index.html?path=3abe41fa_e6e0_4888_8671_5e12a3be0f70.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">MemoryMap</span><span class="o">.</span><span class="n">create_anonymous</span><span class="p">(</span><span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_WRITE</span><span class="p">)</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">n</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"Hello, World!"</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -2518,7 +2510,7 @@ multiples of this value.  Use it for manual alignment:</p>
 </div>
 </div>
 </div>
-<div id="1cc4127b-7c72-4e7b-a304-323a52e50f1b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9d5c8d7e-60f9-43e2-b08e-40d4b65dae09','1cc4127b-7c72-4e7b-a304-323a52e50f1b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9d5c8d7e-60f9-43e2-b08e-40d4b65dae09','1cc4127b-7c72-4e7b-a304-323a52e50f1b')">Open In Tab</button></div><div id="ca0878fb-6c49-4a01-a9dc-1ec60e2c8308" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="31312d6f-5434-43c5-938a-17df6d560544" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e9c9d0d7-4a47-4a05-933d-7d1907880850','31312d6f-5434-43c5-938a-17df6d560544')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e9c9d0d7-4a47-4a05-933d-7d1907880850','31312d6f-5434-43c5-938a-17df6d560544')">Open In Tab</button></div><div id="9686ba64-82da-43d2-b289-b5f579a3206a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -2638,12 +2630,6 @@ multiples of this value.  Use it for manual alignment:</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2661,7 +2647,7 @@ multiples of this value.  Use it for manual alignment:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # DetectorRegistry[#](#detectorregistry "Link to this heading")
 
-class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L472)[#](#scikitplot.cleanprompt.DetectorRegistry "Link to this definition")
+class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L472)[#](#scikitplot.cleanprompt.DetectorRegistry "Link to this definition")
 :   An ordered, immutable-by-convention collection of detectors.
 
     Parameters:
@@ -22,7 +22,7 @@ class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](http
     the detector name as its final, deterministic tie-break — two detectors
     sharing a name would make the outcome depend on insertion order.
 
-    add(**detector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L502)[#](#scikitplot.cleanprompt.DetectorRegistry.add "Link to this definition")
+    add(**detector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L502)[#](#scikitplot.cleanprompt.DetectorRegistry.add "Link to this definition")
     :   Append a detector.
 
         Parameters:
@@ -43,7 +43,7 @@ class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](http
         Return type:
         :   [**DetectorRegistry**](#scikitplot.cleanprompt.DetectorRegistry "scikitplot.cleanprompt._detectors.DetectorRegistry")
 
-    detect\_all(**text**, **policy**, **detectors=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L556)[#](#scikitplot.cleanprompt.DetectorRegistry.detect_all "Link to this definition")
+    detect\_all(**text**, **policy**, **detectors=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L556)[#](#scikitplot.cleanprompt.DetectorRegistry.detect_all "Link to this definition")
     :   Run detectors and collect every span.
 
         Parameters:
@@ -82,7 +82,7 @@ class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](http
         afterwards, so a pathological detector cannot exhaust memory before the
         bound is noticed.
 
-    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L528)[#](#scikitplot.cleanprompt.DetectorRegistry.kinds "Link to this definition")
+    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L528)[#](#scikitplot.cleanprompt.DetectorRegistry.kinds "Link to this definition")
     :   Return every kind this registry can produce.
 
         Returns:
@@ -92,7 +92,7 @@ class scikitplot.cleanprompt.DetectorRegistry(**detectors=None**)[[source]](http
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    select(**kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L539)[#](#scikitplot.cleanprompt.DetectorRegistry.select "Link to this definition")
+    select(**kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L539)[#](#scikitplot.cleanprompt.DetectorRegistry.select "Link to this definition")
     :   Return the detectors whose kind is in `kinds`.
 
         Parameters:

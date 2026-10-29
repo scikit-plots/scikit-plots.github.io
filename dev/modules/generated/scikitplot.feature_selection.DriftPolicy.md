@@ -1,6 +1,6 @@
 # DriftPolicy[#](#driftpolicy "Link to this heading")
 
-class scikitplot.feature\_selection.DriftPolicy(**n\_bins=10**, **max\_categories=50**, **epsilon=0.0001**, **psi\_warn=0.1**, **psi\_alert=0.25**, **min\_count=30**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L587)[#](#scikitplot.feature_selection.DriftPolicy "Link to this definition")
+class scikitplot.feature\_selection.DriftPolicy(**n\_bins=10**, **max\_categories=50**, **epsilon=0.0001**, **psi\_warn=0.1**, **psi\_alert=0.25**, **min\_count=30**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L587)[#](#scikitplot.feature_selection.DriftPolicy "Link to this definition")
 :   How a drift reference is frozen and judged.
 
     Parameters:
@@ -43,7 +43,7 @@ class scikitplot.feature\_selection.DriftPolicy(**n\_bins=10**, **max\_categorie
 
     psi\_warn: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.1[#](#scikitplot.feature_selection.DriftPolicy.psi_warn "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L645)[#](#scikitplot.feature_selection.DriftPolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L645)[#](#scikitplot.feature_selection.DriftPolicy.to_dict "Link to this definition")
     :   Return the config form.
 
         Return type:

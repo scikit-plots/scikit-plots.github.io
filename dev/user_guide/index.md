@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261020.d6b0376 - October 20, 2026 18:35 UTC
+ 0.5.dev0+git.20261029.1037dde - October 29, 2026 06:16 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -162,6 +162,20 @@
 * [Brand](_brand/index.html)
   * [CLI Banner](_brand/_banner.html)
   * [Logo](_brand/_logo.html)
+**environment builder**
+
+* [Environment builder](_env/index.html)
+  * [Getting started](_env/getting_started.html)
+  * [Requests and configuration](_env/configuration.html)
+  * [Targets: host, other platforms, browser, mobile](_env/targets.html)
+  * [CI, containers and agents](_env/automation.html)
+  * [How it works](_env/how_it_works.html)
+**notebook magics**
+
+* [Notebook magics](_ipymagic/index.html)
+  * [Commands in a notebook](_ipymagic/commands.html)
+  * [Profiling](_ipymagic/profiling.html)
+  * [CI, scripts and agents](_ipymagic/automation.html)
 
 ## Under Development[#](#under-development "Link to this heading")
 

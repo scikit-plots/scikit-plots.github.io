@@ -1,6 +1,6 @@
 # LiteralDetector[#](#literaldetector "Link to this heading")
 
-class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **name=None**, **priority=75**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L332)[#](#scikitplot.cleanprompt.LiteralDetector "Link to this definition")
+class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **name=None**, **priority=75**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L332)[#](#scikitplot.cleanprompt.LiteralDetector "Link to this definition")
 :   Detector for exact strings the caller names.
 
     Parameters:
@@ -75,7 +75,7 @@ class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **nam
     confidence[#](#scikitplot.cleanprompt.LiteralDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L437)[#](#scikitplot.cleanprompt.LiteralDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L437)[#](#scikitplot.cleanprompt.LiteralDetector.detect "Link to this definition")
     :   Yield one span per literal occurrence.
 
         Parameters:

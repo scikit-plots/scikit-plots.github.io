@@ -1,6 +1,6 @@
 # StructureChunker[#](#structurechunker "Link to this heading")
 
-class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_structure.py#L568)[#](#scikitplot.corpus.StructureChunker "Link to this definition")
+class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_structure.py#L576)[#](#scikitplot.corpus.StructureChunker "Link to this definition")
 :   Chunk Markdown or reStructuredText by its headings and code blocks.
 
     Parameters:
@@ -42,7 +42,7 @@ class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://gith
     ```
     Go BackOpen In Tab
 
-    blocks(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_structure.py#L621)[#](#scikitplot.corpus.StructureChunker.blocks "Link to this definition")
+    blocks(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_structure.py#L629)[#](#scikitplot.corpus.StructureChunker.blocks "Link to this definition")
     :   Return the document’s blocks: `(kind, span, level, title)`.
 
         Parameters:
@@ -61,7 +61,7 @@ class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://gith
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")], [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_structure.py#L661)[#](#scikitplot.corpus.StructureChunker.chunk "Link to this definition")
+    chunk(**text**, **doc\_id=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_structure.py#L669)[#](#scikitplot.corpus.StructureChunker.chunk "Link to this definition")
     :   Split **text** into prose and code chunks with their heading path.
 
         Parameters:
@@ -94,7 +94,7 @@ class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://gith
         Return type:
         :   [**ChunkResult**](scikitplot.corpus.ChunkResult.html#scikitplot.corpus.ChunkResult "scikitplot.corpus._types.ChunkResult")
 
-    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.StructureChunker.chunk_batch "Link to this definition")
+    chunk\_batch(**texts**, **doc\_ids=None**, **extra\_metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_recursive.py#L242)[#](#scikitplot.corpus.StructureChunker.chunk_batch "Link to this definition")
     :   Chunk a list of documents.
 
         Parameters:
@@ -129,9 +129,9 @@ class scikitplot.corpus.StructureChunker(**config=None**)[[source]](https://gith
     property config: [StructureChunkerConfig](scikitplot.corpus.StructureChunkerConfig.html#scikitplot.corpus.StructureChunkerConfig "scikitplot.corpus._chunkers._structure.StructureChunkerConfig")[#](#scikitplot.corpus.StructureChunker.config "Link to this definition")
     :   The configuration (read-only).
 
-    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_structure.py#L512)[#](#scikitplot.corpus.StructureChunker.config_class "Link to this definition")
+    config\_class[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_structure.py#L520)[#](#scikitplot.corpus.StructureChunker.config_class "Link to this definition")
     :   alias of [`StructureChunkerConfig`](scikitplot.corpus.StructureChunkerConfig.html#scikitplot.corpus.StructureChunkerConfig "scikitplot.corpus._chunkers._structure.StructureChunkerConfig")
 
-    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.StructureChunker.strategy "Link to this definition")
+    strategy: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[ChunkingStrategy](scikitplot.corpus.ChunkingStrategy.html#scikitplot.corpus.ChunkingStrategy "scikitplot.corpus._schema.ChunkingStrategy")] = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.StructureChunker.strategy "Link to this definition")
 
     text\_is\_source\_slice = True[#](#scikitplot.corpus.StructureChunker.text_is_source_slice "Link to this definition")

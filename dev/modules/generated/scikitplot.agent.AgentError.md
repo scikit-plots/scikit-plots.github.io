@@ -1,6 +1,6 @@
 # AgentError[#](#agenterror "Link to this heading")
 
-class scikitplot.agent.AgentError(**code**, **message**, **details=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError "Link to this definition")
+class scikitplot.agent.AgentError(**code**, **message**, **details=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError "Link to this definition")
 :   One error, as recorded in a run’s state and audit trail.
 
     Parameters:
@@ -37,11 +37,11 @@ class scikitplot.agent.AgentError(**code**, **message**, **details=<factory>**)[
     ```
     Go BackOpen In Tab
 
-    code: [ErrorCode](scikitplot.agent.ErrorCode.html#scikitplot.agent.ErrorCode "scikitplot.agent._errors.ErrorCode")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.code "Link to this definition")
+    code: [ErrorCode](scikitplot.agent.ErrorCode.html#scikitplot.agent.ErrorCode "scikitplot.agent._errors.ErrorCode")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.code "Link to this definition")
 
-    details: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.details "Link to this definition")
+    details: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.details "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L152)[#](#scikitplot.agent.AgentError.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L152)[#](#scikitplot.agent.AgentError.from_dict "Link to this definition")
     :   Rebuild an error written by [`to_dict`](#scikitplot.agent.AgentError.to_dict "scikitplot.agent.AgentError.to_dict").
 
         Parameters:
@@ -50,9 +50,9 @@ class scikitplot.agent.AgentError(**code**, **message**, **details=<factory>**)[
         Return type:
         :   [**AgentError**](#scikitplot.agent.AgentError "scikitplot.agent._errors.AgentError")
 
-    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.message "Link to this definition")
+    message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L99)[#](#scikitplot.agent.AgentError.message "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_errors.py#L144)[#](#scikitplot.agent.AgentError.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_errors.py#L144)[#](#scikitplot.agent.AgentError.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

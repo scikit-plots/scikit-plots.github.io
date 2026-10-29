@@ -1,6 +1,6 @@
 # threads\_info[#](#threads-info "Link to this heading")
 
-scikitplot.annoy.threads\_info()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/annoy/_threads.py#L277)[#](#scikitplot.annoy.threads_info "Link to this definition")
+scikitplot.annoy.threads\_info()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/annoy/_threads.py#L277)[#](#scikitplot.annoy.threads_info "Link to this definition")
 :   Describe what decides the number of threads in this process.
 
     Returns:

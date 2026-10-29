@@ -1,21 +1,21 @@
 # FeatureRole[#](#featurerole "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureRole(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L100)[#](#scikitplot.feature_selection.FeatureRole "Link to this definition")
+class scikitplot.feature\_selection.FeatureRole(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L100)[#](#scikitplot.feature_selection.FeatureRole "Link to this definition")
 :   Role of a column in a modelling task; only `FEATURE` columns are model inputs.
 
-    DROP = 'drop'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.DROP "Link to this definition")
+    DROP = 'drop'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.DROP "Link to this definition")
 
-    FEATURE = 'feature'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.FEATURE "Link to this definition")
+    FEATURE = 'feature'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.FEATURE "Link to this definition")
 
-    GROUP = 'group'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.GROUP "Link to this definition")
+    GROUP = 'group'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.GROUP "Link to this definition")
 
-    IDENTIFIER = 'identifier'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.IDENTIFIER "Link to this definition")
+    IDENTIFIER = 'identifier'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.IDENTIFIER "Link to this definition")
 
-    TARGET = 'target'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.TARGET "Link to this definition")
+    TARGET = 'target'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.TARGET "Link to this definition")
 
-    TIME = 'time'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.TIME "Link to this definition")
+    TIME = 'time'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.TIME "Link to this definition")
 
-    WEIGHT = 'weight'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.WEIGHT "Link to this definition")
+    WEIGHT = 'weight'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureRole.WEIGHT "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.FeatureRole.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

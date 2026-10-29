@@ -1,6 +1,6 @@
 # print\_labels[#](#print-labels "Link to this heading")
 
-scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/decile/kds/_kds.py#L59)[#](#scikitplot.decile.kds.print_labels "Link to this definition")
+scikitplot.decile.kds.print\_labels(**\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/decile/kds/_kds.py#L59)[#](#scikitplot.decile.kds.print_labels "Link to this definition")
 :   Display a legend for the abbreviations of decile table column names.
 
     Added in version 0.3.9.

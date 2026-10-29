@@ -1,21 +1,21 @@
 # EvidenceGrade[#](#evidencegrade "Link to this heading")
 
-class scikitplot.corpus.EvidenceGrade(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L80)[#](#scikitplot.corpus.EvidenceGrade "Link to this definition")
+class scikitplot.corpus.EvidenceGrade(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L80)[#](#scikitplot.corpus.EvidenceGrade "Link to this definition")
 :   How a grader judged one round’s hits.
 
-    AMBIGUOUS = 'ambiguous'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.AMBIGUOUS "Link to this definition")
+    AMBIGUOUS = 'ambiguous'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.AMBIGUOUS "Link to this definition")
     :   retry if rounds remain, else keep them as partial evidence.
 
         Type:
         :   Partly
 
-    CORRECT = 'correct'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.CORRECT "Link to this definition")
+    CORRECT = 'correct'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.CORRECT "Link to this definition")
     :   accept them.
 
         Type:
         :   The hits are evidence for the query
 
-    INCORRECT = 'incorrect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.INCORRECT "Link to this definition")
+    INCORRECT = 'incorrect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.EvidenceGrade.INCORRECT "Link to this definition")
     :   retry if rounds remain, else abstain.
 
         Type:

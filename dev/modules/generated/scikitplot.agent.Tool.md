@@ -1,6 +1,6 @@
 # Tool[#](#tool "Link to this heading")
 
-class scikitplot.agent.Tool(**name**, **function**, **description=''**, **parameters=None**, **effect=ToolEffect.READ**, **scopes=frozenset({})**, **cost=1.0**, **idempotent=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool "Link to this definition")
+class scikitplot.agent.Tool(**name**, **function**, **description=''**, **parameters=None**, **effect=ToolEffect.READ**, **scopes=frozenset({})**, **cost=1.0**, **idempotent=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool "Link to this definition")
 :   One callable tool and the facts the gate chain decides on.
 
     Parameters:
@@ -85,7 +85,7 @@ class scikitplot.agent.Tool(**name**, **function**, **description=''**, **parame
 
     cost: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 1.0[#](#scikitplot.agent.Tool.cost "Link to this definition")
 
-    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L217)[#](#scikitplot.agent.Tool.describe "Link to this definition")
+    describe()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L217)[#](#scikitplot.agent.Tool.describe "Link to this definition")
     :   Return what a planner needs to call this tool, as JSON.
 
         Return type:
@@ -93,13 +93,13 @@ class scikitplot.agent.Tool(**name**, **function**, **description=''**, **parame
 
     description: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.agent.Tool.description "Link to this definition")
 
-    effect: [ToolEffect](scikitplot.agent.ToolEffect.html#scikitplot.agent.ToolEffect "scikitplot.agent._tools.ToolEffect") = 'read'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.Tool.effect "Link to this definition")
+    effect: [ToolEffect](scikitplot.agent.ToolEffect.html#scikitplot.agent.ToolEffect "scikitplot.agent._tools.ToolEffect") = 'read'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.Tool.effect "Link to this definition")
 
-    function: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[...], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool.function "Link to this definition")
+    function: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[...], [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool.function "Link to this definition")
 
     idempotent: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Tool.idempotent "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L57)[#](#scikitplot.agent.Tool.name "Link to this definition")
 
     parameters: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Tool.parameters "Link to this definition")
 

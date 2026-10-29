@@ -1,6 +1,6 @@
 # IndicAksharaStrategy[#](#indicaksharastrategy "Link to this heading")
 
-class scikitplot.corpus.IndicAksharaStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_writing_system.py#L905)[#](#scikitplot.corpus.IndicAksharaStrategy "Link to this definition")
+class scikitplot.corpus.IndicAksharaStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_writing_system.py#L905)[#](#scikitplot.corpus.IndicAksharaStrategy "Link to this definition")
 :   Grapheme-cluster segmentation for Indic scripts.
 
     Devanagari, Tamil, Telugu, Kannada, Malayalam, Sinhala, and other Indic
@@ -10,7 +10,7 @@ class scikitplot.corpus.IndicAksharaStrategy[[source]](https://github.com/scikit
     Parameters:
     :   ****(none)****
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_writing_system.py#L919)[#](#scikitplot.corpus.IndicAksharaStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_writing_system.py#L919)[#](#scikitplot.corpus.IndicAksharaStrategy.segment "Link to this definition")
     :   Segment Indic **span** at grapheme-cluster (aksara) granularity.
 
         Parameters:

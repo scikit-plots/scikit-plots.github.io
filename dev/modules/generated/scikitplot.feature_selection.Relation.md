@@ -1,23 +1,23 @@
 # Relation[#](#relation "Link to this heading")
 
-class scikitplot.feature\_selection.Relation(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L112)[#](#scikitplot.feature_selection.Relation "Link to this definition")
+class scikitplot.feature\_selection.Relation(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L112)[#](#scikitplot.feature_selection.Relation "Link to this definition")
 :   How the outputs of one pipeline stage relate to its inputs.
 
-    COMBINE = 'combine'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.COMBINE "Link to this definition")
+    COMBINE = 'combine'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.COMBINE "Link to this definition")
 
-    CONCAT = 'concat'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.CONCAT "Link to this definition")
+    CONCAT = 'concat'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.CONCAT "Link to this definition")
 
-    EXPAND = 'expand'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.EXPAND "Link to this definition")
+    EXPAND = 'expand'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.EXPAND "Link to this definition")
 
-    INPUT = 'input'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.INPUT "Link to this definition")
+    INPUT = 'input'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.INPUT "Link to this definition")
 
-    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.MIXED "Link to this definition")
+    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.MIXED "Link to this definition")
 
-    ONE\_TO\_ONE = 'one\_to\_one'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.ONE_TO_ONE "Link to this definition")
+    ONE\_TO\_ONE = 'one\_to\_one'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.ONE_TO_ONE "Link to this definition")
 
-    SUBSET = 'subset'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.SUBSET "Link to this definition")
+    SUBSET = 'subset'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.SUBSET "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.Relation.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.Relation.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

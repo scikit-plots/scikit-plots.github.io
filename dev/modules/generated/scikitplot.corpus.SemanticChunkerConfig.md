@@ -1,6 +1,6 @@
 # SemanticChunkerConfig[#](#semanticchunkerconfig "Link to this heading")
 
-class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**, **model\_name='paraphrase-multilingual-mpnet-base-v2'**, **model\_version=None**, **similarity\_threshold=0.85**, **max\_chunk\_tokens=None**, **min\_chunk\_tokens=1**, **include\_offsets=True**, **adapter\_unit='word'**, **multilang\_config=None**, **device='cpu'**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_semantic.py#L121)[#](#scikitplot.corpus.SemanticChunkerConfig "Link to this definition")
+class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**, **model\_name='paraphrase-multilingual-mpnet-base-v2'**, **model\_version=None**, **similarity\_threshold=0.85**, **max\_chunk\_tokens=None**, **min\_chunk\_tokens=1**, **include\_offsets=True**, **adapter\_unit='word'**, **multilang\_config=None**, **device='cpu'**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_semantic.py#L121)[#](#scikitplot.corpus.SemanticChunkerConfig "Link to this definition")
 :   Configuration for [`SemanticChunker`](scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker "scikitplot.corpus.SemanticChunker").
 
     Parameters:
@@ -93,7 +93,7 @@ class scikitplot.corpus.SemanticChunkerConfig(**backend=SemanticBackend.HYBRID**
 
     allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.SemanticChunkerConfig.allow_fallback "Link to this definition")
 
-    backend: [SemanticBackend](scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus._chunkers._semantic.SemanticBackend") = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticChunkerConfig.backend "Link to this definition")
+    backend: [SemanticBackend](scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend "scikitplot.corpus._chunkers._semantic.SemanticBackend") = 'hybrid'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_semantic.py#L)[#](#scikitplot.corpus.SemanticChunkerConfig.backend "Link to this definition")
 
     device: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'cpu'[#](#scikitplot.corpus.SemanticChunkerConfig.device "Link to this definition")
 

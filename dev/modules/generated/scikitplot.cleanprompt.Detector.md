@@ -1,6 +1,6 @@
 # Detector[#](#detector "Link to this heading")
 
-class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L56)[#](#scikitplot.cleanprompt.Detector "Link to this definition")
+class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L56)[#](#scikitplot.cleanprompt.Detector "Link to this definition")
 :   Base class for detectors.
 
     Subclasses implement [`detect`](#scikitplot.cleanprompt.Detector.detect "scikitplot.cleanprompt.Detector.detect"). The base class supplies the identity
@@ -34,7 +34,7 @@ class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **con
     confidence[#](#scikitplot.cleanprompt.Detector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_detectors.py#L113)[#](#scikitplot.cleanprompt.Detector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_detectors.py#L113)[#](#scikitplot.cleanprompt.Detector.detect "Link to this definition")
     :   Yield spans over `text`.
 
         Parameters:

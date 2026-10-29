@@ -1,6 +1,6 @@
 # ReferenceProfile[#](#referenceprofile "Link to this heading")
 
-class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile "Link to this definition")
+class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile "Link to this definition")
 :   Frozen training distribution of every compared feature.
 
     Parameters:
@@ -38,7 +38,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
     ```
     Go BackOpen In Tab
 
-    drift(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L511)[#](#scikitplot.feature_selection.ReferenceProfile.drift "Link to this definition")
+    drift(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L511)[#](#scikitplot.feature_selection.ReferenceProfile.drift "Link to this definition")
     :   Compare `X` with the reference, feature by feature.
 
         Parameters:
@@ -60,7 +60,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L651)[#](#scikitplot.feature_selection.ReferenceProfile.dumps "Link to this definition")
+    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L651)[#](#scikitplot.feature_selection.ReferenceProfile.dumps "Link to this definition")
     :   Serialise the reference (verified by reading it back).
 
         Parameters:
@@ -77,9 +77,9 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    features: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[FeatureReference](scikitplot.feature_selection.FeatureReference.html#scikitplot.feature_selection.FeatureReference "scikitplot.feature_selection._drift.FeatureReference"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile.features "Link to this definition")
+    features: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[FeatureReference](scikitplot.feature_selection.FeatureReference.html#scikitplot.feature_selection.FeatureReference "scikitplot.feature_selection._drift.FeatureReference"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile.features "Link to this definition")
 
-    classmethod fit(**X**, **schema=None**, **\***, **policy=None**, **columns=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L443)[#](#scikitplot.feature_selection.ReferenceProfile.fit "Link to this definition")
+    classmethod fit(**X**, **schema=None**, **\***, **policy=None**, **columns=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L443)[#](#scikitplot.feature_selection.ReferenceProfile.fit "Link to this definition")
     :   Freeze the reference buckets of `X`.
 
         Parameters:
@@ -109,7 +109,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [**ReferenceProfile**](#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection._drift.ReferenceProfile")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L607)[#](#scikitplot.feature_selection.ReferenceProfile.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L607)[#](#scikitplot.feature_selection.ReferenceProfile.from_dict "Link to this definition")
     :   Rebuild a reference from [`to_dict`](#scikitplot.feature_selection.ReferenceProfile.to_dict "scikitplot.feature_selection.ReferenceProfile.to_dict") output.
 
         Parameters:
@@ -130,7 +130,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [**ReferenceProfile**](#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection._drift.ReferenceProfile")
 
-    classmethod load(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L713)[#](#scikitplot.feature_selection.ReferenceProfile.load "Link to this definition")
+    classmethod load(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L713)[#](#scikitplot.feature_selection.ReferenceProfile.load "Link to this definition")
     :   Read a reference written by [`save`](#scikitplot.feature_selection.ReferenceProfile.save "scikitplot.feature_selection.ReferenceProfile.save").
 
         Parameters:
@@ -151,7 +151,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [**ReferenceProfile**](#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection._drift.ReferenceProfile")
 
-    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L670)[#](#scikitplot.feature_selection.ReferenceProfile.loads "Link to this definition")
+    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L670)[#](#scikitplot.feature_selection.ReferenceProfile.loads "Link to this definition")
     :   Parse a reference document.
 
         Parameters:
@@ -178,9 +178,9 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    policy: [DriftPolicy](scikitplot.feature_selection.DriftPolicy.html#scikitplot.feature_selection.DriftPolicy "scikitplot.feature_selection._policy.DriftPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile.policy "Link to this definition")
+    policy: [DriftPolicy](scikitplot.feature_selection.DriftPolicy.html#scikitplot.feature_selection.DriftPolicy "scikitplot.feature_selection._policy.DriftPolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L408)[#](#scikitplot.feature_selection.ReferenceProfile.policy "Link to this definition")
 
-    save(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L693)[#](#scikitplot.feature_selection.ReferenceProfile.save "Link to this definition")
+    save(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L693)[#](#scikitplot.feature_selection.ReferenceProfile.save "Link to this definition")
     :   Write the reference atomically.
 
         Parameters:
@@ -201,7 +201,7 @@ class scikitplot.feature\_selection.ReferenceProfile(**features**, **policy=<fac
         Return type:
         :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_drift.py#L598)[#](#scikitplot.feature_selection.ReferenceProfile.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_drift.py#L598)[#](#scikitplot.feature_selection.ReferenceProfile.to_dict "Link to this definition")
     :   Return the persisted form.
 
         Return type:

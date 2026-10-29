@@ -1,6 +1,6 @@
 # require\_count[#](#require-count "Link to this heading")
 
-scikitplot.rank\_bm25.require\_count(**value**, **\***, **maximum=None**, **name='count'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_validation.py#L137)[#](#scikitplot.rank_bm25.require_count "Link to this definition")
+scikitplot.rank\_bm25.require\_count(**value**, **\***, **maximum=None**, **name='count'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_validation.py#L127)[#](#scikitplot.rank_bm25.require_count "Link to this definition")
 :   Return `value` as a non-negative count within its declared maximum.
 
     Parameters:

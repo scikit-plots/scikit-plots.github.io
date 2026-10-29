@@ -1,6 +1,6 @@
 # FeatureSchema[#](#featureschema "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\_rows**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema "Link to this definition")
+class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\_rows**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema "Link to this definition")
 :   Immutable, fitted description of a table’s columns.
 
     Parameters:
@@ -53,7 +53,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
     ```
     Go BackOpen In Tab
 
-    assessment\_table()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L742)[#](#scikitplot.feature_selection.FeatureSchema.assessment_table "Link to this definition")
+    assessment\_table()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L742)[#](#scikitplot.feature_selection.FeatureSchema.assessment_table "Link to this definition")
     :   Return a features-by-assessments table of states.
 
         Returns:
@@ -63,7 +63,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    audit(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L779)[#](#scikitplot.feature_selection.FeatureSchema.audit "Link to this definition")
+    audit(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L779)[#](#scikitplot.feature_selection.FeatureSchema.audit "Link to this definition")
     :   Compare later data’s columns and dtypes with the fitted schema.
 
         Parameters:
@@ -89,7 +89,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         The schema is not changed. Distribution changes are the job of
         [`ReferenceProfile`](scikitplot.feature_selection.ReferenceProfile.html#scikitplot.feature_selection.ReferenceProfile "scikitplot.feature_selection.ReferenceProfile").
 
-    binning\_plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L758)[#](#scikitplot.feature_selection.FeatureSchema.binning_plan "Link to this definition")
+    binning\_plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L758)[#](#scikitplot.feature_selection.FeatureSchema.binning_plan "Link to this definition")
     :   Return the binning recommendation of every numeric feature.
 
         Returns:
@@ -100,7 +100,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    check(**X**, **\***, **allow=('dtype\_changed',)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L840)[#](#scikitplot.feature_selection.FeatureSchema.check "Link to this definition")
+    check(**X**, **\***, **allow=('dtype\_changed',)**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L840)[#](#scikitplot.feature_selection.FeatureSchema.check "Link to this definition")
     :   Raise when [`audit`](#scikitplot.feature_selection.FeatureSchema.audit "scikitplot.feature_selection.FeatureSchema.audit") finds an issue that is not allowed.
 
         Parameters:
@@ -121,7 +121,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   None
 
-    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L1032)[#](#scikitplot.feature_selection.FeatureSchema.dumps "Link to this definition")
+    dumps(**format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L1032)[#](#scikitplot.feature_selection.FeatureSchema.dumps "Link to this definition")
     :   Serialise the schema (verified by reading it back).
 
         Parameters:
@@ -138,7 +138,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    feature(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L543)[#](#scikitplot.feature_selection.FeatureSchema.feature "Link to this definition")
+    feature(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L543)[#](#scikitplot.feature_selection.FeatureSchema.feature "Link to this definition")
     :   Return a feature by name (or position).
 
         Parameters:
@@ -165,9 +165,9 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    features: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[FeatureSpec](scikitplot.feature_selection.FeatureSpec.html#scikitplot.feature_selection.FeatureSpec "scikitplot.feature_selection._schema.FeatureSpec"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.features "Link to this definition")
+    features: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[FeatureSpec](scikitplot.feature_selection.FeatureSpec.html#scikitplot.feature_selection.FeatureSpec "scikitplot.feature_selection._schema.FeatureSpec"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.features "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L967)[#](#scikitplot.feature_selection.FeatureSchema.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L967)[#](#scikitplot.feature_selection.FeatureSchema.from_dict "Link to this definition")
     :   Rebuild a schema from [`to_dict`](#scikitplot.feature_selection.FeatureSchema.to_dict "scikitplot.feature_selection.FeatureSchema.to_dict") output.
 
         Parameters:
@@ -192,7 +192,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**FeatureSchema**](#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection._schema.FeatureSchema")
 
-    groups(**by='kind'**, **\***, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L667)[#](#scikitplot.feature_selection.FeatureSchema.groups "Link to this definition")
+    groups(**by='kind'**, **\***, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L667)[#](#scikitplot.feature_selection.FeatureSchema.groups "Link to this definition")
     :   Group feature names.
 
         Parameters:
@@ -216,7 +216,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")]]
 
-    classmethod load(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L1090)[#](#scikitplot.feature_selection.FeatureSchema.load "Link to this definition")
+    classmethod load(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L1090)[#](#scikitplot.feature_selection.FeatureSchema.load "Link to this definition")
     :   Read a schema written by [`save`](#scikitplot.feature_selection.FeatureSchema.save "scikitplot.feature_selection.FeatureSchema.save").
 
         Parameters:
@@ -237,7 +237,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**FeatureSchema**](#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection._schema.FeatureSchema")
 
-    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L1051)[#](#scikitplot.feature_selection.FeatureSchema.loads "Link to this definition")
+    classmethod loads(**text**, **format='json'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L1051)[#](#scikitplot.feature_selection.FeatureSchema.loads "Link to this definition")
     :   Parse a schema document.
 
         Parameters:
@@ -258,7 +258,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**FeatureSchema**](#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection._schema.FeatureSchema")
 
-    n\_rows: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.n_rows "Link to this definition")
+    n\_rows: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.n_rows "Link to this definition")
 
     property names: [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][#](#scikitplot.feature_selection.FeatureSchema.names "Link to this definition")
     :   Every column name, in training order.
@@ -266,7 +266,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Type:
         :   List of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    policy: [FeaturePolicy](scikitplot.feature_selection.FeaturePolicy.html#scikitplot.feature_selection.FeaturePolicy "scikitplot.feature_selection._policy.FeaturePolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.policy "Link to this definition")
+    policy: [FeaturePolicy](scikitplot.feature_selection.FeaturePolicy.html#scikitplot.feature_selection.FeaturePolicy "scikitplot.feature_selection._policy.FeaturePolicy")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L462)[#](#scikitplot.feature_selection.FeatureSchema.policy "Link to this definition")
 
     property policy\_digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.feature_selection.FeatureSchema.policy_digest "Link to this definition")
     :   Digest of the policy the schema was fitted with.
@@ -274,7 +274,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    rename(**mapping**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L870)[#](#scikitplot.feature_selection.FeatureSchema.rename "Link to this definition")
+    rename(**mapping**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L870)[#](#scikitplot.feature_selection.FeatureSchema.rename "Link to this definition")
     :   Return a schema whose features are renamed, keeping old names as aliases.
 
         Parameters:
@@ -298,7 +298,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**FeatureSchema**](#scikitplot.feature_selection.FeatureSchema "scikitplot.feature_selection._schema.FeatureSchema")
 
-    resolve\_alias(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L921)[#](#scikitplot.feature_selection.FeatureSchema.resolve_alias "Link to this definition")
+    resolve\_alias(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L921)[#](#scikitplot.feature_selection.FeatureSchema.resolve_alias "Link to this definition")
     :   Return the current name of a feature known by `name` or an alias.
 
         Parameters:
@@ -319,7 +319,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    save(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L1070)[#](#scikitplot.feature_selection.FeatureSchema.save "Link to this definition")
+    save(**path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L1070)[#](#scikitplot.feature_selection.FeatureSchema.save "Link to this definition")
     :   Write the schema to `path` atomically.
 
         Parameters:
@@ -340,7 +340,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    select(**\***, **kind=None**, **family=None**, **role='feature'**, **tag=None**, **is\_=()**, **is\_not=()**, **names=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L588)[#](#scikitplot.feature_selection.FeatureSchema.select "Link to this definition")
+    select(**\***, **kind=None**, **family=None**, **role='feature'**, **tag=None**, **is\_=()**, **is\_not=()**, **names=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L588)[#](#scikitplot.feature_selection.FeatureSchema.select "Link to this definition")
     :   Return the names of the features that satisfy every given condition.
 
         Parameters:
@@ -396,7 +396,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         ```
         Go BackOpen In Tab
 
-    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L705)[#](#scikitplot.feature_selection.FeatureSchema.summary "Link to this definition")
+    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L705)[#](#scikitplot.feature_selection.FeatureSchema.summary "Link to this definition")
     :   Return one row per feature with role, kind, key statistics and states.
 
         Returns:
@@ -406,7 +406,7 @@ class scikitplot.feature\_selection.FeatureSchema(**features**, **policy**, **n\
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_schema.py#L949)[#](#scikitplot.feature_selection.FeatureSchema.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_schema.py#L949)[#](#scikitplot.feature_selection.FeatureSchema.to_dict "Link to this definition")
     :   Return the persisted form (schema version, policy, digest, features).
 
         Returns:

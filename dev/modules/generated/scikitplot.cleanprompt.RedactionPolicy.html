@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:41:37Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:22:59Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.RedactionPolicy","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -64,7 +63,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1764,6 +1763,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1795,14 +1795,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1848,7 +1840,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>RedactionPolicy<a class="headerlink" href="#redactionpolicy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">RedactionPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OverlapStrategy.LONGEST_WINS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_insensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_placeholders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L564"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">RedactionPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kinds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">OverlapStrategy.LONGEST_WINS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_insensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_confidence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_placeholders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L564"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy" title="Link to this definition">#</a></dt>
 <dd><p>Complete, declarative configuration for a redaction pass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1909,8 +1901,8 @@ already-redacted text back through the pipeline lets a detector tag the
 inside of a placeholder and destroy it — which is the reproduced upstream
 defect <code class="docutils literal notranslate"><span class="pre">CP-006</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="1a5892c1-596f-4d85-a372-7f433ebf734c">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1a5892c1-596f-4d85-a372-7f433ebf734c','022a65ac-3598-40bf-964f-f208eae35b86','3bca78d2-7d57-45bc-b182-0ddb2c214a10','../../lite/tree/../notebooks/index.html?path=5843c4ff_5170_46e1_a937_60d0f63693b4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="34574ae4-8837-468b-a95d-a60e8583c17d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('34574ae4-8837-468b-a95d-a60e8583c17d','d9dd53a7-2376-4150-81a2-740a84b27089','4f8ea223-673f-4fc2-ab35-22271bd5cf4a','../../lite/tree/../notebooks/index.html?path=38734cb3_ce85_42fb_b609_03f578d52b65.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span> <span class="o">=</span> <span class="n">DEFAULT_POLICY</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">case_insensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">policy</span><span class="o">.</span><span class="n">case_insensitive</span>
 <span class="go">True</span>
@@ -1922,14 +1914,14 @@ defect <code class="docutils literal notranslate"><span class="pre">CP-006</span
 </div>
 </div>
 </div>
-<div id="3bca78d2-7d57-45bc-b182-0ddb2c214a10" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1a5892c1-596f-4d85-a372-7f433ebf734c','3bca78d2-7d57-45bc-b182-0ddb2c214a10')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1a5892c1-596f-4d85-a372-7f433ebf734c','3bca78d2-7d57-45bc-b182-0ddb2c214a10')">Open In Tab</button></div><div id="022a65ac-3598-40bf-964f-f208eae35b86" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="4f8ea223-673f-4fc2-ab35-22271bd5cf4a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('34574ae4-8837-468b-a95d-a60e8583c17d','4f8ea223-673f-4fc2-ab35-22271bd5cf4a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('34574ae4-8837-468b-a95d-a60e8583c17d','4f8ea223-673f-4fc2-ab35-22271bd5cf4a')">Open In Tab</button></div><div id="d9dd53a7-2376-4150-81a2-740a84b27089" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.allow">
 <span class="sig-name descname"><span class="pre">allow</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></span><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.allow" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.as_dict">
-<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L763"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.as_dict" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L763"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.as_dict" title="Link to this definition">#</a></dt>
 <dd><p>Return a JSON-safe dictionary of this policy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1953,7 +1945,7 @@ same rendering.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.evolve">
-<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">changes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L679"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.evolve" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">changes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L679"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.evolve" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of this policy with <code class="docutils literal notranslate"><span class="pre">changes</span></code> applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1983,15 +1975,15 @@ and is normalised to a tuple.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0d0c46b5-a66c-420e-a679-8b57fe40d9fc">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0d0c46b5-a66c-420e-a679-8b57fe40d9fc','d41e5cd1-8042-46b4-8b1e-e3c3d26ad127','9d5be0d9-411e-460f-9ff1-ea5af79faaca','../../lite/tree/../notebooks/index.html?path=633bb984_7307_471e_ad30_27c645f5ceea.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a92fbf77-7bf6-47c4-92b7-0b517e8c44d2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a92fbf77-7bf6-47c4-92b7-0b517e8c44d2','f69d10ab-9f30-44a0-b72a-edac7bfcf8b6','5b8bafb2-533b-470a-ba33-9b4788a82705','../../lite/tree/../notebooks/index.html?path=e8ed04fd_9293_4245_ab7f_b17e7cb462c3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DEFAULT_POLICY</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">kinds</span><span class="o">=</span><span class="p">[</span><span class="s2">"EMAIL"</span><span class="p">])</span><span class="o">.</span><span class="n">kinds</span>
 <span class="go">('EMAIL',)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="9d5be0d9-411e-460f-9ff1-ea5af79faaca" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0d0c46b5-a66c-420e-a679-8b57fe40d9fc','9d5be0d9-411e-460f-9ff1-ea5af79faaca')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0d0c46b5-a66c-420e-a679-8b57fe40d9fc','9d5be0d9-411e-460f-9ff1-ea5af79faaca')">Open In Tab</button></div><div id="d41e5cd1-8042-46b4-8b1e-e3c3d26ad127" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5b8bafb2-533b-470a-ba33-9b4788a82705" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a92fbf77-7bf6-47c4-92b7-0b517e8c44d2','5b8bafb2-533b-470a-ba33-9b4788a82705')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a92fbf77-7bf6-47c4-92b7-0b517e8c44d2','5b8bafb2-533b-470a-ba33-9b4788a82705')">Open In Tab</button></div><div id="f69d10ab-9f30-44a0-b72a-edac7bfcf8b6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.fingerprint">
@@ -2017,7 +2009,7 @@ written by an earlier run.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.limits">
-<span class="sig-name descname"><span class="pre">limits</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits" title="scikitplot.cleanprompt._policy.Limits"><span class="pre">Limits</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.limits" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">limits</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits" title="scikitplot.cleanprompt._policy.Limits"><span class="pre">Limits</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Limits(max_input_chars=1000000,</span> <span class="pre">max_spans=100000,</span> <span class="pre">max_entries=50000,</span> <span class="pre">max_literal_terms=10000,</span> <span class="pre">max_literal_length=4096)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.limits" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2027,7 +2019,7 @@ written by an earlier run.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.overlap">
-<span class="sig-name descname"><span class="pre">overlap</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy" title="scikitplot.cleanprompt._policy.OverlapStrategy"><span class="pre">OverlapStrategy</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LONGEST_WINS'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.overlap" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">overlap</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy" title="scikitplot.cleanprompt._policy.OverlapStrategy"><span class="pre">OverlapStrategy</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LONGEST_WINS'</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.overlap" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2037,7 +2029,7 @@ written by an earlier run.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.selected_kinds">
-<span class="sig-name descname"><span class="pre">selected_kinds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">available</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.selected_kinds" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">selected_kinds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">available</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L727"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.selected_kinds" title="Link to this definition">#</a></dt>
 <dd><p>Resolve <a class="reference internal" href="#scikitplot.cleanprompt.RedactionPolicy.kinds" title="scikitplot.cleanprompt.RedactionPolicy.kinds"><code class="xref py py-attr docutils literal notranslate"><span class="pre">kinds</span></code></a> against the kinds a registry offers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2073,7 +2065,7 @@ and the caller would have no way to notice before transmitting.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.RedactionPolicy.tag_style">
-<span class="sig-name descname"><span class="pre">tag_style</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle" title="scikitplot.cleanprompt._policy.TagStyle"><span class="pre">TagStyle</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.tag_style" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">tag_style</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle" title="scikitplot.cleanprompt._policy.TagStyle"><span class="pre">TagStyle</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">TagStyle(prefix='[',</span> <span class="pre">suffix=']',</span> <span class="pre">separator='-',</span> <span class="pre">uppercase_kind=True,</span> <span class="pre">style='placeholder',</span> <span class="pre">surrogates=None)</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_policy.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.RedactionPolicy.tag_style" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2185,12 +2177,6 @@ and the caller would have no way to notice before transmitting.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2208,7 +2194,7 @@ and the caller would have no way to notice before transmitting.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

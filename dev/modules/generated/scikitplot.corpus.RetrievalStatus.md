@@ -1,6 +1,6 @@
 # RetrievalStatus[#](#retrievalstatus "Link to this heading")
 
-class scikitplot.corpus.RetrievalStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L69)[#](#scikitplot.corpus.RetrievalStatus "Link to this definition")
+class scikitplot.corpus.RetrievalStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L69)[#](#scikitplot.corpus.RetrievalStatus "Link to this definition")
 :   Outcome of a retrieval **operation** as a whole.
 
     Examples
@@ -13,27 +13,27 @@ class scikitplot.corpus.RetrievalStatus(**\*values**)[[source]](https://github.c
     ```
     Go BackOpen In Tab
 
-    CANCELLED = 'cancelled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.CANCELLED "Link to this definition")
+    CANCELLED = 'cancelled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.CANCELLED "Link to this definition")
     :   Aborted by budget, deadline or explicit cancellation.
 
-    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.DEGRADED "Link to this definition")
+    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.DEGRADED "Link to this definition")
     :   At least one requested leg did not run, or ran at reduced capability.
 
         Hits may be incomplete. A `DEGRADED` response always carries at least one
         [`ErrorRecord`](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord"); a degradation with no
         explanation is invalid.
 
-    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.EMPTY "Link to this definition")
+    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.EMPTY "Link to this definition")
     :   Every requested leg ran fully and correctly found zero hits.
 
         This value is only reachable when **all** requested legs actually ran. A
         query that returned nothing because a leg could not run is `DEGRADED`, not
         `EMPTY` – that distinction is the whole point of the envelope.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.FAILED "Link to this definition")
     :   The operation could not be performed at all.
 
-    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.SUCCESS "Link to this definition")
+    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_retrieval.py#L)[#](#scikitplot.corpus.RetrievalStatus.SUCCESS "Link to this definition")
     :   Every requested leg ran and at least one hit was found.
 
     capitalize(**/**)[#](#scikitplot.corpus.RetrievalStatus.capitalize "Link to this definition")

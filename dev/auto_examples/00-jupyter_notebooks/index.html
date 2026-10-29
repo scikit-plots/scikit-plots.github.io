@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -19,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:40:45Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:22:06Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"auto_examples/00-jupyter_notebooks/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -68,7 +67,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/principles-ticker.css?v=ded7c6a7" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -643,14 +642,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -803,68 +794,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
             
           </footer>
         
-
-  
-  
-  
-    <!-- <div id="psc-staging- loop.index | default(0) " -->
-    <div id="psc-staging-auto_examples-00-jupyter_notebooks-index"
-         data-psc-template="shell_interactive_skplt_tutorials.html"
-         data-psc-selector=".sphx-glr-thumbnails"
-         data-psc-position="beforebegin"
-         style="display:none;">
-
-<div>
-  <!-- Interactive Shell -->
-  <!-- src="https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=import%20numpy%20as%20np" -->
-  <!-- src="https://jupyterlite.github.io/demo/repl/#toolbar=1&kernel=python&execute=0&code=import+numpy+as+np" -->
-  <iframe
-    src="https://jupyterlite.github.io/demo/repl?toolbar=1&execute=0&kernel=python&code=import+micropip%3B+from+itertools+import+combinations%2C+product%0AVERSIONS+++%3D+%5B%220.5.dev0%22%2C+%220.4.0.post12%22%5D%0AWASM_TAGS+%3D+%5B%0A++++%22pyemscripten%22%2C++%23+PyPI+%E2%9C%85+pyodide%2Fv314.0.0+Emscripten-5.0.3-wasm32%0A++++%22pyodide%22%2C+++++++%23+PyPI+%E2%9D%8C+pyodide%2Fv0.29.4++Emscripten-4.0.9-wasm32%0A%5D%0ABUILD_TAGS+%3D+%5B%0A++++%22cp314-cp314-%7B%7D_2026_0_wasm32%22%2C%0A++++%22cp313-cp313-%7B%7D_2025_0_wasm32%22%2C%0A++++%22cp312-cp312-%7B%7D_2024_0_wasm32%22%2C%0A%5D%0ABUILD_TAGS+%3D+%5Bb.format%28w%29+for+w+in+WASM_TAGS+for+b+in+BUILD_TAGS%5D%0AURL_TEMPLATE+%3D+%28%0A++++%23+%22https%3A%2F%2Fanaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fscikit-plots%2F%7Bv%7D%2Fdownload%2F%22%0A++++%22https%3A%2F%2Fpypi.anaconda.org%2Fscikit-plots-wheels-staging-nightly%2Fsimple%2Fscikit-plots%2F%7Bv%7D%2F%22%0A++++%22scikit_plots-%7Bv%7D-%7Btag%7D.whl%22%0A%29%0Afor+v%2C+tag+in+product%28VERSIONS%2C+BUILD_TAGS%29%3A%0A++++url+%3D+URL_TEMPLATE.format%28v%3Dv%2C+tag%3Dtag%29%0A++++try%3A%0A++++++++await+micropip.install%28url%2C+keep_going%3DTrue%29%0A++++++++break++%23+success+-%3E+stop+trying%0A++++except+Exception+as+e%3A%0A++++++++print%28f%22install+failed+for+%7Bv%7D+%7Btag%7D%3A+%7Be%7D%22%29%0Aelse%3A%0A++++%23+Pure+python+runs+only+if+the+loop+never+hit+%27break%27+%28i.e.%2C+all+installs+failed%29%0A++++await+micropip.install%28%22scikit-plots%3D%3D0.3.9rc3%22%2C+keep_going%3DTrue%29%0Aimport+scikitplot+as+sp%0Aprint%28%22scikit-plots+version%3A%22%2C+sp.__version__%29%0Asp.show_versions%28%29%0A%23+https%3A%2F%2Fpyodide.org%2Fen%2Fstable%2Fusage%2Fpackages-in-pyodide.html%23packages-in-pyodide%0A"
-    width="100%" height="71vh"
-    style="height: 71vh; display: block;"
-  >Try the REPL!
-  </iframe>
-</div>
-    </div>
-    <script>
-    (function () {
-      // var STAGING_ID = "psc-staging- loop.index | default(0) ";
-      var STAGING_ID = "psc-staging-auto_examples-00-jupyter_notebooks-index";
-      var SELECTOR   = ".sphx-glr-thumbnails";
-      var POSITION   = "beforebegin";
-
-      function relocate() {
-        var staging = document.getElementById(STAGING_ID);
-        if (!staging) {
-          console.warn("[page-component] staging div not found:", STAGING_ID);
-          return;
-        }
-
-        var target = document.querySelector(SELECTOR);
-        if (!target) {
-          console.warn("[page-component] selector not found:", SELECTOR);
-          staging.remove();
-          return;
-        }
-
-        // Move rendered HTML to exact position inside article
-        target.insertAdjacentHTML(POSITION, staging.innerHTML);
-        staging.remove();
-
-        console.debug("[page-component] inserted", "shell_interactive_skplt_tutorials.html",
-                      "at", SELECTOR, POSITION);
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", relocate);
-      } else {
-        // DOMContentLoaded already fired (e.g. script deferred)
-        relocate();
-      }
-    })();
-    </script>
-
-
       </main>
     </div>
   </div>
@@ -882,7 +811,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

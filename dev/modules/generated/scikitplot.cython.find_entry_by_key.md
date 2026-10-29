@@ -1,6 +1,6 @@
 # find\_entry\_by\_key[#](#find-entry-by-key "Link to this heading")
 
-scikitplot.cython.find\_entry\_by\_key(**cache\_dir**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_cache.py#L696)[#](#scikitplot.cython.find_entry_by_key "Link to this definition")
+scikitplot.cython.find\_entry\_by\_key(**cache\_dir**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cython/_cache.py#L696)[#](#scikitplot.cython.find_entry_by_key "Link to this definition")
 :   Find a single **module** cache entry by key.
 
     Parameters:

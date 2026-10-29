@@ -1,6 +1,6 @@
 # SentenceSplitterProtocol[#](#sentencesplitterprotocol "Link to this heading")
 
-class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L245)[#](#scikitplot.corpus.SentenceSplitterProtocol "Link to this definition")
+class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L253)[#](#scikitplot.corpus.SentenceSplitterProtocol "Link to this definition")
 :   Structural protocol for sentence segmenters.
 
     Any object with a `split(text: str) -> list[str]` method satisfies
@@ -19,7 +19,7 @@ class scikitplot.corpus.SentenceSplitterProtocol(**\*args**, **\*\*kwargs**)[[so
     ```
     Go BackOpen In Tab
 
-    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L261)[#](#scikitplot.corpus.SentenceSplitterProtocol.split "Link to this definition")
+    split(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L269)[#](#scikitplot.corpus.SentenceSplitterProtocol.split "Link to this definition")
     :   Split **text** into sentences.
 
         Parameters:

@@ -1,0 +1,94 @@
+:html_theme.sidebar_secondary.remove:
+
+.. _0_ipymagic_ref:
+
+scikitplot._ipymagic
+====================
+
+.. automodule:: scikitplot._ipymagic
+
+**User guide.** See the :ref:`ipymagic-index` section for further details.
+
+.. _0_ipymagic_ref-notebook-magics--extension:
+
+Notebook magics: extension
+--------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  load_ipython_extension  
+  unload_ipython_extension
+
+.. _0_ipymagic_ref-notebook-magics--commands:
+
+Notebook magics: commands
+-------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: Route CommandResult MagicSettings
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  run_command  
+  split_line  
+  route  
+  wants_json  
+  complete  
+  Route  
+  CommandResult  
+  MagicSettings
+
+.. _0_ipymagic_ref-notebook-magics--profiling:
+
+Notebook magics: profiling
+--------------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: ProfileResult ProfileRow
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  profile_code  
+  profiler_busy_reason  
+  ProfileResult  
+  ProfileRow
+
+.. _0_ipymagic_ref-notebook-magics--errors:
+
+Notebook magics: errors
+-----------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: IpyMagicError MagicUsageError CommandFailedError ProfilerBusyError CapabilityMissingError
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  IpyMagicError  
+  MagicUsageError  
+  CommandFailedError  
+  ProfilerBusyError  
+  CapabilityMissingError

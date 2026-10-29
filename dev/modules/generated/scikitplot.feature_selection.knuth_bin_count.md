@@ -1,6 +1,6 @@
 # knuth\_bin\_count[#](#knuth-bin-count "Link to this heading")
 
-scikitplot.feature\_selection.knuth\_bin\_count(**values**, **min\_bins=1**, **max\_bins=100**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L185)[#](#scikitplot.feature_selection.knuth_bin_count "Link to this definition")
+scikitplot.feature\_selection.knuth\_bin\_count(**values**, **min\_bins=1**, **max\_bins=100**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L185)[#](#scikitplot.feature_selection.knuth_bin_count "Link to this definition")
 :   Return the equal-width bin count that maximises Knuth’s posterior.
 
     Parameters:

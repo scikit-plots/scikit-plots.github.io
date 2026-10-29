@@ -1,6 +1,6 @@
 # exact\_match\_score[#](#exact-match-score "Link to this heading")
 
-scikitplot.corpus.exact\_match\_score(**y\_true**, **y\_pred**, **\***, **normalize='squad'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_text.py#L280)[#](#scikitplot.corpus.exact_match_score "Link to this definition")
+scikitplot.corpus.exact\_match\_score(**y\_true**, **y\_pred**, **\***, **normalize='squad'**, **sample\_weight=None**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_text.py#L280)[#](#scikitplot.corpus.exact_match_score "Link to this definition")
 :   Fraction of predicted answers equal to a reference after normalisation.
 
     Parameters:

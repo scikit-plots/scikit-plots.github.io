@@ -1,6 +1,6 @@
 # make\_kbins\_discretizer[#](#make-kbins-discretizer "Link to this heading")
 
-scikitplot.feature\_selection.make\_kbins\_discretizer(**schema**, **columns=None**, **\***, **encode='ordinal'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L336)[#](#scikitplot.feature_selection.make_kbins_discretizer "Link to this definition")
+scikitplot.feature\_selection.make\_kbins\_discretizer(**schema**, **columns=None**, **\***, **encode='ordinal'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L336)[#](#scikitplot.feature_selection.make_kbins_discretizer "Link to this definition")
 :   Build a `KBinsDiscretizer` with the recommended per-feature bin counts.
 
     Parameters:

@@ -1,6 +1,6 @@
 # LineageQuality[#](#lineagequality "Link to this heading")
 
-class scikitplot.feature\_selection.LineageQuality(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L125)[#](#scikitplot.feature_selection.LineageQuality "Link to this definition")
+class scikitplot.feature\_selection.LineageQuality(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L125)[#](#scikitplot.feature_selection.LineageQuality "Link to this definition")
 :   How strongly a lineage edge is supported.
 
     `EXACT`: derived from fitted attributes or a class contract of the
@@ -10,11 +10,11 @@ class scikitplot.feature\_selection.LineageQuality(**\*values**)[[source]](https
     `UNKNOWN`: the estimator exposes no mechanical mapping; parents are
     listed conservatively as all inputs and nothing is attributed.
 
-    EXACT = 'exact'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.EXACT "Link to this definition")
+    EXACT = 'exact'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.EXACT "Link to this definition")
 
-    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.MIXED "Link to this definition")
+    MIXED = 'mixed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.MIXED "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.LineageQuality.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.LineageQuality.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

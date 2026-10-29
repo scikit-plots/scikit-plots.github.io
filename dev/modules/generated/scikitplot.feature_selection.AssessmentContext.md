@@ -1,6 +1,6 @@
 # AssessmentContext[#](#assessmentcontext "Link to this heading")
 
-class scikitplot.feature\_selection.AssessmentContext(**name**, **stats**, **series=None**, **declared\_kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext "Link to this definition")
+class scikitplot.feature\_selection.AssessmentContext(**name**, **stats**, **series=None**, **declared\_kind=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext "Link to this definition")
 :   What a provider may read about one feature.
 
     Parameters:
@@ -30,9 +30,9 @@ class scikitplot.feature\_selection.AssessmentContext(**name**, **stats**, **ser
         Type:
         :   [DtypeFamily](scikitplot.feature_selection.DtypeFamily.html#scikitplot.feature_selection.DtypeFamily "scikitplot.feature_selection.DtypeFamily")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext.name "Link to this definition")
 
-    result(**state**, **\*reasons**, **\*\*evidence**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L303)[#](#scikitplot.feature_selection.AssessmentContext.result "Link to this definition")
+    result(**state**, **\*reasons**, **\*\*evidence**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L303)[#](#scikitplot.feature_selection.AssessmentContext.result "Link to this definition")
     :   Build an [`AssessmentOutcome`](scikitplot.feature_selection.AssessmentOutcome.html#scikitplot.feature_selection.AssessmentOutcome "scikitplot.feature_selection.AssessmentOutcome").
 
         Parameters:
@@ -59,4 +59,4 @@ class scikitplot.feature\_selection.AssessmentContext(**name**, **stats**, **ser
 
     series: [Series](https://pandas.pydata.org/docs/dev/reference/api/pandas.Series.html#pandas.Series "(in pandas v3.2)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.AssessmentContext.series "Link to this definition")
 
-    stats: [FeatureStats](scikitplot.feature_selection.FeatureStats.html#scikitplot.feature_selection.FeatureStats "scikitplot.feature_selection._stats.FeatureStats")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext.stats "Link to this definition")
+    stats: [FeatureStats](scikitplot.feature_selection.FeatureStats.html#scikitplot.feature_selection.FeatureStats "scikitplot.feature_selection._stats.FeatureStats")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L276)[#](#scikitplot.feature_selection.AssessmentContext.stats "Link to this definition")

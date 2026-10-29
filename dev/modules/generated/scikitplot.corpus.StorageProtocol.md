@@ -1,9 +1,9 @@
 # StorageProtocol[#](#storageprotocol "Link to this heading")
 
-class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L893)[#](#scikitplot.corpus.StorageProtocol "Link to this definition")
+class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L893)[#](#scikitplot.corpus.StorageProtocol "Link to this definition")
 :   Structural interface every storage backend must satisfy.
 
-    delete(**record\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L932)[#](#scikitplot.corpus.StorageProtocol.delete "Link to this definition")
+    delete(**record\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L932)[#](#scikitplot.corpus.StorageProtocol.delete "Link to this definition")
     :   Delete a record by its identifier.
 
         Parameters:
@@ -20,7 +20,7 @@ class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    get(**record\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L917)[#](#scikitplot.corpus.StorageProtocol.get "Link to this definition")
+    get(**record\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L917)[#](#scikitplot.corpus.StorageProtocol.get "Link to this definition")
     :   Retrieve a record by its identifier.
 
         Parameters:
@@ -37,7 +37,7 @@ class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
         Return type:
         :   [**CorpusRecord**](scikitplot.corpus.CorpusRecord.html#scikitplot.corpus.CorpusRecord "scikitplot.corpus._types.CorpusRecord") | None
 
-    save(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L897)[#](#scikitplot.corpus.StorageProtocol.save "Link to this definition")
+    save(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L897)[#](#scikitplot.corpus.StorageProtocol.save "Link to this definition")
     :   Persist a single [`CorpusRecord`](scikitplot.corpus.CorpusRecord.html#scikitplot.corpus.CorpusRecord "scikitplot.corpus.CorpusRecord").
 
         Parameters:
@@ -50,7 +50,7 @@ class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
         Return type:
         :   None
 
-    save\_batch(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L907)[#](#scikitplot.corpus.StorageProtocol.save_batch "Link to this definition")
+    save\_batch(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L907)[#](#scikitplot.corpus.StorageProtocol.save_batch "Link to this definition")
     :   Persist a batch of [`CorpusRecord`](scikitplot.corpus.CorpusRecord.html#scikitplot.corpus.CorpusRecord "scikitplot.corpus.CorpusRecord") objects.
 
         Parameters:
@@ -63,7 +63,7 @@ class scikitplot.corpus.StorageProtocol(**\*args**, **\*\*kwargs**)[[source]](ht
         Return type:
         :   None
 
-    search(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L947)[#](#scikitplot.corpus.StorageProtocol.search "Link to this definition")
+    search(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L947)[#](#scikitplot.corpus.StorageProtocol.search "Link to this definition")
     :   Execute a retrieval query against this backend.
 
         Parameters:

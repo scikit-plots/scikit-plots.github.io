@@ -1,6 +1,6 @@
 # evaluate\_answers[#](#evaluate-answers "Link to this heading")
 
-scikitplot.corpus.evaluate\_answers(**system**, **dataset**, **\***, **judges=None**, **metrics=('faithfulness', 'answer\_relevance')**, **criteria=None**, **text\_metrics=('exact\_match', 'token\_f1')**, **on\_error='record'**, **n\_jobs=1**, **keep\_verdicts=True**, **metadata=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_answers.py#L787)[#](#scikitplot.corpus.evaluate_answers "Link to this definition")
+scikitplot.corpus.evaluate\_answers(**system**, **dataset**, **\***, **judges=None**, **metrics=('faithfulness', 'answer\_relevance')**, **criteria=None**, **text\_metrics=('exact\_match', 'token\_f1')**, **on\_error='record'**, **n\_jobs=1**, **keep\_verdicts=True**, **metadata=None**, **clock=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_answers.py#L787)[#](#scikitplot.corpus.evaluate_answers "Link to this definition")
 :   Evaluate a system’s answers with text metrics and LLM judges.
 
     Parameters:

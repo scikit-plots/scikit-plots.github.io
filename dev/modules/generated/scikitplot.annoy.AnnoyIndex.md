@@ -1,6 +1,6 @@
 # AnnoyIndex[#](#annoyindex "Link to this heading")
 
-scikitplot.annoy.AnnoyIndex[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.annoy.AnnoyIndex "Link to this definition")
+scikitplot.annoy.AnnoyIndex[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cexternals/_annoy/__init__.py#L)[#](#scikitplot.annoy.AnnoyIndex "Link to this definition")
 :   alias of [`Annoy`](scikitplot.cexternals._annoy.Annoy.html#scikitplot.cexternals._annoy.Annoy "scikitplot.cexternals._annoy.Annoy")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")

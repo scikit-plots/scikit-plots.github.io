@@ -1,18 +1,18 @@
 # CorrectionVerdict[#](#correctionverdict "Link to this heading")
 
-class scikitplot.corpus.CorrectionVerdict(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L94)[#](#scikitplot.corpus.CorrectionVerdict "Link to this definition")
+class scikitplot.corpus.CorrectionVerdict(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L94)[#](#scikitplot.corpus.CorrectionVerdict "Link to this definition")
 :   What the corrective retrieval came to.
 
-    ABSTAINED = 'abstained'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.ABSTAINED "Link to this definition")
+    ABSTAINED = 'abstained'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.ABSTAINED "Link to this definition")
     :   No round was correct or ambiguous; no hit is returned.
 
-    ACCEPTED = 'accepted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.ACCEPTED "Link to this definition")
+    ACCEPTED = 'accepted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.ACCEPTED "Link to this definition")
     :   The first round was graded correct.
 
-    CORRECTED = 'corrected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.CORRECTED "Link to this definition")
+    CORRECTED = 'corrected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.CORRECTED "Link to this definition")
     :   A later round, with a rewritten query, was graded correct.
 
-    PARTIAL = 'partial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.PARTIAL "Link to this definition")
+    PARTIAL = 'partial'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L)[#](#scikitplot.corpus.CorrectionVerdict.PARTIAL "Link to this definition")
     :   No round was correct; the ambiguous rounds’ hits, fused, are returned.
 
     capitalize(**/**)[#](#scikitplot.corpus.CorrectionVerdict.capitalize "Link to this definition")

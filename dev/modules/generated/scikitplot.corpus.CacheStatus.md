@@ -1,6 +1,6 @@
 # CacheStatus[#](#cachestatus "Link to this heading")
 
-class scikitplot.corpus.CacheStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L88)[#](#scikitplot.corpus.CacheStatus "Link to this definition")
+class scikitplot.corpus.CacheStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L88)[#](#scikitplot.corpus.CacheStatus "Link to this definition")
 :   What one cached embedding call did.
 
     Attributes:
@@ -30,21 +30,21 @@ class scikitplot.corpus.CacheStatus(**\*values**)[[source]](https://github.com/s
         ****BYPASS\_UNPINNED****str
         :   Computed, not cached: the model revision is not pinned or resolved.
 
-    BYPASS\_UNIDENTIFIED = 'bypass\_unidentified'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.BYPASS_UNIDENTIFIED "Link to this definition")
+    BYPASS\_UNIDENTIFIED = 'bypass\_unidentified'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.BYPASS_UNIDENTIFIED "Link to this definition")
 
-    BYPASS\_UNPINNED = 'bypass\_unpinned'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.BYPASS_UNPINNED "Link to this definition")
+    BYPASS\_UNPINNED = 'bypass\_unpinned'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.BYPASS_UNPINNED "Link to this definition")
 
-    DISABLED = 'disabled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.DISABLED "Link to this definition")
+    DISABLED = 'disabled'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.DISABLED "Link to this definition")
 
-    HIT = 'hit'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.HIT "Link to this definition")
+    HIT = 'hit'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.HIT "Link to this definition")
 
-    NOT\_STORABLE = 'not\_storable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.NOT_STORABLE "Link to this definition")
+    NOT\_STORABLE = 'not\_storable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.NOT_STORABLE "Link to this definition")
 
-    STORED = 'stored'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.STORED "Link to this definition")
+    STORED = 'stored'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.STORED "Link to this definition")
 
-    STORE\_FAILED = 'store\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.STORE_FAILED "Link to this definition")
+    STORE\_FAILED = 'store\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.STORE_FAILED "Link to this definition")
 
-    TOO\_LARGE = 'too\_large'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.TOO_LARGE "Link to this definition")
+    TOO\_LARGE = 'too\_large'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L)[#](#scikitplot.corpus.CacheStatus.TOO_LARGE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.corpus.CacheStatus.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

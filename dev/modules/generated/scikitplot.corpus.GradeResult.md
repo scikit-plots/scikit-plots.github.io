@@ -1,6 +1,6 @@
 # GradeResult[#](#graderesult "Link to this heading")
 
-class scikitplot.corpus.GradeResult(**grade**, **score**, **reason=''**, **grader=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult "Link to this definition")
+class scikitplot.corpus.GradeResult(**grade**, **score**, **reason=''**, **grader=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult "Link to this definition")
 :   One grader’s judgement of one round.
 
     Parameters:
@@ -31,15 +31,15 @@ class scikitplot.corpus.GradeResult(**grade**, **score**, **reason=''**, **grade
         * ****reason**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****grader**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
-    grade: [EvidenceGrade](scikitplot.corpus.EvidenceGrade.html#scikitplot.corpus.EvidenceGrade "scikitplot.corpus._correction.EvidenceGrade")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult.grade "Link to this definition")
+    grade: [EvidenceGrade](scikitplot.corpus.EvidenceGrade.html#scikitplot.corpus.EvidenceGrade "scikitplot.corpus._correction.EvidenceGrade")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult.grade "Link to this definition")
 
     grader: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.GradeResult.grader "Link to this definition")
 
     reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.corpus.GradeResult.reason "Link to this definition")
 
-    score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult.score "Link to this definition")
+    score: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L111)[#](#scikitplot.corpus.GradeResult.score "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_correction.py#L162)[#](#scikitplot.corpus.GradeResult.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_correction.py#L162)[#](#scikitplot.corpus.GradeResult.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

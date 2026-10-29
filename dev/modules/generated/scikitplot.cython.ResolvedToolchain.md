@@ -1,6 +1,6 @@
 # ResolvedToolchain[#](#resolvedtoolchain "Link to this heading")
 
-class scikitplot.cython.ResolvedToolchain(**compiler\_type**, **cc**, **cxx**, **linker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_profiles.py#L324)[#](#scikitplot.cython.ResolvedToolchain "Link to this definition")
+class scikitplot.cython.ResolvedToolchain(**compiler\_type**, **cc**, **cxx**, **linker**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cython/_profiles.py#L324)[#](#scikitplot.cython.ResolvedToolchain "Link to this definition")
 :   The compiler the build backend **actually** selects (CYTHON-PORT-001).
 
     Host/toolchain detection based on `PATH` (e.g. “is `cl` present?”) is a
@@ -40,16 +40,16 @@ class scikitplot.cython.ResolvedToolchain(**compiler\_type**, **cc**, **cxx**, *
     `ResolvedToolchain("unknown", "", "", "")` if the backend cannot be
     interrogated.
 
-    cc: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.cc "Link to this definition")
+    cc: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.cc "Link to this definition")
     :   Alias for field number 1
 
-    compiler\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.compiler_type "Link to this definition")
+    compiler\_type: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.compiler_type "Link to this definition")
     :   Alias for field number 0
 
     count(**value**, **/**)[#](#scikitplot.cython.ResolvedToolchain.count "Link to this definition")
     :   Return number of occurrences of value.
 
-    cxx: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.cxx "Link to this definition")
+    cxx: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.cxx "Link to this definition")
     :   Alias for field number 2
 
     index(**value**, **start=0**, **stop=sys.maxsize**, **/**)[#](#scikitplot.cython.ResolvedToolchain.index "Link to this definition")
@@ -57,5 +57,5 @@ class scikitplot.cython.ResolvedToolchain(**compiler\_type**, **cc**, **cxx**, *
 
         Raises ValueError if the value is not present.
 
-    linker: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.linker "Link to this definition")
+    linker: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../../collections/__init__.py#L)[#](#scikitplot.cython.ResolvedToolchain.linker "Link to this definition")
     :   Alias for field number 3

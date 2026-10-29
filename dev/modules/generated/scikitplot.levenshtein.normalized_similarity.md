@@ -1,6 +1,6 @@
 # normalized\_similarity[#](#normalized-similarity "Link to this heading")
 
-scikitplot.levenshtein.normalized\_similarity(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/levenshtein/_core.py#L486)[#](#scikitplot.levenshtein.normalized_similarity "Link to this definition")
+scikitplot.levenshtein.normalized\_similarity(**a**, **b**, **\***, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/levenshtein/_core.py#L486)[#](#scikitplot.levenshtein.normalized_similarity "Link to this definition")
 :   Return normalised Levenshtein similarity in `[0, 1]`.
 
     Parameters:

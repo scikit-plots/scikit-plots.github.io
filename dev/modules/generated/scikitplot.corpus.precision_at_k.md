@@ -1,6 +1,6 @@
 # precision\_at\_k[#](#precision-at-k "Link to this heading")
 
-scikitplot.corpus.precision\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_ranking.py#L434)[#](#scikitplot.corpus.precision_at_k "Link to this definition")
+scikitplot.corpus.precision\_at\_k(**y\_true**, **y\_pred**, **\***, **k=10**, **sample\_weight=None**, **relevance\_threshold=1**, **duplicates='raise'**, **zero\_division='warn'**, **average='mean'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_ranking.py#L434)[#](#scikitplot.corpus.precision_at_k "Link to this definition")
 :   Fraction of the first `k` ranked identifiers that are relevant.
 
     Parameters:

@@ -1,6 +1,6 @@
 # filterable\_fields[#](#filterable-fields "Link to this heading")
 
-scikitplot.corpus.filterable\_fields()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_filters.py#L517)[#](#scikitplot.corpus.filterable_fields "Link to this definition")
+scikitplot.corpus.filterable\_fields()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L517)[#](#scikitplot.corpus.filterable_fields "Link to this definition")
 :   Return the document fields a filter may name.
 
     Returns:

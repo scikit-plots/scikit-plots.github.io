@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -21,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-20T18:42:04Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:23:25Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.EmbeddingEngine","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -66,7 +65,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=0c681824" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=256bf3c9" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
@@ -1766,6 +1765,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot._ipymagic.html">scikitplot._ipymagic</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1797,14 +1797,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       <main id="main-content" class="bd-main" role="main">
         
         
-
-  
-  
-  
-
-  
-  
-  
           <div class="bd-content">
             <div class="bd-article-container">
               
@@ -1850,7 +1842,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>EmbeddingEngine<a class="headerlink" href="#embeddingengine" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">EmbeddingEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'paraphrase-multilingual-mpnet-base-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence_transformers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_revision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_fn_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">EmbeddingEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'paraphrase-multilingual-mpnet-base-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sentence_transformers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_revision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_fn_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L502"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine" title="Link to this definition">#</a></dt>
 <dd><p>Multi-backend sentence embedding engine with SHA-256 file caching.</p>
 <p>Produces a 2-D <code class="docutils literal notranslate"><span class="pre">float32</span></code> numpy array of shape <code class="docutils literal notranslate"><span class="pre">(n_texts,</span> <span class="pre">dim)</span></code>
 for a list of input strings. Embeddings are cached to <code class="docutils literal notranslate"><span class="pre">.npy</span></code> files
@@ -1981,8 +1973,8 @@ left as zero vectors rather than producing NaN. The normalisation guard in
 <code class="xref py py-class docutils literal notranslate"><span class="pre">RetrievalIndex</span></code> will warn if any zero
 vectors are detected at search time.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3fec3741-d3e4-4775-9404-6d63d352e828">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3fec3741-d3e4-4775-9404-6d63d352e828','bdf90148-e535-4007-aac8-6245c31d7a95','5a70dd3b-325d-4cf6-ab98-dfe19d046453','../../lite/tree/../notebooks/index.html?path=b5cafbb5_557a_4371_8bfe_39eb891a63a3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f5186a36-cad7-4c59-a8b0-66f26c84728a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f5186a36-cad7-4c59-a8b0-66f26c84728a','def45696-2317-4163-8ec5-6a0e03b59850','88ed137d-e85f-440a-ab14-f53efb4902ea','../../lite/tree/../notebooks/index.html?path=98e9854a_0d8c_4a76_927f_60c5b0e97528.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Default usage (sentence_transformers):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">EmbeddingEngine</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hello world."</span><span class="p">,</span> <span class="s2">"Second sentence."</span><span class="p">]</span>
@@ -2012,7 +2004,7 @@ vectors are detected at search time.</p>
 </div>
 </div>
 </div>
-<div id="5a70dd3b-325d-4cf6-ab98-dfe19d046453" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3fec3741-d3e4-4775-9404-6d63d352e828','5a70dd3b-325d-4cf6-ab98-dfe19d046453')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3fec3741-d3e4-4775-9404-6d63d352e828','5a70dd3b-325d-4cf6-ab98-dfe19d046453')">Open In Tab</button></div><div id="bdf90148-e535-4007-aac8-6245c31d7a95" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="88ed137d-e85f-440a-ab14-f53efb4902ea" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f5186a36-cad7-4c59-a8b0-66f26c84728a','88ed137d-e85f-440a-ab14-f53efb4902ea')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f5186a36-cad7-4c59-a8b0-66f26c84728a','88ed137d-e85f-440a-ab14-f53efb4902ea')">Open In Tab</button></div><div id="def45696-2317-4163-8ec5-6a0e03b59850" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.VALID_BACKENDS">
 <span class="sig-name descname"><span class="pre">VALID_BACKENDS</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.15)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('sentence_transformers',</span> <span class="pre">'openai',</span> <span class="pre">'custom')</span></span><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.VALID_BACKENDS" title="Link to this definition">#</a></dt>
 <dd><p>Accepted <code class="docutils literal notranslate"><span class="pre">backend</span></code> values.</p>
@@ -2058,13 +2050,13 @@ which supports <code class="docutils literal notranslate"><span class="pre">&quo
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.dtype">
-<span class="sig-name descname"><span class="pre">dtype</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../numpy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.dtype" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../numpy/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.dtype" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">float32</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.embed">
-<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L752"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L752"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed" title="Link to this definition">#</a></dt>
 <dd><p>Compute embeddings for <code class="docutils literal notranslate"><span class="pre">texts</span></code> without caching.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2097,8 +2089,8 @@ the pipeline).</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c9040916-1d59-4402-8dde-ef3cf6b55912">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c9040916-1d59-4402-8dde-ef3cf6b55912','762e8a17-3a27-4b81-ad06-136420f7d148','fa754baa-35bf-453a-ab0e-9b9cf71f8278','../../lite/tree/../notebooks/index.html?path=4466d6ad_38aa_4b34_91b6_0b1c2771adab.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6e46bc53-4316-4a21-a342-fd2924bd64af">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6e46bc53-4316-4a21-a342-fd2924bd64af','60aa6e7c-8bfa-4f0f-8590-811268c8c74c','1d21f5ee-7256-40b4-a9d0-10a2fca93f1b','../../lite/tree/../notebooks/index.html?path=5659b90a_b4d5_4185_8823_02aff4a2692a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">EmbeddingEngine</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">backend</span><span class="o">=</span><span class="s2">"custom"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
@@ -2109,11 +2101,11 @@ the pipeline).</p>
 </div>
 </div>
 </div>
-<div id="fa754baa-35bf-453a-ab0e-9b9cf71f8278" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c9040916-1d59-4402-8dde-ef3cf6b55912','fa754baa-35bf-453a-ab0e-9b9cf71f8278')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c9040916-1d59-4402-8dde-ef3cf6b55912','fa754baa-35bf-453a-ab0e-9b9cf71f8278')">Open In Tab</button></div><div id="762e8a17-3a27-4b81-ad06-136420f7d148" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1d21f5ee-7256-40b4-a9d0-10a2fca93f1b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6e46bc53-4316-4a21-a342-fd2924bd64af','1d21f5ee-7256-40b4-a9d0-10a2fca93f1b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6e46bc53-4316-4a21-a342-fd2924bd64af','1d21f5ee-7256-40b4-a9d0-10a2fca93f1b')">Open In Tab</button></div><div id="60aa6e7c-8bfa-4f0f-8590-811268c8c74c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.embed_cached">
-<span class="sig-name descname"><span class="pre">embed_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L873"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_cached" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L873"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_cached" title="Link to this definition">#</a></dt>
 <dd><p>Compute embeddings through the disk cache, and say what happened.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2160,8 +2152,8 @@ raised.</p>
 <p><strong>Developer.</strong> A hit refreshes the entry’s modification time; after a
 store, <code class="xref py py-func docutils literal notranslate"><span class="pre">enforce_bounds</span></code> evicts least recently used entries.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9cc44df6-388f-444a-860c-791314aa56e2">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9cc44df6-388f-444a-860c-791314aa56e2','9c029730-1d50-4559-81f2-c123e056ea61','56e4aca2-1937-4c64-b06b-f58845d18cef','../../lite/tree/../notebooks/index.html?path=729537ad_c8ec_4847_b91c_f6986c195d34.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="70b28242-7cb1-4cf3-9285-4fad69825ee6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('70b28242-7cb1-4cf3-9285-4fad69825ee6','ad05cf6c-c60a-440a-9e60-42e533139dc3','ac5ef3bf-73b9-486e-939c-2e251e3649fd','../../lite/tree/../notebooks/index.html?path=7e21398a_cb60_4afa_ac6c_ff2d8712e023.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">EmbeddingEngine</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">backend</span><span class="o">=</span><span class="s2">"custom"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
@@ -2173,11 +2165,11 @@ store, <code class="xref py py-func docutils literal notranslate"><span class="p
 </div>
 </div>
 </div>
-<div id="56e4aca2-1937-4c64-b06b-f58845d18cef" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9cc44df6-388f-444a-860c-791314aa56e2','56e4aca2-1937-4c64-b06b-f58845d18cef')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9cc44df6-388f-444a-860c-791314aa56e2','56e4aca2-1937-4c64-b06b-f58845d18cef')">Open In Tab</button></div><div id="9c029730-1d50-4559-81f2-c123e056ea61" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ac5ef3bf-73b9-486e-939c-2e251e3649fd" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('70b28242-7cb1-4cf3-9285-4fad69825ee6','ac5ef3bf-73b9-486e-939c-2e251e3649fd')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('70b28242-7cb1-4cf3-9285-4fad69825ee6','ac5ef3bf-73b9-486e-939c-2e251e3649fd')">Open In Tab</button></div><div id="ad05cf6c-c60a-440a-9e60-42e533139dc3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.embed_documents">
-<span class="sig-name descname"><span class="pre">embed_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L978"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">documents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L978"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_documents" title="Link to this definition">#</a></dt>
 <dd><p>Embed a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code>
 instances in-place (sets <code class="docutils literal notranslate"><span class="pre">doc.embedding</span></code> on each).</p>
 <dl class="field-list simple">
@@ -2215,8 +2207,8 @@ Documents used to leave this method untagged, and untagged vectors are
 never compared, so the guard never fired: two providers’ vectors were
 built into one index and ranked against each other without error.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c4141915-1a74-496e-bc74-619bfd8472b5">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c4141915-1a74-496e-bc74-619bfd8472b5','1b3bcced-12c6-4800-ad98-1c5697985fb0','884b2d8f-6033-4b2e-8c23-a878a5db3a27','../../lite/tree/../notebooks/index.html?path=c8f7745d_a847_41a1_bfe3_7898fcf94373.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="513f8c1f-aff8-4724-acca-386cf45912a8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('513f8c1f-aff8-4724-acca-386cf45912a8','368c1ac4-23a2-4eba-ba77-1710060cf59b','1fb39f1b-0682-49ed-a978-442d74f4cf7d','../../lite/tree/../notebooks/index.html?path=ca4b9814_38bc_4713_b58d_e1fa9b0d8532.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">has_embedding</span>
@@ -2225,11 +2217,11 @@ built into one index and ranked against each other without error.</p>
 </div>
 </div>
 </div>
-<div id="884b2d8f-6033-4b2e-8c23-a878a5db3a27" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c4141915-1a74-496e-bc74-619bfd8472b5','884b2d8f-6033-4b2e-8c23-a878a5db3a27')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c4141915-1a74-496e-bc74-619bfd8472b5','884b2d8f-6033-4b2e-8c23-a878a5db3a27')">Open In Tab</button></div><div id="1b3bcced-12c6-4800-ad98-1c5697985fb0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1fb39f1b-0682-49ed-a978-442d74f4cf7d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('513f8c1f-aff8-4724-acca-386cf45912a8','1fb39f1b-0682-49ed-a978-442d74f4cf7d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('513f8c1f-aff8-4724-acca-386cf45912a8','1fb39f1b-0682-49ed-a978-442d74f4cf7d')">Open In Tab</button></div><div id="368c1ac4-23a2-4eba-ba77-1710060cf59b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.embed_with_cache">
-<span class="sig-name descname"><span class="pre">embed_with_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_with_cache" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embed_with_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embed_with_cache" title="Link to this definition">#</a></dt>
 <dd><p>Compute embeddings through the content-addressed disk cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2275,8 +2267,8 @@ exactly like a file.</p>
 </dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="82f9af4a-bbe1-43c3-880f-4cddddf92667">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('82f9af4a-bbe1-43c3-880f-4cddddf92667','9e614360-d253-478e-800f-9a577a87ae80','be30676d-2df6-4577-8015-90b4cf5c06b2','../../lite/tree/../notebooks/index.html?path=08a60d06_20ee_41fe_9217_5d1f1c8692d7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="13b831db-571a-436c-8726-c674baeae9f3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('13b831db-571a-436c-8726-c674baeae9f3','a1da8cb5-86d6-44b2-83fd-572401ddf605','d64d548f-1811-420f-9ee8-296b54b1d7c9','../../lite/tree/../notebooks/index.html?path=5596b256_a75f_40ee_b77d_3def607c77a8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">EmbeddingEngine</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">backend</span><span class="o">=</span><span class="s2">"custom"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
@@ -2289,11 +2281,11 @@ exactly like a file.</p>
 </div>
 </div>
 </div>
-<div id="be30676d-2df6-4577-8015-90b4cf5c06b2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('82f9af4a-bbe1-43c3-880f-4cddddf92667','be30676d-2df6-4577-8015-90b4cf5c06b2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('82f9af4a-bbe1-43c3-880f-4cddddf92667','be30676d-2df6-4577-8015-90b4cf5c06b2')">Open In Tab</button></div><div id="9e614360-d253-478e-800f-9a577a87ae80" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d64d548f-1811-420f-9ee8-296b54b1d7c9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('13b831db-571a-436c-8726-c674baeae9f3','d64d548f-1811-420f-9ee8-296b54b1d7c9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('13b831db-571a-436c-8726-c674baeae9f3','d64d548f-1811-420f-9ee8-296b54b1d7c9')">Open In Tab</button></div><div id="a1da8cb5-86d6-44b2-83fd-572401ddf605" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.EmbeddingEngine.embedding_manifest">
-<span class="sig-name descname"><span class="pre">embedding_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimension</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_embedding.py#L1030"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embedding_manifest" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">embedding_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimension</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_embedding.py#L1030"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.EmbeddingEngine.embedding_manifest" title="Link to this definition">#</a></dt>
 <dd><p>Describe the vectors this engine produces.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2480,12 +2472,6 @@ two produced comparable vectors.</p>
             
           </footer>
         
-
-  
-  
-  
-
-
       </main>
     </div>
   </div>
@@ -2503,7 +2489,7 @@ two produced comparable vectors.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261020.d6b0376 2026-10-20T18:35Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
       <br/>
     
   </p>

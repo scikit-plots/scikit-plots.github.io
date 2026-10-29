@@ -1,6 +1,6 @@
 # NerDetector[#](#nerdetector "Link to this heading")
 
-class scikitplot.cleanprompt.NerDetector(**model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **kind\_prefix=''**, **priority=None**, **confidence=None**, **disable=None**, **language='en'**, **size='sm'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L102)[#](#scikitplot.cleanprompt.NerDetector "Link to this definition")
+class scikitplot.cleanprompt.NerDetector(**model=None**, **labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **kind\_prefix=''**, **priority=None**, **confidence=None**, **disable=None**, **language='en'**, **size='sm'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L102)[#](#scikitplot.cleanprompt.NerDetector "Link to this definition")
 :   Detect named entities with a spaCy pipeline.
 
     Parameters:
@@ -65,7 +65,7 @@ class scikitplot.cleanprompt.NerDetector(**model=None**, **labels=frozenset({'EV
     confidence[#](#scikitplot.cleanprompt.NerDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L262)[#](#scikitplot.cleanprompt.NerDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L262)[#](#scikitplot.cleanprompt.NerDetector.detect "Link to this definition")
     :   Yield one span per accepted named entity.
 
         Parameters:
@@ -112,7 +112,7 @@ class scikitplot.cleanprompt.NerDetector(**model=None**, **labels=frozenset({'EV
     kind\_prefix[#](#scikitplot.cleanprompt.NerDetector.kind_prefix "Link to this definition")
     :   !! processed by numpydoc !!
 
-    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_ner.py#L180)[#](#scikitplot.cleanprompt.NerDetector.kinds "Link to this definition")
+    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_ner.py#L180)[#](#scikitplot.cleanprompt.NerDetector.kinds "Link to this definition")
     :   Return the placeholder categories this detector can produce.
 
         Returns:

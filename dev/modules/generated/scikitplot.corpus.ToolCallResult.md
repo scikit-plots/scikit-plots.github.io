@@ -1,6 +1,6 @@
 # ToolCallResult[#](#toolcallresult "Link to this heading")
 
-class scikitplot.corpus.ToolCallResult(**call\_id**, **content**, **is\_error=False**, **error\_message=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult "Link to this definition")
+class scikitplot.corpus.ToolCallResult(**call\_id**, **content**, **is\_error=False**, **error\_message=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult "Link to this definition")
 :   Result returned from a Model Context Protocol tool call.
 
     > **Note**
@@ -30,9 +30,9 @@ class scikitplot.corpus.ToolCallResult(**call\_id**, **content**, **is\_error=Fa
         * ****is\_error**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****error\_message**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
-    call\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult.call_id "Link to this definition")
+    call\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult.call_id "Link to this definition")
 
-    content: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult.content "Link to this definition")
+    content: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_types.py#L1155)[#](#scikitplot.corpus.ToolCallResult.content "Link to this definition")
 
     error\_message: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.ToolCallResult.error_message "Link to this definition")
 

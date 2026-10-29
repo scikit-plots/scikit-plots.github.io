@@ -1,6 +1,6 @@
 # AssessmentProvider[#](#assessmentprovider "Link to this heading")
 
-class scikitplot.feature\_selection.AssessmentProvider(**name**, **func**, **defaults=()**, **version='1'**, **description=''**, **validate=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider "Link to this definition")
+class scikitplot.feature\_selection.AssessmentProvider(**name**, **func**, **defaults=()**, **version='1'**, **description=''**, **validate=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider "Link to this definition")
 :   A named, versioned function that answers one kind of question.
 
     Parameters:
@@ -36,11 +36,11 @@ class scikitplot.feature\_selection.AssessmentProvider(**name**, **func**, **def
 
     description: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.feature_selection.AssessmentProvider.description "Link to this definition")
 
-    func: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[...], [AssessmentOutcome](scikitplot.feature_selection.AssessmentOutcome.html#scikitplot.feature_selection.AssessmentOutcome "scikitplot.feature_selection._assessments.AssessmentOutcome")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider.func "Link to this definition")
+    func: [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[...], [AssessmentOutcome](scikitplot.feature_selection.AssessmentOutcome.html#scikitplot.feature_selection.AssessmentOutcome "scikitplot.feature_selection._assessments.AssessmentOutcome")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider.func "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L330)[#](#scikitplot.feature_selection.AssessmentProvider.name "Link to this definition")
 
-    resolve\_params(**given**, **\***, **field**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L360)[#](#scikitplot.feature_selection.AssessmentProvider.resolve_params "Link to this definition")
+    resolve\_params(**given**, **\***, **field**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L360)[#](#scikitplot.feature_selection.AssessmentProvider.resolve_params "Link to this definition")
     :   Merge `given` over the defaults, checking names and types.
 
         Parameters:

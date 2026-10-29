@@ -1,6 +1,6 @@
 # FeatureRenamer[#](#featurerenamer "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **start=0**, **on\_collision='raise'**, **on\_missing='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L609)[#](#scikitplot.feature_selection.FeatureRenamer "Link to this definition")
+class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **start=0**, **on\_collision='raise'**, **on\_missing='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L609)[#](#scikitplot.feature_selection.FeatureRenamer "Link to this definition")
 :   Rename columns with a plan frozen at fit time.
 
     Parameters:
@@ -54,7 +54,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
     ```
     Go BackOpen In Tab
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L682)[#](#scikitplot.feature_selection.FeatureRenamer.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L682)[#](#scikitplot.feature_selection.FeatureRenamer.fit "Link to this definition")
     :   Build and freeze the rename plan from the columns of `X`.
 
         Parameters:
@@ -75,7 +75,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         Return type:
         :   [**FeatureRenamer**](#scikitplot.feature_selection.FeatureRenamer "scikitplot.feature_selection._estimators.FeatureRenamer")
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.feature_selection.FeatureRenamer.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.feature_selection.FeatureRenamer.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -96,7 +96,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_lineage(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L772)[#](#scikitplot.feature_selection.FeatureRenamer.get_feature_lineage "Link to this definition")
+    get\_feature\_lineage(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L772)[#](#scikitplot.feature_selection.FeatureRenamer.get_feature_lineage "Link to this definition")
     :   Return the one-to-one lineage of this step.
 
         Parameters:
@@ -113,7 +113,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         Return type:
         :   [**FeatureMapping**](scikitplot.feature_selection.FeatureMapping.html#scikitplot.feature_selection.FeatureMapping "scikitplot.feature_selection._lineage.FeatureMapping")
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L755)[#](#scikitplot.feature_selection.FeatureRenamer.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L755)[#](#scikitplot.feature_selection.FeatureRenamer.get_feature_names_out "Link to this definition")
     :   Return the new names.
 
         Parameters:
@@ -130,7 +130,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.feature_selection.FeatureRenamer.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.feature_selection.FeatureRenamer.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
@@ -141,7 +141,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.feature_selection.FeatureRenamer.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.feature_selection.FeatureRenamer.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -153,7 +153,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.feature_selection.FeatureRenamer.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.feature_selection.FeatureRenamer.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -175,7 +175,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.feature_selection.FeatureRenamer.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.feature_selection.FeatureRenamer.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -191,7 +191,7 @@ class scikitplot.feature\_selection.FeatureRenamer(**rule=None**, **\***, **star
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L727)[#](#scikitplot.feature_selection.FeatureRenamer.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L727)[#](#scikitplot.feature_selection.FeatureRenamer.transform "Link to this definition")
     :   Apply the frozen plan.
 
         Parameters:

@@ -1,6 +1,6 @@
 # supported\_languages[#](#supported-languages "Link to this heading")
 
-scikitplot.cleanprompt.supported\_languages()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_languages.py#L162)[#](#scikitplot.cleanprompt.supported_languages "Link to this definition")
+scikitplot.cleanprompt.supported\_languages()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_languages.py#L162)[#](#scikitplot.cleanprompt.supported_languages "Link to this definition")
 :   Return every language code with a dedicated model.
 
     Returns:

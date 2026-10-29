@@ -49,3 +49,5 @@ See [Visualkeras](../../auto_examples/visualkeras/index.html#visualkeras-example
 
 > **See also**
 > * [paulgavrikov/visualkeras](https://github.com/paulgavrikov/visualkeras)
+* [triton-lang/triton](https://github.com/triton-lang/triton/)
+* <https://triton-lang.org/main/getting-started/installation.html>

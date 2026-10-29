@@ -1,6 +1,6 @@
 # DeterminativeGroupStrategy[#](#determinativegroupstrategy "Link to this heading")
 
-class scikitplot.corpus.DeterminativeGroupStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_writing_system.py#L1323)[#](#scikitplot.corpus.DeterminativeGroupStrategy "Link to this definition")
+class scikitplot.corpus.DeterminativeGroupStrategy[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_writing_system.py#L1323)[#](#scikitplot.corpus.DeterminativeGroupStrategy "Link to this definition")
 :   Egyptian Hieroglyph segmentation into determinative groups.
 
     Operates on Unicode-digitised hieroglyphic text (U+13000-U+1342F).
@@ -21,7 +21,7 @@ class scikitplot.corpus.DeterminativeGroupStrategy[[source]](https://github.com/
     group, enabling downstream population of
     `CorpusDocument.determinative_groups`.
 
-    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_chunkers/_writing_system.py#L1348)[#](#scikitplot.corpus.DeterminativeGroupStrategy.segment "Link to this definition")
+    segment(**span**, **config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_chunkers/_writing_system.py#L1348)[#](#scikitplot.corpus.DeterminativeGroupStrategy.segment "Link to this definition")
     :   Segment hieroglyphic **span** into determinative groups.
 
         Parameters:

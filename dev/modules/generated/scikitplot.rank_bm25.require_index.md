@@ -1,6 +1,6 @@
 # require\_index[#](#require-index "Link to this heading")
 
-scikitplot.rank\_bm25.require\_index(**value**, **count**, **\***, **name='index'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/rank_bm25/_validation.py#L91)[#](#scikitplot.rank_bm25.require_index "Link to this definition")
+scikitplot.rank\_bm25.require\_index(**value**, **count**, **\***, **name='index'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/rank_bm25/_validation.py#L81)[#](#scikitplot.rank_bm25.require_index "Link to this definition")
 :   Return `value` as a position valid in `[0, count)`.
 
     Parameters:

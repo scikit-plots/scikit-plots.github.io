@@ -1,6 +1,6 @@
 # FallbackRefusedError[#](#fallbackrefusederror "Link to this heading")
 
-exception scikitplot.corpus.FallbackRefusedError[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_similarity/_backends.py#L88)[#](#scikitplot.corpus.FallbackRefusedError "Link to this definition")
+exception scikitplot.corpus.FallbackRefusedError[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_backends.py#L88)[#](#scikitplot.corpus.FallbackRefusedError "Link to this definition")
 :   A fallback was needed and `allow_fallback=False` refused it (R2-5).
 
     Raised when the dense backend (or an Annoy binding) cannot run as

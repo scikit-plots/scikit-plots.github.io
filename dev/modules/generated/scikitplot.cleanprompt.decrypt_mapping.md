@@ -1,6 +1,6 @@
 # decrypt\_mapping[#](#decrypt-mapping "Link to this heading")
 
-scikitplot.cleanprompt.decrypt\_mapping(**mapping**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_crypto.py#L151)[#](#scikitplot.cleanprompt.decrypt_mapping "Link to this definition")
+scikitplot.cleanprompt.decrypt\_mapping(**mapping**, **key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_crypto.py#L151)[#](#scikitplot.cleanprompt.decrypt_mapping "Link to this definition")
 :   Decrypt a mapping produced by [`encrypt_mapping`](scikitplot.cleanprompt.encrypt_mapping.html#scikitplot.cleanprompt.encrypt_mapping "scikitplot.cleanprompt.encrypt_mapping").
 
     Parameters:

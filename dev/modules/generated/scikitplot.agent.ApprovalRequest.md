@@ -1,6 +1,6 @@
 # ApprovalRequest[#](#approvalrequest "Link to this heading")
 
-class scikitplot.agent.ApprovalRequest(**run\_id**, **step**, **decision**, **effect**, **scopes**, **reason**, **head**, **digest**, **gates=()**, **attempt=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest "Link to this definition")
+class scikitplot.agent.ApprovalRequest(**run\_id**, **step**, **decision**, **effect**, **scopes**, **reason**, **head**, **digest**, **gates=()**, **attempt=1**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest "Link to this definition")
 :   An action waiting at the Approval gate.
 
     Parameters:
@@ -56,13 +56,13 @@ class scikitplot.agent.ApprovalRequest(**run\_id**, **step**, **decision**, **ef
 
     attempt: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 1[#](#scikitplot.agent.ApprovalRequest.attempt "Link to this definition")
 
-    decision: [Decision](scikitplot.agent.Decision.html#scikitplot.agent.Decision "scikitplot.agent._state.Decision")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.decision "Link to this definition")
+    decision: [Decision](scikitplot.agent.Decision.html#scikitplot.agent.Decision "scikitplot.agent._state.Decision")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.decision "Link to this definition")
 
-    digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.digest "Link to this definition")
+    digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.digest "Link to this definition")
 
-    effect: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.effect "Link to this definition")
+    effect: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.effect "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L450)[#](#scikitplot.agent.ApprovalRequest.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L450)[#](#scikitplot.agent.ApprovalRequest.from_dict "Link to this definition")
     :   Rebuild a request written by [`to_dict`](#scikitplot.agent.ApprovalRequest.to_dict "scikitplot.agent.ApprovalRequest.to_dict").
 
         Parameters:
@@ -73,17 +73,17 @@ class scikitplot.agent.ApprovalRequest(**run\_id**, **step**, **decision**, **ef
 
     gates: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], ...] = ()[#](#scikitplot.agent.ApprovalRequest.gates "Link to this definition")
 
-    head: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.head "Link to this definition")
+    head: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.head "Link to this definition")
 
-    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.reason "Link to this definition")
+    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.reason "Link to this definition")
 
-    run\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.run_id "Link to this definition")
+    run\_id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.run_id "Link to this definition")
 
-    scopes: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.scopes "Link to this definition")
+    scopes: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.scopes "Link to this definition")
 
-    step: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.step "Link to this definition")
+    step: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L362)[#](#scikitplot.agent.ApprovalRequest.step "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L435)[#](#scikitplot.agent.ApprovalRequest.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L435)[#](#scikitplot.agent.ApprovalRequest.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

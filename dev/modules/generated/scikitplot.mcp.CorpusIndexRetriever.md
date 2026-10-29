@@ -1,6 +1,6 @@
 # CorpusIndexRetriever[#](#corpusindexretriever "Link to this heading")
 
-class scikitplot.mcp.CorpusIndexRetriever(**embedder**, **index**, **\***, **match\_mode='hybrid'**, **strict=False**, **filter=None**, **documents=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_corpus_annoy.py#L172)[#](#scikitplot.mcp.CorpusIndexRetriever "Link to this definition")
+class scikitplot.mcp.CorpusIndexRetriever(**embedder**, **index**, **\***, **match\_mode='hybrid'**, **strict=False**, **filter=None**, **documents=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/mcp/_corpus_annoy.py#L172)[#](#scikitplot.mcp.CorpusIndexRetriever "Link to this definition")
 :   Text-level retriever over a corpus `RetrievalIndex`: hybrid by default.
 
     Parameters:
@@ -76,7 +76,7 @@ class scikitplot.mcp.CorpusIndexRetriever(**embedder**, **index**, **\***, **mat
         Type:
         :   [Filter](scikitplot.corpus.Filter.html#scikitplot.corpus.Filter "scikitplot.corpus.Filter") or None
 
-    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_corpus_annoy.py#L260)[#](#scikitplot.mcp.CorpusIndexRetriever.get "Link to this definition")
+    get(**doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/mcp/_corpus_annoy.py#L260)[#](#scikitplot.mcp.CorpusIndexRetriever.get "Link to this definition")
     :   Return one indexed document by id, for the MCP resource route.
 
         Parameters:
@@ -104,7 +104,7 @@ class scikitplot.mcp.CorpusIndexRetriever(**embedder**, **index**, **\***, **mat
         Type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_corpus_annoy.py#L316)[#](#scikitplot.mcp.CorpusIndexRetriever.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/mcp/_corpus_annoy.py#L316)[#](#scikitplot.mcp.CorpusIndexRetriever.search "Link to this definition")
     :   Search the corpus index and map its hits and legs for MCP.
 
         Parameters:

@@ -1,6 +1,6 @@
 # restore[#](#restore "Link to this heading")
 
-scikitplot.cleanprompt.restore(**text**, **vault**, **policy=None**, **strict=False**, **lenient=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cleanprompt/_engine.py#L981)[#](#scikitplot.cleanprompt.restore "Link to this definition")
+scikitplot.cleanprompt.restore(**text**, **vault**, **policy=None**, **strict=False**, **lenient=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_engine.py#L981)[#](#scikitplot.cleanprompt.restore "Link to this definition")
 :   Replace placeholders in `text` with the values held in `vault`.
 
     Parameters:

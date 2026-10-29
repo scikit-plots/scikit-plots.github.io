@@ -17,7 +17,7 @@ Ensure that the correct python.pythonPath is set in your `.vscode/settings.json`
 Matplotlib uses the [pytest](https://docs.pytest.org/en/stable/) framework.
 
 The tests are in `lib/matplotlib/tests`, and customizations to the pytest
-testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev813+g07832268c)").
+testing infrastructure are in [`matplotlib.testing`](https://matplotlib.org/devdocs/api/testing_api.html#module-matplotlib.testing "(in Matplotlib v3.12.0.dev856+gf318e2855)").
 
 ## [Requirements](#id3)[#](#requirements "Link to this heading")
 
@@ -43,7 +43,7 @@ pytest
 
 ```
 
-`pytest` can be configured via many [command-line parameters](https://pytest.org/en/stable/how-to/usage.html "(in pytest v9.1.1)").
+`pytest` can be configured via many [command-line parameters](https://pytest.org/en/stable/how-to/usage.html "(in pytest v9.2.0)").
 Some particularly useful ones are:
 
 |  |  |
@@ -79,7 +79,7 @@ to avoid clashes between `pytest`’s import mode and Python’s search path:
   python -I -m pytest
 
   ```
-* On any Python, set `pytest`’s [import mode](https://pytest.org/en/stable/explanation/pythonpath.html "(in pytest v9.1.1)")
+* On any Python, set `pytest`’s [import mode](https://pytest.org/en/stable/explanation/pythonpath.html "(in pytest v9.2.0)")
   to the older `prepend` mode (but note that this will break
   `pytest`’s assert rewriting):
 

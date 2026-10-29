@@ -1,6 +1,6 @@
 # PinRegistryError[#](#pinregistryerror "Link to this heading")
 
-exception scikitplot.cython.PinRegistryError[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/cython/_pins.py#L47)[#](#scikitplot.cython.PinRegistryError "Link to this definition")
+exception scikitplot.cython.PinRegistryError[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cython/_pins.py#L47)[#](#scikitplot.cython.PinRegistryError "Link to this definition")
 :   Raised when the pin registry (`pins.json`) is corrupt or unreadable.
 
     Subclasses [`ValueError`](https://docs.python.org/3/builtins/exceptions.html#ValueError "(in Python v3.15)") so existing `except ValueError` handlers

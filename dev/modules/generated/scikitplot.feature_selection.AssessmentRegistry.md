@@ -1,6 +1,6 @@
 # AssessmentRegistry[#](#assessmentregistry "Link to this heading")
 
-class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L419)[#](#scikitplot.feature_selection.AssessmentRegistry "Link to this definition")
+class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L419)[#](#scikitplot.feature_selection.AssessmentRegistry "Link to this definition")
 :   Name table of assessment providers.
 
     Notes
@@ -9,7 +9,7 @@ class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.
     existing name unless `replace=True`; `_register_builtin` inserts
     only absent names.
 
-    copy()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L492)[#](#scikitplot.feature_selection.AssessmentRegistry.copy "Link to this definition")
+    copy()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L492)[#](#scikitplot.feature_selection.AssessmentRegistry.copy "Link to this definition")
     :   Return an independent registry with the same providers.
 
         Returns:
@@ -31,7 +31,7 @@ class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.
         ```
         Go BackOpen In Tab
 
-    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L464)[#](#scikitplot.feature_selection.AssessmentRegistry.get "Link to this definition")
+    get(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L464)[#](#scikitplot.feature_selection.AssessmentRegistry.get "Link to this definition")
     :   Return the provider registered as `name`.
 
         Parameters:
@@ -52,13 +52,13 @@ class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.
         Return type:
         :   [**AssessmentProvider**](scikitplot.feature_selection.AssessmentProvider.html#scikitplot.feature_selection.AssessmentProvider "scikitplot.feature_selection._assessments.AssessmentProvider")
 
-    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L513)[#](#scikitplot.feature_selection.AssessmentRegistry.names "Link to this definition")
+    names()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L513)[#](#scikitplot.feature_selection.AssessmentRegistry.names "Link to this definition")
     :   Tuple of str: Registered names, sorted.
 
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    register(**provider**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L434)[#](#scikitplot.feature_selection.AssessmentRegistry.register "Link to this definition")
+    register(**provider**, **\***, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L434)[#](#scikitplot.feature_selection.AssessmentRegistry.register "Link to this definition")
     :   Add `provider` under its name.
 
         Parameters:
@@ -79,7 +79,7 @@ class scikitplot.feature\_selection.AssessmentRegistry[[source]](https://github.
         Return type:
         :   None
 
-    unregister(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L518)[#](#scikitplot.feature_selection.AssessmentRegistry.unregister "Link to this definition")
+    unregister(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L518)[#](#scikitplot.feature_selection.AssessmentRegistry.unregister "Link to this definition")
     :   Remove `name` (mainly for tests); missing names are ignored.
 
         Parameters:

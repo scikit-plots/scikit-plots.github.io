@@ -1,6 +1,6 @@
 # context\_texts[#](#context-texts "Link to this heading")
 
-scikitplot.corpus.context\_texts(**contexts**, **\***, **label='contexts'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_metrics/_judge.py#L399)[#](#scikitplot.corpus.context_texts "Link to this definition")
+scikitplot.corpus.context\_texts(**contexts**, **\***, **label='contexts'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_metrics/_judge.py#L399)[#](#scikitplot.corpus.context_texts "Link to this definition")
 :   Return the texts of retrieved contexts, in order.
 
     Parameters:

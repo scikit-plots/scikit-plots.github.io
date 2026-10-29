@@ -1,24 +1,24 @@
 # StepOutcome[#](#stepoutcome "Link to this heading")
 
-class scikitplot.agent.StepOutcome(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L92)[#](#scikitplot.agent.StepOutcome "Link to this definition")
+class scikitplot.agent.StepOutcome(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L92)[#](#scikitplot.agent.StepOutcome "Link to this definition")
 :   What one step came to.
 
-    DENIED = 'denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.DENIED "Link to this definition")
+    DENIED = 'denied'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.DENIED "Link to this definition")
     :   A gate refused the action; the tool did not run.
 
-    EXECUTED = 'executed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.EXECUTED "Link to this definition")
+    EXECUTED = 'executed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.EXECUTED "Link to this definition")
     :   The tool ran and returned a JSON value.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.FAILED "Link to this definition")
     :   The tool raised, or returned something that is not JSON.
 
-    FINISHED = 'finished'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.FINISHED "Link to this definition")
+    FINISHED = 'finished'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.FINISHED "Link to this definition")
     :   The planner’s answer was accepted.
 
-    INTERRUPTED = 'interrupted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.INTERRUPTED "Link to this definition")
+    INTERRUPTED = 'interrupted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.INTERRUPTED "Link to this definition")
     :   The call was in flight when the run stopped, and was not repeated.
 
-    REJECTED = 'rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.REJECTED "Link to this definition")
+    REJECTED = 'rejected'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StepOutcome.REJECTED "Link to this definition")
     :   The done criterion refused the planner’s answer.
 
     capitalize(**/**)[#](#scikitplot.agent.StepOutcome.capitalize "Link to this definition")

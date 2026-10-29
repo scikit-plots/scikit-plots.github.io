@@ -1,27 +1,27 @@
 # StopReason[#](#stopreason "Link to this heading")
 
-class scikitplot.agent.StopReason(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L76)[#](#scikitplot.agent.StopReason "Link to this definition")
+class scikitplot.agent.StopReason(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L76)[#](#scikitplot.agent.StopReason "Link to this definition")
 :   Why a run is no longer running. Set whenever the status is not running.
 
-    APPROVAL\_REQUIRED = 'approval\_required'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.APPROVAL_REQUIRED "Link to this definition")
+    APPROVAL\_REQUIRED = 'approval\_required'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.APPROVAL_REQUIRED "Link to this definition")
 
-    DONE = 'done'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.DONE "Link to this definition")
+    DONE = 'done'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.DONE "Link to this definition")
 
-    DONE\_CHECK\_FAILED = 'done\_check\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.DONE_CHECK_FAILED "Link to this definition")
+    DONE\_CHECK\_FAILED = 'done\_check\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.DONE_CHECK_FAILED "Link to this definition")
 
-    INVALID\_DECISION = 'invalid\_decision'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.INVALID_DECISION "Link to this definition")
+    INVALID\_DECISION = 'invalid\_decision'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.INVALID_DECISION "Link to this definition")
 
-    MAX\_COST = 'max\_cost'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_COST "Link to this definition")
+    MAX\_COST = 'max\_cost'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_COST "Link to this definition")
 
-    MAX\_STEPS = 'max\_steps'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_STEPS "Link to this definition")
+    MAX\_STEPS = 'max\_steps'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_STEPS "Link to this definition")
 
-    MAX\_TOKENS = 'max\_tokens'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_TOKENS "Link to this definition")
+    MAX\_TOKENS = 'max\_tokens'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.MAX_TOKENS "Link to this definition")
 
-    PLANNER\_FAILED = 'planner\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.PLANNER_FAILED "Link to this definition")
+    PLANNER\_FAILED = 'planner\_failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.PLANNER_FAILED "Link to this definition")
 
-    TIMEOUT = 'timeout'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.TIMEOUT "Link to this definition")
+    TIMEOUT = 'timeout'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.TIMEOUT "Link to this definition")
 
-    USAGE\_NOT\_REPORTED = 'usage\_not\_reported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.USAGE_NOT_REPORTED "Link to this definition")
+    USAGE\_NOT\_REPORTED = 'usage\_not\_reported'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.StopReason.USAGE_NOT_REPORTED "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.agent.StopReason.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

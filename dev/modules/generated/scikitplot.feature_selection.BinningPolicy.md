@@ -1,6 +1,6 @@
 # BinningPolicy[#](#binningpolicy "Link to this heading")
 
-class scikitplot.feature\_selection.BinningPolicy(**enabled=True**, **rule='auto'**, **n\_bins=None**, **min\_bins=2**, **max\_bins=64**, **min\_count=30**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L511)[#](#scikitplot.feature_selection.BinningPolicy "Link to this definition")
+class scikitplot.feature\_selection.BinningPolicy(**enabled=True**, **rule='auto'**, **n\_bins=None**, **min\_bins=2**, **max\_bins=64**, **min\_count=30**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L511)[#](#scikitplot.feature_selection.BinningPolicy "Link to this definition")
 :   How bin recommendations are computed for numeric features.
 
     Parameters:
@@ -58,7 +58,7 @@ class scikitplot.feature\_selection.BinningPolicy(**enabled=True**, **rule='auto
 
     strategy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'uniform'[#](#scikitplot.feature_selection.BinningPolicy.strategy "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_policy.py#L582)[#](#scikitplot.feature_selection.BinningPolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_policy.py#L582)[#](#scikitplot.feature_selection.BinningPolicy.to_dict "Link to this definition")
     :   Return the config form.
 
         Return type:

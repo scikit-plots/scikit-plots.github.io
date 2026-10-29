@@ -1,6 +1,6 @@
 # default\_registry[#](#default-registry "Link to this heading")
 
-scikitplot.feature\_selection.default\_registry = <scikitplot.feature\_selection.\_assessments.AssessmentRegistry object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L)[#](#scikitplot.feature_selection.default_registry "Link to this definition")
+scikitplot.feature\_selection.default\_registry = <scikitplot.feature\_selection.\_assessments.AssessmentRegistry object>[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L)[#](#scikitplot.feature_selection.default_registry "Link to this definition")
 :   Name table of assessment providers.
 
     Notes

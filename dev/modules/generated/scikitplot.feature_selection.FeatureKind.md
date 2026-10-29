@@ -1,6 +1,6 @@
 # FeatureKind[#](#featurekind "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L78)[#](#scikitplot.feature_selection.FeatureKind "Link to this definition")
+class scikitplot.feature\_selection.FeatureKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L78)[#](#scikitplot.feature_selection.FeatureKind "Link to this definition")
 :   Semantic kind of a feature: what analyses and treatments make sense.
 
     Inferred from the dtype family plus the `binary` and `discrete`
@@ -8,25 +8,25 @@ class scikitplot.feature\_selection.FeatureKind(**\*values**)[[source]](https://
     is never inferred: free text cannot be told from a nominal string column
     by cardinality alone, so it is an explicit declaration only.
 
-    BINARY = 'binary'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.BINARY "Link to this definition")
+    BINARY = 'binary'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.BINARY "Link to this definition")
 
-    CATEGORICAL\_NOMINAL = 'categorical\_nominal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.CATEGORICAL_NOMINAL "Link to this definition")
+    CATEGORICAL\_NOMINAL = 'categorical\_nominal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.CATEGORICAL_NOMINAL "Link to this definition")
 
-    CATEGORICAL\_ORDINAL = 'categorical\_ordinal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.CATEGORICAL_ORDINAL "Link to this definition")
+    CATEGORICAL\_ORDINAL = 'categorical\_ordinal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.CATEGORICAL_ORDINAL "Link to this definition")
 
-    DATETIME = 'datetime'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.DATETIME "Link to this definition")
+    DATETIME = 'datetime'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.DATETIME "Link to this definition")
 
-    NUMERIC\_CONTINUOUS = 'numeric\_continuous'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.NUMERIC_CONTINUOUS "Link to this definition")
+    NUMERIC\_CONTINUOUS = 'numeric\_continuous'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.NUMERIC_CONTINUOUS "Link to this definition")
 
-    NUMERIC\_DISCRETE = 'numeric\_discrete'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.NUMERIC_DISCRETE "Link to this definition")
+    NUMERIC\_DISCRETE = 'numeric\_discrete'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.NUMERIC_DISCRETE "Link to this definition")
 
-    OTHER = 'other'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.OTHER "Link to this definition")
+    OTHER = 'other'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.OTHER "Link to this definition")
 
-    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.TEXT "Link to this definition")
+    TEXT = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.TEXT "Link to this definition")
 
-    TIMEDELTA = 'timedelta'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.TIMEDELTA "Link to this definition")
+    TIMEDELTA = 'timedelta'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.TIMEDELTA "Link to this definition")
 
-    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.UNKNOWN "Link to this definition")
+    UNKNOWN = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.FeatureKind.UNKNOWN "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.FeatureKind.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

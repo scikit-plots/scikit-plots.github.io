@@ -1,6 +1,6 @@
 # Approval[#](#approval "Link to this heading")
 
-class scikitplot.agent.Approval(**digest**, **granted**, **approver**, **note=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval "Link to this definition")
+class scikitplot.agent.Approval(**digest**, **granted**, **approver**, **note=''**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval "Link to this definition")
 :   A person’s answer to an [`ApprovalRequest`](scikitplot.agent.ApprovalRequest.html#scikitplot.agent.ApprovalRequest "scikitplot.agent.ApprovalRequest").
 
     Parameters:
@@ -33,15 +33,15 @@ class scikitplot.agent.Approval(**digest**, **granted**, **approver**, **note=''
     ```
     Go BackOpen In Tab
 
-    approver: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.approver "Link to this definition")
+    approver: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.approver "Link to this definition")
 
-    digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.digest "Link to this definition")
+    digest: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.digest "Link to this definition")
 
-    granted: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.granted "Link to this definition")
+    granted: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L486)[#](#scikitplot.agent.Approval.granted "Link to this definition")
 
     note: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.agent.Approval.note "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L522)[#](#scikitplot.agent.Approval.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L522)[#](#scikitplot.agent.Approval.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

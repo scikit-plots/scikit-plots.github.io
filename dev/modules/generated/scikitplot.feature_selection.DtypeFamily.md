@@ -1,23 +1,23 @@
 # DtypeFamily[#](#dtypefamily "Link to this heading")
 
-class scikitplot.feature\_selection.DtypeFamily(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L65)[#](#scikitplot.feature_selection.DtypeFamily "Link to this definition")
+class scikitplot.feature\_selection.DtypeFamily(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L65)[#](#scikitplot.feature_selection.DtypeFamily "Link to this definition")
 :   Physical storage family of a column, read from its pandas dtype and values.
 
-    BOOLEAN = 'boolean'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.BOOLEAN "Link to this definition")
+    BOOLEAN = 'boolean'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.BOOLEAN "Link to this definition")
 
-    CATEGORICAL = 'categorical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.CATEGORICAL "Link to this definition")
+    CATEGORICAL = 'categorical'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.CATEGORICAL "Link to this definition")
 
-    DATETIME = 'datetime'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.DATETIME "Link to this definition")
+    DATETIME = 'datetime'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.DATETIME "Link to this definition")
 
-    FLOAT = 'float'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.FLOAT "Link to this definition")
+    FLOAT = 'float'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.FLOAT "Link to this definition")
 
-    INTEGER = 'integer'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.INTEGER "Link to this definition")
+    INTEGER = 'integer'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.INTEGER "Link to this definition")
 
-    OBJECT = 'object'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.OBJECT "Link to this definition")
+    OBJECT = 'object'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.OBJECT "Link to this definition")
 
-    STRING = 'string'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.STRING "Link to this definition")
+    STRING = 'string'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.STRING "Link to this definition")
 
-    TIMEDELTA = 'timedelta'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.TIMEDELTA "Link to this definition")
+    TIMEDELTA = 'timedelta'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_types.py#L)[#](#scikitplot.feature_selection.DtypeFamily.TIMEDELTA "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.feature_selection.DtypeFamily.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

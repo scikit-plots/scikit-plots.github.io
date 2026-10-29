@@ -18,6 +18,7 @@ This project was started in 2024.
   * [NumFOCUS Subcommittee](teams/index.html#numfocus-subcommittee)
   * [Project Specific Leads](teams/index.html#project-specific-leads)
 * [Citing Guide](citing.html)
+  * [Which entry to cite](citing.html#which-entry-to-cite)
   * [DOIs](citing.html#dois)
 * [License](license.html)
   * [Copyright policy](license.html#copyright-policy)

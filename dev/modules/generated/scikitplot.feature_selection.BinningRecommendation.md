@@ -1,6 +1,6 @@
 # BinningRecommendation[#](#binningrecommendation "Link to this heading")
 
-class scikitplot.feature\_selection.BinningRecommendation(**feature**, **state**, **rule=None**, **n\_bins=None**, **rule\_n\_bins=None**, **strategy=None**, **edges=()**, **reasons=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation "Link to this definition")
+class scikitplot.feature\_selection.BinningRecommendation(**feature**, **state**, **rule=None**, **n\_bins=None**, **rule\_n\_bins=None**, **strategy=None**, **edges=()**, **reasons=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation "Link to this definition")
 :   A frozen bin recommendation for one feature.
 
     Parameters:
@@ -45,9 +45,9 @@ class scikitplot.feature\_selection.BinningRecommendation(**feature**, **state**
 
     edges: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"), ...] = ()[#](#scikitplot.feature_selection.BinningRecommendation.edges "Link to this definition")
 
-    feature: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation.feature "Link to this definition")
+    feature: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation.feature "Link to this definition")
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L118)[#](#scikitplot.feature_selection.BinningRecommendation.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L118)[#](#scikitplot.feature_selection.BinningRecommendation.from_dict "Link to this definition")
     :   Rebuild from [`to_dict`](#scikitplot.feature_selection.BinningRecommendation.to_dict "scikitplot.feature_selection.BinningRecommendation.to_dict") output, checking every field.
 
         Parameters:
@@ -82,11 +82,11 @@ class scikitplot.feature\_selection.BinningRecommendation(**feature**, **state**
 
     rule\_n\_bins: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.BinningRecommendation.rule_n_bins "Link to this definition")
 
-    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation.state "Link to this definition")
+    state: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L67)[#](#scikitplot.feature_selection.BinningRecommendation.state "Link to this definition")
 
     strategy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.feature_selection.BinningRecommendation.strategy "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_binning.py#L111)[#](#scikitplot.feature_selection.BinningRecommendation.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_binning.py#L111)[#](#scikitplot.feature_selection.BinningRecommendation.to_dict "Link to this definition")
     :   Return the shared-data-model form.
 
         Return type:

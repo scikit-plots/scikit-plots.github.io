@@ -1,21 +1,21 @@
 # RunStatus[#](#runstatus "Link to this heading")
 
-class scikitplot.agent.RunStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L56)[#](#scikitplot.agent.RunStatus "Link to this definition")
+class scikitplot.agent.RunStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L56)[#](#scikitplot.agent.RunStatus "Link to this definition")
 :   Where a run is.
 
-    AWAITING\_APPROVAL = 'awaiting\_approval'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.AWAITING_APPROVAL "Link to this definition")
+    AWAITING\_APPROVAL = 'awaiting\_approval'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.AWAITING_APPROVAL "Link to this definition")
     :   Paused before an action that needs approval (a human checkpoint).
 
-    COMPLETED = 'completed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.COMPLETED "Link to this definition")
+    COMPLETED = 'completed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.COMPLETED "Link to this definition")
     :   The planner finished and the done criterion accepted the answer.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.FAILED "Link to this definition")
     :   The planner or the done criterion failed; `error` says how.
 
-    RUNNING = 'running'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.RUNNING "Link to this definition")
+    RUNNING = 'running'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.RUNNING "Link to this definition")
     :   Steps remain; `run` or `resume` continues it.
 
-    STOPPED = 'stopped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.STOPPED "Link to this definition")
+    STOPPED = 'stopped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_state.py#L)[#](#scikitplot.agent.RunStatus.STOPPED "Link to this definition")
     :   A limit stopped the run; `stop_reason` names it.
 
     capitalize(**/**)[#](#scikitplot.agent.RunStatus.capitalize "Link to this definition")

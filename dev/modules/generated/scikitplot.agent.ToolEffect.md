@@ -1,18 +1,18 @@
 # ToolEffect[#](#tooleffect "Link to this heading")
 
-class scikitplot.agent.ToolEffect(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L39)[#](#scikitplot.agent.ToolEffect "Link to this definition")
+class scikitplot.agent.ToolEffect(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L39)[#](#scikitplot.agent.ToolEffect "Link to this definition")
 :   The kind of effect a tool has, which the policy permits or not.
 
-    EXTERNAL = 'external'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.EXTERNAL "Link to this definition")
+    EXTERNAL = 'external'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.EXTERNAL "Link to this definition")
     :   the network, a message, a payment.
 
         Type:
         :   Reaches outside the process
 
-    READ = 'read'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.READ "Link to this definition")
+    READ = 'read'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.READ "Link to this definition")
     :   Reads only; the world is the same after the call.
 
-    WRITE = 'write'[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.WRITE "Link to this definition")
+    WRITE = 'write'[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_tools.py#L)[#](#scikitplot.agent.ToolEffect.WRITE "Link to this definition")
     :   Changes state the caller owns (a file, a store, an index).
 
     capitalize(**/**)[#](#scikitplot.agent.ToolEffect.capitalize "Link to this definition")

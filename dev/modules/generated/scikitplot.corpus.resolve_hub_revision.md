@@ -1,6 +1,6 @@
 # resolve\_hub\_revision[#](#resolve-hub-revision "Link to this heading")
 
-scikitplot.corpus.resolve\_hub\_revision(**model\_name**, **\***, **timeout=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_embeddings/_cache_policy.py#L247)[#](#scikitplot.corpus.resolve_hub_revision "Link to this definition")
+scikitplot.corpus.resolve\_hub\_revision(**model\_name**, **\***, **timeout=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_embeddings/_cache_policy.py#L247)[#](#scikitplot.corpus.resolve_hub_revision "Link to this definition")
 :   Return the Hugging Face Hub commit a model id currently points to.
 
     Parameters:

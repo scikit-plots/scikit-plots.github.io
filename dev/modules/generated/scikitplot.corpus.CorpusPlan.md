@@ -1,6 +1,6 @@
 # CorpusPlan[#](#corpusplan "Link to this heading")
 
-class scikitplot.corpus.CorpusPlan(**fragments=<factory>**, **stages=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L163)[#](#scikitplot.corpus.CorpusPlan "Link to this definition")
+class scikitplot.corpus.CorpusPlan(**fragments=<factory>**, **stages=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L163)[#](#scikitplot.corpus.CorpusPlan "Link to this definition")
 :   An immutable, canonical description of a corpus configuration.
 
     Parameters:
@@ -51,9 +51,9 @@ class scikitplot.corpus.CorpusPlan(**fragments=<factory>**, **stages=None**)[[so
 
         The full SHA-256 is returned. Use [`short_fingerprint`](#scikitplot.corpus.CorpusPlan.short_fingerprint "scikitplot.corpus.CorpusPlan.short_fingerprint") for display.
 
-    fragments: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L163)[#](#scikitplot.corpus.CorpusPlan.fragments "Link to this definition")
+    fragments: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L163)[#](#scikitplot.corpus.CorpusPlan.fragments "Link to this definition")
 
-    get(**domain**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L311)[#](#scikitplot.corpus.CorpusPlan.get "Link to this definition")
+    get(**domain**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L311)[#](#scikitplot.corpus.CorpusPlan.get "Link to this definition")
     :   Return the fragment for `domain`, or `None`.
 
         Parameters:
@@ -74,7 +74,7 @@ class scikitplot.corpus.CorpusPlan(**fragments=<factory>**, **stages=None**)[[so
         ****Developer.**** Covers `INGEST_DOMAINS` and the effective stage
         order, which changes what is produced rather than how it is read.
 
-    classmethod of(**\*\*fragments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L184)[#](#scikitplot.corpus.CorpusPlan.of "Link to this definition")
+    classmethod of(**\*\*fragments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L184)[#](#scikitplot.corpus.CorpusPlan.of "Link to this definition")
     :   Build a plan from keyword fragments.
 
         Raises:
@@ -107,13 +107,13 @@ class scikitplot.corpus.CorpusPlan(**fragments=<factory>**, **stages=None**)[[so
 
     stages: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CorpusPlan.stages "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L388)[#](#scikitplot.corpus.CorpusPlan.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L388)[#](#scikitplot.corpus.CorpusPlan.to_dict "Link to this definition")
     :   Return a JSON-compatible description of the plan.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/corpus/_plan.py#L315)[#](#scikitplot.corpus.CorpusPlan.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_plan.py#L315)[#](#scikitplot.corpus.CorpusPlan.validate "Link to this definition")
     :   Check cross-fragment coherence.
 
         Returns:

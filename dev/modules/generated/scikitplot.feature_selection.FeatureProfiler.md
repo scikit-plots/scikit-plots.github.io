@@ -1,6 +1,6 @@
 # FeatureProfiler[#](#featureprofiler "Link to this heading")
 
-class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **output='all'**, **on\_mismatch='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L126)[#](#scikitplot.feature_selection.FeatureProfiler "Link to this definition")
+class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **output='all'**, **on\_mismatch='raise'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L126)[#](#scikitplot.feature_selection.FeatureProfiler "Link to this definition")
 :   Fit a feature schema on the training data; pass data through unchanged.
 
     Parameters:
@@ -63,7 +63,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
     ```
     Go BackOpen In Tab
 
-    audit(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L237)[#](#scikitplot.feature_selection.FeatureProfiler.audit "Link to this definition")
+    audit(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L237)[#](#scikitplot.feature_selection.FeatureProfiler.audit "Link to this definition")
     :   Return [`FeatureSchema.audit`](scikitplot.feature_selection.FeatureSchema.html#scikitplot.feature_selection.FeatureSchema.audit "scikitplot.feature_selection.FeatureSchema.audit") of `X`.
 
         Parameters:
@@ -80,7 +80,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         Return type:
         :   [**DataFrame**](https://pandas.pydata.org/docs/dev/reference/api/pandas.DataFrame.html#pandas.DataFrame "(in pandas v3.2)")
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L184)[#](#scikitplot.feature_selection.FeatureProfiler.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L184)[#](#scikitplot.feature_selection.FeatureProfiler.fit "Link to this definition")
     :   Fit the schema on `X`.
 
         Parameters:
@@ -101,7 +101,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         Return type:
         :   [**FeatureProfiler**](#scikitplot.feature_selection.FeatureProfiler "scikitplot.feature_selection._estimators.FeatureProfiler")
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.feature_selection.FeatureProfiler.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.feature_selection.FeatureProfiler.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -122,7 +122,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_lineage(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L271)[#](#scikitplot.feature_selection.FeatureProfiler.get_feature_lineage "Link to this definition")
+    get\_feature\_lineage(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L271)[#](#scikitplot.feature_selection.FeatureProfiler.get_feature_lineage "Link to this definition")
     :   Return the exact lineage of this step (a subset or the identity).
 
         Parameters:
@@ -139,7 +139,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         Return type:
         :   [**FeatureMapping**](scikitplot.feature_selection.FeatureMapping.html#scikitplot.feature_selection.FeatureMapping "scikitplot.feature_selection._lineage.FeatureMapping")
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L254)[#](#scikitplot.feature_selection.FeatureProfiler.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L254)[#](#scikitplot.feature_selection.FeatureProfiler.get_feature_names_out "Link to this definition")
     :   Return the output column names.
 
         Parameters:
@@ -156,7 +156,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.feature_selection.FeatureProfiler.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.feature_selection.FeatureProfiler.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](https://scikit-learn.org/dev/metadata_routing.html#metadata-routing "(in scikit-learn v1.10)") on how the routing
@@ -167,7 +167,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.feature_selection.FeatureProfiler.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.feature_selection.FeatureProfiler.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -179,7 +179,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.feature_selection.FeatureProfiler.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.feature_selection.FeatureProfiler.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -201,7 +201,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.feature_selection.FeatureProfiler.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.feature_selection.FeatureProfiler.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -217,7 +217,7 @@ class scikitplot.feature\_selection.FeatureProfiler(**policy=None**, **\***, **o
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_estimators.py#L212)[#](#scikitplot.feature_selection.FeatureProfiler.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_estimators.py#L212)[#](#scikitplot.feature_selection.FeatureProfiler.transform "Link to this definition")
     :   Check `X` against the schema and return the fitted columns.
 
         Parameters:

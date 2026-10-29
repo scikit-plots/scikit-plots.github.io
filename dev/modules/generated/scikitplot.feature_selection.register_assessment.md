@@ -1,6 +1,6 @@
 # register\_assessment[#](#register-assessment "Link to this heading")
 
-scikitplot.feature\_selection.register\_assessment(**name**, **func=None**, **\***, **defaults=None**, **version='1'**, **description=''**, **validate=None**, **replace=False**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/feature_selection/_assessments.py#L535)[#](#scikitplot.feature_selection.register_assessment "Link to this definition")
+scikitplot.feature\_selection.register\_assessment(**name**, **func=None**, **\***, **defaults=None**, **version='1'**, **description=''**, **validate=None**, **replace=False**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/feature_selection/_assessments.py#L535)[#](#scikitplot.feature_selection.register_assessment "Link to this definition")
 :   Register an assessment provider; usable as a decorator.
 
     Parameters:

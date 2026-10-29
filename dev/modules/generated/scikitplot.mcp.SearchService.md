@@ -1,6 +1,6 @@
 # SearchService[#](#searchservice "Link to this heading")
 
-class scikitplot.mcp.SearchService(**retriever**, **\***, **max\_concurrency=4**, **acquire\_timeout\_seconds=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_server.py#L144)[#](#scikitplot.mcp.SearchService "Link to this definition")
+class scikitplot.mcp.SearchService(**retriever**, **\***, **max\_concurrency=4**, **acquire\_timeout\_seconds=0.05**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/mcp/_server.py#L144)[#](#scikitplot.mcp.SearchService "Link to this definition")
 :   Wire adapter: bounded, validated search returning pydantic tool models.
 
     Parameters:
@@ -35,7 +35,7 @@ class scikitplot.mcp.SearchService(**retriever**, **\***, **max\_concurrency=4**
     Retrieval tier) should use [`SearchCoordinator`](scikitplot.mcp.SearchCoordinator.html#scikitplot.mcp.SearchCoordinator "scikitplot.mcp.SearchCoordinator")
     directly and avoid the `[mcp]` extra entirely.
 
-    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/d6b03769/scikitplot/mcp/_server.py#L187)[#](#scikitplot.mcp.SearchService.search "Link to this definition")
+    search(**query**, **k=5**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/mcp/_server.py#L187)[#](#scikitplot.mcp.SearchService.search "Link to this definition")
     :   Search and return the validated wire model.
 
         Parameters:
