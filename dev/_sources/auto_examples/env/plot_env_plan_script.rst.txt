@@ -116,11 +116,11 @@ neither: ``venv`` and the standard library need nothing from outside.
 
  .. code-block:: none
 
-    plan 90f52e12da72  ensure <tmp>/demo
+    plan e51594f6df76  ensure <tmp>/demo
       target   host
       backend  venv - named in the request
       1. create a venv with Python 3.12.16
-         $ /home/circleci/.pyenv/versions/3.12.16/bin/python3.12 -m venv <tmp>/demo
+         $ /home/circleci/.pyenv/versions/3.12.16/bin/python -m venv <tmp>/demo
       2. import json
          $ <tmp>/demo/bin/python -I -c 'import importlib, sys; [importlib.import_module(m) for m in sys.argv[1:]]' json
 
@@ -325,7 +325,7 @@ A plan never writes: the example's folder holds no environment.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.013 seconds)
+   **Total running time of the script:** (0 minutes 0.011 seconds)
 
 
 .. _sphx_glr_download_auto_examples_env_plot_env_plan_script.py:

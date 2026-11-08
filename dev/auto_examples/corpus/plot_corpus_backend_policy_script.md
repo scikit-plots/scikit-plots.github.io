@@ -139,7 +139,7 @@ assert reader.backend_reports[-1]["backend"] == "gallery-local-asr"
 preflight: {'policy': 'resilient', 'declared': ['faster-whisper', 'openai-whisper', 'gallery-local-asr'], 'ordered': ['gallery-local-asr'], 'eligible': ['gallery-local-asr'], 'selected': ['gallery-local-asr'], 'skipped': [], 'selected_capabilities': [], 'skip_details': []}
 chunk text: synthetic transcript for demo
 provider: gallery-demo
-backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
+backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'requested_backend': 'gallery-local-asr', 'fallback_reason': None, 'allow_fallback': True, 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
 policy skips: []
 
 ```
@@ -171,7 +171,7 @@ strict BackendPolicy(name='strict', order=(), include_unlisted=True, allow_fallb
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.007 seconds)
+****Total running time of the script:**** (0 minutes 0.005 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)
 

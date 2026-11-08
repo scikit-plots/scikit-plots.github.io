@@ -137,7 +137,7 @@ for domain in plan.configured:
 
 ```
 ```
-supported domains: ('source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')
+supported domains: ('source', 'reader', 'identity', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')
 configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 source     -> '<source>'
 reader     -> '<reader>'
@@ -170,8 +170,8 @@ print(dynamic.plan().configured)
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] caa980f5c69c740d026bad6ecf84a2cf79b316baf768f7b6b9ee5109cba414c6>
-['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
+<FluentCorpus configured=[source, reader, identity, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 9157ce36fd4c0ddaced7bfee9292957385d439b27234c6134192698aaed47588>
+['source', 'reader', 'identity', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 ```
 
@@ -284,6 +284,7 @@ for domain in CONFIG_DOMAINS:
 ```
 source     | replace_source
 reader     | replace_reader
+identity   | replace_identity
 normalizer | replace_normalizer
 chunker    | replace_chunker
 enricher   | replace_enricher
@@ -731,7 +732,7 @@ variant fingerprints: ['3e79673a12b5ff2d0b43b1d537332a1c9f1c89c699f4ba98c4085a18
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.025 seconds)
+****Total running time of the script:**** (0 minutes 0.022 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_corpus_script.ipynb)
 

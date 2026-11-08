@@ -227,7 +227,7 @@ print("Characters:", len(HAMLET_TEXT))
 
 ```
 ```
-Source: /tmp/scikitplot-hamlet-g4j7rmbr/hamlet_excerpt.txt
+Source: /tmp/scikitplot-hamlet-l8r8r16n/hamlet_excerpt.txt
 Characters: 3819
 
 ```
@@ -404,7 +404,7 @@ print("Configured domains:", portable.plan().configured)
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 4180a72984fe24628e2f01b8363253dfd0819eae3efbc2b53da05c3db6da2e19>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 3911db9efe7ee11bd0e5cdd37f542be6adc440c644ba779d0ce47795f07b3592>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 ```
@@ -426,7 +426,7 @@ print("Stages:", plan.effective_stages)
 ```
 ```
 Validation problems: []
-Plan fingerprint: 4180a72984fe24628e2f01b8363253dfd0819eae3efbc2b53da05c3db6da2e19
+Plan fingerprint: 3911db9efe7ee11bd0e5cdd37f542be6adc440c644ba779d0ce47795f07b3592
 Stages: ('read', 'normalize', 'chunk', 'enrich', 'embed', 'store', 'retrieve')
 
 ```
@@ -506,7 +506,7 @@ print("Index backend requested:", plan.get("index").backend)
 
 ```
 ```
-Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7dcc5876f470>
+Pipeline: <scikitplot.corpus._pipeline.CorpusPipeline object at 0x7127055d85c0>
 Storage: InMemoryStorage(n_docs=0)
 Index backend requested: bruteforce
 
@@ -716,10 +716,10 @@ print(_EXPORT_PATH.read_text(encoding="utf-8").splitlines()[0][:300])
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-g4j7rmbr/hamlet_corpus.jsonl
-Bytes: 31126
+Exported: /tmp/scikitplot-hamlet-l8r8r16n/hamlet_corpus.jsonl
+Bytes: 30960
 First JSONL row:
-{"schema_version": "2.0", "doc_id": "778d78ec096f965d", "input_path": "hamlet_excerpt.txt", "chunk_index": 0, "text": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK", "section_type": "text", "chunking_strategy": "paragraph", "language": null, "char_start": 0, "char_end": 40, "metadata": {}, "source_type"
+{"schema_version":"3.0","doc_id":"0d4874993c04ef91eab3d6ce118c39876c9d6b24a11086f398699d8cd0896127","input_path":"hamlet_excerpt.txt","chunk_index":0,"text":"THE TRAGEDY OF HAMLET, PRINCE OF DENMARK","section_type":"text","chunking_strategy":"paragraph","language":null,"char_start":0,"char_end":40,"
 
 ```
 
@@ -820,7 +820,7 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.047 seconds)
+****Total running time of the script:**** (0 minutes 0.053 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.ipynb)
 

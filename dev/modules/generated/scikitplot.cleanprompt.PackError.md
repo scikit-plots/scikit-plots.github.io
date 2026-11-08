@@ -1,6 +1,6 @@
 # PackError[#](#packerror "Link to this heading")
 
-exception scikitplot.cleanprompt.PackError(**source**, **problems**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_packs.py#L170)[#](#scikitplot.cleanprompt.PackError "Link to this definition")
+exception scikitplot.cleanprompt.PackError(**source**, **problems**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_packs.py#L176)[#](#scikitplot.cleanprompt.PackError "Link to this definition")
 :   A pack document is invalid.
 
     Parameters:

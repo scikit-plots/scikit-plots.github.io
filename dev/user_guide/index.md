@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261029.1037dde - October 29, 2026 06:16 UTC
+ 0.5.dev0+git.20261108.f7759b5 - November 08, 2026 15:11 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -11,6 +11,11 @@
   * [Limits and how a run ends](agent/index.html#limits-and-how-a-run-ends)
   * [Approval, pause and resume](agent/index.html#approval-pause-and-resume)
   * [The audit trail](agent/index.html#the-audit-trail)
+  * [Plans](agent/index.html#plans)
+  * [Large tool results](agent/index.html#large-tool-results)
+  * [Sub-runs](agent/index.html#sub-runs)
+  * [Workflow graphs](agent/index.html#workflow-graphs)
+  * [Evaluating runs](agent/index.html#evaluating-runs)
   * [Measured](agent/index.html#measured)
   * [Writing a planner](agent/index.html#writing-a-planner)
 **nearest neighbor**
@@ -176,6 +181,12 @@
   * [Commands in a notebook](_ipymagic/commands.html)
   * [Profiling](_ipymagic/profiling.html)
   * [CI, scripts and agents](_ipymagic/automation.html)
+**scikit-learn metadata routing**
+
+* [Metadata routing](metadata_routing.html)
+  * [Estimators](metadata_routing.html#estimators)
+  * [`scikitplot.experimental.pipeline.Pipeline`](metadata_routing.html#scikitplot-experimental-pipeline-pipeline)
+  * [Corpus scorers](metadata_routing.html#corpus-scorers)
 
 ## Under Development[#](#under-development "Link to this heading")
 

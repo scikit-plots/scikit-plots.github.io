@@ -1,6 +1,6 @@
 # reserved\_label\_spans[#](#reserved-label-spans "Link to this heading")
 
-scikitplot.cleanprompt.reserved\_label\_spans(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_engine.py#L98)[#](#scikitplot.cleanprompt.reserved_label_spans "Link to this definition")
+scikitplot.cleanprompt.reserved\_label\_spans(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_engine.py#L107)[#](#scikitplot.cleanprompt.reserved_label_spans "Link to this definition")
 :   Find substrings of `text` that already match the placeholder grammar.
 
     Parameters:
@@ -32,3 +32,15 @@ scikitplot.cleanprompt.reserved\_label\_spans(**text**, **policy**)[[source]](ht
     `"[EMAIL-1] and bob@example.com"` the real address would otherwise be
     issued `[EMAIL-1]` as well, and restoration would then rewrite both
     occurrences to the same value.
+
+    ****Rewritten spellings in the source (``CP-112``).**** Restoration also
+    repairs labels a model rewrote ([`TagStyle.lenient_pattern`](scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle.lenient_pattern "scikitplot.cleanprompt.TagStyle.lenient_pattern")), so a
+    source that already holds such a spelling (`[email_1]`,
+    `[EMAIL<U+2028>-1]`) was restored as the value later issued that label,
+    and the round trip was not exact. The label each one normalises to is
+    therefore reserved too, so no value is ever issued it: restoring the
+    spelling then finds nothing in the vault and leaves it as written, while
+    a model’s rewrite of a label that **was** issued is still repaired. Only
+    the label is reserved, not the range: a lenient match such as
+    `[PHONE 5550104477]` can hold a real value, and detection must still
+    see it.

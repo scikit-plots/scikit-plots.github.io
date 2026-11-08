@@ -344,24 +344,20 @@ if the `v3.7.x` branch exists)
 
 ## [Release management / DOI](#id10)[#](#release-management-doi "Link to this heading")
 
-Via the [GitHub UI](https://github.com/matplotlib/matplotlib/releases), turn the
+Via the [GitHub UI](https://github.com/scikit-plots/scikit-plots/releases), turn the
 newly pushed tag into a release. If this is a pre-release remember to mark it as such.
 
 For final releases, also get the DOI from [Zenodo](https://zenodo.org/) (which will
-automatically produce one once the tag is pushed). Add the DOI post-fix and version to
-the dictionary in `tools/cache_zenodo_svg.py` and run the script.
-
-This will download the new SVG to `doc/_static/zenodo_cache/postfix.svg` and
-edit `doc/project/citing.rst`. Commit the new SVG, the change to
-`tools/cache_zenodo_svg.py`, and the changes to `doc/project/citing.rst`
-to the VER-doc branch and push to GitHub.
+automatically produce one once the tag is pushed). Add the version and its DOI at the
+top of `VERSION_DOIS` in `tools/citation/citation_ref.py` and regenerate the
+citation files and the DOI list of `docs/source/project/citing.rst` from it:
 
 ```
-git checkout v3.7.0-doc
-$EDITOR tools/cache_zenodo_svg.py
-python tools/cache_zenodo_svg.py
+$EDITOR tools/citation/citation_ref.py
+python tools/citation/citation_ref.py sync            # preview
+python tools/citation/citation_ref.py sync --apply
+python tools/citation/citation_ref.py check
 git commit -a
-git push DANGER v3.7.0-doc:v3.7.0-doc
 
 ```
 
@@ -510,9 +506,9 @@ be squashed because the intent is to merge the branch histories.
 After the release is published to PyPI and conda, it should be announced
 through our communication channels:
 
-* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.12.0.dev856+gf318e2855)")
-* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/devel/api_changes.html#release-notes "(in Matplotlib v3.12.0.dev856+gf318e2855)") on the
-  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.12.0.dev856+gf318e2855)")
+* Send a short version of the release notes and acknowledgments to all the [Mailing lists](https://matplotlib.org/devdocs/devel/communication_guide.html#mailing-lists "(in Matplotlib v3.12.0.dev887+g85fbd9432)")
+* Post highlights and link to [What’s new](https://matplotlib.org/devdocs/release/release_notes.html#release-notes "(in Matplotlib v3.12.0.dev887+g85fbd9432)") on the
+  active [social media accounts](https://matplotlib.org/devdocs/devel/communication_guide.html#social-media "(in Matplotlib v3.12.0.dev887+g85fbd9432)")
 * Add a release announcement to the “News” section of
   [matplotlib.org](https://github.com/matplotlib/mpl-brochure-site) by editing
   `docs/body.html`. Link to the auto-generated announcement discourse post,

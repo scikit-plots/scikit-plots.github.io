@@ -28,6 +28,7 @@ Or install only the tier you need:
 | `cleanprompt-nltk` | `nltk` | NLTK | English named-entity detection without spaCy |
 | `cleanprompt-web` | `web` | Flask | local browser interface |
 | `cleanprompt-crypto` | `crypto` | cryptography | the optional Fernet vault cipher; encryption itself needs no tier |
+| `cleanprompt-timeout` | `timeout` | regex | a time limit on custom pack patterns ([A time limit for custom patterns](files_and_packs.html#cleanprompt-pattern-timeout)) |
 
 A lightweight partial distribution is also available as
 `scikit-plots-cleanprompt`. It composes with `scikit-plots-skinny` and is

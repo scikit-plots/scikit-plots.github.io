@@ -254,7 +254,7 @@ ADVANCED – zero-copy NumPy, mprotect lifecycle, micro-benchmark
 byte-for-byte — no copy.  We also exercise ``mprotect()`` to toggle
 write permission at runtime, and time read() vs the array slice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 177-271
+.. GENERATED FROM PYTHON SOURCE LINES 177-277
 
 .. code-block:: Python
 
@@ -287,13 +287,19 @@ write permission at runtime, and time read() vs the array slice.
         # --------------------------------------------------------------------------
         # 2. mprotect lifecycle – make read-only, confirm write blocked, restore
         # --------------------------------------------------------------------------
-        m.mprotect(PY_PROT_READ)                    # → read-only
-        print(f"[ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only")
-        # The array flags are unchanged (we do not auto-sync them); the kernel
-        # will SIGSEGV / raise on an actual write attempt.  We only *read* here.
-        _ = m.read(64)                           # safe
-        m.mprotect(PY_PROT_READ | PY_PROT_WRITE)       # restore
+        # Removing a permission while a view is alive is refused: a write through
+        # the writable ``arr`` into read-only pages would crash the process.
+        try:
+            m.mprotect(PY_PROT_READ)
+        except BufferError as exc:
+            print(f"[ADVANCED] refused while the view is alive: {exc}")
+        del arr                                  # release the only exported view
+        m.mprotect(PY_PROT_READ)                 # → read-only
+        print("[ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only")
+        _ = m.read(64)                           # reading is still allowed
+        m.mprotect(PY_PROT_READ | PY_PROT_WRITE) # restore (adding bits is always allowed)
         print("[ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.")
+        arr = m.as_numpy_array(dtype=np.uint8)   # new view for the benchmark
 
         # --------------------------------------------------------------------------
         # 3. micro-benchmark: .read() vs NumPy slice copy
@@ -367,18 +373,19 @@ write permission at runtime, and time read() vs the array slice.
 
     [ADVANCED] array shape=(1048576,), dtype=uint8, writeable=True
     [ADVANCED] pattern written via NumPy, verified via .read().
+    [ADVANCED] refused while the view is alive: Cannot remove protection while 1 view(s) of the mapping or running operation(s) on it (read, write, msync, mlock, munlock) are alive: an access through one of them would crash the process. Release the views first.
     [ADVANCED] after mprotect(PY_PROT_READ): mapping is read-only
     [ADVANCED] mprotect(PY_PROT_READ | PY_PROT_WRITE) restored.
     [ADVANCED] 200 iterations over 1.0 MB:
-               .read()     : 0.0777 s  (2.70 GB/s)
-               arr.copy()  : 0.0348 s  (6.02 GB/s)
+               .read()     : 0.0974 s  (2.15 GB/s)
+               arr.copy()  : 0.0355 s  (5.91 GB/s)
     [ADVANCED] done.
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 272-277
+.. GENERATED FROM PYTHON SOURCE LINES 278-283
 
 .. tags::
 
@@ -389,7 +396,7 @@ write permission at runtime, and time read() vs the array slice.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.099 seconds)
+   **Total running time of the script:** (0 minutes 1.173 seconds)
 
 
 .. _sphx_glr_download_auto_examples_memmap_plot_mman.py:

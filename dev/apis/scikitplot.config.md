@@ -12,3 +12,4 @@ Cite your source automatically (e.g., .bib, .cff, APA, MLA, IEEE, AMA, Chicago, 
 | --- | --- |
 | [`__bibtex__`](../modules/generated/scikitplot.config.__bibtex__.html#scikitplot.config.__bibtex__ "scikitplot.config.__bibtex__") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
 | [`__citation__`](../modules/generated/scikitplot.config.__citation__.html#scikitplot.config.__citation__ "scikitplot.config.__citation__") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
+| [`citation`](../modules/generated/scikitplot.config.citation.html#scikitplot.config.citation "scikitplot.config.citation") | Return a BibTeX citation of scikit-plots. |

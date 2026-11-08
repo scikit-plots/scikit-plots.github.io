@@ -1,6 +1,6 @@
 # filter\_to\_dict[#](#filter-to-dict "Link to this heading")
 
-scikitplot.corpus.filter\_to\_dict(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L586)[#](#scikitplot.corpus.filter_to_dict "Link to this definition")
+scikitplot.corpus.filter\_to\_dict(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_filters.py#L588)[#](#scikitplot.corpus.filter_to_dict "Link to this definition")
 :   Return the JSON form of a filter expression.
 
     Parameters:

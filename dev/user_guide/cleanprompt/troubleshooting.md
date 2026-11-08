@@ -54,9 +54,10 @@ use.
 
 ****A value with an odd character in it was missed.****
 :   Invisible format characters, full-width letters and Unicode spaces or
-    dashes are read through the detection view. Look-alike letters from
-    another script, and a non-ASCII letter inside an email address, are not
-    covered yet ([What it protects, and what it does not](security_and_limits.html#cleanprompt-security)); use `--hide`.
+    dashes are read through the detection view, as are letters and digits of
+    another script that look like ASCII ones, and email addresses may hold
+    letters of any script. A disguise outside these
+    ([What it protects, and what it does not](security_and_limits.html#cleanprompt-security)) needs `--hide`.
 
 ****The model rewrote a placeholder and it was not restored.****
 :   `decode` repairs case, separator, Markdown escaping and line-wrap
@@ -85,7 +86,14 @@ use.
 :   Python’s regular expressions backtrack, and a pattern with nested
     repetition can take exponential time on a near-match. Such patterns are
     reported when they load; `cleanprompt packs --pack-file FILE --check`
-    lists them with rewrites ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)).
+    lists them with rewrites ([A pack file is trusted like code](files_and_packs.html#cleanprompt-pack-trust)). To stop a run
+    from hanging whatever the pattern, set `--pattern-timeout SECONDS`
+    (needs `regex`; [A time limit for custom patterns](files_and_packs.html#cleanprompt-pattern-timeout)).
+
+****A run stops with ``PatternTimeoutError``.****
+:   That document was not cleaned, and nothing from it was written. Rewrite
+    the named pattern (`packs --check` suggests how), raise the limit, or
+    leave the pack out of the run.
 
 ****A ``warning: … nested-quantifier`` line appears when my pack loads.****
 :   The pack loaded and the run continues; the warning goes to standard
@@ -99,6 +107,13 @@ use.
 :   It needs `--style surrogate`; the set only changes which names are used.
     A set that lists `EMAIL`, `PHONE`, `URL` or a credential kind is
     refused because those forms are fixed ([Your own invented names](how_it_works.html#cleanprompt-surrogate-sets)).
+
+****A set entry “is listed under avoid”.****
+:   The entry equals a word in the set’s own `avoid` list, ignoring case
+    and separators, so `decode` would rewrite that word wherever the reply
+    used it. Remove the entry or the word. A run that issues fewer stand-ins
+    than expected may be skipping avoided combined names or built-in names;
+    the remaining values get placeholders.
 
 ****Encoding says “Appending would mix two kinds of stand-in”.****
 :   The vault was written with another `--style` or surrogate set; the

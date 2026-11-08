@@ -219,6 +219,11 @@ Class inheritance
 | [`SufficiencySignals`](../modules/generated/scikitplot.corpus.SufficiencySignals.html#scikitplot.corpus.SufficiencySignals "scikitplot.corpus.SufficiencySignals") | The seven deterministic signals, computed before any model judgement. |
 | [`route`](../modules/generated/scikitplot.corpus.route.html#scikitplot.corpus.route "scikitplot.corpus.route") | Choose evidence paths by deterministic rule (autonomy level A1). |
 | [`run_investigation`](../modules/generated/scikitplot.corpus.run_investigation.html#scikitplot.corpus.run_investigation "scikitplot.corpus.run_investigation") | Run the bounded retrieve/evaluate/refine loop (autonomy level A2). |
+| [`RoutingPolicy`](../modules/generated/scikitplot.corpus.RoutingPolicy.html#scikitplot.corpus.RoutingPolicy "scikitplot.corpus.RoutingPolicy") | An ordered set of [`RoutingRule`](../modules/generated/scikitplot.corpus.RoutingRule.html#scikitplot.corpus.RoutingRule "scikitplot.corpus.RoutingRule"), one per shape. |
+| [`RoutingRule`](../modules/generated/scikitplot.corpus.RoutingRule.html#scikitplot.corpus.RoutingRule "scikitplot.corpus.RoutingRule") | One shape: the words that reveal it and the evidence paths it needs. |
+| [`QueryShape`](../modules/generated/scikitplot.corpus.QueryShape.html#scikitplot.corpus.QueryShape "scikitplot.corpus.QueryShape") | The built-in shapes of [`DEFAULT_ROUTING_POLICY`](../modules/generated/scikitplot.corpus.DEFAULT_ROUTING_POLICY.html#scikitplot.corpus.DEFAULT_ROUTING_POLICY "scikitplot.corpus.DEFAULT_ROUTING_POLICY"). |
+| [`DEFAULT_ROUTING_POLICY`](../modules/generated/scikitplot.corpus.DEFAULT_ROUTING_POLICY.html#scikitplot.corpus.DEFAULT_ROUTING_POLICY "scikitplot.corpus.DEFAULT_ROUTING_POLICY") | An ordered set of [`RoutingRule`](../modules/generated/scikitplot.corpus.RoutingRule.html#scikitplot.corpus.RoutingRule "scikitplot.corpus.RoutingRule"), one per shape. |
+| [`query_tokens`](../modules/generated/scikitplot.corpus.query_tokens.html#scikitplot.corpus.query_tokens "scikitplot.corpus.query_tokens") | Return the words a routing rule matches against. |
 
 ## Archive within Archive Handler[#](#archive-within-archive-handler "Link to this heading")
 
@@ -497,6 +502,11 @@ Class inheritance
 | [`r_precision`](../modules/generated/scikitplot.corpus.r_precision.html#scikitplot.corpus.r_precision "scikitplot.corpus.r_precision") | Precision at `|R|`, the number of relevant identifiers of each query. |
 | [`ranking_metrics`](../modules/generated/scikitplot.corpus.ranking_metrics.html#scikitplot.corpus.ranking_metrics "scikitplot.corpus.ranking_metrics") | Compute several ranking metrics in one validated pass. |
 | [`recall_at_k`](../modules/generated/scikitplot.corpus.recall_at_k.html#scikitplot.corpus.recall_at_k "scikitplot.corpus.recall_at_k") | Fraction of the relevant identifiers found in the first `k`. |
+| [`binary_log_loss`](../modules/generated/scikitplot.corpus.binary_log_loss.html#scikitplot.corpus.binary_log_loss "scikitplot.corpus.binary_log_loss") | Mean negative log-likelihood of binary outcomes under the probabilities. |
+| [`brier_score`](../modules/generated/scikitplot.corpus.brier_score.html#scikitplot.corpus.brier_score "scikitplot.corpus.brier_score") | Mean squared difference between probabilities and binary outcomes. |
+| [`calibration_report`](../modules/generated/scikitplot.corpus.calibration_report.html#scikitplot.corpus.calibration_report "scikitplot.corpus.calibration_report") | Every calibration measure for one set of labelled probabilities. |
+| [`expected_calibration_error`](../modules/generated/scikitplot.corpus.expected_calibration_error.html#scikitplot.corpus.expected_calibration_error "scikitplot.corpus.expected_calibration_error") | Count-weighted mean absolute gap between prediction and observation. |
+| [`reliability_table`](../modules/generated/scikitplot.corpus.reliability_table.html#scikitplot.corpus.reliability_table "scikitplot.corpus.reliability_table") | Per-bin mean predicted probability against observed relevance frequency. |
 | [`anls_score`](../modules/generated/scikitplot.corpus.anls_score.html#scikitplot.corpus.anls_score "scikitplot.corpus.anls_score") | Average normalised Levenshtein similarity (ANLS). |
 | [`edit_similarity`](../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity "scikitplot.corpus.edit_similarity") | Return `1 - levenshtein(a, b) / max(len(a), len(b))`. |
 | [`edit_similarity_score`](../modules/generated/scikitplot.corpus.edit_similarity_score.html#scikitplot.corpus.edit_similarity_score "scikitplot.corpus.edit_similarity_score") | Mean normalised edit similarity between predictions and references. |
@@ -739,6 +749,16 @@ Class inheritance
 | [`LegContribution`](../modules/generated/scikitplot.corpus.LegContribution.html#scikitplot.corpus.LegContribution "scikitplot.corpus.LegContribution") | One leg's contribution to a fused hit. |
 | [`LegResult`](../modules/generated/scikitplot.corpus.LegResult.html#scikitplot.corpus.LegResult "scikitplot.corpus.LegResult") | What one leg produced, and how it went. |
 | [`LexicalRetriever`](../modules/generated/scikitplot.corpus.LexicalRetriever.html#scikitplot.corpus.LexicalRetriever "scikitplot.corpus.LexicalRetriever") | Keyword / BM25 evidence path. |
+| [`LogOddsContribution`](../modules/generated/scikitplot.corpus.LogOddsContribution.html#scikitplot.corpus.LogOddsContribution "scikitplot.corpus.LogOddsContribution") | One leg's evidence for one fused item. |
+| [`LogOddsFusedItem`](../modules/generated/scikitplot.corpus.LogOddsFusedItem.html#scikitplot.corpus.LogOddsFusedItem "scikitplot.corpus.LogOddsFusedItem") | One item of a probability-fused ranking. |
+| [`LogOddsFusion`](../modules/generated/scikitplot.corpus.LogOddsFusion.html#scikitplot.corpus.LogOddsFusion "scikitplot.corpus.LogOddsFusion") | Pool calibrated legs as log-odds evidence into probabilities of relevance. |
+| [`LogOddsFusionResult`](../modules/generated/scikitplot.corpus.LogOddsFusionResult.html#scikitplot.corpus.LogOddsFusionResult "scikitplot.corpus.LogOddsFusionResult") | A fused ranking and the diagnostics needed to trust it. |
+| [`CUT_MODES`](../modules/generated/scikitplot.corpus.CUT_MODES.html#scikitplot.corpus.CUT_MODES "scikitplot.corpus.CUT_MODES") | Built-in immutable sequence. |
+| [`CachedSearch`](../modules/generated/scikitplot.corpus.CachedSearch.html#scikitplot.corpus.CachedSearch "scikitplot.corpus.CachedSearch") | Exact, bounded cache in front of one retrieval index. |
+| [`CutPolicy`](../modules/generated/scikitplot.corpus.CutPolicy.html#scikitplot.corpus.CutPolicy "scikitplot.corpus.CutPolicy") | A rule for how many ranked hits to keep. |
+| [`CutResult`](../modules/generated/scikitplot.corpus.CutResult.html#scikitplot.corpus.CutResult "scikitplot.corpus.CutResult") | Where a list was cut, and why. |
+| [`PROBABILITY_FUSION_LEGS`](../modules/generated/scikitplot.corpus.PROBABILITY_FUSION_LEGS.html#scikitplot.corpus.PROBABILITY_FUSION_LEGS "scikitplot.corpus.PROBABILITY_FUSION_LEGS") | Built-in immutable sequence. |
+| [`ProbabilityFusion`](../modules/generated/scikitplot.corpus.ProbabilityFusion.html#scikitplot.corpus.ProbabilityFusion "scikitplot.corpus.ProbabilityFusion") | Opt-in probability fusion for hybrid search: a policy and a calibrator per leg. |
 | [`Retriever`](../modules/generated/scikitplot.corpus.Retriever.html#scikitplot.corpus.Retriever "scikitplot.corpus.Retriever") | Base class for an independent evidence path. |
 | [`fuse_by_rank`](../modules/generated/scikitplot.corpus.fuse_by_rank.html#scikitplot.corpus.fuse_by_rank "scikitplot.corpus.fuse_by_rank") | Combine leg results by weighted reciprocal rank fusion. |
 

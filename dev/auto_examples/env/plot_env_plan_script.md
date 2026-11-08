@@ -63,11 +63,11 @@ show(plan.render())
 
 ```
 ```
-plan 90f52e12da72  ensure <tmp>/demo
+plan e51594f6df76  ensure <tmp>/demo
   target   host
   backend  venv - named in the request
   1. create a venv with Python 3.12.16
-     $ /home/circleci/.pyenv/versions/3.12.16/bin/python3.12 -m venv <tmp>/demo
+     $ /home/circleci/.pyenv/versions/3.12.16/bin/python -m venv <tmp>/demo
   2. import json
      $ <tmp>/demo/bin/python -I -c 'import importlib, sys; [importlib.import_module(m) for m in sys.argv[1:]]' json
 
@@ -195,9 +195,9 @@ anything built? False
 
 Tags: [model-workflow: env](../../_tags/model-workflow-env.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html)
 
-****Total running time of the script:**** (0 minutes 0.013 seconds)
+****Total running time of the script:**** (0 minutes 0.011 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo24.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_plan_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo24.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_plan_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo9.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_plan_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo9.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_plan_script.ipynb)
 
 [`Download Jupyter notebook: plot_env_plan_script.ipynb`](../../_downloads/61bad83f88c30e3eb4ae2286aa2d1648/plot_env_plan_script.ipynb)
 

@@ -61,6 +61,49 @@ I1-I9 are listed in `maintenances/agent/todo/todo.md`.
 | [`Action`](../modules/generated/scikitplot.agent.Action.html#scikitplot.agent.Action "scikitplot.agent.Action") | A call the planner proposes: a tool name and its arguments. |
 | [`Usage`](../modules/generated/scikitplot.agent.Usage.html#scikitplot.agent.Usage "scikitplot.agent.Usage") | What producing one decision cost, as the planner reports it. |
 
+## Sub-runs and evaluation[#](#sub-runs-and-evaluation "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`delegate`](../modules/generated/scikitplot.agent.delegate.html#scikitplot.agent.delegate "scikitplot.agent.delegate") | Return a tool that runs `child` toward the goal it is called with. |
+| [`DelegateTool`](../modules/generated/scikitplot.agent.DelegateTool.html#scikitplot.agent.DelegateTool "scikitplot.agent.DelegateTool") | A tool whose call is a bounded run of `child`. |
+| [`evaluate_audit`](../modules/generated/scikitplot.agent.evaluate_audit.html#scikitplot.agent.evaluate_audit "scikitplot.agent.evaluate_audit") | Summarise every run in an audit trail. |
+| [`AuditEvaluation`](../modules/generated/scikitplot.agent.AuditEvaluation.html#scikitplot.agent.AuditEvaluation "scikitplot.agent.AuditEvaluation") | Per-run summaries and aggregate rates. |
+| [`RunSummary`](../modules/generated/scikitplot.agent.RunSummary.html#scikitplot.agent.RunSummary "scikitplot.agent.RunSummary") | What one run did, read from its audit records. |
+
+## Workflow graphs[#](#workflow-graphs "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`WorkflowGraph`](../modules/generated/scikitplot.agent.WorkflowGraph.html#scikitplot.agent.WorkflowGraph "scikitplot.agent.WorkflowGraph") | A checked, immutable workflow: nodes, edges and channels. |
+| [`Task`](../modules/generated/scikitplot.agent.Task.html#scikitplot.agent.Task "scikitplot.agent.Task") | A node that calls one tool. |
+| [`FanOut`](../modules/generated/scikitplot.agent.FanOut.html#scikitplot.agent.FanOut "scikitplot.agent.FanOut") | A node that calls several tools, then joins their results. |
+| [`Branch`](../modules/generated/scikitplot.agent.Branch.html#scikitplot.agent.Branch "scikitplot.agent.Branch") | One branch of a [`FanOut`](../modules/generated/scikitplot.agent.FanOut.html#scikitplot.agent.FanOut "scikitplot.agent.FanOut"): a tool and its arguments. |
+| [`Finish`](../modules/generated/scikitplot.agent.Finish.html#scikitplot.agent.Finish "scikitplot.agent.Finish") | A node that ends the run with an answer. |
+| [`Edge`](../modules/generated/scikitplot.agent.Edge.html#scikitplot.agent.Edge "scikitplot.agent.Edge") | A transition from `source` to `target`, taken when `when` is true. |
+| [`WorkflowView`](../modules/generated/scikitplot.agent.WorkflowView.html#scikitplot.agent.WorkflowView "scikitplot.agent.WorkflowView") | Where a run stands in its workflow, rebuilt from the recorded steps. |
+| [`StepSummary`](../modules/generated/scikitplot.agent.StepSummary.html#scikitplot.agent.StepSummary "scikitplot.agent.StepSummary") | What one recorded step came to, as a callback sees it. |
+| [`REDUCERS`](../modules/generated/scikitplot.agent.REDUCERS.html#scikitplot.agent.REDUCERS "scikitplot.agent.REDUCERS") |  |
+| [`WorkflowError`](../modules/generated/scikitplot.agent.WorkflowError.html#scikitplot.agent.WorkflowError "scikitplot.agent.WorkflowError") | A graph that cannot be built, or a run the graph cannot continue. |
+| [`WorkflowBranchError`](../modules/generated/scikitplot.agent.WorkflowBranchError.html#scikitplot.agent.WorkflowBranchError "scikitplot.agent.WorkflowBranchError") | A branch of a concurrent fan-out raised; the fan-out step failed. |
+
+## Artifacts[#](#artifacts "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`ArtifactStore`](../modules/generated/scikitplot.agent.ArtifactStore.html#scikitplot.agent.ArtifactStore "scikitplot.agent.ArtifactStore") | Keeps JSON values under the digest of their canonical form. |
+| [`MemoryArtifactStore`](../modules/generated/scikitplot.agent.MemoryArtifactStore.html#scikitplot.agent.MemoryArtifactStore "scikitplot.agent.MemoryArtifactStore") | Keep artifacts in memory, as their canonical JSON text. |
+| [`DirectoryArtifactStore`](../modules/generated/scikitplot.agent.DirectoryArtifactStore.html#scikitplot.agent.DirectoryArtifactStore "scikitplot.agent.DirectoryArtifactStore") | Keep each artifact in `<directory>/<first two digits>/<digest>.json`. |
+
+## Plans[#](#plans "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`PlanItem`](../modules/generated/scikitplot.agent.PlanItem.html#scikitplot.agent.PlanItem "scikitplot.agent.PlanItem") | One item of a plan. |
+| [`PlanStatus`](../modules/generated/scikitplot.agent.PlanStatus.html#scikitplot.agent.PlanStatus "scikitplot.agent.PlanStatus") | Where one plan item stands. |
+| [`MAX_PLAN_ITEMS`](../modules/generated/scikitplot.agent.MAX_PLAN_ITEMS.html#scikitplot.agent.MAX_PLAN_ITEMS "scikitplot.agent.MAX_PLAN_ITEMS") | int([x]) -> integer int(x, base=10) -> integer |
+| [`check_plan_change`](../modules/generated/scikitplot.agent.check_plan_change.html#scikitplot.agent.check_plan_change "scikitplot.agent.check_plan_change") | Refuse a plan change that would hide or rewrite progress. |
+
 ## Tools, policy and limits[#](#tools-policy-and-limits "Link to this heading")
 
 |  |  |

@@ -133,12 +133,12 @@ The magic runs the line in the notebook's namespace; here
 
  .. code-block:: none
 
-    3 calls in 0.0389 s; 3 of 3 functions by cumulative
+    3 calls in 0.0298 s; 3 of 3 functions by cumulative
 
           ncalls    tottime    cumtime  function
-               1   0.000032   0.038872  <built-in method builtins.exec>
-               1   0.000002   0.038839  <string>:1(<module>)
-               1   0.038837   0.038837  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+               1   0.000063   0.029710  <built-in method builtins.exec>
+               1   0.000004   0.029647  <string>:1(<module>)
+               1   0.029643   0.029643  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
 
 
 
@@ -175,13 +175,13 @@ gives the same table.
 
  .. code-block:: none
 
-    50006 calls in 0.0247 s; 4 of 6 functions by ncalls
+    50006 calls in 0.0252 s; 4 of 6 functions by ncalls
 
           ncalls    tottime    cumtime  function
-           50001   0.007353   0.007353  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
-               1   0.010468   0.010468  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
-               1   0.000006   0.014144  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
-               1   0.000004   0.024616  <string>:1(<module>)
+           50001   0.008803   0.008803  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
+               1   0.007003   0.007003  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+               1   0.000014   0.018024  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
+               1   0.000010   0.025038  <string>:1(<module>)
 
 
 
@@ -250,20 +250,20 @@ spaces: ``-D "my run.prof"``.
  .. code-block:: none
 
     written: my run.prof
-    Thu Oct 29 06:16:52 2026    /tmp/skplt-profile-n7m36n2f/my run.prof
+    Sun Nov  8 15:22:19 2026    /tmp/skplt-profile-6bkwh36t/my run.prof
 
-             4 function calls in 0.011 seconds
+             4 function calls in 0.016 seconds
 
        Ordered by: cumulative time
        List reduced from 4 to 2 due to restriction <2>
 
        ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-            1    0.000    0.000    0.011    0.011 {built-in method builtins.exec}
-            1    0.000    0.000    0.011    0.011 <string>:1(<module>)
+            1    0.000    0.000    0.016    0.016 {built-in method builtins.exec}
+            1    0.000    0.000    0.016    0.016 <string>:1(<module>)
 
 
 
-    <pstats.Stats object at 0x7bc00152c590>
+    <pstats.Stats object at 0x7126fa754ce0>
 
 
 
@@ -397,7 +397,7 @@ exits. A documentation build starts one only when
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.090 seconds)
+   **Total running time of the script:** (0 minutes 0.084 seconds)
 
 
 .. _sphx_glr_download_auto_examples_ipymagic_plot_ipymagic_scikit-plots_profiler.py:

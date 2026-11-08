@@ -57,7 +57,12 @@ Agentic Retrieval Session
   StopReason  
   SufficiencySignals  
   route  
-  run_investigation
+  run_investigation  
+  RoutingPolicy  
+  RoutingRule  
+  QueryShape  
+  DEFAULT_ROUTING_POLICY  
+  query_tokens
 
 .. _corpus_ref-archive-within-archive-handler:
 
@@ -397,6 +402,11 @@ Evaluation: Retrieval and Answer Metrics, Scorers
   r_precision  
   ranking_metrics  
   recall_at_k  
+  binary_log_loss  
+  brier_score  
+  calibration_report  
+  expected_calibration_error  
+  reliability_table  
   anls_score  
   edit_similarity  
   edit_similarity_score  
@@ -721,6 +731,16 @@ Retriever
   LegContribution  
   LegResult  
   LexicalRetriever  
+  LogOddsContribution  
+  LogOddsFusedItem  
+  LogOddsFusion  
+  LogOddsFusionResult  
+  CUT_MODES  
+  CachedSearch  
+  CutPolicy  
+  CutResult  
+  PROBABILITY_FUSION_LEGS  
+  ProbabilityFusion  
   Retriever  
   fuse_by_rank
 

@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -44,10 +44,10 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
 
     System Information:
                        python: 3.12.16 (main, Oct 27 2026, 00:06:27) [GCC 11.4.0]
-                   executable: /home/circleci/.pyenv/versions/3.12.16/bin/python3.12
+                   executable: /home/circleci/.pyenv/versions/3.12.16/bin/python
         python_implementation: CPython
                      libc_ver: ('glibc', '2.35')
-                           OS: Linux-7.0.0-1014-aws-x86_64-with-glibc2.35
+                           OS: Linux-7.0.0-1016-aws-x86_64-with-glibc2.35
                  architecture: x86_64
                           CPU: x86_64
                         cores: 36
@@ -56,17 +56,17 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20261029.1037dde
-                          pip: 26.2.2
+                   scikitplot: 0.5.dev0+git.20261108.f7759b5
+                          pip: 26.3
                    setuptools: 84.2.1
-                       cython: 3.3.0
+                       cython: 3.3.1
                         numpy: 2.5.4
                         scipy: 1.18.1
                       aggdraw: 1.4.1
-                       pandas: 3.1.0
+                       pandas: 3.1.1
                    matplotlib: 3.11.2
                        joblib: 1.6.0
-                threadpoolctl: 3.7.0
+                threadpoolctl: 3.8.0
                  scikit-learn: 1.9.1
                       seaborn: 0.13.2
 
@@ -103,27 +103,27 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
     ```
     ```
     {'system': {'python': '3.12.16 (main, Oct 27 2026, 00:06:27) [GCC 11.4.0]',
-      'executable': '/home/circleci/.pyenv/versions/3.12.16/bin/python3.12',
+      'executable': '/home/circleci/.pyenv/versions/3.12.16/bin/python',
       'python_implementation': 'CPython',
       'libc_ver': ('glibc', '2.35'),
-      'OS': 'Linux-7.0.0-1014-aws-x86_64-with-glibc2.35',
+      'OS': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.35',
       'architecture': 'x86_64',
       'CPU': 'x86_64',
       'cores': 36,
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20261029.1037dde',
-      'pip': '26.2.2',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20261108.f7759b5',
+      'pip': '26.3',
       'setuptools': '84.2.1',
-      'cython': '3.3.0',
+      'cython': '3.3.1',
       'numpy': '2.5.4',
       'scipy': '1.18.1',
       'aggdraw': '1.4.1',
-      'pandas': '3.1.0',
+      'pandas': '3.1.1',
       'matplotlib': '3.11.2',
       'joblib': '1.6.0',
-      'threadpoolctl': '3.7.0',
+      'threadpoolctl': '3.8.0',
       'scikit-learn': '1.9.1',
       'seaborn': '0.13.2'},
      'environment': {'runtime_envs': ['docker'],
@@ -154,7 +154,7 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                    executable: /home/circleci/.pyenv/versions/3.12.16/bin/python
         python_implementation: CPython
                      libc_ver: ('glibc', '2.35')
-                           OS: Linux-7.0.0-1014-aws-x86_64-with-glibc2.35
+                           OS: Linux-7.0.0-1016-aws-x86_64-with-glibc2.35
                  architecture: x86_64
                           CPU: x86_64
                         cores: 36
@@ -163,17 +163,17 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20261029.1037dde
-                          pip: 26.2.2
+                   scikitplot: 0.5.dev0+git.20261108.f7759b5
+                          pip: 26.3
                    setuptools: 84.2.1
-                       cython: 3.3.0
+                       cython: 3.3.1
                         numpy: 2.5.4
                         scipy: 1.18.1
                       aggdraw: 1.4.1
-                       pandas: 3.1.0
+                       pandas: 3.1.1
                    matplotlib: 3.11.2
                        joblib: 1.6.0
-                threadpoolctl: 3.7.0
+                threadpoolctl: 3.8.0
                  scikit-learn: 1.9.1
                       seaborn: 0.13.2
 

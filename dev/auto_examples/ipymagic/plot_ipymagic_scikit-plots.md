@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # Run scikit-plots Commands from a Notebook[#](#run-scikit-plots-commands-from-a-notebook "Link to this heading")
 
 `%scikitplot` runs any `scikitplot` command inside a notebook and returns
-a `CommandResult` you can keep, test and pass on. This example walks
+a [`CommandResult`](../../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult "scikitplot._ipymagic.CommandResult") you can keep, test and pass on. This example walks
 through the everyday cases and the ones that go wrong, in the order a new
 user meets them:
 
@@ -65,7 +65,7 @@ if _shell is not None:
 ```
 
 The command’s output is shown as in a terminal; the magic returns a
-`CommandResult`. `info`, `doctor`, `show-versions` run in the
+[`CommandResult`](../../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult "scikitplot._ipymagic.CommandResult"). `info`, `doctor`, `show-versions` run in the
 kernel itself (fast), and the kernel’s logging is left as it was.
 
 ```
@@ -75,12 +75,12 @@ print("exit code:", result.exit_code, "| ok:", result.ok, "| ran:", result.mode)
 
 ```
 ```
-scikitplot.version: 0.5.dev0+git.20261029.1037dde
+scikitplot.version: 0.5.dev0+git.20261108.f7759b5
 python.version: 3.12.16
 python.implementation: CPython
-python.executable: /home/circleci/.pyenv/versions/3.12.16/bin/python3.12
+python.executable: /home/circleci/.pyenv/versions/3.12.16/bin/python
 platform.system: Linux
-platform.release: 7.0.0-1014-aws
+platform.release: 7.0.0-1016-aws
 platform.machine: x86_64
 scikitplot info: exit 0 in 0.01 s (in-process)
 exit code: 0 | ok: True | ran: in-process
@@ -148,7 +148,7 @@ MagicUsageError [usage]: 'evn' is not a scikitplot command
 
 ```
 
-`route` shows where a command would run, without running it. The
+[`route`](../../modules/generated/scikitplot._ipymagic.route.html#scikitplot._ipymagic.route "scikitplot._ipymagic.route") shows where a command would run, without running it. The
 decision comes from the CLI’s own registry, so it cannot drift from it:
 delegated commands (`env`, `mcp`, `cleanprompt`) run in a subprocess.
 
@@ -179,7 +179,7 @@ print(err.getvalue().strip().splitlines()[-1])
 
 ```
 ```
-scikitplot info: exit 2 in 0.01 s (in-process)
+scikitplot info: exit 2 in 0.00 s (in-process)
 scikitplot: error: unrecognized arguments: --no-such-option
 
 ```
@@ -210,7 +210,7 @@ refused: timeout='-1' must be a positive number of seconds
 
 ```
 
-With `raise_on_error=true` a failure raises `CommandFailedError`,
+With `raise_on_error=true` a failure raises [`CommandFailedError`](../../modules/generated/scikitplot._ipymagic.CommandFailedError.html#scikitplot._ipymagic.CommandFailedError "scikitplot._ipymagic.CommandFailedError"),
 which stops “Run all”; the result travels with the exception.
 
 ```
@@ -222,7 +222,7 @@ except CommandFailedError as exc:
 
 ```
 ```
-raised: scikitplot info: exit 2 in 0.01 s (in-process)
+raised: scikitplot info: exit 2 in 0.00 s (in-process)
 exit code kept on the exception: 2
 
 ```
@@ -230,7 +230,7 @@ exit code kept on the exception: 2
 ## Tab completion[#](#tab-completion "Link to this heading")
 
 `%scikitplot <TAB>` completes command names, then a native command’s
-options and fixed values. `complete` is what the notebook calls:
+options and fixed values. [`complete`](../../modules/generated/scikitplot._ipymagic.complete.html#scikitplot._ipymagic.complete "scikitplot._ipymagic.complete") is what the notebook calls:
 
 ```
 print(complete("%scikitplot sh"))
@@ -252,9 +252,9 @@ command sees them: `name = "analysis"` then
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html)
 
-****Total running time of the script:**** (0 minutes 0.040 seconds)
+****Total running time of the script:**** (0 minutes 0.029 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo25.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo25.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)
+[![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)
 
 [`Download Jupyter notebook: plot_ipymagic_scikit-plots.ipynb`](../../_downloads/e516b31d589b2e5c50eee6c48210f5b8/plot_ipymagic_scikit-plots.ipynb)
 

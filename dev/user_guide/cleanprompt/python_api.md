@@ -95,7 +95,11 @@ placeholder the handle never issued, instead of leaving it in place.
 
 `policy=` / `registry=`
 :   A full [`RedactionPolicy`](../../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy") or [`DetectorRegistry`](../../modules/generated/scikitplot.cleanprompt.DetectorRegistry.html#scikitplot.cleanprompt.DetectorRegistry "scikitplot.cleanprompt.DetectorRegistry"), for the
-    cases the keywords do not cover.
+    cases the keywords do not cover. `RedactionPolicy(actions={"EMAIL":
+    "surrogate", "CREDIT_CARD": "block"})` chooses what happens to each kind
+    ([One action per kind](how_it_works.html#cleanprompt-actions)); a value whose action is `report` stays in
+    the text and is listed in `reported`, and `block` raises
+    `BlockedError`.
 
 ### Profiles[#](#profiles "Link to this heading")
 

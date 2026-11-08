@@ -10,17 +10,17 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://scikit-plots.github.io/stable/user_guide/rank_bm25/performance_and_scaling.html" />
 <meta property="og:site_name" content="scikit-plots" />
-<meta property="og:description" content="Sparse retrieval uses an inverted postings view and accumulates scores only for rows containing query terms. Dense get_scores must touch/allocate one score per corpus row. The postings map is deriv..." />
+<meta property="og:description" content="Every query term’s contribution to every document that holds it is computed once per index – on the first query, or when you call prepare() – and stored term by term. A query then adds those stored..." />
 <meta property="og:image" content="https://scikit-plots.github.io/stable/_static/scikit-plots-logo-small.png" />
 <meta property="og:image:alt" content="scikit-plots" />
-<meta name="description" content="Sparse retrieval uses an inverted postings view and accumulates scores only for rows containing query terms. Dense get_scores must touch/allocate one score per corpus row. The postings map is deriv..." />
+<meta name="description" content="Every query term’s contribution to every document that holds it is computed once per index – on the first query, or when you call prepare() – and stored term by term. A query then adds those stored..." />
 
 <script>
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:25:57Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:37:30Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/rank_bm25/performance_and_scaling","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -43,8 +43,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -68,10 +68,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -94,7 +94,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/rank_bm25/performance_and_scaling';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -109,7 +109,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Python API" href="python_api.html" />
+    <link rel="next" title="Score calibration" href="calibration.html" />
     <link rel="prev" title="Persistence and reproducibility" href="persistence_and_reproducibility.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -162,7 +162,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -332,14 +332,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -416,7 +416,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   
 
   
-    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -430,7 +430,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -557,14 +557,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -857,6 +857,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="retrieval_and_identity.html">Retrieval and identity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="persistence_and_reproducibility.html">Persistence and reproducibility</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Performance and scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calibration.html">Score calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage_scenarios.html">Rank-BM25 Usage Scenarios</a></li>
@@ -916,6 +917,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../_ipymagic/automation.html">CI, scripts and agents</a></li>
 </ul>
 </details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../metadata_routing.html">Metadata routing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
 <ul class="nav bd-sidenav">
@@ -992,7 +996,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -1020,16 +1024,65 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
                   
   <section id="performance-and-scaling">
 <span id="rank-bm25-performance-and-scaling"></span><h1>Performance and scaling<a class="headerlink" href="#performance-and-scaling" title="Link to this heading">#</a></h1>
-<p>Sparse retrieval uses an inverted postings view and accumulates scores only for
-rows containing query terms. Dense <code class="docutils literal notranslate"><span class="pre">get_scores</span></code> must touch/allocate one score
-per corpus row.</p>
-<p>The postings map is derived lazily and cached. Corpus tokenization can use
-multiple workers, but query scoring is not turned into a distributed service by
-that setting.</p>
+<p>Every query term’s contribution to every document that holds it is computed
+once per index – on the first query, or when you call <code class="docutils literal notranslate"><span class="pre">prepare()</span></code> – and
+stored term by term. A query then adds those stored values, in query order,
+for each document; documents without a term receive that term’s absent-term
+value. The results are bit-identical to evaluating the formula directly
+(<code class="docutils literal notranslate"><span class="pre">backend=&quot;reference&quot;</span></code>), so switching backend never changes a score, a tie
+order or <code class="docutils literal notranslate"><span class="pre">identity</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.rank_bm25</span><span class="w"> </span><span class="kn">import</span> <span class="n">BM25Okapi</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">BM25Okapi</span><span class="p">(</span><span class="n">tokenized_corpus</span><span class="p">,</span> <span class="n">doc_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>  <span class="c1"># pay costs at start-up</span>
+<span class="n">index</span><span class="o">.</span><span class="n">backend</span>          <span class="c1"># "numba" when Numba is installed, else "numpy"</span>
+<span class="n">index</span><span class="o">.</span><span class="n">get_top_ids</span><span class="p">(</span><span class="n">query_tokens</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="backends">
+<h2>Backends<a class="headerlink" href="#backends" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">backend=&quot;auto&quot;</span></code> (default)</dt><dd><p>Numba when it can be imported, NumPy otherwise.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">backend=&quot;numpy&quot;</span></code></dt><dd><p>Vectorised NumPy; no compilation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">backend=&quot;numba&quot;</span></code></dt><dd><p>The same loop compiled; raises <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> at construction when Numba
+is not installed. Install it with the <code class="docutils literal notranslate"><span class="pre">rank-bm25</span></code> extra.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">backend=&quot;reference&quot;</span></code></dt><dd><p>The direct formula evaluation every other backend is tested against.</p>
+</dd>
+</dl>
+<p>An index can be queried from several threads at once on every backend. The
+compiled kernel is single-threaded and releases the GIL, so concurrent queries
+from different threads run in parallel; it starts no worker threads of its
+own, under any Numba threading layer.</p>
+<p>Numba is imported only when the compiled backend is first used. Compiling the
+kernel takes under a second in a new process and is cached on disk after
+that; <code class="docutils literal notranslate"><span class="pre">SCIKITPLOT_RANK_BM25_DISABLE_NUMBA=1</span></code> forces NumPy. A subclass that
+overrides the scoring formula always uses the reference evaluation.</p>
+</section>
+<section id="costs">
+<h2>Costs<a class="headerlink" href="#costs" title="Link to this heading">#</a></h2>
+<p>Measured on a synthetic 200 000-document corpus (about 20 million stored
+document–term pairs, two CPU cores): <code class="docutils literal notranslate"><span class="pre">get_top_ids</span></code> took about 600 ms per
+four-term query with the reference evaluation and about 2.5 ms with either
+NumPy or Numba. Building the stored contributions took about 5 s, roughly the
+cost of building the index itself, once per index. On two cores Numba was no
+faster than NumPy; measure on your own hardware before relying on a
+difference.</p>
+<p>Memory: the stored postings and contributions take about 24 bytes per
+document–term pair. An index built in the process also keeps its
+per-document term counts; an index loaded from a <code class="docutils literal notranslate"><span class="pre">bm25-index/2</span></code> generation
+does not, until a path that needs them runs (see
+<a class="reference internal" href="persistence_and_reproducibility.html#rank-bm25-persistence-and-reproducibility"><span class="std std-ref">Persistence and reproducibility</span></a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_batch_scores</span></code> still evaluates the formula for the requested rows only,
+which is the cheaper path when you score a handful of documents.</p>
+<p>Tokenization can use several processes (<code class="docutils literal notranslate"><span class="pre">workers=N</span></code>); query scoring runs in
+the calling process.</p>
 <p>Move to a larger search system when you need distributed indexing, concurrent
 mutation, service-level persistence, very large corpora, advanced analyzers, or
-hybrid/vector retrieval at a scale that exceeds an in-process NumPy/Python
-index. BM25 remains useful as a lexical leg in a hybrid retriever.</p>
+hybrid/vector retrieval at a scale that exceeds an in-process index. BM25
+remains useful as a lexical leg in a hybrid retriever.</p>
+</section>
 </section>
 
 
@@ -1052,11 +1105,11 @@ index. BM25 remains useful as a lexical leg in a hybrid retriever.</p>
       </div>
     </a>
     <a class="right-next"
-       href="python_api.html"
+       href="calibration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python API</p>
+        <p class="prev-next-title">Score calibration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1071,9 +1124,22 @@ index. BM25 remains useful as a lexical leg in a hybrid retriever.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backends">Backends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#costs">Costs</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   
@@ -1112,8 +1178,8 @@ index. BM25 remains useful as a lexical leg in a hybrid retriever.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1124,7 +1190,7 @@ index. BM25 remains useful as a lexical leg in a hybrid retriever.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
       <br/>
     
   </p>

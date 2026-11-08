@@ -14,3 +14,40 @@ identities do not imply equal documents.
 
 A bare callable tokenizer has no durable analyzer identity and therefore cannot
 be safely persisted as a reproducible declaration.
+
+## Generation format[#](#generation-format "Link to this heading")
+
+A generation written by this version (schema `bm25-index/2`) holds
+`index.json` and three arrays: `indptr.npy`, `rows.npy` and `tfs.npy`,
+the postings term by term (rows and counts as 32-bit integers when they fit).
+`index.json` records each array’s SHA-256, dtype and shape, and the
+generation’s name is the digest of `index.json`, so it covers the arrays too.
+`load` reads the arrays with `allow_pickle=False`, refuses any whose digest,
+dtype or shape differs, and recomputes the precomputed contributions from them
+with the recipe’s own formula, bit for bit; `load(..., mmap_mode="r")`
+memory-maps the arrays. The per-document term counts are rebuilt from the
+arrays only if a path needs them (`backend="reference"`,
+`get_batch_scores`).
+
+Measured on a synthetic 100 000-document index: the previous format
+(`bm25-index/1`, every document’s counts in the JSON) took 173 MB and 4.2 s to
+load and answer a first query; `bm25-index/2` took 82 MB and 0.6 s.
+Generations of `bm25-index/1` are not read: each was written with an earlier
+recipe version, so rebuild them from their corpus.
+
+## What `load` verifies[#](#what-load-verifies "Link to this heading")
+
+Before it rebuilds anything, `load` checks the generation against the class
+it is called on, and refuses with a `ValueError` that names the cause:
+
+* the recipe must be the class’s own (`BM25Plus.load` on a `BM25Okapi`
+  index says `load it with BM25Okapi`); an earlier version of the formula, or
+  an unknown recipe, is refused rather than rescored with the current one;
+* the parameters must be exactly the recipe’s, each inside the domain the
+  constructor enforces (a persisted `b=7` is refused);
+* the recorded `identity` must equal the one recomputed from the declared
+  recipe, analyzer and parameters, so edited metadata is refused;
+* each array must match its recorded SHA-256, dtype and shape.
+
+Load with the scorer class that built the index; `BM25.load` raises
+`TypeError` because the base class has no formula.

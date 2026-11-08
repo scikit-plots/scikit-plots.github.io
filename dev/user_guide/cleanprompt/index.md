@@ -37,6 +37,7 @@ front of you.
   * [4. Rewrite](how_it_works.html#rewrite)
   * [5. Restore](how_it_works.html#restore)
   * [Placeholders or surrogates](how_it_works.html#placeholders-or-surrogates)
+  * [Coverage](how_it_works.html#coverage)
   * [The guarantees, in plain words](how_it_works.html#the-guarantees-in-plain-words)
 **python**
 

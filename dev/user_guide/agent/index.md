@@ -165,6 +165,191 @@ after its last record, but the state can: it keeps `audit_head`, the last
 record’s number and digest, and a resume whose trail does not hold that
 record is refused with [`StateError`](../../modules/generated/scikitplot.agent.StateError.html#scikitplot.agent.StateError "scikitplot.agent.StateError").
 
+## Plans[#](#plans "Link to this heading")
+
+A planner may attach the whole plan to any decision (`plan=` on
+[`Decision.act`](../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.act "scikitplot.agent.Decision.act") and [`Decision.finish`](../../modules/generated/scikitplot.agent.Decision.html#scikitplot.agent.Decision.finish "scikitplot.agent.Decision.finish")); [`RunState.plan`](../../modules/generated/scikitplot.agent.RunState.html#scikitplot.agent.RunState.plan "scikitplot.agent.RunState.plan") is the
+plan as of the last decision that carried one. The plan travels with the
+decision, so it is saved, written to the audit trail and resumed with it, and a
+decision without `plan=` leaves it as it is.
+
+```
+from scikitplot.agent import PlanItem
+
+def planning(state, tools):
+    if not state.steps:
+        return Decision.act(
+            "lookup",
+            {"topic": "ids"},
+            plan=[PlanItem("look", "look up ids", "in_progress"),
+                  PlanItem("reply", "answer", "pending")],
+        )
+    return Decision.finish(
+        state.steps[-1].result,
+        plan=[PlanItem("look", "look up ids", "done"),
+              PlanItem("reply", "answer", "done")],
+    )
+
+state = Agent([lookup], planning, policy=Policy(granted_scopes={"docs:read"})).run("ids?")
+assert [item.status.value for item in state.plan] == ["done", "done"]
+
+```
+
+A plan cannot misreport progress. Every item of the plan in force must appear in
+the next one – an item is removed by marking it `dropped` – and `done` and
+`dropped` items keep their status and text. At most one item is
+`in_progress`. A change that breaks a rule fails the run with
+`invalid_decision`, and a saved state whose plan history breaks one is refused
+when it is loaded. A plan records intent; the gates, not the plan, decide what
+runs.
+
+## Large tool results[#](#large-tool-results "Link to this heading")
+
+Every state is saved after every step, so a tool that returns large results
+makes each save rewrite all of them. Give the agent an artifact store and a
+size: a result whose canonical JSON is longer than **offload\_results\_over**
+bytes is stored under its digest, and the step keeps only
+[`Step.result_ref`](../../modules/generated/scikitplot.agent.Step.html#scikitplot.agent.Step.result_ref "scikitplot.agent.Step.result_ref"), the digest and the size.
+
+```
+from scikitplot.agent import MemoryArtifactStore, delegate, evaluate_audit
+
+ROWS = {"rows": [{"id": i, "text": "x" * 40} for i in range(200)]}
+table = Tool(
+    "table",
+    lambda: ROWS,
+    parameters={"type": "object", "properties": {}, "additionalProperties": False},
+)
+store = MemoryArtifactStore()
+
+def reader(state, tools):
+    if not state.steps:
+        return Decision.act("table")
+    ref = state.steps[-1].result_ref
+    return Decision.finish(len(store.get(ref["digest"])["rows"]))
+
+agent = Agent([table], reader, artifacts=store, offload_results_over=1000)
+state = agent.run("count the rows")
+assert state.answer == 200 and state.steps[0].result is None
+
+```
+
+The digest is the step’s audited result digest, so the audit trail names each
+artifact. Reading an artifact recomputes its digest and refuses one whose
+content changed. [`DirectoryArtifactStore`](../../modules/generated/scikitplot.agent.DirectoryArtifactStore.html#scikitplot.agent.DirectoryArtifactStore "scikitplot.agent.DirectoryArtifactStore") writes each artifact
+atomically, like [`JsonFileStore`](../../modules/generated/scikitplot.agent.JsonFileStore.html#scikitplot.agent.JsonFileStore "scikitplot.agent.JsonFileStore"). In a measured run of ten 12 KB
+results the saved state was 126 KB inline and 6 KB with offloading. Results
+at or under the size stay inline, and a run without an artifact store saves
+exactly what it saved before.
+
+## Sub-runs[#](#sub-runs "Link to this heading")
+
+[`delegate`](../../modules/generated/scikitplot.agent.delegate.html#scikitplot.agent.delegate "scikitplot.agent.delegate") turns an agent into a tool the parent’s planner calls with
+`{"goal": ...}`. The child runs to its end and the tool returns its run id,
+status, stop reason, answer and spend; the parent’s state holds that, not the
+child’s steps.
+
+```
+child = Agent([lookup], planner, policy=Policy(granted_scopes={"docs:read"}))
+research = delegate("research", child, max_steps=4)
+
+def boss(state, tools):
+    if not state.steps:
+        return Decision.act("research", {"goal": "what is a chunk's text?"})
+    return Decision.finish(state.steps[-1].result["answer"])
+
+parent = Agent(
+    [research], boss, policy=Policy(granted_scopes={"docs:read"}),
+    limits=Limits(max_steps=4, max_tool_calls=3),
+)
+state = parent.run("ask the researcher")
+assert state.answer == "A chunk's text is a slice of its source."
+assert state.spent.tool_calls <= 3
+
+```
+
+A delegate has the strongest effect and every scope of the child’s tools, so the
+parent’s policy and approval decide a delegation as they would the child’s tools
+called directly. The child’s limits are the smaller of what the delegate asks
+for and what the parent has left, and its spend is charged to the parent, so a
+parent never spends more than its limits through its children. The child writes
+to the parent’s audit trail under a run id derived from the call, and the parent
+records a `subrun` event linking the two. A delegate is not idempotent: a
+parent stopped during a sub-run marks that step `interrupted`.
+
+## Workflow graphs[#](#workflow-graphs "Link to this heading")
+
+When the order of the steps is known, a [`WorkflowGraph`](../../modules/generated/scikitplot.agent.WorkflowGraph.html#scikitplot.agent.WorkflowGraph "scikitplot.agent.WorkflowGraph") writes it down
+instead of a planner: [`Task`](../../modules/generated/scikitplot.agent.Task.html#scikitplot.agent.Task "scikitplot.agent.Task") nodes call one tool, [`FanOut`](../../modules/generated/scikitplot.agent.FanOut.html#scikitplot.agent.FanOut "scikitplot.agent.FanOut") nodes
+call several, [`Finish`](../../modules/generated/scikitplot.agent.Finish.html#scikitplot.agent.Finish "scikitplot.agent.Finish") nodes answer, and [`Edge`](../../modules/generated/scikitplot.agent.Edge.html#scikitplot.agent.Edge "scikitplot.agent.Edge") objects choose
+the next node, optionally on a condition. Results are folded into named
+channels by reducers (`replace`, `append`, `extend`, `add`,
+`merge` or a function). The graph compiles into an ordinary planner, so
+every call still passes the five gates and is audited. A straight line is a
+[`WorkflowGraph.sequence`](../../modules/generated/scikitplot.agent.WorkflowGraph.html#scikitplot.agent.WorkflowGraph.sequence "scikitplot.agent.WorkflowGraph.sequence"):
+
+```
+from scikitplot.agent import Branch, Edge, FanOut, Finish, Task, WorkflowGraph
+
+flow = WorkflowGraph.sequence(
+    FanOut(
+        "read_both",
+        [
+            Branch("spans", lookup, {"topic": "spans"}),
+            Branch("ids", lookup, {"topic": "ids"}),
+        ],
+        mode="concurrent",
+        into="pages",
+    ),
+    Finish("answer", answer=lambda view: view.channels["pages"]["spans"]),
+    channels={"pages": "replace"},
+)
+agent = Agent(flow.tools(), flow.planner(), policy=Policy(granted_scopes={"docs:read"}))
+state = agent.run("read two pages at once")
+assert state.answer == "A chunk's text is a slice of its source."
+assert flow.replay(state).finished
+
+```
+
+A `"concurrent"` fan-out is one step whose tool runs every branch at the
+same time; the gates judge it as its branches together (strongest effect,
+union of scopes, sum of costs), its result is `{branch: result}` in
+declared order, and if a branch raises the whole step fails. An
+`"ordered"` fan-out is one audited step per branch, each gated on its own,
+so a denied branch leaves the others’ results.
+
+Loops are allowed only through a node with `max_visits`; when the bound is
+reached the run continues at the node’s `on_exhausted` node, and a
+[`Finish`](../../modules/generated/scikitplot.agent.Finish.html#scikitplot.agent.Finish "scikitplot.agent.Finish") whose answer the `done` criterion rejects continues at its
+`on_rejected` node. The graph is checked when it is built: every node
+reachable from the start, a [`Finish`](../../modules/generated/scikitplot.agent.Finish.html#scikitplot.agent.Finish "scikitplot.agent.Finish") reachable from every node, no
+cycle through unbounded nodes only, and no `on_exhausted` node that leads
+back to its node. So every graph that can be built terminates.
+
+The planner keeps no state of its own: at each decision it replays the
+recorded steps through the graph, checking each against what the graph would
+have done, so a resumed run continues where it stopped and a state that this
+graph did not produce is refused with [`WorkflowError`](../../modules/generated/scikitplot.agent.WorkflowError.html#scikitplot.agent.WorkflowError "scikitplot.agent.WorkflowError").
+[`WorkflowGraph.replay`](../../modules/generated/scikitplot.agent.WorkflowGraph.html#scikitplot.agent.WorkflowGraph.replay "scikitplot.agent.WorkflowGraph.replay") returns that position (node, channels, visit
+counts) and [`WorkflowView.digest`](../../modules/generated/scikitplot.agent.WorkflowView.html#scikitplot.agent.WorkflowView.digest "scikitplot.agent.WorkflowView.digest") its digest.
+
+## Evaluating runs[#](#evaluating-runs "Link to this heading")
+
+[`evaluate_audit`](../../modules/generated/scikitplot.agent.evaluate_audit.html#scikitplot.agent.evaluate_audit "scikitplot.agent.evaluate_audit") reads an audit trail – verified first, refused if it
+does not verify – and reports per run and over all top-level runs: how they
+ended, decisions, tool calls, denials by code, tool failures, approvals,
+sub-runs, plan changes, tokens, cost and wall time.
+
+```
+evaluation = evaluate_audit(parent.audit.records)
+evaluation.summary["completion_rate"]                 # 1.0
+[run.parent is not None for run in evaluation.runs]   # [False, True]
+
+```
+
+A run that has not ended is reported without a status and left out of the rates
+that need an end; sub-runs are listed with their parent and not counted twice.
+
 ## Measured[#](#measured "Link to this heading")
 
 On the corpus user guide (`recursive (500)` chunks, BM25 search) with 82

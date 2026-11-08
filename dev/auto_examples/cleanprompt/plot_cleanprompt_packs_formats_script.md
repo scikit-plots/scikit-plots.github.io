@@ -16,12 +16,13 @@ member_id,M-00412            nothing at all, to a pattern
 
 Packs close that gap. A ****pack**** is a validated YAML definition of what to hide
 in one domain — `personal`, `addressbook`, `patient`, `finance`,
-`secrets`, `records`, `email`, `cloud`, and `pandas`/`numpy`/
-`sklearn` for code. A ****format**** says how a kind of file is read — CSV by its
-header, JSON by its keys, `.env` by `KEY=value`, a Word file by extracting
-its text — and which packs suit it. [`FluentCleanPrompt`](../../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt") combines them
-into one immutable plan, and [`Cleaner`](../../modules/generated/scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner "scikitplot.cleanprompt.Cleaner") applies the plan to text, files,
-folders and zip archives under one shared vault.
+`secrets`, `records`, `email`, `cloud`, `vehicle`, `de`, and
+`pandas`/`numpy`/`sklearn` for code. A ****format**** says how a kind of
+file is read — CSV by its header, JSON by its keys, `.env` by
+`KEY=value`, a Word file by extracting its text — and which packs suit it.
+[`FluentCleanPrompt`](../../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt") combines them into one immutable plan, and
+[`Cleaner`](../../modules/generated/scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner "scikitplot.cleanprompt.Cleaner") applies the plan to text, files, folders and zip archives
+under one shared vault.
 
 Every value in this example is reserved and cannot reach anybody.
 
@@ -120,6 +121,30 @@ assert numbers.decode(numeric.text) == '{"mrn": 20417, "visits": 3}'
 
 ```
 
+A pack can also hold a checked pattern. `vehicle` finds a vehicle
+identification number in prose only when its check digit holds, so a
+seventeen-character product code is left alone, and next to its label it
+accepts one written without a check digit.
+
+```
+vehicles = FluentCleanPrompt().packs("vehicle").materialize()
+ticket = (
+    "VIN 1M8GDM9AXKP042788 rattles; the loan car is VIN: WVWZZZ3BZWE689725. "
+    "Part ABCDEFGHJK1234567 is on order."
+)
+cleaned = vehicles.encode_text(ticket)
+show("a support ticket", cleaned.text)
+assert "1M8GDM9AXKP042788" not in cleaned.text
+assert "ABCDEFGHJK1234567" in cleaned.text
+assert vehicles.decode(cleaned.text) == ticket
+
+```
+```
+── a support ticket ──
+VIN [VIN-1] rattles; the loan car is VIN: [VIN-2]. Part ABCDEFGHJK1234567 is on order.
+
+```
+
 ## 2. What is available[#](#what-is-available "Link to this heading")
 
 Everything is data, compiled into a JSON file the standard library reads, so
@@ -147,6 +172,7 @@ for name in ("csv", "json", "env", "notebook", "docx", "archive"):
 pack   personal     fields=9  patterns=3  Names, contact details, birth dates and national identifiers
 pack   addressbook  fields=7  patterns=1  Contact entries - organisation, role, postal and web details
 pack   cloud        fields=2  patterns=2  Drive, bucket, project, tenant and account identifiers, and
+pack   de           fields=1  patterns=1  German national identifiers (tax identification number).
 pack   email        fields=3  patterns=1  Message headers - senders, recipients, message ids and routi
 pack   finance      fields=4  patterns=2  Account and routing numbers, salaries, tax identifiers and c
 pack   numpy        fields=0  patterns=0  NumPy field-naming arguments and dtype codes, for notebooks
@@ -155,6 +181,7 @@ pack   patient      fields=9  patterns=4  Clinical identifiers, dates, diagnoses
 pack   records      fields=3  patterns=2  Customer, account, employee, student and device identifiers
 pack   secrets      fields=1  patterns=7  Passwords, tokens, API keys and connection strings in code a
 pack   sklearn      fields=0  patterns=0  scikit-learn column lists in ColumnTransformer and friends,
+pack   vehicle      fields=2  patterns=1  Vehicle identification numbers and registration plates.
 
 format csv       .csv             round trip=True  auto packs=finance,patient,personal,records,secrets
 format json      .geojson,.har,.json round trip=True  auto packs=finance,patient,personal,records,secrets
@@ -181,7 +208,7 @@ for selection in (("all",), ("addressbook",), ("personal", "finance")):
 
 ```
 ```
-all                    packs=['personal', 'addressbook', 'cloud', 'email', 'finance', 'numpy', 'pandas', 'patient', 'records', 'secrets', 'sklearn']
+all                    packs=['personal', 'addressbook', 'cloud', 'de', 'email', 'finance', 'numpy', 'pandas', 'patient', 'records', 'secrets', 'sklearn', 'vehicle']
    [PERSON-1],[EMAIL-1],[JOB-1],[ORG-1]
 addressbook            packs=['personal', 'addressbook']
    [PERSON-1],[EMAIL-1],[JOB-1],[ORG-1]
@@ -219,7 +246,7 @@ print("same plan, any order:", first.fingerprint()[:16])
 refused: packs is already set to ('patient',); pass conflict='replace' or conflict='extend'
 problem: style: 'fancy' is not one of placeholder, surrogate
 problem: formats: unknown format 'docz'; did you mean docx, .docx, .docm? Known formats: archive, csv, docx, email, env, html, ini, javascript, json, jsonl, markdown, notebook, pdf, pptx, python, rlang, rst, shell, sql, text, tsv, vcard, xlsx, yaml
-problem: packs: unknown pack 'patinet'; did you mean patient? Known packs: addressbook, cloud, email, finance, numpy, pandas, patient, personal, records, secrets, sklearn
+problem: packs: unknown pack 'patinet'; did you mean patient? Known packs: addressbook, cloud, de, email, finance, numpy, pandas, patient, personal, records, secrets, sklearn, vehicle
 same plan, any order: c63c7e3e49f2e48f
 
 ```
@@ -519,14 +546,14 @@ $ cleanprompt batch <workspace>/project --out <workspace>/cli-safe --pack all -f
         "status": "skipped",
         "relative": ".git/",
         "format": null,
-  ... (80 more)
+  ... (87 more)
   exit 1
 $ cleanprompt batch <workspace>/cli-safe --decode --out <workspace>/cli-back
   items:
     status: decoded
     relative: contacts.csv
     format: -
-  ... (32 more)
+  ... (36 more)
   exit 0
 
 ```
@@ -546,7 +573,7 @@ Temporary workspace cleaned: True
 
 Tags: [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.083 seconds)
+****Total running time of the script:**** (0 minutes 2.011 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.ipynb)
 

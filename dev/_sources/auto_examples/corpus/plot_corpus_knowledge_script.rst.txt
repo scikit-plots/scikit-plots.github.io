@@ -650,8 +650,8 @@ fallbacks for text where whitespace tokenization is not sufficient.
     Fixed / tokens
     --------------
     chunks: 6
-    chars/chunk: avg=331.7, min=317, max=346
-    sample: 'ire uursacesced Caraga io 10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT RCO RSP eo ere Memmnminsane(s) erklaren kannst, hast du Creerona eats Brome ccrlhy | | Petesercne | verstanden. > If you cannot explain » Sas ONAN Co oiag understand it we'
+    chars/chunk: avg=365.5, min=346, max=397
+    sample: 'ire uursacesced Caraga io\n10 Bi6doKew 8 Erna monet) 1b / aoe Maa ETT\nRCO RSP eo ere\n\nMemmnminsane(s)\nerklaren kannst, hast du\nCreerona eats\n\n \n \n      \n     \n   \n \n \n \n \n \n  \n \n\n \n\nBrome ccrlhy | |\n Petesercne | verstanden.\n>\nIf you cannot '
 
 
 
@@ -890,7 +890,7 @@ downstream task.
     Word / sentence            OK            5      207      29     639  lexical features per sentence-like unit
     Sentence / REGEX           OK            5    256.8      30     801  natural sentence boundaries with minimal dependencies
     Fixed / characters         OK            5    461.8     269     512  deterministic character-size limits with overlap
-    Fixed / tokens             OK            6    331.7     317     346  token-budget-like windows with deterministic overlap
+    Fixed / tokens             OK            6    365.5     346     397  token-budget-like windows with deterministic overlap
     Semantic / morphological   OK          217      4.4       1      15  content-aware multilingual boundaries without a model download
     Sentence / NLTK            OK            8      160      30     406  NLTK sentence segmentation with pre-provisioned data
     Word / NLTK + WordNet      OK            1      875     875     875  richer English lexical preprocessing with local NLTK data
@@ -1015,7 +1015,7 @@ reproducible CI/documentation environments.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.097 seconds)
+   **Total running time of the script:** (0 minutes 3.832 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_knowledge_script.py:

@@ -11,15 +11,15 @@ in Jupyter, JupyterLab, VS Code, Colab or terminal IPython.
 
 | Magic | Does |
 | --- | --- |
-| `%scikitplot ARGS` | runs `scikitplot ARGS`; returns a `CommandResult` |
+| `%scikitplot ARGS` | runs `scikitplot ARGS`; returns a [`CommandResult`](../../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult "scikitplot._ipymagic.CommandResult") |
 | `%%scikitplot ARGS` + cell | the same, with the cell on standard input |
-| `%scikitplot_profile STMT` / `%%scikitplot_profile` + cell | profiles the code; returns a `ProfileResult` |
-| `%scikitplot_config key=value ...` | session settings (`MagicSettings`) |
+| `%scikitplot_profile STMT` / `%%scikitplot_profile` + cell | profiles the code; returns a [`ProfileResult`](../../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult "scikitplot._ipymagic.ProfileResult") |
+| `%scikitplot_config key=value ...` | session settings ([`MagicSettings`](../../modules/generated/scikitplot._ipymagic.MagicSettings.html#scikitplot._ipymagic.MagicSettings "scikitplot._ipymagic.MagicSettings")) |
 
 ****How to read these examples.**** A gallery page runs as a plain Python script,
 where magics do not exist. Each step therefore shows the magic in an
 `ipython` block, then runs the very same thing with the Python function the
-magic calls (`run_command`, `profile_code`). In the Jupyter
+magic calls ([`run_command`](../../modules/generated/scikitplot._ipymagic.run_command.html#scikitplot._ipymagic.run_command "scikitplot._ipymagic.run_command"), [`profile_code`](../../modules/generated/scikitplot._ipymagic.profile_code.html#scikitplot._ipymagic.profile_code "scikitplot._ipymagic.profile_code")). In the Jupyter
 notebook download, every cell magic (`%%scikitplot`,
 `%%scikitplot_profile`) becomes a runnable cell next to its Python
 equivalent, and the first cell loads the extension; line magics stay as text

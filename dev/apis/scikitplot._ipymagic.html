@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:21:55Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:32:52Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot._ipymagic","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -43,8 +43,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -68,10 +68,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
     <script src="../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
@@ -94,7 +94,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'apis/scikitplot._ipymagic';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -109,7 +109,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="icon" href="../_static/scikit-plots-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="scikitplot._externals" href="scikitplot._externals.html" />
+    <link rel="next" title="load_ipython_extension" href="../modules/generated/scikitplot._ipymagic.load_ipython_extension.html" />
     <link rel="prev" title="sphinx_tabs_patch" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
@@ -162,7 +162,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -332,14 +332,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -426,7 +426,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -553,14 +553,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -657,6 +657,29 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Decision.html">Decision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Action.html">Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Usage.html">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.delegate.html">delegate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.DelegateTool.html">DelegateTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.evaluate_audit.html">evaluate_audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.AuditEvaluation.html">AuditEvaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.RunSummary.html">RunSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.WorkflowGraph.html">WorkflowGraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Task.html">Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.FanOut.html">FanOut</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Branch.html">Branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Finish.html">Finish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Edge.html">Edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.WorkflowView.html">WorkflowView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StepSummary.html">StepSummary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.REDUCERS.html">REDUCERS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.WorkflowError.html">WorkflowError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.WorkflowBranchError.html">WorkflowBranchError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ArtifactStore.html">ArtifactStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.MemoryArtifactStore.html">MemoryArtifactStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.DirectoryArtifactStore.html">DirectoryArtifactStore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.PlanItem.html">PlanItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.PlanStatus.html">PlanStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.MAX_PLAN_ITEMS.html">MAX_PLAN_ITEMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.check_plan_change.html">check_plan_change</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Tool.html">Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ToolEffect.html">ToolEffect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.Toolset.html">Toolset</a></li>
@@ -814,6 +837,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.config.html">scikitplot.config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__bibtex__.html">__bibtex__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__citation__.html">__citation__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.citation.html">citation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.corpus.html">scikitplot.corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -838,6 +862,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SufficiencySignals.html">SufficiencySignals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.route.html">route</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.run_investigation.html">run_investigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RoutingPolicy.html">RoutingPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RoutingRule.html">RoutingRule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.QueryShape.html">QueryShape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DEFAULT_ROUTING_POLICY.html">DEFAULT_ROUTING_POLICY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.query_tokens.html">query_tokens</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.extract_archive.html">extract_archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_archive.html">is_archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ANNIndexArtifact.html">ANNIndexArtifact</a></li>
@@ -995,6 +1024,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.r_precision.html">r_precision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ranking_metrics.html">ranking_metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.recall_at_k.html">recall_at_k</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.binary_log_loss.html">binary_log_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.brier_score.html">brier_score</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.calibration_report.html">calibration_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.expected_calibration_error.html">expected_calibration_error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.reliability_table.html">reliability_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.anls_score.html">anls_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity.html">edit_similarity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity_score.html">edit_similarity_score</a></li>
@@ -1126,6 +1160,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LegContribution.html">LegContribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LegResult.html">LegResult</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LexicalRetriever.html">LexicalRetriever</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LogOddsContribution.html">LogOddsContribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LogOddsFusedItem.html">LogOddsFusedItem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LogOddsFusion.html">LogOddsFusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LogOddsFusionResult.html">LogOddsFusionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CUT_MODES.html">CUT_MODES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CachedSearch.html">CachedSearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CutPolicy.html">CutPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CutResult.html">CutResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PROBABILITY_FUSION_LEGS.html">PROBABILITY_FUSION_LEGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ProbabilityFusion.html">ProbabilityFusion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.Retriever.html">Retriever</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.fuse_by_rank.html">fuse_by_rank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CharBudgetCompressor.html">CharBudgetCompressor</a></li>
@@ -1653,6 +1697,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Okapi.html">BM25Okapi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25L.html">BM25L</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.BM25Plus.html">BM25Plus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.CALIBRATION_METHODS.html">CALIBRATION_METHODS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.ScoreCalibrator.html">ScoreCalibrator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.require_count.html">require_count</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.rank_bm25.require_index.html">require_index</a></li>
 </ul>
@@ -1724,7 +1770,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1751,16 +1797,37 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">scikitplot._ipymagic</a></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot._ipymagic</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.load_ipython_extension.html">load_ipython_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.unload_ipython_extension.html">unload_ipython_extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.run_command.html">run_command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.split_line.html">split_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.route.html">route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.wants_json.html">wants_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.complete.html">complete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.Route.html">Route</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CommandResult.html">CommandResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.MagicSettings.html">MagicSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.profile_code.html">profile_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.profiler_busy_reason.html">profiler_busy_reason</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfileResult.html">ProfileResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfileRow.html">ProfileRow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.IpyMagicError.html">IpyMagicError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.MagicUsageError.html">MagicUsageError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CommandFailedError.html">CommandFailedError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfilerBusyError.html">ProfilerBusyError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CapabilityMissingError.html">CapabilityMissingError</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot._externals.html">scikitplot._externals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.add_ai_assistant_context.html">add_ai_assistant_context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot._externals._sphinx_ext._sphinx_ai_assistant.generate_llms_txt.html">generate_llms_txt</a></li>
@@ -1807,7 +1874,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -1846,7 +1913,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%scikitplot</span> <span class="pre">ARGS</span></code></p></td>
 <td><p>run <code class="docutils literal notranslate"><span class="pre">scikitplot</span> <span class="pre">ARGS</span></code>; returns a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">CommandResult</span></code></p></td>
+<a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult" title="scikitplot._ipymagic.CommandResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandResult</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%%scikitplot</span> <span class="pre">ARGS</span></code> + cell</p></td>
 <td><p>the same, the cell on standard input</p></td>
@@ -1855,11 +1922,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <td><p>profile code; returns a table</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code> + cell</p></td>
-<td><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">ProfileResult</span></code>)</p></td>
+<td><p>(<a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult" title="scikitplot._ipymagic.ProfileResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProfileResult</span></code></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%scikitplot_config</span> <span class="pre">key=value</span></code></p></td>
 <td><p>session settings
-(<code class="xref py py-class docutils literal notranslate"><span class="pre">MagicSettings</span></code>)</p></td>
+(<a class="reference internal" href="../modules/generated/scikitplot._ipymagic.MagicSettings.html#scikitplot._ipymagic.MagicSettings" title="scikitplot._ipymagic.MagicSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">MagicSettings</span></code></a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1887,10 +1954,10 @@ package imports nothing until a name is used.</p>
 <span id="ipymagic-ref-notebook-magics-extension"></span><h2>Notebook magics: extension<a class="headerlink" href="#notebook-magics-extension" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_ipython_extension</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.load_ipython_extension.html#scikitplot._ipymagic.load_ipython_extension" title="scikitplot._ipymagic.load_ipython_extension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_ipython_extension</span></code></a></p></td>
 <td><p>Register the scikitplot magics (<code class="docutils literal notranslate"><span class="pre">%load_ext</span> <span class="pre">scikitplot._ipymagic</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unload_ipython_extension</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.unload_ipython_extension.html#scikitplot._ipymagic.unload_ipython_extension" title="scikitplot._ipymagic.unload_ipython_extension"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unload_ipython_extension</span></code></a></p></td>
 <td><p>Remove the magics, stop snakeviz servers, delete temporary profiles.</p></td>
 </tr>
 </tbody>
@@ -1900,31 +1967,35 @@ package imports nothing until a name is used.</p>
 <section id="notebook-magics-commands">
 <span id="ipymagic-ref-notebook-magics-commands"></span><h2>Notebook magics: commands<a class="headerlink" href="#notebook-magics-commands" title="Link to this heading">#</a></h2>
 <p class="rubric">Class inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-b0236415ac8c8155811b76651fc5b9b362730000.png" alt="Inheritance diagram of Route, CommandResult, MagicSettings" class="inheritance graphviz" /></div>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<div class="graphviz"><img src="../_images/inheritance-1896f814fd1f35481b960082a477e3c001d16ab4.png" alt="Inheritance diagram of Route, CommandResult, MagicSettings" usemap="#inheritance868190808c" class="inheritance graphviz" /></div>
+<map id="inheritance868190808c" name="inheritance868190808c">
+<area shape="rect" id="node1" href="../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult" target="_top" title="The outcome of one ``scikitplot`` command run from a notebook or Python." alt="" coords="5,104,136,129"/>
+<area shape="rect" id="node2" href="../modules/generated/scikitplot._ipymagic.MagicSettings.html#scikitplot._ipymagic.MagicSettings" target="_top" title="Behaviour of the magics for one IPython session." alt="" coords="13,55,128,80"/>
+<area shape="rect" id="node3" href="../modules/generated/scikitplot._ipymagic.Route.html#scikitplot._ipymagic.Route" target="_top" title="Which command an argument list names, and whether the CLI delegates it." alt="" coords="35,5,107,31"/>
+</map><div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_command</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.run_command.html#scikitplot._ipymagic.run_command" title="scikitplot._ipymagic.run_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_command</span></code></a></p></td>
 <td><p>Run one <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> command and return its result.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_line</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.split_line.html#scikitplot._ipymagic.split_line" title="scikitplot._ipymagic.split_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_line</span></code></a></p></td>
 <td><p>Split a magic's line into arguments the way a POSIX shell would.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">route</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.route.html#scikitplot._ipymagic.route" title="scikitplot._ipymagic.route"><code class="xref py py-obj docutils literal notranslate"><span class="pre">route</span></code></a></p></td>
 <td><p>Return the command <code class="docutils literal notranslate"><span class="pre">argv</span></code> names, as the CLI would find it.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">wants_json</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.wants_json.html#scikitplot._ipymagic.wants_json" title="scikitplot._ipymagic.wants_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wants_json</span></code></a></p></td>
 <td><p>Return whether <code class="docutils literal notranslate"><span class="pre">argv</span></code> asks for JSON output (<code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">json</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">complete</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.complete.html#scikitplot._ipymagic.complete" title="scikitplot._ipymagic.complete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">complete</span></code></a></p></td>
 <td><p>Return the completions of the last word of a <code class="docutils literal notranslate"><span class="pre">%scikitplot</span></code> line.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Route</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.Route.html#scikitplot._ipymagic.Route" title="scikitplot._ipymagic.Route"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Route</span></code></a></p></td>
 <td><p>Which command an argument list names, and whether the CLI delegates it.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandResult</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult" title="scikitplot._ipymagic.CommandResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandResult</span></code></a></p></td>
 <td><p>The outcome of one <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> command run from a notebook or Python.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagicSettings</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.MagicSettings.html#scikitplot._ipymagic.MagicSettings" title="scikitplot._ipymagic.MagicSettings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagicSettings</span></code></a></p></td>
 <td><p>Behaviour of the magics for one IPython session.</p></td>
 </tr>
 </tbody>
@@ -1934,19 +2005,22 @@ package imports nothing until a name is used.</p>
 <section id="notebook-magics-profiling">
 <span id="ipymagic-ref-notebook-magics-profiling"></span><h2>Notebook magics: profiling<a class="headerlink" href="#notebook-magics-profiling" title="Link to this heading">#</a></h2>
 <p class="rubric">Class inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-5fee18c3483e12112c0d78896c6974e6eda13ace.png" alt="Inheritance diagram of ProfileResult, ProfileRow" class="inheritance graphviz" /></div>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<div class="graphviz"><img src="../_images/inheritance-afc7c2883cb2dedb0bafc274f9659f5fe76b5937.png" alt="Inheritance diagram of ProfileResult, ProfileRow" usemap="#inheritance9ea5093b1c" class="inheritance graphviz" /></div>
+<map id="inheritance9ea5093b1c" name="inheritance9ea5093b1c">
+<area shape="rect" id="node1" href="../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult" target="_top" title="A profile of a statement or cell, displayed as a table." alt="" coords="5,55,109,80"/>
+<area shape="rect" id="node2" href="../modules/generated/scikitplot._ipymagic.ProfileRow.html#scikitplot._ipymagic.ProfileRow" target="_top" title="One function of a profile." alt="" coords="12,5,103,31"/>
+</map><div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile_code</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.profile_code.html#scikitplot._ipymagic.profile_code" title="scikitplot._ipymagic.profile_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profile_code</span></code></a></p></td>
 <td><p>Run <code class="docutils literal notranslate"><span class="pre">code</span></code> under <code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code> and summarise the profile.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">profiler_busy_reason</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.profiler_busy_reason.html#scikitplot._ipymagic.profiler_busy_reason" title="scikitplot._ipymagic.profiler_busy_reason"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profiler_busy_reason</span></code></a></p></td>
 <td><p>Return why a profiler cannot be enabled now, or None when it can.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileResult</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult" title="scikitplot._ipymagic.ProfileResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileResult</span></code></a></p></td>
 <td><p>A profile of a statement or cell, displayed as a table.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileRow</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfileRow.html#scikitplot._ipymagic.ProfileRow" title="scikitplot._ipymagic.ProfileRow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfileRow</span></code></a></p></td>
 <td><p>One function of a profile.</p></td>
 </tr>
 </tbody>
@@ -1956,22 +2030,28 @@ package imports nothing until a name is used.</p>
 <section id="notebook-magics-errors">
 <span id="ipymagic-ref-notebook-magics-errors"></span><h2>Notebook magics: errors<a class="headerlink" href="#notebook-magics-errors" title="Link to this heading">#</a></h2>
 <p class="rubric">Class inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-364e6b2313de4c0d6552a0a7e3fd792eb8e6c9f0.png" alt="Inheritance diagram of IpyMagicError, MagicUsageError, CommandFailedError, ProfilerBusyError, CapabilityMissingError" class="inheritance graphviz" /></div>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<div class="graphviz"><img src="../_images/inheritance-d547112783ddf5fdcb1f69398854895c58a48451.png" alt="Inheritance diagram of IpyMagicError, MagicUsageError, CommandFailedError, ProfilerBusyError, CapabilityMissingError" usemap="#inheritance90d55937c9" class="inheritance graphviz" /></div>
+<map id="inheritance90d55937c9" name="inheritance90d55937c9">
+<area shape="rect" id="node1" href="../modules/generated/scikitplot._ipymagic.CapabilityMissingError.html#scikitplot._ipymagic.CapabilityMissingError" target="_top" title="An optional package the request needs is not installed." alt="" coords="165,5,335,31"/>
+<area shape="rect" id="node2" href="../modules/generated/scikitplot._ipymagic.IpyMagicError.html#scikitplot._ipymagic.IpyMagicError" target="_top" title="Base class of every error raised by :py:mod:`scikitplot._ipymagic`." alt="" coords="5,80,117,105"/>
+<area shape="rect" id="node3" href="../modules/generated/scikitplot._ipymagic.CommandFailedError.html#scikitplot._ipymagic.CommandFailedError" target="_top" title="A command exited with a non&#45;zero status (raised only when asked to)." alt="" coords="171,55,329,80"/>
+<area shape="rect" id="node4" href="../modules/generated/scikitplot._ipymagic.MagicUsageError.html#scikitplot._ipymagic.MagicUsageError" target="_top" title="The magic was called with arguments it cannot run (nothing was run)." alt="" coords="183,104,317,129"/>
+<area shape="rect" id="node5" href="../modules/generated/scikitplot._ipymagic.ProfilerBusyError.html#scikitplot._ipymagic.ProfilerBusyError" target="_top" title="Another profiler is active in this process (Rule 133); nothing was run." alt="" coords="185,153,315,179"/>
+</map><div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyMagicError</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.IpyMagicError.html#scikitplot._ipymagic.IpyMagicError" title="scikitplot._ipymagic.IpyMagicError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IpyMagicError</span></code></a></p></td>
 <td><p>Base class of every error raised by <a class="reference internal" href="#module-scikitplot._ipymagic" title="scikitplot._ipymagic"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot._ipymagic</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagicUsageError</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.MagicUsageError.html#scikitplot._ipymagic.MagicUsageError" title="scikitplot._ipymagic.MagicUsageError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagicUsageError</span></code></a></p></td>
 <td><p>The magic was called with arguments it cannot run (nothing was run).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandFailedError</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CommandFailedError.html#scikitplot._ipymagic.CommandFailedError" title="scikitplot._ipymagic.CommandFailedError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandFailedError</span></code></a></p></td>
 <td><p>A command exited with a non-zero status (raised only when asked to).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilerBusyError</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.ProfilerBusyError.html#scikitplot._ipymagic.ProfilerBusyError" title="scikitplot._ipymagic.ProfilerBusyError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilerBusyError</span></code></a></p></td>
 <td><p>Another profiler is active in this process (Rule 133); nothing was run.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilityMissingError</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot._ipymagic.CapabilityMissingError.html#scikitplot._ipymagic.CapabilityMissingError" title="scikitplot._ipymagic.CapabilityMissingError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilityMissingError</span></code></a></p></td>
 <td><p>An optional package the request needs is not installed.</p></td>
 </tr>
 </tbody>
@@ -2000,11 +2080,11 @@ package imports nothing until a name is used.</p>
       </div>
     </a>
     <a class="right-next"
-       href="scikitplot._externals.html"
+       href="../modules/generated/scikitplot._ipymagic.load_ipython_extension.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">scikitplot._externals</p>
+        <p class="prev-next-title">load_ipython_extension</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2030,8 +2110,8 @@ package imports nothing until a name is used.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2042,7 +2122,7 @@ package imports nothing until a name is used.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
       <br/>
     
   </p>

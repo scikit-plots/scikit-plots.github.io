@@ -261,17 +261,17 @@ p = sp.decileplot(
   "decile_wise_lift": "Meaning: Improvement factor for individual deciles; shows how much better each decile performs vs random. Critical: Fatal if <1. Early deciles should show highest lift. Formula: decile_wise_lift = cnt_resp_true / cnt_resp_rndm_true.",
   "KS": "Meaning: Peak discriminative power (scalar) extracted from cumulative gain curves; maximum distance between cumulative distributions of positives and negatives. Range: 0-1 (fraction) or 0-100 (percent). Interpretation: - <0.2 → Poor discrimination - 0.2-0.4 → Fair - 0.4-0.6 → Good - ≥0.6 → Excellent - ≥0.7 → Suspiciously high (possible overfitting or leakage). Critical: Report across train/validation/test; ensure top deciles dominate appropriately. Formula: KS = max(cum_resp_true_pct - cum_resp_false_pct) (sorted descending by model score)."
 }
-   decile  prob_min  prob_max  ...  decile_wise_lift  decile_wise_lift_wiz       KS
-0       1    0.8478    0.9998  ...            5.3595                6.5359  51.4696
-1       2    0.5792    0.8416  ...            1.9608                3.4641  62.8130
-2       3    0.3837    0.5774  ...            1.0458                0.0000  63.3532
-3       4    0.2739    0.3827  ...            0.3268                0.0000  55.4051
-4       5    0.2044    0.2728  ...            0.3268                0.0000  47.4570
-5       6    0.1410    0.2040  ...            0.3922                0.0000  40.2806
-6       7    0.0984    0.1409  ...            0.1961                0.0000  30.7892
-7       8    0.0605    0.0978  ...            0.2614                0.0000  22.0694
-8       9    0.0344    0.0605  ...            0.0654                0.0000  11.0347
-9      10    0.0014    0.0343  ...            0.0654                0.0000   0.0000
+   decile  prob_min  ...  decile_wise_lift_wiz       KS
+0       1    0.8478  ...                6.5359  51.4696
+1       2    0.5792  ...                3.4641  62.8130
+2       3    0.3837  ...                0.0000  63.3532
+3       4    0.2739  ...                0.0000  55.4051
+4       5    0.2044  ...                0.0000  47.4570
+5       6    0.1410  ...                0.0000  40.2806
+6       7    0.0984  ...                0.0000  30.7892
+7       8    0.0605  ...                0.0000  22.0694
+8       9    0.0344  ...                0.0000  11.0347
+9      10    0.0014  ...                0.0000   0.0000
 
 [10 rows x 28 columns]
 
@@ -311,9 +311,9 @@ p = sp.decileplot(
 
 Tags: [model-type: classification](../../_tags/model-type-classification.html) [model-workflow: model evaluation](../../_tags/model-workflow-model-evaluation.html) [plot-type: line](../../_tags/plot-type-line.html) [plot-type: decile](../../_tags/plot-type-decile.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 2.680 seconds)
+****Total running time of the script:**** (0 minutes 3.108 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo19.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_decileplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo19.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_decileplot_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo23.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/seaborn/plot_decileplot_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo23.svg)](../../lite/lab/index.html?path=auto_examples/seaborn/plot_decileplot_script.ipynb)
 
 [`Download Jupyter notebook: plot_decileplot_script.ipynb`](../../_downloads/340d1be8e74b90f18131d89680f5492b/plot_decileplot_script.ipynb)
 

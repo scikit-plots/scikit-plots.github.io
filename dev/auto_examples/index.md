@@ -1,6 +1,6 @@
 🤓 Scikit-plots Examples & Tutorials
   
- 0.5.dev0+git.20261029.1037dde - October 29, 2026 06:16 UTC
+ 0.5.dev0+git.20261108.f7759b5 - November 08, 2026 15:11 UTC
 
 # Examples[#](#examples "Link to this heading")
 
@@ -735,9 +735,8 @@ pip install scikit-plots[corpus]
    configure the real YouTube reader, and keep the live transcript request
    explicit and optional.
 10. ****Build a multi-source WHO corpus**** — see the explicit stage-by-stage
-
-> integration path, partial source success, keyword retrieval, adapters, and
-> where `CorpusBuilder` fits.
+    integration path, partial source success, keyword retrieval, adapters, and
+    where `CorpusBuilder` fits.
 
 ## Which API should I use?[#](#which-api-should-i-use "Link to this heading")
 
@@ -1060,15 +1059,15 @@ in Jupyter, JupyterLab, VS Code, Colab or terminal IPython.
 
 | Magic | Does |
 | --- | --- |
-| `%scikitplot ARGS` | runs `scikitplot ARGS`; returns a `CommandResult` |
+| `%scikitplot ARGS` | runs `scikitplot ARGS`; returns a [`CommandResult`](../modules/generated/scikitplot._ipymagic.CommandResult.html#scikitplot._ipymagic.CommandResult "scikitplot._ipymagic.CommandResult") |
 | `%%scikitplot ARGS` + cell | the same, with the cell on standard input |
-| `%scikitplot_profile STMT` / `%%scikitplot_profile` + cell | profiles the code; returns a `ProfileResult` |
-| `%scikitplot_config key=value ...` | session settings (`MagicSettings`) |
+| `%scikitplot_profile STMT` / `%%scikitplot_profile` + cell | profiles the code; returns a [`ProfileResult`](../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult "scikitplot._ipymagic.ProfileResult") |
+| `%scikitplot_config key=value ...` | session settings ([`MagicSettings`](../modules/generated/scikitplot._ipymagic.MagicSettings.html#scikitplot._ipymagic.MagicSettings "scikitplot._ipymagic.MagicSettings")) |
 
 ****How to read these examples.**** A gallery page runs as a plain Python script,
 where magics do not exist. Each step therefore shows the magic in an
 `ipython` block, then runs the very same thing with the Python function the
-magic calls (`run_command`, `profile_code`). In the Jupyter
+magic calls ([`run_command`](../modules/generated/scikitplot._ipymagic.run_command.html#scikitplot._ipymagic.run_command "scikitplot._ipymagic.run_command"), [`profile_code`](../modules/generated/scikitplot._ipymagic.profile_code.html#scikitplot._ipymagic.profile_code "scikitplot._ipymagic.profile_code")). In the Jupyter
 notebook download, every cell magic (`%%scikitplot`,
 `%%scikitplot_profile`) becomes a runnable cell next to its Python
 equivalent, and the first cell loads the extension; line magics stay as text
@@ -1491,9 +1490,14 @@ For a smaller installation that owns only the Rank-BM25 package and the
 Scikit-Plots core dependencies:
 
 ```
-python -m pip install scikit-plots-rank-bm25
+python -m pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+    "scikit-plots-rank-bm25 @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/rank-bm25"
 
 ```
+
+It is not on PyPI yet: this builds it, with the core it depends on, from the
+repository (`git` needed); the installation guide also gives the commands
+for the project’s staging index.
 
 Do not install the full and partial distributions into the same environment;
 they own overlapping `scikitplot` package files. See

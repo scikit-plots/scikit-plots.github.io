@@ -176,12 +176,47 @@ round(anls_score(references, answers), 3)       # 0.344
 
 ```
 
+## Calibration[#](#calibration "Link to this heading")
+
+Ranking metrics do not change when scores are rescaled, so they cannot tell
+whether a score presented as a probability of relevance behaves like one. The
+calibration metrics take binary labels and probabilities, one per labelled
+(query, document) pair, in scikit-learn’s `(y_true, y_prob)` order:
+
+* [`brier_score`](../../modules/generated/scikitplot.corpus.brier_score.html#scikitplot.corpus.brier_score "scikitplot.corpus.brier_score") – mean squared error of the probabilities;
+* [`binary_log_loss`](../../modules/generated/scikitplot.corpus.binary_log_loss.html#scikitplot.corpus.binary_log_loss "scikitplot.corpus.binary_log_loss") – mean negative log-likelihood (probabilities of
+  exactly 0 or 1 are clipped to float64 machine epsilon);
+* [`reliability_table`](../../modules/generated/scikitplot.corpus.reliability_table.html#scikitplot.corpus.reliability_table "scikitplot.corpus.reliability_table") – per bin, the mean probability against the
+  observed share of relevant labels, with counts; empty bins are kept so two
+  tables line up;
+* [`expected_calibration_error`](../../modules/generated/scikitplot.corpus.expected_calibration_error.html#scikitplot.corpus.expected_calibration_error "scikitplot.corpus.expected_calibration_error") – the count-weighted mean gap between
+  the two;
+* [`calibration_report`](../../modules/generated/scikitplot.corpus.calibration_report.html#scikitplot.corpus.calibration_report "scikitplot.corpus.calibration_report") – all of them, with sample size and prevalence.
+
+```
+from scikitplot.corpus import calibration_report, expected_calibration_error
+
+labels = [0, 1, 1, 0]
+probs = [0.1, 0.9, 0.8, 0.3]
+round(expected_calibration_error(labels, probs, n_bins=2), 4)  # 0.175
+round(calibration_report(labels, probs, n_bins=2)["brier_score"], 4)  # 0.0375
+
+```
+
+Report `n_bins`, `strategy` (`"uniform"` or `"quantile"`) and the
+labelled population with every ECE: the value depends on all three, and a
+probability calibrated on lexical candidates is not calibrated on the whole
+corpus. Labels must already be binary; graded relevance is refused rather than
+thresholded silently. No scikit-learn is needed; the results equal
+`brier_score_loss`, `log_loss` and `calibration_curve`.
+
 ## scikit-learn scorers[#](#scikit-learn-scorers "Link to this heading")
 
 [`make_corpus_scorer`](../../modules/generated/scikitplot.corpus.make_corpus_scorer.html#scikitplot.corpus.make_corpus_scorer "scikitplot.corpus.make_corpus_scorer") mirrors [`sklearn.metrics.make_scorer`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer "(in scikit-learn v1.10)")
 (`score_func`, `greater_is_better`, `**kwargs`), and
 [`get_corpus_scorer`](../../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer "scikitplot.corpus.get_corpus_scorer") mirrors [`sklearn.metrics.get_scorer`](https://scikit-learn.org/dev/modules/generated/sklearn.metrics.get_scorer.html#sklearn.metrics.get_scorer "(in scikit-learn v1.10)") with names
-such as `"ndcg@10"`. Both add two ways to get predictions:
+such as `"ndcg@10"`. Both add two ways to get predictions (for `sample_weight` and metadata
+routing, see [Metadata routing](../metadata_routing.html#metadata-routing)):
 
 * `response_method="predict"`: `estimator.predict(X)` returns one ranking
   (or answer) per query. From scikit-learn 1.4, a scikit-learn estimator

@@ -1,6 +1,6 @@
 # capabilities[#](#capabilities "Link to this heading")
 
-scikitplot.cleanprompt.capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/cleanprompt/_capabilities.py#L363)[#](#scikitplot.cleanprompt.capabilities "Link to this definition")
+scikitplot.cleanprompt.capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_capabilities.py#L375)[#](#scikitplot.cleanprompt.capabilities "Link to this definition")
 :   Probe every optional tier.
 
     Returns:
@@ -15,7 +15,7 @@ scikitplot.cleanprompt.capabilities()[[source]](https://github.com/scikit-plots/
     Try it in your browser!
     ```
     >>> sorted(capabilities())
-    ['crypto', 'ner', 'nltk', 'web']
+    ['crypto', 'ner', 'nltk', 'timeout', 'web']
 
     ```
     Go BackOpen In Tab

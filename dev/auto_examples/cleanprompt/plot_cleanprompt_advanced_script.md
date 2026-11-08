@@ -405,7 +405,7 @@ print("round trip:", decrypt_mapping(entries, SAMPLE_KEY.encode(), params))
 ```
 ```
 kdf       : scrypt n=16384 r=8 p=1
-token     : O/SCuvzw5JIxWWHH+AcnvvWL42brC0iuYlVWj244XC5V ...
+token     : wkeR071KSLzPjazCnO/ma5bsWQSX4wBn4SSj+gCKzj+B ...
 round trip: {'[EMAIL-1]': 'ada@example.com'}
 
 ```
@@ -487,7 +487,7 @@ $ cleanprompt encode --quiet --vault-mode overwrite --encrypt "Mail ada@example.
 
 encrypted : True
 cipher    : cleanprompt-hmac-v1
-on disk   : yMppFajgQcRsVYqzEOV33qbGqP9dHVk73aB6WFZbWkBJ ...
+on disk   : 9prsEcEqu/VoeGSKxZqVdo89CfjsUKpYx0GvdDqkKe3v ...
 no value in the file: True
 
 ```
@@ -509,7 +509,7 @@ $ cleanprompt decode "I wrote to [EMAIL-1]."
   err │ error: vault entry [EMAIL-1] failed authentication: the passphrase is wrong, or the vault has been modified since it was written
   exit │ 1
 
-CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.15/bin/scikitplot', 'cleanprompt', 'decode', 'I wrote to [EMAIL-1].'], returncode=1, stdout='', stderr='error: vault entry [EMAIL-1] failed authentication: the passphrase is wrong, or the vault has been modified since it was written\n')
+CompletedProcess(args=['/home/circleci/.pyenv/versions/3.12.16/bin/scikitplot', 'cleanprompt', 'decode', 'I wrote to [EMAIL-1].'], returncode=1, stdout='', stderr='error: vault entry [EMAIL-1] failed authentication: the passphrase is wrong, or the vault has been modified since it was written\n')
 
 ```
 
@@ -807,7 +807,7 @@ Temporary workspace cleaned: True
 
 Tags: [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html) [plot-type: text](../../_tags/plot-type-text.html) [level: advanced](../../_tags/level-advanced.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 6.709 seconds)
+****Total running time of the script:**** (0 minutes 5.598 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb)
 

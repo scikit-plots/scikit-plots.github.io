@@ -1,6 +1,6 @@
 # UnsupportedOperatorError[#](#unsupportedoperatorerror "Link to this heading")
 
-exception scikitplot.corpus.UnsupportedOperatorError[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_filters.py#L85)[#](#scikitplot.corpus.UnsupportedOperatorError "Link to this definition")
+exception scikitplot.corpus.UnsupportedOperatorError[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_filters.py#L87)[#](#scikitplot.corpus.UnsupportedOperatorError "Link to this definition")
 :   Raised when a backend is asked to evaluate an operator it rejects.
 
     Annotation:

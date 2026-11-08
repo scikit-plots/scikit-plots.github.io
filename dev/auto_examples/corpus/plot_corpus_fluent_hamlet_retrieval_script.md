@@ -148,9 +148,9 @@ print("Addendum source:", _HAMLET_ADDENDUM_PATH)
 
 ```
 ```
-Initial source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_excerpt.txt
+Initial source: /tmp/scikitplot-hamlet-f1obszdp/hamlet_excerpt.txt
 Initial characters: 3820
-Addendum source: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_addendum.txt
+Addendum source: /tmp/scikitplot-hamlet-f1obszdp/hamlet_addendum.txt
 
 ```
 
@@ -239,7 +239,7 @@ print("Validation problems:", fluent.validate())
 
 ```
 ```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee>
+<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] a9e072f99241b0c3038ac0e4822305a41f7bae5a5661c8889ce38adee7587278>
 Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 Validation problems: []
 
@@ -280,7 +280,7 @@ print("Index before run:", runtime.index)
 ```
 ```
 Runtime type: RuntimeCorpus
-Plan fingerprint: fe2501d0dad5634e4ea827ad55da6610f6bd5fa3afd9b4a2f8a70eb126b038ee
+Plan fingerprint: a9e072f99241b0c3038ac0e4822305a41f7bae5a5661c8889ce38adee7587278
 Documents before run: 0
 Index before run: None
 
@@ -318,7 +318,7 @@ Stored documents: 12
 Index documents: 12
 Dense index available: True
 Dense backend: bruteforce
-Index generation: 597b47bf70700c05
+Index generation: be0a247547f274eb31d8309e44eb9c36e7b2bc0ae5b1711f1b9a8ddd5252a90b
 
 [0] 'THE TRAGEDY OF HAMLET, PRINCE OF DENMARK'
     keywords: ['denmark', 'hamlet', 'prince', 'the', 'tragedy']
@@ -432,8 +432,8 @@ Addendum pipeline documents: 2
 Documents before add: 12
 Documents after add: 14
 Stored documents after add: 14
-Generation before add: 597b47bf70700c05
-Generation after add: afcbdb4ec1e453e2
+Generation before add: be0a247547f274eb31d8309e44eb9c36e7b2bc0ae5b1711f1b9a8ddd5252a90b
+Generation after add: ba92c74ead0710d16c25768aad6a084c90fab542758c03c695954b7dd43177f1
 Generation changed: True
 Addendum search status: success
 Addendum top hit: POLONIUS. This business is well ended.
@@ -519,11 +519,11 @@ print("Runtime still open after export:", not runtime.closed)
 
 ```
 ```
-Exported: /tmp/scikitplot-hamlet-qnshmpvq/hamlet_corpus.jsonl
-Bytes: 35993
+Exported: /tmp/scikitplot-hamlet-f1obszdp/hamlet_corpus.jsonl
+Bytes: 35811
 Exported documents: 14
 First JSONL row:
-{"schema_version": "2.0", "doc_id": "778d78ec096f965d", "input_path": "hamlet_excerpt.txt", "chunk_index": 0, "text": "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK", "section_type": "text", "chunking_strategy": "paragraph", "language": null, "char_start": 0, "char_end": 40, "metadata": {}, "source_type"
+{"schema_version":"3.0","doc_id":"0d4874993c04ef91eab3d6ce118c39876c9d6b24a11086f398699d8cd0896127","input_path":"hamlet_excerpt.txt","chunk_index":0,"text":"THE TRAGEDY OF HAMLET, PRINCE OF DENMARK","section_type":"text","chunking_strategy":"paragraph","language":null,"char_start":0,"char_end":40,"
 Runtime still open after export: True
 
 ```
@@ -628,7 +628,7 @@ Temporary workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.048 seconds)
+****Total running time of the script:**** (0 minutes 1.002 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
 

@@ -269,104 +269,141 @@ A lightweight version that is designed to be used in environments where you want
 
 * <https://anaconda.org/channels/scikit-plots-wheels-staging-nightly>
 
+The partial distributions are not on PyPI yet. Each section below gives two
+ways to install one:
+
+* from the repository: one command, which needs `git`; every part names
+  `scikit-plots-skinny` too, which it depends on;
+* from the staging index (development builds): two commands. The first takes
+  the project’s packages from the staging index only (`--no-deps`); the
+  second installs their dependencies from PyPI. Do not use `-i` or
+  `--extra-index-url` with one command: the staging index holds no
+  third-party package, and with two indexes pip takes a project name from
+  whichever offers the higher version.
+
+An extra that needs another part (`scikit-plots-mcp[corpus]`) needs that
+part named in the command too.
+
 ### scikit-plots-skinny[#](#scikit-plots-skinny "Link to this heading")
 
 * ⚠️ `scikit-plots-skinny` as base required/dependency remaining `scikit-plots-x`.
 
 ```
-pip install scikit-plots-skinny@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-skinny
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-corpus @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/corpus"
+
+```
+```
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny
+pip install scikit-plots-skinny
 
 ```
 
 ### scikit-plots-annoy[#](#scikit-plots-annoy "Link to this heading")
 
 ```
-pip install scikit-plots-annoy@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/annoy
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-annoy @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/annoy"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-annoy
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-annoy
+pip install scikit-plots-skinny scikit-plots-annoy
 
 ```
 
 ### scikit-plots-cleanprompt[#](#scikit-plots-cleanprompt "Link to this heading")
 
 ```
-pip install scikit-plots-cleanprompt@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cleanprompt
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-cleanprompt @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cleanprompt"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-cleanprompt
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-cleanprompt
+pip install scikit-plots-skinny scikit-plots-cleanprompt
 
 ```
 
 ### scikit-plots-corpus[#](#scikit-plots-corpus "Link to this heading")
 
 ```
-pip install scikit-plots-corpus@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/corpus
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-corpus @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/corpus"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-corpus
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-corpus
+pip install scikit-plots-skinny scikit-plots-corpus
 
 ```
 
 ### scikit-plots-cython[#](#scikit-plots-cython "Link to this heading")
 
 ```
-pip install scikit-plots-cython@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cython
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-cython @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/cython"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-cython
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-cython
+pip install scikit-plots-skinny scikit-plots-cython
 
 ```
 
 ### scikit-plots-mcp[#](#scikit-plots-mcp "Link to this heading")
 
 ```
-pip install scikit-plots-mcp@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mcp
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-mcp @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mcp"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-mcp
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-mcp
+pip install scikit-plots-skinny scikit-plots-mcp
 
 ```
 
 ### scikit-plots-mlflow[#](#scikit-plots-mlflow "Link to this heading")
 
 ```
-pip install scikit-plots-mlflow@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mlflow
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-mlflow @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/mlflow"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-mlflow
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-mlflow
+pip install scikit-plots-skinny scikit-plots-mlflow
 
 ```
 
 ### scikit-plots-rank-bm25[#](#scikit-plots-rank-bm25 "Link to this heading")
 
 ```
-pip install scikit-plots-rank-bm25@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/rank-bm25
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-rank-bm25 @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/rank-bm25"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-rank-bm25
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-rank-bm25
+pip install scikit-plots-skinny scikit-plots-rank-bm25
 
 ```
 
 ### scikit-plots-sphinx-ext[#](#scikit-plots-sphinx-ext "Link to this heading")
 
 ```
-pip install scikit-plots-sphinx-ext@git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/sphinx-ext
+pip install "scikit-plots-skinny @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/skinny" \
+  "scikit-plots-sphinx-ext @ git+https://github.com/scikit-plots/scikit-plots.git@main#subdirectory=libs/sphinx-ext"
 
 ```
 ```
-pip install -i https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple scikit-plots-sphinx-ext
+pip install --index-url https://pypi.anaconda.org/scikit-plots-wheels-staging-nightly/simple --no-deps scikit-plots-skinny scikit-plots-sphinx-ext
+pip install scikit-plots-skinny scikit-plots-sphinx-ext
 
 ```
 

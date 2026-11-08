@@ -26,12 +26,38 @@ Version 0.5
 
 .. towncrier release notes start
 
-.. _changes_0_5_dev0+git_20261029_1037dde:
+.. _changes_0_5_dev0+git_20261108_f7759b5:
 
-Version 0.5.dev0+git.20261029.1037dde
+Version 0.5.dev0+git.20261108.f7759b5
 =====================================
 
-**October 2026**
+**November 2026**
+
+Build and packaging
+-------------------
+
+- |Fix| Building scikit-plots from a checkout owned by another user (conda-forge,
+  Docker, CI caches) no longer writes ``safe.directory`` into your global Git
+  configuration, which also named the wrong directory and so never helped: the
+  version step retries its one ``git log`` with ``git -c
+  safe.directory=<checkout>``, only after Git's "dubious ownership" refusal.
+  The generated Annoy Cython sources now pass ``cython_generate.py
+  --validate``, which compares each output with its template rendered again,
+  and are written atomically. The Meson ``features`` module is reinstalled
+  when its content differs or a stale file remains, not only when the source
+  is newer. A source build with numpy installed outside the checkout no longer
+  fails with ``Include dir ../../venv/... does not exist`` when the build
+  directory is nested (pip's ``build/cp3XY``): the numpy include path is now
+  computed relative to the project root, and is absolute unless numpy lives
+  inside the source tree. :pr:`909`
+
+Compatibility and dependencies
+------------------------------
+
+- New optional extra ``rank-bm25`` (``pip install "scikit-plots[rank-bm25]"``,
+  or ``scikit-plots-rank-bm25[rank-bm25]``) installs ``numba>=0.57.0`` for the
+  compiled BM25 scoring backend, on Python below 3.15 until Numba supports
+  3.15. Nothing changes without it. :pr:`906`
 
 Documentation
 -------------
@@ -41,6 +67,105 @@ Documentation
   environment builder (``galleries/examples/env``: plan, build and remove,
   configuration files, policies and error codes), and ``scikitplot._ipymagic``
   in the API reference. :pr:`891`
+
+- The Claude Code plugins no longer carry a copy of ``skill-creator``. The users'
+  ``scikitplot`` plugin is Markdown only and depends on nothing; install
+  ``skill-creator@claude-plugins-official`` to write skills. ``scikitplot-dev``
+  declares it as a dependency, so Claude Code installs the current version
+  that Anthropic publishes. :pr:`906`
+
+- New user-guide page :ref:`metadata_routing`: where scikit-plots takes part in
+  scikit-learn's metadata routing (estimators built on ``BaseEstimator``, the
+  experimental ``Pipeline``, the corpus scorers with and without
+  scikit-learn), with the result of each call with routing on and off. The
+  experimental ``Pipeline``'s docstrings linked to this page before it
+  existed, and showed scikit-learn's version numbers as if they were
+  scikit-plots versions; both are fixed. :pr:`909`
+
+- Installation guide, :ref:`installing-a-lightweight-version`: each git command
+  for a single part now installs ``scikit-plots-skinny`` with it, as a quoted
+  ``"name @ git+..."`` requirement. A part alone failed with "No matching
+  distribution found for scikit-plots-skinny", because its dependency on
+  ``scikit-plots-skinny`` was looked up on PyPI, where it is not published.
+  The section's label was also missing its colon, so links to it did not
+  resolve. :pr:`911`
+
+Security
+--------
+
+- |Feature| ``scikitplot.cleanprompt``: a custom pack pattern that can backtrack
+  catastrophically (nested quantifiers such as ``^(a+)+$``, overlapping
+  alternations, adjacent quantifiers) is now reported when the pack loads
+  instead of loading silently and stalling a run. Warn is the default;
+  ``--pattern-risk ignore|warn|refuse`` (``packs``, ``batch``, ``plan``,
+  ``ask``, ``mcp``), ``pattern_risk`` in a plan file and
+  ``CLEANPROMPT_PATTERN_RISK`` tune it per run, team or machine, a pattern can
+  be marked ``risk: accepted`` with a ``risk_reason``, and ``packs --check``
+  lists every finding. :pr:`864`
+
+- |Enhancement| ``cleanprompt flask --debug`` is now refused on any non-loopback bind,
+  container mode included, and the generated container files publish on
+  ``127.0.0.1`` only. :pr:`864`
+
+- |Enhancement| ``scikitplot.cleanprompt``: custom pack patterns can now run under a time
+  limit. With the optional ``regex`` package installed
+  (``pip install "scikit-plots[cleanprompt-timeout]"``), ``--pattern-timeout
+  SECONDS`` (``packs``, ``batch``, ``plan``, ``ask``, ``mcp``),
+  ``pattern_timeout`` in a plan file, ``FluentCleanPrompt().pattern_timeout()``
+  or ``CLEANPROMPT_PATTERN_TIMEOUT`` gives each document one time budget for
+  every custom pattern. A document that runs past it is not cleaned and fails
+  with ``PatternTimeoutError``, naming the pack and kind but never the text;
+  ``batch`` continues with the other files. A limit set without ``regex``, or
+  a pattern ``regex`` cannot compile, is refused before any document is read.
+  Built-in patterns are unchanged, and ``doctor`` reports the new ``timeout``
+  tier. :pr:`909`
+
+- |Fix| ``scikitplot.cleanprompt``: values written with invisible format characters
+  (zero-width spaces and joiners, bidirectional controls, soft hyphens),
+  full-width or other compatibility forms, or Unicode spaces and dashes inside
+  them are now detected and restored exactly as written; previously they were
+  sent unredacted. :pr:`864`
+
+- |Fix| ``scikitplot.cleanprompt``: three disguises that sent a value to the model
+  unredacted are closed. First, an invisible character (a zero-width space or
+  joiner, a soft hyphen, a bidirectional control) inside a variable name or a
+  code identifier no longer hides the value it names, as in
+  ``export DB_PASS<ZWSP>WORD=...`` in shell, ``.env``, JavaScript, R, SQL and
+  Python files; the same holds inside a JSON string value, such as an e-mail
+  address. The file's structure and its exact round trip are unchanged.
+  Second, an e-mail address with one non-ASCII letter anywhere in it is no
+  longer missed whole: an accented local part or domain, an address written
+  in another script, or one starting with a look-alike letter from another
+  script. Addresses may hold letters, digits and combining marks of any
+  script, as internationalised addresses and domains allow. Third, a letter
+  or digit of another script that looks like an ASCII one (a Cyrillic ``A``
+  in an AWS access key, a Cyrillic ``a`` in a URL) no longer hides the value
+  or cuts it short: detection reads it as the ASCII character it imitates,
+  from a table generated from the Unicode confusables data. :pr:`909`
+
+scikitplot (top-level)
+----------------------
+
+- |Fix| Looking up a name ``scikitplot`` does not have (as pytest and other tools do
+  for optional hooks) and ``dir(scikitplot)`` no longer import the plotting
+  API (``scikitplot.api``, with scikit-learn, SciPy and the vendored seaborn),
+  and a failed import of it is no longer repeated by every such lookup: the
+  re-exported names are now a fixed list, checked against
+  ``scikitplot.api.__all__`` by the test suite. ``scikitplot.plot_roc`` and
+  the other plotting functions resolve as before; a broken ``scikitplot.api``
+  now fails when one of its names is used, with the import error as the cause,
+  and ``dir(scikitplot)`` works even then. :pr:`909`
+
+- |Fix| The command printed when a part of ``scikitplot`` is missing (``Install it
+  with: ...``, in Python, in the ``scikitplot`` command line, in
+  ``scikitplot doctor`` and in the ``cleanprompt`` and ``mcp`` corpus
+  messages) now works as written. It named partial distributions such as
+  ``scikit-plots-corpus`` as if they were on PyPI, where they are not yet; it
+  now installs them from the repository together with
+  ``scikit-plots-skinny``, which every part depends on. The partial
+  distributions' own descriptions also give the two commands for the
+  project's staging index. New in ``scikitplot._distributions``:
+  ``requirement``, ``pip_install`` and ``staging_install``. :pr:`911`
 
 scikitplot._build_utils
 -----------------------
@@ -60,6 +185,13 @@ scikitplot._build_utils
   ``scikitplot.experimental.enable_ann_imputer``) as stale: a simple name is
   resolved as autosummary resolves it, the attribute or else the submodule of
   that name, so ``check`` passes on a complete build. :pr:`891`
+
+scikitplot._cli
+---------------
+
+- |Fix| The ``scikitplot cleanprompt`` install hint now names the NLTK extra and says
+  that vault encryption needs no optional package; the ``cleanprompt-crypto``
+  extra adds only the Fernet cipher. :pr:`864`
 
 scikitplot._env
 ---------------
@@ -96,6 +228,37 @@ scikitplot._env
   skipped, the empack configuration is downloaded with a timeout and an HTTP
   status check, and a PyPI package with a compiled file is refused before any
   of its files is copied into the prefix. :pr:`869`
+
+scikitplot._externals
+---------------------
+
+- |Fix| The ``_sphinx_jinja_render`` Sphinx extension now fails the build when an
+  ``*.rst.template`` does not render (an undefined variable, a syntax error,
+  an unreadable template or an unwritable output) instead of skipping it
+  silently, which let Sphinx build the ``.rst`` left over from an earlier run.
+  The error names every failing template with its cause and says when an
+  existing output was not regenerated. ``render_rst_templates(...,
+  strict=True)`` now attempts every template before raising one
+  ``RuntimeError`` that lists all failures, and best-effort mode logs each
+  skipped template as a warning. Values are no longer HTML-escaped into the
+  generated reStructuredText (a link with ``&`` came out as ``&amp;``);
+  templates named ``.html``, ``.htm`` or ``.xml`` are still escaped. :pr:`909`
+
+scikitplot._externals._sphinx_ext._sphinx_feedback
+--------------------------------------------------
+
+- |Feature| Page feedback can open a reviewed pull request on Bitbucket Data Center. A
+  ``bitbucket`` storage target whose ``api_url`` is a Data Center REST root,
+  ``https://<host>[/<context path>]/rest/api/1.0``, runs the same reviewed-change
+  engine as GitHub, GitLab and Bitbucket Cloud: a deterministic branch, one
+  immutable event file, one pull request, and every broken-pipe step reconciled
+  from what the server reports. ``repo`` is ``<project key>/<repository slug>``
+  and the credential is an HTTP access token (``Authorization: Bearer``).
+  Paged, capped or unexpected answers fail closed, and review URLs must be on
+  the server's host under the configured repository. ``check-provider`` also
+  reads, without writing, the changes of the base head and confirms their
+  shape. A server whose certificate comes from a private CA is trusted through
+  ``SSL_CERT_FILE``; verification is never disabled. :pr:`909`
 
 scikitplot._ipymagic
 --------------------
@@ -168,6 +331,52 @@ scikitplot.agent
   ``JsonFileStore``), so a paused or crashed run resumes; a non-idempotent
   call in flight at a crash is not repeated. Standard library only. :pr:`865`
 
+- |Feature| A planner can keep a plan in the run: ``Decision.act`` and
+  ``Decision.finish`` take ``plan=`` (the whole list of ``PlanItem``, each
+  ``pending``, ``in_progress``, ``done`` or ``dropped``), and
+  ``RunState.plan`` is the plan of the last decision that carried one, saved,
+  audited and resumed with the decisions. A change that removes an item
+  instead of marking it ``dropped``, or alters a ``done`` or ``dropped`` item,
+  fails the run with ``invalid_decision``, at most one item may be
+  ``in_progress``, and a saved state whose plan history breaks a rule is
+  refused at load. A decision without ``plan=`` is written exactly as before,
+  so existing states and audit trails are unchanged.
+  Large tool results can be kept out of the run state:
+  ``Agent(artifacts=..., offload_results_over=N)`` stores a result whose
+  canonical JSON exceeds ``N`` bytes in a content-addressed
+  ``MemoryArtifactStore`` or ``DirectoryArtifactStore`` and records only
+  ``Step.result_ref`` (digest and size); the digest is the audited result
+  digest, reads verify it, and a run without a store saves exactly what it
+  saved before.
+  ``delegate(name, child_agent, max_steps=...)`` runs another agent as a tool
+  inside the parent's budget: the delegate has the strongest effect and every
+  scope of the child's tools, so the parent's gates and approval decide it;
+  the child's limits are capped by what the parent has left and its spend is
+  charged to the parent; it writes to the parent's audit trail under a run id
+  derived from the call, linked by a ``subrun`` record. ``evaluate_audit``
+  verifies an audit trail and reports, per run and over top-level runs, how
+  runs ended, decisions, tool calls, denials by code, failures, approvals,
+  sub-runs, plan changes, tokens, cost and wall time. :pr:`906`
+
+- |Feature| ``WorkflowGraph`` writes a known order of steps down instead of a planner:
+  ``Task`` nodes call one tool, ``FanOut`` nodes call several -- one audited
+  step per branch (``mode="ordered"``) or one step that runs every branch at
+  the same time (``mode="concurrent"``), judged by the gates as its branches
+  together and joined in declared order -- ``Finish`` nodes answer, and
+  ``Edge`` objects choose the next node, optionally on a condition. Results
+  are folded into named channels by reducers (``replace``, ``append``,
+  ``extend``, ``add``, ``merge`` or a function). ``graph.tools()`` and
+  ``graph.planner()`` drive an ordinary ``Agent``, so every call still passes
+  the five gates and is audited; ``WorkflowGraph.sequence(...)`` builds a
+  straight line. A graph is checked when it is built -- every node reachable,
+  a ``Finish`` reachable from every node, every loop through a node with
+  ``max_visits`` and its ``on_exhausted`` exit not leading back -- so every
+  graph that can be built terminates. The planner replays the recorded steps
+  at each decision, so resume needs no new state, the state schema is
+  unchanged, and a state the graph did not produce is refused with
+  ``WorkflowError``; ``graph.replay(state)`` returns the position and
+  ``WorkflowView.digest()`` its digest. :pr:`909`
+
 scikitplot.annoy
 ----------------
 
@@ -184,6 +393,88 @@ scikitplot.annoy
   were all ``xfail``, which hid that ``test_lastfm_angular`` builds a
   65-dimensional index from 64-dimensional rows; it is now a strict
   ``xfail`` on that ``ValueError``. :pr:`865`
+
+scikitplot.cleanprompt
+----------------------
+
+- |Feature| ``--style surrogate`` can use your own stand-in names: a surrogate set is a
+  YAML or JSON file of ``PERSON``, ``ORG``, ``GPE``, ``LOC`` and ``FAC``
+  pools, validated when it loads (unknown keys, empty or duplicate entries,
+  look-alike or mixed-script entries and anything a structural pattern would
+  detect are refused), selected with ``--surrogates FILE`` on ``redact``,
+  ``encode``, ``roundtrip``, ``batch``, ``ask``, ``mcp`` and ``plan``, with
+  ``FluentCleanPrompt().surrogates(path)`` or in a plan file, and loaded in
+  Python with ``load_surrogate_set``. The set's identity is part of the tag
+  style and of the plan fingerprint, so editing a set makes a saved plan
+  stale; ``EMAIL``, ``PHONE`` and ``URL`` keep their built-in reserved forms,
+  and the default output is unchanged. :pr:`864`
+
+- |Feature| ``scikitplot.cleanprompt``: a policy can now choose what happens to each
+  kind of value once it is detected: ``tokenize`` (a placeholder),
+  ``surrogate`` (an invented stand-in), ``report`` (leave it and list it) or
+  ``block`` (refuse the whole text with ``BlockedError``). Set it with
+  ``--action KIND=ACTION`` on every command that cleans,
+  ``FluentCleanPrompt().action()``, ``RedactionPolicy(actions=...)``, a plan
+  file or a config file. A run that reports values prints an alert, ``doctor``
+  lists reported kinds as blind spots, and the guard and the MCP server refuse
+  to send them. Without actions the output is unchanged. :pr:`909`
+
+- |Enhancement| The CleanPrompt user guide is now several task-oriented pages, including
+  entity-engine readiness, web and container deployment, and an explicit list
+  of what is and is not protected. :pr:`864`
+
+- |Enhancement| ``scikitplot.cleanprompt``: ``kinds --matrix`` prints the coverage matrix.
+  For every detection kind it shows which core patterns, packs, entity
+  engines and tiers find it, whether a validator checks it, whether a
+  stand-in exists, and what the policy's actions do with it
+  (``--action KIND=ACTION`` to see your own). The user guide's new coverage
+  table is generated from the same data. A new ``vehicle`` pack
+  (``--pack vehicle``) finds vehicle identification numbers: in running text
+  only when the North American check digit holds, and next to a ``VIN`` or
+  ``chassis number`` label in any well-formed spelling, plus licence-plate
+  fields. A surrogate set can list ordinary words under ``avoid``
+  (``avoid: [the, ash]``): an entry equal to one is refused when the set
+  loads, and no stand-in equal to one is issued, combined names and the
+  built-in names included, so ``decode`` can no longer rewrite those words
+  in the model's reply. Words compare ignoring case, compatibility forms and
+  separators. A new ``de`` pack (``--pack de``) finds the German tax
+  identification number (Steuer-ID), written together or in groups, only
+  when its published structure rule and check digit hold, and in fields
+  such as ``steuer_id``. :pr:`909`
+
+- |Fix| ``doctor``, ``inspect``, ``encode`` and the web app now agree on whether an
+  entity engine can run: an engine installed without its spaCy model or NLTK
+  data is reported as not ready with the exact download command, ``auto`` no
+  longer selects it, and an explicit ``--ner`` request fails before any text
+  is read. NLTK data present only under pre-3.9 names is detected as
+  unloadable. The web app now honours ``ner_engine``, ``language`` and
+  ``model_size``, and ``docker --with-ner`` installs the model it runs with. :pr:`864`
+
+- |Fix| ``scikitplot.cleanprompt``: telephone numbers in common international
+  groupings are now hidden whole. Previously the country and area code of
+  ``+33 1 23 45 67 89`` or ``+49 (0)30 1234 5678`` were sent beside the
+  placeholder, and numbers with a long subscriber group (``+49 30 12345678``,
+  ``030 12345678``, ``+44 7700 900123``) were not found at all. An extension
+  (``ext. 123``, ``x12``) is hidden with its number. Year ranges such as
+  ``2019-2024`` and day-month-year dates are no longer mistaken for phone
+  numbers. Separately, a placeholder spelling already present in the source
+  text, such as ``[email_1]`` or ``\[EMAIL-1\]``, is now restored exactly as
+  written, in a single call and across a session's turns. Previously
+  restoration replaced it with the value issued under that label, in the same
+  call or an earlier turn. :pr:`909`
+
+scikitplot.config
+-----------------
+
+- |Enhancement| New :func:`scikitplot.config.citation` returns a BibTeX entry.
+  ``citation("all")`` (the default) is :data:`scikitplot.__bibtex__`, which
+  cites every version. ``citation("build")`` cites the installed build: its
+  version and kind, the build version with its commit, and the URL of that
+  exact source tree, so a notebook can record exactly what it ran. A build
+  made without git has no year or month and cites the repository. A release
+  gets its own Zenodo DOI only when the DOI was known at build time. The entry
+  is the same one ``tools/citation/citation_ref.py`` writes for that version,
+  commit and date; nothing is read from the network. :pr:`909`
 
 scikitplot.corpus
 -----------------
@@ -272,6 +563,72 @@ scikitplot.corpus
   like an index. ``TermCoverageGrader`` is the deterministic grader (the
   share of query words in the top hits, against two thresholds); a model
   grader is any callable returning a ``GradeResult``. :pr:`865`
+
+- |Feature| Corpus can measure whether scores presented as probabilities of relevance
+  behave like probabilities: ``brier_score``, ``binary_log_loss``,
+  ``reliability_table``, ``expected_calibration_error`` and
+  ``calibration_report`` take scikit-learn's ``(y_true, y_prob)`` order, keep
+  empty bins in the reliability table so two tables line up, refuse graded
+  labels instead of thresholding them, and need no scikit-learn (their
+  results equal ``brier_score_loss``, ``log_loss`` and
+  ``calibration_curve``).
+  ``LogOddsFusion`` combines retriever legs whose scores have fitted
+  calibrators into probabilities of relevance: each leg's evidence
+  ``logit(p) - logit(prevalence)``, weighted, is added to ``logit(base_rate)``
+  (Bayes' rule for legs independent given relevance), a leg that did not list a
+  document adds nothing, and an unfitted calibrator is refused. Each fused item
+  carries its per-leg contributions, and the result reports the marginal
+  correlation of every pair of legs' evidence. Rank fusion (``FusionPolicy``)
+  stays the default.
+  Hybrid search fuses this way when given
+  ``RetrievalConfig(match_mode="hybrid", probability_fusion=ProbabilityFusion(policy, calibrators))``:
+  each leg's native score (BM25, cosine) is calibrated by that leg's
+  calibrator, hits are scored by the fused probability
+  (``native_metric="logodds_probability"``), leg weights come from the policy
+  (``hybrid_alpha`` must stay at its default), and an index bound to a
+  ``SecurityFilter`` scope is refused because its BM25 statistics differ from
+  the ones the calibrator was fitted on.
+  ``CutPolicy`` keeps a fixed count, every hit at or above a probability
+  threshold (refused on scores outside ``[0, 1]``) or the hits above the
+  largest score gap, clamped by ``min_k``/``max_k``, and reports its evidence
+  in a ``CutResult``. ``CachedSearch`` is an exact, bounded, thread-safe cache
+  in front of an index, keyed by the index's content generation, its security
+  filter, the query, every config field, the caller's filter and the query
+  embedding; only ``success`` and ``empty`` responses are kept, and hits come
+  back as copies. :pr:`906`
+
+- |Feature| ``route`` detects the shape of a query from its words and adds the evidence
+  paths that shape needs, when the index has them: ``multi_hop`` and
+  ``hierarchy`` add graph traversal, ``aggregation``, ``negation`` and
+  ``temporal`` add metadata filters (new ``has_metadata=``). ``RoutePlan``
+  gains ``shapes`` and ``unavailable`` (the paths a shape needed that the index
+  lacks); a plain query routes exactly as before and a quoted phrase is still
+  lexical only. The rules are data: ``RoutingRule`` (a shape, its legs,
+  whole-word ``phrases`` and an optional ``matcher(tokens) -> bool``) and
+  ``RoutingPolicy`` (rules in order, ``with_rules`` to extend or replace),
+  with ``DEFAULT_ROUTING_POLICY`` for English and ``route(query,
+  policy=...)`` for another language or vocabulary. Matching is on whole
+  words, never on caller-supplied regular expressions, so routing is linear
+  in the query's length. A labelled routing set of 45 queries, near misses
+  included, pins the default policy. :pr:`909`
+
+- |Efficiency| Keyword (BM25) search over an unscoped index scores from contributions
+  computed once per build when :mod:`scikitplot.rank_bm25` is installed:
+  about 99 ms to about 2 ms per four-term query on 200 000 documents, with
+  bit-identical results. Searches under a ``SecurityFilter`` scope, whose
+  statistics depend on the scope, and installs without
+  :mod:`scikitplot.rank_bm25` keep the previous evaluation. :pr:`906`
+
+- |Enhancement| Probability fusion now runs on an index bound to a ``SecurityFilter``. Pass
+  the scope the lexical calibrator was fitted under as
+  ``ProbabilityFusion(scope=...)``; hybrid search fuses only when the index's
+  scope has the same digest, and otherwise refuses with a ``ValueError``
+  naming both digests (a calibrator fitted unscoped is still refused on a
+  scoped index, and the reverse). The new ``SecurityFilter.digest`` is the
+  SHA-256 of the expression's canonical JSON, so two filters with one label
+  are two scopes. A dense-only fusion (lexical weight 0) runs under any
+  scope, because cosine similarity does not depend on it. Rank fusion is
+  unchanged. :pr:`909`
 
 - |Fix| ``EmbeddingEngine`` no longer serves one custom provider's cached vectors to
   another (a custom provider is cached only under a ``custom_fn_id``), loads
@@ -447,6 +804,63 @@ scikitplot.random
   ``KissSeedSequence.spawn`` reserves its spawn keys under a lock, so
   threads never mint the same key (identical child streams) on
   free-threaded builds. Annoy, which shares the C++ generator, is unchanged. :pr:`865`
+
+scikitplot.rank_bm25
+--------------------
+
+- |Feature| ``ScoreCalibrator`` turns BM25 scores into probabilities of relevance fitted
+  on labelled (query, document) pairs, by Platt scaling (``"sigmoid"``, the
+  default) or isotonic regression (``"isotonic"``), with the results of
+  scikit-learn's sigmoid calibration and ``IsotonicRegression`` and without
+  needing scikit-learn. ``fit`` requires the query of every pair and the
+  population the pairs were drawn from; ``require_held_out`` refuses
+  evaluation queries that were used to fit (they are kept only as SHA-256
+  digests), a fit that would reverse the ranking raises, and
+  ``shift_prior`` moves a calibrator to a population with another share of
+  relevant documents by the Bayes prior correction. ``to_dict`` and
+  ``from_dict`` store it as JSON. :pr:`906`
+
+- |Efficiency| ``BM25Okapi``, ``BM25L`` and ``BM25Plus`` score from contributions computed
+  once per index (on the first query, or by the new ``prepare()``) instead of
+  re-evaluating the formula for every document on every query: ``get_top_ids``
+  on 200 000 documents went from about 600 ms to about 2.5 ms per query.
+  Results are bit-identical to the reference evaluation for every recipe,
+  including ties and duplicate and unknown query terms. A new ``backend``
+  argument (``"auto"``, the default, ``"numpy"``, ``"numba"`` or
+  ``"reference"``) chooses how the sums run; ``"auto"`` uses Numba when it is
+  installed and NumPy otherwise, and every backend returns the same values, so
+  ``identity`` does not depend on it. Numba is imported only when the compiled
+  backend is first used, the compiled kernel is cached on disk, and
+  ``SCIKITPLOT_RANK_BM25_DISABLE_NUMBA=1`` forces NumPy. A subclass that
+  overrides the scoring formula keeps the previous evaluation. ``save`` writes
+  generations of schema ``bm25-index/2``: the postings as ``.npy`` arrays
+  whose SHA-256, dtype and shape ``index.json`` records, instead of every
+  document's term counts in the JSON. ``load`` refuses an array that does not
+  match, reads with ``allow_pickle=False``, recomputes the contributions
+  exactly, and accepts ``mmap_mode="r"``; on 100 000 documents a generation
+  went from 173 MB to 82 MB and loading plus a first query from 4.2 s to
+  0.6 s. :pr:`906`
+
+- |Fix| ``BM25Okapi``, ``BM25L`` and ``BM25Plus`` no longer score an empty document
+  ``NaN`` (with a ``RuntimeWarning``) when ``b=1``. An empty document holds no
+  query term, so it now scores the recipe's absent-term value for every ``b``
+  in ``[0, 1]``: ``0`` for ``BM25Okapi`` and the ``delta`` lower bound for
+  ``BM25L`` and ``BM25Plus``, the same as a non-empty document lacking every
+  query term. Scores of non-empty documents are unchanged bit for bit. The
+  recipes are now ``okapi-epsilon-floor/2``, ``bm25l-delta/2`` and
+  ``bm25plus-delta/2``, so ``identity`` tells indexes built before and after
+  the change apart. :pr:`909`
+
+- |API| ``BM25Okapi.load``, ``BM25L.load`` and ``BM25Plus.load`` now verify what they
+  load before rebuilding the index, and refuse with a ``ValueError`` naming
+  the cause: a generation of another scorer (``load it with BM25Okapi``), one
+  built with an earlier version of the formula or an unknown recipe (rebuild
+  it from the corpus), a parameter that is missing, unknown or outside its
+  domain (a persisted ``b=7`` is no longer scored), or metadata whose recorded
+  ``identity`` does not match the recipe, analyzer and parameters it declares.
+  Loading with the ``BM25`` base class raises ``TypeError``. Generations of
+  schema ``bm25-index/1`` are no longer read: every one was written with a
+  previous recipe version, so rebuild those indexes with this version. :pr:`909`
 
 tools/citation
 --------------

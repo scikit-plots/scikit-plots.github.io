@@ -204,7 +204,7 @@ that own their inference runtime.
     preflight: {'policy': 'resilient', 'declared': ['faster-whisper', 'openai-whisper', 'gallery-local-asr'], 'ordered': ['gallery-local-asr'], 'eligible': ['gallery-local-asr'], 'selected': ['gallery-local-asr'], 'skipped': [], 'selected_capabilities': [], 'skip_details': []}
     chunk text: synthetic transcript for demo
     provider: gallery-demo
-    backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
+    backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'requested_backend': 'gallery-local-asr', 'fallback_reason': None, 'allow_fallback': True, 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
     policy skips: []
 
 
@@ -213,7 +213,7 @@ that own their inference runtime.
 .. GENERATED FROM PYTHON SOURCE LINES 128-136
 
 Policy presets express orchestration, not reader semantics
----------------------------------------------------------
+----------------------------------------------------------
 ``offline`` forbids network and download side effects rather than equating
 "may download" with "must download now".  A backend may participate when it
 can enforce local-only execution; model-backed adapters can therefore use an
@@ -252,7 +252,7 @@ back from.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.007 seconds)
+   **Total running time of the script:** (0 minutes 0.005 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_backend_policy_script.py:

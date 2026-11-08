@@ -71,8 +71,8 @@ namespace = {
 ```
 
 The magic runs the line in the notebook’s namespace; here
-`profile_code` gets the namespace explicitly. It returns the
-`ProfileResult` and what the code raised (None).
+[`profile_code`](../../modules/generated/scikitplot._ipymagic.profile_code.html#scikitplot._ipymagic.profile_code "scikitplot._ipymagic.profile_code") gets the namespace explicitly. It returns the
+[`ProfileResult`](../../modules/generated/scikitplot._ipymagic.ProfileResult.html#scikitplot._ipymagic.ProfileResult "scikitplot._ipymagic.ProfileResult") and what the code raised (None).
 
 ```
 result, error = profile_code("slow_sum_of_squares(200_000)", namespace, limit=5)
@@ -81,12 +81,12 @@ assert error is None
 
 ```
 ```
-3 calls in 0.0389 s; 3 of 3 functions by cumulative
+3 calls in 0.0298 s; 3 of 3 functions by cumulative
 
       ncalls    tottime    cumtime  function
-           1   0.000032   0.038872  <built-in method builtins.exec>
-           1   0.000002   0.038839  <string>:1(<module>)
-           1   0.038837   0.038837  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+           1   0.000063   0.029710  <built-in method builtins.exec>
+           1   0.000004   0.029647  <string>:1(<module>)
+           1   0.029643   0.029643  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
 
 ```
 
@@ -110,13 +110,13 @@ print(result.to_text())
 
 ```
 ```
-50006 calls in 0.0247 s; 4 of 6 functions by ncalls
+50006 calls in 0.0252 s; 4 of 6 functions by ncalls
 
       ncalls    tottime    cumtime  function
-       50001   0.007353   0.007353  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
-           1   0.010468   0.010468  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
-           1   0.000006   0.014144  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
-           1   0.000004   0.024616  <string>:1(<module>)
+       50001   0.008803   0.008803  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
+           1   0.007003   0.007003  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+           1   0.000014   0.018024  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
+           1   0.000010   0.025038  <string>:1(<module>)
 
 ```
 
@@ -159,20 +159,20 @@ pstats.Stats(str(stats_file)).sort_stats("cumulative").print_stats(2)
 ```
 ```
 written: my run.prof
-Thu Oct 29 06:16:52 2026    /tmp/skplt-profile-n7m36n2f/my run.prof
+Sun Nov  8 15:22:19 2026    /tmp/skplt-profile-6bkwh36t/my run.prof
 
-         4 function calls in 0.011 seconds
+         4 function calls in 0.016 seconds
 
    Ordered by: cumulative time
    List reduced from 4 to 2 due to restriction <2>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    0.011    0.011 {built-in method builtins.exec}
-        1    0.000    0.000    0.011    0.011 <string>:1(<module>)
+        1    0.000    0.000    0.016    0.016 {built-in method builtins.exec}
+        1    0.000    0.000    0.016    0.016 <string>:1(<module>)
 
 
 
-<pstats.Stats object at 0x7bc00152c590>
+<pstats.Stats object at 0x7126fa754ce0>
 
 ```
 
@@ -257,9 +257,9 @@ SKIP: set SCIKITPLOT_GALLERY_RUN_SNAKEVIZ=1 to start snakeviz
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html)
 
-****Total running time of the script:**** (0 minutes 0.090 seconds)
+****Total running time of the script:**** (0 minutes 0.084 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo25.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo25.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)
+[![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)
 
 [`Download Jupyter notebook: plot_ipymagic_scikit-plots_profiler.ipynb`](../../_downloads/a2528bffae21bc4a58f71f2c602d7f1d/plot_ipymagic_scikit-plots_profiler.ipynb)
 
@@ -269,15 +269,15 @@ Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [plot
 
 Related examples
 
-![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_thumb.png)
-
-[Run scikit-plots Commands from a Notebook](plot_ipymagic_scikit-plots.html)
-
-Run scikit-plots Commands from a Notebook![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_cleanprompt_thumb.png)
+![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_cleanprompt_thumb.png)
 
 [Clean a Prompt in a Notebook Cell with %%scikitplot](plot_ipymagic_scikit-plots_cleanprompt.html)
 
-Clean a Prompt in a Notebook Cell with %%scikitplot![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_mcp_thumb.png)
+Clean a Prompt in a Notebook Cell with %%scikitplot![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_thumb.png)
+
+[Run scikit-plots Commands from a Notebook](plot_ipymagic_scikit-plots.html)
+
+Run scikit-plots Commands from a Notebook![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_mcp_thumb.png)
 
 [Inspect and Self-test the MCP Server from a Notebook](plot_ipymagic_scikit-plots_mcp.html)
 

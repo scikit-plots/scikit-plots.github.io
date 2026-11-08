@@ -197,9 +197,9 @@ removed: True | still there: False
 
 Tags: [model-workflow: env](../../_tags/model-workflow-env.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html)
 
-****Total running time of the script:**** (0 minutes 3.022 seconds)
+****Total running time of the script:**** (0 minutes 3.170 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo24.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_create_run_remove_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo24.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_create_run_remove_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo9.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_create_run_remove_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo9.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_create_run_remove_script.ipynb)
 
 [`Download Jupyter notebook: plot_env_create_run_remove_script.ipynb`](../../_downloads/d926450f26f570b5a422afdd75a08605/plot_env_create_run_remove_script.ipynb)
 

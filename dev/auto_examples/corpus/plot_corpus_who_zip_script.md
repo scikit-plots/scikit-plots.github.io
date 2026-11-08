@@ -435,21 +435,22 @@ else:
 ```
 ```
   0%|                                               | 0.00/461M [00:00<?, ?iB/s]
-  7%|██▌                                    | 30.4M/461M [00:00<00:01, 319MiB/s]
- 15%|█████▊                                 | 69.5M/461M [00:00<00:01, 372MiB/s]
- 23%|█████████                               | 105M/461M [00:00<00:01, 325MiB/s]
- 32%|████████████▌                           | 145M/461M [00:00<00:00, 361MiB/s]
- 39%|███████████████▋                        | 180M/461M [00:00<00:00, 300MiB/s]
- 46%|██████████████████▎                     | 211M/461M [00:00<00:00, 298MiB/s]
- 52%|████████████████████▉                   | 241M/461M [00:00<00:00, 304MiB/s]
- 59%|███████████████████████▍                | 271M/461M [00:00<00:00, 306MiB/s]
- 66%|██████████████████████████▍             | 306M/461M [00:01<00:00, 323MiB/s]
- 74%|█████████████████████████████▌          | 341M/461M [00:01<00:00, 337MiB/s]
- 81%|████████████████████████████████▍       | 374M/461M [00:01<00:00, 340MiB/s]
- 88%|███████████████████████████████████▎    | 408M/461M [00:01<00:00, 344MiB/s]
- 96%|██████████████████████████████████████▍ | 443M/461M [00:01<00:00, 352MiB/s]
-100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 334MiB/s]
-/home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+  4%|█▌                                     | 19.0M/461M [00:00<00:02, 200MiB/s]
+ 10%|███▉                                   | 46.6M/461M [00:00<00:01, 252MiB/s]
+ 17%|██████▌                                | 77.8M/461M [00:00<00:01, 286MiB/s]
+ 24%|█████████▍                              | 108M/461M [00:00<00:01, 300MiB/s]
+ 30%|████████████▏                           | 140M/461M [00:00<00:01, 313MiB/s]
+ 38%|███████████████                         | 173M/461M [00:00<00:00, 324MiB/s]
+ 45%|█████████████████▊                      | 206M/461M [00:00<00:00, 330MiB/s]
+ 52%|████████████████████▋                   | 239M/461M [00:00<00:00, 335MiB/s]
+ 59%|███████████████████████▌                | 272M/461M [00:00<00:00, 339MiB/s]
+ 66%|██████████████████████████▍             | 305M/461M [00:01<00:00, 341MiB/s]
+ 73%|█████████████████████████████▎          | 338M/461M [00:01<00:00, 343MiB/s]
+ 81%|████████████████████████████████▏       | 371M/461M [00:01<00:00, 344MiB/s]
+ 88%|███████████████████████████████████     | 404M/461M [00:01<00:00, 344MiB/s]
+ 95%|█████████████████████████████████████▉  | 438M/461M [00:01<00:00, 346MiB/s]
+100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 329MiB/s]
+/home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 ASR-enabled archive documents: 120
 Audio documents: 5
@@ -471,7 +472,7 @@ not erase evidence successfully extracted from other members.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 15.964 seconds)
+****Total running time of the script:**** (0 minutes 17.405 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

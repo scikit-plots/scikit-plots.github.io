@@ -44,7 +44,7 @@ print("build identity:", index.identity)
 ```
 ```
 before save: [('bm25', 0.5699829445233371), ('annoy', 0.0863610522005056)]
-build identity: 4a029b342b87df32a0853f5c5907550b050c2a8fb89235aac3ffee0c7f8130e9
+build identity: f1b27be51e923e727fe00a90aa72c2a705da99fb82c4da94e2a8153e8dedd703
 
 ```
 
@@ -93,9 +93,9 @@ rather than teaching a private import.
 
 Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: workflow](../../_tags/purpose-workflow.html)
 
-****Total running time of the script:**** (0 minutes 0.008 seconds)
+****Total running time of the script:**** (0 minutes 0.272 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo21.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo21.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_persistence_script.ipynb`](../../_downloads/e1b28178b46860f574fe919897a0d491/plot_rank_bm25_persistence_script.ipynb)
 

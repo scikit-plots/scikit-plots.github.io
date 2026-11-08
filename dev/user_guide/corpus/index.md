@@ -77,11 +77,15 @@ front of you.
 
 * [Retrieval and similarity](retrieval_and_similarity.html)
   * [Hybrid fusion](retrieval_and_similarity.html#hybrid-fusion)
+  * [Probability fusion](retrieval_and_similarity.html#probability-fusion)
+  * [Cutting a ranked list](retrieval_and_similarity.html#cutting-a-ranked-list)
+  * [Caching searches](retrieval_and_similarity.html#caching-searches)
   * [Filtering a search](retrieval_and_similarity.html#filtering-a-search)
   * [Levenshtein facade](retrieval_and_similarity.html#levenshtein-facade)
   * [Choosing a metric](retrieval_and_similarity.html#choosing-a-metric)
   * [Embedding cache](retrieval_and_similarity.html#embedding-cache)
   * [Retrieval execution plan](retrieval_and_similarity.html#retrieval-execution-plan)
+  * [Routing by query shape](retrieval_and_similarity.html#routing-by-query-shape)
   * [Corrective retrieval](retrieval_and_similarity.html#corrective-retrieval)
 **evaluate**
 
@@ -93,6 +97,7 @@ front of you.
   * [Reports](evaluation.html#reports)
   * [Compare two systems](evaluation.html#compare-two-systems)
   * [Answer metrics](evaluation.html#answer-metrics)
+  * [Calibration](evaluation.html#calibration)
   * [scikit-learn scorers](evaluation.html#scikit-learn-scorers)
 * [Judging answers with language models](llm_evaluation.html)
   * [Connect a model](llm_evaluation.html#connect-a-model)

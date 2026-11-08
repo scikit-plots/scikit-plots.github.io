@@ -46,9 +46,8 @@ pip install scikit-plots[corpus]
    configure the real YouTube reader, and keep the live transcript request
    explicit and optional.
 10. ****Build a multi-source WHO corpus**** — see the explicit stage-by-stage
-
-> integration path, partial source success, keyword retrieval, adapters, and
-> where `CorpusBuilder` fits.
+    integration path, partial source success, keyword retrieval, adapters, and
+    where `CorpusBuilder` fits.
 
 ## Which API should I use?[#](#which-api-should-i-use "Link to this heading")
 

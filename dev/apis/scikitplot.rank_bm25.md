@@ -69,7 +69,7 @@ The scoring formula is named and versioned rather than implied by the class:
 
 ```
 >>> bm25.recipe.identifier
-'okapi-epsilon-floor/1'
+'okapi-epsilon-floor/2'
 
 ```
 Go BackOpen In Tab
@@ -93,6 +93,13 @@ Go BackOpen In Tab
 | [`BM25Okapi`](../modules/generated/scikitplot.rank_bm25.BM25Okapi.html#scikitplot.rank_bm25.BM25Okapi "scikitplot.rank_bm25.BM25Okapi") | Okapi BM25 with an epsilon floor on negative IDFs (ATIRE-style IDF). |
 | [`BM25L`](../modules/generated/scikitplot.rank_bm25.BM25L.html#scikitplot.rank_bm25.BM25L "scikitplot.rank_bm25.BM25L") |  |
 | [`BM25Plus`](../modules/generated/scikitplot.rank_bm25.BM25Plus.html#scikitplot.rank_bm25.BM25Plus "scikitplot.rank_bm25.BM25Plus") |  |
+
+## Score calibration[#](#score-calibration "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`CALIBRATION_METHODS`](../modules/generated/scikitplot.rank_bm25.CALIBRATION_METHODS.html#scikitplot.rank_bm25.CALIBRATION_METHODS "scikitplot.rank_bm25.CALIBRATION_METHODS") | Built-in immutable sequence. |
+| [`ScoreCalibrator`](../modules/generated/scikitplot.rank_bm25.ScoreCalibrator.html#scikitplot.rank_bm25.ScoreCalibrator "scikitplot.rank_bm25.ScoreCalibrator") | Monotone map from BM25 scores to probabilities of relevance. |
 
 ## Validation[#](#validation "Link to this heading")
 

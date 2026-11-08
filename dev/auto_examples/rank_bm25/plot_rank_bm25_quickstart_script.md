@@ -122,9 +122,9 @@ and persist an index. The full contracts and failure modes live in
 
 Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: tutorial](../../_tags/purpose-tutorial.html)
 
-****Total running time of the script:**** (0 minutes 0.003 seconds)
+****Total running time of the script:**** (0 minutes 0.004 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo17.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo17.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo21.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo21.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_quickstart_script.ipynb)
 
 [`Download Jupyter notebook: plot_rank_bm25_quickstart_script.ipynb`](../../_downloads/56b16713795f21edf3d747a426821ffa/plot_rank_bm25_quickstart_script.ipynb)
 

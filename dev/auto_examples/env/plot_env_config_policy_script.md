@@ -115,11 +115,11 @@ assert not plan.uses_network
 
 ```
 ```
-plan 94d4e2e791e3  ensure <tmp>/.venv
+plan 7ec2a250de46  ensure <tmp>/.venv
   target   host
   backend  venv - named in the request
   1. create a venv with Python 3.12.16
-     $ /home/circleci/.pyenv/versions/3.12.16/bin/python3.12 -m venv <tmp>/.venv
+     $ /home/circleci/.pyenv/versions/3.12.16/bin/python -m venv <tmp>/.venv
   2. install PyPI packages with pip
      $ <tmp>/.venv/bin/python -m pip install --disable-pip-version-check --no-input --no-index -r <tmp>/requirements.txt
   3. import six
@@ -302,9 +302,9 @@ else:
 
 Tags: [model-workflow: env](../../_tags/model-workflow-env.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html)
 
-****Total running time of the script:**** (0 minutes 0.046 seconds)
+****Total running time of the script:**** (0 minutes 0.050 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo24.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_config_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo24.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_config_policy_script.ipynb)
+[![Launch binder](../../_images/binder_badge_logo9.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/env/plot_env_config_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo9.svg)](../../lite/lab/index.html?path=auto_examples/env/plot_env_config_policy_script.ipynb)
 
 [`Download Jupyter notebook: plot_env_config_policy_script.ipynb`](../../_downloads/782599685fbc82106bcfa3406fe4b200/plot_env_config_policy_script.ipynb)
 

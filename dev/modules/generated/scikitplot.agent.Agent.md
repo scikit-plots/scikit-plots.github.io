@@ -1,6 +1,6 @@
 # Agent[#](#agent "Link to this heading")
 
-class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **limits=None**, **approver=None**, **done=None**, **audit=None**, **store=None**, **clock=None**, **now=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L79)[#](#scikitplot.agent.Agent "Link to this definition")
+class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **limits=None**, **approver=None**, **done=None**, **audit=None**, **store=None**, **clock=None**, **now=None**, **artifacts=None**, **offload\_results\_over=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_loop.py#L82)[#](#scikitplot.agent.Agent "Link to this definition")
 :   Run a goal with a planner and tools, within a policy and limits.
 
     Parameters:
@@ -44,6 +44,15 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
         ****now****callable or None, default=None
         :   Wall-clock time written in audit records; `None` is [`time.time`](https://docs.python.org/3/library/time.html#time.time "(in Python v3.15)").
 
+        ****artifacts****ArtifactStore or None, default=None
+        :   Where offloaded tool results are kept.
+
+        ****offload\_results\_over****int or None, default=None
+        :   A tool result whose canonical JSON is longer than this many bytes is
+            written to `artifacts` and the step keeps only its `result_ref`
+            (`{"digest", "bytes"}`); `None` keeps every result in the state.
+            Requires `artifacts`.
+
     Raises:
     :   TypeError
         :   If an argument has the wrong type.
@@ -59,6 +68,8 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
         * ****store**** ([**StateStore**](scikitplot.agent.StateStore.html#scikitplot.agent.StateStore "scikitplot.agent.StateStore") **|** **None**)
         * ****clock**** (**Callable****[****[****]****,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** **None**)
         * ****now**** (**Callable****[****[****]****,** [**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")**]** **|** **None**)
+        * ****artifacts**** ([**ArtifactStore**](scikitplot.agent.ArtifactStore.html#scikitplot.agent.ArtifactStore "scikitplot.agent.ArtifactStore") **|** **None**)
+        * ****offload\_results\_over**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
 
     Examples
 
@@ -77,7 +88,7 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
     ```
     Go BackOpen In Tab
 
-    resume(**state**, **\***, **approvals=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L221)[#](#scikitplot.agent.Agent.resume "Link to this definition")
+    resume(**state**, **\***, **approvals=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_loop.py#L251)[#](#scikitplot.agent.Agent.resume "Link to this definition")
     :   Continue a paused or interrupted run.
 
         Parameters:
@@ -122,7 +133,7 @@ class scikitplot.agent.Agent(**tools**, **planner**, **\***, **policy=None**, **
         state it returns replaces the one given, even when a paused run stays
         paused: resume that one next.
 
-    run(**goal**, **\***, **run\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/agent/_loop.py#L174)[#](#scikitplot.agent.Agent.run "Link to this definition")
+    run(**goal**, **\***, **run\_id=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_loop.py#L204)[#](#scikitplot.agent.Agent.run "Link to this definition")
     :   Start a run toward `goal` and drive it until it ends or pauses.
 
         Parameters:

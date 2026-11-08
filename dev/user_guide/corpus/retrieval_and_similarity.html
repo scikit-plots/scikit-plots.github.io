@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-10-29T06:25:48Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:37:21Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/retrieval_and_similarity","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -43,8 +43,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -68,10 +68,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/styles/principles-ticker.css" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
     <script src="../../_static/documentation_options.js?v=de0fc20e"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -94,7 +94,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/corpus/retrieval_and_similarity';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.23.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.24.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://scikit-plots.github.io/dev/_static/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.5.dev0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -162,7 +162,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   
     <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -332,14 +332,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
       
@@ -416,7 +416,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
   
 
   
-    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -430,7 +430,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
@@ -557,14 +557,14 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
 <div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
   <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
-    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
   </ul>
 </div></div>
         
@@ -857,6 +857,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/retrieval_and_identity.html">Retrieval and identity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/persistence_and_reproducibility.html">Persistence and reproducibility</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/performance_and_scaling.html">Performance and scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/calibration.html">Score calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rank_bm25/usage_scenarios.html">Rank-BM25 Usage Scenarios</a></li>
@@ -916,6 +917,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../_ipymagic/automation.html">CI, scripts and agents</a></li>
 </ul>
 </details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../metadata_routing.html">Metadata routing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">development</span></p>
 <ul class="nav bd-sidenav">
@@ -992,7 +996,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../index.html" class="nav-link" aria-label="Home">
-        <i class="fa-solid fa-home"></i>
+        <i class="fa-solid fa-house"></i>
       </a>
     </li>
     
@@ -1050,6 +1054,117 @@ carry only the fused score.</p></li>
 <span class="nb">dict</span><span class="p">(</span><span class="n">FusionPolicy</span><span class="o">.</span><span class="n">from_alpha</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>         <span class="c1"># {'lexical': 0.0, 'dense': 1.0}</span>
 </pre></div>
 </div>
+</section>
+<section id="probability-fusion">
+<h2>Probability fusion<a class="headerlink" href="#probability-fusion" title="Link to this heading">#</a></h2>
+<p>When every leg has a fitted calibrator (for example
+<a class="reference internal" href="../../modules/generated/scikitplot.rank_bm25.ScoreCalibrator.html#scikitplot.rank_bm25.ScoreCalibrator" title="scikitplot.rank_bm25.ScoreCalibrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">scikitplot.rank_bm25.ScoreCalibrator</span></code></a> for BM25 scores and another for
+dense scores), <a class="reference internal" href="../../modules/generated/scikitplot.corpus.LogOddsFusion.html#scikitplot.corpus.LogOddsFusion" title="scikitplot.corpus.LogOddsFusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogOddsFusion</span></code></a> combines the legs as evidence and returns
+probabilities of relevance instead of rank scores. Each leg passes its raw
+<code class="docutils literal notranslate"><span class="pre">(doc_id,</span> <span class="pre">score)</span></code> hits <em>and</em> its calibrator, so an uncalibrated score cannot
+enter; an unfitted calibrator is refused.</p>
+<p>A document’s log-odds is <code class="docutils literal notranslate"><span class="pre">logit(base_rate)</span></code> plus, for every leg that listed
+it, <code class="docutils literal notranslate"><span class="pre">weight</span> <span class="pre">*</span> <span class="pre">(logit(p)</span> <span class="pre">-</span> <span class="pre">logit(leg</span> <span class="pre">prevalence))</span></code>: Bayes’ rule when the legs
+are independent given relevance. A leg that did not list the document adds
+nothing. <code class="docutils literal notranslate"><span class="pre">base_rate</span></code> is required; it moves every probability but never the
+order. Probabilities are clipped to <code class="docutils literal notranslate"><span class="pre">[clip,</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">clip]</span></code> (default <code class="docutils literal notranslate"><span class="pre">1e-6</span></code>)
+before the logit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogOddsFusion</span><span class="p">,</span> <span class="n">calibration_report</span>
+
+<span class="n">fusion</span> <span class="o">=</span> <span class="n">LogOddsFusion</span><span class="p">(</span><span class="n">base_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">{</span><span class="s2">"dense"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fusion</span><span class="o">.</span><span class="n">fuse</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">"lexical"</span><span class="p">,</span> <span class="n">lexical_hits</span><span class="p">,</span> <span class="n">bm25_calibrator</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"dense"</span><span class="p">,</span> <span class="n">dense_hits</span><span class="p">,</span> <span class="n">dense_calibrator</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="p">[(</span><span class="n">item</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">probability</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
+<span class="n">result</span><span class="o">.</span><span class="n">evidence_correlation</span>   <span class="c1"># {(0, 1): 0.26...}</span>
+</pre></div>
+</div>
+<p>Lexical and dense legs are rarely independent, and correlated legs make the
+fused probability over-confident. That cannot be measured without labels:
+check the fused probabilities with <a class="reference internal" href="../../modules/generated/scikitplot.corpus.calibration_report.html#scikitplot.corpus.calibration_report" title="scikitplot.corpus.calibration_report"><code class="xref py py-func docutils literal notranslate"><span class="pre">calibration_report</span></code></a> on held-out
+labelled queries, and lower the weight of a correlated leg when they are
+over-confident. <code class="docutils literal notranslate"><span class="pre">evidence_correlation</span></code> is the <em>marginal</em> correlation of each
+pair of legs’ evidence over the documents both listed. It is positive whenever
+both legs are informative, so it does not test independence; a value near 1
+means two legs are nearly duplicates. Rank fusion (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.FusionPolicy.html#scikitplot.corpus.FusionPolicy" title="scikitplot.corpus.FusionPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">FusionPolicy</span></code></a>)
+needs no calibration and stays the default.</p>
+<p>Hybrid search can fuse this way instead of by rank. Pass a
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.ProbabilityFusion.html#scikitplot.corpus.ProbabilityFusion" title="scikitplot.corpus.ProbabilityFusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProbabilityFusion</span></code></a> – the policy and a fitted calibrator per running
+leg – as <code class="docutils literal notranslate"><span class="pre">RetrievalConfig(match_mode=&quot;hybrid&quot;,</span> <span class="pre">probability_fusion=...)</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogOddsFusion</span><span class="p">,</span> <span class="n">ProbabilityFusion</span><span class="p">,</span> <span class="n">RetrievalConfig</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">RetrievalConfig</span><span class="p">(</span>
+    <span class="n">match_mode</span><span class="o">=</span><span class="s2">"hybrid"</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">probability_fusion</span><span class="o">=</span><span class="n">ProbabilityFusion</span><span class="p">(</span>
+        <span class="n">policy</span><span class="o">=</span><span class="n">LogOddsFusion</span><span class="p">(</span><span class="n">base_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">{</span><span class="s2">"dense"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">}),</span>
+        <span class="n">calibrators</span><span class="o">=</span><span class="p">{</span><span class="s2">"lexical"</span><span class="p">:</span> <span class="n">bm25_calibrator</span><span class="p">,</span> <span class="s2">"dense"</span><span class="p">:</span> <span class="n">dense_calibrator</span><span class="p">},</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">query_embedding</span><span class="o">=</span><span class="n">query_vector</span><span class="p">)</span>
+<span class="n">hits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">score</span>          <span class="c1"># probability of relevance</span>
+<span class="n">hits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">native_metric</span>  <span class="c1"># "logodds_probability"</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Each leg’s <code class="docutils literal notranslate"><span class="pre">native_score</span></code> is calibrated: BM25 for <code class="docutils literal notranslate"><span class="pre">&quot;lexical&quot;</span></code>, cosine
+similarity for <code class="docutils literal notranslate"><span class="pre">&quot;dense&quot;</span></code>. Fit each calibrator on the scores that leg returns
+for the hybrid candidate pool (<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">top_k</span></code> hits per leg, as in rank fusion).</p></li>
+<li><p>Leg weights come from the policy; a leg runs only if its weight is above 0
+and then needs a calibrator. <code class="docutils literal notranslate"><span class="pre">hybrid_alpha</span></code> must stay at its default,
+because its meaning (a rank-fusion weight) does not carry over.</p></li>
+<li><p>Under a <a class="reference internal" href="../../modules/generated/scikitplot.corpus.SecurityFilter.html#scikitplot.corpus.SecurityFilter" title="scikitplot.corpus.SecurityFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SecurityFilter</span></code></a> scope, BM25 statistics (document count,
+document frequencies, average length) are computed over the documents the
+scope admits, so the same document scores differently than unscoped. Fit
+the lexical calibrator on the scoped index’s scores and pass its scope:
+<code class="docutils literal notranslate"><span class="pre">ProbabilityFusion(policy=...,</span> <span class="pre">calibrators=...,</span> <span class="pre">scope=security_filter)</span></code>.
+Hybrid search then fuses only on an index bound to a scope with the same
+<code class="docutils literal notranslate"><span class="pre">SecurityFilter.digest</span></code> (SHA-256 of the expression’s canonical JSON; the
+label does not count). Any other scope, or none, is refused, and the error
+names both digests. A calibrator fitted unscoped (<code class="docutils literal notranslate"><span class="pre">scope=None</span></code>) is refused
+on a scoped index, and the reverse. Cosine similarity does not depend on the
+scope, so a dense-only fusion (lexical weight 0) runs under any scope.</p></li>
+</ul>
+</section>
+<section id="cutting-a-ranked-list">
+<h2>Cutting a ranked list<a class="headerlink" href="#cutting-a-ranked-list" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CutPolicy.html#scikitplot.corpus.CutPolicy" title="scikitplot.corpus.CutPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">CutPolicy</span></code></a> decides how many of a ranked list to keep instead of always
+<code class="docutils literal notranslate"><span class="pre">top_k</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;fixed&quot;</span></code> keeps <code class="docutils literal notranslate"><span class="pre">max_k</span></code>; <code class="docutils literal notranslate"><span class="pre">&quot;threshold&quot;</span></code> keeps every hit scoring
+at least <code class="docutils literal notranslate"><span class="pre">threshold</span></code> (<code class="docutils literal notranslate"><span class="pre">K*</span> <span class="pre">=</span> <span class="pre">max{k</span> <span class="pre">:</span> <span class="pre">s_k</span> <span class="pre">&gt;=</span> <span class="pre">threshold}</span></code>); <code class="docutils literal notranslate"><span class="pre">&quot;max_gap&quot;</span></code> cuts
+after the largest drop between neighbours. <code class="docutils literal notranslate"><span class="pre">min_k</span></code> and <code class="docutils literal notranslate"><span class="pre">max_k</span></code> clamp all
+three, and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CutResult.html#scikitplot.corpus.CutResult" title="scikitplot.corpus.CutResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CutResult</span></code></a> records the rule’s evidence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CutPolicy</span>
+
+<span class="n">CutPolicy</span><span class="p">(</span><span class="s2">"max_gap"</span><span class="p">)</span><span class="o">.</span><span class="n">cut</span><span class="p">([</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span><span class="o">.</span><span class="n">k</span>      <span class="c1"># 3</span>
+<span class="n">CutPolicy</span><span class="p">(</span><span class="s2">"threshold"</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">probability_hits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A threshold is refused on scores outside <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: raw BM25, cosine and
+rank-fusion scores have no scale shared across queries, so one threshold would
+mean something different for each query. Use it on calibrated probabilities,
+such as probability-fusion hits. A large gap marks a ranking boundary; it does
+not show that the hits above it answer the question.</p>
+</section>
+<section id="caching-searches">
+<h2>Caching searches<a class="headerlink" href="#caching-searches" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CachedSearch.html#scikitplot.corpus.CachedSearch" title="scikitplot.corpus.CachedSearch"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedSearch</span></code></a> wraps one index and returns a stored response when every
+input that decides it is unchanged: the index’s content generation (a rebuild
+changes it), its security filter by canonical expression, the query, every
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.RetrievalConfig.html#scikitplot.corpus.RetrievalConfig" title="scikitplot.corpus.RetrievalConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">RetrievalConfig</span></code></a> field, the caller’s filter and the query embedding’s
+bytes, dtype and shape.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachedSearch</span>
+
+<span class="n">cache</span> <span class="o">=</span> <span class="n">CachedSearch</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">max_entries</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="n">cache</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"merger plan"</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">cache</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>   <span class="c1"># hits, misses, stored, uncacheable, evicted, size</span>
+</pre></div>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">success</span></code> and <code class="docutils literal notranslate"><span class="pre">empty</span></code> responses are kept, so a degraded answer is never
+replayed; a config with <code class="docutils literal notranslate"><span class="pre">probability_fusion</span></code> is answered by the index every
+time. Each hit returns a fresh copy of the hits list, and the cache is safe to
+share between threads. It is an exact cache: a similar query is a different
+question and is not served from it.</p>
 </section>
 <section id="filtering-a-search">
 <h2>Filtering a search<a class="headerlink" href="#filtering-a-search" title="Link to this heading">#</a></h2>
@@ -1280,6 +1395,64 @@ context held the sentence for 0.94 of the queries, against 0.95 whose ten hits
 held it: a budget drops the evidence that ranks too low to fit. No stage is a
 default.</p>
 </section>
+<section id="routing-by-query-shape">
+<h2>Routing by query shape<a class="headerlink" href="#routing-by-query-shape" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.route.html#scikitplot.corpus.route" title="scikitplot.corpus.route"><code class="xref py py-func docutils literal notranslate"><span class="pre">route</span></code></a> chooses the evidence paths of a query by rule, never by a model.
+A plain query gets lexical and dense (and graph, when the index has one). A
+query whose words show a <em>shape</em> also gets the paths that shape needs, when
+the index has them; <a class="reference internal" href="../../modules/generated/scikitplot.corpus.DEFAULT_ROUTING_POLICY.html#scikitplot.corpus.DEFAULT_ROUTING_POLICY" title="scikitplot.corpus.DEFAULT_ROUTING_POLICY"><code class="xref py py-data docutils literal notranslate"><span class="pre">DEFAULT_ROUTING_POLICY</span></code></a> knows five, in English:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shape</p></th>
+<th class="head"><p>Typical words</p></th>
+<th class="head"><p>Adds</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">multi_hop</span></code></p></td>
+<td><p>relationship between, whose</p></td>
+<td><p>graph</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aggregation</span></code></p></td>
+<td><p>how many, total, average</p></td>
+<td><p>metadata</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">negation</span></code></p></td>
+<td><p>not, without, except</p></td>
+<td><p>metadata</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temporal</span></code></p></td>
+<td><p>before, since, latest, a year</p></td>
+<td><p>metadata</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hierarchy</span></code></p></td>
+<td><p>parent, section, part of</p></td>
+<td><p>graph</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">route</span>
+
+<span class="n">plan</span> <span class="o">=</span> <span class="n">route</span><span class="p">(</span><span class="s2">"how many sections are not about fusion"</span><span class="p">,</span> <span class="n">has_metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plan</span><span class="o">.</span><span class="n">shapes</span>        <span class="c1"># ('aggregation', 'negation', 'hierarchy')</span>
+<span class="n">plan</span><span class="o">.</span><span class="n">legs</span>          <span class="c1"># lexical, dense, metadata</span>
+<span class="n">plan</span><span class="o">.</span><span class="n">unavailable</span>   <span class="c1"># graph: the index has no graph view</span>
+</pre></div>
+</div>
+<p>A <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RoutingPolicy.html#scikitplot.corpus.RoutingPolicy" title="scikitplot.corpus.RoutingPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutingPolicy</span></code></a> is an ordered set of <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RoutingRule.html#scikitplot.corpus.RoutingRule" title="scikitplot.corpus.RoutingRule"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutingRule</span></code></a> objects:
+a shape name, the legs it needs, whole-word <code class="docutils literal notranslate"><span class="pre">phrases</span></code> and an optional
+<code class="docutils literal notranslate"><span class="pre">matcher(tokens)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> for what phrases cannot say (the default temporal
+rule reads four-digit years this way). Build one for another language or a
+domain vocabulary, extend the default with
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.RoutingPolicy.html#scikitplot.corpus.RoutingPolicy.with_rules" title="scikitplot.corpus.RoutingPolicy.with_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RoutingPolicy.with_rules</span></code></a>, and pass it as <code class="docutils literal notranslate"><span class="pre">route(query,</span>
+<span class="pre">policy=...)</span></code>; <code class="docutils literal notranslate"><span class="pre">RoutingPolicy()</span></code> detects nothing. Rules match lowercase
+whole words (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.query_tokens.html#scikitplot.corpus.query_tokens" title="scikitplot.corpus.query_tokens"><code class="xref py py-func docutils literal notranslate"><span class="pre">query_tokens</span></code></a>), never caller-supplied regular
+expressions, so routing is linear in the query’s length and a pure function
+of it. A quoted phrase still routes lexical only. The labelled routing set
+<code class="docutils literal notranslate"><span class="pre">scikitplot/corpus/tests/data/routing_set.json</span></code> pins the default policy’s
+behaviour, near misses (<code class="docutils literal notranslate"><span class="pre">notebook</span></code>, <code class="docutils literal notranslate"><span class="pre">knot</span></code>, <code class="docutils literal notranslate"><span class="pre">sectional</span></code>) included.</p>
+</section>
 <section id="corrective-retrieval">
 <h2>Corrective retrieval<a class="headerlink" href="#corrective-retrieval" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorrectiveRetrieval.html#scikitplot.corpus.CorrectiveRetrieval" title="scikitplot.corpus.CorrectiveRetrieval"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorrectiveRetrieval</span></code></a> grades what a search returned and decides what to
@@ -1410,7 +1583,7 @@ default.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -1423,11 +1596,15 @@ default.</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-fusion">Hybrid fusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-fusion">Probability fusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-a-ranked-list">Cutting a ranked list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caching-searches">Caching searches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-a-search">Filtering a search</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-facade">Levenshtein facade</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-metric">Choosing a metric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-cache">Embedding cache</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-execution-plan">Retrieval execution plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#routing-by-query-shape">Routing by query shape</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corrective-retrieval">Corrective retrieval</a></li>
 </ul>
   </nav></div>
@@ -1469,8 +1646,8 @@ default.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1481,7 +1658,7 @@ default.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261029.1037dde 2026-10-29T06:16Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
       <br/>
     
   </p>

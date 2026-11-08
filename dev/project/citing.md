@@ -77,6 +77,19 @@ the commit that contains it. `CITATION.cff` carries the same facts in the
 [Citation File Format](https://citation-file-format.github.io) (GitHub’s
 “Cite this repository” reads it).
 
+The installed package can cite itself:
+`scikitplot.config.citation("build")` returns the entry for the installed
+build (its version, build and source tree, from `scikitplot.version`), and
+`scikitplot.config.citation()` returns the entry for every version, the
+same as `scikitplot.__bibtex__`:
+
+```
+import scikitplot.config
+
+print(scikitplot.config.citation("build"))
+
+```
+
 ## DOIs[#](#dois "Link to this heading")
 
 The following DOI represents **all** scikit-plots versions. Please select a more
@@ -104,8 +117,20 @@ v0.4.0
 v0.3.8dev0
 :   [![https://zenodo.org/badge/DOI/10.5281/zenodo.13367001.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.13367001.svg)](https://doi.org/10.5281/zenodo.13367001)
 
-v0.3.7
+reiinakano/scikit-plot (predecessor), all versions
 :   [![https://zenodo.org/badge/DOI/10.5281/zenodo.591428.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.591428.svg)](https://doi.org/10.5281/zenodo.591428)
 
-v0.3.5
-:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.591428.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.591428.svg)](https://doi.org/10.5281/zenodo.1245853)
+reiinakano/scikit-plot v0.3.5
+:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.1245853.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.1245853.svg)](https://doi.org/10.5281/zenodo.1245853)
+
+reiinakano/scikit-plot v0.3.4
+:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.1165959.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.1165959.svg)](https://doi.org/10.5281/zenodo.1165959)
+
+reiinakano/scikit-plot v0.3.3
+:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.1036860.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.1036860.svg)](https://doi.org/10.5281/zenodo.1036860)
+
+reiinakano/scikit-plot v0.3.2
+:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.1036749.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.1036749.svg)](https://doi.org/10.5281/zenodo.1036749)
+
+reiinakano/scikit-plot v0.3.1
+:   [![https://zenodo.org/badge/DOI/10.5281/zenodo.893392.svg](https://zenodo.org/badge/DOI/10.5281/zenodo.893392.svg)](https://doi.org/10.5281/zenodo.893392)

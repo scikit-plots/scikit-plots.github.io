@@ -24,7 +24,11 @@ Save generation-based state, understand build identity, and protect derived lexi
 
 Sparse postings, dense vectors, tokenizer workers, and when to move to a larger search system.
 
-[Performance and scaling](performance_and_scaling.html#rank-bm25-performance-and-scaling)Python API
+[Performance and scaling](performance_and_scaling.html#rank-bm25-performance-and-scaling)Score calibration
+
+Turn BM25 scores into held-out-validated probabilities of relevance.
+
+[Score calibration](calibration.html#rank-bm25-calibration)Python API
 
 BM25 classes, recipe/identity properties, validation behavior, and internal analyzer boundary.
 

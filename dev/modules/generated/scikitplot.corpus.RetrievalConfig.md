@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **allow\_fallback=True**, **probability\_fusion=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -73,6 +73,13 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
         :   Item-id integer width for the Cython Annoy class (e.g. `"int32"`,
             `"uint64"`) for very large corpora. Default `None`.
 
+        ****probability\_fusion****ProbabilityFusion or None
+        :   HYBRID only, opt-in: fuse the legs as calibrated log-odds evidence
+            ([`LogOddsFusion`](scikitplot.corpus.LogOddsFusion.html#scikitplot.corpus.LogOddsFusion "scikitplot.corpus.LogOddsFusion")) instead of by rank, so each
+            hit’s `score` is a probability of relevance. Leg weights come from
+            its policy; `hybrid_alpha` must then stay at its default. `None`
+            (default) keeps reciprocal rank fusion.
+
         ****allow\_fallback****bool
         :   What happens when the dense backend cannot run as configured (R2-5):
             under `backend="auto"` an installed backend that fails to load is
@@ -99,6 +106,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
         * ****annoy\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****annoy\_index\_dtype**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****allow\_fallback**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
+        * ****probability\_fusion**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)"))
 
     Notes
 
@@ -127,11 +135,13 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
     hybrid\_alpha: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/1037dde0/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
     keyword\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 
     match\_mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'semantic'[#](#scikitplot.corpus.RetrievalConfig.match_mode "Link to this definition")
+
+    probability\_fusion: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") = None[#](#scikitplot.corpus.RetrievalConfig.probability_fusion "Link to this definition")
 
     rrf\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 60[#](#scikitplot.corpus.RetrievalConfig.rrf_k "Link to this definition")
 

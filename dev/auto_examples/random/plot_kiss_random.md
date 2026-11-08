@@ -153,37 +153,37 @@ for method in ["random", "uniform"]:
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.003702687999975751,
- 'time_mean': 0.003719373999774689,
- 'time_max': 0.0037470649995157146,
- 'time_std': 1.819378370264651e-05,
+ 'time_min': 0.004357300000037867,
+ 'time_mean': 0.005747302800000398,
+ 'time_max': 0.007529072999886921,
+ 'time_std': 0.0011425863465759302,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.00957093499982875,
- 'time_mean': 0.009777135600052134,
- 'time_max': 0.010093497000525531,
- 'time_std': 0.000196895122706402,
+ 'time_min': 0.010231364999981452,
+ 'time_mean': 0.011160897999980079,
+ 'time_max': 0.012591490999966481,
+ 'time_std': 0.0010787953111997155,
  'output_mean': 0.4994983951235816,
  'output_std': 0.28868033687878636}
 Numpy
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.0048086960005093715,
- 'time_mean': 0.004830752000270877,
- 'time_max': 0.004850811999858706,
- 'time_std': 1.7339400325035658e-05,
+ 'time_min': 0.004886953999857724,
+ 'time_mean': 0.006305369199981215,
+ 'time_max': 0.00723094700015281,
+ 'time_std': 0.0008587400745705563,
  'output_mean': 0.5000264761740889,
  'output_std': 0.2886354529025341}
 Kiss Customized 64
 {'n': 1000000,
  'repeat': 5,
- 'time_min': 0.011959565999859478,
- 'time_mean': 0.012056640799892193,
- 'time_max': 0.012222119999933057,
- 'time_std': 0.00012875892753115253,
+ 'time_min': 0.012917048000190334,
+ 'time_mean': 0.013972197800103458,
+ 'time_max': 0.015635017000022344,
+ 'time_std': 0.001172065294095049,
  'output_mean': 0.4994983951235816,
  'output_std': 0.28868033687878636}
 
@@ -404,13 +404,13 @@ Generator from seed: KissGenerator
 Generator from BitGenerator: KissGenerator
 
 Generator methods:
-  random(5):         [0.63069258 0.01223361 0.63681515 0.74134666 0.53663604]
-  integers(0, 100):  [88 37 82 69 78]
-  normal(0, 1):      [-1.88252611  0.9364274   1.87964717 -1.34855233  0.27573708]
-  uniform(10, 20):   [18.0166309  18.20923563 15.38188855 10.83479025 15.04632177]
-  choice(['A','B','C']): ['C' 'C' 'C' 'A' 'B' 'A' 'B' 'B' 'B' 'B']
-  Weighted choice A: 43% (✅ expected ~50%)
-  shuffle([0..9]):   [5 8 0 1 6 4 3 2 7 9]
+  random(5):         [0.47586445 0.47046481 0.60825216 0.12619353 0.88978661]
+  integers(0, 100):  [ 5 79 16 28 44]
+  normal(0, 1):      [-0.26454885 -0.9866066  -0.2969699  -0.09468385  1.22065461]
+  uniform(10, 20):   [12.98239879 14.6144825  13.42722554 10.54270922 11.28619913]
+  choice(['A','B','C']): ['C' 'A' 'C' 'A' 'B' 'B' 'B' 'C' 'B' 'B']
+  Weighted choice A: 48% (✅ expected ~50%)
+  shuffle([0..9]):   [9 5 6 3 7 4 8 1 0 2]
 
 ```
 ```
@@ -681,8 +681,8 @@ print(f"Beta(2, 5):           {beta_samples}")
 ======================================================================
 10. ADVANCED USAGE - CUSTOM DISTRIBUTIONS
 ======================================================================
-Exponential(scale=2): [2.99181254 1.14760452 1.65780557 0.99972048 0.53419863]
-Beta(2, 5):           [0.30444403 0.06532269 0.68576174 0.44031146 0.40673686]
+Exponential(scale=2): [2.13685529 3.29721375 2.9959396  3.21514705 0.00670609]
+Beta(2, 5):           [0.30567939 0.20058343 0.11728249 0.40573607 0.27634984]
 
 ```
 ```
@@ -927,9 +927,9 @@ RECOMMENDED USAGE:
 
 ```
 
-****Total running time of the script:**** (0 minutes 2.328 seconds)
+****Total running time of the script:**** (0 minutes 2.504 seconds)
 
-[![Launch binder](../../_images/binder_badge_logo16.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo16.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
+[![Launch binder](../../_images/binder_badge_logo20.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/random/plot_kiss_random.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo20.svg)](../../lite/lab/index.html?path=auto_examples/random/plot_kiss_random.ipynb)
 
 [`Download Jupyter notebook: plot_kiss_random.ipynb`](../../_downloads/ce3f634011a2324c237757c468b6c928/plot_kiss_random.ipynb)
 

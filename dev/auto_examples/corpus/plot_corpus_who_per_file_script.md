@@ -475,7 +475,7 @@ else:
 
 ```
 ```
-/home/circleci/.pyenv/versions/3.12.15/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+/home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 ✓ audio ASR: 5 documents [OK]
   [0] source_type=audio input='can-people-afford-to-pay-for-health-care.mp3'
@@ -800,8 +800,8 @@ else:
 ```
 Protocol handoff — MCP
 MCP resources: 3
-  corpus://0f29e28833142922 → 'Can people afford \nto pay for health care? \nNew evidence on \nfinancial'
-  corpus://b649dce7516ea847 → 'Fig. 2. Breakdown of catastrophic \nhealth spending by type of health \n'
+  corpus://f9f663cbd785e0a2950a503349f85b493029da264f7c8e30a10f9c0b81bd3537 → 'Can people afford \nto pay for health care? \nNew evidence on \nfinancial'
+  corpus://d7bdbfea8ead277ed6391be1f856781d56fe997e1fb0a67b768783a875ef40c5 → 'Fig. 2. Breakdown of catastrophic \nhealth spending by type of health \n'
 MCP tool content items: 3
 MCP tool isError: False
 MCP server tools: ['corpus_search']
@@ -982,7 +982,7 @@ Use:
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.268 seconds)
+****Total running time of the script:**** (0 minutes 4.437 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_per_file_script.ipynb)
 
