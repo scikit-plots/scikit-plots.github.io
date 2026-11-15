@@ -1,6 +1,6 @@
 # PlanItem[#](#planitem "Link to this heading")
 
-class scikitplot.agent.PlanItem(**id**, **text**, **status=PlanStatus.PENDING**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem "Link to this definition")
+class scikitplot.agent.PlanItem(**id**, **text**, **status=PlanStatus.PENDING**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem "Link to this definition")
 :   One item of a plan.
 
     Parameters:
@@ -28,7 +28,7 @@ class scikitplot.agent.PlanItem(**id**, **text**, **status=PlanStatus.PENDING**)
     ```
     Go BackOpen In Tab
 
-    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L117)[#](#scikitplot.agent.PlanItem.from_dict "Link to this definition")
+    classmethod from\_dict(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L117)[#](#scikitplot.agent.PlanItem.from_dict "Link to this definition")
     :   Rebuild an item written by [`to_dict`](#scikitplot.agent.PlanItem.to_dict "scikitplot.agent.PlanItem.to_dict").
 
         Parameters:
@@ -37,13 +37,13 @@ class scikitplot.agent.PlanItem(**id**, **text**, **status=PlanStatus.PENDING**)
         Return type:
         :   [**PlanItem**](#scikitplot.agent.PlanItem "scikitplot.agent._plan.PlanItem")
 
-    id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem.id "Link to this definition")
+    id: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem.id "Link to this definition")
 
-    status: [PlanStatus](scikitplot.agent.PlanStatus.html#scikitplot.agent.PlanStatus "scikitplot.agent._plan.PlanStatus") = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanItem.status "Link to this definition")
+    status: [PlanStatus](scikitplot.agent.PlanStatus.html#scikitplot.agent.PlanStatus "scikitplot.agent._plan.PlanStatus") = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanItem.status "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L77)[#](#scikitplot.agent.PlanItem.text "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_plan.py#L113)[#](#scikitplot.agent.PlanItem.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_plan.py#L113)[#](#scikitplot.agent.PlanItem.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

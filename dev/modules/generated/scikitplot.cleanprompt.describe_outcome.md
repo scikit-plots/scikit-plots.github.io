@@ -1,6 +1,6 @@
 # describe\_outcome[#](#describe-outcome "Link to this heading")
 
-scikitplot.cleanprompt.describe\_outcome(**result**, **diagnosis**, **suggestions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_diagnostics.py#L636)[#](#scikitplot.cleanprompt.describe_outcome "Link to this definition")
+scikitplot.cleanprompt.describe\_outcome(**result**, **diagnosis**, **suggestions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_diagnostics.py#L636)[#](#scikitplot.cleanprompt.describe_outcome "Link to this definition")
 :   Explain a redaction outcome, especially an empty one.
 
     Parameters:
@@ -19,7 +19,7 @@ scikitplot.cleanprompt.describe\_outcome(**result**, **diagnosis**, **suggestion
             `actions`. `level` is `"ok"`, `"warning"` or `"alert"`.
 
     Parameters:
-    :   * ****result**** (**RedactionResult**)
+    :   * ****result**** ([**RedactionResult**](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt.RedactionResult"))
         * ****diagnosis**** ([**Diagnosis**](scikitplot.cleanprompt.Diagnosis.html#scikitplot.cleanprompt.Diagnosis "scikitplot.cleanprompt.Diagnosis"))
         * ****suggestions**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**Suggestion**](scikitplot.cleanprompt.Suggestion.html#scikitplot.cleanprompt.Suggestion "scikitplot.cleanprompt.Suggestion")**,** **...****]**)
 

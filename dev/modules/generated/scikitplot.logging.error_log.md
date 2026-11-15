@@ -1,6 +1,6 @@
 # error\_log[#](#error-log "Link to this heading")
 
-scikitplot.logging.error\_log(**error\_msg**, **\*args**, **level=40**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/logging/_logging.py#L1482)[#](#scikitplot.logging.error_log "Link to this definition")
+scikitplot.logging.error\_log(**error\_msg**, **\*args**, **level=40**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/logging/_logging.py#L1480)[#](#scikitplot.logging.error_log "Link to this definition")
 :   Log an error-like message at a specified level.
 
     Parameters:

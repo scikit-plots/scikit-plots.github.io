@@ -1,6 +1,6 @@
 # OverlapStrategy[#](#overlapstrategy "Link to this heading")
 
-class scikitplot.cleanprompt.OverlapStrategy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L63)[#](#scikitplot.cleanprompt.OverlapStrategy "Link to this definition")
+class scikitplot.cleanprompt.OverlapStrategy(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L63)[#](#scikitplot.cleanprompt.OverlapStrategy "Link to this definition")
 :   How to arbitrate two detections that share characters.
 
     Attributes:
@@ -15,7 +15,7 @@ class scikitplot.cleanprompt.OverlapStrategy(**\*values**)[[source]](https://git
             shorter match.
 
         ****STRICT****str
-        :   Raise `OverlapError`. Use in
+        :   Raise [`OverlapError`](scikitplot.cleanprompt.OverlapError.html#scikitplot.cleanprompt.OverlapError "scikitplot.cleanprompt._exceptions.OverlapError"). Use in
             tests and in pipelines that must prove their detector set is disjoint.
 
     Notes
@@ -25,11 +25,11 @@ class scikitplot.cleanprompt.OverlapStrategy(**\*values**)[[source]](https://git
     exactly the kind of hidden positional coupling that makes a redaction result
     unreproducible.
 
-    LONGEST\_WINS = 'LONGEST\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.LONGEST_WINS "Link to this definition")
+    LONGEST\_WINS = 'LONGEST\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.LONGEST_WINS "Link to this definition")
 
-    PRIORITY\_WINS = 'PRIORITY\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.PRIORITY_WINS "Link to this definition")
+    PRIORITY\_WINS = 'PRIORITY\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.PRIORITY_WINS "Link to this definition")
 
-    STRICT = 'STRICT'[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.STRICT "Link to this definition")
+    STRICT = 'STRICT'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.OverlapStrategy.STRICT "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.cleanprompt.OverlapStrategy.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

@@ -1,12 +1,12 @@
 # DEFAULT\_LIMITS[#](#default-limits "Link to this heading")
 
-scikitplot.cleanprompt.DEFAULT\_LIMITS = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_LIMITS "Link to this definition")
+scikitplot.cleanprompt.DEFAULT\_LIMITS = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.DEFAULT_LIMITS "Link to this definition")
 :   Hard bounds on one redaction pass.
 
     Parameters:
     :   ****max\_input\_chars****int, default=1\_000\_000
         :   Longest text accepted. Exceeding it raises
-            `LimitExceededError`.
+            [`LimitExceededError`](scikitplot.cleanprompt.LimitExceededError.html#scikitplot.cleanprompt.LimitExceededError "scikitplot.cleanprompt._exceptions.LimitExceededError").
 
         ****max\_spans****int, default=100\_000
         :   Most detections accepted before overlap resolution.
@@ -32,7 +32,7 @@ scikitplot.cleanprompt.DEFAULT\_LIMITS = Limits(max\_input\_chars=1000000, max\_
     a caller who genuinely needs a larger document can raise them explicitly and
     own that decision. Nothing in this submodule silently truncates: the
     `truncated` field on
-    `RedactionResult` is always `False`
+    [`RedactionResult`](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt._types.RedactionResult") is always `False`
     and exists so a caller can assert that.
 
     The default `max_input_chars` matches the default document ceiling of the

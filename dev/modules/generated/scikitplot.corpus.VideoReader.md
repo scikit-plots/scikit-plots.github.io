@@ -1,6 +1,6 @@
 # VideoReader[#](#videoreader "Link to this heading")
 
-class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **transcribe=False**, **whisper\_model='base'**, **subtitle\_frame\_rate=25.0**, **max\_file\_bytes=10737418240**, **yield\_frames=False**, **strict=False**, **backend\_policy=None**, **asr\_backends=<factory>**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader "Link to this definition")
+class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**, **transcribe=False**, **whisper\_model='base'**, **subtitle\_frame\_rate=25.0**, **max\_file\_bytes=10737418240**, **yield\_frames=False**, **strict=False**, **backend\_policy=None**, **asr\_backends=<factory>**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader "Link to this definition")
 :   Text extraction from video files via subtitle parsing and/or
     automatic speech recognition.
 
@@ -81,15 +81,18 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
         * ****custom\_extractor**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
         * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****max\_text\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****max\_text\_chars\_per\_byte**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
+        * ****on\_text\_limit**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****transcribe**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****whisper\_model**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****subtitle\_frame\_rate**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
         * ****max\_file\_bytes**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****yield\_frames**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****strict**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
-        * ****backend\_policy**** (**BackendPolicy** **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
-        * ****asr\_backends**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[****ASRBackend****,** **...****]**)
-        * ****capability\_registry**** (**CapabilityRegistry** **|** **None**)
+        * ****backend\_policy**** ([**BackendPolicy**](scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy") **|** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
+        * ****asr\_backends**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**ASRBackend**](scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus._readers._whisper.ASRBackend")**,** **...****]**)
+        * ****capability\_registry**** ([**CapabilityRegistry**](scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry "scikitplot.corpus._capabilities.CapabilityRegistry") **|** **None**)
 
     > **See also**
     > `scikitplot.corpus._readers.ImageReader`
@@ -158,10 +161,10 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
     ```
     Go BackOpen In Tab
 
-    asr\_backends: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[ASRBackend, ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.asr_backends "Link to this definition")
+    asr\_backends: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[ASRBackend](scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus._readers._whisper.ASRBackend"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.asr_backends "Link to this definition")
     :   User-provided ASR backends appended to the built-in backend registry.
 
-    backend\_policy: BackendPolicy | [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.backend_policy "Link to this definition")
+    backend\_policy: [BackendPolicy](scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy") | [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.backend_policy "Link to this definition")
     :   Optional backend policy preset/object/config mapping.
 
     property backend\_reports: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], ...][#](#scikitplot.corpus.VideoReader.backend_reports "Link to this definition")
@@ -178,20 +181,20 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
             :   One report per backend operation that opted into central
                 orchestration. Empty when no optional backend operation ran.
 
-    capability\_registry: CapabilityRegistry | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.capability_registry "Link to this definition")
+    capability\_registry: [CapabilityRegistry](scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry "scikitplot.corpus._capabilities.CapabilityRegistry") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.capability_registry "Link to this definition")
     :   Optional private readiness registry for custom ASR capabilities.
 
     chunker: [ChunkerBase](scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus._base.ChunkerBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.chunker "Link to this definition")
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L969)[#](#scikitplot.corpus.VideoReader.clear_backend_reports "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1171)[#](#scikitplot.corpus.VideoReader.clear_backend_reports "Link to this definition")
     :   Clear structured optional-backend reports on this reader instance.
 
         Return type:
         :   None
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1716)[#](#scikitplot.corpus.VideoReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2041)[#](#scikitplot.corpus.VideoReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -413,7 +416,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.VideoReader.custom_extractor "scikitplot.corpus.VideoReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -478,7 +481,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2033)[#](#scikitplot.corpus.VideoReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2358)[#](#scikitplot.corpus.VideoReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -605,7 +608,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2229)[#](#scikitplot.corpus.VideoReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2554)[#](#scikitplot.corpus.VideoReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -706,7 +709,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1215)[#](#scikitplot.corpus.VideoReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1510)[#](#scikitplot.corpus.VideoReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -751,7 +754,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L595)[#](#scikitplot.corpus.VideoReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L595)[#](#scikitplot.corpus.VideoReader.get_raw_chunks "Link to this definition")
     :   Extract text from the video via subtitle or transcription.
 
         Attempts subtitle detection first. Falls back to Whisper only
@@ -778,7 +781,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], None, None]
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -792,10 +795,41 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         Type:
         :   Maximum video file size. Default
 
-    plan\_asr\_backends()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L581)[#](#scikitplot.corpus.VideoReader.plan_asr_backends "Link to this definition")
+    max\_text\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.max_text_chars "Link to this definition")
+    :   Most characters of text one input may yield, over all its chunks.
+
+        The bound on what a small input can expand into (compressed or
+        repeated content). `None` (the default here): no limit, for formats
+        whose text cannot outgrow their input, already bounded by their size
+        limit. Readers of amplifying formats (`OfficeReader`, `PDFReader`)
+        default to 256 Mi characters. Counted as chunks stream, at the one
+        place every chunk passes (`_iter_raw_chunks`), custom extractors
+        included.
+
+    max\_text\_chars\_per\_byte: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.VideoReader.max_text_chars_per_byte "Link to this definition")
+    :   Most characters of text per byte of the input file.
+
+        Keeps the output, and so the work of extracting it, in proportion to
+        the input: with it, the limit is the smaller of [`max_text_chars`](#scikitplot.corpus.VideoReader.max_text_chars "scikitplot.corpus.VideoReader.max_text_chars")
+        and `max(max_text_chars_per_byte x file size, 1 Mi)` characters (a
+        small file may always yield 1 Mi). It covers compression, shared and
+        repeated content alike. `None` (the default here): no ratio limit;
+        `OfficeReader` and `PDFReader` default to 50 (ordinary documents
+        yield under 10 characters per byte). Not applied when the input is not
+        a file on disk.
+
+    on\_text\_limit: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'refuse'[#](#scikitplot.corpus.VideoReader.on_text_limit "Link to this definition")
+    :   What happens past the text limit ([`max_text_chars`](#scikitplot.corpus.VideoReader.max_text_chars "scikitplot.corpus.VideoReader.max_text_chars"),
+        [`max_text_chars_per_byte`](#scikitplot.corpus.VideoReader.max_text_chars_per_byte "scikitplot.corpus.VideoReader.max_text_chars_per_byte")): `"refuse"` (default) raises
+        `ValueError`; `"truncate"` keeps exactly the first
+        `max_text_chars` characters, marks the chunk it cuts
+        `text_truncated=True` (none when the limit falls between chunks) and
+        logs a warning either way.
+
+    plan\_asr\_backends()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L581)[#](#scikitplot.corpus.VideoReader.plan_asr_backends "Link to this definition")
     :   Return the exact side-effect-free ASR backend preflight plan.
 
-    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_video.py#L370)[#](#scikitplot.corpus.VideoReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -825,7 +859,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
     strict: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.VideoReader.strict "Link to this definition")
     :   Raise when all Whisper backends fail instead of yielding no ASR chunks.
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1605)[#](#scikitplot.corpus.VideoReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1900)[#](#scikitplot.corpus.VideoReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -853,7 +887,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
         Type:
         :   Frames per second for MicroDVD SUB format. Default
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1587)[#](#scikitplot.corpus.VideoReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1882)[#](#scikitplot.corpus.VideoReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -877,7 +911,7 @@ class scikitplot.corpus.VideoReader(**input\_path**, **chunker=None**, **filter\
     transcribe: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.VideoReader.transcribe "Link to this definition")
     :   Enable Whisper fallback when no subtitle file is found.
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1003)[#](#scikitplot.corpus.VideoReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1205)[#](#scikitplot.corpus.VideoReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:

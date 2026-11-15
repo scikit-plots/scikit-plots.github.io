@@ -1,6 +1,6 @@
 # WhitespaceNormalizer[#](#whitespacenormalizer "Link to this heading")
 
-class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L215)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
+class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **strip=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L278)[#](#scikitplot.corpus.WhitespaceNormalizer "Link to this definition")
 :   Collapse runs of whitespace and optionally strip leading/trailing space.
 
     Parameters:
@@ -29,20 +29,39 @@ class scikitplot.corpus.WhitespaceNormalizer(**collapse\_newlines=False**, **str
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L245)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
-    :   Collapse whitespace in the document text.
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L191)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_doc "Link to this definition")
+    :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
         :   ****doc****CorpusDocument
+            :   Input document.
 
         Returns:
         :   CorpusDocument
+            :   New instance with `normalized_text` updated. `text` is never
+                modified.
 
         Parameters:
         :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
+
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L308)[#](#scikitplot.corpus.WhitespaceNormalizer.normalize_text "Link to this definition")
+    :   Collapse whitespace in the text.
+
+        Parameters:
+        :   ****text****str
+            :   The text to normalise.
+
+        Returns:
+        :   str
+
+        Parameters:
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+
+        Return type:
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

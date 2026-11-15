@@ -209,6 +209,6 @@ To **evaluate** any retriever, see [Evaluating retrieval and answers](evaluation
 
 ## Custom registries[#](#custom-registries "Link to this heading")
 
-`CapabilityRegistry` is an explicit object. Copy the default registry or
-build a private one and register `CapabilitySpec` objects. Registration
+[`CapabilityRegistry`](../../modules/generated/scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry "scikitplot.corpus.CapabilityRegistry") is an explicit object. Copy the default registry or
+build a private one and register [`CapabilitySpec`](../../modules/generated/scikitplot.corpus.CapabilitySpec.html#scikitplot.corpus.CapabilitySpec "scikitplot.corpus.CapabilitySpec") objects. Registration
 refuses accidental replacement unless `replace=True` is explicit.

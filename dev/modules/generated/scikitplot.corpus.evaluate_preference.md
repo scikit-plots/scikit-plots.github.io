@@ -1,6 +1,6 @@
 # evaluate\_preference[#](#evaluate-preference "Link to this heading")
 
-scikitplot.corpus.evaluate\_preference(**dataset**, **answers\_a**, **answers\_b**, **\***, **judges**, **names=('a', 'b')**, **on\_error='record'**, **n\_jobs=1**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_metrics/_answers.py#L1072)[#](#scikitplot.corpus.evaluate_preference "Link to this definition")
+scikitplot.corpus.evaluate\_preference(**dataset**, **answers\_a**, **answers\_b**, **\***, **judges**, **names=('a', 'b')**, **on\_error='record'**, **n\_jobs=1**, **metadata=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_answers.py#L1072)[#](#scikitplot.corpus.evaluate_preference "Link to this definition")
 :   Judge two systems’ answers head to head, in both orders.
 
     Parameters:

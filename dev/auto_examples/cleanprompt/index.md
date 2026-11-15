@@ -87,7 +87,7 @@ python -m scikitplot.cleanprompt doctor
 | See a file’s schema before sending it | `cleanprompt inspect --in analysis.ipynb` |
 | Records, configs, Office files, a whole folder or a zip | [`FluentCleanPrompt`](../../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt.FluentCleanPrompt") → [`Cleaner`](../../modules/generated/scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner "scikitplot.cleanprompt.Cleaner"), or `cleanprompt batch SRC --out DST` |
 | Hide your own domain’s fields | a pack file: `cleanprompt batch --pack-file hr.yaml --pack hr` |
-| Make corpus documents safe before indexing | `redact_documents` |
+| Make corpus documents safe before indexing | [`redact_documents`](../../modules/generated/scikitplot.cleanprompt.redact_documents.html#scikitplot.cleanprompt.redact_documents "scikitplot.cleanprompt.redact_documents") |
 | Put any model, SDK or agent behind one privacy gate | [`Guard`](../../modules/generated/scikitplot.cleanprompt.Guard.html#scikitplot.cleanprompt.Guard "scikitplot.cleanprompt.Guard") (`FluentCleanPrompt().guard()`) |
 | Guard a command-line model (`ollama`, `llm`, …) | `cleanprompt ask --via "COMMAND"` |
 | Teach an AI assistant to use it | `cleanprompt skill --write DIR` |

@@ -1,6 +1,6 @@
 # cohen\_kappa[#](#cohen-kappa "Link to this heading")
 
-scikitplot.corpus.cohen\_kappa(**rater\_a**, **rater\_b**, **\***, **labels=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_metrics/_agreement.py#L139)[#](#scikitplot.corpus.cohen_kappa "Link to this definition")
+scikitplot.corpus.cohen\_kappa(**rater\_a**, **rater\_b**, **\***, **labels=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_agreement.py#L139)[#](#scikitplot.corpus.cohen_kappa "Link to this definition")
 :   Cohen’s kappa between two raters of the same items.
 
     Parameters:

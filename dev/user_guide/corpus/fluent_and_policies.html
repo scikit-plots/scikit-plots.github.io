@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:37:20Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:11:23Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/fluent_and_policies","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
@@ -87,7 +87,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -1084,9 +1084,9 @@ domains or stages differ between plans.</p>
 <li><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy" title="scikitplot.corpus.RuntimePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimePolicy</span></code></a> controls source execution boundaries such as URL
 permission. It provides <code class="docutils literal notranslate"><span class="pre">offline</span></code> and <code class="docutils literal notranslate"><span class="pre">networked</span></code> presets and strict
 mapping validation.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code> controls transfer security/resource budgets such as
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy" title="scikitplot.corpus.DownloadPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code></a> controls transfer security/resource budgets such as
 TLS verification, SSRF blocking, redirects, retries and maximum bytes.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code> controls optional backend selection/fallback/readiness.</p></li>
+<li><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy" title="scikitplot.corpus.BackendPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code></a> controls optional backend selection/fallback/readiness.</p></li>
 <li><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy" title="scikitplot.corpus.ErrorPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorPolicy</span></code></a> describes per-document pipeline error behavior.</p></li>
 <li><p>reader-specific options still own format semantics.</p></li>
 </ul>
@@ -1121,7 +1121,7 @@ settings cannot look applied while leaving the default behavior unchanged.</p>
 <section id="compose-without-collapsing-policy-dimensions">
 <h2>Compose without collapsing policy dimensions<a class="headerlink" href="#compose-without-collapsing-policy-dimensions" title="Link to this heading">#</a></h2>
 <p>When the same policy family is reused across readers, builders and runtimes,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code> provides a typed convenience layer.  It <strong>composes</strong>
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle" title="scikitplot.corpus.CorpusPolicyBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code></a> provides a typed convenience layer.  It <strong>composes</strong>
 the existing policies; it does not replace them with a second execution engine
 or a global <code class="docutils literal notranslate"><span class="pre">strict</span></code> switch.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusPolicyBundle</span>
@@ -1142,9 +1142,9 @@ or a global <code class="docutils literal notranslate"><span class="pre">strict<
 </pre></div>
 </div>
 <p>Built-in bundles are intentionally few and orthogonal. In Python they are
-constructed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.default</span></code>,
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.safe_local</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.strict_local</span></code>,
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.networked</span></code>, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.docs_ci</span></code>;
+constructed with <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.default" title="scikitplot.corpus.CorpusPolicyBundle.default"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.default</span></code></a>,
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.safe_local" title="scikitplot.corpus.CorpusPolicyBundle.safe_local"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.safe_local</span></code></a>, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.strict_local" title="scikitplot.corpus.CorpusPolicyBundle.strict_local"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.strict_local</span></code></a>,
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.networked" title="scikitplot.corpus.CorpusPolicyBundle.networked"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.networked</span></code></a>, and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.docs_ci" title="scikitplot.corpus.CorpusPolicyBundle.docs_ci"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CorpusPolicyBundle.docs_ci</span></code></a>;
 the mapping/preset spellings use hyphens where appropriate.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt><dd><p>Match current Corpus defaults: offline URL execution, resilient optional
@@ -1183,8 +1183,8 @@ type validation as the individual policy classes:</p>
 PDF parser, OCR engine, ASR engine and text decoder do not share identical
 fallback semantics.  Convenience helpers therefore target only the seams that
 actually own those policies.</p>
-<p>For configuration files, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy" title="scikitplot.corpus.RuntimePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimePolicy</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code> all reject unknown
+<p>For configuration files, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy" title="scikitplot.corpus.RuntimePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimePolicy</span></code></a>, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy" title="scikitplot.corpus.BackendPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code></a>,
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy" title="scikitplot.corpus.DownloadPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code></a> and <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle" title="scikitplot.corpus.CorpusPolicyBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code></a> all reject unknown
 keys. Security booleans must be real booleans; strings such as <code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code> are
 not accepted as truthy stand-ins.</p>
 </section>
@@ -1298,7 +1298,7 @@ not accepted as truthy stand-ins.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>

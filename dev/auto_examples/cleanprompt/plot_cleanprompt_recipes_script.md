@@ -444,7 +444,7 @@ The loop above protects the model. It does nothing about the log line your
 framework writes just before the call, which is a common way for a value to
 escape a system that redacts correctly everywhere it was designed to.
 
-`redacting` installs a filter for literal strings you hold — tokens,
+[`redacting`](../../modules/generated/scikitplot.cleanprompt.redacting.html#scikitplot.cleanprompt.redacting "scikitplot.cleanprompt.redacting") installs a filter for literal strings you hold — tokens,
 passphrases, a customer identifier you were given. It is deliberately
 literal rather than pattern-based, so treat it as a last line of defence for
 ****named**** values, never as a substitute for redacting the prompt.

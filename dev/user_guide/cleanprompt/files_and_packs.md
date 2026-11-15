@@ -209,10 +209,10 @@ You decide what happens next, at the level that fits:
 under `pattern_risk`, accepted ones included with their reason, so a review
 can see what was accepted.
 
-In Python, findings are `PatternRiskWarning`, a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)").
+In Python, findings are [`PatternRiskWarning`](../../modules/generated/scikitplot.cleanprompt.PatternRiskWarning.html#scikitplot.cleanprompt.PatternRiskWarning "scikitplot.cleanprompt.PatternRiskWarning"), a [`UserWarning`](https://docs.python.org/3/builtins/exceptions.html#UserWarning "(in Python v3.15)").
 `warnings.simplefilter("error", PatternRiskWarning)` makes them fatal in a
 test suite, and `load_custom(paths, pattern_risk="refuse")` does the same
-for one call. `analyse_pattern` checks a single pattern.
+for one call. [`analyse_pattern`](../../modules/generated/scikitplot.cleanprompt.analyse_pattern.html#scikitplot.cleanprompt.analyse_pattern "scikitplot.cleanprompt.analyse_pattern") checks a single pattern.
 
 The check reads the pattern the way Python runs it. Verbose patterns
 (`flags: [VERBOSE]` or `(?x)`) are checked without their whitespace and

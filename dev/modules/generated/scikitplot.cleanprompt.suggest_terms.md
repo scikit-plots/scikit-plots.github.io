@@ -1,6 +1,6 @@
 # suggest\_terms[#](#suggest-terms "Link to this heading")
 
-scikitplot.cleanprompt.suggest\_terms(**text**, **result=None**, **min\_tokens=1**, **max\_suggestions=40**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_diagnostics.py#L504)[#](#scikitplot.cleanprompt.suggest_terms "Link to this definition")
+scikitplot.cleanprompt.suggest\_terms(**text**, **result=None**, **min\_tokens=1**, **max\_suggestions=40**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_diagnostics.py#L504)[#](#scikitplot.cleanprompt.suggest_terms "Link to this definition")
 :   Offer candidate terms the active detectors did not claim.
 
     Parameters:
@@ -30,7 +30,7 @@ scikitplot.cleanprompt.suggest\_terms(**text**, **result=None**, **min\_tokens=1
 
     Parameters:
     :   * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
-        * ****result**** (**RedactionResult** **|** **None**)
+        * ****result**** ([**RedactionResult**](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt.RedactionResult") **|** **None**)
         * ****min\_tokens**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****max\_suggestions**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 

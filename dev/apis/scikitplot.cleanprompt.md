@@ -53,7 +53,7 @@ Optional-tier names are resolved lazily through [****PEP 562****](https://peps.p
   that touches all of them. The optional names remain reachable by attribute
   access, which is how a consumer of that tier reaches them anyway.
 * `__getattr__` imports the owning module on first access, and raises
-  `CapabilityError` with an install command when the tier is
+  [`CapabilityError`](../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError "scikitplot.cleanprompt.CapabilityError") with an install command when the tier is
   unavailable — raised **before** the missing dependency is imported, so the
   message is actually reachable.
 * `__dir__` unions the module globals with the optional names ****as
@@ -133,6 +133,8 @@ Each is a checked-in regression test, not a claim.
 | [`describe_outcome`](../modules/generated/scikitplot.cleanprompt.describe_outcome.html#scikitplot.cleanprompt.describe_outcome "scikitplot.cleanprompt.describe_outcome") | Explain a redaction outcome, especially an empty one. |
 | [`diagnose`](../modules/generated/scikitplot.cleanprompt.diagnose.html#scikitplot.cleanprompt.diagnose "scikitplot.cleanprompt.diagnose") | Report what a configuration can and cannot detect. |
 | [`suggest_terms`](../modules/generated/scikitplot.cleanprompt.suggest_terms.html#scikitplot.cleanprompt.suggest_terms "scikitplot.cleanprompt.suggest_terms") | Offer candidate terms the active detectors did not claim. |
+| [`CoverageRow`](../modules/generated/scikitplot.cleanprompt.CoverageRow.html#scikitplot.cleanprompt.CoverageRow "scikitplot.cleanprompt.CoverageRow") | What covers one detection kind, and what happens to its values. |
+| [`coverage_matrix`](../modules/generated/scikitplot.cleanprompt.coverage_matrix.html#scikitplot.cleanprompt.coverage_matrix "scikitplot.cleanprompt.coverage_matrix") | Return one row per detection kind, derived from the live registries. |
 
 ## Redactor[#](#redactor "Link to this heading")
 
@@ -157,6 +159,8 @@ Each is a checked-in regression test, not a claim.
 | [`describe_engines`](../modules/generated/scikitplot.cleanprompt.describe_engines.html#scikitplot.cleanprompt.describe_engines "scikitplot.cleanprompt.describe_engines") | Report every engine's readiness, and what `mode` would select. |
 | [`resolve_engine`](../modules/generated/scikitplot.cleanprompt.resolve_engine.html#scikitplot.cleanprompt.resolve_engine "scikitplot.cleanprompt.resolve_engine") | Resolve an engine mode into the engines that will actually run. |
 | [`trim_entity_span`](../modules/generated/scikitplot.cleanprompt.trim_entity_span.html#scikitplot.cleanprompt.trim_entity_span "scikitplot.cleanprompt.trim_entity_span") | Shrink an entity span until it carries no unmatched bracket. |
+| [`EngineReadiness`](../modules/generated/scikitplot.cleanprompt.EngineReadiness.html#scikitplot.cleanprompt.EngineReadiness "scikitplot.cleanprompt.EngineReadiness") | Whether one engine can run here, now, and if not, the one step that fixes it. |
+| [`engine_readiness`](../modules/generated/scikitplot.cleanprompt.engine_readiness.html#scikitplot.cleanprompt.engine_readiness "scikitplot.cleanprompt.engine_readiness") | Decide whether one engine can run for a language, and how to fix it if not. |
 
 ## Format Spec[#](#format-spec "Link to this heading")
 
@@ -205,6 +209,7 @@ Each is a checked-in regression test, not a claim.
 | --- | --- |
 | [`NltkDetector`](../modules/generated/scikitplot.cleanprompt.NltkDetector.html#scikitplot.cleanprompt.NltkDetector "scikitplot.cleanprompt.NltkDetector") | Detect named entities with NLTK's maximum-entropy chunker. |
 | [`nltk_detector`](../modules/generated/scikitplot.cleanprompt.nltk_detector.html#scikitplot.cleanprompt.nltk_detector "scikitplot.cleanprompt.nltk_detector") | Build an [`NltkDetector`](../modules/generated/scikitplot.cleanprompt.NltkDetector.html#scikitplot.cleanprompt.NltkDetector "scikitplot.cleanprompt.NltkDetector"). |
+| [`corpora_status`](../modules/generated/scikitplot.cleanprompt.corpora_status.html#scikitplot.cleanprompt.corpora_status "scikitplot.cleanprompt.corpora_status") | Report whether NLTK's data packages are present. |
 
 ## Pack Pattern Detector[#](#pack-pattern-detector "Link to this heading")
 
@@ -223,6 +228,8 @@ Each is a checked-in regression test, not a claim.
 | [`default_patterns`](../modules/generated/scikitplot.cleanprompt.default_patterns.html#scikitplot.cleanprompt.default_patterns "scikitplot.cleanprompt.default_patterns") | Return the patterns enabled when a policy does not name `kinds`. |
 | [`get_pattern`](../modules/generated/scikitplot.cleanprompt.get_pattern.html#scikitplot.cleanprompt.get_pattern "scikitplot.cleanprompt.get_pattern") | Return one pattern specification by kind. |
 | [`luhn_ok`](../modules/generated/scikitplot.cleanprompt.luhn_ok.html#scikitplot.cleanprompt.luhn_ok "scikitplot.cleanprompt.luhn_ok") | Return whether `digits` satisfies the Luhn checksum. |
+| [`PatternRiskWarning`](../modules/generated/scikitplot.cleanprompt.PatternRiskWarning.html#scikitplot.cleanprompt.PatternRiskWarning "scikitplot.cleanprompt.PatternRiskWarning") | A pack pattern has a shape that can backtrack catastrophically. |
+| [`analyse_pattern`](../modules/generated/scikitplot.cleanprompt.analyse_pattern.html#scikitplot.cleanprompt.analyse_pattern "scikitplot.cleanprompt.analyse_pattern") | Report the shapes in `source` that can backtrack catastrophically. |
 
 ## Plan Spec[#](#plan-spec "Link to this heading")
 
@@ -238,6 +245,8 @@ Each is a checked-in regression test, not a claim.
 | [`DEFAULT_LIMITS`](../modules/generated/scikitplot.cleanprompt.DEFAULT_LIMITS.html#scikitplot.cleanprompt.DEFAULT_LIMITS "scikitplot.cleanprompt.DEFAULT_LIMITS") | Hard bounds on one redaction pass. |
 | [`DEFAULT_POLICY`](../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html#scikitplot.cleanprompt.DEFAULT_POLICY "scikitplot.cleanprompt.DEFAULT_POLICY") | Complete, declarative configuration for a redaction pass. |
 | [`DEFAULT_TAG_STYLE`](../modules/generated/scikitplot.cleanprompt.DEFAULT_TAG_STYLE.html#scikitplot.cleanprompt.DEFAULT_TAG_STYLE "scikitplot.cleanprompt.DEFAULT_TAG_STYLE") | The placeholder grammar. |
+| [`ACTIONS`](../modules/generated/scikitplot.cleanprompt.ACTIONS.html#scikitplot.cleanprompt.ACTIONS "scikitplot.cleanprompt.ACTIONS") | Built-in immutable sequence. |
+| [`Action`](../modules/generated/scikitplot.cleanprompt.Action.html#scikitplot.cleanprompt.Action "scikitplot.cleanprompt.Action") | What happens to a value of one kind once it is detected. |
 | [`Limits`](../modules/generated/scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits "scikitplot.cleanprompt.Limits") | Hard bounds on one redaction pass. |
 | [`OverlapStrategy`](../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy "scikitplot.cleanprompt.OverlapStrategy") | How to arbitrate two detections that share characters. |
 | [`RedactionPolicy`](../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt.RedactionPolicy") | Complete, declarative configuration for a redaction pass. |
@@ -273,3 +282,79 @@ Each is a checked-in regression test, not a claim.
 | --- | --- |
 | [`decrypt_mapping`](../modules/generated/scikitplot.cleanprompt.decrypt_mapping.html#scikitplot.cleanprompt.decrypt_mapping "scikitplot.cleanprompt.decrypt_mapping") | Decrypt a mapping produced by [`encrypt_mapping`](../modules/generated/scikitplot.cleanprompt.encrypt_mapping.html#scikitplot.cleanprompt.encrypt_mapping "scikitplot.cleanprompt.encrypt_mapping"). |
 | [`encrypt_mapping`](../modules/generated/scikitplot.cleanprompt.encrypt_mapping.html#scikitplot.cleanprompt.encrypt_mapping "scikitplot.cleanprompt.encrypt_mapping") | Encrypt every value of `mapping`, leaving the labels in the clear. |
+| [`new_key`](../modules/generated/scikitplot.cleanprompt.new_key.html#scikitplot.cleanprompt.new_key "scikitplot.cleanprompt.new_key") | Generate a fresh vault key. |
+
+## Results and Types[#](#results-and-types "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`Entry`](../modules/generated/scikitplot.cleanprompt.Entry.html#scikitplot.cleanprompt.Entry "scikitplot.cleanprompt.Entry") | One resolved detection and the placeholder label assigned to it. |
+| [`RedactionResult`](../modules/generated/scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt.RedactionResult") | Output of a redaction pass. |
+| [`RestorationResult`](../modules/generated/scikitplot.cleanprompt.RestorationResult.html#scikitplot.cleanprompt.RestorationResult "scikitplot.cleanprompt.RestorationResult") | Output of a restoration pass. |
+| [`Span`](../modules/generated/scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt.Span") | A half-open `[start, end)` character interval flagged by one detector. |
+| [`Stats`](../modules/generated/scikitplot.cleanprompt.Stats.html#scikitplot.cleanprompt.Stats "scikitplot.cleanprompt.Stats") | Counters describing one redaction pass. |
+| [`as_dict`](../modules/generated/scikitplot.cleanprompt.as_dict.html#scikitplot.cleanprompt.as_dict "scikitplot.cleanprompt.as_dict") | Return a JSON-safe, secret-free dictionary for a result object. |
+
+## Errors and Warnings[#](#errors-and-warnings "Link to this heading")
+
+Class inheritance
+
+![Inheritance diagram of CleanPromptError](../_images/inheritance-b49e5913c5e564208f4d7f0a6240506ebe5c29fa.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+|  |  |
+| --- | --- |
+| [`CleanPromptError`](../modules/generated/scikitplot.cleanprompt.CleanPromptError.html#scikitplot.cleanprompt.CleanPromptError "scikitplot.cleanprompt.CleanPromptError") | Base class for every error raised by [`scikitplot.cleanprompt`](#module-scikitplot.cleanprompt "scikitplot.cleanprompt"). |
+| [`BlockedError`](../modules/generated/scikitplot.cleanprompt.BlockedError.html#scikitplot.cleanprompt.BlockedError "scikitplot.cleanprompt.BlockedError") | The text holds a value of a kind whose action is `block`; nothing was returned. |
+| [`CapabilityError`](../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError "scikitplot.cleanprompt.CapabilityError") | An optional tier is not usable in this environment. |
+| [`DetectorError`](../modules/generated/scikitplot.cleanprompt.DetectorError.html#scikitplot.cleanprompt.DetectorError "scikitplot.cleanprompt.DetectorError") | A detector raised while scanning. |
+| [`LeakError`](../modules/generated/scikitplot.cleanprompt.LeakError.html#scikitplot.cleanprompt.LeakError "scikitplot.cleanprompt.LeakError") | Outgoing text still holds a value the vault removed; it was not sent. |
+| [`LimitExceededError`](../modules/generated/scikitplot.cleanprompt.LimitExceededError.html#scikitplot.cleanprompt.LimitExceededError "scikitplot.cleanprompt.LimitExceededError") | A policy limit was exceeded. |
+| [`OverlapError`](../modules/generated/scikitplot.cleanprompt.OverlapError.html#scikitplot.cleanprompt.OverlapError "scikitplot.cleanprompt.OverlapError") | Two detections overlap under `STRICT`. |
+| [`PatternError`](../modules/generated/scikitplot.cleanprompt.PatternError.html#scikitplot.cleanprompt.PatternError "scikitplot.cleanprompt.PatternError") | A detection pattern is uncompilable or structurally unsafe. |
+| [`PatternTimeoutError`](../modules/generated/scikitplot.cleanprompt.PatternTimeoutError.html#scikitplot.cleanprompt.PatternTimeoutError "scikitplot.cleanprompt.PatternTimeoutError") | A custom pack pattern ran past the pattern time limit on one document. |
+| [`PolicyError`](../modules/generated/scikitplot.cleanprompt.PolicyError.html#scikitplot.cleanprompt.PolicyError "scikitplot.cleanprompt.PolicyError") | A [`RedactionPolicy`](../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy") is invalid. |
+| [`RestorationError`](../modules/generated/scikitplot.cleanprompt.RestorationError.html#scikitplot.cleanprompt.RestorationError "scikitplot.cleanprompt.RestorationError") | A placeholder in the text cannot be restored from the supplied vault. |
+
+## Logging and Audit[#](#logging-and-audit "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`AUDIT_LOGGER_NAME`](../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html#scikitplot.cleanprompt.AUDIT_LOGGER_NAME "scikitplot.cleanprompt.AUDIT_LOGGER_NAME") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
+| [`LOGGER_NAME`](../modules/generated/scikitplot.cleanprompt.LOGGER_NAME.html#scikitplot.cleanprompt.LOGGER_NAME "scikitplot.cleanprompt.LOGGER_NAME") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
+| [`JsonFormatter`](../modules/generated/scikitplot.cleanprompt.JsonFormatter.html#scikitplot.cleanprompt.JsonFormatter "scikitplot.cleanprompt.JsonFormatter") | Format a record as one JSON object per line. |
+| [`SecretFilter`](../modules/generated/scikitplot.cleanprompt.SecretFilter.html#scikitplot.cleanprompt.SecretFilter "scikitplot.cleanprompt.SecretFilter") | Replace known secret surfaces in a record with `REDACTION_MARK`. |
+| [`VaultScrubber`](../modules/generated/scikitplot.cleanprompt.VaultScrubber.html#scikitplot.cleanprompt.VaultScrubber "scikitplot.cleanprompt.VaultScrubber") | Keep a vault's values out of every log record for as long as it holds them. |
+| [`audit`](../modules/generated/scikitplot.cleanprompt.audit.html#scikitplot.cleanprompt.audit "scikitplot.cleanprompt.audit") | Emit one structured audit event on [`AUDIT_LOGGER_NAME`](../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html#scikitplot.cleanprompt.AUDIT_LOGGER_NAME "scikitplot.cleanprompt.AUDIT_LOGGER_NAME"). |
+| [`configure_logging`](../modules/generated/scikitplot.cleanprompt.configure_logging.html#scikitplot.cleanprompt.configure_logging "scikitplot.cleanprompt.configure_logging") | Attach a handler to this submodule's logger. |
+| [`get_logger`](../modules/generated/scikitplot.cleanprompt.get_logger.html#scikitplot.cleanprompt.get_logger "scikitplot.cleanprompt.get_logger") | Return a logger under this submodule's namespace. |
+| [`log_level_from_env`](../modules/generated/scikitplot.cleanprompt.log_level_from_env.html#scikitplot.cleanprompt.log_level_from_env "scikitplot.cleanprompt.log_level_from_env") | Return the log level named by the environment, or `default`. |
+| [`redacting`](../modules/generated/scikitplot.cleanprompt.redacting.html#scikitplot.cleanprompt.redacting "scikitplot.cleanprompt.redacting") | Scrub known secrets from log records for the duration of a block. |
+
+## Pattern Catalog and Surrogate Sets[#](#pattern-catalog-and-surrogate-sets "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`Catalog`](../modules/generated/scikitplot.cleanprompt.Catalog.html#scikitplot.cleanprompt.Catalog "scikitplot.cleanprompt.Catalog") | An immutable set of packs and formats. |
+| [`builtin_catalog`](../modules/generated/scikitplot.cleanprompt.builtin_catalog.html#scikitplot.cleanprompt.builtin_catalog "scikitplot.cleanprompt.builtin_catalog") | Return the built-in catalog, read from the compiled JSON. |
+| [`SurrogateSet`](../modules/generated/scikitplot.cleanprompt.SurrogateSet.html#scikitplot.cleanprompt.SurrogateSet "scikitplot.cleanprompt.SurrogateSet") | A validated set of invented names. |
+| [`load_surrogate_set`](../modules/generated/scikitplot.cleanprompt.load_surrogate_set.html#scikitplot.cleanprompt.load_surrogate_set "scikitplot.cleanprompt.load_surrogate_set") | Read and validate a surrogate set from a `.yaml`, `.yml` or `.json` file. |
+
+## Corpus Integration[#](#corpus-integration "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`redact_documents`](../modules/generated/scikitplot.cleanprompt.redact_documents.html#scikitplot.cleanprompt.redact_documents "scikitplot.cleanprompt.redact_documents") | Return corpus documents with every text field redacted by one cleaner. |
+| [`register_corpus_readers`](../modules/generated/scikitplot.cleanprompt.register_corpus_readers.html#scikitplot.cleanprompt.register_corpus_readers "scikitplot.cleanprompt.register_corpus_readers") | Let corpus read `.docx`, `.xlsx` and `.pptx` with cleanprompt's reader. |

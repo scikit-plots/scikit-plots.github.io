@@ -1,12 +1,12 @@
 # Limits[#](#limits "Link to this heading")
 
-class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L593)[#](#scikitplot.cleanprompt.Limits "Link to this definition")
+class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L593)[#](#scikitplot.cleanprompt.Limits "Link to this definition")
 :   Hard bounds on one redaction pass.
 
     Parameters:
     :   ****max\_input\_chars****int, default=1\_000\_000
         :   Longest text accepted. Exceeding it raises
-            `LimitExceededError`.
+            [`LimitExceededError`](scikitplot.cleanprompt.LimitExceededError.html#scikitplot.cleanprompt.LimitExceededError "scikitplot.cleanprompt._exceptions.LimitExceededError").
 
         ****max\_spans****int, default=100\_000
         :   Most detections accepted before overlap resolution.
@@ -39,14 +39,14 @@ class scikitplot.cleanprompt.Limits(**max\_input\_chars=1000000**, **max\_spans=
     a caller who genuinely needs a larger document can raise them explicitly and
     own that decision. Nothing in this submodule silently truncates: the
     `truncated` field on
-    `RedactionResult` is always `False`
+    [`RedactionResult`](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt._types.RedactionResult") is always `False`
     and exists so a caller can assert that.
 
     The default `max_input_chars` matches the default document ceiling of the
     optional spaCy tier, so the base tier and the NER tier fail at the same
     size rather than at two different, surprising ones.
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L653)[#](#scikitplot.cleanprompt.Limits.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L653)[#](#scikitplot.cleanprompt.Limits.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary of these limits.
 
         Returns:

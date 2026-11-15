@@ -127,7 +127,13 @@ Capability Status
   CapabilityStatus  
   capability_snapshot  
   distribution_version  
-  probe_backend
+  probe_backend  
+  CapabilityRegistry  
+  CapabilityReport  
+  CapabilitySpec  
+  capability_report  
+  component_capabilities  
+  default_capability_registry
 
 .. _corpus_ref-component-spec:
 
@@ -188,7 +194,6 @@ Chunkers
   is_cjk_char  
   is_rtl_char  
   split_cjk_chars  
-  _split_cjk_chars_legacy  
   MULTI_SCRIPT_SENTENCE_RE_PATTERN  
   ScriptSpan  
   ScriptSegmenter  
@@ -218,7 +223,6 @@ Chunkers
   SentenceBackend  
   SentenceChunker  
   SentenceChunkerConfig  
-  _validate_text_input  
   StructureChunker  
   StructureChunkerConfig  
   LemmatizationBackend  
@@ -322,7 +326,10 @@ Downloader
   GitHubDownloader  
   GoogleDriveDownloader  
   WebDownloader  
-  YouTubeDownloader
+  YouTubeDownloader  
+  DownloadPlan  
+  DownloadPolicy  
+  download_policy
 
 .. _corpus_ref-embeddings:
 
@@ -407,6 +414,7 @@ Evaluation: Retrieval and Answer Metrics, Scorers
   calibration_report  
   expected_calibration_error  
   reliability_table  
+  CALIBRATION_STRATEGIES  
   anls_score  
   edit_similarity  
   edit_similarity_score  
@@ -527,6 +535,7 @@ Document Identity
   :template: base.rst
     
   DocIdScheme  
+  IDENTITY_HEX_WIDTH  
   IncompatibleSchemaError  
   UUID7Generator  
   assign_doc_ids  
@@ -672,6 +681,7 @@ Readers
   CustomReader  
   normalize_extractor_output  
   ImageReader  
+  OfficeReader  
   PDFReader  
   MarkdownReader  
   ReSTReader  
@@ -681,6 +691,7 @@ Readers
   YouTubeReader  
   TEIReader  
   XMLReader  
+  ArchiveBudgetError  
   ArchiveNestingError  
   ZipReader
 
@@ -794,7 +805,36 @@ Runtime Policy
     
   RuntimeCorpus  
   RuntimePolicy  
-  materialize_plan
+  materialize_plan  
+  runtime_policy  
+  CorpusPolicyBundle  
+  corpus_policy_bundle
+
+.. _corpus_ref-optional-backend-policy:
+
+Optional Backend Policy
+-----------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  BackendCandidate  
+  BackendOutcome  
+  BackendPlan  
+  BackendPolicy  
+  BackendSkip  
+  BackendStatus  
+  backend_policy  
+  plan_backend_chain  
+  run_backend_chain  
+  ASRBackend  
+  ASRRequest  
+  WHISPER_MODELS  
+  asr_segment_metadata  
+  plan_whisper_backends  
+  transcribe_whisper
 
 .. _corpus_ref-samples-for-corpus-usage:
 

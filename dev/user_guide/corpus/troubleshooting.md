@@ -2,7 +2,7 @@
 
 ## Package installed, backend still unavailable[#](#package-installed-backend-still-unavailable "Link to this heading")
 
-Inspect `component_capabilities`. For model/system-backed components, look
+Inspect [`component_capabilities`](../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities "scikitplot.corpus.component_capabilities"). For model/system-backed components, look
 at `assets_ready` and `reason_code` rather than only `installed`.
 
 ## Whisper fails but the gallery should continue[#](#whisper-fails-but-the-gallery-should-continue "Link to this heading")
@@ -15,8 +15,8 @@ should raise.
 
 ## Need a fully local ASR[#](#need-a-fully-local-asr "Link to this heading")
 
-Provide `ASRBackend` and select it first with an explicit
-`BackendPolicy`. Use `include_unlisted=False` if built-in Whisper
+Provide [`ASRBackend`](../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") and select it first with an explicit
+[`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy"). Use `include_unlisted=False` if built-in Whisper
 backends must not be attempted.
 
 ## A builder factory seems ignored[#](#a-builder-factory-seems-ignored "Link to this heading")

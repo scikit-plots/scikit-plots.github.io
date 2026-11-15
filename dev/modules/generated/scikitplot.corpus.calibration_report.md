@@ -1,6 +1,6 @@
 # calibration\_report[#](#calibration-report "Link to this heading")
 
-scikitplot.corpus.calibration\_report(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_metrics/_calibration.py#L348)[#](#scikitplot.corpus.calibration_report "Link to this definition")
+scikitplot.corpus.calibration\_report(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_calibration.py#L348)[#](#scikitplot.corpus.calibration_report "Link to this definition")
 :   Every calibration measure for one set of labelled probabilities.
 
     Parameters:

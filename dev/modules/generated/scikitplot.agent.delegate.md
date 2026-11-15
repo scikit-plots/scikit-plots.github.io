@@ -1,6 +1,6 @@
 # delegate[#](#delegate "Link to this heading")
 
-scikitplot.agent.delegate(**name**, **child**, **\***, **description=''**, **max\_steps=8**, **max\_tool\_calls=None**, **max\_cost=None**, **max\_tokens=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_delegate.py#L78)[#](#scikitplot.agent.delegate "Link to this definition")
+scikitplot.agent.delegate(**name**, **child**, **\***, **description=''**, **max\_steps=8**, **max\_tool\_calls=None**, **max\_cost=None**, **max\_tokens=None**, **max\_seconds=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_delegate.py#L78)[#](#scikitplot.agent.delegate "Link to this definition")
 :   Return a tool that runs `child` toward the goal it is called with.
 
     Parameters:

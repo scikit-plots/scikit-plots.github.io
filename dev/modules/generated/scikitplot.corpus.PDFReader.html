@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:35:04Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:09:00Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.PDFReader","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -58,7 +58,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/apis.css?v=1f9b4101" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
@@ -86,7 +86,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -109,7 +109,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="MarkdownReader" href="scikitplot.corpus.MarkdownReader.html" />
-    <link rel="prev" title="ImageReader" href="scikitplot.corpus.ImageReader.html" />
+    <link rel="prev" title="OfficeReader" href="scikitplot.corpus.OfficeReader.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -710,6 +710,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.ErrorCode.html">ErrorCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.SchemaError.html">SchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.StateError.html">StateError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.check_schema.html">check_schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.validate.html">validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.canonical_json.html">canonical_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.digest.html">digest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.agent.plain.html">plain</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -745,6 +750,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.api.stack.html">stack</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.cleanprompt.html">scikitplot.cleanprompt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -775,6 +781,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.describe_outcome.html">describe_outcome</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.diagnose.html">diagnose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.suggest_terms.html">suggest_terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.CoverageRow.html">CoverageRow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.coverage_matrix.html">coverage_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Redactor.html">Redactor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.reserved_label_spans.html">reserved_label_spans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.resolve_spans.html">resolve_spans</a></li>
@@ -789,6 +797,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.describe_engines.html">describe_engines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.resolve_engine.html">resolve_engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.trim_entity_span.html">trim_entity_span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.EngineReadiness.html">EngineReadiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.engine_readiness.html">engine_readiness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.FormatSpec.html">FormatSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Guard.html">Guard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.StreamDecoder.html">StreamDecoder</a></li>
@@ -807,6 +817,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.spacy_detector.html">spacy_detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.NltkDetector.html">NltkDetector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.nltk_detector.html">nltk_detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.corpora_status.html">corpora_status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.FieldSpec.html">FieldSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PackError.html">PackError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PackSpec.html">PackSpec</a></li>
@@ -815,11 +826,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.default_patterns.html">default_patterns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.get_pattern.html">get_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.luhn_ok.html">luhn_ok</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PatternRiskWarning.html">PatternRiskWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.analyse_pattern.html">analyse_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.CleanPlan.html">CleanPlan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.FluentCleanPrompt.html">FluentCleanPrompt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.DEFAULT_LIMITS.html">DEFAULT_LIMITS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.DEFAULT_POLICY.html">DEFAULT_POLICY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.DEFAULT_TAG_STYLE.html">DEFAULT_TAG_STYLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.ACTIONS.html">ACTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Action.html">Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Limits.html">Limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.OverlapStrategy.html">OverlapStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.RedactionPolicy.html">RedactionPolicy</a></li>
@@ -835,12 +850,50 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Vault.html">Vault</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.decrypt_mapping.html">decrypt_mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.encrypt_mapping.html">encrypt_mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.new_key.html">new_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Entry.html">Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.RedactionResult.html">RedactionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.RestorationResult.html">RestorationResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Span.html">Span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.as_dict.html">as_dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.CleanPromptError.html">CleanPromptError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.BlockedError.html">BlockedError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.CapabilityError.html">CapabilityError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.DetectorError.html">DetectorError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.LeakError.html">LeakError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.LimitExceededError.html">LimitExceededError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.OverlapError.html">OverlapError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PatternError.html">PatternError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PatternTimeoutError.html">PatternTimeoutError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.PolicyError.html">PolicyError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.RestorationError.html">RestorationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html">AUDIT_LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.LOGGER_NAME.html">LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.JsonFormatter.html">JsonFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.SecretFilter.html">SecretFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.VaultScrubber.html">VaultScrubber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.audit.html">audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.configure_logging.html">configure_logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.log_level_from_env.html">log_level_from_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.redacting.html">redacting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.Catalog.html">Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.builtin_catalog.html">builtin_catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.SurrogateSet.html">SurrogateSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.load_surrogate_set.html">load_surrogate_set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.redact_documents.html">redact_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cleanprompt.register_corpus_readers.html">register_corpus_readers</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.config.html">scikitplot.config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config.__bibtex__.html">__bibtex__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config.__citation__.html">__citation__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.config.citation.html">citation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.config.config_context.html">config_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.config.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.config.set_config.html">set_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.config.show_config.html">show_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../apis/scikitplot.corpus.html">scikitplot.corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -884,6 +937,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.probe_backend.html">probe_backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityRegistry.html">CapabilityRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityReport.html">CapabilityReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilitySpec.html">CapabilitySpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_report.html">capability_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.component_capabilities.html">component_capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.default_capability_registry.html">default_capability_registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentCatalog.html">ComponentCatalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentSpec.html">ComponentSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DiscoveryOutcome.html">DiscoveryOutcome</a></li>
@@ -922,7 +981,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._split_cjk_chars_legacy.html">_split_cjk_chars_legacy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ScriptSpan.html">ScriptSpan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ScriptSegmenter.html">ScriptSegmenter</a></li>
@@ -952,7 +1010,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SentenceChunkerConfig.html">SentenceChunkerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus._validate_text_input.html">_validate_text_input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StructureChunker.html">StructureChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.StructureChunkerConfig.html">StructureChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LemmatizationBackend.html">LemmatizationBackend</a></li>
@@ -999,6 +1056,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.GoogleDriveDownloader.html">GoogleDriveDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebDownloader.html">WebDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeDownloader.html">YouTubeDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DownloadPlan.html">DownloadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DownloadPolicy.html">DownloadPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.download_policy.html">download_policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CachePolicy.html">CachePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CacheStatus.html">CacheStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CachedEmbeddings.html">CachedEmbeddings</a></li>
@@ -1032,6 +1092,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.calibration_report.html">calibration_report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.expected_calibration_error.html">expected_calibration_error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.reliability_table.html">reliability_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CALIBRATION_STRATEGIES.html">CALIBRATION_STRATEGIES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.anls_score.html">anls_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.edit_similarity.html">edit_similarity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.edit_similarity_score.html">edit_similarity_score</a></li>
@@ -1090,6 +1151,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.IndexGeneration.html">IndexGeneration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.derive_generation.html">derive_generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DocIdScheme.html">DocIdScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.IDENTITY_HEX_WIDTH.html">IDENTITY_HEX_WIDTH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.IncompatibleSchemaError.html">IncompatibleSchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.UUID7Generator.html">UUID7Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.assign_doc_ids.html">assign_doc_ids</a></li>
@@ -1137,6 +1199,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">PDFReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
@@ -1146,6 +1209,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.XMLReader.html">XMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
@@ -1194,6 +1258,24 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.RuntimeCorpus.html">RuntimeCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.RuntimePolicy.html">RuntimePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.materialize_plan.html">materialize_plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.runtime_policy.html">runtime_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CorpusPolicyBundle.html">CorpusPolicyBundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.corpus_policy_bundle.html">corpus_policy_bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendCandidate.html">BackendCandidate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendOutcome.html">BackendOutcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendPlan.html">BackendPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendPolicy.html">BackendPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendSkip.html">BackendSkip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.BackendStatus.html">BackendStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.backend_policy.html">backend_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.plan_backend_chain.html">plan_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.run_backend_chain.html">run_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ASRBackend.html">ASRBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ASRRequest.html">ASRRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WHISPER_MODELS.html">WHISPER_MODELS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.asr_segment_metadata.html">asr_segment_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.plan_whisper_backends.html">plan_whisper_backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.transcribe_whisper.html">transcribe_whisper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HAMLET_TEXT.html">HAMLET_TEXT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SectionType.html">SectionType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
@@ -1444,8 +1526,27 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.CommandError.html">CommandError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ExecutionException.html">ExecutionException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.InvalidUrlException.html">InvalidUrlException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.MissingConfigException.html">MissingConfigException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotTracingException.html">ScikitplotTracingException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotTraceDataException.html">ScikitplotTraceDataException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotTraceDataCorrupted.html">ScikitplotTraceDataCorrupted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotTraceDataNotFound.html">ScikitplotTraceDataNotFound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.AxisError.html">AxisError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.DTypePromotionError.html">DTypePromotionError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.TooHardError.html">TooHardError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotWarning.html">ScikitplotWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotUserWarning.html">ScikitplotUserWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotDeprecationWarning.html">ScikitplotDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotPendingDeprecationWarning.html">ScikitplotPendingDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ScikitplotBackwardsIncompatibleChangeWarning.html">ScikitplotBackwardsIncompatibleChangeWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.DuplicateRepresentationWarning.html">DuplicateRepresentationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ComplexWarning.html">ComplexWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.RankWarning.html">RankWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
@@ -1504,6 +1605,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.MissingIndicator.html">MissingIndicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.SimpleImputer.html">SimpleImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1535,6 +1638,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.get_verbosity.html">get_verbosity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.set_verbosity.html">set_verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.BASIC_FORMAT.html">BASIC_FORMAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.Filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.Formatter.html">Formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.Handler.html">Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.LogRecord.html">LogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.Logger.html">Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.NullHandler.html">NullHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.StreamHandler.html">StreamHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.getLevelName.html">getLevelName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.getLogger.html">getLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.log.html">log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.log_every_n.html">log_every_n</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.logging.log_first_n.html">log_first_n</a></li>
@@ -1592,6 +1705,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.SearchDocsOutput.html">SearchDocsOutput</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.SearchService.html">SearchService</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.create_server.html">create_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.RuntimeConfig.html">RuntimeConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.main.html">main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.require_count.html">require_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.mcp.require_index.html">require_index</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1745,6 +1862,26 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq.html">akaike_info_criterion_lsq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.bayesian_info_criterion.html">bayesian_info_criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq.html">bayesian_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_location.html">biweight_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html">biweight_midcorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcovariance.html">biweight_midcovariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midvariance.html">biweight_midvariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_scale.html">biweight_scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.SigmaClip.html">SigmaClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.SigmaClippedStats.html">SigmaClippedStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.sigma_clip.html">sigma_clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.sigma_clipped_stats.html">sigma_clipped_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.circcorrcoef.html">circcorrcoef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.circmean.html">circmean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.circmoment.html">circmoment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.circstd.html">circstd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.circvar.html">circvar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.rayleightest.html">rayleightest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.vonmisesmle.html">vonmisesmle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.vtest.html">vtest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.jackknife_resampling.html">jackknife_resampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.jackknife_stats.html">jackknife_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.cexternals._astropy.stats.RipleysKEstimator.html">RipleysKEstimator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 </ul>
@@ -1752,7 +1889,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._time.Timer.html">Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.get_path.html">get_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.make_path.html">make_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.utils._path.remove_path.html">remove_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1773,7 +1912,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1800,9 +1939,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -1907,7 +2046,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>PDFReader<a class="headerlink" href="#pdfreader" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">PDFReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_provenance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_extractor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_extractor_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_file_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2147483648</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">PDFReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_provenance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_extractor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_extractor_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_text_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">268435456</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_text_chars_per_byte</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_text_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'refuse'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_file_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2147483648</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefer_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdfminer_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdfminer_ties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stable'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'off'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr_min_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr_max_pages</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr_engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tesseract'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr_lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ocr_dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pypdfium2_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader" title="Link to this definition">#</a></dt>
 <dd><p>PDF document reader with pdfminer.six → pypdf cascade.</p>
 <p>Yields one raw chunk per PDF page. Pages that produce no extractable
 text after stripping are silently skipped (logged at DEBUG level).</p>
@@ -1924,6 +2063,52 @@ text after stripping are silently skipped (logged at DEBUG level).</p>
 <dt><strong>prefer_backend</strong><span class="classifier">str or None, optional</span></dt><dd><p>Force a specific extraction backend. One of <code class="docutils literal notranslate"><span class="pre">&quot;pdfminer&quot;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&quot;pypdf&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> (auto: try pdfminer first). Default:
 <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>pdfminer_kwargs</strong><span class="classifier">Mapping or None, optional</span></dt><dd><p>Keyword arguments for <code class="docutils literal notranslate"><span class="pre">pdfminer.high_level.extract_pages</span></code>, used
+when pdfminer.six reads a page; pypdf ignores them. A mapping under
+<code class="docutils literal notranslate"><span class="pre">&quot;laparams&quot;</span></code> is turned into a <code class="docutils literal notranslate"><span class="pre">pdfminer.layout.LAParams</span></code>, so
+the layout analysis can be set without importing pdfminer.
+<code class="docutils literal notranslate"><span class="pre">password</span></code>, <code class="docutils literal notranslate"><span class="pre">page_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">maxpages</span></code> are set by the
+reader and are not accepted. <code class="docutils literal notranslate"><span class="pre">None</span></code> uses pdfminer’s defaults.
+Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>pdfminer_ties</strong><span class="classifier">{“stable”, “pdfminer”}, optional</span></dt><dd><p>How pdfminer.six’s layout groups text boxes that are equally far
+apart. <code class="docutils literal notranslate"><span class="pre">&quot;stable&quot;</span></code>: in the order the boxes were found, so a page
+gives the same text on every read. <code class="docutils literal notranslate"><span class="pre">&quot;pdfminer&quot;</span></code>: pdfminer.six’s
+own order, by memory address, which can change from one read to the
+next; for comparing with pdfminer.six itself. Pages without such
+ties are the same either way. See the Notes. Default: <code class="docutils literal notranslate"><span class="pre">&quot;stable&quot;</span></code>.</p>
+</dd>
+<dt><strong>ocr</strong><span class="classifier">{“off”, “auto”, “always”} or callable, optional</span></dt><dd><p>Which pages are rendered and read with OCR. <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> reads the text
+layer only. <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code> reads a page with OCR when its text layer has
+fewer than <code class="docutils literal notranslate"><span class="pre">ocr_min_chars</span></code> characters: scanned pages, slides
+exported as pictures. <code class="docutils literal notranslate"><span class="pre">&quot;always&quot;</span></code> reads every page with OCR. A
+callable <code class="docutils literal notranslate"><span class="pre">policy(page_number,</span> <span class="pre">text)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> decides per page from
+the zero-based page number and the stripped text layer. The OCR text
+replaces the text layer when it is not empty. Default: <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code>.</p>
+</dd>
+<dt><strong>ocr_min_chars</strong><span class="classifier">int, optional</span></dt><dd><p>Under <code class="docutils literal notranslate"><span class="pre">ocr=&quot;auto&quot;</span></code>, a text layer shorter than this is not trusted.
+Raise it for scans that carry only a page label as text. Default: 1
+(only pages with no text).</p>
+</dd>
+<dt><strong>ocr_max_pages</strong><span class="classifier">int or None, optional</span></dt><dd><p>Most pages read with OCR per file. Pages past the limit keep their
+text layer and are named in one warning. <code class="docutils literal notranslate"><span class="pre">None</span></code> for no limit.
+Default: 64.</p>
+</dd>
+<dt><strong>ocr_engine</strong><span class="classifier">{“tesseract”, “easyocr”} or callable, optional</span></dt><dd><p>OCR engine, as in <a class="reference internal" href="scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader" title="scikitplot.corpus.ImageReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageReader</span></code></a>, or a callable taking a PIL
+image and returning its text or <code class="docutils literal notranslate"><span class="pre">(text,</span> <span class="pre">confidence)</span></code> with the
+confidence in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. Recorded in each OCR chunk’s
+<code class="docutils literal notranslate"><span class="pre">ocr_engine</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> for a callable). Default:
+<code class="docutils literal notranslate"><span class="pre">&quot;tesseract&quot;</span></code>.</p>
+</dd>
+<dt><strong>ocr_lang</strong><span class="classifier">str or None, optional</span></dt><dd><p>Language hint for a built-in engine (<code class="docutils literal notranslate"><span class="pre">&quot;eng&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;eng+deu&quot;</span></code> for
+Tesseract; <code class="docutils literal notranslate"><span class="pre">&quot;en&quot;</span></code> for easyocr). Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt><strong>ocr_dpi</strong><span class="classifier">int, optional</span></dt><dd><p>Resolution pages are rendered at, from 1 to 1200. Default: 300.</p>
+</dd>
+<dt><strong>pypdfium2_kwargs</strong><span class="classifier">Mapping or None, optional</span></dt><dd><p>Keyword arguments for pypdfium2’s <code class="docutils literal notranslate"><span class="pre">PdfPage.render</span></code>, which renders
+pages for OCR (for example <code class="docutils literal notranslate"><span class="pre">{&quot;grayscale&quot;:</span> <span class="pre">True}</span></code>). <code class="docutils literal notranslate"><span class="pre">scale</span></code> is set
+from <code class="docutils literal notranslate"><span class="pre">ocr_dpi</span></code> and is not accepted. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 <dt><strong>chunker</strong><span class="classifier">ChunkerBase or None, optional</span></dt><dd><p>Inherited from <a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus._base.DocumentReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentReader</span></code></a>.</p>
 </dd>
@@ -1965,9 +2150,21 @@ text after stripping are silently skipped (logged at DEBUG level).</p>
 <li><p><strong>source_provenance</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>]</em>)</p></li>
 <li><p><strong>custom_extractor</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>custom_extractor_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>max_text_chars</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>max_text_chars_per_byte</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>on_text_limit</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>)</p></li>
 <li><p><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>)</p></li>
 <li><p><strong>max_file_bytes</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p></li>
 <li><p><strong>prefer_backend</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>pdfminer_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.15)"><em>Mapping</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>pdfminer_ties</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>)</p></li>
+<li><p><strong>ocr</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.15)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><em>bool</em></a><em>]</em>)</p></li>
+<li><p><strong>ocr_min_chars</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p></li>
+<li><p><strong>ocr_max_pages</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>ocr_engine</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.15)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>ocr_lang</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>ocr_dpi</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p></li>
+<li><p><strong>pypdfium2_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.15)"><em>Mapping</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><em>Any</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1994,11 +2191,32 @@ no text for a page, pypdf is tried as fallback on that page.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;page_number&quot;</span></code> — zero-based page index (int).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;section_type&quot;</span></code> — always <code class="docutils literal notranslate"><span class="pre">SectionType.TEXT</span></code>.</p></li>
 </ul>
+<p><strong>Scanned pages (OCR):</strong> A PDF of scanned pages has no text layer, and
+one exported from slides may carry only page labels. With <code class="docutils literal notranslate"><span class="pre">ocr=&quot;auto&quot;</span></code>
+such pages are rendered with pypdfium2 (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pypdfium2</span></code>) and
+read by the OCR engine. A chunk read with OCR carries <code class="docutils literal notranslate"><span class="pre">ocr_engine</span></code> and,
+from the built-in engines, <code class="docutils literal notranslate"><span class="pre">confidence</span></code>. OCR takes about one to two
+seconds per page at 300 dpi with Tesseract, hence <code class="docutils literal notranslate"><span class="pre">ocr_max_pages</span></code>. With
+<code class="docutils literal notranslate"><span class="pre">ocr=&quot;off&quot;</span></code> a file whose pages hold no text gives one warning that
+names the option. The images a page lists as resources are not used: a
+page can list images it does not draw. PDFium is not thread-safe, so
+readers running in parallel threads (<code class="docutils literal notranslate"><span class="pre">CorpusBuilder(max_workers=...)</span></code>)
+render one page at a time; the OCR engine runs in parallel.</p>
+<p><strong>Reproducible text:</strong> The same file and settings give the same text for
+every page on every read. pdfminer.six orders text boxes that are
+equally far apart by their address in memory, so a page with many such
+boxes (a figure with repeated labels, a grid) could come out in a
+different order on another read; the reader breaks those ties by the
+order in which the boxes were found. Pages without ties, and pdfminer’s
+grouping of boxes into columns, are as pdfminer.six lays them out.
+<code class="docutils literal notranslate"><span class="pre">pdfminer_ties=&quot;pdfminer&quot;</span></code> reads in pdfminer.six’s own order instead.
+<code class="docutils literal notranslate"><span class="pre">pdfminer_kwargs={&quot;laparams&quot;:</span> <span class="pre">{&quot;boxes_flow&quot;:</span> <span class="pre">None}}</span></code> orders the boxes
+by position without grouping them into columns: reproducible either way.</p>
 <p><strong>Encrypted PDFs:</strong> Supply <code class="docutils literal notranslate"><span class="pre">password</span></code> when constructing the reader.
 If the password is wrong, affected pages are skipped with a warning.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="53208707-2fcd-45f0-9bd7-00783f9dba50">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('53208707-2fcd-45f0-9bd7-00783f9dba50','1cda475c-fa71-479c-929d-8d861743b47a','2e04b91f-163b-4cf5-8361-8caa48a999a4','../../lite/tree/../notebooks/index.html?path=e6091a9a_82b1_41d1_93bc_27fbffbffdfd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d6b90b77-d3c9-49e6-a5ab-f3239cd360ea">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d6b90b77-d3c9-49e6-a5ab-f3239cd360ea','93ff47db-3633-4e0d-8fac-848a8b8efd7f','899cec93-36ba-4d06-9ce4-e2513dbc1d2a','../../lite/tree/../notebooks/index.html?path=104901f7_8981_4bb7_91ac_f915d461ac1b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Default usage (auto backend):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">PDFReader</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">"paper.pdf"</span><span class="p">))</span>
@@ -2028,7 +2246,7 @@ If the password is wrong, affected pages are skipped with a warning.</p>
 </div>
 </div>
 </div>
-<div id="2e04b91f-163b-4cf5-8361-8caa48a999a4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('53208707-2fcd-45f0-9bd7-00783f9dba50','2e04b91f-163b-4cf5-8361-8caa48a999a4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('53208707-2fcd-45f0-9bd7-00783f9dba50','2e04b91f-163b-4cf5-8361-8caa48a999a4')">Open In Tab</button></div><div id="1cda475c-fa71-479c-929d-8d861743b47a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py property">
+<div id="899cec93-36ba-4d06-9ce4-e2513dbc1d2a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d6b90b77-d3c9-49e6-a5ab-f3239cd360ea','899cec93-36ba-4d06-9ce4-e2513dbc1d2a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d6b90b77-d3c9-49e6-a5ab-f3239cd360ea','899cec93-36ba-4d06-9ce4-e2513dbc1d2a')">Open In Tab</button></div><div id="93ff47db-3633-4e0d-8fac-848a8b8efd7f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py property">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.backend_reports">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">backend_reports</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.backend_reports" title="Link to this definition">#</a></dt>
 <dd><p>Return structured optional-backend reports from the current run.</p>
@@ -2057,7 +2275,7 @@ is used as-is (one CorpusDocument per raw chunk).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.clear_backend_reports">
-<span class="sig-name descname"><span class="pre">clear_backend_reports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L969"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.clear_backend_reports" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear_backend_reports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1171"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.clear_backend_reports" title="Link to this definition">#</a></dt>
 <dd><p>Clear structured optional-backend reports on this reader instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -2068,7 +2286,7 @@ is used as-is (one CorpusDocument per raw chunk).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.create">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1716"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.create" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2041"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.create" title="Link to this definition">#</a></dt>
 <dd><p>Instantiate the appropriate reader for one or more sources.</p>
 <p>Accepts any mix of file paths, URL strings, and
 <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> objects — in any order.  URL strings (those
@@ -2197,8 +2415,8 @@ different media types, supply a list:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">classify=True</span></code>, <code class="docutils literal notranslate"><span class="pre">classifier=fn</span></code> → <a class="reference internal" href="scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" title="scikitplot.corpus.AudioReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AudioReader</span></code></a></p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ba42f3c5-5ae3-45d9-8826-49eeb7b7f57f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ba42f3c5-5ae3-45d9-8826-49eeb7b7f57f','231772bd-5422-49a7-948f-b2dc0a14ffea','6cb8b762-8a4e-4927-9f0d-bd842477bba7','../../lite/tree/../notebooks/index.html?path=94dea60a_5680_435e_8fdd_e60814317b7e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="8e9113e2-0d49-4121-b0ea-d819360c0df4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8e9113e2-0d49-4121-b0ea-d819360c0df4','1672c39c-25e0-40fc-aa60-22b14d1b25ec','7deb384b-81eb-4996-93cf-118f36e25129','../../lite/tree/../notebooks/index.html?path=018ca70b_e3e7_4b3b_bdcf_d6074379ead3.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Single file (backward-compatible):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"hamlet.txt"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
@@ -2222,7 +2440,7 @@ different media types, supply a list:</p>
 </div>
 </div>
 </div>
-<div id="6cb8b762-8a4e-4927-9f0d-bd842477bba7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ba42f3c5-5ae3-45d9-8826-49eeb7b7f57f','6cb8b762-8a4e-4927-9f0d-bd842477bba7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ba42f3c5-5ae3-45d9-8826-49eeb7b7f57f','6cb8b762-8a4e-4927-9f0d-bd842477bba7')">Open In Tab</button></div><div id="231772bd-5422-49a7-948f-b2dc0a14ffea" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7deb384b-81eb-4996-93cf-118f36e25129" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8e9113e2-0d49-4121-b0ea-d819360c0df4','7deb384b-81eb-4996-93cf-118f36e25129')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8e9113e2-0d49-4121-b0ea-d819360c0df4','7deb384b-81eb-4996-93cf-118f36e25129')">Open In Tab</button></div><div id="1672c39c-25e0-40fc-aa60-22b14d1b25ec" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.custom_extractor">
@@ -2244,8 +2462,8 @@ without any subclassing — simply pass a callable at construction time.</p>
 <p>where <code class="docutils literal notranslate"><span class="pre">ExtractorOutput</span></code> is <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">list[str]</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">list[dict]</span></code> — the same contract as <code class="xref py py-class docutils literal notranslate"><span class="pre">CustomReader</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8a7fb576-d624-475b-b546-672ca8234619">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8a7fb576-d624-475b-b546-672ca8234619','1d78fa02-a130-4f15-9bca-0b1c517832b6','658c963d-7b46-42a3-9be3-ab94f38fab83','../../lite/tree/../notebooks/index.html?path=051755e0_3a29_4039_9dfd_282c20cb1f6f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9dc7f5a6-a214-4d4e-905c-209efc47eb9d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9dc7f5a6-a214-4d4e-905c-209efc47eb9d','4d22d7f0-edb9-468d-96a3-bf2611297deb','9b95137e-d91d-4604-b4a1-90686cd73c17','../../lite/tree/../notebooks/index.html?path=24b4c72a_3b93_4503_b384_d2823bf9ed2f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Override PDF extraction with <code class="docutils literal notranslate"><span class="pre">pdfplumber</span></code> for a single reader:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdfplumber</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -2265,16 +2483,16 @@ without any subclassing — simply pass a callable at construction time.</p>
 </div>
 </div>
 </div>
-<div id="658c963d-7b46-42a3-9be3-ab94f38fab83" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8a7fb576-d624-475b-b546-672ca8234619','658c963d-7b46-42a3-9be3-ab94f38fab83')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8a7fb576-d624-475b-b546-672ca8234619','658c963d-7b46-42a3-9be3-ab94f38fab83')">Open In Tab</button></div><div id="1d78fa02-a130-4f15-9bca-0b1c517832b6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="9b95137e-d91d-4604-b4a1-90686cd73c17" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9dc7f5a6-a214-4d4e-905c-209efc47eb9d','9b95137e-d91d-4604-b4a1-90686cd73c17')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9dc7f5a6-a214-4d4e-905c-209efc47eb9d','9b95137e-d91d-4604-b4a1-90686cd73c17')">Open In Tab</button></div><div id="4d22d7f0-edb9-468d-96a3-bf2611297deb" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.custom_extractor_kwargs">
-<span class="sig-name descname"><span class="pre">custom_extractor_kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.custom_extractor_kwargs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">custom_extractor_kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.custom_extractor_kwargs" title="Link to this definition">#</a></dt>
 <dd><p>Extra keyword arguments forwarded to <a class="reference internal" href="#scikitplot.corpus.PDFReader.custom_extractor" title="scikitplot.corpus.PDFReader.custom_extractor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">custom_extractor</span></code></a> on every
 invocation.  Merged into the call as <code class="docutils literal notranslate"><span class="pre">**custom_extractor_kwargs</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e4183572-ca6a-4e24-8a57-8cf52105ea8e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e4183572-ca6a-4e24-8a57-8cf52105ea8e','594fe73e-7f26-43f3-9706-bf902284e569','39faa201-1449-418c-bac3-d4ba2daad25b','../../lite/tree/../notebooks/index.html?path=12e9c4e3_d758_480e_b641_2a26eb41fa23.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d18a8af1-611e-4186-a35f-69294a7970d5">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d18a8af1-611e-4186-a35f-69294a7970d5','541ce9eb-4e49-4b40-bf7e-9a7d8e199972','e95461f4-673f-488a-9d19-c00109f892e1','../../lite/tree/../notebooks/index.html?path=a5ece6a1_5acc_4a84_b3db_20efc6c4756e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">Path</span><span class="p">(</span><span class="s2">"report.pdf"</span><span class="p">),</span>
     <span class="n">custom_extractor</span><span class="o">=</span><span class="n">my_fn</span><span class="p">,</span>
@@ -2284,7 +2502,7 @@ invocation.  Merged into the call as <code class="docutils literal notranslate">
 </div>
 </div>
 </div>
-<div id="39faa201-1449-418c-bac3-d4ba2daad25b" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e4183572-ca6a-4e24-8a57-8cf52105ea8e','39faa201-1449-418c-bac3-d4ba2daad25b')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e4183572-ca6a-4e24-8a57-8cf52105ea8e','39faa201-1449-418c-bac3-d4ba2daad25b')">Open In Tab</button></div><div id="594fe73e-7f26-43f3-9706-bf902284e569" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e95461f4-673f-488a-9d19-c00109f892e1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d18a8af1-611e-4186-a35f-69294a7970d5','e95461f4-673f-488a-9d19-c00109f892e1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d18a8af1-611e-4186-a35f-69294a7970d5','e95461f4-673f-488a-9d19-c00109f892e1')">Open In Tab</button></div><div id="541ce9eb-4e49-4b40-bf7e-9a7d8e199972" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.default_language">
@@ -2307,8 +2525,8 @@ invocation.  Merged into the call as <code class="docutils literal notranslate">
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="15b77915-80e7-40e7-b37f-7c9c94c7fb9b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('15b77915-80e7-40e7-b37f-7c9c94c7fb9b','d371e259-04ed-4690-93fa-4b4c2de98a2a','ad1c78a8-fbe4-4986-9b05-cc82c1afd866','../../lite/tree/../notebooks/index.html?path=2ce720b3_0727_4a63_9394_496128e159e2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="cd5e7f87-406a-4ed0-82d6-d213cb72b3da">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cd5e7f87-406a-4ed0-82d6-d213cb72b3da','e94bf065-843e-4510-91c5-05d9a2b6b12b','d6ffd459-5409-4fb1-9518-81bca7c020d7','../../lite/tree/../notebooks/index.html?path=352fac13_65c7_4e14_8fc4_e0a3e22c936d.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">TextReader</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">"/data/corpus.txt"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">file_name</span>
@@ -2317,11 +2535,11 @@ invocation.  Merged into the call as <code class="docutils literal notranslate">
 </div>
 </div>
 </div>
-<div id="ad1c78a8-fbe4-4986-9b05-cc82c1afd866" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('15b77915-80e7-40e7-b37f-7c9c94c7fb9b','ad1c78a8-fbe4-4986-9b05-cc82c1afd866')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('15b77915-80e7-40e7-b37f-7c9c94c7fb9b','ad1c78a8-fbe4-4986-9b05-cc82c1afd866')">Open In Tab</button></div><div id="d371e259-04ed-4690-93fa-4b4c2de98a2a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d6ffd459-5409-4fb1-9518-81bca7c020d7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cd5e7f87-406a-4ed0-82d6-d213cb72b3da','d6ffd459-5409-4fb1-9518-81bca7c020d7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cd5e7f87-406a-4ed0-82d6-d213cb72b3da','d6ffd459-5409-4fb1-9518-81bca7c020d7')">Open In Tab</button></div><div id="e94bf065-843e-4510-91c5-05d9a2b6b12b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.file_type">
-<span class="sig-name descname"><span class="pre">file_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.15)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.file_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">file_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.15)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.file_type" title="Link to this definition">#</a></dt>
 <dd><p>Single file extension this reader handles (lowercase, including leading
 dot). E.g. <code class="docutils literal notranslate"><span class="pre">&quot;.txt&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;.xml&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;.zip&quot;</span></code>.</p>
 <p>For readers that handle multiple extensions, define <code class="docutils literal notranslate"><span class="pre">file_types</span></code>
@@ -2354,7 +2572,7 @@ class, <code class="docutils literal notranslate"><span class="pre">file_types</
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.from_manifest">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2033"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.from_manifest" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_manifest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2358"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.from_manifest" title="Link to this definition">#</a></dt>
 <dd><p>Build a <code class="xref py py-class docutils literal notranslate"><span class="pre">_MultiSourceReader</span></code> from a manifest file.</p>
 <p>The manifest is a text file with one source per line — either a
 file path or a URL.  Blank lines and lines starting with <code class="docutils literal notranslate"><span class="pre">#</span></code>
@@ -2446,8 +2664,8 @@ object with:</p>
 <p>String-level <code class="docutils literal notranslate"><span class="pre">source_type</span></code> values are coerced via
 <code class="docutils literal notranslate"><span class="pre">SourceType(value)</span></code> and an invalid value raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="59b1cb56-24c1-4c0e-8072-59ef37742209">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('59b1cb56-24c1-4c0e-8072-59ef37742209','560128bc-70b3-4200-b7ec-39ea0445f75d','bd4537ad-1c44-4f7f-969c-f9529b6e554c','../../lite/tree/../notebooks/index.html?path=22b6e311_932c_4426_81a8_0757af1ed934.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="95cfd7d4-de6e-47b4-ba17-81075d460849">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('95cfd7d4-de6e-47b4-ba17-81075d460849','8f59fa8b-8c5f-4957-bcf9-5d42339e9008','aca1b646-6182-4bfc-8d37-7955c242deca','../../lite/tree/../notebooks/index.html?path=2e284721_9fd2_40d3_b3ae_96625351ab85.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Text manifest <code class="docutils literal notranslate"><span class="pre">sources.txt</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># WHO corpus</span>
 <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">who</span><span class="o">.</span><span class="n">int</span><span class="o">/</span><span class="n">europe</span><span class="o">/</span><span class="n">news</span><span class="o">/</span><span class="n">item</span><span class="o">/...</span>
@@ -2466,11 +2684,11 @@ object with:</p>
 </div>
 </div>
 </div>
-<div id="bd4537ad-1c44-4f7f-969c-f9529b6e554c" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('59b1cb56-24c1-4c0e-8072-59ef37742209','bd4537ad-1c44-4f7f-969c-f9529b6e554c')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('59b1cb56-24c1-4c0e-8072-59ef37742209','bd4537ad-1c44-4f7f-969c-f9529b6e554c')">Open In Tab</button></div><div id="560128bc-70b3-4200-b7ec-39ea0445f75d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="aca1b646-6182-4bfc-8d37-7955c242deca" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('95cfd7d4-de6e-47b4-ba17-81075d460849','aca1b646-6182-4bfc-8d37-7955c242deca')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('95cfd7d4-de6e-47b4-ba17-81075d460849','aca1b646-6182-4bfc-8d37-7955c242deca')">Open In Tab</button></div><div id="8f59fa8b-8c5f-4957-bcf9-5d42339e9008" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.from_url">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.from_url" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_author</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isbn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2554"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.from_url" title="Link to this definition">#</a></dt>
 <dd><p>Instantiate the appropriate reader for a URL source.</p>
 <p>Dispatches to <code class="xref py py-class docutils literal notranslate"><span class="pre">YouTubeReader</span></code>
 for YouTube URLs and to
@@ -2550,8 +2768,8 @@ for YouTube URLs and to
 <a class="reference internal" href="#scikitplot.corpus.PDFReader.create" title="scikitplot.corpus.PDFReader.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create</span></code></a> automatically calls <a class="reference internal" href="#scikitplot.corpus.PDFReader.from_url" title="scikitplot.corpus.PDFReader.from_url"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_url</span></code></a> — you rarely
 need to call <a class="reference internal" href="#scikitplot.corpus.PDFReader.from_url" title="scikitplot.corpus.PDFReader.from_url"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_url</span></code></a> directly.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="96fe9dd7-91f9-4854-bda0-603c456566ef">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('96fe9dd7-91f9-4854-bda0-603c456566ef','0cb26428-3867-48ee-9f15-9730ff0c6b6c','d52a6117-f004-4bea-9412-e761f4ffdcdc','../../lite/tree/../notebooks/index.html?path=b2b5fdb2_e992_4307_9114_b9b9c2c43f0c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="745dcd18-7720-4bce-aafa-de6389f7a317">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('745dcd18-7720-4bce-aafa-de6389f7a317','1dd569f2-4615-476a-9dc6-dda78af08f45','62d09a47-47df-4b86-8cf8-d066e9a119e4','../../lite/tree/../notebooks/index.html?path=b3cc6637_1622_4eeb_998c_94516c47835f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s2">"https://en.wikipedia.org/wiki/Python"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
 </pre></div>
@@ -2562,11 +2780,11 @@ need to call <a class="reference internal" href="#scikitplot.corpus.PDFReader.fr
 </div>
 </div>
 </div>
-<div id="d52a6117-f004-4bea-9412-e761f4ffdcdc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('96fe9dd7-91f9-4854-bda0-603c456566ef','d52a6117-f004-4bea-9412-e761f4ffdcdc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('96fe9dd7-91f9-4854-bda0-603c456566ef','d52a6117-f004-4bea-9412-e761f4ffdcdc')">Open In Tab</button></div><div id="0cb26428-3867-48ee-9f15-9730ff0c6b6c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="62d09a47-47df-4b86-8cf8-d066e9a119e4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('745dcd18-7720-4bce-aafa-de6389f7a317','62d09a47-47df-4b86-8cf8-d066e9a119e4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('745dcd18-7720-4bce-aafa-de6389f7a317','62d09a47-47df-4b86-8cf8-d066e9a119e4')">Open In Tab</button></div><div id="1dd569f2-4615-476a-9dc6-dda78af08f45" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.get_documents">
-<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1215"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.get_documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1510"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.get_documents" title="Link to this definition">#</a></dt>
 <dd><p>Yield validated <a class="reference internal" href="scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument" title="scikitplot.corpus._schema.CorpusDocument"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusDocument</span></code></a>
 instances for the input file.</p>
 <p>Orchestrates the full per-file pipeline:</p>
@@ -2601,8 +2819,8 @@ instances for the input file.</p>
 <p>Omitted-document statistics are logged at INFO level after processing
 each file.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="93a2adbf-d8a6-4a30-8ce4-6486b8786267">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('93a2adbf-d8a6-4a30-8ce4-6486b8786267','928073ae-1f20-43e0-a3b0-db432e7a0761','89ac2a3c-deec-4daa-a15c-d9bc79337998','../../lite/tree/../notebooks/index.html?path=deb69879_e869_4cd9_8e8d_43d7a71253f8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="cf65ac95-517a-4d60-8563-06a9f7356803">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('cf65ac95-517a-4d60-8563-06a9f7356803','ad456bbe-e01d-4fb1-a8d4-3152d171462f','3741dbc5-eaef-421d-9346-48074c4d3e00','../../lite/tree/../notebooks/index.html?path=03cf95cf_93aa_4eb2_a91f_539f92589edb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"corpus.txt"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">docs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="o">.</span><span class="n">get_documents</span><span class="p">())</span>
@@ -2612,11 +2830,11 @@ each file.</p>
 </div>
 </div>
 </div>
-<div id="89ac2a3c-deec-4daa-a15c-d9bc79337998" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('93a2adbf-d8a6-4a30-8ce4-6486b8786267','89ac2a3c-deec-4daa-a15c-d9bc79337998')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('93a2adbf-d8a6-4a30-8ce4-6486b8786267','89ac2a3c-deec-4daa-a15c-d9bc79337998')">Open In Tab</button></div><div id="928073ae-1f20-43e0-a3b0-db432e7a0761" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="3741dbc5-eaef-421d-9346-48074c4d3e00" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('cf65ac95-517a-4d60-8563-06a9f7356803','3741dbc5-eaef-421d-9346-48074c4d3e00')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('cf65ac95-517a-4d60-8563-06a9f7356803','3741dbc5-eaef-421d-9346-48074c4d3e00')">Open In Tab</button></div><div id="ad456bbe-e01d-4fb1-a8d4-3152d171462f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.get_raw_chunks">
-<span class="sig-name descname"><span class="pre">get_raw_chunks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L430"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.get_raw_chunks" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_raw_chunks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.get_raw_chunks" title="Link to this definition">#</a></dt>
 <dd><p>Yield one raw chunk dict per PDF page.</p>
 <p>When <code class="docutils literal notranslate"><span class="pre">prefer_backend=&quot;custom&quot;</span></code> and <a class="reference internal" href="#scikitplot.corpus.PDFReader.custom_extractor" title="scikitplot.corpus.PDFReader.custom_extractor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">custom_extractor</span></code></a> is
 set, delegates entirely to the extractor callable and normalises
@@ -2625,6 +2843,10 @@ its return value via
 Otherwise, attempts pdfminer.six first; falls back to pypdf on
 pages where pdfminer returns no text.  Pages with no extractable
 text are skipped.</p>
+<p>A page no backend can read is skipped, and the skipped pages are
+named in one warning after the last page. A file whose pages are
+read but hold no text (scanned images) gives no chunk and one
+warning.</p>
 <dl class="field-list">
 <dt class="field-odd">Yields<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -2644,7 +2866,15 @@ text are skipped.</p>
 <dd class="field-even"><dl class="simple">
 <dt>ValueError</dt><dd><p>If the file exceeds <code class="docutils literal notranslate"><span class="pre">max_file_bytes</span></code>.</p>
 </dd>
+<dt>ValueError</dt><dd><p>If no backend can read any page: the file is not a complete
+PDF, or it is encrypted and <code class="docutils literal notranslate"><span class="pre">password</span></code> is wrong.</p>
+</dd>
+<dt>ValueError</dt><dd><p>If pdfminer.six does not accept <code class="docutils literal notranslate"><span class="pre">pdfminer_kwargs</span></code>.</p>
+</dd>
 <dt>ImportError</dt><dd><p>If neither pdfminer.six nor pypdf is installed (built-in path).</p>
+</dd>
+<dt>ImportError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">ocr</span></code> is not <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code>, a page needs OCR, and pypdfium2 or
+the engine’s library is not installed.</p>
 </dd>
 <dt>RuntimeError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">prefer_backend=&quot;custom&quot;</span></code> and the extractor raises.</p>
 </dd>
@@ -2658,7 +2888,7 @@ text are skipped.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.input_path">
-<span class="sig-name descname"><span class="pre">input_path</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.15)"><span class="pre">Path</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.input_path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">input_path</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.15)"><span class="pre">Path</span></a></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.input_path" title="Link to this definition">#</a></dt>
 <dd><p>Path to the source file.</p>
 <p>For URL-based readers (<a class="reference internal" href="scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" title="scikitplot.corpus.WebReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">WebReader</span></code></a>, <a class="reference internal" href="scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a>),
 pass <code class="docutils literal notranslate"><span class="pre">pathlib.Path(url_string)</span></code> here and set <code class="docutils literal notranslate"><span class="pre">source_uri</span></code> to the
@@ -2678,9 +2908,138 @@ subclasses to skip the file-existence check.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.max_text_chars">
+<span class="sig-name descname"><span class="pre">max_text_chars</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">268435456</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.max_text_chars" title="Link to this definition">#</a></dt>
+<dd><p>256 Mi.</p>
+<p>Content streams are compressed and pages may share one, so a few
+kilobytes can yield millions of characters per page. Enforced by
+<a class="reference internal" href="scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" title="scikitplot.corpus._base.DocumentReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentReader</span></code></a> with <code class="docutils literal notranslate"><span class="pre">on_text_limit</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Most characters of text one file yields; <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>no limit. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.max_text_chars_per_byte">
+<span class="sig-name descname"><span class="pre">max_text_chars_per_byte</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">50</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.max_text_chars_per_byte" title="Link to this definition">#</a></dt>
+<dd><p>1 Mi characters).</p>
+<p>Default: 50; <code class="docutils literal notranslate"><span class="pre">None</span></code>: no ratio limit. See
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">max_text_chars_per_byte</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Most characters of text per byte of the file (floor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr">
+<span class="sig-name descname"><span class="pre">ocr</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'off'</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code> (pages whose text
+layer has fewer than <a class="reference internal" href="#scikitplot.corpus.PDFReader.ocr_min_chars" title="scikitplot.corpus.PDFReader.ocr_min_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ocr_min_chars</span></code></a> characters), <code class="docutils literal notranslate"><span class="pre">&quot;always&quot;</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">policy(page_number,</span> <span class="pre">text)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Which pages are read with OCR</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr_dpi">
+<span class="sig-name descname"><span class="pre">ocr_dpi</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">300</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr_dpi" title="Link to this definition">#</a></dt>
+<dd><ol class="arabic simple" start="300">
+<li></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Resolution pages are rendered at for OCR, 1 to 1200. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr_engine">
+<span class="sig-name descname"><span class="pre">ocr_engine</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.15)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tesseract'</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr_engine" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">&quot;tesseract&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">&quot;tesseract&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;easyocr&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">engine(image)</span></code>. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr_lang">
+<span class="sig-name descname"><span class="pre">ocr_lang</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr_lang" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Language hint for a built-in OCR engine. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr_max_pages">
+<span class="sig-name descname"><span class="pre">ocr_max_pages</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">64</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr_max_pages" title="Link to this definition">#</a></dt>
+<dd><ol class="arabic simple" start="64">
+<li></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Most pages read with OCR per file; <code class="docutils literal notranslate"><span class="pre">None</span></code> for no limit. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.ocr_min_chars">
+<span class="sig-name descname"><span class="pre">ocr_min_chars</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.ocr_min_chars" title="Link to this definition">#</a></dt>
+<dd><ol class="arabic simple">
+<li></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Under <code class="docutils literal notranslate"><span class="pre">ocr=&quot;auto&quot;</span></code>, the text layer length below which OCR runs. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.on_text_limit">
+<span class="sig-name descname"><span class="pre">on_text_limit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'refuse'</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.on_text_limit" title="Link to this definition">#</a></dt>
+<dd><p>What happens past the text limit (<a class="reference internal" href="#scikitplot.corpus.PDFReader.max_text_chars" title="scikitplot.corpus.PDFReader.max_text_chars"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max_text_chars</span></code></a>,
+<a class="reference internal" href="#scikitplot.corpus.PDFReader.max_text_chars_per_byte" title="scikitplot.corpus.PDFReader.max_text_chars_per_byte"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max_text_chars_per_byte</span></code></a>): <code class="docutils literal notranslate"><span class="pre">&quot;refuse&quot;</span></code> (default) raises
+<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>; <code class="docutils literal notranslate"><span class="pre">&quot;truncate&quot;</span></code> keeps exactly the first
+<code class="docutils literal notranslate"><span class="pre">max_text_chars</span></code> characters, marks the chunk it cuts
+<code class="docutils literal notranslate"><span class="pre">text_truncated=True</span></code> (none when the limit falls between chunks) and
+logs a warning either way.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.password">
 <span class="sig-name descname"><span class="pre">password</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.password" title="Link to this definition">#</a></dt>
 <dd><p>Decryption password for encrypted PDFs. Empty string means unencrypted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.pdfminer_kwargs">
+<span class="sig-name descname"><span class="pre">pdfminer_kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.pdfminer_kwargs" title="Link to this definition">#</a></dt>
+<dd><p>Keyword arguments for <code class="docutils literal notranslate"><span class="pre">pdfminer.high_level.extract_pages</span></code>; <code class="docutils literal notranslate"><span class="pre">None</span></code>
+uses pdfminer’s defaults. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.pdfminer_ties">
+<span class="sig-name descname"><span class="pre">pdfminer_ties</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stable'</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.pdfminer_ties" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">&quot;stable&quot;</span></code> (same text on every read) or <code class="docutils literal notranslate"><span class="pre">&quot;pdfminer&quot;</span></code> (pdfminer.six’s
+own order of equally distant text boxes). Default: <code class="docutils literal notranslate"><span class="pre">&quot;stable&quot;</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2693,8 +3052,15 @@ Default: <code class="docutils literal notranslate"><span class="pre">None</span
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.pypdfium2_kwargs">
+<span class="sig-name descname"><span class="pre">pypdfium2_kwargs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><span class="pre">None</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#scikitplot.corpus.PDFReader.pypdfium2_kwargs" title="Link to this definition">#</a></dt>
+<dd><p>Keyword arguments for pypdfium2’s <code class="docutils literal notranslate"><span class="pre">PdfPage.render</span></code>, used for OCR;
+<code class="docutils literal notranslate"><span class="pre">scale</span></code> is set from <a class="reference internal" href="#scikitplot.corpus.PDFReader.ocr_dpi" title="scikitplot.corpus.PDFReader.ocr_dpi"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ocr_dpi</span></code></a>. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.source_provenance">
-<span class="sig-name descname"><span class="pre">source_provenance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_pdf.py#L251"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.source_provenance" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">source_provenance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.15)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.source_provenance" title="Link to this definition">#</a></dt>
 <dd><p>Provenance overrides propagated into every yielded <code class="docutils literal notranslate"><span class="pre">CorpusDocument</span></code>.</p>
 <p>Keys may include <code class="docutils literal notranslate"><span class="pre">&quot;source_type&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;source_title&quot;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&quot;source_author&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;collection_id&quot;</span></code>.
@@ -2710,8 +3076,8 @@ arguments.</p>
 <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> wrapping a URL.  File-based readers leave this
 <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ad1c613e-1137-4d92-b5cf-cf6b2f8b4168">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ad1c613e-1137-4d92-b5cf-cf6b2f8b4168','078e5d91-ee30-4625-84ab-201d26e095a4','d24f390c-8093-4894-ba89-ceb2c69c6e81','../../lite/tree/../notebooks/index.html?path=8348914a_cd57_4b0c_9507_5f32481048d1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="451c0cdb-fe8a-4836-a4d3-27e6810e4340">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('451c0cdb-fe8a-4836-a4d3-27e6810e4340','56622e55-00cd-495b-96ec-3e7c1fbd2b9b','aa9a52b1-ee6e-4b8b-bb15-cce27d5f50a0','../../lite/tree/../notebooks/index.html?path=3ead1032_8006_4817_a1c5_8fc578ea626e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">WebReader</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">input_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">"https://example.com/article"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">source_uri</span><span class="o">=</span><span class="s2">"https://example.com/article"</span><span class="p">,</span>
@@ -2720,11 +3086,11 @@ arguments.</p>
 </div>
 </div>
 </div>
-<div id="d24f390c-8093-4894-ba89-ceb2c69c6e81" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ad1c613e-1137-4d92-b5cf-cf6b2f8b4168','d24f390c-8093-4894-ba89-ceb2c69c6e81')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ad1c613e-1137-4d92-b5cf-cf6b2f8b4168','d24f390c-8093-4894-ba89-ceb2c69c6e81')">Open In Tab</button></div><div id="078e5d91-ee30-4625-84ab-201d26e095a4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="aa9a52b1-ee6e-4b8b-bb15-cce27d5f50a0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('451c0cdb-fe8a-4836-a4d3-27e6810e4340','aa9a52b1-ee6e-4b8b-bb15-cce27d5f50a0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('451c0cdb-fe8a-4836-a4d3-27e6810e4340','aa9a52b1-ee6e-4b8b-bb15-cce27d5f50a0')">Open In Tab</button></div><div id="56622e55-00cd-495b-96ec-3e7c1fbd2b9b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.subclass_by_type">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">subclass_by_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.subclass_by_type" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">subclass_by_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1900"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.subclass_by_type" title="Link to this definition">#</a></dt>
 <dd><p>Return a copy of the extension → reader class registry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2739,8 +3105,8 @@ shallow copy so callers cannot accidentally mutate the registry.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="2ccc55db-7795-447e-81b6-4782aff3d4d4">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('2ccc55db-7795-447e-81b6-4782aff3d4d4','a52ceaee-51ae-4dd6-ba67-056988a02ad1','cbc4c19f-d704-49f1-845a-67e57da13a3a','../../lite/tree/../notebooks/index.html?path=c9fe1fab_aeba_4874_9a71_24914cde00d5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e414c1a5-8302-4bc7-809b-c82316226267">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e414c1a5-8302-4bc7-809b-c82316226267','9227243e-b4c9-41fa-a399-a7f23f221893','7e9b8ca2-062e-4183-8f3e-697c89883819','../../lite/tree/../notebooks/index.html?path=78ae8263_53ff_492f_890b_55a00d009e75.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">subclass_by_type</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s2">".txt"</span> <span class="ow">in</span> <span class="n">registry</span>
 <span class="go">True</span>
@@ -2748,11 +3114,11 @@ shallow copy so callers cannot accidentally mutate the registry.</p>
 </div>
 </div>
 </div>
-<div id="cbc4c19f-d704-49f1-845a-67e57da13a3a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('2ccc55db-7795-447e-81b6-4782aff3d4d4','cbc4c19f-d704-49f1-845a-67e57da13a3a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('2ccc55db-7795-447e-81b6-4782aff3d4d4','cbc4c19f-d704-49f1-845a-67e57da13a3a')">Open In Tab</button></div><div id="a52ceaee-51ae-4dd6-ba67-056988a02ad1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7e9b8ca2-062e-4183-8f3e-697c89883819" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e414c1a5-8302-4bc7-809b-c82316226267','7e9b8ca2-062e-4183-8f3e-697c89883819')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e414c1a5-8302-4bc7-809b-c82316226267','7e9b8ca2-062e-4183-8f3e-697c89883819')">Open In Tab</button></div><div id="9227243e-b4c9-41fa-a399-a7f23f221893" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.supported_types">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">supported_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1587"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.supported_types" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">supported_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1882"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.supported_types" title="Link to this definition">#</a></dt>
 <dd><p>Return a sorted list of file extensions supported by registered readers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2767,19 +3133,19 @@ E.g. <code class="docutils literal notranslate"><span class="pre">['.pdf',</span
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7acd727e-b133-406b-8f39-4fc3594da7c1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7acd727e-b133-406b-8f39-4fc3594da7c1','c37f80c5-9c8f-42db-962e-dabd01c24003','7162736c-6e16-4171-b526-004747f82955','../../lite/tree/../notebooks/index.html?path=4a55af55_6608_4b68_be6a_2c851aee7923.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="43595d51-ef6e-441e-9575-52b498c910f8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('43595d51-ef6e-441e-9575-52b498c910f8','16effff4-72f9-4083-88fc-317aa608a1e1','453206af-f91c-43e6-8cb2-c5879f2f9fe6','../../lite/tree/../notebooks/index.html?path=0e1ec72a_c93c_4e95_96ec_b896de80903a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DocumentReader</span><span class="o">.</span><span class="n">supported_types</span><span class="p">()</span>
 <span class="go">['.pdf', '.txt', '.xml', '.zip']</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="7162736c-6e16-4171-b526-004747f82955" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7acd727e-b133-406b-8f39-4fc3594da7c1','7162736c-6e16-4171-b526-004747f82955')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7acd727e-b133-406b-8f39-4fc3594da7c1','7162736c-6e16-4171-b526-004747f82955')">Open In Tab</button></div><div id="c37f80c5-9c8f-42db-962e-dabd01c24003" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="453206af-f91c-43e6-8cb2-c5879f2f9fe6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('43595d51-ef6e-441e-9575-52b498c910f8','453206af-f91c-43e6-8cb2-c5879f2f9fe6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('43595d51-ef6e-441e-9575-52b498c910f8','453206af-f91c-43e6-8cb2-c5879f2f9fe6')">Open In Tab</button></div><div id="16effff4-72f9-4083-88fc-317aa608a1e1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.PDFReader.validate_input">
-<span class="sig-name descname"><span class="pre">validate_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1003"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.validate_input" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">validate_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1205"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.PDFReader.validate_input" title="Link to this definition">#</a></dt>
 <dd><p>Assert that the input file exists and is readable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -2796,8 +3162,8 @@ E.g. <code class="docutils literal notranslate"><span class="pre">['.pdf',</span
 <p>Called automatically by <a class="reference internal" href="#scikitplot.corpus.PDFReader.get_documents" title="scikitplot.corpus.PDFReader.get_documents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_documents</span></code></a> before iterating.
 Can also be called eagerly after construction to fail fast.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ee2ce4b7-aa2e-498b-aefb-f9a79d888a5d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ee2ce4b7-aa2e-498b-aefb-f9a79d888a5d','589d571a-66bb-4e28-b9ed-6f8158dceff0','550f7306-b39f-4719-ab8f-5b214bd14d87','../../lite/tree/../notebooks/index.html?path=a5cfd08c_89ef_4f28_b995_f536f9d83b8b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="4a156673-bd9e-4592-833f-975f59952bee">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4a156673-bd9e-4592-833f-975f59952bee','6332439e-31e9-4e74-935e-c0cfc6e4aab2','5075772e-251c-428c-be1e-223bc0491e4f','../../lite/tree/../notebooks/index.html?path=8e453cf2_63c3_4034_a30b_e05d517ffbaa.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span> <span class="o">=</span> <span class="n">DocumentReader</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"missing.txt"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reader</span><span class="o">.</span><span class="n">validate_input</span><span class="p">()</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -2807,7 +3173,7 @@ Can also be called eagerly after construction to fail fast.</p>
 </div>
 </div>
 </div>
-<div id="550f7306-b39f-4719-ab8f-5b214bd14d87" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ee2ce4b7-aa2e-498b-aefb-f9a79d888a5d','550f7306-b39f-4719-ab8f-5b214bd14d87')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ee2ce4b7-aa2e-498b-aefb-f9a79d888a5d','550f7306-b39f-4719-ab8f-5b214bd14d87')">Open In Tab</button></div><div id="589d571a-66bb-4e28-b9ed-6f8158dceff0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5075772e-251c-428c-be1e-223bc0491e4f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4a156673-bd9e-4592-833f-975f59952bee','5075772e-251c-428c-be1e-223bc0491e4f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('4a156673-bd9e-4592-833f-975f59952bee','5075772e-251c-428c-be1e-223bc0491e4f')">Open In Tab</button></div><div id="6332439e-31e9-4e74-935e-c0cfc6e4aab2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -2824,12 +3190,12 @@ Can also be called eagerly after construction to fail fast.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scikitplot.corpus.ImageReader.html"
+       href="scikitplot.corpus.OfficeReader.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ImageReader</p>
+        <p class="prev-next-title">OfficeReader</p>
       </div>
     </a>
     <a class="right-next"
@@ -2884,8 +3250,20 @@ Can also be called eagerly after construction to fail fast.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.get_raw_chunks"><code class="docutils literal notranslate"><span class="pre">get_raw_chunks</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.input_path"><code class="docutils literal notranslate"><span class="pre">input_path</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.max_file_bytes"><code class="docutils literal notranslate"><span class="pre">max_file_bytes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.max_text_chars"><code class="docutils literal notranslate"><span class="pre">max_text_chars</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.max_text_chars_per_byte"><code class="docutils literal notranslate"><span class="pre">max_text_chars_per_byte</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr"><code class="docutils literal notranslate"><span class="pre">ocr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr_dpi"><code class="docutils literal notranslate"><span class="pre">ocr_dpi</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr_engine"><code class="docutils literal notranslate"><span class="pre">ocr_engine</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr_lang"><code class="docutils literal notranslate"><span class="pre">ocr_lang</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr_max_pages"><code class="docutils literal notranslate"><span class="pre">ocr_max_pages</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.ocr_min_chars"><code class="docutils literal notranslate"><span class="pre">ocr_min_chars</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.on_text_limit"><code class="docutils literal notranslate"><span class="pre">on_text_limit</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.password"><code class="docutils literal notranslate"><span class="pre">password</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.pdfminer_kwargs"><code class="docutils literal notranslate"><span class="pre">pdfminer_kwargs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.pdfminer_ties"><code class="docutils literal notranslate"><span class="pre">pdfminer_ties</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.prefer_backend"><code class="docutils literal notranslate"><span class="pre">prefer_backend</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.pypdfium2_kwargs"><code class="docutils literal notranslate"><span class="pre">pypdfium2_kwargs</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.source_provenance"><code class="docutils literal notranslate"><span class="pre">source_provenance</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.source_uri"><code class="docutils literal notranslate"><span class="pre">source_uri</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot.corpus.PDFReader.subclass_by_type"><code class="docutils literal notranslate"><span class="pre">subclass_by_type</span></code></a></li>
@@ -2948,7 +3326,7 @@ Can also be called eagerly after construction to fail fast.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>

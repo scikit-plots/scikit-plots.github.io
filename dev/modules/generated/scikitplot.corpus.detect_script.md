@@ -1,6 +1,6 @@
 # detect\_script[#](#detect-script "Link to this heading")
 
-scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1044)[#](#scikitplot.corpus.detect_script "Link to this definition")
+scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **majority\_threshold=0.55**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1043)[#](#scikitplot.corpus.detect_script "Link to this definition")
 :   Detect the dominant Unicode script in **text**.
 
     Samples up to **sample\_size** characters for efficiency on long documents.
@@ -48,7 +48,10 @@ scikitplot.corpus.detect\_script(**text**, **\***, **sample\_size=500**, **major
 
     ****Developer note:**** Unicode categories `unicodedata.category(c)`
     are **not** used here because they do not map cleanly to script families.
-    Code-point ranges from the Unicode Standard are used instead.
+    Code-point ranges from the Unicode Standard are used instead. An ASCII
+    sample skips the range tests, which try every other script before Latin:
+    in ASCII only `A-Z` and `a-z` count, and only as Latin, so the counts
+    and the result are the same (finding CX-08).
 
     Examples
 

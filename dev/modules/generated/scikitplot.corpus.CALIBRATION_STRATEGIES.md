@@ -1,0 +1,9 @@
+# CALIBRATION\_STRATEGIES[#](#calibration-strategies "Link to this heading")
+
+scikitplot.corpus.CALIBRATION\_STRATEGIES = ('uniform', 'quantile')[#](#scikitplot.corpus.CALIBRATION_STRATEGIES "Link to this definition")
+:   Built-in immutable sequence.
+
+    If no argument is given, the constructor returns an empty tuple.
+    If iterable is specified the tuple is initialized from iterable’s items.
+
+    If the argument is a tuple, the return value is the same object.

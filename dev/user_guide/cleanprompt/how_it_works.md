@@ -110,7 +110,7 @@ other.
 ## 4. Rewrite[#](#rewrite "Link to this heading")
 
 One pass over the original text replaces every resolved span with its label.
-The result is a `RedactionResult` whose `text` is safe to send and
+The result is a [`RedactionResult`](../../modules/generated/scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt.RedactionResult") whose `text` is safe to send and
 whose `vault` is not. They are different types precisely so that no
 serializer can emit both by accident.
 

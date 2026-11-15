@@ -90,7 +90,7 @@ placeholder the handle never issued, instead of leaving it in place.
 :   Add a named-entity engine; `engine=` (`"auto"`, `"spacy"`,
     `"nltk"`, `"both"`, `"none"`), `language=`, `size=` and
     `model=` select it. A request that cannot be met raises
-    `CapabilityError` with the remedy — see
+    [`CapabilityError`](../../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError "scikitplot.cleanprompt.CapabilityError") with the remedy — see
     [Names, organisations and places](entity_detection.html#cleanprompt-entity-detection).
 
 `policy=` / `registry=`
@@ -99,7 +99,7 @@ placeholder the handle never issued, instead of leaving it in place.
     "surrogate", "CREDIT_CARD": "block"})` chooses what happens to each kind
     ([One action per kind](how_it_works.html#cleanprompt-actions)); a value whose action is `report` stays in
     the text and is listed in `reported`, and `block` raises
-    `BlockedError`.
+    [`BlockedError`](../../modules/generated/scikitplot.cleanprompt.BlockedError.html#scikitplot.cleanprompt.BlockedError "scikitplot.cleanprompt.BlockedError").
 
 ### Profiles[#](#profiles "Link to this heading")
 
@@ -179,7 +179,7 @@ turns belongs in [`Session`](../../modules/generated/scikitplot.cleanprompt.Sess
 than hidden process globals. To continue numbering from an earlier pass, pass
 its entries explicitly: `redactor.redact(text, seed=previous.entries)`.
 
-[`restore`](../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore "scikitplot.cleanprompt.restore") returns a `RestorationResult` rather than a bare string:
+[`restore`](../../modules/generated/scikitplot.cleanprompt.restore.html#scikitplot.cleanprompt.restore "scikitplot.cleanprompt.restore") returns a [`RestorationResult`](../../modules/generated/scikitplot.cleanprompt.RestorationResult.html#scikitplot.cleanprompt.RestorationResult "scikitplot.cleanprompt.RestorationResult") rather than a bare string:
 `text`, the labels it restored, the rewritten spellings it `repaired`, the
 `unknown` placeholders it could not resolve, and vault entries left unused.
 
@@ -218,7 +218,7 @@ span and term bounds; exceeding one raises), `case_insensitive`,
 ### Your own detector[#](#your-own-detector "Link to this heading")
 
 A detector is an object with a `name`, a `kind`, a `priority` and a
-`detect(text, policy)` method yielding `Span` objects over the text it
+`detect(text, policy)` method yielding [`Span`](../../modules/generated/scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt.Span") objects over the text it
 was given. [`RegexDetector`](../../modules/generated/scikitplot.cleanprompt.RegexDetector.html#scikitplot.cleanprompt.RegexDetector "scikitplot.cleanprompt.RegexDetector") and [`LiteralDetector`](../../modules/generated/scikitplot.cleanprompt.LiteralDetector.html#scikitplot.cleanprompt.LiteralDetector "scikitplot.cleanprompt.LiteralDetector") cover most needs:
 
 ```

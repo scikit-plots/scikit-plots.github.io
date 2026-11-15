@@ -1,6 +1,6 @@
 # NltkDetector[#](#nltkdetector "Link to this heading")
 
-class scikitplot.cleanprompt.NltkDetector(**labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **kind\_prefix=''**, **priority=None**, **confidence=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_nltk.py#L131)[#](#scikitplot.cleanprompt.NltkDetector "Link to this definition")
+class scikitplot.cleanprompt.NltkDetector(**labels=frozenset({'EVENT', 'FAC', 'GPE', 'LANGUAGE', 'LAW', 'LOC', 'NORP', 'ORG', 'PERSON', 'PRODUCT', 'WORK\_OF\_ART'})**, **language='en'**, **kind\_prefix=''**, **priority=None**, **confidence=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_nltk.py#L131)[#](#scikitplot.cleanprompt.NltkDetector "Link to this definition")
 :   Detect named entities with NLTK’s maximum-entropy chunker.
 
     Parameters:
@@ -52,7 +52,7 @@ class scikitplot.cleanprompt.NltkDetector(**labels=frozenset({'EVENT', 'FAC', 'G
     confidence[#](#scikitplot.cleanprompt.NltkDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_nltk.py#L271)[#](#scikitplot.cleanprompt.NltkDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_nltk.py#L271)[#](#scikitplot.cleanprompt.NltkDetector.detect "Link to this definition")
     :   Yield one span per accepted named entity.
 
         Parameters:
@@ -79,7 +79,7 @@ class scikitplot.cleanprompt.NltkDetector(**labels=frozenset({'EVENT', 'FAC', 'G
             * ****policy**** ([**RedactionPolicy**](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy"))
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[**Span**]
+        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span")]
 
     kind[#](#scikitplot.cleanprompt.NltkDetector.kind "Link to this definition")
     :   !! processed by numpydoc !!
@@ -87,7 +87,7 @@ class scikitplot.cleanprompt.NltkDetector(**labels=frozenset({'EVENT', 'FAC', 'G
     kind\_prefix[#](#scikitplot.cleanprompt.NltkDetector.kind_prefix "Link to this definition")
     :   !! processed by numpydoc !!
 
-    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_nltk.py#L191)[#](#scikitplot.cleanprompt.NltkDetector.kinds "Link to this definition")
+    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_nltk.py#L191)[#](#scikitplot.cleanprompt.NltkDetector.kinds "Link to this definition")
     :   Return the placeholder categories this detector can produce.
 
         Return type:

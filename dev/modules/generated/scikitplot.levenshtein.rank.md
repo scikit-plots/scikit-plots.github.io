@@ -1,6 +1,6 @@
 # rank[#](#rank "Link to this heading")
 
-scikitplot.levenshtein.rank(**query**, **choices**, **\***, **key=None**, **limit=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/levenshtein/_core.py#L517)[#](#scikitplot.levenshtein.rank "Link to this definition")
+scikitplot.levenshtein.rank(**query**, **choices**, **\***, **key=None**, **limit=None**, **score\_cutoff=0.0**, **backend='auto'**, **strict=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/levenshtein/_core.py#L517)[#](#scikitplot.levenshtein.rank "Link to this definition")
 :   Rank choices from most to least similar to **query**.
 
     `score_cutoff` is backend-neutral normalized similarity in `[0, 1]`.

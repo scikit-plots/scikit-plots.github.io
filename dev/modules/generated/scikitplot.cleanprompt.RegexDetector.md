@@ -1,6 +1,6 @@
 # RegexDetector[#](#regexdetector "Link to this heading")
 
-class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L140)[#](#scikitplot.cleanprompt.RegexDetector "Link to this definition")
+class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L140)[#](#scikitplot.cleanprompt.RegexDetector "Link to this definition")
 :   Detector backed by one entry of the pattern library.
 
     Parameters:
@@ -14,7 +14,7 @@ class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.co
     Notes
 
     ****Developer notes.**** A zero-width match cannot produce a
-    `Span`, which requires `end > start`.
+    [`Span`](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span"), which requires `end > start`.
     Rather than let a pattern that can match empty silently produce nothing,
     such matches are skipped explicitly and the scan advances, so a pattern
     author sees “no detections” rather than an infinite loop.
@@ -76,7 +76,7 @@ class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.co
     confidence[#](#scikitplot.cleanprompt.RegexDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L222)[#](#scikitplot.cleanprompt.RegexDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L222)[#](#scikitplot.cleanprompt.RegexDetector.detect "Link to this definition")
     :   Yield one span per accepted match.
 
         Parameters:
@@ -95,7 +95,7 @@ class scikitplot.cleanprompt.RegexDetector(**spec**)[[source]](https://github.co
             * ****policy**** ([**RedactionPolicy**](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy"))
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[**Span**]
+        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span")]
 
     kind[#](#scikitplot.cleanprompt.RegexDetector.kind "Link to this definition")
     :   !! processed by numpydoc !!

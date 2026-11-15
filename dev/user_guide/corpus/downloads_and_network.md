@@ -6,7 +6,7 @@ preserving the common [`DownloadResult`](../../modules/generated/scikitplot.corp
 
 ## DownloadPolicy: one transport contract[#](#downloadpolicy-one-transport-contract "Link to this heading")
 
-`DownloadPolicy` centralizes the settings that describe transport
+[`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") centralizes the settings that describe transport
 security and resource budgets. It contains no credentials, headers or output
 paths, so it can be serialized in configuration/evidence without accidentally
 serializing authentication material.
@@ -47,7 +47,7 @@ caller intentionally needs a per-transfer exception.
 
 Use [`AnyDownloader.plan`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader.plan "scikitplot.corpus.AnyDownloader.plan") when code, CI or a user interface needs to show
 what ****would**** happen before any transfer starts. The returned
-`DownloadPlan` uses the same URL-classification/per-URL parameter
+[`DownloadPlan`](../../modules/generated/scikitplot.corpus.DownloadPlan.html#scikitplot.corpus.DownloadPlan "scikitplot.corpus.DownloadPlan") uses the same URL-classification/per-URL parameter
 resolver as the real specialist construction. Planning intentionally does not
 resolve DNS, issue HEAD/GET requests, allocate a temporary directory or import a
 remote SDK.
@@ -150,5 +150,5 @@ not automatically mean an OCR/ASR/model backend may fetch assets.
 Do not mix an explicit `download_policy` with customized legacy scalar
 fields such as `download_timeout` or `max_download_bytes`. That is
 ambiguous and [`BuilderConfig`](../../modules/generated/scikitplot.corpus.BuilderConfig.html#scikitplot.corpus.BuilderConfig "scikitplot.corpus.BuilderConfig") rejects it instead of silently ignoring
-one side. Put the value in `DownloadPolicy`, or use
+one side. Put the value in [`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy"), or use
 `downloader_kwargs` when an intentional one-build override is required.

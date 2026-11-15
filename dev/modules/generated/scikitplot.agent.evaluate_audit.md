@@ -1,6 +1,6 @@
 # evaluate\_audit[#](#evaluate-audit "Link to this heading")
 
-scikitplot.agent.evaluate\_audit(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_evaluate.py#L127)[#](#scikitplot.agent.evaluate_audit "Link to this definition")
+scikitplot.agent.evaluate\_audit(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_evaluate.py#L127)[#](#scikitplot.agent.evaluate_audit "Link to this definition")
 :   Summarise every run in an audit trail.
 
     Parameters:

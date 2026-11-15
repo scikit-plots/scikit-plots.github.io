@@ -1,6 +1,6 @@
 # expected\_calibration\_error[#](#expected-calibration-error "Link to this heading")
 
-scikitplot.corpus.expected\_calibration\_error(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_metrics/_calibration.py#L303)[#](#scikitplot.corpus.expected_calibration_error "Link to this definition")
+scikitplot.corpus.expected\_calibration\_error(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_calibration.py#L303)[#](#scikitplot.corpus.expected_calibration_error "Link to this definition")
 :   Count-weighted mean absolute gap between prediction and observation.
 
     Parameters:

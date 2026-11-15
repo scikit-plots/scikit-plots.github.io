@@ -1,6 +1,6 @@
 # logger[#](#logger "Link to this heading")
 
-[`logging`](../../apis/scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") and [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.15)") utilities.
+[`logging`](../../apis/scikitplot.logging.html#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") and [`logging.Logger`](scikitplot.logging.Logger.html#scikitplot.logging.Logger "logging.Logger") utilities.
 
 View aliases[#](#view-aliases "Link to this dropdown")
 

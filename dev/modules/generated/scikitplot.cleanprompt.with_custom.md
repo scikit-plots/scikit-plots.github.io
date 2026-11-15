@@ -1,6 +1,6 @@
 # with\_custom[#](#with-custom "Link to this heading")
 
-scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_custom.py#L220)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
+scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_custom.py#L220)[#](#scikitplot.cleanprompt.with_custom "Link to this definition")
 :   Return the built-in catalog with custom definitions merged in.
 
     Parameters:
@@ -24,11 +24,11 @@ scikitplot.cleanprompt.with\_custom(**paths**, **conflict='error'**, **base=None
     Parameters:
     :   * ****paths**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)") **|** [**Iterable**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")**]** **|** **None**)
         * ****conflict**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
-        * ****base**** (**Catalog** **|** **None**)
+        * ****base**** ([**Catalog**](scikitplot.cleanprompt.Catalog.html#scikitplot.cleanprompt.Catalog "scikitplot.cleanprompt._catalog.Catalog") **|** **None**)
         * ****pattern\_risk**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   **Catalog**
+    :   [**Catalog**](scikitplot.cleanprompt.Catalog.html#scikitplot.cleanprompt.Catalog "scikitplot.cleanprompt._catalog.Catalog")
 
     Examples
 

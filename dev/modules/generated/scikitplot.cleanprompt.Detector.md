@@ -1,6 +1,6 @@
 # Detector[#](#detector "Link to this heading")
 
-class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L56)[#](#scikitplot.cleanprompt.Detector "Link to this definition")
+class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L56)[#](#scikitplot.cleanprompt.Detector "Link to this definition")
 :   Base class for detectors.
 
     Subclasses implement [`detect`](#scikitplot.cleanprompt.Detector.detect "scikitplot.cleanprompt.Detector.detect"). The base class supplies the identity
@@ -34,7 +34,7 @@ class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **con
     confidence[#](#scikitplot.cleanprompt.Detector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L113)[#](#scikitplot.cleanprompt.Detector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L113)[#](#scikitplot.cleanprompt.Detector.detect "Link to this definition")
     :   Yield spans over `text`.
 
         Parameters:
@@ -57,7 +57,7 @@ class scikitplot.cleanprompt.Detector(**name**, **kind**, **priority=50**, **con
             * ****policy**** ([**RedactionPolicy**](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy"))
 
         Return type:
-        :   [**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")[**Span**]
+        :   [**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")[[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span")]
 
     kind[#](#scikitplot.cleanprompt.Detector.kind "Link to this definition")
     :   !! processed by numpydoc !!

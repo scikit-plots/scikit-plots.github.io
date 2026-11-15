@@ -1,6 +1,6 @@
 # derive\_graph[#](#derive-graph "Link to this heading")
 
-scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_graph.py#L471)[#](#scikitplot.corpus.derive_graph "Link to this definition")
+scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_graph.py#L513)[#](#scikitplot.corpus.derive_graph "Link to this definition")
 :   Build the G0 view from document fields.
 
     Parameters:
@@ -22,7 +22,7 @@ scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[sou
 
     Notes
 
-    Four relations are derived, each from fields Corpus already stores:
+    These are derived, each from fields Corpus already stores:
 
     `contains` / `parent_of`
     :   from `parent_doc_id`. ****Empty on today’s corpora**** – no producer sets
@@ -34,6 +34,14 @@ scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[sou
     `precedes`
     :   from `chunk_index` / `paragraph_index` / `frame_index` within one
         parent.
+
+    the outline
+    :   from `metadata["heading_path"]`, which `StructureChunker` records
+        on every chunk: one `heading` node per source and heading path,
+        `contains` / `parent_of` between a heading and its sub-headings
+        and between the innermost heading and the document, and
+        `same_source` from each top heading to its source. A document
+        without a heading path adds nothing.
 
     `references` is **not** derived: `CorpusDocument` has a single `url`
     field – its own source URL, not outbound links – so true reference edges

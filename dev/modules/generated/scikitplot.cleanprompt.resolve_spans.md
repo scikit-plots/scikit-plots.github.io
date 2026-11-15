@@ -1,6 +1,6 @@
 # resolve\_spans[#](#resolve-spans "Link to this heading")
 
-scikitplot.cleanprompt.resolve\_spans(**spans**, **policy=RedactionPolicy(kinds=None**, **allow=()**, **tag\_style=TagStyle(prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**, **surrogates=None)**, **overlap=<OverlapStrategy.LONGEST\_WINS: 'LONGEST\_WINS'>**, **limits=Limits(max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096)**, **case\_insensitive=False**, **min\_confidence=0.0**, **preserve\_placeholders=True**, **actions=())**, **text=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_engine.py#L380)[#](#scikitplot.cleanprompt.resolve_spans "Link to this definition")
+scikitplot.cleanprompt.resolve\_spans(**spans**, **policy=RedactionPolicy(kinds=None**, **allow=()**, **tag\_style=TagStyle(prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**, **surrogates=None)**, **overlap=<OverlapStrategy.LONGEST\_WINS: 'LONGEST\_WINS'>**, **limits=Limits(max\_input\_chars=1000000**, **max\_spans=100000**, **max\_entries=50000**, **max\_literal\_terms=10000**, **max\_literal\_length=4096)**, **case\_insensitive=False**, **min\_confidence=0.0**, **preserve\_placeholders=True**, **actions=())**, **text=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_engine.py#L380)[#](#scikitplot.cleanprompt.resolve_spans "Link to this definition")
 :   Reduce possibly overlapping spans to a disjoint, ascending sequence.
 
     Parameters:
@@ -30,12 +30,12 @@ scikitplot.cleanprompt.resolve\_spans(**spans**, **policy=RedactionPolicy(kinds=
         :   If a cluster must be merged but `text` was not supplied.
 
     Parameters:
-    :   * ****spans**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[****Span****]**)
+    :   * ****spans**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span")**]**)
         * ****policy**** ([**RedactionPolicy**](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy"))
         * ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
     Return type:
-    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[**Span**, …]
+    :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span"), …]
 
     Notes
 

@@ -1,6 +1,6 @@
 # get\_stemmer[#](#get-stemmer "Link to this heading")
 
-scikitplot.corpus.get\_stemmer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L875)[#](#scikitplot.corpus.get_stemmer "Link to this definition")
+scikitplot.corpus.get\_stemmer(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L874)[#](#scikitplot.corpus.get_stemmer "Link to this definition")
 :   Retrieve a registered stemmer by name.
 
     Parameters:

@@ -12,7 +12,7 @@ fail-soft operation can continue while still recording structured degradation.
 
 > **Important**
 > Corpus treats optional capability failure as data, not as success. Use
-`component_capabilities` before a run when readiness matters and inspect
+[`component_capabilities`](../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities "scikitplot.corpus.component_capabilities") before a run when readiness matters and inspect
 `reader.backend_reports` after a reader run when a fallback was possible.
 `strict=False` may keep ingestion alive; it does not mean failures are
 invisible.
@@ -209,12 +209,12 @@ status["asr:faster-whisper"]["installed"]
 | Ingest heterogeneous local/remote sources | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") |
 | Generate reusable configuration variants | [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
 | Supply a custom reader/filter/downloader/component | [`CorpusBuilder`](../../modules/generated/scikitplot.corpus.CorpusBuilder.html#scikitplot.corpus.CorpusBuilder "scikitplot.corpus.CorpusBuilder") with [`BuilderFactories`](../../modules/generated/scikitplot.corpus.BuilderFactories.html#scikitplot.corpus.BuilderFactories "scikitplot.corpus.BuilderFactories") ([Customization](customization.html#corpus-customization)) |
-| Inspect optional package/model/binary readiness | `component_capabilities` ([Readers, backends, and readiness](readers_and_backends.html#corpus-readers-backends)) |
-| Preview the exact ASR chain without running models | [`AudioReader.plan_asr_backends`](../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends "scikitplot.corpus.AudioReader.plan_asr_backends") / `BackendPlan` |
-| Control backend order/fallback/offline behavior | `BackendPolicy` |
-| Reuse one typed policy family across runtime/reader/builder seams | `CorpusPolicyBundle` ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
-| Control transfer TLS/SSRF/size/retry budgets | `DownloadPolicy` ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
-| Add a private/local ASR implementation | `ASRBackend` |
+| Inspect optional package/model/binary readiness | [`component_capabilities`](../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities "scikitplot.corpus.component_capabilities") ([Readers, backends, and readiness](readers_and_backends.html#corpus-readers-backends)) |
+| Preview the exact ASR chain without running models | [`AudioReader.plan_asr_backends`](../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends "scikitplot.corpus.AudioReader.plan_asr_backends") / [`BackendPlan`](../../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan "scikitplot.corpus.BackendPlan") |
+| Control backend order/fallback/offline behavior | [`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") |
+| Reuse one typed policy family across runtime/reader/builder seams | [`CorpusPolicyBundle`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle "scikitplot.corpus.CorpusPolicyBundle") ([Fluent configuration and policies](fluent_and_policies.html#corpus-fluent-policies)) |
+| Control transfer TLS/SSRF/size/retry budgets | [`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
+| Add a private/local ASR implementation | [`ASRBackend`](../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") |
 | Download HTTP/GDrive/GitHub/YouTube inputs | [`AnyDownloader`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader "scikitplot.corpus.AnyDownloader") ([Downloads and network boundaries](downloads_and_network.html#corpus-downloads-network)) |
 | Do fuzzy lexical ranking without requiring Corpus | [`scikitplot.levenshtein`](../../apis/scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") ([Retrieval and similarity](retrieval_and_similarity.html#corpus-retrieval-similarity)) |
 | Search vectors/lexical/hybrid indexes | [`RetrievalIndex`](../../modules/generated/scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex "scikitplot.corpus.RetrievalIndex") |

@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261108.f7759b5 - November 08, 2026 15:11 UTC
+ 0.5.dev0+git.20261115.c051ece - November 15, 2026 09:00 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 

@@ -1,6 +1,6 @@
 # summary\_table[#](#summary-table "Link to this heading")
 
-scikitplot.cleanprompt.summary\_table(**result**, **reveal=False**, **color=None**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_render.py#L138)[#](#scikitplot.cleanprompt.summary_table "Link to this definition")
+scikitplot.cleanprompt.summary\_table(**result**, **reveal=False**, **color=None**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_render.py#L138)[#](#scikitplot.cleanprompt.summary_table "Link to this definition")
 :   Render a table of what was redacted.
 
     Parameters:
@@ -22,7 +22,7 @@ scikitplot.cleanprompt.summary\_table(**result**, **reveal=False**, **color=None
         :   A plain-text table, or a note when nothing was redacted.
 
     Parameters:
-    :   * ****result**** (**RedactionResult**)
+    :   * ****result**** ([**RedactionResult**](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt._types.RedactionResult"))
         * ****reveal**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****color**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
         * ****stream**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)

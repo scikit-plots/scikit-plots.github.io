@@ -1,6 +1,6 @@
 # TagStyle[#](#tagstyle "Link to this heading")
 
-class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**, **surrogates=None**, **surrogate\_set=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L198)[#](#scikitplot.cleanprompt.TagStyle "Link to this definition")
+class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separator='-'**, **uppercase\_kind=True**, **style='placeholder'**, **surrogates=None**, **surrogate\_set=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L198)[#](#scikitplot.cleanprompt.TagStyle "Link to this definition")
 :   The placeholder grammar.
 
     Parameters:
@@ -74,7 +74,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
     ```
     Go BackOpen In Tab
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L517)[#](#scikitplot.cleanprompt.TagStyle.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L517)[#](#scikitplot.cleanprompt.TagStyle.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary of this style.
 
         Returns:
@@ -102,13 +102,13 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         alarm on the common path.
 
         The full policy digest remains on
-        `RedactionResult`, where it serves
+        [`RedactionResult`](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt._types.RedactionResult"), where it serves
         its own purpose: reproducing a pass exactly.
 
         Type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    lenient\_pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L383)[#](#scikitplot.cleanprompt.TagStyle.lenient_pattern "Link to this definition")
+    lenient\_pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L383)[#](#scikitplot.cleanprompt.TagStyle.lenient_pattern "Link to this definition")
     :   Return a recogniser that also matches labels a model has rewritten.
 
         Returns:
@@ -190,7 +190,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         ```
         Go BackOpen In Tab
 
-    normalize(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L480)[#](#scikitplot.cleanprompt.TagStyle.normalize "Link to this definition")
+    normalize(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L480)[#](#scikitplot.cleanprompt.TagStyle.normalize "Link to this definition")
     :   Return the canonical label that a rewritten one was meant to be.
 
         Parameters:
@@ -230,7 +230,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
         ```
         Go BackOpen In Tab
 
-    pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L361)[#](#scikitplot.cleanprompt.TagStyle.pattern "Link to this definition")
+    pattern()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L361)[#](#scikitplot.cleanprompt.TagStyle.pattern "Link to this definition")
     :   Return the compiled recogniser for labels of this grammar.
 
         Returns:
@@ -251,7 +251,7 @@ class scikitplot.cleanprompt.TagStyle(**prefix='['**, **suffix=']'**, **separato
 
     prefix: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '['[#](#scikitplot.cleanprompt.TagStyle.prefix "Link to this definition")
 
-    render(**kind**, **ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_policy.py#L321)[#](#scikitplot.cleanprompt.TagStyle.render "Link to this definition")
+    render(**kind**, **ordinal**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_policy.py#L321)[#](#scikitplot.cleanprompt.TagStyle.render "Link to this definition")
     :   Render one placeholder label.
 
         Parameters:

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:37:21Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:11:24Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
@@ -87,7 +87,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -1032,7 +1032,7 @@ fail-soft operation can continue while still recording structured degradation.</
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Corpus treats optional capability failure as data, not as success.  Use
-<code class="xref py py-func docutils literal notranslate"><span class="pre">component_capabilities</span></code> before a run when readiness matters and inspect
+<a class="reference internal" href="../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities" title="scikitplot.corpus.component_capabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">component_capabilities</span></code></a> before a run when readiness matters and inspect
 <code class="docutils literal notranslate"><span class="pre">reader.backend_reports</span></code> after a reader run when a fallback was possible.
 <code class="docutils literal notranslate"><span class="pre">strict=False</span></code> may keep ingestion alive; it does not mean failures are
 invisible.</p>
@@ -1390,22 +1390,22 @@ span.prompt1:before {
 (<a class="reference internal" href="customization.html#corpus-customization"><span class="std std-ref">Customization</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p>Inspect optional package/model/binary readiness</p></td>
-<td><p><code class="xref py py-func docutils literal notranslate"><span class="pre">component_capabilities</span></code> (<a class="reference internal" href="readers_and_backends.html#corpus-readers-backends"><span class="std std-ref">Readers, backends, and readiness</span></a>)</p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities" title="scikitplot.corpus.component_capabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">component_capabilities</span></code></a> (<a class="reference internal" href="readers_and_backends.html#corpus-readers-backends"><span class="std std-ref">Readers, backends, and readiness</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Preview the exact ASR chain without running models</p></td>
-<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends" title="scikitplot.corpus.AudioReader.plan_asr_backends"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AudioReader.plan_asr_backends</span></code></a> / <code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPlan</span></code></p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends" title="scikitplot.corpus.AudioReader.plan_asr_backends"><code class="xref py py-meth docutils literal notranslate"><span class="pre">AudioReader.plan_asr_backends</span></code></a> / <a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan" title="scikitplot.corpus.BackendPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPlan</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Control backend order/fallback/offline behavior</p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code></p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy" title="scikitplot.corpus.BackendPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Reuse one typed policy family across runtime/reader/builder seams</p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code> (<a class="reference internal" href="fluent_and_policies.html#corpus-fluent-policies"><span class="std std-ref">Fluent configuration and policies</span></a>)</p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle" title="scikitplot.corpus.CorpusPolicyBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code></a> (<a class="reference internal" href="fluent_and_policies.html#corpus-fluent-policies"><span class="std std-ref">Fluent configuration and policies</span></a>)</p></td>
 </tr>
 <tr class="row-even"><td><p>Control transfer TLS/SSRF/size/retry budgets</p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code> (<a class="reference internal" href="downloads_and_network.html#corpus-downloads-network"><span class="std std-ref">Downloads and network boundaries</span></a>)</p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy" title="scikitplot.corpus.DownloadPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">DownloadPolicy</span></code></a> (<a class="reference internal" href="downloads_and_network.html#corpus-downloads-network"><span class="std std-ref">Downloads and network boundaries</span></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Add a private/local ASR implementation</p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ASRBackend</span></code></p></td>
+<td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend" title="scikitplot.corpus.ASRBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASRBackend</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Download HTTP/GDrive/GitHub/YouTube inputs</p></td>
 <td><p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader" title="scikitplot.corpus.AnyDownloader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnyDownloader</span></code></a> (<a class="reference internal" href="downloads_and_network.html#corpus-downloads-network"><span class="std std-ref">Downloads and network boundaries</span></a>)</p></td>
@@ -1531,7 +1531,7 @@ span.prompt1:before {
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>

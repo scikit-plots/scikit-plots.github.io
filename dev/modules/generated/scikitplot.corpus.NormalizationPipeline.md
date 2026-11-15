@@ -1,11 +1,14 @@
 # NormalizationPipeline[#](#normalizationpipeline "Link to this heading")
 
-class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L649)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
+class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L708)[#](#scikitplot.corpus.NormalizationPipeline "Link to this definition")
 :   Apply a sequence of normalisers in order.
 
     Each normaliser in the pipeline receives the output of the previous
-    one. Normalisers that have no effect return the document unchanged,
-    so only modified documents incur a `replace()` call.
+    one. Consecutive built-in steps that only map the text (Unicode,
+    whitespace, HTML, lowercase, duplicate lines) pass the text along and
+    build one document for the run; every other step, a custom one included,
+    receives and returns a document as before. The result is the same
+    document either way.
 
     Parameters:
     :   ****steps****sequence of NormalizerBase
@@ -34,7 +37,7 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
     ```
     Go BackOpen In Tab
 
-    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L708)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
+    normalize\_batch(**docs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L781)[#](#scikitplot.corpus.NormalizationPipeline.normalize_batch "Link to this definition")
     :   Apply the pipeline to a list of documents.
 
         Parameters:
@@ -49,7 +52,7 @@ class scikitplot.corpus.NormalizationPipeline(**steps**)[[source]](https://githu
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")]
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L690)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L752)[#](#scikitplot.corpus.NormalizationPipeline.normalize_doc "Link to this definition")
     :   Apply all normalisers in order.
 
         Parameters:

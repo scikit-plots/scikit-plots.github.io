@@ -1,6 +1,6 @@
 # scikitplot.logging[#](#module-scikitplot.logging "Link to this heading")
 
-[`logging`](#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](../modules/generated/scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") and [`logging.Logger`](https://docs.python.org/3/library/logging.html#logging.Logger "(in Python v3.15)") utilities.
+[`logging`](#module-scikitplot.logging "scikitplot.logging") (alias, [`logger`](../modules/generated/scikitplot.logger.html#module-scikitplot.logger "scikitplot.logger")) module provide unified both Python [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") and [`logging.Logger`](../modules/generated/scikitplot.logging.Logger.html#scikitplot.logging.Logger "logging.Logger") utilities.
 
 View aliases[#](#view-aliases "Link to this dropdown")
 
@@ -56,13 +56,30 @@ Tensorflow. https://github.com/tensorflow/tensorflow/blob/master/tensorflow/pyth
 
 |  |  |
 | --- | --- |
-| [`AlwaysStdErrHandler`](../modules/generated/scikitplot.logging.AlwaysStdErrHandler.html#scikitplot.logging.AlwaysStdErrHandler "scikitplot.logging.AlwaysStdErrHandler") | A custom logging handler inherited from [`StreamHandler`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler "(in Python v3.15)"). |
-| [`GoogleLogFormatter`](../modules/generated/scikitplot.logging.GoogleLogFormatter.html#scikitplot.logging.GoogleLogFormatter "scikitplot.logging.GoogleLogFormatter") | A custom logging formatter inherited from [`Formatter`](https://docs.python.org/3/library/logging.html#logging.Formatter "(in Python v3.15)"). |
+| [`AlwaysStdErrHandler`](../modules/generated/scikitplot.logging.AlwaysStdErrHandler.html#scikitplot.logging.AlwaysStdErrHandler "scikitplot.logging.AlwaysStdErrHandler") | A custom logging handler inherited from [`StreamHandler`](../modules/generated/scikitplot.logging.StreamHandler.html#scikitplot.logging.StreamHandler "logging.StreamHandler"). |
+| [`GoogleLogFormatter`](../modules/generated/scikitplot.logging.GoogleLogFormatter.html#scikitplot.logging.GoogleLogFormatter "scikitplot.logging.GoogleLogFormatter") | A custom logging formatter inherited from [`Formatter`](../modules/generated/scikitplot.logging.Formatter.html#scikitplot.logging.Formatter "logging.Formatter"). |
 | [`getEffectiveLevel`](../modules/generated/scikitplot.logging.getEffectiveLevel.html#scikitplot.logging.getEffectiveLevel "scikitplot.logging.getEffectiveLevel") | Return the effective level for the scikit-plots logger. |
 | [`get_logger`](../modules/generated/scikitplot.logging.get_logger.html#scikitplot.logging.get_logger "scikitplot.logging.get_logger") | Return SP (scikitplot) logger instance. |
 | [`get_verbosity`](../modules/generated/scikitplot.logging.get_verbosity.html#scikitplot.logging.get_verbosity "scikitplot.logging.get_verbosity") | Return the current verbosity level. |
 | [`setLevel`](../modules/generated/scikitplot.logging.setLevel.html#scikitplot.logging.setLevel "scikitplot.logging.setLevel") | Set the logger's level. |
 | [`set_verbosity`](../modules/generated/scikitplot.logging.set_verbosity.html#scikitplot.logging.set_verbosity "scikitplot.logging.set_verbosity") | Set the verbosity level. |
+
+## Standard Library Compatibility[#](#standard-library-compatibility "Link to this heading")
+
+Re-exported from [`logging`](https://docs.python.org/3/library/logging.html#module-logging "(in Python v3.15)") so this module can be used as a drop-in replacement.
+
+|  |  |
+| --- | --- |
+| [`BASIC_FORMAT`](../modules/generated/scikitplot.logging.BASIC_FORMAT.html#scikitplot.logging.BASIC_FORMAT "scikitplot.logging.BASIC_FORMAT") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
+| [`Filter`](../modules/generated/scikitplot.logging.Filter.html#scikitplot.logging.Filter "scikitplot.logging.Filter") | Filter instances are used to perform arbitrary filtering of LogRecords. |
+| [`Formatter`](../modules/generated/scikitplot.logging.Formatter.html#scikitplot.logging.Formatter "scikitplot.logging.Formatter") | Formatter instances are used to convert a LogRecord to text. |
+| [`Handler`](../modules/generated/scikitplot.logging.Handler.html#scikitplot.logging.Handler "scikitplot.logging.Handler") | Handler instances dispatch logging events to specific destinations. |
+| [`LogRecord`](../modules/generated/scikitplot.logging.LogRecord.html#scikitplot.logging.LogRecord "scikitplot.logging.LogRecord") | A LogRecord instance represents an event being logged. |
+| [`Logger`](../modules/generated/scikitplot.logging.Logger.html#scikitplot.logging.Logger "scikitplot.logging.Logger") | Instances of the Logger class represent a single logging channel. |
+| [`NullHandler`](../modules/generated/scikitplot.logging.NullHandler.html#scikitplot.logging.NullHandler "scikitplot.logging.NullHandler") | This handler does nothing. |
+| [`StreamHandler`](../modules/generated/scikitplot.logging.StreamHandler.html#scikitplot.logging.StreamHandler "scikitplot.logging.StreamHandler") | A handler class which writes logging records, appropriately formatted, to a stream. |
+| [`getLevelName`](../modules/generated/scikitplot.logging.getLevelName.html#scikitplot.logging.getLevelName "scikitplot.logging.getLevelName") | Return the textual or numeric representation of logging level 'level'. |
+| [`getLogger`](../modules/generated/scikitplot.logging.getLogger.html#scikitplot.logging.getLogger "scikitplot.logging.getLogger") | Return a logger with the specified name, creating it if necessary. |
 
 ## Log the Message[#](#log-the-message "Link to this heading")
 

@@ -1,6 +1,6 @@
 # StorageQuery[#](#storagequery "Link to this heading")
 
-class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **parent\_doc\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_storage/_storage.py#L97)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
+class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**, **language=None**, **section\_type=None**, **collection\_id=None**, **parent\_doc\_id=None**, **full\_text=None**, **limit=100**, **offset=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_storage/_storage.py#L97)[#](#scikitplot.corpus.StorageQuery "Link to this definition")
 :   Query parameters for [`StorageBase.query`](scikitplot.corpus.StorageBase.html#scikitplot.corpus.StorageBase.query "scikitplot.corpus.StorageBase.query").
 
     Parameters:
@@ -27,9 +27,10 @@ class scikitplot.corpus.StorageQuery(**input\_path=None**, **source\_type=None**
         ****full\_text****str or None, optional
         :   Full-text search string, matched as a whole: native FTS5 phrase
             matching on `SQLiteStorage`, a case-insensitive substring scan
-            elsewhere (reported as `EMULATED`). Never read as FTS5 syntax. For
-            ranked retrieval by any of the words, use
-            [`SQLiteStorage.search_text`](scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage.search_text "scikitplot.corpus.SQLiteStorage.search_text"). Default: `None`.
+            elsewhere (reported as `EMULATED`). Never read as FTS5 syntax; on
+            `SQLiteStorage` a NUL character or a lone surrogate, which no FTS5
+            query can carry, matches as a space. For ranked retrieval by any of
+            the words, use [`SQLiteStorage.search_text`](scikitplot.corpus.SQLiteStorage.html#scikitplot.corpus.SQLiteStorage.search_text "scikitplot.corpus.SQLiteStorage.search_text"). Default: `None`.
 
         ****limit****int, optional
         :   Maximum number of results to return. Default: `100`.

@@ -1,6 +1,6 @@
 # FanOut[#](#fanout "Link to this heading")
 
-class scikitplot.agent.FanOut(**name**, **branches**, **mode='ordered'**, **max\_workers=None**, **into=None**, **update=None**, **max\_visits=None**, **on\_exhausted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut "Link to this definition")
+class scikitplot.agent.FanOut(**name**, **branches**, **mode='ordered'**, **max\_workers=None**, **into=None**, **update=None**, **max\_visits=None**, **on\_exhausted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut "Link to this definition")
 :   A node that calls several tools, then joins their results.
 
     Parameters:
@@ -36,7 +36,7 @@ class scikitplot.agent.FanOut(**name**, **branches**, **mode='ordered'**, **max\
         * ****max\_visits**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
         * ****on\_exhausted**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
 
-    branches: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Branch](scikitplot.agent.Branch.html#scikitplot.agent.Branch "scikitplot.agent._workflow.Branch"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut.branches "Link to this definition")
+    branches: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Branch](scikitplot.agent.Branch.html#scikitplot.agent.Branch "scikitplot.agent._workflow.Branch"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut.branches "Link to this definition")
 
     into: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.FanOut.into "Link to this definition")
 
@@ -46,7 +46,7 @@ class scikitplot.agent.FanOut(**name**, **branches**, **mode='ordered'**, **max\
 
     mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'ordered'[#](#scikitplot.agent.FanOut.mode "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L278)[#](#scikitplot.agent.FanOut.name "Link to this definition")
 
     on\_exhausted: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.FanOut.on_exhausted "Link to this definition")
 

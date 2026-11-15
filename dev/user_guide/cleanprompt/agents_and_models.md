@@ -4,7 +4,7 @@
 properties worth relying on:
 
 * ****encode, check, then call.**** Text is encoded, then checked independently
-  for any value the conversation holds; a leak raises `LeakError`
+  for any value the conversation holds; a leak raises [`LeakError`](../../modules/generated/scikitplot.cleanprompt.LeakError.html#scikitplot.cleanprompt.LeakError "scikitplot.cleanprompt.LeakError")
   **before** your function is called.
 * ****no network of its own.**** The guard owns no client, socket or key. You pass
   the function that talks to the model, so it works with every provider.
@@ -109,7 +109,7 @@ labels, offsets, durations and capability decisions — what happened, never
 what was found — and a filter on the whole `scikitplot.cleanprompt` logger
 namespace scrubs held values as a second line of defence. Nothing is emitted
 until you configure logging (`--log-level`, `--log-format`, or
-`configure_logging`).
+[`configure_logging`](../../modules/generated/scikitplot.cleanprompt.configure_logging.html#scikitplot.cleanprompt.configure_logging "scikitplot.cleanprompt.configure_logging")).
 
 ## What a guard does not do[#](#what-a-guard-does-not-do "Link to this heading")
 

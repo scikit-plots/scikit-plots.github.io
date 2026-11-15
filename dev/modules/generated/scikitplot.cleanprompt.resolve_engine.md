@@ -1,6 +1,6 @@
 # resolve\_engine[#](#resolve-engine "Link to this heading")
 
-scikitplot.cleanprompt.resolve\_engine(**mode='auto'**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_engines.py#L712)[#](#scikitplot.cleanprompt.resolve_engine "Link to this definition")
+scikitplot.cleanprompt.resolve\_engine(**mode='auto'**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_engines.py#L712)[#](#scikitplot.cleanprompt.resolve_engine "Link to this definition")
 :   Resolve an engine mode into the engines that will actually run.
 
     Parameters:
@@ -18,7 +18,7 @@ scikitplot.cleanprompt.resolve\_engine(**mode='auto'**, **language='en'**, **mod
 
         ****check\_assets****bool, default=False
         :   Also check NLTK’s data packages when `auto` considers NLTK. See
-            `engine_readiness`.
+            [`engine_readiness`](scikitplot.cleanprompt.engine_readiness.html#scikitplot.cleanprompt.engine_readiness "scikitplot.cleanprompt.engine_readiness").
 
     Returns:
     :   tuple of str

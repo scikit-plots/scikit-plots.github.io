@@ -41,7 +41,7 @@ replaying the operation or scraping debug logs.
 ## What ran, what was asked, and why they differ[#](#what-ran-what-was-asked-and-why-they-differ "Link to this heading")
 
 The components that choose between implementations – reader backend chains
-(`BackendOutcome`), vector backends and their Annoy bindings, and
+([`BackendOutcome`](../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome "scikitplot.corpus.BackendOutcome")), vector backends and their Annoy bindings, and
 `SemanticChunker` – report the same four names:
 
 `requested_backend`
@@ -52,7 +52,7 @@ The components that choose between implementations – reader backend chains
 
 `fallback_reason`
 :   Why they differ, from a closed vocabulary per component; `None` when they
-    do not. Reader chains (`BackendOutcome`) use `"failed"` and
+    do not. Reader chains ([`BackendOutcome`](../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome "scikitplot.corpus.BackendOutcome")) use `"failed"` and
     `"no_result"` (a candidate the policy skips was never eligible, as an
     absent backend is not a fallback under `"auto"`); vector backends use
     `"<name>_broken"` (installed but failing to load, skipped under
@@ -103,7 +103,7 @@ backend that is installed but fails to load as `broken`, never as
 
 ## Readiness vocabulary[#](#readiness-vocabulary "Link to this heading")
 
-`CapabilityReport` separates five facts that are commonly conflated:
+[`CapabilityReport`](../../modules/generated/scikitplot.corpus.CapabilityReport.html#scikitplot.corpus.CapabilityReport "scikitplot.corpus.CapabilityReport") separates five facts that are commonly conflated:
 
 `installed`
 :   The Python package/module can be located.
@@ -161,20 +161,20 @@ print(plan.capability_view())
 
 ```
 
-`BackendPlan` separates `declared`, `ordered`, `eligible`,
+[`BackendPlan`](../../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan "scikitplot.corpus.BackendPlan") separates `declared`, `ordered`, `eligible`,
 `selected` and `skipped` candidates. A skipped backend includes its reason
-and readiness evidence. After execution, `BackendOutcome` exposes the
+and readiness evidence. After execution, [`BackendOutcome`](../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome "scikitplot.corpus.BackendOutcome") exposes the
 same capability view with `active=True` only for the backend that actually
 completed the operation.
 
-For lower-level/custom operations, `plan_backend_chain` provides the same
-side-effect-free preflight over explicit `BackendCandidate` objects.
+For lower-level/custom operations, [`plan_backend_chain`](../../modules/generated/scikitplot.corpus.plan_backend_chain.html#scikitplot.corpus.plan_backend_chain "scikitplot.corpus.plan_backend_chain") provides the same
+side-effect-free preflight over explicit [`BackendCandidate`](../../modules/generated/scikitplot.corpus.BackendCandidate.html#scikitplot.corpus.BackendCandidate "scikitplot.corpus.BackendCandidate") objects.
 
 ## Custom readiness registries[#](#custom-readiness-registries "Link to this heading")
 
 A private backend can publish readiness without mutating process-global
-discovery. Pass the same `CapabilityRegistry` to the reader and give the
-custom `ASRBackend` its capability identifier. This keeps preflight
+discovery. Pass the same [`CapabilityRegistry`](../../modules/generated/scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry "scikitplot.corpus.CapabilityRegistry") to the reader and give the
+custom [`ASRBackend`](../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") its capability identifier. This keeps preflight
 (`selected`) and runtime evidence (`active`) connected end to end.
 
 ```
@@ -208,7 +208,7 @@ Python code and must honour any offline/network promises they declare.
 
 ## Backend policies[#](#backend-policies "Link to this heading")
 
-`BackendPolicy` provides reusable orchestration presets:
+[`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") provides reusable orchestration presets:
 
 | Policy | Meaning |
 | --- | --- |
@@ -236,7 +236,7 @@ policy = BackendPolicy(
 
 ## Custom ASR[#](#custom-asr "Link to this heading")
 
-A user backend receives one immutable `ASRRequest`; this avoids an
+A user backend receives one immutable [`ASRRequest`](../../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus.ASRRequest"); this avoids an
 unstable expanding keyword callback signature.
 
 ```

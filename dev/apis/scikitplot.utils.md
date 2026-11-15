@@ -33,4 +33,6 @@ Filename format:
 |  |  |
 | --- | --- |
 | [`_path.PathNamer`](../modules/generated/scikitplot.utils._path.PathNamer.html#scikitplot.utils._path.PathNamer "scikitplot.utils._path.PathNamer") | Generate portable, collision-resistant filenames and paths. |
+| [`_path.get_path`](../modules/generated/scikitplot.utils._path.get_path.html#scikitplot.utils._path.get_path "scikitplot.utils._path.get_path") | Generate a full file path for saving result images, ensuring the target directory exists. |
 | [`_path.make_path`](../modules/generated/scikitplot.utils._path.make_path.html#scikitplot.utils._path.make_path "scikitplot.utils._path.make_path") | Make Convenience wrapper to build a unique path (callable with zero args). |
+| [`_path.remove_path`](../modules/generated/scikitplot.utils._path.remove_path.html#scikitplot.utils._path.remove_path "scikitplot.utils._path.remove_path") | Remove unwanted files or directories from a specified base path. |

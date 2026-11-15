@@ -1,6 +1,6 @@
 # to\_corpus\_status[#](#to-corpus-status "Link to this heading")
 
-scikitplot.mcp.to\_corpus\_status(**status**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/mcp/_outcome.py#L297)[#](#scikitplot.mcp.to_corpus_status "Link to this definition")
+scikitplot.mcp.to\_corpus\_status(**status**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/mcp/_outcome.py#L297)[#](#scikitplot.mcp.to_corpus_status "Link to this definition")
 :   Resolve a status string to [`scikitplot.corpus.RetrievalStatus`](scikitplot.corpus.RetrievalStatus.html#scikitplot.corpus.RetrievalStatus "scikitplot.corpus.RetrievalStatus").
 
     Parameters:

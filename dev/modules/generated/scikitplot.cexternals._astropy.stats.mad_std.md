@@ -1,6 +1,6 @@
 # mad\_std[#](#mad-std "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=None**, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/funcs.py#L886)[#](#scikitplot.cexternals._astropy.stats.mad_std "Link to this definition")
 :   Calculate a robust standard deviation using the [median absolute deviation (MAD)](https://en.wikipedia.org/wiki/Median_absolute_deviation).
 
     The standard deviation estimator is given by:
@@ -46,7 +46,7 @@ scikitplot.cexternals.\_astropy.stats.mad\_std(**data**, **axis=None**, **func=N
     :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
     > **See also**
-    > `biweight_midvariance`, `biweight_midcovariance`, [`median_absolute_deviation`](scikitplot.cexternals._astropy.stats.median_absolute_deviation.html#scikitplot.cexternals._astropy.stats.median_absolute_deviation "scikitplot.cexternals._astropy.stats.median_absolute_deviation")
+    > [`biweight_midvariance`](scikitplot.cexternals._astropy.stats.biweight_midvariance.html#scikitplot.cexternals._astropy.stats.biweight_midvariance "scikitplot.cexternals._astropy.stats.biweight_midvariance"), [`biweight_midcovariance`](scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance "scikitplot.cexternals._astropy.stats.biweight_midcovariance"), [`median_absolute_deviation`](scikitplot.cexternals._astropy.stats.median_absolute_deviation.html#scikitplot.cexternals._astropy.stats.median_absolute_deviation "scikitplot.cexternals._astropy.stats.median_absolute_deviation")
 
     Examples
 

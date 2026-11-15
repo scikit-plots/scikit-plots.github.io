@@ -1,6 +1,6 @@
 # YouTubeReader[#](#youtubereader "Link to this heading")
 
-class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **preferred\_language=None**, **include\_auto\_generated=True**, **merge\_short\_cues=True**, **min\_cue\_chars=20**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader "Link to this definition")
+class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**, **preferred\_language=None**, **include\_auto\_generated=True**, **merge\_short\_cues=True**, **min\_cue\_chars=20**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader "Link to this definition")
 :   Extract the transcript of a YouTube video using `youtube-transcript-api`.
 
     Tries to retrieve manually-created captions first (preferred — often
@@ -73,6 +73,9 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         * ****source\_provenance**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
         * ****custom\_extractor**** ([**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)") **|** **None**)
         * ****custom\_extractor\_kwargs**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
+        * ****max\_text\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
+        * ****max\_text\_chars\_per\_byte**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
+        * ****on\_text\_limit**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****preferred\_language**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****include\_auto\_generated**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
         * ****merge\_short\_cues**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
@@ -132,13 +135,13 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L969)[#](#scikitplot.corpus.YouTubeReader.clear_backend_reports "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1171)[#](#scikitplot.corpus.YouTubeReader.clear_backend_reports "Link to this definition")
     :   Clear structured optional-backend reports on this reader instance.
 
         Return type:
         :   None
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1716)[#](#scikitplot.corpus.YouTubeReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2041)[#](#scikitplot.corpus.YouTubeReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -360,7 +363,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.YouTubeReader.custom_extractor "scikitplot.corpus.YouTubeReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -383,7 +386,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     property file\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.corpus.YouTubeReader.file_name "Link to this definition")
     :   Return the URL as the effective file name.
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -406,7 +409,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.YouTubeReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2033)[#](#scikitplot.corpus.YouTubeReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2358)[#](#scikitplot.corpus.YouTubeReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -533,7 +536,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L2229)[#](#scikitplot.corpus.YouTubeReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2554)[#](#scikitplot.corpus.YouTubeReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -634,7 +637,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1215)[#](#scikitplot.corpus.YouTubeReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1510)[#](#scikitplot.corpus.YouTubeReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -679,7 +682,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L760)[#](#scikitplot.corpus.YouTubeReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L760)[#](#scikitplot.corpus.YouTubeReader.get_raw_chunks "Link to this definition")
     :   Fetch the YouTube transcript and yield one chunk per cue.
 
         Yields:
@@ -730,7 +733,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
     include\_auto\_generated: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.YouTubeReader.include_auto_generated "Link to this definition")
     :   Accept auto-generated captions as fallback.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -738,16 +741,47 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         original URL string. `validate_input()` is overridden in those
         subclasses to skip the file-existence check.
 
+    max\_text\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.YouTubeReader.max_text_chars "Link to this definition")
+    :   Most characters of text one input may yield, over all its chunks.
+
+        The bound on what a small input can expand into (compressed or
+        repeated content). `None` (the default here): no limit, for formats
+        whose text cannot outgrow their input, already bounded by their size
+        limit. Readers of amplifying formats (`OfficeReader`, `PDFReader`)
+        default to 256 Mi characters. Counted as chunks stream, at the one
+        place every chunk passes (`_iter_raw_chunks`), custom extractors
+        included.
+
+    max\_text\_chars\_per\_byte: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.YouTubeReader.max_text_chars_per_byte "Link to this definition")
+    :   Most characters of text per byte of the input file.
+
+        Keeps the output, and so the work of extracting it, in proportion to
+        the input: with it, the limit is the smaller of [`max_text_chars`](#scikitplot.corpus.YouTubeReader.max_text_chars "scikitplot.corpus.YouTubeReader.max_text_chars")
+        and `max(max_text_chars_per_byte x file size, 1 Mi)` characters (a
+        small file may always yield 1 Mi). It covers compression, shared and
+        repeated content alike. `None` (the default here): no ratio limit;
+        `OfficeReader` and `PDFReader` default to 50 (ordinary documents
+        yield under 10 characters per byte). Not applied when the input is not
+        a file on disk.
+
     merge\_short\_cues: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.YouTubeReader.merge_short_cues "Link to this definition")
     :   Merge consecutive short cues into longer chunks.
 
     min\_cue\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 20[#](#scikitplot.corpus.YouTubeReader.min_cue_chars "Link to this definition")
     :   Minimum cue length for `merge_short_cues`.
 
+    on\_text\_limit: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'refuse'[#](#scikitplot.corpus.YouTubeReader.on_text_limit "Link to this definition")
+    :   What happens past the text limit ([`max_text_chars`](#scikitplot.corpus.YouTubeReader.max_text_chars "scikitplot.corpus.YouTubeReader.max_text_chars"),
+        [`max_text_chars_per_byte`](#scikitplot.corpus.YouTubeReader.max_text_chars_per_byte "scikitplot.corpus.YouTubeReader.max_text_chars_per_byte")): `"refuse"` (default) raises
+        `ValueError`; `"truncate"` keeps exactly the first
+        `max_text_chars` characters, marks the chunk it cuts
+        `text_truncated=True` (none when the limit falls between chunks) and
+        logs a warning either way.
+
     preferred\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.YouTubeReader.preferred_language "Link to this definition")
     :   ISO 639-1 language code for the preferred transcript track.
 
-    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L594)[#](#scikitplot.corpus.YouTubeReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -774,7 +808,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1605)[#](#scikitplot.corpus.YouTubeReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1900)[#](#scikitplot.corpus.YouTubeReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -796,7 +830,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L1587)[#](#scikitplot.corpus.YouTubeReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1882)[#](#scikitplot.corpus.YouTubeReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -817,7 +851,7 @@ class scikitplot.corpus.YouTubeReader(**input\_path**, **chunker=None**, **filte
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_readers/_web.py#L717)[#](#scikitplot.corpus.YouTubeReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_web.py#L717)[#](#scikitplot.corpus.YouTubeReader.validate_input "Link to this definition")
     :   Validate that the source URI is a recognisable YouTube URL.
 
         Raises:

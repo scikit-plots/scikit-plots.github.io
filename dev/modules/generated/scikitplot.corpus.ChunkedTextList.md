@@ -1,6 +1,6 @@
 # ChunkedTextList[#](#chunkedtextlist "Link to this heading")
 
-class scikitplot.corpus.ChunkedTextList(**pairs**, **chunk\_metadata\_list**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_chunkers/_chunker_bridge.py#L63)[#](#scikitplot.corpus.ChunkedTextList "Link to this definition")
+class scikitplot.corpus.ChunkedTextList(**pairs**, **chunk\_metadata\_list**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_chunker_bridge.py#L63)[#](#scikitplot.corpus.ChunkedTextList "Link to this definition")
 :   A `list` subclass that carries per-chunk metadata alongside `(int, str)` pairs.
 
     Returned by every [`ChunkerBridge`](scikitplot.corpus.ChunkerBridge.html#scikitplot.corpus.ChunkerBridge "scikitplot.corpus.ChunkerBridge") subclass in place of a plain

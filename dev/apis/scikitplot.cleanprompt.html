@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:32:53Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:06:23Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.cleanprompt","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
@@ -87,7 +87,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="EncodedPrompt" href="../modules/generated/scikitplot.cleanprompt.EncodedPrompt.html" />
-    <link rel="prev" title="validate_plotting_kwargs" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html" />
+    <link rel="prev" title="stack" href="../modules/generated/scikitplot.api.stack.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -707,6 +707,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ErrorCode.html">ErrorCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.SchemaError.html">SchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StateError.html">StateError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.check_schema.html">check_schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.validate.html">validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.canonical_json.html">canonical_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.digest.html">digest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.plain.html">plain</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -742,6 +747,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.stack.html">stack</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot.cleanprompt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -772,6 +778,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.describe_outcome.html">describe_outcome</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.diagnose.html">diagnose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.suggest_terms.html">suggest_terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CoverageRow.html">CoverageRow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.coverage_matrix.html">coverage_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Redactor.html">Redactor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.reserved_label_spans.html">reserved_label_spans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.resolve_spans.html">resolve_spans</a></li>
@@ -786,6 +794,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.describe_engines.html">describe_engines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.resolve_engine.html">resolve_engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.trim_entity_span.html">trim_entity_span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.EngineReadiness.html">EngineReadiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.engine_readiness.html">engine_readiness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FormatSpec.html">FormatSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Guard.html">Guard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.StreamDecoder.html">StreamDecoder</a></li>
@@ -804,6 +814,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.spacy_detector.html">spacy_detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.NltkDetector.html">NltkDetector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.nltk_detector.html">nltk_detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.corpora_status.html">corpora_status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FieldSpec.html">FieldSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PackError.html">PackError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PackSpec.html">PackSpec</a></li>
@@ -812,11 +823,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.default_patterns.html">default_patterns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.get_pattern.html">get_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.luhn_ok.html">luhn_ok</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternRiskWarning.html">PatternRiskWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.analyse_pattern.html">analyse_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CleanPlan.html">CleanPlan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html">FluentCleanPrompt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_LIMITS.html">DEFAULT_LIMITS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html">DEFAULT_POLICY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_TAG_STYLE.html">DEFAULT_TAG_STYLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.ACTIONS.html">ACTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Action.html">Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Limits.html">Limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html">OverlapStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html">RedactionPolicy</a></li>
@@ -832,12 +847,50 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Vault.html">Vault</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.decrypt_mapping.html">decrypt_mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.encrypt_mapping.html">encrypt_mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.new_key.html">new_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Entry.html">Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionResult.html">RedactionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationResult.html">RestorationResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Span.html">Span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.as_dict.html">as_dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CleanPromptError.html">CleanPromptError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.BlockedError.html">BlockedError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CapabilityError.html">CapabilityError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DetectorError.html">DetectorError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LeakError.html">LeakError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LimitExceededError.html">LimitExceededError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.OverlapError.html">OverlapError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternError.html">PatternError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternTimeoutError.html">PatternTimeoutError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PolicyError.html">PolicyError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationError.html">RestorationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html">AUDIT_LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LOGGER_NAME.html">LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.JsonFormatter.html">JsonFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SecretFilter.html">SecretFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.VaultScrubber.html">VaultScrubber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.audit.html">audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.configure_logging.html">configure_logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.log_level_from_env.html">log_level_from_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redacting.html">redacting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Catalog.html">Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.builtin_catalog.html">builtin_catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SurrogateSet.html">SurrogateSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.load_surrogate_set.html">load_surrogate_set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redact_documents.html">redact_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.register_corpus_readers.html">register_corpus_readers</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.config.html">scikitplot.config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__bibtex__.html">__bibtex__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__citation__.html">__citation__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.citation.html">citation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.config_context.html">config_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.set_config.html">set_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.show_config.html">show_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.corpus.html">scikitplot.corpus</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -881,6 +934,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.distribution_version.html">distribution_version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.probe_backend.html">probe_backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityRegistry.html">CapabilityRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityReport.html">CapabilityReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilitySpec.html">CapabilitySpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.capability_report.html">capability_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.component_capabilities.html">component_capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.default_capability_registry.html">default_capability_registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentCatalog.html">ComponentCatalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentSpec.html">ComponentSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DiscoveryOutcome.html">DiscoveryOutcome</a></li>
@@ -919,7 +978,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._split_cjk_chars_legacy.html">_split_cjk_chars_legacy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSpan.html">ScriptSpan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSegmenter.html">ScriptSegmenter</a></li>
@@ -949,7 +1007,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html">SentenceChunkerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._validate_text_input.html">_validate_text_input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StructureChunker.html">StructureChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StructureChunkerConfig.html">StructureChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LemmatizationBackend.html">LemmatizationBackend</a></li>
@@ -996,6 +1053,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.GoogleDriveDownloader.html">GoogleDriveDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebDownloader.html">WebDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeDownloader.html">YouTubeDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPlan.html">DownloadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPolicy.html">DownloadPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.download_policy.html">download_policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CachePolicy.html">CachePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CacheStatus.html">CacheStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CachedEmbeddings.html">CachedEmbeddings</a></li>
@@ -1029,6 +1089,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.calibration_report.html">calibration_report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.expected_calibration_error.html">expected_calibration_error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.reliability_table.html">reliability_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CALIBRATION_STRATEGIES.html">CALIBRATION_STRATEGIES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.anls_score.html">anls_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity.html">edit_similarity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity_score.html">edit_similarity_score</a></li>
@@ -1087,6 +1148,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IndexGeneration.html">IndexGeneration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.derive_generation.html">derive_generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DocIdScheme.html">DocIdScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IDENTITY_HEX_WIDTH.html">IDENTITY_HEX_WIDTH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html">IncompatibleSchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.UUID7Generator.html">UUID7Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.assign_doc_ids.html">assign_doc_ids</a></li>
@@ -1134,6 +1196,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
@@ -1143,6 +1206,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html">TEIReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html">XMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html">ZipReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
@@ -1191,6 +1255,24 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RuntimeCorpus.html">RuntimeCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RuntimePolicy.html">RuntimePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.materialize_plan.html">materialize_plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.runtime_policy.html">runtime_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html">CorpusPolicyBundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.corpus_policy_bundle.html">corpus_policy_bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendCandidate.html">BackendCandidate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendOutcome.html">BackendOutcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPlan.html">BackendPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPolicy.html">BackendPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendSkip.html">BackendSkip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendStatus.html">BackendStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.backend_policy.html">backend_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_backend_chain.html">plan_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.run_backend_chain.html">run_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRBackend.html">ASRBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRRequest.html">ASRRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WHISPER_MODELS.html">WHISPER_MODELS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.asr_segment_metadata.html">asr_segment_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_whisper_backends.html">plan_whisper_backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.transcribe_whisper.html">transcribe_whisper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HAMLET_TEXT.html">HAMLET_TEXT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SectionType.html">SectionType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
@@ -1441,8 +1523,27 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.CommandError.html">CommandError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ExecutionException.html">ExecutionException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.InvalidUrlException.html">InvalidUrlException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.MissingConfigException.html">MissingConfigException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTracingException.html">ScikitplotTracingException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataException.html">ScikitplotTraceDataException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataCorrupted.html">ScikitplotTraceDataCorrupted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataNotFound.html">ScikitplotTraceDataNotFound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.AxisError.html">AxisError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.DTypePromotionError.html">DTypePromotionError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.TooHardError.html">TooHardError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotWarning.html">ScikitplotWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotUserWarning.html">ScikitplotUserWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotDeprecationWarning.html">ScikitplotDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotPendingDeprecationWarning.html">ScikitplotPendingDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotBackwardsIncompatibleChangeWarning.html">ScikitplotBackwardsIncompatibleChangeWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.DuplicateRepresentationWarning.html">DuplicateRepresentationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ComplexWarning.html">ComplexWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.RankWarning.html">RankWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
@@ -1501,6 +1602,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute.MissingIndicator.html">MissingIndicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute.SimpleImputer.html">SimpleImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1532,6 +1635,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.get_verbosity.html">get_verbosity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.set_verbosity.html">set_verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.BASIC_FORMAT.html">BASIC_FORMAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Formatter.html">Formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Handler.html">Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.LogRecord.html">LogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Logger.html">Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.NullHandler.html">NullHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.StreamHandler.html">StreamHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.getLevelName.html">getLevelName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.getLogger.html">getLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log.html">log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log_every_n.html">log_every_n</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log_first_n.html">log_first_n</a></li>
@@ -1589,6 +1702,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.SearchDocsOutput.html">SearchDocsOutput</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.SearchService.html">SearchService</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.create_server.html">create_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.RuntimeConfig.html">RuntimeConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.main.html">main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.require_count.html">require_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.require_index.html">require_index</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1742,6 +1859,26 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq.html">akaike_info_criterion_lsq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion.html">bayesian_info_criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq.html">bayesian_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_location.html">biweight_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html">biweight_midcorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcovariance.html">biweight_midcovariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midvariance.html">biweight_midvariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_scale.html">biweight_scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClip.html">SigmaClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClippedStats.html">SigmaClippedStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clip.html">sigma_clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clipped_stats.html">sigma_clipped_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circcorrcoef.html">circcorrcoef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circmean.html">circmean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circmoment.html">circmoment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circstd.html">circstd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circvar.html">circvar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.rayleightest.html">rayleightest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.vonmisesmle.html">vonmisesmle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.vtest.html">vtest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_resampling.html">jackknife_resampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_stats.html">jackknife_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.RipleysKEstimator.html">RipleysKEstimator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 </ul>
@@ -1749,7 +1886,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._time.Timer.html">Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.get_path.html">get_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.make_path.html">make_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.remove_path.html">remove_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1770,7 +1909,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1797,9 +1936,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -1940,7 +2079,7 @@ optional name there would defeat the lazy tier at exactly the one operation
 that touches all of them. The optional names remain reachable by attribute
 access, which is how a consumer of that tier reaches them anyway.</p></li>
 <li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">__getattr__</span></code> imports the owning module on first access, and raises
-<code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityError</span></code> with an install command when the tier is
+<a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError" title="scikitplot.cleanprompt.CapabilityError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityError</span></code></a> with an install command when the tier is
 unavailable — raised <em>before</em> the missing dependency is imported, so the
 message is actually reachable.</p></li>
 <li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">__dir__</span></code> unions the module globals with the optional names <strong>as
@@ -2089,6 +2228,12 @@ Each is a checked-in regression test, not a claim.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.suggest_terms.html#scikitplot.cleanprompt.suggest_terms" title="scikitplot.cleanprompt.suggest_terms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">suggest_terms</span></code></a></p></td>
 <td><p>Offer candidate terms the active detectors did not claim.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CoverageRow.html#scikitplot.cleanprompt.CoverageRow" title="scikitplot.cleanprompt.CoverageRow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoverageRow</span></code></a></p></td>
+<td><p>What covers one detection kind, and what happens to its values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.coverage_matrix.html#scikitplot.cleanprompt.coverage_matrix" title="scikitplot.cleanprompt.coverage_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coverage_matrix</span></code></a></p></td>
+<td><p>Return one row per detection kind, derived from the live registries.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2146,6 +2291,12 @@ Each is a checked-in regression test, not a claim.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.trim_entity_span.html#scikitplot.cleanprompt.trim_entity_span" title="scikitplot.cleanprompt.trim_entity_span"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trim_entity_span</span></code></a></p></td>
 <td><p>Shrink an entity span until it carries no unmatched bracket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.EngineReadiness.html#scikitplot.cleanprompt.EngineReadiness" title="scikitplot.cleanprompt.EngineReadiness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EngineReadiness</span></code></a></p></td>
+<td><p>Whether one engine can run here, now, and if not, the one step that fixes it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.engine_readiness.html#scikitplot.cleanprompt.engine_readiness" title="scikitplot.cleanprompt.engine_readiness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">engine_readiness</span></code></a></p></td>
+<td><p>Decide whether one engine can run for a language, and how to fix it if not.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2249,6 +2400,9 @@ Each is a checked-in regression test, not a claim.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.nltk_detector.html#scikitplot.cleanprompt.nltk_detector" title="scikitplot.cleanprompt.nltk_detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nltk_detector</span></code></a></p></td>
 <td><p>Build an <a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.NltkDetector.html#scikitplot.cleanprompt.NltkDetector" title="scikitplot.cleanprompt.NltkDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">NltkDetector</span></code></a>.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.corpora_status.html#scikitplot.cleanprompt.corpora_status" title="scikitplot.cleanprompt.corpora_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corpora_status</span></code></a></p></td>
+<td><p>Report whether NLTK's data packages are present.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2289,6 +2443,12 @@ Each is a checked-in regression test, not a claim.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.luhn_ok.html#scikitplot.cleanprompt.luhn_ok" title="scikitplot.cleanprompt.luhn_ok"><code class="xref py py-obj docutils literal notranslate"><span class="pre">luhn_ok</span></code></a></p></td>
 <td><p>Return whether <code class="docutils literal notranslate"><span class="pre">digits</span></code> satisfies the Luhn checksum.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternRiskWarning.html#scikitplot.cleanprompt.PatternRiskWarning" title="scikitplot.cleanprompt.PatternRiskWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PatternRiskWarning</span></code></a></p></td>
+<td><p>A pack pattern has a shape that can backtrack catastrophically.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.analyse_pattern.html#scikitplot.cleanprompt.analyse_pattern" title="scikitplot.cleanprompt.analyse_pattern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analyse_pattern</span></code></a></p></td>
+<td><p>Report the shapes in <code class="docutils literal notranslate"><span class="pre">source</span></code> that can backtrack catastrophically.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2319,6 +2479,12 @@ Each is a checked-in regression test, not a claim.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_TAG_STYLE.html#scikitplot.cleanprompt.DEFAULT_TAG_STYLE" title="scikitplot.cleanprompt.DEFAULT_TAG_STYLE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_TAG_STYLE</span></code></a></p></td>
 <td><p>The placeholder grammar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.ACTIONS.html#scikitplot.cleanprompt.ACTIONS" title="scikitplot.cleanprompt.ACTIONS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACTIONS</span></code></a></p></td>
+<td><p>Built-in immutable sequence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Action.html#scikitplot.cleanprompt.Action" title="scikitplot.cleanprompt.Action"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Action</span></code></a></p></td>
+<td><p>What happens to a value of one kind once it is detected.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits" title="scikitplot.cleanprompt.Limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Limits</span></code></a></p></td>
 <td><p>Hard bounds on one redaction pass.</p></td>
@@ -2397,6 +2563,163 @@ Each is a checked-in regression test, not a claim.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.encrypt_mapping.html#scikitplot.cleanprompt.encrypt_mapping" title="scikitplot.cleanprompt.encrypt_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encrypt_mapping</span></code></a></p></td>
 <td><p>Encrypt every value of <code class="docutils literal notranslate"><span class="pre">mapping</span></code>, leaving the labels in the clear.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.new_key.html#scikitplot.cleanprompt.new_key" title="scikitplot.cleanprompt.new_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_key</span></code></a></p></td>
+<td><p>Generate a fresh vault key.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="results-and-types">
+<span id="cleanprompt-ref-results-and-types"></span><h2>Results and Types<a class="headerlink" href="#results-and-types" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Entry.html#scikitplot.cleanprompt.Entry" title="scikitplot.cleanprompt.Entry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Entry</span></code></a></p></td>
+<td><p>One resolved detection and the placeholder label assigned to it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult" title="scikitplot.cleanprompt.RedactionResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RedactionResult</span></code></a></p></td>
+<td><p>Output of a redaction pass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationResult.html#scikitplot.cleanprompt.RestorationResult" title="scikitplot.cleanprompt.RestorationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RestorationResult</span></code></a></p></td>
+<td><p>Output of a restoration pass.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span" title="scikitplot.cleanprompt.Span"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Span</span></code></a></p></td>
+<td><p>A half-open <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">end)</span></code> character interval flagged by one detector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Stats.html#scikitplot.cleanprompt.Stats" title="scikitplot.cleanprompt.Stats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stats</span></code></a></p></td>
+<td><p>Counters describing one redaction pass.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.as_dict.html#scikitplot.cleanprompt.as_dict" title="scikitplot.cleanprompt.as_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">as_dict</span></code></a></p></td>
+<td><p>Return a JSON-safe, secret-free dictionary for a result object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="errors-and-warnings">
+<span id="cleanprompt-ref-errors-and-warnings"></span><h2>Errors and Warnings<a class="headerlink" href="#errors-and-warnings" title="Link to this heading">#</a></h2>
+<p class="rubric">Class inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-b49e5913c5e564208f4d7f0a6240506ebe5c29fa.png" alt="Inheritance diagram of CleanPromptError" usemap="#inheritance37d9484d6f" class="inheritance graphviz" /></div>
+<map id="inheritance37d9484d6f" name="inheritance37d9484d6f">
+<area shape="rect" id="node1" href="../modules/generated/scikitplot.cleanprompt.BlockedError.html#scikitplot.cleanprompt.BlockedError" target="_top" title="The text holds a value of a kind whose action is ``block``; nothing was returned." alt="" coords="213,5,317,31"/>
+<area shape="rect" id="node2" href="../modules/generated/scikitplot.cleanprompt.CleanPromptError.html#scikitplot.cleanprompt.CleanPromptError" target="_top" title="Base class for every error raised by :mod:`scikitplot.cleanprompt`." alt="" coords="5,228,143,253"/>
+<area shape="rect" id="node3" href="../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError" target="_top" title="An optional tier is not usable in this environment." alt="" coords="206,55,325,80"/>
+<area shape="rect" id="node4" href="../modules/generated/scikitplot.cleanprompt.DetectorError.html#scikitplot.cleanprompt.DetectorError" target="_top" title="A detector raised while scanning." alt="" coords="211,104,320,129"/>
+<area shape="rect" id="node5" href="../modules/generated/scikitplot.cleanprompt.LeakError.html#scikitplot.cleanprompt.LeakError" target="_top" title="Outgoing text still holds a value the vault removed; it was not sent." alt="" coords="223,153,307,179"/>
+<area shape="rect" id="node6" href="../modules/generated/scikitplot.cleanprompt.LimitExceededError.html#scikitplot.cleanprompt.LimitExceededError" target="_top" title="A policy limit was exceeded." alt="" coords="191,203,340,228"/>
+<area shape="rect" id="node7" href="../modules/generated/scikitplot.cleanprompt.OverlapError.html#scikitplot.cleanprompt.OverlapError" target="_top" title="Two detections overlap under" alt="" coords="213,252,317,277"/>
+<area shape="rect" id="node8" href="../modules/generated/scikitplot.cleanprompt.PackError.html#scikitplot.cleanprompt.PackError" target="_top" title="A pack document is invalid." alt="" coords="224,301,307,327"/>
+<area shape="rect" id="node9" href="../modules/generated/scikitplot.cleanprompt.PatternError.html#scikitplot.cleanprompt.PatternError" target="_top" title="A detection pattern is uncompilable or structurally unsafe." alt="" coords="216,351,315,376"/>
+<area shape="rect" id="node11" href="../modules/generated/scikitplot.cleanprompt.PolicyError.html#scikitplot.cleanprompt.PolicyError" target="_top" title="A :class:`~scikitplot.cleanprompt._policy.RedactionPolicy` is invalid." alt="" coords="219,400,311,425"/>
+<area shape="rect" id="node12" href="../modules/generated/scikitplot.cleanprompt.RestorationError.html#scikitplot.cleanprompt.RestorationError" target="_top" title="A placeholder in the text cannot be restored from the supplied vault." alt="" coords="201,449,329,475"/>
+<area shape="rect" id="node10" href="../modules/generated/scikitplot.cleanprompt.PatternTimeoutError.html#scikitplot.cleanprompt.PatternTimeoutError" target="_top" title="A custom pack pattern ran past the pattern time limit on one document." alt="" coords="388,104,541,129"/>
+</map><div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CleanPromptError.html#scikitplot.cleanprompt.CleanPromptError" title="scikitplot.cleanprompt.CleanPromptError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CleanPromptError</span></code></a></p></td>
+<td><p>Base class for every error raised by <a class="reference internal" href="#module-scikitplot.cleanprompt" title="scikitplot.cleanprompt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.cleanprompt</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.BlockedError.html#scikitplot.cleanprompt.BlockedError" title="scikitplot.cleanprompt.BlockedError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BlockedError</span></code></a></p></td>
+<td><p>The text holds a value of a kind whose action is <code class="docutils literal notranslate"><span class="pre">block</span></code>; nothing was returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CapabilityError.html#scikitplot.cleanprompt.CapabilityError" title="scikitplot.cleanprompt.CapabilityError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilityError</span></code></a></p></td>
+<td><p>An optional tier is not usable in this environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DetectorError.html#scikitplot.cleanprompt.DetectorError" title="scikitplot.cleanprompt.DetectorError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DetectorError</span></code></a></p></td>
+<td><p>A detector raised while scanning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LeakError.html#scikitplot.cleanprompt.LeakError" title="scikitplot.cleanprompt.LeakError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LeakError</span></code></a></p></td>
+<td><p>Outgoing text still holds a value the vault removed; it was not sent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LimitExceededError.html#scikitplot.cleanprompt.LimitExceededError" title="scikitplot.cleanprompt.LimitExceededError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LimitExceededError</span></code></a></p></td>
+<td><p>A policy limit was exceeded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.OverlapError.html#scikitplot.cleanprompt.OverlapError" title="scikitplot.cleanprompt.OverlapError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OverlapError</span></code></a></p></td>
+<td><p>Two detections overlap under <code class="xref py py-attr docutils literal notranslate"><span class="pre">STRICT</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternError.html#scikitplot.cleanprompt.PatternError" title="scikitplot.cleanprompt.PatternError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PatternError</span></code></a></p></td>
+<td><p>A detection pattern is uncompilable or structurally unsafe.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternTimeoutError.html#scikitplot.cleanprompt.PatternTimeoutError" title="scikitplot.cleanprompt.PatternTimeoutError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PatternTimeoutError</span></code></a></p></td>
+<td><p>A custom pack pattern ran past the pattern time limit on one document.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PolicyError.html#scikitplot.cleanprompt.PolicyError" title="scikitplot.cleanprompt.PolicyError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolicyError</span></code></a></p></td>
+<td><p>A <a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy" title="scikitplot.cleanprompt._policy.RedactionPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedactionPolicy</span></code></a> is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationError.html#scikitplot.cleanprompt.RestorationError" title="scikitplot.cleanprompt.RestorationError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RestorationError</span></code></a></p></td>
+<td><p>A placeholder in the text cannot be restored from the supplied vault.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="logging-and-audit">
+<span id="cleanprompt-ref-logging-and-audit"></span><h2>Logging and Audit<a class="headerlink" href="#logging-and-audit" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html#scikitplot.cleanprompt.AUDIT_LOGGER_NAME" title="scikitplot.cleanprompt.AUDIT_LOGGER_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUDIT_LOGGER_NAME</span></code></a></p></td>
+<td><p>str(object='') -&gt; str str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LOGGER_NAME.html#scikitplot.cleanprompt.LOGGER_NAME" title="scikitplot.cleanprompt.LOGGER_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LOGGER_NAME</span></code></a></p></td>
+<td><p>str(object='') -&gt; str str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.JsonFormatter.html#scikitplot.cleanprompt.JsonFormatter" title="scikitplot.cleanprompt.JsonFormatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a></p></td>
+<td><p>Format a record as one JSON object per line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SecretFilter.html#scikitplot.cleanprompt.SecretFilter" title="scikitplot.cleanprompt.SecretFilter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SecretFilter</span></code></a></p></td>
+<td><p>Replace known secret surfaces in a record with <code class="xref py py-data docutils literal notranslate"><span class="pre">REDACTION_MARK</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.VaultScrubber.html#scikitplot.cleanprompt.VaultScrubber" title="scikitplot.cleanprompt.VaultScrubber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VaultScrubber</span></code></a></p></td>
+<td><p>Keep a vault's values out of every log record for as long as it holds them.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.audit.html#scikitplot.cleanprompt.audit" title="scikitplot.cleanprompt.audit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">audit</span></code></a></p></td>
+<td><p>Emit one structured audit event on <a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html#scikitplot.cleanprompt.AUDIT_LOGGER_NAME" title="scikitplot.cleanprompt.AUDIT_LOGGER_NAME"><code class="xref py py-data docutils literal notranslate"><span class="pre">AUDIT_LOGGER_NAME</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.configure_logging.html#scikitplot.cleanprompt.configure_logging" title="scikitplot.cleanprompt.configure_logging"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_logging</span></code></a></p></td>
+<td><p>Attach a handler to this submodule's logger.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.get_logger.html#scikitplot.cleanprompt.get_logger" title="scikitplot.cleanprompt.get_logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_logger</span></code></a></p></td>
+<td><p>Return a logger under this submodule's namespace.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.log_level_from_env.html#scikitplot.cleanprompt.log_level_from_env" title="scikitplot.cleanprompt.log_level_from_env"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_level_from_env</span></code></a></p></td>
+<td><p>Return the log level named by the environment, or <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redacting.html#scikitplot.cleanprompt.redacting" title="scikitplot.cleanprompt.redacting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redacting</span></code></a></p></td>
+<td><p>Scrub known secrets from log records for the duration of a block.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pattern-catalog-and-surrogate-sets">
+<span id="cleanprompt-ref-pattern-catalog-and-surrogate-sets"></span><h2>Pattern Catalog and Surrogate Sets<a class="headerlink" href="#pattern-catalog-and-surrogate-sets" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Catalog.html#scikitplot.cleanprompt.Catalog" title="scikitplot.cleanprompt.Catalog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Catalog</span></code></a></p></td>
+<td><p>An immutable set of packs and formats.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.builtin_catalog.html#scikitplot.cleanprompt.builtin_catalog" title="scikitplot.cleanprompt.builtin_catalog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">builtin_catalog</span></code></a></p></td>
+<td><p>Return the built-in catalog, read from the compiled JSON.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SurrogateSet.html#scikitplot.cleanprompt.SurrogateSet" title="scikitplot.cleanprompt.SurrogateSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurrogateSet</span></code></a></p></td>
+<td><p>A validated set of invented names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.load_surrogate_set.html#scikitplot.cleanprompt.load_surrogate_set" title="scikitplot.cleanprompt.load_surrogate_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_surrogate_set</span></code></a></p></td>
+<td><p>Read and validate a surrogate set from a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">.json</span></code> file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="corpus-integration">
+<span id="cleanprompt-ref-corpus-integration"></span><h2>Corpus Integration<a class="headerlink" href="#corpus-integration" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redact_documents.html#scikitplot.cleanprompt.redact_documents" title="scikitplot.cleanprompt.redact_documents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">redact_documents</span></code></a></p></td>
+<td><p>Return corpus documents with every text field redacted by one cleaner.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.register_corpus_readers.html#scikitplot.cleanprompt.register_corpus_readers" title="scikitplot.cleanprompt.register_corpus_readers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_corpus_readers</span></code></a></p></td>
+<td><p>Let corpus read <code class="docutils literal notranslate"><span class="pre">.docx</span></code>, <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> and <code class="docutils literal notranslate"><span class="pre">.pptx</span></code> with cleanprompt's reader.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2414,12 +2737,12 @@ Each is a checked-in regression test, not a claim.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html"
+       href="../modules/generated/scikitplot.api.stack.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">validate_plotting_kwargs</p>
+        <p class="prev-next-title">stack</p>
       </div>
     </a>
     <a class="right-next"
@@ -2465,7 +2788,7 @@ Each is a checked-in regression test, not a claim.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>

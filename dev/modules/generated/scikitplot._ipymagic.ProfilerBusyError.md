@@ -1,6 +1,6 @@
 # ProfilerBusyError[#](#profilerbusyerror "Link to this heading")
 
-exception scikitplot.\_ipymagic.ProfilerBusyError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/_ipymagic/_errors.py#L119)[#](#scikitplot._ipymagic.ProfilerBusyError "Link to this definition")
+exception scikitplot.\_ipymagic.ProfilerBusyError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_errors.py#L119)[#](#scikitplot._ipymagic.ProfilerBusyError "Link to this definition")
 :   Another profiler is active in this process (Rule 133); nothing was run.
 
     Annotation:

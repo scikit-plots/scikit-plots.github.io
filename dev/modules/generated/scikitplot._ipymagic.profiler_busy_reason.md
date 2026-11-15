@@ -1,6 +1,6 @@
 # profiler\_busy\_reason[#](#profiler-busy-reason "Link to this heading")
 
-scikitplot.\_ipymagic.profiler\_busy\_reason()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/_ipymagic/_profiling.py#L52)[#](#scikitplot._ipymagic.profiler_busy_reason "Link to this definition")
+scikitplot.\_ipymagic.profiler\_busy\_reason()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_profiling.py#L52)[#](#scikitplot._ipymagic.profiler_busy_reason "Link to this definition")
 :   Return why a profiler cannot be enabled now, or None when it can.
 
     Returns:

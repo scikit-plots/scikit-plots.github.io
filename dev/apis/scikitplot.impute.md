@@ -55,3 +55,10 @@ Class inheritance
 |  |  |
 | --- | --- |
 | [`_ann.ANNImputer`](../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") | Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends. |
+
+## Re-exported scikit-learn imputers.[#](#re-exported-scikit-learn-imputers "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`MissingIndicator`](../modules/generated/scikitplot.impute.MissingIndicator.html#scikitplot.impute.MissingIndicator "scikitplot.impute.MissingIndicator") | Binary indicators for missing values. |
+| [`SimpleImputer`](../modules/generated/scikitplot.impute.SimpleImputer.html#scikitplot.impute.SimpleImputer "scikitplot.impute.SimpleImputer") | Univariate imputer for completing missing values with simple strategies. |

@@ -1,6 +1,6 @@
 # DedupLinesNormalizer[#](#deduplinesnormalizer "Link to this heading")
 
-class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L432)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
+class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\_line\_length=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L492)[#](#scikitplot.corpus.DedupLinesNormalizer "Link to this definition")
 :   Remove exact duplicate lines while preserving first-occurrence order.
 
     Useful for de-noising OCR output and web-scraped text which often
@@ -32,17 +32,36 @@ class scikitplot.corpus.DedupLinesNormalizer(**ignore\_whitespace=True**, **min\
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L470)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
-    :   Remove duplicate lines from the document text.
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L191)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_doc "Link to this definition")
+    :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
         :   ****doc****CorpusDocument
+            :   Input document.
 
         Returns:
         :   CorpusDocument
+            :   New instance with `normalized_text` updated. `text` is never
+                modified.
 
         Parameters:
         :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
+
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L530)[#](#scikitplot.corpus.DedupLinesNormalizer.normalize_text "Link to this definition")
+    :   Remove duplicate lines from the text.
+
+        Parameters:
+        :   ****text****str
+            :   The text to normalise.
+
+        Returns:
+        :   str
+
+        Parameters:
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+
+        Return type:
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

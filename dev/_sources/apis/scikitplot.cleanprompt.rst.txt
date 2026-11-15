@@ -100,7 +100,9 @@ Diagnosis
   Suggestion  
   describe_outcome  
   diagnose  
-  suggest_terms
+  suggest_terms  
+  CoverageRow  
+  coverage_matrix
 
 .. _cleanprompt_ref-redactor:
 
@@ -136,7 +138,9 @@ Engines Named-entity
   canonical_label  
   describe_engines  
   resolve_engine  
-  trim_entity_span
+  trim_entity_span  
+  EngineReadiness  
+  engine_readiness
 
 .. _cleanprompt_ref-format-spec:
 
@@ -220,7 +224,8 @@ Nltk Detector
   :template: base.rst
     
   NltkDetector  
-  nltk_detector
+  nltk_detector  
+  corpora_status
 
 .. _cleanprompt_ref-pack-pattern-detector:
 
@@ -250,7 +255,9 @@ Pattern Spec
   PatternSpec  
   default_patterns  
   get_pattern  
-  luhn_ok
+  luhn_ok  
+  PatternRiskWarning  
+  analyse_pattern
 
 .. _cleanprompt_ref-plan-spec:
 
@@ -278,6 +285,8 @@ Policy Spec
   DEFAULT_LIMITS  
   DEFAULT_POLICY  
   DEFAULT_TAG_STYLE  
+  ACTIONS  
+  Action  
   Limits  
   OverlapStrategy  
   RedactionPolicy  
@@ -336,4 +345,100 @@ Vault Encryption
   :template: base.rst
     
   decrypt_mapping  
-  encrypt_mapping
+  encrypt_mapping  
+  new_key
+
+.. _cleanprompt_ref-results-and-types:
+
+Results and Types
+-----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  Entry  
+  RedactionResult  
+  RestorationResult  
+  Span  
+  Stats  
+  as_dict
+
+.. _cleanprompt_ref-errors-and-warnings:
+
+Errors and Warnings
+-------------------
+
+.. rubric:: Class inheritance
+
+.. inheritance-diagram:: CleanPromptError
+   :parts: 1
+   :private-bases:
+   :include-subclasses:
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  CleanPromptError  
+  BlockedError  
+  CapabilityError  
+  DetectorError  
+  LeakError  
+  LimitExceededError  
+  OverlapError  
+  PatternError  
+  PatternTimeoutError  
+  PolicyError  
+  RestorationError
+
+.. _cleanprompt_ref-logging-and-audit:
+
+Logging and Audit
+-----------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  AUDIT_LOGGER_NAME  
+  LOGGER_NAME  
+  JsonFormatter  
+  SecretFilter  
+  VaultScrubber  
+  audit  
+  configure_logging  
+  get_logger  
+  log_level_from_env  
+  redacting
+
+.. _cleanprompt_ref-pattern-catalog-and-surrogate-sets:
+
+Pattern Catalog and Surrogate Sets
+----------------------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  Catalog  
+  builtin_catalog  
+  SurrogateSet  
+  load_surrogate_set
+
+.. _cleanprompt_ref-corpus-integration:
+
+Corpus Integration
+------------------
+
+.. autosummary::
+  :nosignatures:
+  :toctree: ../modules/generated/
+  :template: base.rst
+    
+  redact_documents  
+  register_corpus_readers

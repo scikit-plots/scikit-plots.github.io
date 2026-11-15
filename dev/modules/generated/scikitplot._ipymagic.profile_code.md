@@ -1,6 +1,6 @@
 # profile\_code[#](#profile-code "Link to this heading")
 
-scikitplot.\_ipymagic.profile\_code(**code**, **namespace**, **local\_namespace=None**, **\***, **sort='cumulative'**, **limit=25**, **stats\_file=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/_ipymagic/_profiling.py#L128)[#](#scikitplot._ipymagic.profile_code "Link to this definition")
+scikitplot.\_ipymagic.profile\_code(**code**, **namespace**, **local\_namespace=None**, **\***, **sort='cumulative'**, **limit=25**, **stats\_file=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_profiling.py#L128)[#](#scikitplot._ipymagic.profile_code "Link to this definition")
 :   Run `code` under `cProfile` and summarise the profile.
 
     Parameters:

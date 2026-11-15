@@ -1,6 +1,6 @@
 # HTMLStripNormalizer[#](#htmlstripnormalizer "Link to this heading")
 
-class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L283)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
+class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L346)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
 :   Remove HTML and XML tags from the document text.
 
     Two modes are available:
@@ -40,21 +40,40 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_normalizers/_normalizer.py#L324)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
-    :   Strip HTML tags from the document text.
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L191)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
+    :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
         :   ****doc****CorpusDocument
+            :   Input document.
 
         Returns:
         :   CorpusDocument
-
-        Raises:
-        :   ImportError
-            :   If `use_beautifulsoup=True` and `beautifulsoup4` is not installed.
+            :   New instance with `normalized_text` updated. `text` is never
+                modified.
 
         Parameters:
         :   ****doc**** ([**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument"))
 
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
+
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L387)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_text "Link to this definition")
+    :   Strip HTML tags from the text.
+
+        Parameters:
+        :   ****text****str
+            :   The text to normalise.
+
+        Returns:
+        :   str
+
+        Raises:
+        :   ImportError
+            :   If `use_beautifulsoup=True` and `beautifulsoup4` is not installed.
+
+        Parameters:
+        :   ****text**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+
+        Return type:
+        :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

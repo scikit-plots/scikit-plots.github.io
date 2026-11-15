@@ -1,6 +1,6 @@
 # complete[#](#complete "Link to this heading")
 
-scikitplot.\_ipymagic.complete(**line**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/_ipymagic/_completion.py#L58)[#](#scikitplot._ipymagic.complete "Link to this definition")
+scikitplot.\_ipymagic.complete(**line**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_completion.py#L58)[#](#scikitplot._ipymagic.complete "Link to this definition")
 :   Return the completions of the last word of a `%scikitplot` line.
 
     Parameters:

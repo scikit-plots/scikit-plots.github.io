@@ -65,3 +65,9 @@ e.g. confusion matrix, silhouette scores, etc.
 | [`_utils.cumulative_gain_curve`](../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html#scikitplot.api._utils.cumulative_gain_curve "scikitplot.api._utils.cumulative_gain_curve") | Generate the data points necessary to plot the Cumulative Gain curve for binary classification tasks. |
 | [`_utils.binary_ks_curve`](../modules/generated/scikitplot.api._utils.binary_ks_curve.html#scikitplot.api._utils.binary_ks_curve "scikitplot.api._utils.binary_ks_curve") | Generate the data points necessary to plot the Kolmogorov-Smirnov (KS) curve for binary classification tasks. |
 | [`_utils.validate_plotting_kwargs`](../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html#scikitplot.api._utils.validate_plotting_kwargs "scikitplot.api._utils.validate_plotting_kwargs") | Validate the provided axes and figure or create new ones if needed. |
+
+## Figure Utilities[#](#figure-utilities "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`stack`](../modules/generated/scikitplot.api.stack.html#scikitplot.api.stack "scikitplot.api.stack") | Stack multiple matplotlib figures into a single combined figure. |

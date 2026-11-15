@@ -243,7 +243,8 @@ Class inheritance
 
 Class inheritance
 
-![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-a3d308c22933e509fd8f33675b88cc1b3263fc3d.png)
+![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-ba165a254de3585c1e565bd98fc600d7a90fdca2.png)
+
 
 
 
@@ -280,6 +281,12 @@ Class inheritance
 | [`capability_snapshot`](../modules/generated/scikitplot.corpus.capability_snapshot.html#scikitplot.corpus.capability_snapshot "scikitplot.corpus.capability_snapshot") | Return a read-only snapshot of the runtime corpus capabilities. |
 | [`distribution_version`](../modules/generated/scikitplot.corpus.distribution_version.html#scikitplot.corpus.distribution_version "scikitplot.corpus.distribution_version") | Return the installed version of a distribution, or `None` if absent. |
 | [`probe_backend`](../modules/generated/scikitplot.corpus.probe_backend.html#scikitplot.corpus.probe_backend "scikitplot.corpus.probe_backend") | Classify one backend's availability. |
+| [`CapabilityRegistry`](../modules/generated/scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry "scikitplot.corpus.CapabilityRegistry") | Explicit, side-effect-free registry for component readiness probes. |
+| [`CapabilityReport`](../modules/generated/scikitplot.corpus.CapabilityReport.html#scikitplot.corpus.CapabilityReport "scikitplot.corpus.CapabilityReport") | Read-only readiness state for one optional component. |
+| [`CapabilitySpec`](../modules/generated/scikitplot.corpus.CapabilitySpec.html#scikitplot.corpus.CapabilitySpec "scikitplot.corpus.CapabilitySpec") | Declarative probe specification for one optional component. |
+| [`capability_report`](../modules/generated/scikitplot.corpus.capability_report.html#scikitplot.corpus.capability_report "scikitplot.corpus.capability_report") | Probe one registered component capability. |
+| [`component_capabilities`](../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities "scikitplot.corpus.component_capabilities") | Return JSON-compatible readiness records for components. |
+| [`default_capability_registry`](../modules/generated/scikitplot.corpus.default_capability_registry.html#scikitplot.corpus.default_capability_registry "scikitplot.corpus.default_capability_registry") | Return the built-in component readiness registry. |
 
 ## Component Spec[#](#component-spec "Link to this heading")
 
@@ -328,7 +335,6 @@ Class inheritance
 | [`is_cjk_char`](../modules/generated/scikitplot.corpus.is_cjk_char.html#scikitplot.corpus.is_cjk_char "scikitplot.corpus.is_cjk_char") | Return `True` if **ch** is a CJK / Japanese / Korean character. |
 | [`is_rtl_char`](../modules/generated/scikitplot.corpus.is_rtl_char.html#scikitplot.corpus.is_rtl_char "scikitplot.corpus.is_rtl_char") | Return `True` if **ch** belongs to a right-to-left script. |
 | [`split_cjk_chars`](../modules/generated/scikitplot.corpus.split_cjk_chars.html#scikitplot.corpus.split_cjk_chars "scikitplot.corpus.split_cjk_chars") | Split **text** into individual CJK character tokens. |
-| [`_split_cjk_chars_legacy`](../modules/generated/scikitplot.corpus._split_cjk_chars_legacy.html#scikitplot.corpus._split_cjk_chars_legacy "scikitplot.corpus._split_cjk_chars_legacy") | Legacy codepoint-level CJK splitting (pre-Layer-0 implementation). |
 | [`MULTI_SCRIPT_SENTENCE_RE_PATTERN`](../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html#scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN "scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN") | str(object='') -> str str(bytes\_or\_buffer[, encoding[, errors]]) -> str |
 | [`ScriptSpan`](../modules/generated/scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan "scikitplot.corpus.ScriptSpan") | A contiguous span of text in a single Unicode script. |
 | [`ScriptSegmenter`](../modules/generated/scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter "scikitplot.corpus.ScriptSegmenter") | Segment NFC-normalised text into contiguous Unicode script spans. |
@@ -358,7 +364,6 @@ Class inheritance
 | [`SentenceBackend`](../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend "scikitplot.corpus.SentenceBackend") | Supported sentence-splitting backends. |
 | [`SentenceChunker`](../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker") | Split a document into sentence-level `Chunk` objects. |
 | [`SentenceChunkerConfig`](../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig "scikitplot.corpus.SentenceChunkerConfig") | Configuration for [`SentenceChunker`](../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker "scikitplot.corpus.SentenceChunker"). |
-| [`_validate_text_input`](../modules/generated/scikitplot.corpus._validate_text_input.html#scikitplot.corpus._validate_text_input "scikitplot.corpus._validate_text_input") | Validate chunker text input for NUL bytes and lone surrogates. |
 | [`StructureChunker`](../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker "scikitplot.corpus.StructureChunker") | Chunk Markdown or reStructuredText by its headings and code blocks. |
 | [`StructureChunkerConfig`](../modules/generated/scikitplot.corpus.StructureChunkerConfig.html#scikitplot.corpus.StructureChunkerConfig "scikitplot.corpus.StructureChunkerConfig") | Configuration for [`StructureChunker`](../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker "scikitplot.corpus.StructureChunker"). |
 | [`LemmatizationBackend`](../modules/generated/scikitplot.corpus.LemmatizationBackend.html#scikitplot.corpus.LemmatizationBackend "scikitplot.corpus.LemmatizationBackend") | Lemmatization backend. |
@@ -444,6 +449,9 @@ Class inheritance
 | [`GoogleDriveDownloader`](../modules/generated/scikitplot.corpus.GoogleDriveDownloader.html#scikitplot.corpus.GoogleDriveDownloader "scikitplot.corpus.GoogleDriveDownloader") | Google Drive share-link downloader. |
 | [`WebDownloader`](../modules/generated/scikitplot.corpus.WebDownloader.html#scikitplot.corpus.WebDownloader "scikitplot.corpus.WebDownloader") | Generic HTTP/HTTPS file downloader. |
 | [`YouTubeDownloader`](../modules/generated/scikitplot.corpus.YouTubeDownloader.html#scikitplot.corpus.YouTubeDownloader "scikitplot.corpus.YouTubeDownloader") | YouTube content downloader. |
+| [`DownloadPlan`](../modules/generated/scikitplot.corpus.DownloadPlan.html#scikitplot.corpus.DownloadPlan "scikitplot.corpus.DownloadPlan") | Side-effect-free dispatch plan for one URL. |
+| [`DownloadPolicy`](../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") | Transport/resource policy shared by Corpus downloaders. |
+| [`download_policy`](../modules/generated/scikitplot.corpus.download_policy.html#scikitplot.corpus.download_policy "scikitplot.corpus.download_policy") | Resolve an object, named preset or mapping without hidden global state. |
 
 ## Embeddings[#](#embeddings "Link to this heading")
 
@@ -507,6 +515,7 @@ Class inheritance
 | [`calibration_report`](../modules/generated/scikitplot.corpus.calibration_report.html#scikitplot.corpus.calibration_report "scikitplot.corpus.calibration_report") | Every calibration measure for one set of labelled probabilities. |
 | [`expected_calibration_error`](../modules/generated/scikitplot.corpus.expected_calibration_error.html#scikitplot.corpus.expected_calibration_error "scikitplot.corpus.expected_calibration_error") | Count-weighted mean absolute gap between prediction and observation. |
 | [`reliability_table`](../modules/generated/scikitplot.corpus.reliability_table.html#scikitplot.corpus.reliability_table "scikitplot.corpus.reliability_table") | Per-bin mean predicted probability against observed relevance frequency. |
+| [`CALIBRATION_STRATEGIES`](../modules/generated/scikitplot.corpus.CALIBRATION_STRATEGIES.html#scikitplot.corpus.CALIBRATION_STRATEGIES "scikitplot.corpus.CALIBRATION_STRATEGIES") | Built-in immutable sequence. |
 | [`anls_score`](../modules/generated/scikitplot.corpus.anls_score.html#scikitplot.corpus.anls_score "scikitplot.corpus.anls_score") | Average normalised Levenshtein similarity (ANLS). |
 | [`edit_similarity`](../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity "scikitplot.corpus.edit_similarity") | Return `1 - levenshtein(a, b) / max(len(a), len(b))`. |
 | [`edit_similarity_score`](../modules/generated/scikitplot.corpus.edit_similarity_score.html#scikitplot.corpus.edit_similarity_score "scikitplot.corpus.edit_similarity_score") | Mean normalised edit similarity between predictions and references. |
@@ -602,6 +611,7 @@ Class inheritance
 |  |  |
 | --- | --- |
 | [`DocIdScheme`](../modules/generated/scikitplot.corpus.DocIdScheme.html#scikitplot.corpus.DocIdScheme "scikitplot.corpus.DocIdScheme") | How a corpus build names its documents. |
+| [`IDENTITY_HEX_WIDTH`](../modules/generated/scikitplot.corpus.IDENTITY_HEX_WIDTH.html#scikitplot.corpus.IDENTITY_HEX_WIDTH "scikitplot.corpus.IDENTITY_HEX_WIDTH") | int([x]) -> integer int(x, base=10) -> integer |
 | [`IncompatibleSchemaError`](../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html#scikitplot.corpus.IncompatibleSchemaError "scikitplot.corpus.IncompatibleSchemaError") | Raised for data written by another generation of the document schema. |
 | [`UUID7Generator`](../modules/generated/scikitplot.corpus.UUID7Generator.html#scikitplot.corpus.UUID7Generator "scikitplot.corpus.UUID7Generator") | Monotonic generator of RFC 9562 UUID version 7 identifiers. |
 | [`assign_doc_ids`](../modules/generated/scikitplot.corpus.assign_doc_ids.html#scikitplot.corpus.assign_doc_ids "scikitplot.corpus.assign_doc_ids") | Return `documents` named by `scheme`, with parent links kept intact. |
@@ -708,6 +718,7 @@ Class inheritance
 | [`CustomReader`](../modules/generated/scikitplot.corpus.CustomReader.html#scikitplot.corpus.CustomReader "scikitplot.corpus.CustomReader") | Fully user-customizable reader for any file extension and resource type. |
 | [`normalize_extractor_output`](../modules/generated/scikitplot.corpus.normalize_extractor_output.html#scikitplot.corpus.normalize_extractor_output "scikitplot.corpus.normalize_extractor_output") | Coerce an extractor return value to a list of raw chunk dicts. |
 | [`ImageReader`](../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader "scikitplot.corpus.ImageReader") | OCR-based text extraction from raster image files. |
+| [`OfficeReader`](../modules/generated/scikitplot.corpus.OfficeReader.html#scikitplot.corpus.OfficeReader "scikitplot.corpus.OfficeReader") | Read office documents: Office Open XML and OpenDocument. |
 | [`PDFReader`](../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader "scikitplot.corpus.PDFReader") | PDF document reader with pdfminer.six → pypdf cascade. |
 | [`MarkdownReader`](../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader "scikitplot.corpus.MarkdownReader") | Markdown document reader. |
 | [`ReSTReader`](../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader "scikitplot.corpus.ReSTReader") | reStructuredText document reader. |
@@ -717,6 +728,7 @@ Class inheritance
 | [`YouTubeReader`](../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader") | Extract the transcript of a YouTube video using `youtube-transcript-api`. |
 | [`TEIReader`](../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader "scikitplot.corpus.TEIReader") | TEI/XML document reader with dramatic structure extraction. |
 | [`XMLReader`](../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader "scikitplot.corpus.XMLReader") | Generic XML document reader with configurable XPath. |
+| [`ArchiveBudgetError`](../modules/generated/scikitplot.corpus.ArchiveBudgetError.html#scikitplot.corpus.ArchiveBudgetError "scikitplot.corpus.ArchiveBudgetError") | Raised when the members of an archive tree inflate past its extraction budget. |
 | [`ArchiveNestingError`](../modules/generated/scikitplot.corpus.ArchiveNestingError.html#scikitplot.corpus.ArchiveNestingError "scikitplot.corpus.ArchiveNestingError") | Raised when archive nesting exceeds `max_depth` (nested-archive bomb). |
 | [`ZipReader`](../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader "scikitplot.corpus.ZipReader") | Generic ZIP archive reader — dispatches each member to its natural reader. |
 
@@ -795,6 +807,29 @@ Class inheritance
 | [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus") | Materialized operational view of a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan"). |
 | [`RuntimePolicy`](../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") | Execution-boundary policy applied by [`RuntimeCorpus`](../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"). |
 | [`materialize_plan`](../modules/generated/scikitplot.corpus.materialize_plan.html#scikitplot.corpus.materialize_plan "scikitplot.corpus.materialize_plan") | Resolve a validated [`CorpusPlan`](../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan "scikitplot.corpus.CorpusPlan") into runtime components. |
+| [`runtime_policy`](../modules/generated/scikitplot.corpus.runtime_policy.html#scikitplot.corpus.runtime_policy "scikitplot.corpus.runtime_policy") | Resolve a runtime policy object, preset name, or mapping. |
+| [`CorpusPolicyBundle`](../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle "scikitplot.corpus.CorpusPolicyBundle") | Typed composition of the independent Corpus policy dimensions. |
+| [`corpus_policy_bundle`](../modules/generated/scikitplot.corpus.corpus_policy_bundle.html#scikitplot.corpus.corpus_policy_bundle "scikitplot.corpus.corpus_policy_bundle") | Resolve a policy bundle object, named preset, or mapping. |
+
+## Optional Backend Policy[#](#optional-backend-policy "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`BackendCandidate`](../modules/generated/scikitplot.corpus.BackendCandidate.html#scikitplot.corpus.BackendCandidate "scikitplot.corpus.BackendCandidate") | One lazy backend attempt. |
+| [`BackendOutcome`](../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome "scikitplot.corpus.BackendOutcome") | Structured, serialisable outcome from [`run_backend_chain`](../modules/generated/scikitplot.corpus.run_backend_chain.html#scikitplot.corpus.run_backend_chain "scikitplot.corpus.run_backend_chain"). |
+| [`BackendPlan`](../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan "scikitplot.corpus.BackendPlan") | Side-effect-free preflight of candidate ordering and policy eligibility. |
+| [`BackendPolicy`](../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") | Policy for selecting and exhausting optional backend chains. |
+| [`BackendSkip`](../modules/generated/scikitplot.corpus.BackendSkip.html#scikitplot.corpus.BackendSkip "scikitplot.corpus.BackendSkip") | Why a backend was not executed under the resolved policy. |
+| [`BackendStatus`](../modules/generated/scikitplot.corpus.BackendStatus.html#scikitplot.corpus.BackendStatus "scikitplot.corpus.BackendStatus") | Outcome of one ordered backend operation. |
+| [`backend_policy`](../modules/generated/scikitplot.corpus.backend_policy.html#scikitplot.corpus.backend_policy "scikitplot.corpus.backend_policy") | Resolve an object, named preset or mapping without hidden global state. |
+| [`plan_backend_chain`](../modules/generated/scikitplot.corpus.plan_backend_chain.html#scikitplot.corpus.plan_backend_chain "scikitplot.corpus.plan_backend_chain") | Resolve backend order/readiness without executing a backend. |
+| [`run_backend_chain`](../modules/generated/scikitplot.corpus.run_backend_chain.html#scikitplot.corpus.run_backend_chain "scikitplot.corpus.run_backend_chain") | Try **candidates** in order and return a structured outcome. |
+| [`ASRBackend`](../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") | User-defined ASR backend adapter. |
+| [`ASRRequest`](../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus.ASRRequest") | Stable immutable request passed to user-provided ASR backends. |
+| [`WHISPER_MODELS`](../modules/generated/scikitplot.corpus.WHISPER_MODELS.html#scikitplot.corpus.WHISPER_MODELS "scikitplot.corpus.WHISPER_MODELS") | Built-in immutable sequence. |
+| [`asr_segment_metadata`](../modules/generated/scikitplot.corpus.asr_segment_metadata.html#scikitplot.corpus.asr_segment_metadata "scikitplot.corpus.asr_segment_metadata") | Return user/backend metadata without allowing core-field shadowing. |
+| [`plan_whisper_backends`](../modules/generated/scikitplot.corpus.plan_whisper_backends.html#scikitplot.corpus.plan_whisper_backends "scikitplot.corpus.plan_whisper_backends") | Plan the exact ASR chain without importing/loading/running a model. |
+| [`transcribe_whisper`](../modules/generated/scikitplot.corpus.transcribe_whisper.html#scikitplot.corpus.transcribe_whisper "scikitplot.corpus.transcribe_whisper") | Transcribe media with a shared, policy-driven ASR backend chain. |
 
 ## Samples for Corpus Usage[#](#samples-for-corpus-usage "Link to this heading")
 

@@ -11,10 +11,10 @@ reported as degraded.
 
 This example shows the public pieces that keep those states separate:
 
-* `component_capabilities` for side-effect-free readiness inspection,
+* [`component_capabilities`](../../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities "scikitplot.corpus.component_capabilities") for side-effect-free readiness inspection,
 * [`AudioReader.plan_asr_backends`](../../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader.plan_asr_backends "scikitplot.corpus.AudioReader.plan_asr_backends") for exact preflight selection,
-* `BackendPolicy` for ordered/offline/strict selection policy,
-* `ASRBackend` for a user-provided speech recognizer,
+* [`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") for ordered/offline/strict selection policy,
+* [`ASRBackend`](../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") for a user-provided speech recognizer,
 * [`DocumentReader.backend_reports`](../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.backend_reports "scikitplot.corpus.DocumentReader.backend_reports") for structured runtime evidence.
 
 The executable path uses a tiny synthetic local backend. It performs no
@@ -68,7 +68,7 @@ asr:openai-whisper {'installed': True, 'assets_ready': None, 'ready': None, 'sel
 
 ## Provide a user-side ASR backend[#](#provide-a-user-side-asr-backend "Link to this heading")
 
-Custom backends receive one immutable `ASRRequest`, keeping the
+Custom backends receive one immutable [`ASRRequest`](../../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus.ASRRequest"), keeping the
 extension signature stable as future request metadata is added.
 
 ```

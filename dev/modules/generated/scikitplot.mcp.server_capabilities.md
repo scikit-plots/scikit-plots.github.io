@@ -1,6 +1,6 @@
 # server\_capabilities[#](#server-capabilities "Link to this heading")
 
-scikitplot.mcp.server\_capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/mcp/_capabilities.py#L170)[#](#scikitplot.mcp.server_capabilities "Link to this definition")
+scikitplot.mcp.server\_capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/mcp/_capabilities.py#L170)[#](#scikitplot.mcp.server_capabilities "Link to this definition")
 :   Return the ****static / potential**** tool/resource inventory, without importing
     the MCP SDK — safe on any interpreter, including the Legacy Retrieval tier.
 

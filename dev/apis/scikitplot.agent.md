@@ -150,3 +150,13 @@ I1-I9 are listed in `maintenances/agent/todo/todo.md`.
 | [`ErrorCode`](../modules/generated/scikitplot.agent.ErrorCode.html#scikitplot.agent.ErrorCode "scikitplot.agent.ErrorCode") | What went wrong, as a stable code a caller may branch on. |
 | [`SchemaError`](../modules/generated/scikitplot.agent.SchemaError.html#scikitplot.agent.SchemaError "scikitplot.agent.SchemaError") | A tool's parameter schema uses something outside the supported subset. |
 | [`StateError`](../modules/generated/scikitplot.agent.StateError.html#scikitplot.agent.StateError "scikitplot.agent.StateError") | A saved run state is malformed, or of a schema version not supported. |
+
+## Schemas and canonical values[#](#schemas-and-canonical-values "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`check_schema`](../modules/generated/scikitplot.agent.check_schema.html#scikitplot.agent.check_schema "scikitplot.agent.check_schema") | Check that a tool's argument schema is in the supported subset. |
+| [`validate`](../modules/generated/scikitplot.agent.validate.html#scikitplot.agent.validate "scikitplot.agent.validate") | Return the reasons `instance` does not match `schema`. |
+| [`canonical_json`](../modules/generated/scikitplot.agent.canonical_json.html#scikitplot.agent.canonical_json "scikitplot.agent.canonical_json") | Return the canonical JSON text of a plain value. |
+| [`digest`](../modules/generated/scikitplot.agent.digest.html#scikitplot.agent.digest "scikitplot.agent.digest") | Return the SHA-256 of a plain value's canonical JSON, as 64 hex digits. |
+| [`plain`](../modules/generated/scikitplot.agent.plain.html#scikitplot.agent.plain "scikitplot.agent.plain") | Return `value` as a plain JSON value, or raise. |

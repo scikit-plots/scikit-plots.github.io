@@ -1,6 +1,6 @@
 # CutResult[#](#cutresult "Link to this heading")
 
-class scikitplot.corpus.CutResult(**k**, **mode**, **evidence**, **clamped**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult "Link to this definition")
+class scikitplot.corpus.CutResult(**k**, **mode**, **evidence**, **clamped**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult "Link to this definition")
 :   Where a list was cut, and why.
 
     Parameters:
@@ -23,10 +23,10 @@ class scikitplot.corpus.CutResult(**k**, **mode**, **evidence**, **clamped**)[[s
         * ****evidence**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") **|** **None**)
         * ****clamped**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
-    clamped: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.clamped "Link to this definition")
+    clamped: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.clamped "Link to this definition")
 
-    evidence: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.evidence "Link to this definition")
+    evidence: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.evidence "Link to this definition")
 
-    k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.k "Link to this definition")
+    k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.k "Link to this definition")
 
-    mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.mode "Link to this definition")
+    mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L55)[#](#scikitplot.corpus.CutResult.mode "Link to this definition")

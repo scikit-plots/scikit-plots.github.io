@@ -34,12 +34,12 @@ Quiskstart Template: Beginner workflow demo
 
 ```
 
-CLI
+CLI (a shell command, not Python):
 
 ```
->>> # Walk upward from `start` until a directory containing any marker is found.
->>> # export SCIKITPLOT_PROJECT_MARKERS='[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'
->>> python -m scikitplot.mlflow --profile local --open-ui-seconds 5
+# Walk upward from `start` until a directory containing any marker is found.
+# export SCIKITPLOT_PROJECT_MARKERS='[".git","pyproject.toml","README.txt","configs/mlflow.toml"]'
+python -m scikitplot.mlflow --profile local --open-ui-seconds 5
 
 ```
 Go BackOpen In Tab

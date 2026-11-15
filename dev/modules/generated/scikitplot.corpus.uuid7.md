@@ -1,6 +1,6 @@
 # uuid7[#](#uuid7 "Link to this heading")
 
-scikitplot.corpus.uuid7()[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_identity.py#L325)[#](#scikitplot.corpus.uuid7 "Link to this definition")
+scikitplot.corpus.uuid7()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_identity.py#L325)[#](#scikitplot.corpus.uuid7 "Link to this definition")
 :   Return a new RFC 9562 UUID version 7 from this process’s generator.
 
     Returns:

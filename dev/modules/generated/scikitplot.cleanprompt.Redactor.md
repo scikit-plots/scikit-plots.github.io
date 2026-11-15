@@ -1,6 +1,6 @@
 # Redactor[#](#redactor "Link to this heading")
 
-class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_engine.py#L555)[#](#scikitplot.cleanprompt.Redactor "Link to this definition")
+class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_engine.py#L555)[#](#scikitplot.cleanprompt.Redactor "Link to this definition")
 :   Reusable, stateless redactor.
 
     Parameters:
@@ -52,7 +52,7 @@ class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[sourc
     policy[#](#scikitplot.cleanprompt.Redactor.policy "Link to this definition")
     :   !! processed by numpydoc !!
 
-    redact(**text**, **extra\_terms=None**, **extra\_kind='CUSTOM'**, **word\_boundary=False**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_engine.py#L611)[#](#scikitplot.cleanprompt.Redactor.redact "Link to this definition")
+    redact(**text**, **extra\_terms=None**, **extra\_kind='CUSTOM'**, **word\_boundary=False**, **seed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_engine.py#L611)[#](#scikitplot.cleanprompt.Redactor.redact "Link to this definition")
     :   Replace sensitive values in `text` with stable placeholders.
 
         Parameters:
@@ -99,10 +99,10 @@ class scikitplot.cleanprompt.Redactor(**policy=None**, **registry=None**)[[sourc
             * ****extra\_terms**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
             * ****extra\_kind**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****word\_boundary**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
-            * ****seed**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[****Entry****]** **|** **None**)
+            * ****seed**** ([**Iterable**](https://docs.python.org/3/library/typing.html#typing.Iterable "(in Python v3.15)")**[**[**Entry**](scikitplot.cleanprompt.Entry.html#scikitplot.cleanprompt.Entry "scikitplot.cleanprompt._types.Entry")**]** **|** **None**)
 
         Return type:
-        :   **RedactionResult**
+        :   [**RedactionResult**](scikitplot.cleanprompt.RedactionResult.html#scikitplot.cleanprompt.RedactionResult "scikitplot.cleanprompt._types.RedactionResult")
 
         Notes
 

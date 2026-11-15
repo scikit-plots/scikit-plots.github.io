@@ -71,9 +71,9 @@ Do not collapse all policy into one `strict` flag:
 * [`RuntimePolicy`](../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") controls source execution boundaries such as URL
   permission. It provides `offline` and `networked` presets and strict
   mapping validation.
-* `DownloadPolicy` controls transfer security/resource budgets such as
+* [`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") controls transfer security/resource budgets such as
   TLS verification, SSRF blocking, redirects, retries and maximum bytes.
-* `BackendPolicy` controls optional backend selection/fallback/readiness.
+* [`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") controls optional backend selection/fallback/readiness.
 * [`ErrorPolicy`](../../modules/generated/scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus.ErrorPolicy") describes per-document pipeline error behavior.
 * reader-specific options still own format semantics.
 
@@ -115,7 +115,7 @@ download_policy = DownloadPolicy.constrained()
 ## Compose without collapsing policy dimensions[#](#compose-without-collapsing-policy-dimensions "Link to this heading")
 
 When the same policy family is reused across readers, builders and runtimes,
-`CorpusPolicyBundle` provides a typed convenience layer. It ****composes****
+[`CorpusPolicyBundle`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle "scikitplot.corpus.CorpusPolicyBundle") provides a typed convenience layer. It ****composes****
 the existing policies; it does not replace them with a second execution engine
 or a global `strict` switch.
 
@@ -139,9 +139,9 @@ error_policy = policies.errors
 ```
 
 Built-in bundles are intentionally few and orthogonal. In Python they are
-constructed with `CorpusPolicyBundle.default`,
-`CorpusPolicyBundle.safe_local`, `CorpusPolicyBundle.strict_local`,
-`CorpusPolicyBundle.networked`, and `CorpusPolicyBundle.docs_ci`;
+constructed with [`CorpusPolicyBundle.default`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.default "scikitplot.corpus.CorpusPolicyBundle.default"),
+[`CorpusPolicyBundle.safe_local`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.safe_local "scikitplot.corpus.CorpusPolicyBundle.safe_local"), [`CorpusPolicyBundle.strict_local`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.strict_local "scikitplot.corpus.CorpusPolicyBundle.strict_local"),
+[`CorpusPolicyBundle.networked`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.networked "scikitplot.corpus.CorpusPolicyBundle.networked"), and [`CorpusPolicyBundle.docs_ci`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle.docs_ci "scikitplot.corpus.CorpusPolicyBundle.docs_ci");
 the mapping/preset spellings use hyphens where appropriate.
 
 `default`
@@ -188,7 +188,7 @@ PDF parser, OCR engine, ASR engine and text decoder do not share identical
 fallback semantics. Convenience helpers therefore target only the seams that
 actually own those policies.
 
-For configuration files, [`RuntimePolicy`](../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy"), `BackendPolicy`,
-`DownloadPolicy` and `CorpusPolicyBundle` all reject unknown
+For configuration files, [`RuntimePolicy`](../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy"), [`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy"),
+[`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") and [`CorpusPolicyBundle`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle "scikitplot.corpus.CorpusPolicyBundle") all reject unknown
 keys. Security booleans must be real booleans; strings such as `"false"` are
 not accepted as truthy stand-ins.

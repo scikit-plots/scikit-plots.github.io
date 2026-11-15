@@ -1,6 +1,6 @@
 # LiteralDetector[#](#literaldetector "Link to this heading")
 
-class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **name=None**, **priority=75**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L345)[#](#scikitplot.cleanprompt.LiteralDetector "Link to this definition")
+class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **name=None**, **priority=75**, **word\_boundary=False**, **ignore\_case=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L345)[#](#scikitplot.cleanprompt.LiteralDetector "Link to this definition")
 :   Detector for exact strings the caller names.
 
     Parameters:
@@ -75,7 +75,7 @@ class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **nam
     confidence[#](#scikitplot.cleanprompt.LiteralDetector.confidence "Link to this definition")
     :   !! processed by numpydoc !!
 
-    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_detectors.py#L450)[#](#scikitplot.cleanprompt.LiteralDetector.detect "Link to this definition")
+    detect(**text**, **policy**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_detectors.py#L450)[#](#scikitplot.cleanprompt.LiteralDetector.detect "Link to this definition")
     :   Yield one span per literal occurrence.
 
         Parameters:
@@ -95,7 +95,7 @@ class scikitplot.cleanprompt.LiteralDetector(**terms**, **kind='CUSTOM'**, **nam
             * ****policy**** ([**RedactionPolicy**](scikitplot.cleanprompt.RedactionPolicy.html#scikitplot.cleanprompt.RedactionPolicy "scikitplot.cleanprompt._policy.RedactionPolicy"))
 
         Return type:
-        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[**Span**]
+        :   [**Iterator**](https://docs.python.org/3/library/typing.html#typing.Iterator "(in Python v3.15)")[[**Span**](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span")]
 
     ignore\_case[#](#scikitplot.cleanprompt.LiteralDetector.ignore_case "Link to this definition")
     :   !! processed by numpydoc !!

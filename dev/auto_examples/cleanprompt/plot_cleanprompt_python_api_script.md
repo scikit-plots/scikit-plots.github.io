@@ -480,7 +480,7 @@ suggest: Northwind Logistics
 
 ### 12. Keeping values out of your logs[#](#keeping-values-out-of-your-logs "Link to this heading")
 
-`redacting` installs a filter that replaces known literal secrets in
+[`redacting`](../../modules/generated/scikitplot.cleanprompt.redacting.html#scikitplot.cleanprompt.redacting "scikitplot.cleanprompt.redacting") installs a filter that replaces known literal secrets in
 every record passing through a logger. It is a last line of defence for
 strings you hold — an API token, a passphrase — and it is deliberately
 literal: it does not pattern-match, so it cannot be relied on for values you
@@ -509,7 +509,7 @@ the named secret is gone: True
 
 ### 13. Reports as data[#](#reports-as-data "Link to this heading")
 
-`as_dict` renders any result object as JSON-safe data, which is what
+[`as_dict`](../../modules/generated/scikitplot.cleanprompt.as_dict.html#scikitplot.cleanprompt.as_dict "scikitplot.cleanprompt.as_dict") renders any result object as JSON-safe data, which is what
 the `--format json` output of the CLI is built from. Note what it does
 **not** contain: the values.
 

@@ -5,7 +5,7 @@ to download the full example code or to run this example in your browser via Jup
 # Compose Corpus policies without hiding boundaries[#](#compose-corpus-policies-without-hiding-boundaries "Link to this heading")
 
 This example keeps the four policy dimensions separate while using
-`CorpusPolicyBundle` as a reusable configuration
+[`CorpusPolicyBundle`](../../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle "scikitplot.corpus.CorpusPolicyBundle") as a reusable configuration
 container. It performs no network request and loads no optional model.
 
 ```

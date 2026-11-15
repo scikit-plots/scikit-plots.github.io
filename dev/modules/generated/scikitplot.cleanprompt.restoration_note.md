@@ -1,6 +1,6 @@
 # restoration\_note[#](#restoration-note "Link to this heading")
 
-scikitplot.cleanprompt.restoration\_note(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/cleanprompt/_render.py#L205)[#](#scikitplot.cleanprompt.restoration_note "Link to this definition")
+scikitplot.cleanprompt.restoration\_note(**result**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_render.py#L205)[#](#scikitplot.cleanprompt.restoration_note "Link to this definition")
 :   Return a one-line, secret-free description of a restoration.
 
     Parameters:
@@ -13,7 +13,7 @@ scikitplot.cleanprompt.restoration\_note(**result**)[[source]](https://github.co
             secrets, so naming them is safe and actionable.
 
     Parameters:
-    :   ****result**** (**RestorationResult**)
+    :   ****result**** ([**RestorationResult**](scikitplot.cleanprompt.RestorationResult.html#scikitplot.cleanprompt.RestorationResult "scikitplot.cleanprompt._types.RestorationResult"))
 
     Return type:
     :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")

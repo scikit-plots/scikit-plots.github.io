@@ -37,11 +37,11 @@ input
 
 `CorpusBuilder._make_downloader`
 :   One construction seam for downloadable URLs. It delegates specialist
-    routing to [`AnyDownloader`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader "scikitplot.corpus.AnyDownloader"), consumes `DownloadPolicy`, and can
+    routing to [`AnyDownloader`](../../modules/generated/scikitplot.corpus.AnyDownloader.html#scikitplot.corpus.AnyDownloader "scikitplot.corpus.AnyDownloader"), consumes [`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy"), and can
     be replaced through `downloader_factory`.
 
 `plan_backend_chain` / `run_backend_chain`
-:   Share one selection algorithm. `BackendPlan` exposes side-effect-free
+:   Share one selection algorithm. [`BackendPlan`](../../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan "scikitplot.corpus.BackendPlan") exposes side-effect-free
     preflight ordering/readiness; runtime adds attempt/failure/active evidence.
     Readers still decide what a valid result means and what failure should
     ultimately do.
@@ -71,8 +71,8 @@ reader owns **when** fallback is correct.
 Corpus deliberately does not create one mega `strict` switch:
 
 * [`RuntimePolicy`](../../modules/generated/scikitplot.corpus.RuntimePolicy.html#scikitplot.corpus.RuntimePolicy "scikitplot.corpus.RuntimePolicy") decides whether URL sources may execute;
-* `DownloadPolicy` owns transfer security/resource budgets;
-* `BackendPolicy` owns optional implementation selection/fallback;
+* [`DownloadPolicy`](../../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy "scikitplot.corpus.DownloadPolicy") owns transfer security/resource budgets;
+* [`BackendPolicy`](../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy "scikitplot.corpus.BackendPolicy") owns optional implementation selection/fallback;
 * [`ErrorPolicy`](../../modules/generated/scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus.ErrorPolicy") owns per-document pipeline failure behavior.
 
 Each layer has presets/config validation, but changing one does not silently

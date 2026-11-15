@@ -1,6 +1,6 @@
 # PolicyError[#](#policyerror "Link to this heading")
 
-exception scikitplot.feature\_selection.PolicyError[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/feature_selection/_errors.py#L41)[#](#scikitplot.feature_selection.PolicyError "Link to this definition")
+exception scikitplot.feature\_selection.PolicyError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/feature_selection/_errors.py#L41)[#](#scikitplot.feature_selection.PolicyError "Link to this definition")
 :   A policy or configuration document is off contract (unknown key, wrong type, bad range).
 
     Annotation:

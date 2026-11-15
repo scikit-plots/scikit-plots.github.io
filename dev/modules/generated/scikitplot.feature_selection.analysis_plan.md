@@ -1,6 +1,6 @@
 # analysis\_plan[#](#analysis-plan "Link to this heading")
 
-scikitplot.feature\_selection.analysis\_plan(**schema**, **target=None**, **\***, **rules=None**, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/feature_selection/_analysis.py#L184)[#](#scikitplot.feature_selection.analysis_plan "Link to this definition")
+scikitplot.feature\_selection.analysis\_plan(**schema**, **target=None**, **\***, **rules=None**, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/feature_selection/_analysis.py#L184)[#](#scikitplot.feature_selection.analysis_plan "Link to this definition")
 :   Route every feature to the plots, summaries and tests that fit its kind.
 
     Parameters:

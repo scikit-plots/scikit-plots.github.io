@@ -1,24 +1,36 @@
 # DefaultFilter[#](#defaultfilter "Link to this heading")
 
-class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L528)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
+class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**, **word\_count='script'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L628)[#](#scikitplot.corpus.DefaultFilter "Link to this definition")
 :   Standard noise filter ported and improved from remarx’s `include_sentence`.
 
     Rejects a document when ****any**** of the following is true:
 
     1. The text contains no Unicode letter characters (punctuation/digit-only).
-    2. The whitespace-delimited token count is less than `min_words`.
+    2. The word count is less than `min_words`.
     3. The character count (after stripping) is less than `min_chars`.
 
     Parameters:
     :   ****min\_words****int, optional
-        :   Minimum number of whitespace-delimited tokens. Default: `3`.
+        :   Minimum number of words, counted as `word_count` says. Default:
+            `3`.
 
         ****min\_chars****int, optional
         :   Minimum number of non-whitespace characters. Default: `10`.
 
+        ****word\_count****{“script”, “whitespace”} or callable, optional
+        :   How words are counted. `"script"` uses `_count_words`: the
+            whitespace tokens of scripts that separate words with spaces, and
+            one word per character of Chinese, Japanese, Thai, Lao, Khmer,
+            Myanmar and Tibetan, which do not. `"whitespace"` counts
+            `str.split()` tokens, so a document in those scripts counts as
+            one word and is dropped. A callable `word_count(text) -> int`
+            counts in its own way (a word segmenter, for example). Default:
+            `"script"`.
+
     Parameters:
     :   * ****min\_words**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****min\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****word\_count**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**]**)
 
     Notes
 
@@ -42,7 +54,7 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     ```
     Go BackOpen In Tab
 
-    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/f7759b55/scikitplot/corpus/_base.py#L585)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
+    include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L724)[#](#scikitplot.corpus.DefaultFilter.include "Link to this definition")
     :   Return `True` if `doc` passes all noise checks.
 
         Parameters:
@@ -67,3 +79,5 @@ class scikitplot.corpus.DefaultFilter(**min\_words=3**, **min\_chars=10**)[[sour
     min\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.DefaultFilter.min_chars "Link to this definition")
 
     min\_words: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.corpus.DefaultFilter.min_words "Link to this definition")
+
+    word\_count: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [Callable](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][#](#scikitplot.corpus.DefaultFilter.word_count "Link to this definition")

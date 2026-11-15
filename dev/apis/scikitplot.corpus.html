@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:32:55Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:06:24Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"apis/scikitplot.corpus","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/colors.css?v=68bd592b" />
@@ -87,7 +87,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -110,7 +110,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="to_langchain_documents" href="../modules/generated/scikitplot.corpus.to_langchain_documents.html" />
-    <link rel="prev" title="citation" href="../modules/generated/scikitplot.config.citation.html" />
+    <link rel="prev" title="show_config" href="../modules/generated/scikitplot.config.show_config.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
@@ -707,6 +707,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.ErrorCode.html">ErrorCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.SchemaError.html">SchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.StateError.html">StateError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.check_schema.html">check_schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.validate.html">validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.canonical_json.html">canonical_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.digest.html">digest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.agent.plain.html">plain</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.annoy.html">scikitplot.annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -742,6 +747,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.cumulative_gain_curve.html">cumulative_gain_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.binary_ks_curve.html">binary_ks_curve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api._utils.validate_plotting_kwargs.html">validate_plotting_kwargs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.api.stack.html">stack</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.cleanprompt.html">scikitplot.cleanprompt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -772,6 +778,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.describe_outcome.html">describe_outcome</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.diagnose.html">diagnose</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.suggest_terms.html">suggest_terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CoverageRow.html">CoverageRow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.coverage_matrix.html">coverage_matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Redactor.html">Redactor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.reserved_label_spans.html">reserved_label_spans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.resolve_spans.html">resolve_spans</a></li>
@@ -786,6 +794,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.describe_engines.html">describe_engines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.resolve_engine.html">resolve_engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.trim_entity_span.html">trim_entity_span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.EngineReadiness.html">EngineReadiness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.engine_readiness.html">engine_readiness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FormatSpec.html">FormatSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Guard.html">Guard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.StreamDecoder.html">StreamDecoder</a></li>
@@ -804,6 +814,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.spacy_detector.html">spacy_detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.NltkDetector.html">NltkDetector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.nltk_detector.html">nltk_detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.corpora_status.html">corpora_status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FieldSpec.html">FieldSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PackError.html">PackError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PackSpec.html">PackSpec</a></li>
@@ -812,11 +823,15 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.default_patterns.html">default_patterns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.get_pattern.html">get_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.luhn_ok.html">luhn_ok</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternRiskWarning.html">PatternRiskWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.analyse_pattern.html">analyse_pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CleanPlan.html">CleanPlan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.FluentCleanPrompt.html">FluentCleanPrompt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_LIMITS.html">DEFAULT_LIMITS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_POLICY.html">DEFAULT_POLICY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DEFAULT_TAG_STYLE.html">DEFAULT_TAG_STYLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.ACTIONS.html">ACTIONS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Action.html">Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Limits.html">Limits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.OverlapStrategy.html">OverlapStrategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionPolicy.html">RedactionPolicy</a></li>
@@ -832,12 +847,50 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Vault.html">Vault</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.decrypt_mapping.html">decrypt_mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.encrypt_mapping.html">encrypt_mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.new_key.html">new_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Entry.html">Entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RedactionResult.html">RedactionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationResult.html">RestorationResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Span.html">Span</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.as_dict.html">as_dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CleanPromptError.html">CleanPromptError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.BlockedError.html">BlockedError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.CapabilityError.html">CapabilityError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.DetectorError.html">DetectorError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LeakError.html">LeakError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LimitExceededError.html">LimitExceededError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.OverlapError.html">OverlapError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternError.html">PatternError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PatternTimeoutError.html">PatternTimeoutError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.PolicyError.html">PolicyError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.RestorationError.html">RestorationError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html">AUDIT_LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.LOGGER_NAME.html">LOGGER_NAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.JsonFormatter.html">JsonFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SecretFilter.html">SecretFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.VaultScrubber.html">VaultScrubber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.audit.html">audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.configure_logging.html">configure_logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.get_logger.html">get_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.log_level_from_env.html">log_level_from_env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redacting.html">redacting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.Catalog.html">Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.builtin_catalog.html">builtin_catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.SurrogateSet.html">SurrogateSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.load_surrogate_set.html">load_surrogate_set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.redact_documents.html">redact_documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cleanprompt.register_corpus_readers.html">register_corpus_readers</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.config.html">scikitplot.config</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__bibtex__.html">__bibtex__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.__citation__.html">__citation__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.citation.html">citation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.config_context.html">config_context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.get_config.html">get_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.set_config.html">set_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.config.show_config.html">show_config</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">scikitplot.corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -881,6 +934,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.distribution_version.html">distribution_version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.probe_backend.html">probe_backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityRegistry.html">CapabilityRegistry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityReport.html">CapabilityReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilitySpec.html">CapabilitySpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.capability_report.html">capability_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.component_capabilities.html">component_capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.default_capability_registry.html">default_capability_registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentCatalog.html">ComponentCatalog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentSpec.html">ComponentSpec</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DiscoveryOutcome.html">DiscoveryOutcome</a></li>
@@ -919,7 +978,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_cjk_char.html">is_cjk_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.is_rtl_char.html">is_rtl_char</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.split_cjk_chars.html">split_cjk_chars</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._split_cjk_chars_legacy.html">_split_cjk_chars_legacy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html">MULTI_SCRIPT_SENTENCE_RE_PATTERN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSpan.html">ScriptSpan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSegmenter.html">ScriptSegmenter</a></li>
@@ -949,7 +1007,6 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html">SentenceBackend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html">SentenceChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html">SentenceChunkerConfig</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus._validate_text_input.html">_validate_text_input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StructureChunker.html">StructureChunker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.StructureChunkerConfig.html">StructureChunkerConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.LemmatizationBackend.html">LemmatizationBackend</a></li>
@@ -996,6 +1053,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.GoogleDriveDownloader.html">GoogleDriveDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebDownloader.html">WebDownloader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeDownloader.html">YouTubeDownloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPlan.html">DownloadPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPolicy.html">DownloadPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.download_policy.html">download_policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CachePolicy.html">CachePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CacheStatus.html">CacheStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CachedEmbeddings.html">CachedEmbeddings</a></li>
@@ -1029,6 +1089,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.calibration_report.html">calibration_report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.expected_calibration_error.html">expected_calibration_error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.reliability_table.html">reliability_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CALIBRATION_STRATEGIES.html">CALIBRATION_STRATEGIES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.anls_score.html">anls_score</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity.html">edit_similarity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity_score.html">edit_similarity_score</a></li>
@@ -1087,6 +1148,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IndexGeneration.html">IndexGeneration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.derive_generation.html">derive_generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.DocIdScheme.html">DocIdScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IDENTITY_HEX_WIDTH.html">IDENTITY_HEX_WIDTH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html">IncompatibleSchemaError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.UUID7Generator.html">UUID7Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.assign_doc_ids.html">assign_doc_ids</a></li>
@@ -1134,6 +1196,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html">PDFReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
@@ -1143,6 +1206,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html">TEIReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html">XMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html">ZipReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
@@ -1191,6 +1255,24 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RuntimeCorpus.html">RuntimeCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.RuntimePolicy.html">RuntimePolicy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.materialize_plan.html">materialize_plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.runtime_policy.html">runtime_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html">CorpusPolicyBundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.corpus_policy_bundle.html">corpus_policy_bundle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendCandidate.html">BackendCandidate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendOutcome.html">BackendOutcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPlan.html">BackendPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPolicy.html">BackendPolicy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendSkip.html">BackendSkip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendStatus.html">BackendStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.backend_policy.html">backend_policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_backend_chain.html">plan_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.run_backend_chain.html">run_backend_chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRBackend.html">ASRBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRRequest.html">ASRRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.WHISPER_MODELS.html">WHISPER_MODELS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.asr_segment_metadata.html">asr_segment_metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_whisper_backends.html">plan_whisper_backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.transcribe_whisper.html">transcribe_whisper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.HAMLET_TEXT.html">HAMLET_TEXT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.SectionType.html">SectionType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkingStrategy.html">ChunkingStrategy</a></li>
@@ -1441,8 +1523,27 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.exceptions.html">scikitplot.exceptions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotException.html">ScikitplotException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.CommandError.html">CommandError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ExecutionException.html">ExecutionException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.InvalidUrlException.html">InvalidUrlException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.MissingConfigException.html">MissingConfigException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTracingException.html">ScikitplotTracingException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataException.html">ScikitplotTraceDataException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataCorrupted.html">ScikitplotTraceDataCorrupted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotTraceDataNotFound.html">ScikitplotTraceDataNotFound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.AxisError.html">AxisError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.DTypePromotionError.html">DTypePromotionError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.TooHardError.html">TooHardError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotWarning.html">ScikitplotWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotUserWarning.html">ScikitplotUserWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotDeprecationWarning.html">ScikitplotDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotPendingDeprecationWarning.html">ScikitplotPendingDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ScikitplotBackwardsIncompatibleChangeWarning.html">ScikitplotBackwardsIncompatibleChangeWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.DuplicateRepresentationWarning.html">DuplicateRepresentationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ComplexWarning.html">ComplexWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.ModuleDeprecationWarning.html">ModuleDeprecationWarning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.RankWarning.html">RankWarning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.exceptions.VisibleDeprecationWarning.html">VisibleDeprecationWarning</a></li>
 </ul>
 </details></li>
@@ -1501,6 +1602,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.impute.html">scikitplot.impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute._ann.ANNImputer.html">ANNImputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute.MissingIndicator.html">MissingIndicator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.impute.SimpleImputer.html">SimpleImputer</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1532,6 +1635,16 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.get_verbosity.html">get_verbosity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.setLevel.html">setLevel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.set_verbosity.html">set_verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.BASIC_FORMAT.html">BASIC_FORMAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Filter.html">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Formatter.html">Formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Handler.html">Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.LogRecord.html">LogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.Logger.html">Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.NullHandler.html">NullHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.StreamHandler.html">StreamHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.getLevelName.html">getLevelName</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.getLogger.html">getLogger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log.html">log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log_every_n.html">log_every_n</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.logging.log_first_n.html">log_first_n</a></li>
@@ -1589,6 +1702,10 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.SearchDocsOutput.html">SearchDocsOutput</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.SearchService.html">SearchService</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.create_server.html">create_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.RuntimeConfig.html">RuntimeConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.main.html">main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.require_count.html">require_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.mcp.require_index.html">require_index</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.memmap.html">scikitplot.memmap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1742,6 +1859,26 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.akaike_info_criterion_lsq.html">akaike_info_criterion_lsq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion.html">bayesian_info_criterion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq.html">bayesian_info_criterion_lsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_location.html">biweight_location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html">biweight_midcorrelation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcovariance.html">biweight_midcovariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midvariance.html">biweight_midvariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.biweight_scale.html">biweight_scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClip.html">SigmaClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClippedStats.html">SigmaClippedStats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clip.html">sigma_clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clipped_stats.html">sigma_clipped_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circcorrcoef.html">circcorrcoef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circmean.html">circmean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circmoment.html">circmoment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circstd.html">circstd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.circvar.html">circvar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.rayleightest.html">rayleightest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.vonmisesmle.html">vonmisesmle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.vtest.html">vtest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_resampling.html">jackknife_resampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_stats.html">jackknife_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.cexternals._astropy.stats.RipleysKEstimator.html">RipleysKEstimator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie_gen.html">tweedie_gen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
 </ul>
@@ -1749,7 +1886,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.utils.html">scikitplot.utils</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._time.Timer.html">Timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.PathNamer.html">PathNamer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.get_path.html">get_path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.make_path.html">make_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.utils._path.remove_path.html">remove_path</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.visualkeras.html">scikitplot.visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1770,7 +1909,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1797,9 +1936,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/generated/scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -1942,8 +2081,8 @@ runtime components; source processing starts only with <code class="docutils lit
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="d80425b0-aa1b-47e3-9045-dfcf0c0c6e5b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d80425b0-aa1b-47e3-9045-dfcf0c0c6e5b','26d78e25-3073-43df-b409-eba300eec4b1','79cc905c-8fd0-4020-90d0-5ab5aadfdba0','../lite/tree/../notebooks/index.html?path=c77bf159_1899_4e34_bbcb_9a67cec04bb0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="a5a2d3b0-0cd6-4a77-aec5-ef8c25560e13">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a5a2d3b0-0cd6-4a77-aec5-ef8c25560e13','4e041699-f2aa-49d8-9b11-29d8d708bcd0','51bc429b-26a7-471f-bce9-b81bf1b998e1','../lite/tree/../notebooks/index.html?path=95e06aed_f6be_4987_8be7_8b84fea9abd7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Direct pipeline control:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">CorpusPipeline</span><span class="p">,</span> <span class="n">ParagraphChunker</span>
@@ -2037,7 +2176,7 @@ an authoritative scholarly edition.</p>
 policy boundary, retrieval modes, and optional-capability guidance.</p>
 </div>
 </div>
-<div id="79cc905c-8fd0-4020-90d0-5ab5aadfdba0" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d80425b0-aa1b-47e3-9045-dfcf0c0c6e5b','79cc905c-8fd0-4020-90d0-5ab5aadfdba0')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d80425b0-aa1b-47e3-9045-dfcf0c0c6e5b','79cc905c-8fd0-4020-90d0-5ab5aadfdba0')">Open In Tab</button></div><div id="26d78e25-3073-43df-b409-eba300eec4b1" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<div id="51bc429b-26a7-471f-bce9-b81bf1b998e1" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a5a2d3b0-0cd6-4a77-aec5-ef8c25560e13','51bc429b-26a7-471f-bce9-b81bf1b998e1')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('a5a2d3b0-0cd6-4a77-aec5-ef8c25560e13','51bc429b-26a7-471f-bce9-b81bf1b998e1')">Open In Tab</button></div><div id="4e041699-f2aa-49d8-9b11-29d8d708bcd0" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
 </section>
 <p><strong>User guide.</strong> See the <a class="reference internal" href="../user_guide/corpus/index.html#corpus-index"><span class="std std-ref">Corpus User Guide</span></a> section for further details.</p>
 <section id="adapter-layer">
@@ -2170,25 +2309,26 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <section id="base-classes">
 <span id="corpus-ref-base-classes"></span><h2>Base Classes<a class="headerlink" href="#base-classes" title="Link to this heading">#</a></h2>
 <p class="rubric">Class inheritance</p>
-<div class="graphviz"><img src="../_images/inheritance-a3d308c22933e509fd8f33675b88cc1b3263fc3d.png" alt="Inheritance diagram of DocumentReader, DummyReader" usemap="#inheritance9fc62714dc" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-ba165a254de3585c1e565bd98fc600d7a90fdca2.png" alt="Inheritance diagram of DocumentReader, DummyReader" usemap="#inheritance9fc62714dc" class="inheritance graphviz" /></div>
 <map id="inheritance9fc62714dc" name="inheritance9fc62714dc">
-<area shape="rect" id="node1" href="https://docs.python.org/3/library/abc.html#abc.ABC" target="_top" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,301,77,327"/>
-<area shape="rect" id="node3" href="../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" target="_top" title="Abstract base class for all format&#45;specific document readers." alt="" coords="125,301,260,327"/>
+<area shape="rect" id="node1" href="https://docs.python.org/3/library/abc.html#abc.ABC" target="_top" title="Helper class that provides a standard way to create an ABC using" alt="" coords="5,327,77,352"/>
+<area shape="rect" id="node3" href="../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader" target="_top" title="Abstract base class for all format&#45;specific document readers." alt="" coords="125,327,260,352"/>
 <area shape="rect" id="node2" href="../modules/generated/scikitplot.corpus.ALTOReader.html#scikitplot.corpus.ALTOReader" target="_top" title="ALTO XML reader for scanned document archives." alt="" coords="317,5,419,31"/>
 <area shape="rect" id="node4" href="../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader" target="_top" title="Text extraction from audio files via companion transcript/lyrics parsing," alt="" coords="315,55,421,80"/>
 <area shape="rect" id="node5" href="../modules/generated/scikitplot.corpus.CustomReader.html#scikitplot.corpus.CustomReader" target="_top" title="Fully user&#45;customizable reader for any file extension and resource type." alt="" coords="309,104,427,129"/>
 <area shape="rect" id="node6" href="../modules/generated/scikitplot.corpus.DummyReader.html#scikitplot.corpus.DummyReader" target="_top" title="A no&#45;op reader that validates source existence and accessibility." alt="" coords="308,153,428,179"/>
 <area shape="rect" id="node7" href="../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader" target="_top" title="OCR&#45;based text extraction from raster image files." alt="" coords="313,203,423,228"/>
 <area shape="rect" id="node9" href="../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader" target="_top" title="Plain&#45;text document reader." alt="" coords="321,252,415,277"/>
-<area shape="rect" id="node10" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" target="_top" title="PDF document reader with pdfminer.six → pypdf cascade." alt="" coords="321,301,415,327"/>
-<area shape="rect" id="node12" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" target="_top" title="TEI/XML document reader with dramatic structure extraction." alt="" coords="324,351,412,376"/>
-<area shape="rect" id="node13" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" target="_top" title="Text extraction from video files via subtitle parsing and/or" alt="" coords="315,400,421,425"/>
-<area shape="rect" id="node14" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" target="_top" title="Fetch a web page and extract structured text via BeautifulSoup." alt="" coords="320,449,416,475"/>
-<area shape="rect" id="node15" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" target="_top" title="Generic XML document reader with configurable XPath." alt="" coords="320,499,416,524"/>
-<area shape="rect" id="node16" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" target="_top" title="Extract the transcript of a YouTube video using ``youtube&#45;transcript&#45;api``." alt="" coords="308,548,428,573"/>
-<area shape="rect" id="node17" href="../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" target="_top" title="Generic ZIP archive reader — dispatches each member to its natural reader." alt="" coords="323,597,413,623"/>
+<area shape="rect" id="node10" href="../modules/generated/scikitplot.corpus.OfficeReader.html#scikitplot.corpus.OfficeReader" target="_top" title="Read office documents: Office Open XML and OpenDocument." alt="" coords="315,301,421,327"/>
+<area shape="rect" id="node11" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" target="_top" title="PDF document reader with pdfminer.six → pypdf cascade." alt="" coords="321,351,415,376"/>
+<area shape="rect" id="node13" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" target="_top" title="TEI/XML document reader with dramatic structure extraction." alt="" coords="324,400,412,425"/>
+<area shape="rect" id="node14" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" target="_top" title="Text extraction from video files via subtitle parsing and/or" alt="" coords="315,449,421,475"/>
+<area shape="rect" id="node15" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" target="_top" title="Fetch a web page and extract structured text via BeautifulSoup." alt="" coords="320,499,416,524"/>
+<area shape="rect" id="node16" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" target="_top" title="Generic XML document reader with configurable XPath." alt="" coords="320,548,416,573"/>
+<area shape="rect" id="node17" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" target="_top" title="Extract the transcript of a YouTube video using ``youtube&#45;transcript&#45;api``." alt="" coords="308,597,428,623"/>
+<area shape="rect" id="node18" href="../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" target="_top" title="Generic ZIP archive reader — dispatches each member to its natural reader." alt="" coords="323,647,413,672"/>
 <area shape="rect" id="node8" href="../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader" target="_top" title="Markdown document reader." alt="" coords="476,228,612,253"/>
-<area shape="rect" id="node11" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" target="_top" title="reStructuredText document reader." alt="" coords="493,277,595,303"/>
+<area shape="rect" id="node12" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" target="_top" title="reStructuredText document reader." alt="" coords="493,277,595,303"/>
 </map><div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase" title="scikitplot.corpus.ChunkerBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkerBase</span></code></a></p></td>
@@ -2228,6 +2368,24 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.probe_backend.html#scikitplot.corpus.probe_backend" title="scikitplot.corpus.probe_backend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">probe_backend</span></code></a></p></td>
 <td><p>Classify one backend's availability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry" title="scikitplot.corpus.CapabilityRegistry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilityRegistry</span></code></a></p></td>
+<td><p>Explicit, side-effect-free registry for component readiness probes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilityReport.html#scikitplot.corpus.CapabilityReport" title="scikitplot.corpus.CapabilityReport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilityReport</span></code></a></p></td>
+<td><p>Read-only readiness state for one optional component.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CapabilitySpec.html#scikitplot.corpus.CapabilitySpec" title="scikitplot.corpus.CapabilitySpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CapabilitySpec</span></code></a></p></td>
+<td><p>Declarative probe specification for one optional component.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.capability_report.html#scikitplot.corpus.capability_report" title="scikitplot.corpus.capability_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capability_report</span></code></a></p></td>
+<td><p>Probe one registered component capability.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.component_capabilities.html#scikitplot.corpus.component_capabilities" title="scikitplot.corpus.component_capabilities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">component_capabilities</span></code></a></p></td>
+<td><p>Return JSON-compatible readiness records for components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.default_capability_registry.html#scikitplot.corpus.default_capability_registry" title="scikitplot.corpus.default_capability_registry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_capability_registry</span></code></a></p></td>
+<td><p>Return the built-in component readiness registry.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2359,98 +2517,92 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.split_cjk_chars.html#scikitplot.corpus.split_cjk_chars" title="scikitplot.corpus.split_cjk_chars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_cjk_chars</span></code></a></p></td>
 <td><p>Split <em>text</em> into individual CJK character tokens.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus._split_cjk_chars_legacy.html#scikitplot.corpus._split_cjk_chars_legacy" title="scikitplot.corpus._split_cjk_chars_legacy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_split_cjk_chars_legacy</span></code></a></p></td>
-<td><p>Legacy codepoint-level CJK splitting (pre-Layer-0 implementation).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html#scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN" title="scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MULTI_SCRIPT_SENTENCE_RE_PATTERN</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN.html#scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN" title="scikitplot.corpus.MULTI_SCRIPT_SENTENCE_RE_PATTERN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MULTI_SCRIPT_SENTENCE_RE_PATTERN</span></code></a></p></td>
 <td><p>str(object='') -&gt; str str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan" title="scikitplot.corpus.ScriptSpan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScriptSpan</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan" title="scikitplot.corpus.ScriptSpan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScriptSpan</span></code></a></p></td>
 <td><p>A contiguous span of text in a single Unicode script.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter" title="scikitplot.corpus.ScriptSegmenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScriptSegmenter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScriptSegmenter.html#scikitplot.corpus.ScriptSegmenter" title="scikitplot.corpus.ScriptSegmenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScriptSegmenter</span></code></a></p></td>
 <td><p>Segment NFC-normalised text into contiguous Unicode script spans.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedWindowChunker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedWindowChunker</span></code></a></p></td>
 <td><p>Produce fixed-size sliding-window chunks over a document.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedWindowChunkerConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunkerConfig.html#scikitplot.corpus.FixedWindowChunkerConfig" title="scikitplot.corpus.FixedWindowChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedWindowChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.FixedWindowChunker.html#scikitplot.corpus.FixedWindowChunker" title="scikitplot.corpus.FixedWindowChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">FixedWindowChunker</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit" title="scikitplot.corpus.WindowUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WindowUnit</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WindowUnit.html#scikitplot.corpus.WindowUnit" title="scikitplot.corpus.WindowUnit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WindowUnit</span></code></a></p></td>
 <td><p>Unit of measurement for window size and step.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NLTK.html#scikitplot.corpus.ISO_TO_NLTK" title="scikitplot.corpus.ISO_TO_NLTK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISO_TO_NLTK</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NLTK.html#scikitplot.corpus.ISO_TO_NLTK" title="scikitplot.corpus.ISO_TO_NLTK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISO_TO_NLTK</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NAME.html#scikitplot.corpus.ISO_TO_NAME" title="scikitplot.corpus.ISO_TO_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISO_TO_NAME</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ISO_TO_NAME.html#scikitplot.corpus.ISO_TO_NAME" title="scikitplot.corpus.ISO_TO_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISO_TO_NAME</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_TO_ISO.html#scikitplot.corpus.NLTK_TO_ISO" title="scikitplot.corpus.NLTK_TO_ISO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NLTK_TO_ISO</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_TO_ISO.html#scikitplot.corpus.NLTK_TO_ISO" title="scikitplot.corpus.NLTK_TO_ISO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NLTK_TO_ISO</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_STOPWORD_LANGUAGES.html#scikitplot.corpus.NLTK_STOPWORD_LANGUAGES" title="scikitplot.corpus.NLTK_STOPWORD_LANGUAGES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NLTK_STOPWORD_LANGUAGES</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.NLTK_STOPWORD_LANGUAGES.html#scikitplot.corpus.NLTK_STOPWORD_LANGUAGES" title="scikitplot.corpus.NLTK_STOPWORD_LANGUAGES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NLTK_STOPWORD_LANGUAGES</span></code></a></p></td>
 <td><p>frozenset() -&gt; empty frozenset object frozenset(iterable) -&gt; frozenset object</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html#scikitplot.corpus.BUILTIN_LANG_STOPWORDS" title="scikitplot.corpus.BUILTIN_LANG_STOPWORDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BUILTIN_LANG_STOPWORDS</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BUILTIN_LANG_STOPWORDS.html#scikitplot.corpus.BUILTIN_LANG_STOPWORDS" title="scikitplot.corpus.BUILTIN_LANG_STOPWORDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BUILTIN_LANG_STOPWORDS</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.coerce_language.html#scikitplot.corpus.coerce_language" title="scikitplot.corpus.coerce_language"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coerce_language</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.coerce_language.html#scikitplot.corpus.coerce_language" title="scikitplot.corpus.coerce_language"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coerce_language</span></code></a></p></td>
 <td><p>Normalise any language specifier into a list of canonical NLTK names.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_stopwords.html#scikitplot.corpus.resolve_stopwords" title="scikitplot.corpus.resolve_stopwords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolve_stopwords</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.resolve_stopwords.html#scikitplot.corpus.resolve_stopwords" title="scikitplot.corpus.resolve_stopwords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolve_stopwords</span></code></a></p></td>
 <td><p>Return a frozenset of stopwords for one or more languages.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.iso_to_nltk-func.html#scikitplot.corpus.iso_to_nltk" title="scikitplot.corpus.iso_to_nltk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso_to_nltk</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.iso_to_nltk-func.html#scikitplot.corpus.iso_to_nltk" title="scikitplot.corpus.iso_to_nltk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iso_to_nltk</span></code></a></p></td>
 <td><p>Resolve an ISO 639-1/639-3 code to a canonical NLTK language name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.nltk_to_iso-func.html#scikitplot.corpus.nltk_to_iso" title="scikitplot.corpus.nltk_to_iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nltk_to_iso</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.nltk_to_iso-func.html#scikitplot.corpus.nltk_to_iso" title="scikitplot.corpus.nltk_to_iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nltk_to_iso</span></code></a></p></td>
 <td><p>Resolve a canonical NLTK language name to its primary ISO 639-1 code.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig" title="scikitplot.corpus.MultilangConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultilangConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MultilangConfig.html#scikitplot.corpus.MultilangConfig" title="scikitplot.corpus.MultilangConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultilangConfig</span></code></a></p></td>
 <td><p>Multilang feature flags for any chunker.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin" title="scikitplot.corpus.MultilangMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultilangMixin</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MultilangMixin.html#scikitplot.corpus.MultilangMixin" title="scikitplot.corpus.MultilangMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultilangMixin</span></code></a></p></td>
 <td><p>Shared multilang analysis mixin for all five chunkers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker" title="scikitplot.corpus.ParagraphChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParagraphChunker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker" title="scikitplot.corpus.ParagraphChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParagraphChunker</span></code></a></p></td>
 <td><p>Split a document into paragraph-level <code class="xref py py-class docutils literal notranslate"><span class="pre">Chunk</span></code> objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html#scikitplot.corpus.ParagraphChunkerConfig" title="scikitplot.corpus.ParagraphChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParagraphChunkerConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunkerConfig.html#scikitplot.corpus.ParagraphChunkerConfig" title="scikitplot.corpus.ParagraphChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParagraphChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.ParagraphChunker.html#scikitplot.corpus.ParagraphChunker" title="scikitplot.corpus.ParagraphChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphChunker</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker" title="scikitplot.corpus.ParentChildChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParentChildChunker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker" title="scikitplot.corpus.ParentChildChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParentChildChunker</span></code></a></p></td>
 <td><p>Large parents for context, small children for retrieval, linked.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParentChildChunkerConfig.html#scikitplot.corpus.ParentChildChunkerConfig" title="scikitplot.corpus.ParentChildChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParentChildChunkerConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ParentChildChunkerConfig.html#scikitplot.corpus.ParentChildChunkerConfig" title="scikitplot.corpus.ParentChildChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParentChildChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.ParentChildChunker.html#scikitplot.corpus.ParentChildChunker" title="scikitplot.corpus.ParentChildChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParentChildChunker</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker" title="scikitplot.corpus.RecursiveChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecursiveChunker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker" title="scikitplot.corpus.RecursiveChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecursiveChunker</span></code></a></p></td>
 <td><p>Split text by a separator hierarchy until each piece fits a budget.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RecursiveChunkerConfig.html#scikitplot.corpus.RecursiveChunkerConfig" title="scikitplot.corpus.RecursiveChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecursiveChunkerConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RecursiveChunkerConfig.html#scikitplot.corpus.RecursiveChunkerConfig" title="scikitplot.corpus.RecursiveChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RecursiveChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.RecursiveChunker.html#scikitplot.corpus.RecursiveChunker" title="scikitplot.corpus.RecursiveChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveChunker</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend" title="scikitplot.corpus.SemanticBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticBackend</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticBackend.html#scikitplot.corpus.SemanticBackend" title="scikitplot.corpus.SemanticBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticBackend</span></code></a></p></td>
 <td><p>Semantic chunking backend selector.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker" title="scikitplot.corpus.SemanticChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticChunker</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker" title="scikitplot.corpus.SemanticChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticChunker</span></code></a></p></td>
 <td><p>Embedding-aware, writing-system-aware semantic chunker (Layer 3).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig" title="scikitplot.corpus.SemanticChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticChunkerConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticChunkerConfig.html#scikitplot.corpus.SemanticChunkerConfig" title="scikitplot.corpus.SemanticChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.SemanticChunker.html#scikitplot.corpus.SemanticChunker" title="scikitplot.corpus.SemanticChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">SemanticChunker</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend" title="scikitplot.corpus.SentenceBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceBackend</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceBackend.html#scikitplot.corpus.SentenceBackend" title="scikitplot.corpus.SentenceBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceBackend</span></code></a></p></td>
 <td><p>Supported sentence-splitting backends.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceChunker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceChunker</span></code></a></p></td>
 <td><p>Split a document into sentence-level <code class="xref py py-class docutils literal notranslate"><span class="pre">Chunk</span></code> objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceChunkerConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunkerConfig.html#scikitplot.corpus.SentenceChunkerConfig" title="scikitplot.corpus.SentenceChunkerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SentenceChunkerConfig</span></code></a></p></td>
 <td><p>Configuration for <a class="reference internal" href="../modules/generated/scikitplot.corpus.SentenceChunker.html#scikitplot.corpus.SentenceChunker" title="scikitplot.corpus.SentenceChunker"><code class="xref py py-class docutils literal notranslate"><span class="pre">SentenceChunker</span></code></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus._validate_text_input.html#scikitplot.corpus._validate_text_input" title="scikitplot.corpus._validate_text_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_validate_text_input</span></code></a></p></td>
-<td><p>Validate chunker text input for NUL bytes and lone surrogates.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker" title="scikitplot.corpus.StructureChunker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StructureChunker</span></code></a></p></td>
 <td><p>Chunk Markdown or reStructuredText by its headings and code blocks.</p></td>
@@ -2637,6 +2789,15 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeDownloader.html#scikitplot.corpus.YouTubeDownloader" title="scikitplot.corpus.YouTubeDownloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YouTubeDownloader</span></code></a></p></td>
 <td><p>YouTube content downloader.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPlan.html#scikitplot.corpus.DownloadPlan" title="scikitplot.corpus.DownloadPlan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DownloadPlan</span></code></a></p></td>
+<td><p>Side-effect-free dispatch plan for one URL.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.DownloadPolicy.html#scikitplot.corpus.DownloadPolicy" title="scikitplot.corpus.DownloadPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DownloadPolicy</span></code></a></p></td>
+<td><p>Transport/resource policy shared by Corpus downloaders.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.download_policy.html#scikitplot.corpus.download_policy" title="scikitplot.corpus.download_policy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_policy</span></code></a></p></td>
+<td><p>Resolve an object, named preset or mapping without hidden global state.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2776,58 +2937,61 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.reliability_table.html#scikitplot.corpus.reliability_table" title="scikitplot.corpus.reliability_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reliability_table</span></code></a></p></td>
 <td><p>Per-bin mean predicted probability against observed relevance frequency.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.anls_score.html#scikitplot.corpus.anls_score" title="scikitplot.corpus.anls_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anls_score</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CALIBRATION_STRATEGIES.html#scikitplot.corpus.CALIBRATION_STRATEGIES" title="scikitplot.corpus.CALIBRATION_STRATEGIES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CALIBRATION_STRATEGIES</span></code></a></p></td>
+<td><p>Built-in immutable sequence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.anls_score.html#scikitplot.corpus.anls_score" title="scikitplot.corpus.anls_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anls_score</span></code></a></p></td>
 <td><p>Average normalised Levenshtein similarity (ANLS).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity" title="scikitplot.corpus.edit_similarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_similarity</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity.html#scikitplot.corpus.edit_similarity" title="scikitplot.corpus.edit_similarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_similarity</span></code></a></p></td>
 <td><p>Return <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">levenshtein(a,</span> <span class="pre">b)</span> <span class="pre">/</span> <span class="pre">max(len(a),</span> <span class="pre">len(b))</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity_score.html#scikitplot.corpus.edit_similarity_score" title="scikitplot.corpus.edit_similarity_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_similarity_score</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.edit_similarity_score.html#scikitplot.corpus.edit_similarity_score" title="scikitplot.corpus.edit_similarity_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edit_similarity_score</span></code></a></p></td>
 <td><p>Mean normalised edit similarity between predictions and references.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.exact_match_score.html#scikitplot.corpus.exact_match_score" title="scikitplot.corpus.exact_match_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exact_match_score</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.exact_match_score.html#scikitplot.corpus.exact_match_score" title="scikitplot.corpus.exact_match_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exact_match_score</span></code></a></p></td>
 <td><p>Fraction of predicted answers equal to a reference after normalisation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_answer.html#scikitplot.corpus.normalize_answer" title="scikitplot.corpus.normalize_answer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_answer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.normalize_answer.html#scikitplot.corpus.normalize_answer" title="scikitplot.corpus.normalize_answer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_answer</span></code></a></p></td>
 <td><p>Normalise an answer string for comparison.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.token_f1_score.html#scikitplot.corpus.token_f1_score" title="scikitplot.corpus.token_f1_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">token_f1_score</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.token_f1_score.html#scikitplot.corpus.token_f1_score" title="scikitplot.corpus.token_f1_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">token_f1_score</span></code></a></p></td>
 <td><p>Token-overlap F1 between predicted and reference answers (SQuAD style).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScorerBackendInfo.html#scikitplot.corpus.ScorerBackendInfo" title="scikitplot.corpus.ScorerBackendInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScorerBackendInfo</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ScorerBackendInfo.html#scikitplot.corpus.ScorerBackendInfo" title="scikitplot.corpus.ScorerBackendInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScorerBackendInfo</span></code></a></p></td>
 <td><p>Which base class the corpus scorers use in this process.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer" title="scikitplot.corpus.get_corpus_scorer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_corpus_scorer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer" title="scikitplot.corpus.get_corpus_scorer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_corpus_scorer</span></code></a></p></td>
 <td><p>Return a new scorer for a metric name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_corpus_scorer_names.html#scikitplot.corpus.get_corpus_scorer_names" title="scikitplot.corpus.get_corpus_scorer_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_corpus_scorer_names</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.get_corpus_scorer_names.html#scikitplot.corpus.get_corpus_scorer_names" title="scikitplot.corpus.get_corpus_scorer_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_corpus_scorer_names</span></code></a></p></td>
 <td><p>Return the names <a class="reference internal" href="../modules/generated/scikitplot.corpus.get_corpus_scorer.html#scikitplot.corpus.get_corpus_scorer" title="scikitplot.corpus.get_corpus_scorer"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_corpus_scorer</span></code></a> accepts.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.make_corpus_scorer.html#scikitplot.corpus.make_corpus_scorer" title="scikitplot.corpus.make_corpus_scorer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_corpus_scorer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.make_corpus_scorer.html#scikitplot.corpus.make_corpus_scorer" title="scikitplot.corpus.make_corpus_scorer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_corpus_scorer</span></code></a></p></td>
 <td><p>Make a scikit-learn compatible scorer from a corpus metric.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.scorer_backend_info.html#scikitplot.corpus.scorer_backend_info" title="scikitplot.corpus.scorer_backend_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scorer_backend_info</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.scorer_backend_info.html#scikitplot.corpus.scorer_backend_info" title="scikitplot.corpus.scorer_backend_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scorer_backend_info</span></code></a></p></td>
 <td><p>Report which base class corpus scorers use in this process.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.EvaluationComparison.html#scikitplot.corpus.EvaluationComparison" title="scikitplot.corpus.EvaluationComparison"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EvaluationComparison</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.EvaluationComparison.html#scikitplot.corpus.EvaluationComparison" title="scikitplot.corpus.EvaluationComparison"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EvaluationComparison</span></code></a></p></td>
 <td><p>Paired comparison of two evaluations of the same queries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MetricComparison.html#scikitplot.corpus.MetricComparison" title="scikitplot.corpus.MetricComparison"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricComparison</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MetricComparison.html#scikitplot.corpus.MetricComparison" title="scikitplot.corpus.MetricComparison"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricComparison</span></code></a></p></td>
 <td><p>One metric of an <a class="reference internal" href="../modules/generated/scikitplot.corpus.EvaluationComparison.html#scikitplot.corpus.EvaluationComparison" title="scikitplot.corpus.EvaluationComparison"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaluationComparison</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.QueryEvaluation.html#scikitplot.corpus.QueryEvaluation" title="scikitplot.corpus.QueryEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueryEvaluation</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.QueryEvaluation.html#scikitplot.corpus.QueryEvaluation" title="scikitplot.corpus.QueryEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueryEvaluation</span></code></a></p></td>
 <td><p>One query of a <a class="reference internal" href="../modules/generated/scikitplot.corpus.RetrievalEvaluation.html#scikitplot.corpus.RetrievalEvaluation" title="scikitplot.corpus.RetrievalEvaluation"><code class="xref py py-class docutils literal notranslate"><span class="pre">RetrievalEvaluation</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RetrievalEvaluation.html#scikitplot.corpus.RetrievalEvaluation" title="scikitplot.corpus.RetrievalEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RetrievalEvaluation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.RetrievalEvaluation.html#scikitplot.corpus.RetrievalEvaluation" title="scikitplot.corpus.RetrievalEvaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RetrievalEvaluation</span></code></a></p></td>
 <td><p>Result of <a class="reference internal" href="../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval" title="scikitplot.corpus.evaluate_retrieval"><code class="xref py py-func docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval" title="scikitplot.corpus.evaluate_retrieval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.evaluate_retrieval.html#scikitplot.corpus.evaluate_retrieval" title="scikitplot.corpus.evaluate_retrieval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_retrieval</span></code></a></p></td>
 <td><p>Run <code class="docutils literal notranslate"><span class="pre">retriever</span></code> on every query and score the rankings.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.UndefinedMetricWarning.html#scikitplot.corpus.UndefinedMetricWarning" title="scikitplot.corpus.UndefinedMetricWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UndefinedMetricWarning</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.UndefinedMetricWarning.html#scikitplot.corpus.UndefinedMetricWarning" title="scikitplot.corpus.UndefinedMetricWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UndefinedMetricWarning</span></code></a></p></td>
 <td><p>A metric is undefined for some queries and was scored by <code class="docutils literal notranslate"><span class="pre">zero_division</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ranked_ids.html#scikitplot.corpus.ranked_ids" title="scikitplot.corpus.ranked_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranked_ids</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ranked_ids.html#scikitplot.corpus.ranked_ids" title="scikitplot.corpus.ranked_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ranked_ids</span></code></a></p></td>
 <td><p>Return the identifiers of retrieval results, in rank order.</p></td>
 </tr>
 </tbody>
@@ -3000,22 +3164,25 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.DocIdScheme.html#scikitplot.corpus.DocIdScheme" title="scikitplot.corpus.DocIdScheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DocIdScheme</span></code></a></p></td>
 <td><p>How a corpus build names its documents.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html#scikitplot.corpus.IncompatibleSchemaError" title="scikitplot.corpus.IncompatibleSchemaError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IncompatibleSchemaError</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.IDENTITY_HEX_WIDTH.html#scikitplot.corpus.IDENTITY_HEX_WIDTH" title="scikitplot.corpus.IDENTITY_HEX_WIDTH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IDENTITY_HEX_WIDTH</span></code></a></p></td>
+<td><p>int([x]) -&gt; integer int(x, base=10) -&gt; integer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.IncompatibleSchemaError.html#scikitplot.corpus.IncompatibleSchemaError" title="scikitplot.corpus.IncompatibleSchemaError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IncompatibleSchemaError</span></code></a></p></td>
 <td><p>Raised for data written by another generation of the document schema.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.UUID7Generator.html#scikitplot.corpus.UUID7Generator" title="scikitplot.corpus.UUID7Generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UUID7Generator</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.UUID7Generator.html#scikitplot.corpus.UUID7Generator" title="scikitplot.corpus.UUID7Generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UUID7Generator</span></code></a></p></td>
 <td><p>Monotonic generator of RFC 9562 UUID version 7 identifiers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.assign_doc_ids.html#scikitplot.corpus.assign_doc_ids" title="scikitplot.corpus.assign_doc_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_doc_ids</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.assign_doc_ids.html#scikitplot.corpus.assign_doc_ids" title="scikitplot.corpus.assign_doc_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assign_doc_ids</span></code></a></p></td>
 <td><p>Return <code class="docutils literal notranslate"><span class="pre">documents</span></code> named by <code class="docutils literal notranslate"><span class="pre">scheme</span></code>, with parent links kept intact.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.doc_id_scheme_of.html#scikitplot.corpus.doc_id_scheme_of" title="scikitplot.corpus.doc_id_scheme_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doc_id_scheme_of</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.doc_id_scheme_of.html#scikitplot.corpus.doc_id_scheme_of" title="scikitplot.corpus.doc_id_scheme_of"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doc_id_scheme_of</span></code></a></p></td>
 <td><p>Return the scheme that produced <code class="docutils literal notranslate"><span class="pre">doc_id</span></code>, judged by its exact form.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.uuid7.html#scikitplot.corpus.uuid7" title="scikitplot.corpus.uuid7"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uuid7</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.uuid7.html#scikitplot.corpus.uuid7" title="scikitplot.corpus.uuid7"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uuid7</span></code></a></p></td>
 <td><p>Return a new RFC 9562 UUID version 7 from this process's generator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.uuid7_unix_ms.html#scikitplot.corpus.uuid7_unix_ms" title="scikitplot.corpus.uuid7_unix_ms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uuid7_unix_ms</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.uuid7_unix_ms.html#scikitplot.corpus.uuid7_unix_ms" title="scikitplot.corpus.uuid7_unix_ms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uuid7_unix_ms</span></code></a></p></td>
 <td><p>Return the Unix time in milliseconds that a UUID version 7 carries.</p></td>
 </tr>
 </tbody>
@@ -3215,32 +3382,38 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader" title="scikitplot.corpus.ImageReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p></td>
 <td><p>OCR-based text extraction from raster image files.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" title="scikitplot.corpus.PDFReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PDFReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.OfficeReader.html#scikitplot.corpus.OfficeReader" title="scikitplot.corpus.OfficeReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfficeReader</span></code></a></p></td>
+<td><p>Read office documents: Office Open XML and OpenDocument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader" title="scikitplot.corpus.PDFReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PDFReader</span></code></a></p></td>
 <td><p>PDF document reader with pdfminer.six → pypdf cascade.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader" title="scikitplot.corpus.MarkdownReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkdownReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader" title="scikitplot.corpus.MarkdownReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkdownReader</span></code></a></p></td>
 <td><p>Markdown document reader.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" title="scikitplot.corpus.ReSTReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReSTReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader" title="scikitplot.corpus.ReSTReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReSTReader</span></code></a></p></td>
 <td><p>reStructuredText document reader.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader" title="scikitplot.corpus.TextReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader" title="scikitplot.corpus.TextReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextReader</span></code></a></p></td>
 <td><p>Plain-text document reader.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" title="scikitplot.corpus.VideoReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader" title="scikitplot.corpus.VideoReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VideoReader</span></code></a></p></td>
 <td><p>Text extraction from video files via subtitle parsing and/or automatic speech recognition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" title="scikitplot.corpus.WebReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader" title="scikitplot.corpus.WebReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WebReader</span></code></a></p></td>
 <td><p>Fetch a web page and extract structured text via BeautifulSoup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader" title="scikitplot.corpus.YouTubeReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">YouTubeReader</span></code></a></p></td>
 <td><p>Extract the transcript of a YouTube video using <code class="docutils literal notranslate"><span class="pre">youtube-transcript-api</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" title="scikitplot.corpus.TEIReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEIReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader" title="scikitplot.corpus.TEIReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEIReader</span></code></a></p></td>
 <td><p>TEI/XML document reader with dramatic structure extraction.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" title="scikitplot.corpus.XMLReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XMLReader</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.XMLReader.html#scikitplot.corpus.XMLReader" title="scikitplot.corpus.XMLReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XMLReader</span></code></a></p></td>
 <td><p>Generic XML document reader with configurable XPath.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveBudgetError.html#scikitplot.corpus.ArchiveBudgetError" title="scikitplot.corpus.ArchiveBudgetError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiveBudgetError</span></code></a></p></td>
+<td><p>Raised when the members of an archive tree inflate past its extraction budget.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ArchiveNestingError.html#scikitplot.corpus.ArchiveNestingError" title="scikitplot.corpus.ArchiveNestingError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiveNestingError</span></code></a></p></td>
 <td><p>Raised when archive nesting exceeds <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> (nested-archive bomb).</p></td>
@@ -3433,6 +3606,68 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.materialize_plan.html#scikitplot.corpus.materialize_plan" title="scikitplot.corpus.materialize_plan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">materialize_plan</span></code></a></p></td>
 <td><p>Resolve a validated <a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPlan.html#scikitplot.corpus.CorpusPlan" title="scikitplot.corpus.CorpusPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusPlan</span></code></a> into runtime components.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.runtime_policy.html#scikitplot.corpus.runtime_policy" title="scikitplot.corpus.runtime_policy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">runtime_policy</span></code></a></p></td>
+<td><p>Resolve a runtime policy object, preset name, or mapping.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.CorpusPolicyBundle.html#scikitplot.corpus.CorpusPolicyBundle" title="scikitplot.corpus.CorpusPolicyBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CorpusPolicyBundle</span></code></a></p></td>
+<td><p>Typed composition of the independent Corpus policy dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.corpus_policy_bundle.html#scikitplot.corpus.corpus_policy_bundle" title="scikitplot.corpus.corpus_policy_bundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">corpus_policy_bundle</span></code></a></p></td>
+<td><p>Resolve a policy bundle object, named preset, or mapping.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="optional-backend-policy">
+<span id="corpus-ref-optional-backend-policy"></span><h2>Optional Backend Policy<a class="headerlink" href="#optional-backend-policy" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendCandidate.html#scikitplot.corpus.BackendCandidate" title="scikitplot.corpus.BackendCandidate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendCandidate</span></code></a></p></td>
+<td><p>One lazy backend attempt.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome" title="scikitplot.corpus.BackendOutcome"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendOutcome</span></code></a></p></td>
+<td><p>Structured, serialisable outcome from <a class="reference internal" href="../modules/generated/scikitplot.corpus.run_backend_chain.html#scikitplot.corpus.run_backend_chain" title="scikitplot.corpus.run_backend_chain"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_backend_chain</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan" title="scikitplot.corpus.BackendPlan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendPlan</span></code></a></p></td>
+<td><p>Side-effect-free preflight of candidate ordering and policy eligibility.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy" title="scikitplot.corpus.BackendPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendPolicy</span></code></a></p></td>
+<td><p>Policy for selecting and exhausting optional backend chains.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendSkip.html#scikitplot.corpus.BackendSkip" title="scikitplot.corpus.BackendSkip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendSkip</span></code></a></p></td>
+<td><p>Why a backend was not executed under the resolved policy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.BackendStatus.html#scikitplot.corpus.BackendStatus" title="scikitplot.corpus.BackendStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackendStatus</span></code></a></p></td>
+<td><p>Outcome of one ordered backend operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.backend_policy.html#scikitplot.corpus.backend_policy" title="scikitplot.corpus.backend_policy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">backend_policy</span></code></a></p></td>
+<td><p>Resolve an object, named preset or mapping without hidden global state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_backend_chain.html#scikitplot.corpus.plan_backend_chain" title="scikitplot.corpus.plan_backend_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_backend_chain</span></code></a></p></td>
+<td><p>Resolve backend order/readiness without executing a backend.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.run_backend_chain.html#scikitplot.corpus.run_backend_chain" title="scikitplot.corpus.run_backend_chain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_backend_chain</span></code></a></p></td>
+<td><p>Try <em>candidates</em> in order and return a structured outcome.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend" title="scikitplot.corpus.ASRBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ASRBackend</span></code></a></p></td>
+<td><p>User-defined ASR backend adapter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest" title="scikitplot.corpus.ASRRequest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ASRRequest</span></code></a></p></td>
+<td><p>Stable immutable request passed to user-provided ASR backends.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.WHISPER_MODELS.html#scikitplot.corpus.WHISPER_MODELS" title="scikitplot.corpus.WHISPER_MODELS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WHISPER_MODELS</span></code></a></p></td>
+<td><p>Built-in immutable sequence.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.asr_segment_metadata.html#scikitplot.corpus.asr_segment_metadata" title="scikitplot.corpus.asr_segment_metadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asr_segment_metadata</span></code></a></p></td>
+<td><p>Return user/backend metadata without allowing core-field shadowing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.plan_whisper_backends.html#scikitplot.corpus.plan_whisper_backends" title="scikitplot.corpus.plan_whisper_backends"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_whisper_backends</span></code></a></p></td>
+<td><p>Plan the exact ASR chain without importing/loading/running a model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../modules/generated/scikitplot.corpus.transcribe_whisper.html#scikitplot.corpus.transcribe_whisper" title="scikitplot.corpus.transcribe_whisper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transcribe_whisper</span></code></a></p></td>
+<td><p>Transcribe media with a shared, policy-driven ASR backend chain.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3756,12 +3991,12 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
     <div class="footer-article-item">
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../modules/generated/scikitplot.config.citation.html"
+       href="../modules/generated/scikitplot.config.show_config.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">citation</p>
+        <p class="prev-next-title">show_config</p>
       </div>
     </a>
     <a class="right-next"
@@ -3807,7 +4042,7 @@ policy boundary, retrieval modes, and optional-capability guidance.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>

@@ -76,6 +76,74 @@ This module contains simple functions for model selection.
 | [`bayesian_info_criterion`](../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion.html#scikitplot.cexternals._astropy.stats.bayesian_info_criterion "scikitplot.cexternals._astropy.stats.bayesian_info_criterion") | Computes the Bayesian Information Criterion (BIC) given the log of the likelihood function evaluated at the estimated (or analytically derived) parameters, the number of parameters, and the number of samples. |
 | [`bayesian_info_criterion_lsq`](../modules/generated/scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq.html#scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq "scikitplot.cexternals._astropy.stats.bayesian_info_criterion_lsq") | Computes the Bayesian Information Criterion (BIC) assuming that the observations come from a Gaussian distribution. |
 
+## Astrostatistics: Robust Biweight Estimators[#](#module-scikitplot.cexternals._astropy.stats.biweight "Link to this heading")
+
+This module contains functions for computing robust statistics using
+Tukey’s biweight function.
+
+****User guide.**** See the [Astrostatistics Tools (experimental)](../user_guide/stats/index.html#astrostatistics-index) section for further details.
+
+|  |  |
+| --- | --- |
+| [`biweight_location`](../modules/generated/scikitplot.cexternals._astropy.stats.biweight_location.html#scikitplot.cexternals._astropy.stats.biweight_location "scikitplot.cexternals._astropy.stats.biweight_location") | Compute the biweight location. |
+| [`biweight_midcorrelation`](../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html#scikitplot.cexternals._astropy.stats.biweight_midcorrelation "scikitplot.cexternals._astropy.stats.biweight_midcorrelation") | Compute the biweight midcorrelation between two variables. |
+| [`biweight_midcovariance`](../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance "scikitplot.cexternals._astropy.stats.biweight_midcovariance") | Compute the biweight midcovariance between pairs of multiple variables. |
+| [`biweight_midvariance`](../modules/generated/scikitplot.cexternals._astropy.stats.biweight_midvariance.html#scikitplot.cexternals._astropy.stats.biweight_midvariance "scikitplot.cexternals._astropy.stats.biweight_midvariance") | Compute the biweight midvariance. |
+| [`biweight_scale`](../modules/generated/scikitplot.cexternals._astropy.stats.biweight_scale.html#scikitplot.cexternals._astropy.stats.biweight_scale "scikitplot.cexternals._astropy.stats.biweight_scale") | Compute the biweight scale. |
+
+## Astrostatistics: Sigma Clipping[#](#module-scikitplot.cexternals._astropy.stats.sigma_clipping "Link to this heading")
+
+****User guide.**** See the [Astrostatistics Tools (experimental)](../user_guide/stats/index.html#astrostatistics-index) section for further details.
+
+|  |  |
+| --- | --- |
+| [`SigmaClip`](../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClip.html#scikitplot.cexternals._astropy.stats.SigmaClip "scikitplot.cexternals._astropy.stats.SigmaClip") | Class to perform sigma clipping. |
+| [`SigmaClippedStats`](../modules/generated/scikitplot.cexternals._astropy.stats.SigmaClippedStats.html#scikitplot.cexternals._astropy.stats.SigmaClippedStats "scikitplot.cexternals._astropy.stats.SigmaClippedStats") | Class to calculate sigma-clipped statistics on the provided data. |
+| [`sigma_clip`](../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clip.html#scikitplot.cexternals._astropy.stats.sigma_clip "scikitplot.cexternals._astropy.stats.sigma_clip") | Perform sigma-clipping on the provided data. |
+| [`sigma_clipped_stats`](../modules/generated/scikitplot.cexternals._astropy.stats.sigma_clipped_stats.html#scikitplot.cexternals._astropy.stats.sigma_clipped_stats "scikitplot.cexternals._astropy.stats.sigma_clipped_stats") | Calculate sigma-clipped statistics on the provided data. |
+
+## Astrostatistics: Circular Statistics[#](#module-scikitplot.cexternals._astropy.stats.circstats "Link to this heading")
+
+This module contains simple functions for dealing with circular statistics, for
+instance, mean, variance, standard deviation, correlation coefficient, and so
+on. This module also cover tests of uniformity, e.g., the Rayleigh and V tests.
+The Maximum Likelihood Estimator for the Von Mises distribution along with the
+Cramer-Rao Lower Bounds are also implemented. Almost all of the implementations
+are based on reference [[1]\_](#id4), which is also the basis for the R package
+‘CircStats’ [[2]\_](#id5).
+
+****User guide.**** See the [Astrostatistics Tools (experimental)](../user_guide/stats/index.html#astrostatistics-index) section for further details.
+
+|  |  |
+| --- | --- |
+| [`circcorrcoef`](../modules/generated/scikitplot.cexternals._astropy.stats.circcorrcoef.html#scikitplot.cexternals._astropy.stats.circcorrcoef "scikitplot.cexternals._astropy.stats.circcorrcoef") | Computes the circular correlation coefficient between two array of circular data. |
+| [`circmean`](../modules/generated/scikitplot.cexternals._astropy.stats.circmean.html#scikitplot.cexternals._astropy.stats.circmean "scikitplot.cexternals._astropy.stats.circmean") | Computes the circular mean angle of an array of circular data. |
+| [`circmoment`](../modules/generated/scikitplot.cexternals._astropy.stats.circmoment.html#scikitplot.cexternals._astropy.stats.circmoment "scikitplot.cexternals._astropy.stats.circmoment") | Computes the `p`-th trigonometric circular moment for an array of circular data. |
+| [`circstd`](../modules/generated/scikitplot.cexternals._astropy.stats.circstd.html#scikitplot.cexternals._astropy.stats.circstd "scikitplot.cexternals._astropy.stats.circstd") | Computes the circular standard deviation of an array of circular data. |
+| [`circvar`](../modules/generated/scikitplot.cexternals._astropy.stats.circvar.html#scikitplot.cexternals._astropy.stats.circvar "scikitplot.cexternals._astropy.stats.circvar") | Computes the circular variance of an array of circular data. |
+| [`rayleightest`](../modules/generated/scikitplot.cexternals._astropy.stats.rayleightest.html#scikitplot.cexternals._astropy.stats.rayleightest "scikitplot.cexternals._astropy.stats.rayleightest") | Performs the Rayleigh test of uniformity. |
+| [`vonmisesmle`](../modules/generated/scikitplot.cexternals._astropy.stats.vonmisesmle.html#scikitplot.cexternals._astropy.stats.vonmisesmle "scikitplot.cexternals._astropy.stats.vonmisesmle") | Computes the Maximum Likelihood Estimator (MLE) for the parameters of the von Mises distribution. |
+| [`vtest`](../modules/generated/scikitplot.cexternals._astropy.stats.vtest.html#scikitplot.cexternals._astropy.stats.vtest "scikitplot.cexternals._astropy.stats.vtest") | Performs the Rayleigh test of uniformity where the alternative hypothesis H1 is assumed to have a known mean angle `mu`. |
+
+## Astrostatistics: Jackknife Resampling[#](#module-scikitplot.cexternals._astropy.stats.jackknife "Link to this heading")
+
+****User guide.**** See the [Astrostatistics Tools (experimental)](../user_guide/stats/index.html#astrostatistics-index) section for further details.
+
+|  |  |
+| --- | --- |
+| [`jackknife_resampling`](../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_resampling.html#scikitplot.cexternals._astropy.stats.jackknife_resampling "scikitplot.cexternals._astropy.stats.jackknife_resampling") | Performs jackknife resampling on numpy arrays. |
+| [`jackknife_stats`](../modules/generated/scikitplot.cexternals._astropy.stats.jackknife_stats.html#scikitplot.cexternals._astropy.stats.jackknife_stats "scikitplot.cexternals._astropy.stats.jackknife_stats") | Performs jackknife estimation on the basis of jackknife resamples. |
+
+## Astrostatistics: Spatial Statistics[#](#module-scikitplot.cexternals._astropy.stats.spatial "Link to this heading")
+
+This module implements functions and classes for spatial statistics.
+
+****User guide.**** See the [Astrostatistics Tools (experimental)](../user_guide/stats/index.html#astrostatistics-index) section for further details.
+
+|  |  |
+| --- | --- |
+| [`RipleysKEstimator`](../modules/generated/scikitplot.cexternals._astropy.stats.RipleysKEstimator.html#scikitplot.cexternals._astropy.stats.RipleysKEstimator "scikitplot.cexternals._astropy.stats.RipleysKEstimator") | Estimators for Ripley's K function for two-dimensional spatial data. |
+
 ## Discrete Distributions Tools[#](#module-scikitplot.externals._tweedie._tweedie_dist "Link to this heading")
 
 Tweedie Distribution Module.

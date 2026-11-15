@@ -135,3 +135,12 @@ Class inheritance
 | [`SearchDocsOutput`](../modules/generated/scikitplot.mcp.SearchDocsOutput.html#scikitplot.mcp.SearchDocsOutput "scikitplot.mcp.SearchDocsOutput") | Structured output schema automatically advertised by MCP SDK v2. |
 | [`SearchService`](../modules/generated/scikitplot.mcp.SearchService.html#scikitplot.mcp.SearchService "scikitplot.mcp.SearchService") | Wire adapter: bounded, validated search returning pydantic tool models. |
 | [`create_server`](../modules/generated/scikitplot.mcp.create_server.html#scikitplot.mcp.create_server "scikitplot.mcp.create_server") | Create an official MCP Python SDK v2 `MCPServer` instance. |
+
+## MCP: Command Line and Validation[#](#mcp-command-line-and-validation "Link to this heading")
+
+|  |  |
+| --- | --- |
+| [`RuntimeConfig`](../modules/generated/scikitplot.mcp.RuntimeConfig.html#scikitplot.mcp.RuntimeConfig "scikitplot.mcp.RuntimeConfig") | Validated effective CLI configuration. |
+| [`main`](../modules/generated/scikitplot.mcp.main.html#scikitplot.mcp.main "scikitplot.mcp.main") |  |
+| [`require_count`](../modules/generated/scikitplot.mcp.require_count.html#scikitplot.mcp.require_count "scikitplot.mcp.require_count") | Return `value` as a non-negative count within its declared maximum. |
+| [`require_index`](../modules/generated/scikitplot.mcp.require_index.html#scikitplot.mcp.require_index "scikitplot.mcp.require_index") | Return `value` as a position valid in `[0, count)`. |

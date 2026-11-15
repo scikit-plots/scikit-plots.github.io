@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-08T15:37:21Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:11:24Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"user_guide/corpus/readers_and_backends","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -60,7 +60,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/sk-collection.css?v=3e0ab7e0" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-feedback.css?v=e80ecaff" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=68bd592b" />
@@ -87,7 +87,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script defer="defer" src="../../_static/sk-collection.js?v=66f0a5ad"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -1060,7 +1060,7 @@ replaying the operation or scraping debug logs.</p>
 <section id="what-ran-what-was-asked-and-why-they-differ">
 <h2>What ran, what was asked, and why they differ<a class="headerlink" href="#what-ran-what-was-asked-and-why-they-differ" title="Link to this heading">#</a></h2>
 <p>The components that choose between implementations – reader backend chains
-(<code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code>), vector backends and their Annoy bindings, and
+(<a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome" title="scikitplot.corpus.BackendOutcome"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code></a>), vector backends and their Annoy bindings, and
 <code class="docutils literal notranslate"><span class="pre">SemanticChunker</span></code> – report the same four names:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">requested_backend</span></code></dt><dd><p>What the configuration asked for (<code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>, a backend name, a binding).</p>
@@ -1068,7 +1068,7 @@ replaying the operation or scraping debug logs.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">backend</span></code></dt><dd><p>What actually ran.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">fallback_reason</span></code></dt><dd><p>Why they differ, from a closed vocabulary per component; <code class="docutils literal notranslate"><span class="pre">None</span></code> when they
-do not. Reader chains (<code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code>) use <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;</span></code> and
+do not. Reader chains (<a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome" title="scikitplot.corpus.BackendOutcome"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code></a>) use <code class="docutils literal notranslate"><span class="pre">&quot;failed&quot;</span></code> and
 <code class="docutils literal notranslate"><span class="pre">&quot;no_result&quot;</span></code> (a candidate the policy skips was never eligible, as an
 absent backend is not a fallback under <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>); vector backends use
 <code class="docutils literal notranslate"><span class="pre">&quot;&lt;name&gt;_broken&quot;</span></code> (installed but failing to load, skipped under
@@ -1116,7 +1116,7 @@ backend that is installed but fails to load as <code class="docutils literal not
 </section>
 <section id="readiness-vocabulary">
 <h2>Readiness vocabulary<a class="headerlink" href="#readiness-vocabulary" title="Link to this heading">#</a></h2>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityReport</span></code> separates five facts that are commonly conflated:</p>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.CapabilityReport.html#scikitplot.corpus.CapabilityReport" title="scikitplot.corpus.CapabilityReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityReport</span></code></a> separates five facts that are commonly conflated:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">installed</span></code></dt><dd><p>The Python package/module can be located.</p>
 </dd>
@@ -1165,19 +1165,19 @@ load a model, decode media, or call a user backend.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="o">.</span><span class="n">capability_view</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPlan</span></code> separates <code class="docutils literal notranslate"><span class="pre">declared</span></code>, <code class="docutils literal notranslate"><span class="pre">ordered</span></code>, <code class="docutils literal notranslate"><span class="pre">eligible</span></code>,
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPlan.html#scikitplot.corpus.BackendPlan" title="scikitplot.corpus.BackendPlan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPlan</span></code></a> separates <code class="docutils literal notranslate"><span class="pre">declared</span></code>, <code class="docutils literal notranslate"><span class="pre">ordered</span></code>, <code class="docutils literal notranslate"><span class="pre">eligible</span></code>,
 <code class="docutils literal notranslate"><span class="pre">selected</span></code> and <code class="docutils literal notranslate"><span class="pre">skipped</span></code> candidates. A skipped backend includes its reason
-and readiness evidence. After execution, <code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code> exposes the
+and readiness evidence. After execution, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendOutcome.html#scikitplot.corpus.BackendOutcome" title="scikitplot.corpus.BackendOutcome"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendOutcome</span></code></a> exposes the
 same capability view with <code class="docutils literal notranslate"><span class="pre">active=True</span></code> only for the backend that actually
 completed the operation.</p>
-<p>For lower-level/custom operations, <code class="xref py py-func docutils literal notranslate"><span class="pre">plan_backend_chain</span></code> provides the same
-side-effect-free preflight over explicit <code class="xref py py-class docutils literal notranslate"><span class="pre">BackendCandidate</span></code> objects.</p>
+<p>For lower-level/custom operations, <a class="reference internal" href="../../modules/generated/scikitplot.corpus.plan_backend_chain.html#scikitplot.corpus.plan_backend_chain" title="scikitplot.corpus.plan_backend_chain"><code class="xref py py-func docutils literal notranslate"><span class="pre">plan_backend_chain</span></code></a> provides the same
+side-effect-free preflight over explicit <a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendCandidate.html#scikitplot.corpus.BackendCandidate" title="scikitplot.corpus.BackendCandidate"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendCandidate</span></code></a> objects.</p>
 </section>
 <section id="custom-readiness-registries">
 <h2>Custom readiness registries<a class="headerlink" href="#custom-readiness-registries" title="Link to this heading">#</a></h2>
 <p>A private backend can publish readiness without mutating process-global
-discovery. Pass the same <code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityRegistry</span></code> to the reader and give the
-custom <code class="xref py py-class docutils literal notranslate"><span class="pre">ASRBackend</span></code> its capability identifier. This keeps preflight
+discovery. Pass the same <a class="reference internal" href="../../modules/generated/scikitplot.corpus.CapabilityRegistry.html#scikitplot.corpus.CapabilityRegistry" title="scikitplot.corpus.CapabilityRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">CapabilityRegistry</span></code></a> to the reader and give the
+custom <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend" title="scikitplot.corpus.ASRBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASRBackend</span></code></a> its capability identifier. This keeps preflight
 (<code class="docutils literal notranslate"><span class="pre">selected</span></code>) and runtime evidence (<code class="docutils literal notranslate"><span class="pre">active</span></code>) connected end to end.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">ASRBackend</span><span class="p">,</span>
@@ -1208,7 +1208,7 @@ Python code and must honour any offline/network promises they declare.</p>
 </section>
 <section id="backend-policies">
 <h2>Backend policies<a class="headerlink" href="#backend-policies" title="Link to this heading">#</a></h2>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code> provides reusable orchestration presets:</p>
+<p><a class="reference internal" href="../../modules/generated/scikitplot.corpus.BackendPolicy.html#scikitplot.corpus.BackendPolicy" title="scikitplot.corpus.BackendPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendPolicy</span></code></a> provides reusable orchestration presets:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
 <col style="width: 22.0%" />
@@ -1255,7 +1255,7 @@ skipped.</p></td>
 </section>
 <section id="custom-asr">
 <h2>Custom ASR<a class="headerlink" href="#custom-asr" title="Link to this heading">#</a></h2>
-<p>A user backend receives one immutable <code class="xref py py-class docutils literal notranslate"><span class="pre">ASRRequest</span></code>; this avoids an
+<p>A user backend receives one immutable <a class="reference internal" href="../../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest" title="scikitplot.corpus.ASRRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASRRequest</span></code></a>; this avoids an
 unstable expanding keyword callback signature.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scikitplot.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">ASRBackend</span><span class="p">,</span> <span class="n">AudioReader</span><span class="p">,</span> <span class="n">BackendPolicy</span>
 
@@ -1410,7 +1410,7 @@ imply one universal fallback policy.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261108.f7759b5 2026-11-08T15:11Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
       <br/>
     
   </p>
