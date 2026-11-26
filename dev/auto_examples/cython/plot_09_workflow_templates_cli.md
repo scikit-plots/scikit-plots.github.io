@@ -148,20 +148,20 @@ else:
 ```
 ```
 Workflows: ['churn_basic']
-Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmpt9bac8ir/workflow_copy
+Copied workflow to: /home/circleci/repo/galleries/examples/cython/tmpwmm217a9/workflow_copy
 Files: ['cli.py', 'hpo.py', 'predict.py', 'train.py']
 
 Run:
-  python /home/circleci/repo/galleries/examples/cython/tmpt9bac8ir/workflow_copy/cli.py train --help
-  python /home/circleci/repo/galleries/examples/cython/tmpt9bac8ir/workflow_copy/cli.py hpo --help
-  python /home/circleci/repo/galleries/examples/cython/tmpt9bac8ir/workflow_copy/cli.py predict --help
+  python /home/circleci/repo/galleries/examples/cython/tmpwmm217a9/workflow_copy/cli.py train --help
+  python /home/circleci/repo/galleries/examples/cython/tmpwmm217a9/workflow_copy/cli.py hpo --help
+  python /home/circleci/repo/galleries/examples/cython/tmpwmm217a9/workflow_copy/cli.py predict --help
 
 Single-module extension imported from copied folder:
   m.square(12) = 144
-Compiling /home/circleci/.cache/scikitplot/cython/cbfe24093268ce4bf4e2159442c1732ae36b329ad0172aba77116b9448066752/wf_ext_pkg/alpha.pyx because it changed.
-Compiling /home/circleci/.cache/scikitplot/cython/cbfe24093268ce4bf4e2159442c1732ae36b329ad0172aba77116b9448066752/wf_ext_pkg/beta.pyx because it changed.
-[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/cbfe24093268ce4bf4e2159442c1732ae36b329ad0172aba77116b9448066752/wf_ext_pkg/alpha.pyx
-[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/cbfe24093268ce4bf4e2159442c1732ae36b329ad0172aba77116b9448066752/wf_ext_pkg/beta.pyx
+Compiling /home/circleci/.cache/scikitplot/cython/27c97fd8e456ed7ca37f35c305144de81af55b8e045bde882bf4079f4c41c40f/wf_ext_pkg/alpha.pyx because it changed.
+Compiling /home/circleci/.cache/scikitplot/cython/27c97fd8e456ed7ca37f35c305144de81af55b8e045bde882bf4079f4c41c40f/wf_ext_pkg/beta.pyx because it changed.
+[1/2] Cythonizing /home/circleci/.cache/scikitplot/cython/27c97fd8e456ed7ca37f35c305144de81af55b8e045bde882bf4079f4c41c40f/wf_ext_pkg/alpha.pyx
+[2/2] Cythonizing /home/circleci/.cache/scikitplot/cython/27c97fd8e456ed7ca37f35c305144de81af55b8e045bde882bf4079f4c41c40f/wf_ext_pkg/beta.pyx
 
 Package extension imported from copied folder:
   alpha.inc(10) = 11
@@ -171,7 +171,7 @@ Package extension imported from copied folder:
 
 Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../../_tags/plot-type-cython.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.484 seconds)
+****Total running time of the script:**** (0 minutes 1.605 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo6.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cython/plot_09_workflow_templates_cli.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo6.svg)](../../lite/lab/index.html?path=auto_examples/cython/plot_09_workflow_templates_cli.ipynb)
 
@@ -183,15 +183,15 @@ Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../..
 
 Related examples
 
-![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
-
-[Multi-module package builds (5 package examples)](plot_05_package_examples_multimodule.html)
-
-Multi-module package builds (5 package examples)![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
+![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
 
 [Browse and compile templates](plot_01_browse_and_compile_templates.html)
 
-Browse and compile templates![](../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png)
+Browse and compile templates![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
+
+[Multi-module package builds (5 package examples)](plot_05_package_examples_multimodule.html)
+
+Multi-module package builds (5 package examples)![](../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png)
 
 [Multi-file builds: .pxi includes and external headers](plot_06_multifile_support_files.html)
 

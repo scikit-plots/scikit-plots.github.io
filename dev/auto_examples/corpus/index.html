@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:17:32Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T15:27:16Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"auto_examples/corpus/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -687,10 +687,12 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_backend_policy_script.html">Customize Corpus backends and readiness policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_code_reader_script.html">Read Source Code with CodeReader: from One File to a Whole Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Hamlet Corpus, Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html">Write Your Own Corpus Components: a Hamlet Walkthrough</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_lean_reader_script.html">Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_levenshtein_script.html">Use Levenshtein distance with Corpus retrieval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_policy_bundle_script.html">Compose Corpus policies without hiding boundaries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
@@ -924,6 +926,11 @@ explicit and optional.</p></li>
 <li><p><strong>Build a multi-source WHO corpus</strong> — see the explicit stage-by-stage
 integration path, partial source success, keyword retrieval, adapters, and
 where <code class="xref py py-class docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> fits.</p></li>
+<li><p><strong>Read source code</strong> — <code class="xref py py-class docutils literal notranslate"><span class="pre">CodeReader</span></code> from one file to a folder of
+languages, custom extensions, awkward encodings and a line-coverage check.</p></li>
+<li><p><strong>Read Lean proofs</strong> — <code class="xref py py-class docutils literal notranslate"><span class="pre">LeanReader</span></code>: one chunk per command, proofs
+kept or dropped, audit flags (<code class="docutils literal notranslate"><span class="pre">sorry</span></code>, <code class="docutils literal notranslate"><span class="pre">native_decide</span></code>, <code class="docutils literal notranslate"><span class="pre">axiom</span></code>,
+<code class="docutils literal notranslate"><span class="pre">#exit</span></code>), long proofs in parts, Lean 3 and hostile input.</p></li>
 </ol>
 </section>
 <section id="which-api-should-i-use">
@@ -1074,6 +1081,9 @@ environment.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Optional packages are not a single yes/no capability.  A package may be installed while its model or system asset is missing, a policy may select a backend that has not run yet, and a successful fallback may be deliberately reported as degraded."><img alt="" src="../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_backend_policy_script.html"><span class="doc">Customize Corpus backends and readiness policies</span></a></p>
   <div class="sphx-glr-thumbnail-title">Customize Corpus backends and readiness policies</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="CodeReader turns source and configuration files into chunks of whole lines, each with its language and the lines it came from. This example goes from the simplest case to a project-sized one:"><img alt="" src="../../_images/sphx_glr_plot_corpus_code_reader_script_thumb.png" />
+<p><a class="reference internal" href="plot_corpus_code_reader_script.html"><span class="doc">Read Source Code with CodeReader: from One File to a Whole Project</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Read Source Code with CodeReader: from One File to a Whole Project</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="FluentCorpus is an immutable configuration facade for building a canonical CorpusPlan and, when requested, materializing that plan as a RuntimeCorpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_fluent_corpus_script.html"><span class="doc">Configure Corpus with FluentCorpus</span></a></p>
   <div class="sphx-glr-thumbnail-title">Configure Corpus with FluentCorpus</div>
@@ -1086,6 +1096,9 @@ environment.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example asks one focused question:"><img alt="" src="../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_knowledge_script.html"><span class="doc">Compare Corpus Chunking Strategies on OCR Text</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compare Corpus Chunking Strategies on OCR Text</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Lean proofs can run to millions of lines, far past what a person can keep track of. LeanReader splits a .lean file into one chunk per Lean command: a theorem, a def, a namespace. Each chunk records where it is, what it declares and the audit flags it raises. This example goes from the simplest case to the hard ones:"><img alt="" src="../../_images/sphx_glr_plot_corpus_lean_reader_script_thumb.png" />
+<p><a class="reference internal" href="plot_corpus_lean_reader_script.html"><span class="doc">Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="scikitplot.levenshtein is an always-importable facade for edit distance. It prefers the bundled Scikit-Plots implementation, can use the MIT-licensed RapidFuzz package when available, and retains a dependency-free Python fallback.  The separately licensed Levenshtein package is available only when explicitly requested."><img alt="" src="../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png" />
 <p><a class="reference internal" href="plot_corpus_levenshtein_script.html"><span class="doc">Use Levenshtein distance with Corpus retrieval</span></a></p>
   <div class="sphx-glr-thumbnail-title">Use Levenshtein distance with Corpus retrieval</div>
@@ -1168,7 +1181,7 @@ environment.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.740e0f5 2026-11-26T15:04Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # require\_count[#](#require-count "Link to this heading")
 
-scikitplot.mcp.require\_count(**value**, **\***, **maximum=None**, **name='count'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/mcp/_validation.py#L127)[#](#scikitplot.mcp.require_count "Link to this definition")
+scikitplot.mcp.require\_count(**value**, **\***, **maximum=None**, **name='count'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/mcp/_validation.py#L127)[#](#scikitplot.mcp.require_count "Link to this definition")
 :   Return `value` as a non-negative count within its declared maximum.
 
     Parameters:

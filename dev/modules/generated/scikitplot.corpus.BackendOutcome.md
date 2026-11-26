@@ -1,6 +1,6 @@
 # BackendOutcome[#](#backendoutcome "Link to this heading")
 
-class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **attempted**, **missed**, **errors**, **skipped=()**, **policy='resilient'**, **selected\_capabilities=()**, **active\_capability=None**, **skip\_details=()**, **requested\_backend=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome "Link to this definition")
+class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **attempted**, **missed**, **errors**, **skipped=()**, **policy='resilient'**, **selected\_capabilities=()**, **active\_capability=None**, **skip\_details=()**, **requested\_backend=None**, **allow\_fallback=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome "Link to this definition")
 :   Structured, serialisable outcome from [`run_backend_chain`](scikitplot.corpus.run_backend_chain.html#scikitplot.corpus.run_backend_chain "scikitplot.corpus.run_backend_chain").
 
     Notes
@@ -34,11 +34,11 @@ class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **att
 
     allow\_fallback: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.BackendOutcome.allow_fallback "Link to this definition")
 
-    attempted: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.attempted "Link to this definition")
+    attempted: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.attempted "Link to this definition")
 
-    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.backend "Link to this definition")
+    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.backend "Link to this definition")
 
-    capability\_view(**\***, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L670)[#](#scikitplot.corpus.BackendOutcome.capability_view "Link to this definition")
+    capability\_view(**\***, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L670)[#](#scikitplot.corpus.BackendOutcome.capability_view "Link to this definition")
     :   Return readiness records with selected/active runtime provenance.
 
         Parameters:
@@ -47,7 +47,7 @@ class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **att
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]
 
-    errors: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[ErrorRecord](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.errors "Link to this definition")
+    errors: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[ErrorRecord](scikitplot.corpus.ErrorRecord.html#scikitplot.corpus.ErrorRecord "scikitplot.corpus._diagnostics.ErrorRecord"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.errors "Link to this definition")
 
     property fallback\_reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[#](#scikitplot.corpus.BackendOutcome.fallback_reason "Link to this definition")
     :   Why `backend` is not `requested_backend`, or `None`.
@@ -58,7 +58,7 @@ class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **att
                 `None` when it produced the value, or when no candidate was
                 eligible.
 
-    missed: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.missed "Link to this definition")
+    missed: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.missed "Link to this definition")
 
     policy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'resilient'[#](#scikitplot.corpus.BackendOutcome.policy "Link to this definition")
 
@@ -70,15 +70,15 @@ class scikitplot.corpus.BackendOutcome(**status**, **value**, **backend**, **att
 
     skipped: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.corpus.BackendOutcome.skipped "Link to this definition")
 
-    status: [BackendStatus](scikitplot.corpus.BackendStatus.html#scikitplot.corpus.BackendStatus "scikitplot.corpus._backends.BackendStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.status "Link to this definition")
+    status: [BackendStatus](scikitplot.corpus.BackendStatus.html#scikitplot.corpus.BackendStatus "scikitplot.corpus._backends.BackendStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.status "Link to this definition")
 
     property succeeded: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.BackendOutcome.succeeded "Link to this definition")
     :   Whether some backend completed successfully.
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L652)[#](#scikitplot.corpus.BackendOutcome.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L652)[#](#scikitplot.corpus.BackendOutcome.to_dict "Link to this definition")
     :   Return a JSON-compatible representation without live exceptions.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    value: \_T[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.value "Link to this definition")
+    value: \_T[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L592)[#](#scikitplot.corpus.BackendOutcome.value "Link to this definition")

@@ -1,6 +1,6 @@
 # make\_cache\_key[#](#make-cache-key "Link to this heading")
 
-scikitplot.cython.make\_cache\_key(**payload**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cython/_cache.py#L340)[#](#scikitplot.cython.make_cache_key "Link to this definition")
+scikitplot.cython.make\_cache\_key(**payload**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cython/_cache.py#L340)[#](#scikitplot.cython.make_cache_key "Link to this definition")
 :   Create a deterministic cache key from a JSON-serializable mapping.
 
     Parameters:

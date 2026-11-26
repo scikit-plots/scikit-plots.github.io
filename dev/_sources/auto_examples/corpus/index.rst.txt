@@ -56,6 +56,11 @@ Start here
 10. **Build a multi-source WHO corpus** — see the explicit stage-by-stage
     integration path, partial source success, keyword retrieval, adapters, and
     where :class:`CorpusBuilder` fits.
+11. **Read source code** — :class:`CodeReader` from one file to a folder of
+    languages, custom extensions, awkward encodings and a line-coverage check.
+12. **Read Lean proofs** — :class:`LeanReader`: one chunk per command, proofs
+    kept or dropped, audit flags (``sorry``, ``native_decide``, ``axiom``,
+    ``#exit``), long proofs in parts, Lean 3 and hostile input.
 
 Which API should I use?
 -----------------------
@@ -224,6 +229,23 @@ environment.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="CodeReader turns source and configuration files into chunks of whole lines, each with its language and the lines it came from. This example goes from the simplest case to a project-sized one:">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_code_reader_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_code_reader_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Read Source Code with CodeReader: from One File to a Whole Project</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="FluentCorpus is an immutable configuration facade for building a canonical CorpusPlan and, when requested, materializing that plan as a RuntimeCorpus.">
 
 .. only:: html
@@ -287,6 +309,23 @@ environment.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Compare Corpus Chunking Strategies on OCR Text</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lean proofs can run to millions of lines, far past what a person can keep track of. LeanReader splits a .lean file into one chunk per Lean command: a theorem, a def, a namespace. Each chunk records where it is, what it declares and the audit flags it raises. This example goes from the simplest case to the hard ones:">
+
+.. only:: html
+
+  .. image:: /auto_examples/corpus/images/thumb/sphx_glr_plot_corpus_lean_reader_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/corpus/plot_corpus_lean_reader_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development</div>
     </div>
 
 
@@ -387,10 +426,12 @@ environment.
 
    /auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script
    /auto_examples/corpus/plot_corpus_backend_policy_script
+   /auto_examples/corpus/plot_corpus_code_reader_script
    /auto_examples/corpus/plot_corpus_fluent_corpus_script
    /auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script
    /auto_examples/corpus/plot_corpus_hamlet_custom_components_script
    /auto_examples/corpus/plot_corpus_knowledge_script
+   /auto_examples/corpus/plot_corpus_lean_reader_script
    /auto_examples/corpus/plot_corpus_levenshtein_script
    /auto_examples/corpus/plot_corpus_policy_bundle_script
    /auto_examples/corpus/plot_corpus_who_per_file_script

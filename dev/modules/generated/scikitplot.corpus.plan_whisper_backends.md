@@ -1,6 +1,6 @@
 # plan\_whisper\_backends[#](#plan-whisper-backends "Link to this heading")
 
-scikitplot.corpus.plan\_whisper\_backends(**media\_path**, **model\_size**, **language**, **\***, **component**, **strict=False**, **faster\_model\_kwargs=None**, **faster\_transcribe\_kwargs=None**, **include\_confidence=False**, **policy=None**, **custom\_backends=()**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L370)[#](#scikitplot.corpus.plan_whisper_backends "Link to this definition")
+scikitplot.corpus.plan\_whisper\_backends(**media\_path**, **model\_size**, **language**, **\***, **component**, **strict=False**, **faster\_model\_kwargs=None**, **faster\_transcribe\_kwargs=None**, **include\_confidence=False**, **policy=None**, **custom\_backends=()**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L370)[#](#scikitplot.corpus.plan_whisper_backends "Link to this definition")
 :   Plan the exact ASR chain without importing/loading/running a model.
 
     Parameters:

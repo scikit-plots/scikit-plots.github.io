@@ -1,6 +1,6 @@
 # AxisError[#](#axiserror "Link to this heading")
 
-exception scikitplot.exceptions.AxisError(**axis**, **ndim=None**, **msg\_prefix=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L192)[#](#scikitplot.exceptions.AxisError "Link to this definition")
+exception scikitplot.exceptions.AxisError(**axis**, **ndim=None**, **msg\_prefix=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L192)[#](#scikitplot.exceptions.AxisError "Link to this definition")
 :   Axis supplied was invalid.
 
     This is raised whenever an `axis` parameter is specified that is larger

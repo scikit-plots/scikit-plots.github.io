@@ -1,6 +1,6 @@
 # AuditEvaluation[#](#auditevaluation "Link to this heading")
 
-class scikitplot.agent.AuditEvaluation(**runs**, **summary**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation "Link to this definition")
+class scikitplot.agent.AuditEvaluation(**runs**, **summary**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation "Link to this definition")
 :   Per-run summaries and aggregate rates.
 
     Parameters:
@@ -19,11 +19,11 @@ class scikitplot.agent.AuditEvaluation(**runs**, **summary**)[[source]](https://
     :   * ****runs**** ([**tuple**](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")**[**[**RunSummary**](scikitplot.agent.RunSummary.html#scikitplot.agent.RunSummary "scikitplot.agent._evaluate.RunSummary")**,** **...****]**)
         * ****summary**** ([**dict**](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
 
-    runs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[RunSummary](scikitplot.agent.RunSummary.html#scikitplot.agent.RunSummary "scikitplot.agent._evaluate.RunSummary"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation.runs "Link to this definition")
+    runs: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[RunSummary](scikitplot.agent.RunSummary.html#scikitplot.agent.RunSummary "scikitplot.agent._evaluate.RunSummary"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation.runs "Link to this definition")
 
-    summary: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation.summary "Link to this definition")
+    summary: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_evaluate.py#L97)[#](#scikitplot.agent.AuditEvaluation.summary "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_evaluate.py#L118)[#](#scikitplot.agent.AuditEvaluation.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_evaluate.py#L118)[#](#scikitplot.agent.AuditEvaluation.to_dict "Link to this definition")
     :   Return a JSON-compatible mapping.
 
         Return type:

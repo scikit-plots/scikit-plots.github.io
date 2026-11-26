@@ -38,7 +38,7 @@ print("auto selected:", auto.name)
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.010 seconds)
+****Total running time of the script:**** (0 minutes 0.008 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/levenshtein/plot_levenshtein_backends_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/levenshtein/plot_levenshtein_backends_script.ipynb)
 

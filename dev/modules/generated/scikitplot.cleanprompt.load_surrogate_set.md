@@ -1,6 +1,6 @@
 # load\_surrogate\_set[#](#load-surrogate-set "Link to this heading")
 
-scikitplot.cleanprompt.load\_surrogate\_set(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L724)[#](#scikitplot.cleanprompt.load_surrogate_set "Link to this definition")
+scikitplot.cleanprompt.load\_surrogate\_set(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L724)[#](#scikitplot.cleanprompt.load_surrogate_set "Link to this definition")
 :   Read and validate a surrogate set from a `.yaml`, `.yml` or `.json` file.
 
     Parameters:

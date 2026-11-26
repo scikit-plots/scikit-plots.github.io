@@ -1,6 +1,6 @@
 # SurrogateSet[#](#surrogateset "Link to this heading")
 
-class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **pools**, **identity**, **source='<memory>'**, **avoid=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet "Link to this definition")
+class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **pools**, **identity**, **source='<memory>'**, **avoid=frozenset({})**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet "Link to this definition")
 :   A validated set of invented names.
 
     Parameters:
@@ -42,7 +42,7 @@ class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **
 
     avoid: [frozenset](https://docs.python.org/3/builtins/stdtypes.html#frozenset "(in Python v3.15)") = frozenset({})[#](#scikitplot.cleanprompt.SurrogateSet.avoid "Link to this definition")
 
-    avoids(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L356)[#](#scikitplot.cleanprompt.SurrogateSet.avoids "Link to this definition")
+    avoids(**candidate**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L356)[#](#scikitplot.cleanprompt.SurrogateSet.avoids "Link to this definition")
     :   Return whether `candidate` is one of the set’s avoided words.
 
         Parameters:
@@ -67,7 +67,7 @@ class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **
         at run time, and for the built-in names of kinds the set leaves out.
         A provider without this method avoids nothing.
 
-    candidate(**kind**, **index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L384)[#](#scikitplot.cleanprompt.SurrogateSet.candidate "Link to this definition")
+    candidate(**kind**, **index**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L384)[#](#scikitplot.cleanprompt.SurrogateSet.candidate "Link to this definition")
     :   Propose the `index`-th stand-in for `kind`.
 
         Parameters:
@@ -96,7 +96,7 @@ class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **
         the same offset rule as the built-in names, so consecutive people do
         not share a surname.
 
-    capacity(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L418)[#](#scikitplot.cleanprompt.SurrogateSet.capacity "Link to this definition")
+    capacity(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L418)[#](#scikitplot.cleanprompt.SurrogateSet.capacity "Link to this definition")
     :   Return how many distinct stand-ins this set can propose for `kind`.
 
         Parameters:
@@ -105,20 +105,20 @@ class scikitplot.cleanprompt.SurrogateSet(**name**, **version**, **summary**, **
         Return type:
         :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    identity: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.identity "Link to this definition")
+    identity: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.identity "Link to this definition")
 
-    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L380)[#](#scikitplot.cleanprompt.SurrogateSet.kinds "Link to this definition")
+    kinds()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L380)[#](#scikitplot.cleanprompt.SurrogateSet.kinds "Link to this definition")
     :   Return the kinds this set defines.
 
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.name "Link to this definition")
 
-    pools: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...], ...]], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.pools "Link to this definition")
+    pools: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...], ...]], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.pools "Link to this definition")
 
     source: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = '<memory>'[#](#scikitplot.cleanprompt.SurrogateSet.source "Link to this definition")
 
-    summary: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.summary "Link to this definition")
+    summary: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.summary "Link to this definition")
 
-    version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.version "Link to this definition")
+    version: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_surrogate_sets.py#L319)[#](#scikitplot.cleanprompt.SurrogateSet.version "Link to this definition")

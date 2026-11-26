@@ -1,6 +1,6 @@
 # vonmisesmle[#](#vonmisesmle "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.vonmisesmle(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L566)[#](#scikitplot.cexternals._astropy.stats.vonmisesmle "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.vonmisesmle(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/circstats.py#L566)[#](#scikitplot.cexternals._astropy.stats.vonmisesmle "Link to this definition")
 :   Computes the Maximum Likelihood Estimator (MLE) for the parameters of
     the von Mises distribution.
 

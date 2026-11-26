@@ -1,6 +1,6 @@
 # split\_line[#](#split-line "Link to this heading")
 
-scikitplot.\_ipymagic.split\_line(**line**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_bridge.py#L81)[#](#scikitplot._ipymagic.split_line "Link to this definition")
+scikitplot.\_ipymagic.split\_line(**line**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_bridge.py#L81)[#](#scikitplot._ipymagic.split_line "Link to this definition")
 :   Split a magic’s line into arguments the way a POSIX shell would.
 
     Parameters:

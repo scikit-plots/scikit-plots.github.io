@@ -1,6 +1,6 @@
 # LeakError[#](#leakerror "Link to this heading")
 
-exception scikitplot.cleanprompt.LeakError(**message**, **kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L217)[#](#scikitplot.cleanprompt.LeakError "Link to this definition")
+exception scikitplot.cleanprompt.LeakError(**message**, **kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L217)[#](#scikitplot.cleanprompt.LeakError "Link to this definition")
 :   Outgoing text still holds a value the vault removed; it was not sent.
 
     Parameters:

@@ -36,10 +36,12 @@ This example shows the public pieces that keep those states separate:
 * :class:`ASRBackend` for a user-provided speech recognizer,
 * :attr:`DocumentReader.backend_reports` for structured runtime evidence.
 
-The executable path uses a tiny synthetic local backend.  It performs no
-network access, model download, or audio decoding.
+The executable path reads the two recordings bundled under ``data/`` with a
+small local backend that stands in for a speech model. It performs no
+network access, model download, or audio decoding; an empty file is shown
+being refused.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-40
+.. GENERATED FROM PYTHON SOURCE LINES 25-42
 
 .. code-block:: Python
 
@@ -67,7 +69,7 @@ network access, model download, or audio decoding.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-47
+.. GENERATED FROM PYTHON SOURCE LINES 43-49
 
 Inspect capability readiness without loading models
 ---------------------------------------------------
@@ -76,7 +78,7 @@ packages may be discoverable while model readiness is unknown until first
 use; the readiness probe must not download a model merely to make a green
 status claim.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-60
+.. GENERATED FROM PYTHON SOURCE LINES 49-62
 
 .. code-block:: Python
 
@@ -107,24 +109,70 @@ status claim.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-65
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
+
+Locate the bundled recordings
+-----------------------------
+The two MP3 files ship with the gallery under ``data/``. A missing file is
+reported as ``SKIP``; it never turns into a network request.
+
+.. GENERATED FROM PYTHON SOURCE LINES 67-85
+
+.. code-block:: Python
+
+
+
+    def _resolve_example_dir() -> Path:
+        """Resolve the example directory across scripts and Sphinx-Gallery."""
+        file = globals().get("__file__")
+        return Path(file).resolve().parent if file else Path.cwd().resolve()
+
+
+    _DATA_DIR = _resolve_example_dir() / "data"
+    RECORDINGS = [
+        _DATA_DIR / "can-people-afford-to-pay-for-health-care.mp3",
+        _DATA_DIR / "tale_of_two_cities_01_dickens_64kb.mp3",
+    ]
+    for path in RECORDINGS:
+        state = f"{path.stat().st_size:,} bytes" if path.is_file() else "SKIP: missing"
+        print(f"{path.name}: {state}")
+    available = [path for path in RECORDINGS if path.is_file() and path.stat().st_size]
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    can-people-afford-to-pay-for-health-care.mp3: 401,709 bytes
+    tale_of_two_cities_01_dickens_64kb.mp3: 200,966 bytes
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 86-92
 
 Provide a user-side ASR backend
 -------------------------------
 Custom backends receive one immutable :class:`ASRRequest`, keeping the
-extension signature stable as future request metadata is added.
+extension signature stable as future request metadata is added. This one
+stands in for a real recognizer: it reads only the file's size, so the
+example runs without a model, yet the reader still checks a real recording.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-87
+.. GENERATED FROM PYTHON SOURCE LINES 92-115
 
 .. code-block:: Python
 
 
 
     def local_demo_asr(request: ASRRequest):
-        """Return one deterministic segment without touching the media bytes."""
+        """Return one deterministic segment describing the media file."""
+        size = request.media_path.stat().st_size
         return [
             {
-                "text": f"synthetic transcript for {request.media_path.stem}",
+                "text": f"placeholder transcript of {request.media_path.stem} ({size:,} bytes)",
                 "timecode_start": 0.0,
                 "timecode_end": 1.25,
                 "provider": "gallery-demo",
@@ -147,15 +195,17 @@ extension signature stable as future request metadata is added.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-93
+.. GENERATED FROM PYTHON SOURCE LINES 116-123
 
 Make backend order an explicit policy
 -------------------------------------
 ``include_unlisted=False`` means the two built-in Whisper implementations
 are not attempted.  This is useful for deterministic tests and for projects
-that own their inference runtime.
+that own their inference runtime. Preflight uses the same candidate
+factory as execution but calls no backend; the runtime report is the
+evidence that the selected backend actually ran.
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-127
+.. GENERATED FROM PYTHON SOURCE LINES 123-148
 
 .. code-block:: Python
 
@@ -165,33 +215,24 @@ that own their inference runtime.
         include_unlisted=False,
     )
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        audio_path = Path(tmpdir) / "demo.mp3"
-        audio_path.write_bytes(b"")
-
+    for audio_path in available:
         reader = AudioReader(
             audio_path,
             transcribe=True,
             backend_policy=policy,
             asr_backends=(custom_backend,),
         )
-        # Preflight uses the same candidate factory as execution but does not call
-        # ``local_demo_asr`` or any model backend.
         plan = reader.plan_asr_backends()
-        print("preflight:", plan.to_dict())
         assert plan.selected == ("gallery-local-asr",)
-
         chunks = list(reader.get_raw_chunks())
-
-    print("chunk text:", chunks[0]["text"])
-    print("provider:", chunks[0]["asr_metadata"]["provider"])
-    print("backend report:", reader.backend_reports[-1])
-    print("policy skips:", reader.backend_reports[-1].get("skip_details", []))
-
-    # The runtime report is the evidence that a selected backend actually ran.
-    assert chunks[0]["asr_metadata"]["provider"] == "gallery-demo"
-    assert reader.backend_reports[-1]["status"] == "success"
-    assert reader.backend_reports[-1]["backend"] == "gallery-local-asr"
+        report = reader.backend_reports[-1]
+        print(audio_path.name)
+        print("  preflight:", plan.selected)
+        print("  chunk text:", chunks[0]["text"])
+        print("  provider:", chunks[0]["asr_metadata"]["provider"])
+        print("  report:", {k: report[k] for k in ("backend", "status") if k in report})
+        assert chunks[0]["asr_metadata"]["provider"] == "gallery-demo"
+        assert report["status"] == "success" and report["backend"] == "gallery-local-asr"
 
 
 
@@ -201,16 +242,59 @@ that own their inference runtime.
 
  .. code-block:: none
 
-    preflight: {'policy': 'resilient', 'declared': ['faster-whisper', 'openai-whisper', 'gallery-local-asr'], 'ordered': ['gallery-local-asr'], 'eligible': ['gallery-local-asr'], 'selected': ['gallery-local-asr'], 'skipped': [], 'selected_capabilities': [], 'skip_details': []}
-    chunk text: synthetic transcript for demo
-    provider: gallery-demo
-    backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'requested_backend': 'gallery-local-asr', 'fallback_reason': None, 'allow_fallback': True, 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
-    policy skips: []
+    can-people-afford-to-pay-for-health-care.mp3
+      preflight: ('gallery-local-asr',)
+      chunk text: placeholder transcript of can-people-afford-to-pay-for-health-care (401,709 bytes)
+      provider: gallery-demo
+      report: {'backend': 'gallery-local-asr', 'status': 'success'}
+    tale_of_two_cities_01_dickens_64kb.mp3
+      preflight: ('gallery-local-asr',)
+      chunk text: placeholder transcript of tale_of_two_cities_01_dickens_64kb (200,966 bytes)
+      provider: gallery-demo
+      report: {'backend': 'gallery-local-asr', 'status': 'success'}
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-136
+.. GENERATED FROM PYTHON SOURCE LINES 149-154
+
+Edge case: an empty file is refused, not transcribed
+----------------------------------------------------
+A 0-byte ``.mp3`` holds no audio. The reader refuses it before any backend
+runs, with an error naming the file, so a truncated download cannot pass
+as an empty transcript.
+
+.. GENERATED FROM PYTHON SOURCE LINES 154-167
+
+.. code-block:: Python
+
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        empty = Path(tmpdir) / "empty.mp3"
+        empty.write_bytes(b"")
+        try:
+            list(
+                AudioReader(
+                    empty, transcribe=True, backend_policy=policy, asr_backends=(custom_backend,)
+                ).get_raw_chunks()
+            )
+        except ValueError as exc:
+            print("refused:", exc)
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    refused: AudioReader: empty.mp3 is empty (0 bytes) and holds no audio. Replace it with the full recording or remove it from the input.
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 168-176
 
 Policy presets express orchestration, not reader semantics
 ----------------------------------------------------------
@@ -221,7 +305,7 @@ already-cached model without weakening the policy. Readers still decide what
 constitutes a successful result and which runtime errors are safe to fall
 back from.
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-144
+.. GENERATED FROM PYTHON SOURCE LINES 176-184
 
 .. code-block:: Python
 
@@ -252,7 +336,7 @@ back from.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.005 seconds)
+   **Total running time of the script:** (0 minutes 0.007 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_backend_policy_script.py:

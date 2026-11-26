@@ -1,6 +1,6 @@
 # MagicSettings[#](#magicsettings "Link to this heading")
 
-class scikitplot.\_ipymagic.MagicSettings(**raise\_on\_error=False**, **timeout=None**, **isolate=False**, **stream=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_settings.py#L83)[#](#scikitplot._ipymagic.MagicSettings "Link to this definition")
+class scikitplot.\_ipymagic.MagicSettings(**raise\_on\_error=False**, **timeout=None**, **isolate=False**, **stream=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_settings.py#L83)[#](#scikitplot._ipymagic.MagicSettings "Link to this definition")
 :   Behaviour of the magics for one IPython session.
 
     Parameters:
@@ -30,7 +30,7 @@ class scikitplot.\_ipymagic.MagicSettings(**raise\_on\_error=False**, **timeout=
 
     timeout: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot._ipymagic.MagicSettings.timeout "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_settings.py#L160)[#](#scikitplot._ipymagic.MagicSettings.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_settings.py#L160)[#](#scikitplot._ipymagic.MagicSettings.to_dict "Link to this definition")
     :   Return the settings as plain data.
 
         Returns:
@@ -40,7 +40,7 @@ class scikitplot.\_ipymagic.MagicSettings(**raise\_on\_error=False**, **timeout=
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    updated(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_settings.py#L117)[#](#scikitplot._ipymagic.MagicSettings.updated "Link to this definition")
+    updated(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_settings.py#L117)[#](#scikitplot._ipymagic.MagicSettings.updated "Link to this definition")
     :   Return the settings with `key=value` assignments applied.
 
         Parameters:

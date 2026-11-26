@@ -1,6 +1,6 @@
 # Action[#](#action "Link to this heading")
 
-class scikitplot.cleanprompt.Action(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L94)[#](#scikitplot.cleanprompt.Action "Link to this definition")
+class scikitplot.cleanprompt.Action(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L94)[#](#scikitplot.cleanprompt.Action "Link to this definition")
 :   What happens to a value of one kind once it is detected.
 
     Attributes:
@@ -36,13 +36,13 @@ class scikitplot.cleanprompt.Action(**\*values**)[[source]](https://github.com/s
     does, so writing a kind’s default action explicitly changes nothing
     (`CP-115`).
 
-    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.BLOCK "Link to this definition")
+    BLOCK = 'block'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.BLOCK "Link to this definition")
 
-    REPORT = 'report'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.REPORT "Link to this definition")
+    REPORT = 'report'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.REPORT "Link to this definition")
 
-    SURROGATE = 'surrogate'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.SURROGATE "Link to this definition")
+    SURROGATE = 'surrogate'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.SURROGATE "Link to this definition")
 
-    TOKENIZE = 'tokenize'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.TOKENIZE "Link to this definition")
+    TOKENIZE = 'tokenize'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.Action.TOKENIZE "Link to this definition")
 
     capitalize(**/**)[#](#scikitplot.cleanprompt.Action.capitalize "Link to this definition")
     :   Return a capitalized version of the string.

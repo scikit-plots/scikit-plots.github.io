@@ -1,6 +1,6 @@
 # route[#](#route "Link to this heading")
 
-scikitplot.\_ipymagic.route(**argv**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_bridge.py#L144)[#](#scikitplot._ipymagic.route "Link to this definition")
+scikitplot.\_ipymagic.route(**argv**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_bridge.py#L144)[#](#scikitplot._ipymagic.route "Link to this definition")
 :   Return the command `argv` names, as the CLI would find it.
 
     Parameters:

@@ -1,6 +1,6 @@
 # load\_custom[#](#load-custom "Link to this heading")
 
-scikitplot.cleanprompt.load\_custom(**paths**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_custom.py#L141)[#](#scikitplot.cleanprompt.load_custom "Link to this definition")
+scikitplot.cleanprompt.load\_custom(**paths**, **pattern\_risk=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_custom.py#L141)[#](#scikitplot.cleanprompt.load_custom "Link to this definition")
 :   Load user definitions from one or more files into a catalog of their own.
 
     Parameters:

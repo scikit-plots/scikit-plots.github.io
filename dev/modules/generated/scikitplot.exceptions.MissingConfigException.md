@@ -1,6 +1,6 @@
 # MissingConfigException[#](#missingconfigexception "Link to this heading")
 
-exception scikitplot.exceptions.MissingConfigException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L488)[#](#scikitplot.exceptions.MissingConfigException "Link to this definition")
+exception scikitplot.exceptions.MissingConfigException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L488)[#](#scikitplot.exceptions.MissingConfigException "Link to this definition")
 :   Exception thrown when expected configuration file/directory not found.
 
     Annotation:

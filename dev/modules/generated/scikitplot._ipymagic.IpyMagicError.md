@@ -1,6 +1,6 @@
 # IpyMagicError[#](#ipymagicerror "Link to this heading")
 
-exception scikitplot.\_ipymagic.IpyMagicError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_errors.py#L36)[#](#scikitplot._ipymagic.IpyMagicError "Link to this definition")
+exception scikitplot.\_ipymagic.IpyMagicError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_errors.py#L36)[#](#scikitplot._ipymagic.IpyMagicError "Link to this definition")
 :   Base class of every error raised by [`scikitplot._ipymagic`](../../apis/scikitplot._ipymagic.html#module-scikitplot._ipymagic "scikitplot._ipymagic").
 
     Parameters:

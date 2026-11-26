@@ -1,6 +1,6 @@
 # RedactionPolicy[#](#redactionpolicy "Link to this heading")
 
-class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag\_style=TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)**, **overlap=OverlapStrategy.LONGEST\_WINS**, **limits=Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)**, **case\_insensitive=False**, **min\_confidence=0.0**, **preserve\_placeholders=True**, **actions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L671)[#](#scikitplot.cleanprompt.RedactionPolicy "Link to this definition")
+class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag\_style=TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)**, **overlap=OverlapStrategy.LONGEST\_WINS**, **limits=Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)**, **case\_insensitive=False**, **min\_confidence=0.0**, **preserve\_placeholders=True**, **actions=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L671)[#](#scikitplot.cleanprompt.RedactionPolicy "Link to this definition")
 :   Complete, declarative configuration for a redaction pass.
 
     Parameters:
@@ -84,7 +84,7 @@ class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag
     ```
     Go BackOpen In Tab
 
-    action\_for(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L908)[#](#scikitplot.cleanprompt.RedactionPolicy.action_for "Link to this definition")
+    action\_for(**kind**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L908)[#](#scikitplot.cleanprompt.RedactionPolicy.action_for "Link to this definition")
     :   Return the action set for `kind`, or `None` when it follows the style.
 
         Parameters:
@@ -117,7 +117,7 @@ class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag
 
     allow: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.RedactionPolicy.allow "Link to this definition")
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L879)[#](#scikitplot.cleanprompt.RedactionPolicy.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L879)[#](#scikitplot.cleanprompt.RedactionPolicy.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary of this policy.
 
         Returns:
@@ -131,7 +131,7 @@ class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag
 
     case\_insensitive: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.cleanprompt.RedactionPolicy.case_insensitive "Link to this definition")
 
-    evolve(**\*\*changes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L795)[#](#scikitplot.cleanprompt.RedactionPolicy.evolve "Link to this definition")
+    evolve(**\*\*changes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L795)[#](#scikitplot.cleanprompt.RedactionPolicy.evolve "Link to this definition")
     :   Return a copy of this policy with `changes` applied.
 
         Parameters:
@@ -179,15 +179,15 @@ class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag
 
     kinds: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.RedactionPolicy.kinds "Link to this definition")
 
-    limits: [Limits](scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits "scikitplot.cleanprompt._policy.Limits") = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.limits "Link to this definition")
+    limits: [Limits](scikitplot.cleanprompt.Limits.html#scikitplot.cleanprompt.Limits "scikitplot.cleanprompt._policy.Limits") = Limits(max\_input\_chars=1000000, max\_spans=100000, max\_entries=50000, max\_literal\_terms=10000, max\_literal\_length=4096)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.limits "Link to this definition")
 
     min\_confidence: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.cleanprompt.RedactionPolicy.min_confidence "Link to this definition")
 
-    overlap: [OverlapStrategy](scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy "scikitplot.cleanprompt._policy.OverlapStrategy") = 'LONGEST\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.overlap "Link to this definition")
+    overlap: [OverlapStrategy](scikitplot.cleanprompt.OverlapStrategy.html#scikitplot.cleanprompt.OverlapStrategy "scikitplot.cleanprompt._policy.OverlapStrategy") = 'LONGEST\_WINS'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.overlap "Link to this definition")
 
     preserve\_placeholders: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.cleanprompt.RedactionPolicy.preserve_placeholders "Link to this definition")
 
-    selected\_kinds(**available**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L843)[#](#scikitplot.cleanprompt.RedactionPolicy.selected_kinds "Link to this definition")
+    selected\_kinds(**available**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L843)[#](#scikitplot.cleanprompt.RedactionPolicy.selected_kinds "Link to this definition")
     :   Resolve [`kinds`](#scikitplot.cleanprompt.RedactionPolicy.kinds "scikitplot.cleanprompt.RedactionPolicy.kinds") against the kinds a registry offers.
 
         Parameters:
@@ -214,4 +214,4 @@ class scikitplot.cleanprompt.RedactionPolicy(**kinds=None**, **allow=()**, **tag
         ignored. A silently dropped category is a redaction that did not happen,
         and the caller would have no way to notice before transmitting.
 
-    tag\_style: [TagStyle](scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle "scikitplot.cleanprompt._policy.TagStyle") = TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.tag_style "Link to this definition")
+    tag\_style: [TagStyle](scikitplot.cleanprompt.TagStyle.html#scikitplot.cleanprompt.TagStyle "scikitplot.cleanprompt._policy.TagStyle") = TagStyle(prefix='[', suffix=']', separator='-', uppercase\_kind=True, style='placeholder', surrogates=None)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_policy.py#L)[#](#scikitplot.cleanprompt.RedactionPolicy.tag_style "Link to this definition")

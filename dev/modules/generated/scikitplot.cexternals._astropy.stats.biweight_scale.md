@@ -1,6 +1,6 @@
 # biweight\_scale[#](#biweight-scale "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.biweight\_scale(**data**, **c=9.0**, **M=None**, **axis=None**, **modify\_sample\_size=False**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/biweight.py#L182)[#](#scikitplot.cexternals._astropy.stats.biweight_scale "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.biweight\_scale(**data**, **c=9.0**, **M=None**, **axis=None**, **modify\_sample\_size=False**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/biweight.py#L182)[#](#scikitplot.cexternals._astropy.stats.biweight_scale "Link to this definition")
 :   Compute the biweight scale.
 
     The biweight scale is a robust statistic for determining the

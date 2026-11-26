@@ -1,6 +1,6 @@
 # EngineReadiness[#](#enginereadiness "Link to this heading")
 
-class scikitplot.cleanprompt.EngineReadiness(**name**, **installed**, **language\_supported**, **assets\_checked**, **assets\_ready**, **ready**, **status**, **reason**, **remedy**, **model=None**, **missing=()**, **version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness "Link to this definition")
+class scikitplot.cleanprompt.EngineReadiness(**name**, **installed**, **language\_supported**, **assets\_checked**, **assets\_ready**, **ready**, **status**, **reason**, **remedy**, **model=None**, **missing=()**, **version=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness "Link to this definition")
 :   Whether one engine can run here, now, and if not, the one step that fixes it.
 
     Parameters:
@@ -76,32 +76,32 @@ class scikitplot.cleanprompt.EngineReadiness(**name**, **installed**, **language
     detection switched on. Everywhere else the field says `None` rather than
     pretending to know.
 
-    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L450)[#](#scikitplot.cleanprompt.EngineReadiness.as_dict "Link to this definition")
+    as\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L450)[#](#scikitplot.cleanprompt.EngineReadiness.as_dict "Link to this definition")
     :   Return a JSON-safe dictionary.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    assets\_checked: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.assets_checked "Link to this definition")
+    assets\_checked: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.assets_checked "Link to this definition")
 
-    assets\_ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.assets_ready "Link to this definition")
+    assets\_ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.assets_ready "Link to this definition")
 
-    installed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.installed "Link to this definition")
+    installed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.installed "Link to this definition")
 
-    language\_supported: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.language_supported "Link to this definition")
+    language\_supported: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.language_supported "Link to this definition")
 
     missing: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.EngineReadiness.missing "Link to this definition")
 
     model: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.EngineReadiness.model "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.name "Link to this definition")
 
-    ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.ready "Link to this definition")
+    ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.ready "Link to this definition")
 
-    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.reason "Link to this definition")
+    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.reason "Link to this definition")
 
-    remedy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.remedy "Link to this definition")
+    remedy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.remedy "Link to this definition")
 
-    status: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.status "Link to this definition")
+    status: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L382)[#](#scikitplot.cleanprompt.EngineReadiness.status "Link to this definition")
 
     version: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.EngineReadiness.version "Link to this definition")

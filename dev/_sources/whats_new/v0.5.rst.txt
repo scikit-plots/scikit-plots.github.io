@@ -26,9 +26,9 @@ Version 0.5
 
 .. towncrier release notes start
 
-.. _changes_0_5_dev0+git_20261126_fbd8e1a:
+.. _changes_0_5_dev0+git_20261126_740e0f5:
 
-Version 0.5.dev0+git.20261126.fbd8e1a
+Version 0.5.dev0+git.20261126.740e0f5
 =====================================
 
 **November 2026**
@@ -1391,6 +1391,14 @@ scikitplot.corpus
   ``.xml``; each under 64 KiB) with the default settings, in a child
   process, under a time ceiling (20 s) and a traced-memory ceiling
   (64 MiB): a small input that expands far past its size now fails a test. :pr:`938`
+
+- Gallery examples for :class:`~scikitplot.corpus.CodeReader` and
+  :class:`~scikitplot.corpus.LeanReader`, from one file to a generated
+  project, with edge cases and a line-coverage check. :pr:`989`
+
+- The backend-policy gallery example reads the two MP3 recordings bundled
+  under ``data/`` instead of an empty file, which the reader now refuses;
+  the refusal is shown as its own edge case. :pr:`990`
 
 scikitplot.datasets
 -------------------

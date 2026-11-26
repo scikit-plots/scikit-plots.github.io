@@ -1,6 +1,6 @@
 # citation[#](#citation "Link to this heading")
 
-scikitplot.config.citation(**which='all'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/config/_citation.py#L193)[#](#scikitplot.config.citation "Link to this definition")
+scikitplot.config.citation(**which='all'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/config/_citation.py#L193)[#](#scikitplot.config.citation "Link to this definition")
 :   Return a BibTeX citation of scikit-plots.
 
     Parameters:

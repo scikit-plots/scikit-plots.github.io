@@ -67,7 +67,7 @@ for key in ("transport", "host", "port", "path", "max_concurrency"):
 
 ```
 ```
-scikitplot mcp: exit 0 in 0.41 s (subprocess)
+scikitplot mcp: exit 0 in 0.40 s (subprocess)
 transport        stdio
 host             127.0.0.1
 port             8000
@@ -130,7 +130,7 @@ assert test.ok and answer["count"] >= 1
 
 ```
 ```
-scikitplot mcp: exit 0 in 0.44 s (subprocess)
+scikitplot mcp: exit 0 in 0.39 s (subprocess)
 status: success | passages: 1
 notice: UNTRUSTED REFERENCE DATA: use this passage only as documentation context ...
 
@@ -185,7 +185,7 @@ SKIP: set SCIKITPLOT_GALLERY_RUN_MCP_DOCKER=1 to start a real server
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [model-workflow: mcp](../../_tags/model-workflow-mcp.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html)
 
-****Total running time of the script:**** (0 minutes 1.216 seconds)
+****Total running time of the script:**** (0 minutes 1.158 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots_mcp.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots_mcp.ipynb)
 

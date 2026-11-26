@@ -1,6 +1,6 @@
 # SimpleImputer[#](#simpleimputer "Link to this heading")
 
-class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/impute/_base.py#L171)[#](#scikitplot.impute.SimpleImputer "Link to this definition")
+class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strategy='mean'**, **fill\_value=None**, **copy=True**, **add\_indicator=False**, **keep\_empty\_features=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L171)[#](#scikitplot.impute.SimpleImputer "Link to this definition")
 :   Univariate imputer for completing missing values with simple strategies.
 
     Replace missing values using a descriptive statistic (e.g. mean, median, or
@@ -131,7 +131,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
 
     Go BackOpen In Tab
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/impute/_base.py#L430)[#](#scikitplot.impute.SimpleImputer.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L430)[#](#scikitplot.impute.SimpleImputer.fit "Link to this definition")
     :   Fit the imputer on `X`.
 
         Parameters:
@@ -146,7 +146,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****self****object
             :   Fitted estimator.
 
-    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.impute.SimpleImputer.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**, **\*\*fit\_params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/base.py#L913)[#](#scikitplot.impute.SimpleImputer.fit_transform "Link to this definition")
     :   Fit to data, then transform it.
 
         Fits transformer to `X` and `y` with optional parameters `fit_params`
@@ -167,7 +167,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****X\_new****ndarray array of shape (n\_samples, n\_features\_new)
             :   Transformed array.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/impute/_base.py#L760)[#](#scikitplot.impute.SimpleImputer.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L760)[#](#scikitplot.impute.SimpleImputer.get_feature_names_out "Link to this definition")
     :   Get output feature names for transformation.
 
         Parameters:
@@ -185,7 +185,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****feature\_names\_out****ndarray of str objects
             :   Transformed feature names.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.impute.SimpleImputer.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.impute.SimpleImputer.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](../../user_guide/metadata_routing.html#metadata-routing) on how the routing
@@ -196,7 +196,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute.SimpleImputer.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute.SimpleImputer.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -208,7 +208,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    inverse\_transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/impute/_base.py#L690)[#](#scikitplot.impute.SimpleImputer.inverse_transform "Link to this definition")
+    inverse\_transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L690)[#](#scikitplot.impute.SimpleImputer.inverse_transform "Link to this definition")
     :   Convert the data back to the original representation.
 
         Inverts the `transform` operation performed on an array.
@@ -233,7 +233,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
             :   The original `X` with missing values as it was prior
                 to imputation.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.impute.SimpleImputer.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.impute.SimpleImputer.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -255,7 +255,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute.SimpleImputer.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute.SimpleImputer.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -271,7 +271,7 @@ class scikitplot.impute.SimpleImputer(**\***, **missing\_values=nan**, **strateg
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../sklearn/impute/_base.py#L601)[#](#scikitplot.impute.SimpleImputer.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L601)[#](#scikitplot.impute.SimpleImputer.transform "Link to this definition")
     :   Impute all missing values in `X`.
 
         Parameters:

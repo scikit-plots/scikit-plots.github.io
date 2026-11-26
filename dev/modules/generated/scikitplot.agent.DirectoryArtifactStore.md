@@ -1,6 +1,6 @@
 # DirectoryArtifactStore[#](#directoryartifactstore "Link to this heading")
 
-class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_artifacts.py#L136)[#](#scikitplot.agent.DirectoryArtifactStore "Link to this definition")
+class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_artifacts.py#L136)[#](#scikitplot.agent.DirectoryArtifactStore "Link to this definition")
 :   Keep each artifact in `<directory>/<first two digits>/<digest>.json`.
 
     Parameters:
@@ -17,7 +17,7 @@ class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://g
     synced, so a reader sees a whole artifact or none. The digest is checked
     to be 64 hexadecimal digits before it names a file.
 
-    get(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_artifacts.py#L79)[#](#scikitplot.agent.DirectoryArtifactStore.get "Link to this definition")
+    get(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_artifacts.py#L79)[#](#scikitplot.agent.DirectoryArtifactStore.get "Link to this definition")
     :   Return the value stored under `key`.
 
         Raises:
@@ -33,7 +33,7 @@ class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://g
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    has(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_artifacts.py#L181)[#](#scikitplot.agent.DirectoryArtifactStore.has "Link to this definition")
+    has(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_artifacts.py#L181)[#](#scikitplot.agent.DirectoryArtifactStore.has "Link to this definition")
     :   Whether a file is stored under `key`.
 
         Parameters:
@@ -42,7 +42,7 @@ class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://g
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    path(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_artifacts.py#L157)[#](#scikitplot.agent.DirectoryArtifactStore.path "Link to this definition")
+    path(**key**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_artifacts.py#L157)[#](#scikitplot.agent.DirectoryArtifactStore.path "Link to this definition")
     :   Return the file that holds `key`.
 
         Parameters:
@@ -51,7 +51,7 @@ class scikitplot.agent.DirectoryArtifactStore(**directory**)[[source]](https://g
         Return type:
         :   [**Path**](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")
 
-    put(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_artifacts.py#L59)[#](#scikitplot.agent.DirectoryArtifactStore.put "Link to this definition")
+    put(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_artifacts.py#L59)[#](#scikitplot.agent.DirectoryArtifactStore.put "Link to this definition")
     :   Store `value` and return its digest.
 
         Parameters:

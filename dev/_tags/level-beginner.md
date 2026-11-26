@@ -23,6 +23,7 @@ With this tag
 * [plot\_elbow with examples](../auto_examples/clustering/plot_elbow_script.html)
 * [plot\_silhouette with examples](../auto_examples/clustering/plot_silhouette_script.html)
 * [Process an MP3 with Corpus](../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
+* [Read Source Code with CodeReader: from One File to a Whole Project](../auto_examples/corpus/plot_corpus_code_reader_script.html)
 * [Configure Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_corpus_script.html)
 * [Compare Corpus Chunking Strategies on OCR Text](../auto_examples/corpus/plot_corpus_knowledge_script.html)
 * [Process a YouTube Transcript with Corpus](../auto_examples/corpus/plot_corpus_who_youtube_script.html)

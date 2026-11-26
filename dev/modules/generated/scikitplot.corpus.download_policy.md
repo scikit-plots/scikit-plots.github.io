@@ -1,6 +1,6 @@
 # download\_policy[#](#download-policy "Link to this heading")
 
-scikitplot.corpus.download\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_downloader/_policy.py#L161)[#](#scikitplot.corpus.download_policy "Link to this definition")
+scikitplot.corpus.download\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_downloader/_policy.py#L161)[#](#scikitplot.corpus.download_policy "Link to this definition")
 :   Resolve an object, named preset or mapping without hidden global state.
 
     Parameters:

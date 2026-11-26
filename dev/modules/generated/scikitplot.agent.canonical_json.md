@@ -1,6 +1,6 @@
 # canonical\_json[#](#canonical-json "Link to this heading")
 
-scikitplot.agent.canonical\_json(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_canonical.py#L123)[#](#scikitplot.agent.canonical_json "Link to this definition")
+scikitplot.agent.canonical\_json(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_canonical.py#L123)[#](#scikitplot.agent.canonical_json "Link to this definition")
 :   Return the canonical JSON text of a plain value.
 
     Keys are sorted, separators carry no whitespace, non-ASCII text is kept

@@ -1,6 +1,6 @@
 # BackendPolicy[#](#backendpolicy "Link to this heading")
 
-class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **include\_unlisted=True**, **allow\_fallback=True**, **require\_ready=False**, **allow\_network=True**, **allow\_download=True**, **on\_exhausted=ErrorPolicy.COLLECT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L109)[#](#scikitplot.corpus.BackendPolicy "Link to this definition")
+class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **include\_unlisted=True**, **allow\_fallback=True**, **require\_ready=False**, **allow\_network=True**, **allow\_download=True**, **on\_exhausted=ErrorPolicy.COLLECT**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L109)[#](#scikitplot.corpus.BackendPolicy "Link to this definition")
 :   Policy for selecting and exhausting optional backend chains.
 
     The policy controls **orchestration**, not backend implementation details.
@@ -56,13 +56,13 @@ class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **incl
 
     allow\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.BackendPolicy.allow_network "Link to this definition")
 
-    classmethod first\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L215)[#](#scikitplot.corpus.BackendPolicy.first_available "Link to this definition")
+    classmethod first\_available()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L215)[#](#scikitplot.corpus.BackendPolicy.first_available "Link to this definition")
     :   Attempt only the first selected candidate; do not cascade.
 
         Return type:
         :   [**BackendPolicy**](#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy")
 
-    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L252)[#](#scikitplot.corpus.BackendPolicy.from_config "Link to this definition")
+    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L252)[#](#scikitplot.corpus.BackendPolicy.from_config "Link to this definition")
     :   Build a policy from JSON/YAML-shaped configuration.
 
         The optional `preset` key selects `resilient` (default), `strict`,
@@ -80,7 +80,7 @@ class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **incl
 
     name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'resilient'[#](#scikitplot.corpus.BackendPolicy.name "Link to this definition")
 
-    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L199)[#](#scikitplot.corpus.BackendPolicy.offline "Link to this definition")
+    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L199)[#](#scikitplot.corpus.BackendPolicy.offline "Link to this definition")
     :   Use only local components and forbid network/download side effects.
 
         Readiness may be `UNKNOWN` for model-backed engines whose cache can
@@ -90,7 +90,7 @@ class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **incl
         Return type:
         :   [**BackendPolicy**](#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy")
 
-    on\_exhausted: [ErrorPolicy](scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus._schema.ErrorPolicy") = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.BackendPolicy.on_exhausted "Link to this definition")
+    on\_exhausted: [ErrorPolicy](scikitplot.corpus.ErrorPolicy.html#scikitplot.corpus.ErrorPolicy "scikitplot.corpus._schema.ErrorPolicy") = 'collect'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.BackendPolicy.on_exhausted "Link to this definition")
 
     order: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.corpus.BackendPolicy.order "Link to this definition")
 
@@ -99,25 +99,25 @@ class scikitplot.corpus.BackendPolicy(**name='resilient'**, **order=()**, **incl
 
     require\_ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.BackendPolicy.require_ready "Link to this definition")
 
-    classmethod resilient()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L189)[#](#scikitplot.corpus.BackendPolicy.resilient "Link to this definition")
+    classmethod resilient()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L189)[#](#scikitplot.corpus.BackendPolicy.resilient "Link to this definition")
     :   Fallback through declared candidates and collect final failure.
 
         Return type:
         :   [**BackendPolicy**](#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy")
 
-    classmethod strict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L194)[#](#scikitplot.corpus.BackendPolicy.strict "Link to this definition")
+    classmethod strict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L194)[#](#scikitplot.corpus.BackendPolicy.strict "Link to this definition")
     :   Fallback through candidates, then require the caller to raise.
 
         Return type:
         :   [**BackendPolicy**](#scikitplot.corpus.BackendPolicy "scikitplot.corpus._backends.BackendPolicy")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L239)[#](#scikitplot.corpus.BackendPolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L239)[#](#scikitplot.corpus.BackendPolicy.to_dict "Link to this definition")
     :   Return a JSON-compatible policy representation.
 
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    with\_order(**\*names**, **include\_unlisted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L220)[#](#scikitplot.corpus.BackendPolicy.with_order "Link to this definition")
+    with\_order(**\*names**, **include\_unlisted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L220)[#](#scikitplot.corpus.BackendPolicy.with_order "Link to this definition")
     :   Return a copy with explicit backend preference order.
 
         Parameters:

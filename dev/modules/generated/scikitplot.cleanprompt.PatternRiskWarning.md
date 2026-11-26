@@ -1,6 +1,6 @@
 # PatternRiskWarning[#](#patternriskwarning "Link to this heading")
 
-exception scikitplot.cleanprompt.PatternRiskWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_pattern_risk.py#L114)[#](#scikitplot.cleanprompt.PatternRiskWarning "Link to this definition")
+exception scikitplot.cleanprompt.PatternRiskWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_pattern_risk.py#L114)[#](#scikitplot.cleanprompt.PatternRiskWarning "Link to this definition")
 :   A pack pattern has a shape that can backtrack catastrophically.
 
     Annotation:

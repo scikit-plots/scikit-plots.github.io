@@ -1,6 +1,6 @@
 # run\_command[#](#run-command "Link to this heading")
 
-scikitplot.\_ipymagic.run\_command(**args**, **\***, **stdin=None**, **settings=None**, **out=None**, **err=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_bridge.py#L605)[#](#scikitplot._ipymagic.run_command "Link to this definition")
+scikitplot.\_ipymagic.run\_command(**args**, **\***, **stdin=None**, **settings=None**, **out=None**, **err=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_bridge.py#L605)[#](#scikitplot._ipymagic.run_command "Link to this definition")
 :   Run one `scikitplot` command and return its result.
 
     Parameters:

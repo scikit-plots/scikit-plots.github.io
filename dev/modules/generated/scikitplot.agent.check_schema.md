@@ -1,6 +1,6 @@
 # check\_schema[#](#check-schema "Link to this heading")
 
-scikitplot.agent.check\_schema(**schema**, **\***, **what='parameters'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_schema.py#L76)[#](#scikitplot.agent.check_schema "Link to this definition")
+scikitplot.agent.check\_schema(**schema**, **\***, **what='parameters'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_schema.py#L76)[#](#scikitplot.agent.check_schema "Link to this definition")
 :   Check that a tool’s argument schema is in the supported subset.
 
     Parameters:

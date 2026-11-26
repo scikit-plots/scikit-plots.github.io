@@ -160,7 +160,7 @@ else:
 
 ```
 ```
-Documents produced: 112
+Documents produced: 113
 
 ```
 
@@ -209,7 +209,7 @@ Produced-document summary
 ====================================================================================================
 member                                                           source type      docs
 ----------------------------------------------------------------------------------------------------
-2555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf research:110      110
+2555-52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf research:111      111
 -52329-80560-eng.zip/WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg image:2             2
 
 ```
@@ -253,7 +253,7 @@ if manifest:
 Member outcome
 ============================================================================================
   can-people-afford-to-pay-for-health-care.mp3                 → 0 documents (ASR disabled unless companion text exists)
-  WHO-EURO-2025-12555-52329-80560-eng.pdf                      → 110 documents
+  WHO-EURO-2025-12555-52329-80560-eng.pdf                      → 111 documents
   WHO-EURO-2025-12555-52329-80560-eng.pdf.jpg                  → 2 documents
 
 ```
@@ -435,21 +435,17 @@ else:
 ```
 ```
   0%|                                               | 0.00/461M [00:00<?, ?iB/s]
-  4%|█▌                                     | 19.0M/461M [00:00<00:02, 200MiB/s]
- 10%|███▉                                   | 46.6M/461M [00:00<00:01, 252MiB/s]
- 17%|██████▌                                | 77.8M/461M [00:00<00:01, 286MiB/s]
- 24%|█████████▍                              | 108M/461M [00:00<00:01, 300MiB/s]
- 30%|████████████▏                           | 140M/461M [00:00<00:01, 313MiB/s]
- 38%|███████████████                         | 173M/461M [00:00<00:00, 324MiB/s]
- 45%|█████████████████▊                      | 206M/461M [00:00<00:00, 330MiB/s]
- 52%|████████████████████▋                   | 239M/461M [00:00<00:00, 335MiB/s]
- 59%|███████████████████████▌                | 272M/461M [00:00<00:00, 339MiB/s]
- 66%|██████████████████████████▍             | 305M/461M [00:01<00:00, 341MiB/s]
- 73%|█████████████████████████████▎          | 338M/461M [00:01<00:00, 343MiB/s]
- 81%|████████████████████████████████▏       | 371M/461M [00:01<00:00, 344MiB/s]
- 88%|███████████████████████████████████     | 404M/461M [00:01<00:00, 344MiB/s]
- 95%|█████████████████████████████████████▉  | 438M/461M [00:01<00:00, 346MiB/s]
-100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 329MiB/s]
+  9%|███▎                                   | 39.7M/461M [00:00<00:01, 416MiB/s]
+ 18%|██████▊                                | 81.0M/461M [00:00<00:00, 426MiB/s]
+ 27%|██████████▉                             | 127M/461M [00:00<00:00, 450MiB/s]
+ 37%|██████████████▉                         | 172M/461M [00:00<00:00, 462MiB/s]
+ 47%|██████████████████▊                     | 217M/461M [00:00<00:00, 461MiB/s]
+ 56%|██████████████████████▌                 | 261M/461M [00:00<00:00, 455MiB/s]
+ 66%|██████████████████████████▎             | 304M/461M [00:00<00:00, 443MiB/s]
+ 76%|██████████████████████████████▎         | 349M/461M [00:00<00:00, 452MiB/s]
+ 85%|██████████████████████████████████▏     | 394M/461M [00:00<00:00, 457MiB/s]
+ 95%|██████████████████████████████████████  | 439M/461M [00:01<00:00, 463MiB/s]
+100%|████████████████████████████████████████| 461M/461M [00:01<00:00, 450MiB/s]
 /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 ASR-enabled archive documents: 120
@@ -472,7 +468,7 @@ not erase evidence successfully extracted from other members.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 17.405 seconds)
+****Total running time of the script:**** (0 minutes 14.739 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_who_zip_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_who_zip_script.ipynb)
 

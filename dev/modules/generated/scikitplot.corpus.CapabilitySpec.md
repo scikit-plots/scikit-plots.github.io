@@ -1,6 +1,6 @@
 # CapabilitySpec[#](#capabilityspec "Link to this heading")
 
-class scikitplot.corpus.CapabilitySpec(**name**, **role**, **module=None**, **distributions=()**, **assets\_required=False**, **asset\_probe=None**, **may\_download=False**, **requires\_network=False**, **remedy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec "Link to this definition")
+class scikitplot.corpus.CapabilitySpec(**name**, **role**, **module=None**, **distributions=()**, **assets\_required=False**, **asset\_probe=None**, **may\_download=False**, **requires\_network=False**, **remedy=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec "Link to this definition")
 :   Declarative probe specification for one optional component.
 
     A spec deliberately separates **installation** from **readiness**. A Python
@@ -63,10 +63,10 @@ class scikitplot.corpus.CapabilitySpec(**name**, **role**, **module=None**, **di
 
     module: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CapabilitySpec.module "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec.name "Link to this definition")
 
     remedy: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CapabilitySpec.remedy "Link to this definition")
 
     requires\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.CapabilitySpec.requires_network "Link to this definition")
 
-    role: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec.role "Link to this definition")
+    role: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_capabilities.py#L363)[#](#scikitplot.corpus.CapabilitySpec.role "Link to this definition")

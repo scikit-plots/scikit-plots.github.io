@@ -1,6 +1,6 @@
 # OverlapError[#](#overlaperror "Link to this heading")
 
-exception scikitplot.cleanprompt.OverlapError(**message**, **spans**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L132)[#](#scikitplot.cleanprompt.OverlapError "Link to this definition")
+exception scikitplot.cleanprompt.OverlapError(**message**, **spans**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L132)[#](#scikitplot.cleanprompt.OverlapError "Link to this definition")
 :   Two detections overlap under
     `STRICT`.
 

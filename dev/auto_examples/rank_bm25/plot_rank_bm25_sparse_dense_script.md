@@ -129,15 +129,15 @@ Related examples
 
 [Rank-BM25 Quick Start with Stable Document IDs](plot_rank_bm25_quickstart_script.html)
 
-Rank-BM25 Quick Start with Stable Document IDs![](../../_images/sphx_glr_plot_rank_bm25_persistence_script_thumb.png)
-
-[Persist and Reload a Rank-BM25 Index](plot_rank_bm25_persistence_script.html)
-
-Persist and Reload a Rank-BM25 Index![](../../_images/sphx_glr_plot_rank_bm25_recipes_script_thumb.png)
+Rank-BM25 Quick Start with Stable Document IDs![](../../_images/sphx_glr_plot_rank_bm25_recipes_script_thumb.png)
 
 [Compare the Three Rank-BM25 Scoring Recipes](plot_rank_bm25_recipes_script.html)
 
-Compare the Three Rank-BM25 Scoring Recipes![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
+Compare the Three Rank-BM25 Scoring Recipes![](../../_images/sphx_glr_plot_rank_bm25_persistence_script_thumb.png)
+
+[Persist and Reload a Rank-BM25 Index](plot_rank_bm25_persistence_script.html)
+
+Persist and Reload a Rank-BM25 Index![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
 [Build and Search a Hamlet Corpus, Step by Step](../corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 

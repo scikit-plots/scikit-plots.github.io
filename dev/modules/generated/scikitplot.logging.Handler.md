@@ -1,6 +1,6 @@
 # Handler[#](#handler "Link to this heading")
 
-class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L919)[#](#scikitplot.logging.Handler "Link to this definition")
+class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L919)[#](#scikitplot.logging.Handler "Link to this definition")
 :   Handler instances dispatch logging events to specific destinations.
 
     The base handler class. Acts as a placeholder which defines the Handler
@@ -8,13 +8,13 @@ class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/sciki
     records as desired. By default, no formatter is specified; in this case,
     the ‘raw’ message as determined by record.message is logged.
 
-    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L968)[#](#scikitplot.logging.Handler.acquire "Link to this definition")
+    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L968)[#](#scikitplot.logging.Handler.acquire "Link to this definition")
     :   Acquire the I/O thread lock.
 
-    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L817)[#](#scikitplot.logging.Handler.addFilter "Link to this definition")
+    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L817)[#](#scikitplot.logging.Handler.addFilter "Link to this definition")
     :   Add the specified filter to this handler.
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1048)[#](#scikitplot.logging.Handler.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1048)[#](#scikitplot.logging.Handler.close "Link to this definition")
     :   Tidy up any resources used by the handler.
 
         This version removes the handler from an internal map of handlers,
@@ -22,16 +22,16 @@ class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/sciki
         should ensure that this gets called from overridden close()
         methods.
 
-    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L958)[#](#scikitplot.logging.Handler.createLock "Link to this definition")
+    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L958)[#](#scikitplot.logging.Handler.createLock "Link to this definition")
     :   Acquire a thread lock for serializing access to the underlying I/O.
 
-    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1001)[#](#scikitplot.logging.Handler.emit "Link to this definition")
+    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1001)[#](#scikitplot.logging.Handler.emit "Link to this definition")
     :   Do whatever it takes to actually log the specified logging record.
 
         This version is intended to be implemented by subclasses and so
         raises a NotImplementedError.
 
-    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L831)[#](#scikitplot.logging.Handler.filter "Link to this definition")
+    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L831)[#](#scikitplot.logging.Handler.filter "Link to this definition")
     :   Determine if a record is loggable by consulting all the filters.
 
         The default is to allow the record to be logged; any filter can veto
@@ -52,21 +52,21 @@ class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/sciki
         Changed in version 3.12: Allow filters to return a LogRecord instead of
         modifying it in place.
 
-    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1039)[#](#scikitplot.logging.Handler.flush "Link to this definition")
+    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1039)[#](#scikitplot.logging.Handler.flush "Link to this definition")
     :   Ensure all logging output has been flushed.
 
         This version does nothing and is intended to be implemented by
         subclasses.
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L988)[#](#scikitplot.logging.Handler.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L988)[#](#scikitplot.logging.Handler.format "Link to this definition")
     :   Format the specified record.
 
         If a formatter is set, use it. Otherwise, use the default formatter
         for the module.
 
-    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.Handler.get_name "Link to this definition")
+    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.Handler.get_name "Link to this definition")
 
-    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1011)[#](#scikitplot.logging.Handler.handle "Link to this definition")
+    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1011)[#](#scikitplot.logging.Handler.handle "Link to this definition")
     :   Conditionally emit the specified logging record.
 
         Emission depends on filters which may have been added to the handler.
@@ -76,7 +76,7 @@ class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/sciki
         Returns an instance of the log record that was emitted
         if it passed all filters, otherwise a false value is returned.
 
-    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1066)[#](#scikitplot.logging.Handler.handleError "Link to this definition")
+    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1066)[#](#scikitplot.logging.Handler.handleError "Link to this definition")
     :   Handle errors which occur during an emit() call.
 
         This method should be called from handlers when an exception is
@@ -94,16 +94,16 @@ class scikitplot.logging.Handler(**level=0**)[[source]](https://github.com/sciki
         :   str | None
             :   The current handler object name if provided, otherwise None.
 
-    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L975)[#](#scikitplot.logging.Handler.release "Link to this definition")
+    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L975)[#](#scikitplot.logging.Handler.release "Link to this definition")
     :   Release the I/O thread lock.
 
-    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L824)[#](#scikitplot.logging.Handler.removeFilter "Link to this definition")
+    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L824)[#](#scikitplot.logging.Handler.removeFilter "Link to this definition")
     :   Remove the specified filter from this handler.
 
-    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1033)[#](#scikitplot.logging.Handler.setFormatter "Link to this definition")
+    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L1033)[#](#scikitplot.logging.Handler.setFormatter "Link to this definition")
     :   Set the formatter for this handler.
 
-    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L982)[#](#scikitplot.logging.Handler.setLevel "Link to this definition")
+    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L982)[#](#scikitplot.logging.Handler.setLevel "Link to this definition")
     :   Set the logging level of this handler. level must be an int or a str.
 
-    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L945)[#](#scikitplot.logging.Handler.set_name "Link to this definition")
+    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L945)[#](#scikitplot.logging.Handler.set_name "Link to this definition")

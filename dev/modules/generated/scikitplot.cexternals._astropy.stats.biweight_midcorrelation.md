@@ -1,6 +1,6 @@
 # biweight\_midcorrelation[#](#biweight-midcorrelation "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.biweight\_midcorrelation(**x**, **y**, **c=9.0**, **M=None**, **modify\_sample\_size=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/biweight.py#L708)[#](#scikitplot.cexternals._astropy.stats.biweight_midcorrelation "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.biweight\_midcorrelation(**x**, **y**, **c=9.0**, **M=None**, **modify\_sample\_size=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/biweight.py#L708)[#](#scikitplot.cexternals._astropy.stats.biweight_midcorrelation "Link to this definition")
 :   Compute the biweight midcorrelation between two variables.
 
     The [biweight midcorrelation](https://en.wikipedia.org/wiki/Biweight_midcorrelation) is a

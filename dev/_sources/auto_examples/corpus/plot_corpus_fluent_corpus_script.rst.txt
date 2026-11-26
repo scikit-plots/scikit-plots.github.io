@@ -206,7 +206,7 @@ loading, storage connection, or vector-index construction.
 
  .. code-block:: none
 
-    supported domains: ('source', 'reader', 'identity', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')
+    supported domains: ('source', 'reader', 'identity', 'normalizer', 'chunker', 'filter', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export')
     configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
     source     -> '<source>'
     reader     -> '<reader>'
@@ -252,8 +252,8 @@ As above, these are plan-only demo values and are not materialized.
 
  .. code-block:: none
 
-    <FluentCorpus configured=[source, reader, identity, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] 9157ce36fd4c0ddaced7bfee9292957385d439b27234c6134192698aaed47588>
-    ['source', 'reader', 'identity', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
+    <FluentCorpus configured=[source, reader, identity, normalizer, chunker, filter, enricher, embedder, storage, index, retrieval, export] 764c18db744858f1f3284583f46dd4ae7e2c0504d2aa6c8347fc943be9e4f9f8>
+    ['source', 'reader', 'identity', 'normalizer', 'chunker', 'filter', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
 
 
 
@@ -434,6 +434,7 @@ fluent vocabulary.
     identity   | replace_identity
     normalizer | replace_normalizer
     chunker    | replace_chunker
+    filter     | replace_filter
     enricher   | replace_enricher
     embedder   | replace_embedder
     storage    | replace_storage
@@ -1076,7 +1077,7 @@ first plan, then materializes plans one at a time in canonical domain order.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.022 seconds)
+   **Total running time of the script:** (0 minutes 0.024 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_fluent_corpus_script.py:

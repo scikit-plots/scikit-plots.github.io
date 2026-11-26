@@ -1,6 +1,6 @@
 # Formatter[#](#formatter "Link to this heading")
 
-class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**, **validate=True**, **\***, **defaults=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L546)[#](#scikitplot.logging.Formatter "Link to this definition")
+class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**, **validate=True**, **\***, **defaults=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L546)[#](#scikitplot.logging.Formatter "Link to this definition")
 :   Formatter instances are used to convert a LogRecord to text.
 
     Formatters need to know how a LogRecord is constructed. They are
@@ -57,7 +57,7 @@ class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**
 
     default\_time\_format = '%Y-%m-%d %H:%M:%S'[#](#scikitplot.logging.Formatter.default_time_format "Link to this definition")
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L690)[#](#scikitplot.logging.Formatter.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L690)[#](#scikitplot.logging.Formatter.format "Link to this definition")
     :   Format the specified record as text.
 
         The record’s attribute dictionary is used as the operand to a
@@ -69,15 +69,15 @@ class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**
         called to format the event time. If there is exception information,
         it is formatted using formatException() and appended to the message.
 
-    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L649)[#](#scikitplot.logging.Formatter.formatException "Link to this definition")
+    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L649)[#](#scikitplot.logging.Formatter.formatException "Link to this definition")
     :   Format and return the specified exception information as a string.
 
         This default implementation just uses
         traceback.print\_exception()
 
-    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L674)[#](#scikitplot.logging.Formatter.formatMessage "Link to this definition")
+    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L674)[#](#scikitplot.logging.Formatter.formatMessage "Link to this definition")
 
-    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L677)[#](#scikitplot.logging.Formatter.formatStack "Link to this definition")
+    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L677)[#](#scikitplot.logging.Formatter.formatStack "Link to this definition")
     :   This method is provided as an extension point for specialized
         formatting of stack information.
 
@@ -87,7 +87,7 @@ class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**
 
         The base implementation just returns the value passed in.
 
-    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L622)[#](#scikitplot.logging.Formatter.formatTime "Link to this definition")
+    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L622)[#](#scikitplot.logging.Formatter.formatTime "Link to this definition")
     :   Return the creation time of the specified LogRecord as formatted text.
 
         This method should be called from format() by a formatter which
@@ -104,5 +104,5 @@ class scikitplot.logging.Formatter(**fmt=None**, **datefmt=None**, **style='%'**
         formatters, for example if you want all logging times to be shown in GMT,
         set the ‘converter’ attribute in the Formatter class.
 
-    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L668)[#](#scikitplot.logging.Formatter.usesTime "Link to this definition")
+    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L668)[#](#scikitplot.logging.Formatter.usesTime "Link to this definition")
     :   Check if the format uses the creation time of the record.

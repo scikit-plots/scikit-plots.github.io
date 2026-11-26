@@ -1,6 +1,6 @@
 # dump\_policy[#](#dump-policy "Link to this heading")
 
-scikitplot.feature\_selection.dump\_policy(**policy**, **path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/feature_selection/_policy.py#L1115)[#](#scikitplot.feature_selection.dump_policy "Link to this definition")
+scikitplot.feature\_selection.dump\_policy(**policy**, **path**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/feature_selection/_policy.py#L1115)[#](#scikitplot.feature_selection.dump_policy "Link to this definition")
 :   Write `policy` to `path` atomically, verified by reading it back.
 
     Parameters:

@@ -1,6 +1,6 @@
 # NodeKind[#](#nodekind "Link to this heading")
 
-class scikitplot.corpus.NodeKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L78)[#](#scikitplot.corpus.NodeKind "Link to this definition")
+class scikitplot.corpus.NodeKind(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L78)[#](#scikitplot.corpus.NodeKind "Link to this definition")
 :   What a graph node represents.
 
     Notes
@@ -9,22 +9,22 @@ class scikitplot.corpus.NodeKind(**\*values**)[[source]](https://github.com/scik
     neither has a producer, and a node kind with no producer is a schema for
     data that cannot be created.
 
-    DOCUMENT = 'document'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.DOCUMENT "Link to this definition")
+    DOCUMENT = 'document'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.DOCUMENT "Link to this definition")
     :   A `CorpusDocument` with no parent.
 
-    ENTITY = 'entity'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.ENTITY "Link to this definition")
+    ENTITY = 'entity'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.ENTITY "Link to this definition")
     :   Reserved for G1 extraction; no producer exists yet.
 
-    HEADING = 'heading'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.HEADING "Link to this definition")
+    HEADING = 'heading'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.HEADING "Link to this definition")
     :   A heading of a source’s outline, from `metadata["heading_path"]`.
 
         One node per source and heading path, so two sections of one source with
         the same titles all the way down share a node.
 
-    SECTION = 'section'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.SECTION "Link to this definition")
+    SECTION = 'section'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.SECTION "Link to this definition")
     :   A `CorpusDocument` with `parent_doc_id` set.
 
-    SOURCE = 'source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.SOURCE "Link to this definition")
+    SOURCE = 'source'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_graph.py#L)[#](#scikitplot.corpus.NodeKind.SOURCE "Link to this definition")
     :   the physical origin.
 
         Modelled as a node rather than an implicit property so `same_source` is

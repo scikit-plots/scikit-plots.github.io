@@ -1,6 +1,6 @@
 # ScikitplotDeprecationWarning[#](#scikitplotdeprecationwarning "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L343)[#](#scikitplot.exceptions.ScikitplotDeprecationWarning "Link to this definition")
+exception scikitplot.exceptions.ScikitplotDeprecationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L343)[#](#scikitplot.exceptions.ScikitplotDeprecationWarning "Link to this definition")
 :   A warning class to indicate a deprecated feature.
 
     Annotation:

@@ -1,6 +1,6 @@
 # SigmaClippedStats[#](#sigmaclippedstats "Link to this heading")
 
-class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, **mask=None**, **mask\_value=None**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **axis=None**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L886)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats "Link to this definition")
+class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, **mask=None**, **mask\_value=None**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **axis=None**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L886)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats "Link to this definition")
 :   Class to calculate sigma-clipped statistics on the provided data.
 
     Parameters:
@@ -94,7 +94,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
     installed. To preserve accuracy, bottleneck is only used for float64
     computations.
 
-    biweight\_location(**c=6.0**, **M=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1147)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.biweight_location "Link to this definition")
+    biweight\_location(**c=6.0**, **M=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1147)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.biweight_location "Link to this definition")
     :   Calculate the biweight location of the data.
 
         NaN values are ignored.
@@ -119,7 +119,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    biweight\_scale(**c=6.0**, **M=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1172)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.biweight_scale "Link to this definition")
+    biweight\_scale(**c=6.0**, **M=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1172)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.biweight_scale "Link to this definition")
     :   Calculate the biweight scale of the data.
 
         NaN values are ignored.
@@ -144,7 +144,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    mad\_std()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1195)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mad_std "Link to this definition")
+    mad\_std()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1195)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mad_std "Link to this definition")
     :   Calculate the median absolute deviation (MAD) based standard
         deviation of the data.
 
@@ -157,7 +157,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    max()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1024)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.max "Link to this definition")
+    max()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1024)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.max "Link to this definition")
     :   Calculate the maximum of the data.
 
         NaN values are ignored.
@@ -169,7 +169,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    mean()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1050)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mean "Link to this definition")
+    mean()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1050)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mean "Link to this definition")
     :   Calculate the mean of the data.
 
         NaN values are ignored.
@@ -181,7 +181,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    median()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1063)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.median "Link to this definition")
+    median()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1063)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.median "Link to this definition")
     :   Calculate the median of the data.
 
         NaN values are ignored.
@@ -193,7 +193,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    min()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1011)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.min "Link to this definition")
+    min()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1011)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.min "Link to this definition")
     :   Calculate the minimum of the data.
 
         NaN values are ignored.
@@ -205,7 +205,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    mode(**median\_factor=3.0**, **mean\_factor=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1076)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mode "Link to this definition")
+    mode(**median\_factor=3.0**, **mean\_factor=2.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1076)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.mode "Link to this definition")
     :   Calculate the mode of the data using a estimator of the form
         `(median_factor * median) - (mean_factor * mean)`.
 
@@ -229,7 +229,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    std(**ddof=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1100)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.std "Link to this definition")
+    std(**ddof=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1100)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.std "Link to this definition")
     :   Calculate the standard deviation of the data.
 
         NaN values are ignored.
@@ -254,7 +254,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    sum()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1037)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.sum "Link to this definition")
+    sum()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1037)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.sum "Link to this definition")
     :   Calculate the sum of the data.
 
         NaN values are ignored.
@@ -266,7 +266,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClippedStats(**data**, **\***, 
         Return type:
         :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**
 
-    var(**ddof=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1124)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.var "Link to this definition")
+    var(**ddof=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1124)[#](#scikitplot.cexternals._astropy.stats.SigmaClippedStats.var "Link to this definition")
     :   Calculate the variance of the data.
 
         NaN values are ignored.

@@ -1,6 +1,6 @@
 🤓 Scikit-plots Examples & Tutorials
   
- 0.5.dev0+git.20261126.fbd8e1a - November 26, 2026 01:09 UTC
+ 0.5.dev0+git.20261126.740e0f5 - November 26, 2026 15:04 UTC
 
 # Examples[#](#examples "Link to this heading")
 
@@ -737,6 +737,11 @@ pip install scikit-plots[corpus]
 10. ****Build a multi-source WHO corpus**** — see the explicit stage-by-stage
     integration path, partial source success, keyword retrieval, adapters, and
     where `CorpusBuilder` fits.
+11. ****Read source code**** — `CodeReader` from one file to a folder of
+    languages, custom extensions, awkward encodings and a line-coverage check.
+12. ****Read Lean proofs**** — `LeanReader`: one chunk per command, proofs
+    kept or dropped, audit flags (`sorry`, `native_decide`, `axiom`,
+    `#exit`), long proofs in parts, Lean 3 and hostile input.
 
 ## Which API should I use?[#](#which-api-should-i-use "Link to this heading")
 
@@ -813,7 +818,11 @@ Process an MP3 with Corpus![](../_images/sphx_glr_plot_corpus_backend_policy_scr
 
 [Customize Corpus backends and readiness policies](corpus/plot_corpus_backend_policy_script.html)
 
-Customize Corpus backends and readiness policies![](../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
+Customize Corpus backends and readiness policies![](../_images/sphx_glr_plot_corpus_code_reader_script_thumb.png)
+
+[Read Source Code with CodeReader: from One File to a Whole Project](corpus/plot_corpus_code_reader_script.html)
+
+Read Source Code with CodeReader: from One File to a Whole Project![](../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
 
 [Configure Corpus with FluentCorpus](corpus/plot_corpus_fluent_corpus_script.html)
 
@@ -829,7 +838,11 @@ Write Your Own Corpus Components: a Hamlet Walkthrough![](../_images/sphx_glr_pl
 
 [Compare Corpus Chunking Strategies on OCR Text](corpus/plot_corpus_knowledge_script.html)
 
-Compare Corpus Chunking Strategies on OCR Text![](../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
+Compare Corpus Chunking Strategies on OCR Text![](../_images/sphx_glr_plot_corpus_lean_reader_script_thumb.png)
+
+[Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development](corpus/plot_corpus_lean_reader_script.html)
+
+Read Lean Proofs with LeanReader: Tracing Every Line of a Formal Development![](../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
 
 [Use Levenshtein distance with Corpus retrieval](corpus/plot_corpus_levenshtein_script.html)
 

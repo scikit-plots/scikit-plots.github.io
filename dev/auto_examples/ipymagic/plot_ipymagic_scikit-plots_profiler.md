@@ -81,12 +81,12 @@ assert error is None
 
 ```
 ```
-3 calls in 0.0298 s; 3 of 3 functions by cumulative
+3 calls in 0.0177 s; 3 of 3 functions by cumulative
 
       ncalls    tottime    cumtime  function
-           1   0.000063   0.029710  <built-in method builtins.exec>
-           1   0.000004   0.029647  <string>:1(<module>)
-           1   0.029643   0.029643  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+           1   0.000032   0.017667  <built-in method builtins.exec>
+           1   0.000002   0.017635  <string>:1(<module>)
+           1   0.017633   0.017633  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
 
 ```
 
@@ -110,13 +110,13 @@ print(result.to_text())
 
 ```
 ```
-50006 calls in 0.0252 s; 4 of 6 functions by ncalls
+50006 calls in 0.0168 s; 4 of 6 functions by ncalls
 
       ncalls    tottime    cumtime  function
-       50001   0.008803   0.008803  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
-           1   0.007003   0.007003  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
-           1   0.000014   0.018024  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
-           1   0.000010   0.025038  <string>:1(<module>)
+       50001   0.006178   0.006178  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:55(<genexpr>)
+           1   0.004415   0.004415  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:45(slow_sum_of_squares)
+           1   0.000006   0.012229  /home/circleci/repo/galleries/examples/ipymagic/plot_ipymagic_scikit-plots_profiler.py:53(fast_sum_of_squares)
+           1   0.000006   0.016650  <string>:1(<module>)
 
 ```
 
@@ -159,20 +159,20 @@ pstats.Stats(str(stats_file)).sort_stats("cumulative").print_stats(2)
 ```
 ```
 written: my run.prof
-Sun Nov  8 15:22:19 2026    /tmp/skplt-profile-6bkwh36t/my run.prof
+Thu Nov 26 15:16:26 2026    /tmp/skplt-profile-liz4u3xb/my run.prof
 
-         4 function calls in 0.016 seconds
+         4 function calls in 0.009 seconds
 
    Ordered by: cumulative time
    List reduced from 4 to 2 due to restriction <2>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    0.016    0.016 {built-in method builtins.exec}
-        1    0.000    0.000    0.016    0.016 <string>:1(<module>)
+        1    0.000    0.000    0.009    0.009 {built-in method builtins.exec}
+        1    0.000    0.000    0.009    0.009 <string>:1(<module>)
 
 
 
-<pstats.Stats object at 0x7126fa754ce0>
+<pstats.Stats object at 0x7b010dba34a0>
 
 ```
 
@@ -257,7 +257,7 @@ SKIP: set SCIKITPLOT_GALLERY_RUN_SNAKEVIZ=1 to start snakeviz
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html)
 
-****Total running time of the script:**** (0 minutes 0.084 seconds)
+****Total running time of the script:**** (0 minutes 0.053 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots_profiler.ipynb)
 

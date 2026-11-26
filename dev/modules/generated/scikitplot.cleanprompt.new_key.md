@@ -1,6 +1,6 @@
 # new\_key[#](#new-key "Link to this heading")
 
-scikitplot.cleanprompt.new\_key()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_crypto.py#L88)[#](#scikitplot.cleanprompt.new_key "Link to this definition")
+scikitplot.cleanprompt.new\_key()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_crypto.py#L88)[#](#scikitplot.cleanprompt.new_key "Link to this definition")
 :   Generate a fresh vault key.
 
     Returns:

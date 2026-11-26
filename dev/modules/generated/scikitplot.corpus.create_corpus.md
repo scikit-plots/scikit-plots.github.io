@@ -1,6 +1,6 @@
 # create\_corpus[#](#create-corpus "Link to this heading")
 
-scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_pipeline.py#L1222)[#](#scikitplot.corpus.create_corpus "Link to this definition")
+scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L1222)[#](#scikitplot.corpus.create_corpus "Link to this definition")
 :   Create and export a corpus from a single source file.
 
     Convenience wrapper around [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") for the common

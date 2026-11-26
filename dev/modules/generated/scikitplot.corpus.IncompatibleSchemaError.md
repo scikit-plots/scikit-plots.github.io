@@ -1,6 +1,6 @@
 # IncompatibleSchemaError[#](#incompatibleschemaerror "Link to this heading")
 
-exception scikitplot.corpus.IncompatibleSchemaError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_schema.py#L1022)[#](#scikitplot.corpus.IncompatibleSchemaError "Link to this definition")
+exception scikitplot.corpus.IncompatibleSchemaError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_schema.py#L1022)[#](#scikitplot.corpus.IncompatibleSchemaError "Link to this definition")
 :   Raised for data written by another generation of the document schema.
 
     A payload, a store row, a pickled export or a checkpoint line that declares

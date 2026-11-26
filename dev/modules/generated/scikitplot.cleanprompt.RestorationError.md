@@ -1,6 +1,6 @@
 # RestorationError[#](#restorationerror "Link to this heading")
 
-exception scikitplot.cleanprompt.RestorationError(**message**, **labels**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L177)[#](#scikitplot.cleanprompt.RestorationError "Link to this definition")
+exception scikitplot.cleanprompt.RestorationError(**message**, **labels**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L177)[#](#scikitplot.cleanprompt.RestorationError "Link to this definition")
 :   A placeholder in the text cannot be restored from the supplied vault.
 
     Parameters:

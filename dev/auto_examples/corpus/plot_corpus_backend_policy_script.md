@@ -17,8 +17,10 @@ This example shows the public pieces that keep those states separate:
 * [`ASRBackend`](../../modules/generated/scikitplot.corpus.ASRBackend.html#scikitplot.corpus.ASRBackend "scikitplot.corpus.ASRBackend") for a user-provided speech recognizer,
 * [`DocumentReader.backend_reports`](../../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader.backend_reports "scikitplot.corpus.DocumentReader.backend_reports") for structured runtime evidence.
 
-The executable path uses a tiny synthetic local backend. It performs no
-network access, model download, or audio decoding.
+The executable path reads the two recordings bundled under `data/` with a
+small local backend that stands in for a speech model. It performs no
+network access, model download, or audio decoding; an empty file is shown
+being refused.
 
 ```
 # Authors: The scikit-plots developers
@@ -66,17 +68,49 @@ asr:openai-whisper {'installed': True, 'assets_ready': None, 'ready': None, 'sel
 
 ```
 
+## Locate the bundled recordings[#](#locate-the-bundled-recordings "Link to this heading")
+
+The two MP3 files ship with the gallery under `data/`. A missing file is
+reported as `SKIP`; it never turns into a network request.
+
+```
+def _resolve_example_dir() -> Path:
+    """Resolve the example directory across scripts and Sphinx-Gallery."""
+    file = globals().get("__file__")
+    return Path(file).resolve().parent if file else Path.cwd().resolve()
+
+
+_DATA_DIR = _resolve_example_dir() / "data"
+RECORDINGS = [
+    _DATA_DIR / "can-people-afford-to-pay-for-health-care.mp3",
+    _DATA_DIR / "tale_of_two_cities_01_dickens_64kb.mp3",
+]
+for path in RECORDINGS:
+    state = f"{path.stat().st_size:,} bytes" if path.is_file() else "SKIP: missing"
+    print(f"{path.name}: {state}")
+available = [path for path in RECORDINGS if path.is_file() and path.stat().st_size]
+
+```
+```
+can-people-afford-to-pay-for-health-care.mp3: 401,709 bytes
+tale_of_two_cities_01_dickens_64kb.mp3: 200,966 bytes
+
+```
+
 ## Provide a user-side ASR backend[#](#provide-a-user-side-asr-backend "Link to this heading")
 
 Custom backends receive one immutable [`ASRRequest`](../../modules/generated/scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus.ASRRequest"), keeping the
-extension signature stable as future request metadata is added.
+extension signature stable as future request metadata is added. This one
+stands in for a real recognizer: it reads only the file’s size, so the
+example runs without a model, yet the reader still checks a real recording.
 
 ```
 def local_demo_asr(request: ASRRequest):
-    """Return one deterministic segment without touching the media bytes."""
+    """Return one deterministic segment describing the media file."""
+    size = request.media_path.stat().st_size
     return [
         {
-            "text": f"synthetic transcript for {request.media_path.stem}",
+            "text": f"placeholder transcript of {request.media_path.stem} ({size:,} bytes)",
             "timecode_start": 0.0,
             "timecode_end": 1.25,
             "provider": "gallery-demo",
@@ -98,7 +132,9 @@ custom_backend = ASRBackend(
 
 `include_unlisted=False` means the two built-in Whisper implementations
 are not attempted. This is useful for deterministic tests and for projects
-that own their inference runtime.
+that own their inference runtime. Preflight uses the same candidate
+factory as execution but calls no backend; the runtime report is the
+evidence that the selected backend actually ran.
 
 ```
 policy = BackendPolicy.resilient().with_order(
@@ -106,41 +142,62 @@ policy = BackendPolicy.resilient().with_order(
     include_unlisted=False,
 )
 
-with tempfile.TemporaryDirectory() as tmpdir:
-    audio_path = Path(tmpdir) / "demo.mp3"
-    audio_path.write_bytes(b"")
-
+for audio_path in available:
     reader = AudioReader(
         audio_path,
         transcribe=True,
         backend_policy=policy,
         asr_backends=(custom_backend,),
     )
-    # Preflight uses the same candidate factory as execution but does not call
-    # ``local_demo_asr`` or any model backend.
     plan = reader.plan_asr_backends()
-    print("preflight:", plan.to_dict())
     assert plan.selected == ("gallery-local-asr",)
-
     chunks = list(reader.get_raw_chunks())
-
-print("chunk text:", chunks[0]["text"])
-print("provider:", chunks[0]["asr_metadata"]["provider"])
-print("backend report:", reader.backend_reports[-1])
-print("policy skips:", reader.backend_reports[-1].get("skip_details", []))
-
-# The runtime report is the evidence that a selected backend actually ran.
-assert chunks[0]["asr_metadata"]["provider"] == "gallery-demo"
-assert reader.backend_reports[-1]["status"] == "success"
-assert reader.backend_reports[-1]["backend"] == "gallery-local-asr"
+    report = reader.backend_reports[-1]
+    print(audio_path.name)
+    print("  preflight:", plan.selected)
+    print("  chunk text:", chunks[0]["text"])
+    print("  provider:", chunks[0]["asr_metadata"]["provider"])
+    print("  report:", {k: report[k] for k in ("backend", "status") if k in report})
+    assert chunks[0]["asr_metadata"]["provider"] == "gallery-demo"
+    assert report["status"] == "success" and report["backend"] == "gallery-local-asr"
 
 ```
 ```
-preflight: {'policy': 'resilient', 'declared': ['faster-whisper', 'openai-whisper', 'gallery-local-asr'], 'ordered': ['gallery-local-asr'], 'eligible': ['gallery-local-asr'], 'selected': ['gallery-local-asr'], 'skipped': [], 'selected_capabilities': [], 'skip_details': []}
-chunk text: synthetic transcript for demo
-provider: gallery-demo
-backend report: {'status': 'success', 'backend': 'gallery-local-asr', 'requested_backend': 'gallery-local-asr', 'fallback_reason': None, 'allow_fallback': True, 'attempted': ['gallery-local-asr'], 'missed': [], 'skipped': [], 'policy': 'resilient', 'selected_capabilities': [], 'active_capability': None, 'skip_details': [], 'errors': []}
-policy skips: []
+can-people-afford-to-pay-for-health-care.mp3
+  preflight: ('gallery-local-asr',)
+  chunk text: placeholder transcript of can-people-afford-to-pay-for-health-care (401,709 bytes)
+  provider: gallery-demo
+  report: {'backend': 'gallery-local-asr', 'status': 'success'}
+tale_of_two_cities_01_dickens_64kb.mp3
+  preflight: ('gallery-local-asr',)
+  chunk text: placeholder transcript of tale_of_two_cities_01_dickens_64kb (200,966 bytes)
+  provider: gallery-demo
+  report: {'backend': 'gallery-local-asr', 'status': 'success'}
+
+```
+
+## Edge case: an empty file is refused, not transcribed[#](#edge-case-an-empty-file-is-refused-not-transcribed "Link to this heading")
+
+A 0-byte `.mp3` holds no audio. The reader refuses it before any backend
+runs, with an error naming the file, so a truncated download cannot pass
+as an empty transcript.
+
+```
+with tempfile.TemporaryDirectory() as tmpdir:
+    empty = Path(tmpdir) / "empty.mp3"
+    empty.write_bytes(b"")
+    try:
+        list(
+            AudioReader(
+                empty, transcribe=True, backend_policy=policy, asr_backends=(custom_backend,)
+            ).get_raw_chunks()
+        )
+    except ValueError as exc:
+        print("refused:", exc)
+
+```
+```
+refused: AudioReader: empty.mp3 is empty (0 bytes) and holds no audio. Replace it with the full recording or remove it from the input.
 
 ```
 
@@ -171,7 +228,7 @@ strict BackendPolicy(name='strict', order=(), include_unlisted=True, allow_fallb
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.005 seconds)
+****Total running time of the script:**** (0 minutes 0.007 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_backend_policy_script.ipynb)
 
@@ -195,10 +252,10 @@ Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_cor
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_policy_bundle_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
-[Compose Corpus policies without hiding boundaries](plot_corpus_policy_bundle_script.html)
+[Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 
-Compose Corpus policies without hiding boundaries
+Compare Corpus Chunking Strategies on OCR Text
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

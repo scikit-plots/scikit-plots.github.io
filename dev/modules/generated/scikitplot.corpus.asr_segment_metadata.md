@@ -1,6 +1,6 @@
 # asr\_segment\_metadata[#](#asr-segment-metadata "Link to this heading")
 
-scikitplot.corpus.asr\_segment\_metadata(**segment**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L256)[#](#scikitplot.corpus.asr_segment_metadata "Link to this definition")
+scikitplot.corpus.asr\_segment\_metadata(**segment**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L256)[#](#scikitplot.corpus.asr_segment_metadata "Link to this definition")
 :   Return user/backend metadata without allowing core-field shadowing.
 
     Custom ASR backends may attach provider-specific information to a segment.

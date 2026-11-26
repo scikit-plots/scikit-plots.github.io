@@ -1,6 +1,6 @@
 # engine\_readiness[#](#engine-readiness "Link to this heading")
 
-scikitplot.cleanprompt.engine\_readiness(**name**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_engines.py#L535)[#](#scikitplot.cleanprompt.engine_readiness "Link to this definition")
+scikitplot.cleanprompt.engine\_readiness(**name**, **language='en'**, **model=None**, **size='sm'**, **check\_assets=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engines.py#L535)[#](#scikitplot.cleanprompt.engine_readiness "Link to this definition")
 :   Decide whether one engine can run for a language, and how to fix it if not.
 
     Parameters:

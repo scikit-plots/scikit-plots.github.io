@@ -1,6 +1,6 @@
 # redact\_documents[#](#redact-documents "Link to this heading")
 
-scikitplot.cleanprompt.redact\_documents(**documents**, **cleaner**, **format='text'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_corpus.py#L262)[#](#scikitplot.cleanprompt.redact_documents "Link to this definition")
+scikitplot.cleanprompt.redact\_documents(**documents**, **cleaner**, **format='text'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_corpus.py#L262)[#](#scikitplot.cleanprompt.redact_documents "Link to this definition")
 :   Return corpus documents with every text field redacted by one cleaner.
 
     Parameters:

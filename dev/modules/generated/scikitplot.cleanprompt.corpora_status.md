@@ -1,6 +1,6 @@
 # corpora\_status[#](#corpora-status "Link to this heading")
 
-scikitplot.cleanprompt.corpora\_status()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_nltk.py#L580)[#](#scikitplot.cleanprompt.corpora_status "Link to this definition")
+scikitplot.cleanprompt.corpora\_status()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_nltk.py#L580)[#](#scikitplot.cleanprompt.corpora_status "Link to this definition")
 :   Report whether NLTK’s data packages are present.
 
     Returns:

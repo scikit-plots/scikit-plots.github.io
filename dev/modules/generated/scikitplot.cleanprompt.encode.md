@@ -1,6 +1,6 @@
 # encode[#](#encode "Link to this heading")
 
-scikitplot.cleanprompt.encode(**text**, **\***, **policy=None**, **profile=None**, **hide=None**, **allow=None**, **kinds=None**, **ignore\_case=None**, **ner=False**, **engine='auto'**, **language='en'**, **model=None**, **size='sm'**, **registry=None**, **word\_boundary=False**, **suggest=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_api.py#L364)[#](#scikitplot.cleanprompt.encode "Link to this definition")
+scikitplot.cleanprompt.encode(**text**, **\***, **policy=None**, **profile=None**, **hide=None**, **allow=None**, **kinds=None**, **ignore\_case=None**, **ner=False**, **engine='auto'**, **language='en'**, **model=None**, **size='sm'**, **registry=None**, **word\_boundary=False**, **suggest=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_api.py#L364)[#](#scikitplot.cleanprompt.encode "Link to this definition")
 :   Replace sensitive values in `text` with placeholders.
 
     Parameters:

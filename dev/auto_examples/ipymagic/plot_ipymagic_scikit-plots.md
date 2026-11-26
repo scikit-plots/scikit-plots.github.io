@@ -75,12 +75,12 @@ print("exit code:", result.exit_code, "| ok:", result.ok, "| ran:", result.mode)
 
 ```
 ```
-scikitplot.version: 0.5.dev0+git.20261108.f7759b5
+scikitplot.version: 0.5.dev0+git.20261126.740e0f5
 python.version: 3.12.16
 python.implementation: CPython
 python.executable: /home/circleci/.pyenv/versions/3.12.16/bin/python
 platform.system: Linux
-platform.release: 7.0.0-1016-aws
+platform.release: 7.0.0-1017-aws
 platform.machine: x86_64
 scikitplot info: exit 0 in 0.01 s (in-process)
 exit code: 0 | ok: True | ran: in-process
@@ -252,7 +252,7 @@ command sees them: `name = "analysis"` then
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html)
 
-****Total running time of the script:**** (0 minutes 0.029 seconds)
+****Total running time of the script:**** (0 minutes 0.028 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots.ipynb)
 

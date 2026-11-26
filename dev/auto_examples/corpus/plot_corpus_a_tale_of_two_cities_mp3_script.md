@@ -182,8 +182,8 @@ A Tale of Two Cities by Charles Dickens.
 ```
 ```
 Bundled MP3: /home/circleci/repo/galleries/examples/corpus/data/tale_of_two_cities_01_dickens_64kb.mp3
-Temporary audio: /tmp/scikitplot-audio-gallery-0p69aqm_/tale_of_two_cities_01_dickens_64kb.mp3
-Companion: /tmp/scikitplot-audio-gallery-0p69aqm_/tale_of_two_cities_01_dickens_64kb.srt
+Temporary audio: /tmp/scikitplot-audio-gallery-mfjfqwkb/tale_of_two_cities_01_dickens_64kb.mp3
+Companion: /tmp/scikitplot-audio-gallery-mfjfqwkb/tale_of_two_cities_01_dickens_64kb.srt
 
 ```
 
@@ -420,10 +420,10 @@ else:
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
   0%|                                               | 0.00/139M [00:00<?, ?iB/s]
- 28%|██████████▊                            | 38.3M/139M [00:00<00:00, 402MiB/s]
- 59%|███████████████████████                | 82.0M/139M [00:00<00:00, 435MiB/s]
- 95%|██████████████████████████████████████▏ | 132M/139M [00:00<00:00, 476MiB/s]
-100%|████████████████████████████████████████| 139M/139M [00:00<00:00, 464MiB/s]
+ 28%|██████████▊                            | 38.6M/139M [00:00<00:00, 405MiB/s]
+ 56%|█████████████████████▋                 | 77.2M/139M [00:00<00:00, 328MiB/s]
+ 82%|████████████████████████████████▉       | 114M/139M [00:00<00:00, 352MiB/s]
+100%|████████████████████████████████████████| 139M/139M [00:00<00:00, 357MiB/s]
 /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/whisper/transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
   warnings.warn("FP16 is not supported on CPU; using FP32 instead")
 Whisper documents: 4
@@ -477,7 +477,7 @@ Temporary audio workspace cleaned.
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 7.353 seconds)
+****Total running time of the script:**** (0 minutes 6.213 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.ipynb)
 
@@ -489,19 +489,19 @@ Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-typ
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
-
-[Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
-
-Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
-
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
+![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
 
 [Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
 
-Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+
+[Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
+
+Process a Mixed-Media ZIP Archive with Corpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 

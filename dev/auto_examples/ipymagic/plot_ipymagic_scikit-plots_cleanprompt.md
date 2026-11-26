@@ -82,8 +82,8 @@ placeholder  kind   count  detector
 -----------  -----  -----  -----------
 [EMAIL-1]    EMAIL  1      regex:EMAIL
 [PHONE-1]    PHONE  1      regex:PHONE
-vault: /tmp/skplt-ipymagic-pe83ipcj/vault.json (overwrite, 2 value(s))
-scikitplot cleanprompt: exit 0 in 0.78 s (subprocess)
+vault: /tmp/skplt-ipymagic-rdy1uhjn/vault.json (overwrite, 2 value(s))
+scikitplot cleanprompt: exit 0 in 0.75 s (subprocess)
 
 ```
 
@@ -142,7 +142,7 @@ print(help_result.stdout.splitlines()[0])
 
 ```
 ```
-scikitplot cleanprompt: exit 0 in 0.54 s (subprocess)
+scikitplot cleanprompt: exit 0 in 0.51 s (subprocess)
 Usage: python -m scikitplot.cleanprompt [OPTIONS] [COMMAND] [ARGS]...
 
 ```
@@ -162,7 +162,7 @@ print(err.getvalue().strip().splitlines()[-1])
 
 ```
 ```
-scikitplot cleanprompt: exit 1 in 0.49 s (subprocess)
+scikitplot cleanprompt: exit 1 in 0.48 s (subprocess)
 error: placeholder '[PERSON-9]' is not present in the vault
 
 ```
@@ -193,7 +193,7 @@ shutil.rmtree(work)
 
 Tags: [model-workflow: ipymagic](../../_tags/model-workflow-ipymagic.html) [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html)
 
-****Total running time of the script:**** (0 minutes 2.298 seconds)
+****Total running time of the script:**** (0 minutes 2.193 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo12.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/ipymagic/plot_ipymagic_scikit-plots_cleanprompt.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo12.svg)](../../lite/lab/index.html?path=auto_examples/ipymagic/plot_ipymagic_scikit-plots_cleanprompt.ipynb)
 

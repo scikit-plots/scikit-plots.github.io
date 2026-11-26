@@ -65,7 +65,7 @@ img_resnet50v2
 ```
 ![plot dl cnn resnetv2](../../_images/sphx_glr_plot_dl_cnn_resnetv2_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x71262031cd40>
+<matplotlib.image.AxesImage object at 0x7b00b42a9100>
 
 ```
 
@@ -108,7 +108,7 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 ```
 
-****Total running time of the script:**** (0 minutes 5.936 seconds)
+****Total running time of the script:**** (0 minutes 5.073 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo25.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_resnetv2.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo25.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_resnetv2.ipynb)
 

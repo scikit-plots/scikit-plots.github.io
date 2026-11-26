@@ -49,7 +49,7 @@ print("closest:", best.choice)
 
 ```
 
-****Total running time of the script:**** (0 minutes 0.003 seconds)
+****Total running time of the script:**** (0 minutes 0.002 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo13.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo13.svg)](../../lite/lab/index.html?path=auto_examples/levenshtein/plot_levenshtein_ranking_script.ipynb)
 

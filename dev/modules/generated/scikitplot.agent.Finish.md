@@ -1,6 +1,6 @@
 # Finish[#](#finish "Link to this heading")
 
-class scikitplot.agent.Finish(**name**, **answer=None**, **on\_rejected=None**, **max\_visits=None**, **on\_exhausted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L342)[#](#scikitplot.agent.Finish "Link to this definition")
+class scikitplot.agent.Finish(**name**, **answer=None**, **on\_rejected=None**, **max\_visits=None**, **on\_exhausted=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_workflow.py#L342)[#](#scikitplot.agent.Finish "Link to this definition")
 :   A node that ends the run with an answer.
 
     Parameters:
@@ -29,7 +29,7 @@ class scikitplot.agent.Finish(**name**, **answer=None**, **on\_rejected=None**, 
 
     max\_visits: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Finish.max_visits "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L342)[#](#scikitplot.agent.Finish.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_workflow.py#L342)[#](#scikitplot.agent.Finish.name "Link to this definition")
 
     on\_exhausted: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.agent.Finish.on_exhausted "Link to this definition")
 

@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:22:21Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T15:32:30Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"whats_new/v0.5","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -713,8 +713,8 @@ future; or a feature will be removed in the future.</p></li>
 </ul>
 <section id="version-0-5">
 <span id="release-notes-0-5"></span><h1>Version 0.5<a class="headerlink" href="#version-0-5" title="Link to this heading">#</a></h1>
-<section id="version-0-5-dev0-git-20261126-fbd8e1a">
-<span id="changes-0-5-dev0-git-20261126-fbd8e1a"></span><h2>Version 0.5.dev0+git.20261126.fbd8e1a<a class="headerlink" href="#version-0-5-dev0-git-20261126-fbd8e1a" title="Link to this heading">#</a></h2>
+<section id="version-0-5-dev0-git-20261126-740e0f5">
+<span id="changes-0-5-dev0-git-20261126-740e0f5"></span><h2>Version 0.5.dev0+git.20261126.740e0f5<a class="headerlink" href="#version-0-5-dev0-git-20261126-740e0f5" title="Link to this heading">#</a></h2>
 <p><strong>November 2026</strong></p>
 <section id="build-and-packaging">
 <h3>Build and packaging<a class="headerlink" href="#build-and-packaging" title="Link to this heading">#</a></h3>
@@ -2006,6 +2006,12 @@ format (<code class="docutils literal notranslate"><span class="pre">.xlsx</span
 <code class="docutils literal notranslate"><span class="pre">.xml</span></code>; each under 64 KiB) with the default settings, in a child
 process, under a time ceiling (20 s) and a traced-memory ceiling
 (64 MiB): a small input that expands far past its size now fails a test. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/938">#938</a></p></li>
+<li><p>Gallery examples for <a class="reference internal" href="../modules/generated/scikitplot.corpus.CodeReader.html#scikitplot.corpus.CodeReader" title="scikitplot.corpus.CodeReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CodeReader</span></code></a> and
+<a class="reference internal" href="../modules/generated/scikitplot.corpus.LeanReader.html#scikitplot.corpus.LeanReader" title="scikitplot.corpus.LeanReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">LeanReader</span></code></a>, from one file to a generated
+project, with edge cases and a line-coverage check. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/989">#989</a></p></li>
+<li><p>The backend-policy gallery example reads the two MP3 recordings bundled
+under <code class="docutils literal notranslate"><span class="pre">data/</span></code> instead of an empty file, which the reader now refuses;
+the refusal is shown as its own edge case. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/990">#990</a></p></li>
 </ul>
 </section>
 <section id="scikitplot-datasets">
@@ -2347,7 +2353,7 @@ the project since version 0.4, including:</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261126-fbd8e1a">Version 0.5.dev0+git.20261126.fbd8e1a</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261126-740e0f5">Version 0.5.dev0+git.20261126.740e0f5</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-packaging">Build and packaging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility-and-dependencies">Compatibility and dependencies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
@@ -2437,7 +2443,7 @@ the project since version 0.4, including:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.740e0f5 2026-11-26T15:04Z.
       <br/>
     
   </p>

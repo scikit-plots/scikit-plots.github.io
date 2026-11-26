@@ -1,6 +1,6 @@
 # get\_path[#](#get-path "Link to this heading")
 
-scikitplot.utils.\_path.get\_path(**\***, **filename=None**, **ext=None**, **file\_path=None**, **subfolder=None**, **add\_timestamp=False**, **return\_parts=False**, **overwrite=True**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/utils/_path.py#L818)[#](#scikitplot.utils._path.get_path "Link to this definition")
+scikitplot.utils.\_path.get\_path(**\***, **filename=None**, **ext=None**, **file\_path=None**, **subfolder=None**, **add\_timestamp=False**, **return\_parts=False**, **overwrite=True**, **verbose=False**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/utils/_path.py#L818)[#](#scikitplot.utils._path.get_path "Link to this definition")
 :   Generate a full file path for saving result images, ensuring the target directory exists.
 
     Parameters:

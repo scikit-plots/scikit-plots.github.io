@@ -1,6 +1,6 @@
 # validate\_filter[#](#validate-filter "Link to this heading")
 
-scikitplot.corpus.validate\_filter(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_filters.py#L776)[#](#scikitplot.corpus.validate_filter "Link to this definition")
+scikitplot.corpus.validate\_filter(**expression**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_filters.py#L776)[#](#scikitplot.corpus.validate_filter "Link to this definition")
 :   Return `expression` checked and frozen to the JSON-able form.
 
     Parameters:

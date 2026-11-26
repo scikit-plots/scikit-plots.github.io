@@ -1,6 +1,6 @@
 # query\_tokens[#](#query-tokens "Link to this heading")
 
-scikitplot.corpus.query\_tokens(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_routing.py#L90)[#](#scikitplot.corpus.query_tokens "Link to this definition")
+scikitplot.corpus.query\_tokens(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L90)[#](#scikitplot.corpus.query_tokens "Link to this definition")
 :   Return the words a routing rule matches against.
 
     Parameters:

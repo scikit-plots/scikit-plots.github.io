@@ -1,6 +1,6 @@
 # default\_patterns[#](#default-patterns "Link to this heading")
 
-scikitplot.cleanprompt.default\_patterns()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_patterns.py#L764)[#](#scikitplot.cleanprompt.default_patterns "Link to this definition")
+scikitplot.cleanprompt.default\_patterns()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_patterns.py#L764)[#](#scikitplot.cleanprompt.default_patterns "Link to this definition")
 :   Return the patterns enabled when a policy does not name `kinds`.
 
     Returns:

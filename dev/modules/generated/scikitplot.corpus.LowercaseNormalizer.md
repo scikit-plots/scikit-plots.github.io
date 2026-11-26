@@ -1,6 +1,6 @@
 # LowercaseNormalizer[#](#lowercasenormalizer "Link to this heading")
 
-class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L490)[#](#scikitplot.corpus.LowercaseNormalizer "Link to this definition")
+class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L490)[#](#scikitplot.corpus.LowercaseNormalizer "Link to this definition")
 :   Convert the document text to lowercase.
 
     Parameters:
@@ -24,7 +24,7 @@ class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](h
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_doc "Link to this definition")
     :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
@@ -42,7 +42,7 @@ class scikitplot.corpus.LowercaseNormalizer(**locale\_aware=False**)[[source]](h
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
-    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L512)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_text "Link to this definition")
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L512)[#](#scikitplot.corpus.LowercaseNormalizer.normalize_text "Link to this definition")
     :   Lowercase the text.
 
         Parameters:

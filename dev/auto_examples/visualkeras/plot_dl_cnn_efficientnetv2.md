@@ -65,7 +65,7 @@ img_efficientnetv2
 ```
 ![plot dl cnn efficientnetv2](../../_images/sphx_glr_plot_dl_cnn_efficientnetv2_001.png)
 ```
-<matplotlib.image.AxesImage object at 0x71268a395610>
+<matplotlib.image.AxesImage object at 0x7b00b478fcb0>
 
 ```
 
@@ -176,7 +176,7 @@ Tags: [model-type: classification](../../_tags/model-type-classification.html) [
 
 ```
 
-****Total running time of the script:**** (0 minutes 8.242 seconds)
+****Total running time of the script:**** (0 minutes 6.443 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo25.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/visualkeras/plot_dl_cnn_efficientnetv2.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo25.svg)](../../lite/lab/index.html?path=auto_examples/visualkeras/plot_dl_cnn_efficientnetv2.ipynb)
 

@@ -1,6 +1,6 @@
 # runtime\_policy[#](#runtime-policy "Link to this heading")
 
-scikitplot.corpus.runtime\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L91)[#](#scikitplot.corpus.runtime_policy "Link to this definition")
+scikitplot.corpus.runtime\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_runtime.py#L91)[#](#scikitplot.corpus.runtime_policy "Link to this definition")
 :   Resolve a runtime policy object, preset name, or mapping.
 
     Parameters:

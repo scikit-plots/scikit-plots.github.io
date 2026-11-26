@@ -93,7 +93,7 @@ rather than teaching a private import.
 
 Tags: [model-workflow: retrieval](../../_tags/model-workflow-retrieval.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: workflow](../../_tags/purpose-workflow.html)
 
-****Total running time of the script:**** (0 minutes 0.272 seconds)
+****Total running time of the script:**** (0 minutes 0.262 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo21.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo21.svg)](../../lite/lab/index.html?path=auto_examples/rank_bm25/plot_rank_bm25_persistence_script.ipynb)
 

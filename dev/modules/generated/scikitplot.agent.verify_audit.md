@@ -1,6 +1,6 @@
 # verify\_audit[#](#verify-audit "Link to this heading")
 
-scikitplot.agent.verify\_audit(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_audit.py#L311)[#](#scikitplot.agent.verify_audit "Link to this definition")
+scikitplot.agent.verify\_audit(**records**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_audit.py#L311)[#](#scikitplot.agent.verify_audit "Link to this definition")
 :   Check every run’s hash chain in `records`.
 
     Parameters:

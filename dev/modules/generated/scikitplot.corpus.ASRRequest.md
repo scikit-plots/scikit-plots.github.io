@@ -1,6 +1,6 @@
 # ASRRequest[#](#asrrequest "Link to this heading")
 
-class scikitplot.corpus.ASRRequest(**media\_path**, **model\_size**, **language**, **component**, **include\_confidence=False**, **allow\_network=True**, **allow\_download=True**, **policy\_name='resilient'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest "Link to this definition")
+class scikitplot.corpus.ASRRequest(**media\_path**, **model\_size**, **language**, **component**, **include\_confidence=False**, **allow\_network=True**, **allow\_download=True**, **policy\_name='resilient'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest "Link to this definition")
 :   Stable immutable request passed to user-provided ASR backends.
 
     `allow_network` and `allow_download` communicate orchestration policy to
@@ -22,15 +22,15 @@ class scikitplot.corpus.ASRRequest(**media\_path**, **model\_size**, **language*
 
     allow\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = True[#](#scikitplot.corpus.ASRRequest.allow_network "Link to this definition")
 
-    component: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.component "Link to this definition")
+    component: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.component "Link to this definition")
 
     include\_confidence: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.ASRRequest.include_confidence "Link to this definition")
 
-    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.language "Link to this definition")
+    language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.language "Link to this definition")
 
-    media\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.media_path "Link to this definition")
+    media\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.media_path "Link to this definition")
 
-    model\_size: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.model_size "Link to this definition")
+    model\_size: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L53)[#](#scikitplot.corpus.ASRRequest.model_size "Link to this definition")
 
     policy\_name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'resilient'[#](#scikitplot.corpus.ASRRequest.policy_name "Link to this definition")
 

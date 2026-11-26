@@ -250,7 +250,7 @@ reference.drift(later)[["feature", "kind", "psi", "missing_delta", "status"]]
   
   
 
-****Total running time of the script:**** (0 minutes 0.506 seconds)
+****Total running time of the script:**** (0 minutes 0.606 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo10.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/feature_selection/plot_feature_profiling_and_lineage.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo10.svg)](../../lite/lab/index.html?path=auto_examples/feature_selection/plot_feature_profiling_and_lineage.ipynb)
 

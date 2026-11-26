@@ -243,7 +243,7 @@ Class inheritance
 
 Class inheritance
 
-![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-b6917682975091f41ffb825426f8584b0a3a762b.png)
+![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-80c1012d591c48864eb17b35d9c4fb9cab412614.png)
 
 
 

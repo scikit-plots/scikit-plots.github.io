@@ -1,6 +1,6 @@
 # PatternTimeoutError[#](#patterntimeouterror "Link to this heading")
 
-exception scikitplot.cleanprompt.PatternTimeoutError(**message**, **detector**, **pack**, **kind**, **seconds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L97)[#](#scikitplot.cleanprompt.PatternTimeoutError "Link to this definition")
+exception scikitplot.cleanprompt.PatternTimeoutError(**message**, **detector**, **pack**, **kind**, **seconds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L97)[#](#scikitplot.cleanprompt.PatternTimeoutError "Link to this definition")
 :   A custom pack pattern ran past the pattern time limit on one document.
 
     Parameters:

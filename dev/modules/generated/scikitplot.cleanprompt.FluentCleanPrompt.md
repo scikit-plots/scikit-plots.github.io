@@ -1,6 +1,6 @@
 # FluentCleanPrompt[#](#fluentcleanprompt "Link to this heading")
 
-class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L760)[#](#scikitplot.cleanprompt.FluentCleanPrompt "Link to this definition")
+class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L760)[#](#scikitplot.cleanprompt.FluentCleanPrompt "Link to this definition")
 :   Build a [`CleanPlan`](scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan "scikitplot.cleanprompt.CleanPlan") one decision at a time.
 
     Parameters:
@@ -40,7 +40,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
     ```
     Go BackOpen In Tab
 
-    action(**kind**, **action**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1013)[#](#scikitplot.cleanprompt.FluentCleanPrompt.action "Link to this definition")
+    action(**kind**, **action**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1013)[#](#scikitplot.cleanprompt.FluentCleanPrompt.action "Link to this definition")
     :   Choose what happens to one kind once detected.
 
         Parameters:
@@ -81,7 +81,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         ```
         Go BackOpen In Tab
 
-    allow(**\*terms**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L946)[#](#scikitplot.cleanprompt.FluentCleanPrompt.allow "Link to this definition")
+    allow(**\*terms**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L946)[#](#scikitplot.cleanprompt.FluentCleanPrompt.allow "Link to this definition")
     :   Never hide these exact strings.
 
         Parameters:
@@ -91,7 +91,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    build()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1109)[#](#scikitplot.cleanprompt.FluentCleanPrompt.build "Link to this definition")
+    build()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1109)[#](#scikitplot.cleanprompt.FluentCleanPrompt.build "Link to this definition")
     :   Return the plan, or raise listing every problem with it.
 
         Returns:
@@ -105,7 +105,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**CleanPlan**](scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan "scikitplot.cleanprompt._plan.CleanPlan")
 
-    core(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L905)[#](#scikitplot.cleanprompt.FluentCleanPrompt.core "Link to this definition")
+    core(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L905)[#](#scikitplot.cleanprompt.FluentCleanPrompt.core "Link to this definition")
     :   Turn the built-in structural patterns on or off.
 
         Parameters:
@@ -115,7 +115,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    custom(**\*paths**, **conflict='error'**, **replace\_builtins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L872)[#](#scikitplot.cleanprompt.FluentCleanPrompt.custom "Link to this definition")
+    custom(**\*paths**, **conflict='error'**, **replace\_builtins=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L872)[#](#scikitplot.cleanprompt.FluentCleanPrompt.custom "Link to this definition")
     :   Add custom pack or format definitions from YAML or JSON files.
 
         Parameters:
@@ -140,7 +140,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    formats(**\*names**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L852)[#](#scikitplot.cleanprompt.FluentCleanPrompt.formats "Link to this definition")
+    formats(**\*names**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L852)[#](#scikitplot.cleanprompt.FluentCleanPrompt.formats "Link to this definition")
     :   Choose which formats are read: names, extensions, or `'all'`.
 
         Parameters:
@@ -161,7 +161,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    guard(**format='text'**, **verify=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1148)[#](#scikitplot.cleanprompt.FluentCleanPrompt.guard "Link to this definition")
+    guard(**format='text'**, **verify=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1148)[#](#scikitplot.cleanprompt.FluentCleanPrompt.guard "Link to this definition")
     :   Return a [`Guard`](scikitplot.cleanprompt.Guard.html#scikitplot.cleanprompt.Guard "scikitplot.cleanprompt._guard.Guard") for this plan.
 
         Parameters:
@@ -179,7 +179,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         :   * ****format**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
             * ****verify**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
-    hide(**\*terms**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L942)[#](#scikitplot.cleanprompt.FluentCleanPrompt.hide "Link to this definition")
+    hide(**\*terms**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L942)[#](#scikitplot.cleanprompt.FluentCleanPrompt.hide "Link to this definition")
     :   Hide these exact strings wherever they appear.
 
         Parameters:
@@ -189,7 +189,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    infer\_roles(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L928)[#](#scikitplot.cleanprompt.FluentCleanPrompt.infer_roles "Link to this definition")
+    infer\_roles(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L928)[#](#scikitplot.cleanprompt.FluentCleanPrompt.infer_roles "Link to this definition")
     :   Guess column roles from their names; reported as inferred.
 
         Parameters:
@@ -199,7 +199,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    keep(**\*parts**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L913)[#](#scikitplot.cleanprompt.FluentCleanPrompt.keep "Link to this definition")
+    keep(**\*parts**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L913)[#](#scikitplot.cleanprompt.FluentCleanPrompt.keep "Link to this definition")
     :   Send artefact parts removed by default: `outputs`, `figures`, `paths`.
 
         Parameters:
@@ -209,7 +209,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    materialize()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1129)[#](#scikitplot.cleanprompt.FluentCleanPrompt.materialize "Link to this definition")
+    materialize()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1129)[#](#scikitplot.cleanprompt.FluentCleanPrompt.materialize "Link to this definition")
     :   Return a [`Cleaner`](scikitplot.cleanprompt.Cleaner.html#scikitplot.cleanprompt.Cleaner "scikitplot.cleanprompt._runtime.Cleaner") for this plan.
 
         Returns:
@@ -221,7 +221,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
             :   If the plan does not validate, or an entity engine it asks for is
                 not usable.
 
-    ner(**engine='auto'**, **language='en'**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L934)[#](#scikitplot.cleanprompt.FluentCleanPrompt.ner "Link to this definition")
+    ner(**engine='auto'**, **language='en'**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L934)[#](#scikitplot.cleanprompt.FluentCleanPrompt.ner "Link to this definition")
     :   Turn on entity detection with `auto`, `spacy`, `nltk` or `both`.
 
         Parameters:
@@ -232,7 +232,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    packs(**\*names**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L832)[#](#scikitplot.cleanprompt.FluentCleanPrompt.packs "Link to this definition")
+    packs(**\*names**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L832)[#](#scikitplot.cleanprompt.FluentCleanPrompt.packs "Link to this definition")
     :   Choose packs: names, or `'all'`, `'auto'` or `'none'`.
 
         Parameters:
@@ -253,7 +253,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    pattern\_risk(**mode**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L984)[#](#scikitplot.cleanprompt.FluentCleanPrompt.pattern_risk "Link to this definition")
+    pattern\_risk(**mode**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L984)[#](#scikitplot.cleanprompt.FluentCleanPrompt.pattern_risk "Link to this definition")
     :   Choose what a risky custom pattern does: `warn`, `ignore` or `refuse`.
 
         Parameters:
@@ -281,7 +281,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    pattern\_timeout(**seconds**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1066)[#](#scikitplot.cleanprompt.FluentCleanPrompt.pattern_timeout "Link to this definition")
+    pattern\_timeout(**seconds**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1066)[#](#scikitplot.cleanprompt.FluentCleanPrompt.pattern_timeout "Link to this definition")
     :   Limit the time each document may spend in the patterns of custom packs.
 
         Parameters:
@@ -310,13 +310,13 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1101)[#](#scikitplot.cleanprompt.FluentCleanPrompt.plan "Link to this definition")
+    plan()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1101)[#](#scikitplot.cleanprompt.FluentCleanPrompt.plan "Link to this definition")
     :   Return the plan as it stands, without validating it.
 
         Return type:
         :   [**CleanPlan**](scikitplot.cleanprompt.CleanPlan.html#scikitplot.cleanprompt.CleanPlan "scikitplot.cleanprompt._plan.CleanPlan")
 
-    profile(**name**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L901)[#](#scikitplot.cleanprompt.FluentCleanPrompt.profile "Link to this definition")
+    profile(**name**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L901)[#](#scikitplot.cleanprompt.FluentCleanPrompt.profile "Link to this definition")
     :   Choose the core-pattern profile: `minimal`, `balanced` or `strict`.
 
         Parameters:
@@ -326,7 +326,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    remember(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L950)[#](#scikitplot.cleanprompt.FluentCleanPrompt.remember "Link to this definition")
+    remember(**enabled=True**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L950)[#](#scikitplot.cleanprompt.FluentCleanPrompt.remember "Link to this definition")
     :   Hide a value everywhere once it has been hidden anywhere (default on).
 
         Notes
@@ -343,7 +343,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    roles(**mapping=None**, **conflict='error'**, **\*\*named**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L917)[#](#scikitplot.cleanprompt.FluentCleanPrompt.roles "Link to this definition")
+    roles(**mapping=None**, **conflict='error'**, **\*\*named**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L917)[#](#scikitplot.cleanprompt.FluentCleanPrompt.roles "Link to this definition")
     :   Declare column roles, e.g. `roles(churned="target")`.
 
         Parameters:
@@ -354,7 +354,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    style(**name**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L909)[#](#scikitplot.cleanprompt.FluentCleanPrompt.style "Link to this definition")
+    style(**name**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L909)[#](#scikitplot.cleanprompt.FluentCleanPrompt.style "Link to this definition")
     :   Choose `placeholder` (`[EMAIL-1]`) or `surrogate` stand-ins.
 
         Parameters:
@@ -364,7 +364,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    surrogates(**path**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L965)[#](#scikitplot.cleanprompt.FluentCleanPrompt.surrogates "Link to this definition")
+    surrogates(**path**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L965)[#](#scikitplot.cleanprompt.FluentCleanPrompt.surrogates "Link to this definition")
     :   Use a custom surrogate set’s names (needs `style('surrogate')`).
 
         Parameters:
@@ -385,7 +385,7 @@ class scikitplot.cleanprompt.FluentCleanPrompt(**plan=None**)[[source]](https://
         Return type:
         :   [**FluentCleanPrompt**](#scikitplot.cleanprompt.FluentCleanPrompt "scikitplot.cleanprompt._plan.FluentCleanPrompt")
 
-    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_plan.py#L1105)[#](#scikitplot.cleanprompt.FluentCleanPrompt.validate "Link to this definition")
+    validate()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_plan.py#L1105)[#](#scikitplot.cleanprompt.FluentCleanPrompt.validate "Link to this definition")
     :   Return every problem with the plan; empty when it can run.
 
         Return type:

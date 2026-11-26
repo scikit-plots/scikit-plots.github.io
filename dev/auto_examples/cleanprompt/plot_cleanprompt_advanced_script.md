@@ -405,7 +405,7 @@ print("round trip:", decrypt_mapping(entries, SAMPLE_KEY.encode(), params))
 ```
 ```
 kdf       : scrypt n=16384 r=8 p=1
-token     : wkeR071KSLzPjazCnO/ma5bsWQSX4wBn4SSj+gCKzj+B ...
+token     : xPhztjU2Suh8Bm2V6v+zx4+GUKxPw5S8oQGzmZknYLFl ...
 round trip: {'[EMAIL-1]': 'ada@example.com'}
 
 ```
@@ -487,7 +487,7 @@ $ cleanprompt encode --quiet --vault-mode overwrite --encrypt "Mail ada@example.
 
 encrypted : True
 cipher    : cleanprompt-hmac-v1
-on disk   : 9prsEcEqu/VoeGSKxZqVdo89CfjsUKpYx0GvdDqkKe3v ...
+on disk   : J6kpDsQXz0nwCorNR9cDuWYgQTgZhB4GyGPzOC3aa/pv ...
 no value in the file: True
 
 ```
@@ -807,7 +807,7 @@ Temporary workspace cleaned: True
 
 Tags: [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html) [plot-type: text](../../_tags/plot-type-text.html) [level: advanced](../../_tags/level-advanced.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 5.598 seconds)
+****Total running time of the script:**** (0 minutes 5.880 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo3.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo3.svg)](../../lite/lab/index.html?path=auto_examples/cleanprompt/plot_cleanprompt_advanced_script.ipynb)
 

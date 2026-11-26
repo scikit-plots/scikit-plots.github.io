@@ -1,6 +1,6 @@
 # treatment\_groups[#](#treatment-groups "Link to this heading")
 
-scikitplot.feature\_selection.treatment\_groups(**treatments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/feature_selection/_analysis.py#L407)[#](#scikitplot.feature_selection.treatment_groups "Link to this definition")
+scikitplot.feature\_selection.treatment\_groups(**treatments**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/feature_selection/_analysis.py#L407)[#](#scikitplot.feature_selection.treatment_groups "Link to this definition")
 :   Group features that share the same recommended chain.
 
     Parameters:

@@ -1,6 +1,6 @@
 # require\_index[#](#require-index "Link to this heading")
 
-scikitplot.mcp.require\_index(**value**, **count**, **\***, **name='index'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/mcp/_validation.py#L81)[#](#scikitplot.mcp.require_index "Link to this definition")
+scikitplot.mcp.require\_index(**value**, **count**, **\***, **name='index'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/mcp/_validation.py#L81)[#](#scikitplot.mcp.require_index "Link to this definition")
 :   Return `value` as a position valid in `[0, count)`.
 
     Parameters:
