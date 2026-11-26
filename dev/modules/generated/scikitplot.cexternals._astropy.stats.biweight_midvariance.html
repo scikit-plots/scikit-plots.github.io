@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:07:38Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:18:22Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cexternals._astropy.stats.biweight_midvariance","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -934,6 +934,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1197,15 +1198,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1213,6 +1227,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2047,7 +2062,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>biweight_midvariance<a class="headerlink" href="#biweight-midvariance" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.cexternals._astropy.stats.biweight_midvariance">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">biweight_midvariance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modify_sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/biweight.py#L308"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.biweight_midvariance" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.cexternals._astropy.stats.</span></span><span class="sig-name descname"><span class="pre">biweight_midvariance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modify_sample_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/biweight.py#L308"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cexternals._astropy.stats.biweight_midvariance" title="Link to this definition">#</a></dt>
 <dd><p>Compute the biweight midvariance.</p>
 <p>The biweight midvariance is a robust statistic for determining the
 variance of a distribution.  Its square root is a robust estimator
@@ -2133,7 +2148,7 @@ large number of rejected values.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance" title="scikitplot.cexternals._astropy.stats.biweight_midcovariance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biweight_midcovariance</span></code></a>, <a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html#scikitplot.cexternals._astropy.stats.biweight_midcorrelation" title="scikitplot.cexternals._astropy.stats.biweight_midcorrelation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biweight_midcorrelation</span></code></a>, <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.stats.mad_std.html#astropy.stats.mad_std" title="(in Astropy v8.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.stats.mad_std</span></code></a>, <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.stats.median_absolute_deviation.html#astropy.stats.median_absolute_deviation" title="(in Astropy v8.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.stats.median_absolute_deviation</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance" title="scikitplot.cexternals._astropy.stats.biweight_midcovariance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biweight_midcovariance</span></code></a>, <a class="reference internal" href="scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html#scikitplot.cexternals._astropy.stats.biweight_midcorrelation" title="scikitplot.cexternals._astropy.stats.biweight_midcorrelation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">biweight_midcorrelation</span></code></a>, <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.stats.mad_std.html#astropy.stats.mad_std" title="(in Astropy v9.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.stats.mad_std</span></code></a>, <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.stats.median_absolute_deviation.html#astropy.stats.median_absolute_deviation" title="(in Astropy v9.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.stats.median_absolute_deviation</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">References</p>
@@ -2148,8 +2163,8 @@ large number of rejected values.</p>
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="c50e6d2d-de26-4035-9a13-c57e27f8a578">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c50e6d2d-de26-4035-9a13-c57e27f8a578','f9b596d2-a822-45e1-805e-1b70223ea600','a1ca5e3b-400c-4e7f-8d19-feb2f70ba399','../../lite/tree/../notebooks/index.html?path=3f0f3c09_a73e_4112_929e_6251a66d955b.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6afe6587-4554-45d7-8484-1dcc13384c80">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6afe6587-4554-45d7-8484-1dcc13384c80','75a5436b-f3ec-4bf7-b45d-f1f766b3c859','77582fcd-439a-4fa9-9515-e1d35d21345a','../../lite/tree/../notebooks/index.html?path=65301d0d_18b8_469d_9c43_e03abe65600e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <p>Generate random variates from a Gaussian distribution and return the
 biweight midvariance of the distribution:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -2162,7 +2177,7 @@ biweight midvariance of the distribution:</p>
 </div>
 </div>
 </div>
-<div id="a1ca5e3b-400c-4e7f-8d19-feb2f70ba399" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c50e6d2d-de26-4035-9a13-c57e27f8a578','a1ca5e3b-400c-4e7f-8d19-feb2f70ba399')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('c50e6d2d-de26-4035-9a13-c57e27f8a578','a1ca5e3b-400c-4e7f-8d19-feb2f70ba399')">Open In Tab</button></div><div id="f9b596d2-a822-45e1-805e-1b70223ea600" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="77582fcd-439a-4fa9-9515-e1d35d21345a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6afe6587-4554-45d7-8484-1dcc13384c80','77582fcd-439a-4fa9-9515-e1d35d21345a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6afe6587-4554-45d7-8484-1dcc13384c80','77582fcd-439a-4fa9-9515-e1d35d21345a')">Open In Tab</button></div><div id="75a5436b-f3ec-4bf7-b45d-f1f766b3c859" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -2274,7 +2289,7 @@ biweight midvariance of the distribution:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

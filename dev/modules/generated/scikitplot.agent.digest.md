@@ -1,6 +1,6 @@
 # digest[#](#digest "Link to this heading")
 
-scikitplot.agent.digest(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_canonical.py#L154)[#](#scikitplot.agent.digest "Link to this definition")
+scikitplot.agent.digest(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_canonical.py#L154)[#](#scikitplot.agent.digest "Link to this definition")
 :   Return the SHA-256 of a plain value’s canonical JSON, as 64 hex digits.
 
     Parameters:

@@ -1,6 +1,6 @@
 # vtest[#](#vtest "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.vtest(**data**, **mu=0.0**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/circstats.py#L475)[#](#scikitplot.cexternals._astropy.stats.vtest "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.vtest(**data**, **mu=0.0**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L475)[#](#scikitplot.cexternals._astropy.stats.vtest "Link to this definition")
 :   Performs the Rayleigh test of uniformity where the alternative
     hypothesis H1 is assumed to have a known mean angle `mu`.
 

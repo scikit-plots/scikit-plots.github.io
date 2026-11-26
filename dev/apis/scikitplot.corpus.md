@@ -243,7 +243,19 @@ Class inheritance
 
 Class inheritance
 
-![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-ba165a254de3585c1e565bd98fc600d7a90fdca2.png)
+![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-b6917682975091f41ffb825426f8584b0a3a762b.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,6 +284,7 @@ Class inheritance
 | [`DummyReader`](../modules/generated/scikitplot.corpus.DummyReader.html#scikitplot.corpus.DummyReader "scikitplot.corpus.DummyReader") | A no-op reader that validates source existence and accessibility. |
 | [`FilterBase`](../modules/generated/scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") | Abstract base class for corpus document filters. |
 | [`PipelineGuard`](../modules/generated/scikitplot.corpus.PipelineGuard.html#scikitplot.corpus.PipelineGuard "scikitplot.corpus.PipelineGuard") | Wrap any document stream with resilience, deduplication, and checkpointing. |
+| [`ReadCoverage`](../modules/generated/scikitplot.corpus.ReadCoverage.html#scikitplot.corpus.ReadCoverage "scikitplot.corpus.ReadCoverage") | What one read of a source covered: parts read, empty and skipped. |
 
 ## Capability Status[#](#capability-status "Link to this heading")
 
@@ -715,15 +728,28 @@ Class inheritance
 | --- | --- |
 | [`ALTOReader`](../modules/generated/scikitplot.corpus.ALTOReader.html#scikitplot.corpus.ALTOReader "scikitplot.corpus.ALTOReader") | ALTO XML reader for scanned document archives. |
 | [`AudioReader`](../modules/generated/scikitplot.corpus.AudioReader.html#scikitplot.corpus.AudioReader "scikitplot.corpus.AudioReader") | Text extraction from audio files via companion transcript/lyrics parsing, Whisper ASR, and optional audio classification. |
+| [`CHMReader`](../modules/generated/scikitplot.corpus.CHMReader.html#scikitplot.corpus.CHMReader "scikitplot.corpus.CHMReader") | Read a Compiled HTML Help (`.chm`) file into chunks, page by page. |
+| [`CodeReader`](../modules/generated/scikitplot.corpus.CodeReader.html#scikitplot.corpus.CodeReader "scikitplot.corpus.CodeReader") | Read a source code or configuration file in blocks of whole lines. |
+| [`LANGUAGES`](../modules/generated/scikitplot.corpus.LANGUAGES.html#scikitplot.corpus.LANGUAGES "scikitplot.corpus.LANGUAGES") |  |
 | [`CustomReader`](../modules/generated/scikitplot.corpus.CustomReader.html#scikitplot.corpus.CustomReader "scikitplot.corpus.CustomReader") | Fully user-customizable reader for any file extension and resource type. |
 | [`normalize_extractor_output`](../modules/generated/scikitplot.corpus.normalize_extractor_output.html#scikitplot.corpus.normalize_extractor_output "scikitplot.corpus.normalize_extractor_output") | Coerce an extractor return value to a list of raw chunk dicts. |
 | [`ImageReader`](../modules/generated/scikitplot.corpus.ImageReader.html#scikitplot.corpus.ImageReader "scikitplot.corpus.ImageReader") | OCR-based text extraction from raster image files. |
+| [`LEAN_FLAGS`](../modules/generated/scikitplot.corpus.LEAN_FLAGS.html#scikitplot.corpus.LEAN_FLAGS "scikitplot.corpus.LEAN_FLAGS") |  |
+| [`LeanReader`](../modules/generated/scikitplot.corpus.LeanReader.html#scikitplot.corpus.LeanReader "scikitplot.corpus.LeanReader") | Read a Lean source file one command at a time, each chunk naming its declaration. |
+| [`MHTMLReader`](../modules/generated/scikitplot.corpus.MHTMLReader.html#scikitplot.corpus.MHTMLReader "scikitplot.corpus.MHTMLReader") | Read a saved web page (`.mhtml`, `.mht`) into one chunk per element. |
+| [`NotebookReader`](../modules/generated/scikitplot.corpus.NotebookReader.html#scikitplot.corpus.NotebookReader "scikitplot.corpus.NotebookReader") | Read a Jupyter notebook (`.ipynb`) into one chunk per cell. |
 | [`OfficeReader`](../modules/generated/scikitplot.corpus.OfficeReader.html#scikitplot.corpus.OfficeReader "scikitplot.corpus.OfficeReader") | Read office documents: Office Open XML and OpenDocument. |
 | [`PDFReader`](../modules/generated/scikitplot.corpus.PDFReader.html#scikitplot.corpus.PDFReader "scikitplot.corpus.PDFReader") | PDF document reader with pdfminer.six → pypdf cascade. |
+| [`JSONReader`](../modules/generated/scikitplot.corpus.JSONReader.html#scikitplot.corpus.JSONReader "scikitplot.corpus.JSONReader") | Read JSON (`.json`) and JSON Lines (`.jsonl`, `.ndjson`). |
+| [`TOMLReader`](../modules/generated/scikitplot.corpus.TOMLReader.html#scikitplot.corpus.TOMLReader "scikitplot.corpus.TOMLReader") | Read TOML (`.toml`). |
+| [`YAMLReader`](../modules/generated/scikitplot.corpus.YAMLReader.html#scikitplot.corpus.YAMLReader "scikitplot.corpus.YAMLReader") | Read YAML (`.yaml`, `.yml`), every document of a stream. |
+| [`SubtitleReader`](../modules/generated/scikitplot.corpus.SubtitleReader.html#scikitplot.corpus.SubtitleReader "scikitplot.corpus.SubtitleReader") | Read a subtitle or caption file into timed chunks. |
+| [`CSVReader`](../modules/generated/scikitplot.corpus.CSVReader.html#scikitplot.corpus.CSVReader "scikitplot.corpus.CSVReader") | Read a delimited text table into chunks of rows. |
 | [`MarkdownReader`](../modules/generated/scikitplot.corpus.MarkdownReader.html#scikitplot.corpus.MarkdownReader "scikitplot.corpus.MarkdownReader") | Markdown document reader. |
 | [`ReSTReader`](../modules/generated/scikitplot.corpus.ReSTReader.html#scikitplot.corpus.ReSTReader "scikitplot.corpus.ReSTReader") | reStructuredText document reader. |
 | [`TextReader`](../modules/generated/scikitplot.corpus.TextReader.html#scikitplot.corpus.TextReader "scikitplot.corpus.TextReader") | Plain-text document reader. |
 | [`VideoReader`](../modules/generated/scikitplot.corpus.VideoReader.html#scikitplot.corpus.VideoReader "scikitplot.corpus.VideoReader") | Text extraction from video files via subtitle parsing and/or automatic speech recognition. |
+| [`HTMLReader`](../modules/generated/scikitplot.corpus.HTMLReader.html#scikitplot.corpus.HTMLReader "scikitplot.corpus.HTMLReader") | Read a local HTML file into one chunk per text element, offline. |
 | [`WebReader`](../modules/generated/scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader") | Fetch a web page and extract structured text via BeautifulSoup. |
 | [`YouTubeReader`](../modules/generated/scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader") | Extract the transcript of a YouTube video using `youtube-transcript-api`. |
 | [`TEIReader`](../modules/generated/scikitplot.corpus.TEIReader.html#scikitplot.corpus.TEIReader "scikitplot.corpus.TEIReader") | TEI/XML document reader with dramatic structure extraction. |
@@ -731,6 +757,7 @@ Class inheritance
 | [`ArchiveBudgetError`](../modules/generated/scikitplot.corpus.ArchiveBudgetError.html#scikitplot.corpus.ArchiveBudgetError "scikitplot.corpus.ArchiveBudgetError") | Raised when the members of an archive tree inflate past its extraction budget. |
 | [`ArchiveNestingError`](../modules/generated/scikitplot.corpus.ArchiveNestingError.html#scikitplot.corpus.ArchiveNestingError "scikitplot.corpus.ArchiveNestingError") | Raised when archive nesting exceeds `max_depth` (nested-archive bomb). |
 | [`ZipReader`](../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader "scikitplot.corpus.ZipReader") | Generic ZIP archive reader — dispatches each member to its natural reader. |
+| [`TarReader`](../modules/generated/scikitplot.corpus.TarReader.html#scikitplot.corpus.TarReader "scikitplot.corpus.TarReader") | Read a tar archive (plain, gzip, bzip2 or xz) or a single compressed file. |
 
 ## Registry[#](#registry "Link to this heading")
 

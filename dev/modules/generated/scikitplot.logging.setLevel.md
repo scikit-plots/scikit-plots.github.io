@@ -1,6 +1,6 @@
 # setLevel[#](#setlevel "Link to this heading")
 
-scikitplot.logging.setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/logging/_logging.py#L1347)[#](#scikitplot.logging.setLevel "Link to this definition")
+scikitplot.logging.setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/logging/_logging.py#L1347)[#](#scikitplot.logging.setLevel "Link to this definition")
 :   Set the logger’s level.
 
     Parameters:

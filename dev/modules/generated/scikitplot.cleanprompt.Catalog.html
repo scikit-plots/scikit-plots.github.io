@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:07:45Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:18:28Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.Catalog","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -933,6 +933,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1196,15 +1197,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1212,6 +1226,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2046,7 +2061,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>Catalog<a class="headerlink" href="#catalog" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Catalog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog" title="Link to this definition">#</a></dt>
 <dd><p>An immutable set of packs and formats.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2082,7 +2097,7 @@ is not in the catalog, or the requirements form a cycle.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.code_vocabulary">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">code_vocabulary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L429"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.code_vocabulary" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">code_vocabulary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L429"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.code_vocabulary" title="Link to this definition">#</a></dt>
 <dd><p>Return the union of the packs’ code sections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2108,12 +2123,12 @@ is not in the catalog, or the requirements form a cycle.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.documents">
-<span class="sig-name descname"><span class="pre">documents</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.documents" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">documents</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.documents" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.field_index">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">field_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L387"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.field_index" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">field_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L387"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.field_index" title="Link to this definition">#</a></dt>
 <dd><p>Return normalised field name to rule, across packs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2147,7 +2162,7 @@ were listed in.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.fingerprint">
-<span class="sig-name descname"><span class="pre">fingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.fingerprint" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.fingerprint" title="Link to this definition">#</a></dt>
 <dd><p>Return a digest of the selected definitions’ content.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2176,7 +2191,7 @@ were listed in.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.format_for">
-<span class="sig-name descname"><span class="pre">format_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.format_for" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">format_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.format_for" title="Link to this definition">#</a></dt>
 <dd><p>Return the format that reads a file, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2209,8 +2224,8 @@ were listed in.</p>
 the only special case, and it is the one that matters: <code class="docutils literal notranslate"><span class="pre">.env</span></code> is
 where credentials live.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="bdb42fe9-d0e5-4c90-bf2b-1f2457ca7b43">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bdb42fe9-d0e5-4c90-bf2b-1f2457ca7b43','462c84f4-e645-468d-90d3-53b9bad9b0ae','6a85bfbe-d76c-4e4e-a858-690f177cfb44','../../lite/tree/../notebooks/index.html?path=7b0b3156_0aef_4500_bb9d_225c8d2ebeeb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="0b4a5cae-876a-49f1-afe5-5080e1d07f30">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0b4a5cae-876a-49f1-afe5-5080e1d07f30','88e982a6-6b42-46ee-98dd-9656fe54ee27','98c5f6ee-7c56-463a-a146-288b6ec9be85','../../lite/tree/../notebooks/index.html?path=36db059c_3354_4a7a_8345_de51677db1af.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">builtin_catalog</span><span class="p">()</span><span class="o">.</span><span class="n">format_for</span><span class="p">(</span><span class="s2">"deploy/.env"</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
 <span class="go">'env'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">builtin_catalog</span><span class="p">()</span><span class="o">.</span><span class="n">format_for</span><span class="p">(</span><span class="s2">"notes.MD"</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
@@ -2219,16 +2234,16 @@ where credentials live.</p>
 </div>
 </div>
 </div>
-<div id="6a85bfbe-d76c-4e4e-a858-690f177cfb44" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bdb42fe9-d0e5-4c90-bf2b-1f2457ca7b43','6a85bfbe-d76c-4e4e-a858-690f177cfb44')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bdb42fe9-d0e5-4c90-bf2b-1f2457ca7b43','6a85bfbe-d76c-4e4e-a858-690f177cfb44')">Open In Tab</button></div><div id="462c84f4-e645-468d-90d3-53b9bad9b0ae" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="98c5f6ee-7c56-463a-a146-288b6ec9be85" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0b4a5cae-876a-49f1-afe5-5080e1d07f30','98c5f6ee-7c56-463a-a146-288b6ec9be85')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0b4a5cae-876a-49f1-afe5-5080e1d07f30','98c5f6ee-7c56-463a-a146-288b6ec9be85')">Open In Tab</button></div><div id="88e982a6-6b42-46ee-98dd-9656fe54ee27" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.formats">
-<span class="sig-name descname"><span class="pre">formats</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.FormatSpec.html#scikitplot.cleanprompt.FormatSpec" title="scikitplot.cleanprompt._formats.FormatSpec"><span class="pre">FormatSpec</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.formats" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">formats</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.FormatSpec.html#scikitplot.cleanprompt.FormatSpec" title="scikitplot.cleanprompt._formats.FormatSpec"><span class="pre">FormatSpec</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.formats" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.merge">
-<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.merge" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'error'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.merge" title="Link to this definition">#</a></dt>
 <dd><p>Return this catalog with another’s definitions added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2266,7 +2281,7 @@ redefinition is never a conflict.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.packs">
-<span class="sig-name descname"><span class="pre">packs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.PackSpec.html#scikitplot.cleanprompt.PackSpec" title="scikitplot.cleanprompt._packs.PackSpec"><span class="pre">PackSpec</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.packs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">packs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.15)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="scikitplot.cleanprompt.PackSpec.html#scikitplot.cleanprompt.PackSpec" title="scikitplot.cleanprompt._packs.PackSpec"><span class="pre">PackSpec</span></a><span class="p"><span class="pre">]</span></span></span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L119"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.packs" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -2276,7 +2291,7 @@ redefinition is never a conflict.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.resolve_formats">
-<span class="sig-name descname"><span class="pre">resolve_formats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.resolve_formats" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">resolve_formats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L293"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.resolve_formats" title="Link to this definition">#</a></dt>
 <dd><p>Return the formats a selection means, sorted by name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2309,7 +2324,7 @@ An extension such as <code class="docutils literal notranslate"><span class="pre
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Catalog.resolve_packs">
-<span class="sig-name descname"><span class="pre">resolve_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_catalog.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.resolve_packs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">resolve_packs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_catalog.py#L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Catalog.resolve_packs" title="Link to this definition">#</a></dt>
 <dd><p>Return the packs a selection means, with their requirements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2344,15 +2359,15 @@ means <code class="docutils literal notranslate"><span class="pre">'none'</span>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="08dd399b-abf1-425b-838c-c5d378e4a652">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('08dd399b-abf1-425b-838c-c5d378e4a652','a4dd0396-697a-4312-97fe-cd5fc4afdf1e','0917772f-0d7c-446d-983d-8a428392949d','../../lite/tree/../notebooks/index.html?path=83d658b3_4b72_4fe7_8904_76d932edd7d8.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="fdcb3475-6670-4f6b-a1d4-ec945316afbc">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('fdcb3475-6670-4f6b-a1d4-ec945316afbc','fcff7e84-d4e2-4d16-8ed2-d96e6a22aa25','7fd97306-2f4e-414a-abdb-74fd9b078922','../../lite/tree/../notebooks/index.html?path=1b736540_875b_4a4c_81d5_b0f090a1489e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">builtin_catalog</span><span class="p">()</span><span class="o">.</span><span class="n">resolve_packs</span><span class="p">(</span><span class="s2">"addressbook"</span><span class="p">)]</span>
 <span class="go">['personal', 'addressbook']</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="0917772f-0d7c-446d-983d-8a428392949d" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('08dd399b-abf1-425b-838c-c5d378e4a652','0917772f-0d7c-446d-983d-8a428392949d')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('08dd399b-abf1-425b-838c-c5d378e4a652','0917772f-0d7c-446d-983d-8a428392949d')">Open In Tab</button></div><div id="a4dd0396-697a-4312-97fe-cd5fc4afdf1e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="7fd97306-2f4e-414a-abdb-74fd9b078922" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('fdcb3475-6670-4f6b-a1d4-ec945316afbc','7fd97306-2f4e-414a-abdb-74fd9b078922')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('fdcb3475-6670-4f6b-a1d4-ec945316afbc','7fd97306-2f4e-414a-abdb-74fd9b078922')">Open In Tab</button></div><div id="fcff7e84-d4e2-4d16-8ed2-d96e6a22aa25" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -2479,7 +2494,7 @@ means <code class="docutils literal notranslate"><span class="pre">'none'</span>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:09:39Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:20:29Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.nltk_to_iso-func","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -933,6 +933,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1196,15 +1197,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1212,6 +1226,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2046,7 +2061,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>nltk_to_iso<a class="headerlink" href="#nltk-to-iso" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="scikitplot.corpus.nltk_to_iso">
-<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">nltk_to_iso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_language_data.py#L1254"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.nltk_to_iso" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">nltk_to_iso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_chunkers/_language_data.py#L1254"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.nltk_to_iso" title="Link to this definition">#</a></dt>
 <dd><p>Resolve a canonical NLTK language name to its primary ISO 639-1 code.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2069,8 +2084,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="26244bd3-1478-42ad-8257-66c6a9e5ee6e">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('26244bd3-1478-42ad-8257-66c6a9e5ee6e','18258c40-0b40-4a9e-a9e0-79e25b5750de','18ed47e4-f29b-4cd8-b59b-4b531a2ed205','../../lite/tree/../notebooks/index.html?path=4009c122_4e5a_4d2e_bdbb_2183ae8bb64a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="e0435c35-378a-4857-8a56-1587cac1a3f3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e0435c35-378a-4857-8a56-1587cac1a3f3','fd597a0d-52d1-4a9c-b247-36e70679ae54','6c54b600-0172-4953-99d1-6481ac471e22','../../lite/tree/../notebooks/index.html?path=70d3d349_72bd_423d_806d_63e844177106.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nltk_to_iso</span><span class="p">(</span><span class="s2">"english"</span><span class="p">)</span>
 <span class="go">'en'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nltk_to_iso</span><span class="p">(</span><span class="s2">"arabic"</span><span class="p">)</span>
@@ -2079,7 +2094,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="18ed47e4-f29b-4cd8-b59b-4b531a2ed205" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('26244bd3-1478-42ad-8257-66c6a9e5ee6e','18ed47e4-f29b-4cd8-b59b-4b531a2ed205')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('26244bd3-1478-42ad-8257-66c6a9e5ee6e','18ed47e4-f29b-4cd8-b59b-4b531a2ed205')">Open In Tab</button></div><div id="18258c40-0b40-4a9e-a9e0-79e25b5750de" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="6c54b600-0172-4953-99d1-6481ac471e22" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e0435c35-378a-4857-8a56-1587cac1a3f3','6c54b600-0172-4953-99d1-6481ac471e22')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e0435c35-378a-4857-8a56-1587cac1a3f3','6c54b600-0172-4953-99d1-6481ac471e22')">Open In Tab</button></div><div id="fd597a0d-52d1-4a9c-b247-36e70679ae54" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </section>
 
@@ -2191,7 +2206,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

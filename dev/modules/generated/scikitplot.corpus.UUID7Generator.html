@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:09:22Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:20:11Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.UUID7Generator","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -933,6 +933,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1196,15 +1197,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1212,6 +1226,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2046,7 +2061,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>UUID7Generator<a class="headerlink" href="#uuid7generator" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.UUID7Generator">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">UUID7Generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_ns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_identity.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">UUID7Generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_ns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_bytes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_identity.py#L178"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator" title="Link to this definition">#</a></dt>
 <dd><p>Monotonic generator of RFC 9562 UUID version 7 identifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2078,8 +2093,8 @@ taking the lock. A lock held by another thread at the fork stays held in
 the child, and the child must not continue the parent’s counter (RFC 9562,
 section 6.9: reseed on fork).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8f3187e8-0f3d-48fb-bea0-e40b7676971f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8f3187e8-0f3d-48fb-bea0-e40b7676971f','8f535f62-20ef-4f6b-bd96-211d00497f9f','25fa1328-5469-4df6-8231-32283672012f','../../lite/tree/../notebooks/index.html?path=b216f1d9_dcd5_400a_9f38_6d7f87c9e2bd.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="37899a89-be4d-4b83-866a-911d4d559d1b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('37899a89-be4d-4b83-866a-911d4d559d1b','4b6c245e-e0c9-4585-a584-b0cbb9594476','027e469f-d8a5-4dad-9012-96bf1ef2b449','../../lite/tree/../notebooks/index.html?path=d6ce955d_9775_47b4_8342_71ee5b674619.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">([</span><span class="mi">5_000_000</span><span class="p">,</span> <span class="mi">5_000_000</span><span class="p">,</span> <span class="mi">1_000_000</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">make</span> <span class="o">=</span> <span class="n">UUID7Generator</span><span class="p">(</span><span class="n">clock_ns</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">next</span><span class="p">(</span><span class="n">ticks</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">make</span><span class="p">(),</span> <span class="n">make</span><span class="p">(),</span> <span class="n">make</span><span class="p">()</span>
@@ -2091,9 +2106,9 @@ section 6.9: reseed on fork).</p>
 </div>
 </div>
 </div>
-<div id="25fa1328-5469-4df6-8231-32283672012f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8f3187e8-0f3d-48fb-bea0-e40b7676971f','25fa1328-5469-4df6-8231-32283672012f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8f3187e8-0f3d-48fb-bea0-e40b7676971f','25fa1328-5469-4df6-8231-32283672012f')">Open In Tab</button></div><div id="8f535f62-20ef-4f6b-bd96-211d00497f9f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="027e469f-d8a5-4dad-9012-96bf1ef2b449" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('37899a89-be4d-4b83-866a-911d4d559d1b','027e469f-d8a5-4dad-9012-96bf1ef2b449')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('37899a89-be4d-4b83-866a-911d4d559d1b','027e469f-d8a5-4dad-9012-96bf1ef2b449')">Open In Tab</button></div><div id="4b6c245e-e0c9-4585-a584-b0cbb9594476" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.UUID7Generator.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_identity.py#L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator.__call__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_identity.py#L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator.__call__" title="Link to this definition">#</a></dt>
 <dd><p>Return the next identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2122,7 +2137,7 @@ clock reads before the Unix epoch.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.UUID7Generator.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_identity.py#L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator.reset" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_identity.py#L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.UUID7Generator.reset" title="Link to this definition">#</a></dt>
 <dd><p>Forget the sequence, so the next identifier starts a new one.</p>
 <p class="rubric">Notes</p>
 <p>Replaces the lock instead of acquiring it: called in a forked child,
@@ -2250,7 +2265,7 @@ where another thread of the parent may have held it at the fork.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

@@ -4,4 +4,5 @@ With this tag
 
 * [Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop](../auto_examples/cleanprompt/plot_cleanprompt_advanced_script.html)
 * [Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../auto_examples/cleanprompt/plot_cleanprompt_recipes_script.html)
+* [Write Your Own Corpus Components: a Hamlet Walkthrough](../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
 * [Serve a Real Hamlet Corpus over MCP with Annoy](../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)

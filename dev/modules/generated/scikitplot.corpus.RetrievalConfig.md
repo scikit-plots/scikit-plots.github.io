@@ -1,6 +1,6 @@
 # RetrievalConfig[#](#retrievalconfig "Link to this heading")
 
-class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **allow\_fallback=True**, **probability\_fusion=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
+class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'**, **semantic\_threshold=0.0**, **keyword\_threshold=0.0**, **hybrid\_alpha=0.5**, **rrf\_k=60**, **use\_normalized\_text=True**, **case\_sensitive=False**, **backend='auto'**, **index\_kwargs=<factory>**, **annoy\_n\_trees=10**, **annoy\_metric='angular'**, **annoy\_search\_k=-1**, **annoy\_impl='auto'**, **annoy\_dtype=None**, **annoy\_index\_dtype=None**, **allow\_fallback=True**, **probability\_fusion=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig "Link to this definition")
 :   Configuration for similarity search.
 
     Parameters:
@@ -135,7 +135,7 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
     hybrid\_alpha: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.5[#](#scikitplot.corpus.RetrievalConfig.hybrid_alpha "Link to this definition")
 
-    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
+    index\_kwargs: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_similarity/_similarity.py#L151)[#](#scikitplot.corpus.RetrievalConfig.index_kwargs "Link to this definition")
 
     keyword\_threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.0[#](#scikitplot.corpus.RetrievalConfig.keyword_threshold "Link to this definition")
 
@@ -155,17 +155,13 @@ class scikitplot.corpus.RetrievalConfig(**top\_k=10**, **match\_mode='semantic'*
 
 ![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+[Build and Search a Hamlet Corpus, Step by Step](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+Build and Search a Hamlet Corpus, Step by Step![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
+[Write Your Own Corpus Components: a Hamlet Walkthrough](../../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
-
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
-
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
+Write Your Own Corpus Components: a Hamlet Walkthrough![](../../_images/sphx_glr_plot_corpus_levenshtein_script_thumb.png)
 
 [Use Levenshtein distance with Corpus retrieval](../../auto_examples/corpus/plot_corpus_levenshtein_script.html)
 

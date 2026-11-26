@@ -1,6 +1,6 @@
 # default\_capability\_registry[#](#default-capability-registry "Link to this heading")
 
-scikitplot.corpus.default\_capability\_registry(**\***, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L882)[#](#scikitplot.corpus.default_capability_registry "Link to this definition")
+scikitplot.corpus.default\_capability\_registry(**\***, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L882)[#](#scikitplot.corpus.default_capability_registry "Link to this definition")
 :   Return the built-in component readiness registry.
 
     `copy=True` (default) prevents one caller’s registrations from mutating

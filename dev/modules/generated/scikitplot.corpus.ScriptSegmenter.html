@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:09:10Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:19:57Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.corpus.ScriptSegmenter","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -933,6 +933,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1196,15 +1197,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1212,6 +1226,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2046,7 +2061,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ScriptSegmenter<a class="headerlink" href="#scriptsegmenter" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.corpus.ScriptSegmenter">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ScriptSegmenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_span_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inherit_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown_script_warning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1647"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ScriptSegmenter" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.corpus.</span></span><span class="sig-name descname"><span class="pre">ScriptSegmenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_span_chars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inherit_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unknown_script_warning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1647"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ScriptSegmenter" title="Link to this definition">#</a></dt>
 <dd><p>Segment NFC-normalised text into contiguous Unicode script spans.</p>
 <p>Uses <code class="docutils literal notranslate"><span class="pre">regex</span></code> Unicode Script property matching (<code class="docutils literal notranslate"><span class="pre">\p{Script=X}</span></code>)
 rather than hard-coded codepoint ranges, so it automatically supports
@@ -2100,8 +2115,8 @@ within <a class="reference internal" href="#scikitplot.corpus.ScriptSegmenter.se
 <p>UAX #24 (Script Property): <a class="reference external" href="https://unicode.org/reports/tr24/">https://unicode.org/reports/tr24/</a>
 regex library: <a class="reference external" href="https://pypi.org/project/regex/">https://pypi.org/project/regex/</a></p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="3ffc272a-0ec4-4676-9f39-fb974a0dad15">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3ffc272a-0ec4-4676-9f39-fb974a0dad15','2b89d077-8b5f-407a-a36d-713d87e05269','c9b1e0c5-6a80-4746-ae29-13033e436aa9','../../lite/tree/../notebooks/index.html?path=5f116208_a7cf_418d_afba_7c0a30ed2e97.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="6a78467b-1eba-499e-a1d7-1870d22a9489">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6a78467b-1eba-499e-a1d7-1870d22a9489','a748ddf1-f710-445f-9a8f-16427e096688','1397aded-d60d-458a-906d-23148756ee87','../../lite/tree/../notebooks/index.html?path=9f0a72e4_e5cc_4e6e_a321_8ac0bc18c4ba.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seg</span> <span class="o">=</span> <span class="n">ScriptSegmenter</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spans</span> <span class="o">=</span> <span class="n">seg</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="s2">"Hello مرحبا world"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">script</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">spans</span><span class="p">]</span>
@@ -2110,7 +2125,7 @@ regex library: <a class="reference external" href="https://pypi.org/project/rege
 </div>
 </div>
 </div>
-<div id="c9b1e0c5-6a80-4746-ae29-13033e436aa9" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3ffc272a-0ec4-4676-9f39-fb974a0dad15','c9b1e0c5-6a80-4746-ae29-13033e436aa9')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('3ffc272a-0ec4-4676-9f39-fb974a0dad15','c9b1e0c5-6a80-4746-ae29-13033e436aa9')">Open In Tab</button></div><div id="2b89d077-8b5f-407a-a36d-713d87e05269" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="1397aded-d60d-458a-906d-23148756ee87" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6a78467b-1eba-499e-a1d7-1870d22a9489','1397aded-d60d-458a-906d-23148756ee87')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6a78467b-1eba-499e-a1d7-1870d22a9489','1397aded-d60d-458a-906d-23148756ee87')">Open In Tab</button></div><div id="a748ddf1-f710-445f-9a8f-16427e096688" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.corpus.ScriptSegmenter.DIRECTION_MAP">
 <span class="sig-name descname"><span class="pre">DIRECTION_MAP</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.ClassVar" title="(in Python v3.15)"><span class="pre">ClassVar</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arabic':</span> <span class="pre">'rtl',</span> <span class="pre">'armenian':</span> <span class="pre">'ltr',</span> <span class="pre">'cjk':</span> <span class="pre">'ltr',</span> <span class="pre">'cyrillic':</span> <span class="pre">'ltr',</span> <span class="pre">'devanagari':</span> <span class="pre">'ltr',</span> <span class="pre">'egyptian':</span> <span class="pre">'ltr',</span> <span class="pre">'egyptian_hieroglyphs':</span> <span class="pre">'ltr',</span> <span class="pre">'emoji':</span> <span class="pre">'ltr',</span> <span class="pre">'ethiopic':</span> <span class="pre">'ltr',</span> <span class="pre">'georgian':</span> <span class="pre">'ltr',</span> <span class="pre">'greek':</span> <span class="pre">'ltr',</span> <span class="pre">'han':</span> <span class="pre">'ltr',</span> <span class="pre">'hangul':</span> <span class="pre">'ltr',</span> <span class="pre">'hebrew':</span> <span class="pre">'rtl',</span> <span class="pre">'hiragana':</span> <span class="pre">'ltr',</span> <span class="pre">'katakana':</span> <span class="pre">'ltr',</span> <span class="pre">'khmer':</span> <span class="pre">'ltr',</span> <span class="pre">'latin':</span> <span class="pre">'ltr',</span> <span class="pre">'mixed':</span> <span class="pre">'ltr',</span> <span class="pre">'mongolian':</span> <span class="pre">'ttb',</span> <span class="pre">'myanmar':</span> <span class="pre">'ltr',</span> <span class="pre">'south_asian':</span> <span class="pre">'ltr',</span> <span class="pre">'southeast_asian':</span> <span class="pre">'ltr',</span> <span class="pre">'symbolic':</span> <span class="pre">'ltr',</span> <span class="pre">'thai':</span> <span class="pre">'ltr',</span> <span class="pre">'tibetan':</span> <span class="pre">'ltr',</span> <span class="pre">'unknown':</span> <span class="pre">'ltr'}</span></span><a class="headerlink" href="#scikitplot.corpus.ScriptSegmenter.DIRECTION_MAP" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -2122,7 +2137,7 @@ regex library: <a class="reference external" href="https://pypi.org/project/rege
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.corpus.ScriptSegmenter.segment">
-<span class="sig-name descname"><span class="pre">segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1839"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ScriptSegmenter.segment" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L1839"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.corpus.ScriptSegmenter.segment" title="Link to this definition">#</a></dt>
 <dd><p>Segment <em>text</em> into contiguous <a class="reference internal" href="scikitplot.corpus.ScriptSpan.html#scikitplot.corpus.ScriptSpan" title="scikitplot.corpus.ScriptSpan"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScriptSpan</span></code></a> objects.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2272,7 +2287,7 @@ into adjacent spans.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

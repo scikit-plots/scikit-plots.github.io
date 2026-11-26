@@ -1,6 +1,6 @@
 # SecurityPolicyViolationError[#](#securitypolicyviolationerror "Link to this heading")
 
-exception scikitplot.mlflow.SecurityPolicyViolationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/mlflow/_errors.py#L36)[#](#scikitplot.mlflow.SecurityPolicyViolationError "Link to this definition")
+exception scikitplot.mlflow.SecurityPolicyViolationError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/mlflow/_errors.py#L36)[#](#scikitplot.mlflow.SecurityPolicyViolationError "Link to this definition")
 :   Raised when an operation is rejected by the active [`SecurityPolicy`](scikitplot.mlflow.SecurityPolicy.html#scikitplot.mlflow.SecurityPolicy "scikitplot.mlflow.SecurityPolicy").
 
     Notes

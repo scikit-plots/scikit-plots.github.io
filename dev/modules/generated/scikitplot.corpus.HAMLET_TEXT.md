@@ -16,9 +16,13 @@ scikitplot.corpus.HAMLET\_TEXT = "THE TRAGEDY OF HAMLET, PRINCE OF DENMARK\n\nHA
 
 ![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+[Build and Search a Hamlet Corpus, Step by Step](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_mcp_corpus_annoy_hamlet_script_thumb.png)
+Build and Search a Hamlet Corpus, Step by Step![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
+
+[Write Your Own Corpus Components: a Hamlet Walkthrough](../../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
+
+Write Your Own Corpus Components: a Hamlet Walkthrough![](../../_images/sphx_glr_plot_mcp_corpus_annoy_hamlet_script_thumb.png)
 
 [Serve a Real Hamlet Corpus over MCP with Annoy](../../auto_examples/mcp/plot_mcp_corpus_annoy_hamlet_script.html)
 

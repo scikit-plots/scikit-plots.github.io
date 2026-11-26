@@ -1,6 +1,6 @@
 # SimpleEnricherSpec[#](#simpleenricherspec "Link to this heading")
 
-class scikitplot.corpus.SimpleEnricherSpec(**min\_token\_length=3**, **max\_keywords=8**, **lowercase=True**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_enrichers/_simple.py#L25)[#](#scikitplot.corpus.SimpleEnricherSpec "Link to this definition")
+class scikitplot.corpus.SimpleEnricherSpec(**min\_token\_length=3**, **max\_keywords=8**, **lowercase=True**, **token\_pattern="[^\\W\\d\_]+(?:['’][^\\W\\d\_]+)\*"**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_enrichers/_simple.py#L25)[#](#scikitplot.corpus.SimpleEnricherSpec "Link to this definition")
 :   Declarative configuration for [`SimpleFrequencyEnricher`](scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher").
 
     Parameters:
@@ -40,6 +40,6 @@ class scikitplot.corpus.SimpleEnricherSpec(**min\_token\_length=3**, **max\_keyw
 
 ![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+[Build and Search a Hamlet Corpus, Step by Step](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus
+Build and Search a Hamlet Corpus, Step by Step

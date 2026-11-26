@@ -1,6 +1,6 @@
 # configure\_logging[#](#configure-logging "Link to this heading")
 
-scikitplot.cleanprompt.configure\_logging(**level='warning'**, **fmt='text'**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L364)[#](#scikitplot.cleanprompt.configure_logging "Link to this definition")
+scikitplot.cleanprompt.configure\_logging(**level='warning'**, **fmt='text'**, **stream=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L364)[#](#scikitplot.cleanprompt.configure_logging "Link to this definition")
 :   Attach a handler to this submodule’s logger.
 
     Parameters:

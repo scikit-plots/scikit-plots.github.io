@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:11:36Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:22:21Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"whats_new/v0.5","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -713,8 +713,8 @@ future; or a feature will be removed in the future.</p></li>
 </ul>
 <section id="version-0-5">
 <span id="release-notes-0-5"></span><h1>Version 0.5<a class="headerlink" href="#version-0-5" title="Link to this heading">#</a></h1>
-<section id="version-0-5-dev0-git-20261115-c051ece">
-<span id="changes-0-5-dev0-git-20261115-c051ece"></span><h2>Version 0.5.dev0+git.20261115.c051ece<a class="headerlink" href="#version-0-5-dev0-git-20261115-c051ece" title="Link to this heading">#</a></h2>
+<section id="version-0-5-dev0-git-20261126-fbd8e1a">
+<span id="changes-0-5-dev0-git-20261126-fbd8e1a"></span><h2>Version 0.5.dev0+git.20261126.fbd8e1a<a class="headerlink" href="#version-0-5-dev0-git-20261126-fbd8e1a" title="Link to this heading">#</a></h2>
 <p><strong>November 2026</strong></p>
 <section id="build-and-packaging">
 <h3>Build and packaging<a class="headerlink" href="#build-and-packaging" title="Link to this heading">#</a></h3>
@@ -722,6 +722,13 @@ future; or a feature will be removed in the future.</p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  The <code class="docutils literal notranslate"><span class="pre">corpus</span></code> extra requires <code class="docutils literal notranslate"><span class="pre">pypdfium2</span></code>, which renders PDF pages for
 <code class="docutils literal notranslate"><span class="pre">PDFReader</span></code>’s OCR. It has wheels for every supported CPython, including
 the free-threaded builds. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/931">#931</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">docker/env_uv/</span></code> holds a uv lock per Python version (3.10 to 3.15) next
+to the Pipenv and conda environments, generated from <code class="docutils literal notranslate"><span class="pre">requirements/*.txt</span></code>
+by <code class="docutils literal notranslate"><span class="pre">.github/scripts/uv_project_from_reqs.py</span></code> and refreshed by the
+<code class="docutils literal notranslate"><span class="pre">ci_uv_artifact.yml</span></code> workflow (one pull request per version); install
+with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span> <span class="pre">--project</span> <span class="pre">docker/env_uv</span></code>. The <code class="docutils literal notranslate"><span class="pre">env-xeus</span></code> extra now marks
+its JupyterLite requirements <code class="docutils literal notranslate"><span class="pre">python_version</span> <span class="pre">&gt;=</span> <span class="pre">&quot;3.10&quot;</span></code>, the only
+Pythons they install on. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/954">#954</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  Building scikit-plots from a checkout owned by another user (conda-forge,
 Docker, CI caches) no longer writes <code class="docutils literal notranslate"><span class="pre">safe.directory</span></code> into your global Git
 configuration, which also named the wrong directory and so never helped: the
@@ -744,6 +751,16 @@ reports such an install by name, with the commands that repair it, instead
 of reading with pypdf without a word; if you installed the extra before,
 run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">pdfminer</span> <span class="pre">pdfminer.six</span></code> and then
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pdfminer.six</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/930">#930</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  Windows ARM64 wheels build again. The build runners moved to Visual Studio
+18.12, whose C++ standard library (MSVC 14.52) refuses a Clang older than
+22, and the pinned LLVM 20.1.8 stopped every Windows ARM64 wheel at its
+first C++ file (<code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">STL1000</span></code>). LLVM is now 22.1.8, and the build setup
+compiles one line against the runner’s standard library before building,
+so a future mismatch stops there with the Clang version required. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/948">#948</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> runs <code class="docutils literal notranslate"><span class="pre">action-validator</span></code> on every GitHub
+Actions workflow, so an unknown key, a bad <code class="docutils literal notranslate"><span class="pre">needs</span></code> reference or a glob
+that matches nothing fails at commit time instead of when the workflow
+runs; <code class="docutils literal notranslate"><span class="pre">zizmor</span></code> keeps covering security. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/952">#952</a></p></li>
 </ul>
 </section>
 <section id="compatibility-and-dependencies">
@@ -758,6 +775,12 @@ compiled BM25 scoring backend, on Python below 3.15 until Numba supports
 <section id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-info">Enhancement</span></span>  <code class="docutils literal notranslate"><span class="pre">MEMORY.md</span></code> holds curated, checked-in project facts, a map of where each
+kind of project knowledge lives and an anonymous real-data baseline; the
+rule <code class="docutils literal notranslate"><span class="pre">.claude/rules/real-life-testing.md</span></code> and the skill
+<code class="docutils literal notranslate"><span class="pre">scikitplot-real-data-testing</span></code>, shipped in both Claude plugins with a
+catalog of public data sources and their terms, show users and developers
+how to test a submodule on real files and compare before and after. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/945">#945</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <a class="reference internal" href="../apis/scikitplot.mlflow.html#module-scikitplot.mlflow" title="scikitplot.mlflow"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.mlflow</span></code></a>: the module documentation’s command-line example,
 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scikitplot.mlflow</span> <span class="pre">--profile</span> <span class="pre">local</span> <span class="pre">--open-ui-seconds</span> <span class="pre">5</span></code>, is now a
 shell code block. It was written as a Python doctest line, which could not
@@ -867,6 +890,23 @@ project’s staging index. New in <code class="docutils literal notranslate"><sp
 <code class="docutils literal notranslate"><span class="pre">requirement</span></code>, <code class="docutils literal notranslate"><span class="pre">pip_install</span></code> and <code class="docutils literal notranslate"><span class="pre">staging_install</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/911">#911</a></p></li>
 </ul>
 </section>
+<section id="scikitplot-brand">
+<h3>scikitplot._brand<a class="headerlink" href="#scikitplot-brand" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">scikitplot._brand._eukrina</span></code> generates the Eukrina Mind AI logos from code:
+the mark alone, the horizontal and stacked lockups, the wordmark, and app and
+round icons, in two colour editions (Charcoal / Bronze and Deep Navy / Blue /
+Forest Green), for light and dark backgrounds, in full colour or one colour.
+<code class="docutils literal notranslate"><span class="pre">render()</span></code> returns one SVG and <code class="docutils literal notranslate"><span class="pre">build()</span></code> writes a whole set with CSS and
+JSON colour tokens and a checksummed manifest, rewriting nothing when the
+inputs are unchanged. Colours are kept where they reach WCAG contrast (3:1
+for the mark, 4.5:1 for the small subtitle) and otherwise moved to the
+nearest step of their own scale; text can be live or drawn as outlines from
+a font file. The generic helpers it is built on (colour scales and contrast,
+a safe SVG writer, font outlines, atomic writing) are in
+<code class="docutils literal notranslate"><span class="pre">scikitplot._brand._kit</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/949">#949</a></p></li>
+</ul>
+</section>
 <section id="scikitplot-build-utils">
 <h3>scikitplot._build_utils<a class="headerlink" href="#scikitplot-build-utils" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -924,6 +964,26 @@ that vault encryption needs no optional package; the <code class="docutils liter
 extra adds only the Fernet cipher. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/864">#864</a></p></li>
 </ul>
 </section>
+<section id="scikitplot-compat">
+<h3>scikitplot._compat<a class="headerlink" href="#scikitplot-compat" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-plots</span></code> without extras imports <a class="reference internal" href="../apis/scikitplot.api.html#module-scikitplot.api" title="scikitplot.api"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.api</span></code></a>
+and runs the README quick start again: <code class="docutils literal notranslate"><span class="pre">scikitplot._compat</span></code> no longer
+imports the vendored seaborn copy, which needs the real seaborn. A part
+that does need an optional dependency (<a class="reference internal" href="../apis/scikitplot.seaborn.html#module-scikitplot.seaborn" title="scikitplot.seaborn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.seaborn</span></code></a>,
+<a class="reference internal" href="../apis/scikitplot.decile.html#module-scikitplot.decile" title="scikitplot.decile"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.decile</span></code></a>) now names the extra that installs it, for
+example <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;scikit-plots[core]&quot;</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/961">#961</a></p></li>
+</ul>
+</section>
+<section id="scikitplot-decorates">
+<h3>scikitplot._decorates<a class="headerlink" href="#scikitplot-decorates" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">BaseDecorator.deserialize</span></code> no longer unpickles a file it was not told
+to trust: it raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> unless <code class="docutils literal notranslate"><span class="pre">trusted=True</span></code> is passed, and
+with <code class="docutils literal notranslate"><span class="pre">expected_sha256=</span></code> it refuses a file whose digest differs, both
+before any byte is loaded. Loading a joblib file runs code from the file. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/963">#963</a></p></li>
+</ul>
+</section>
 <section id="scikitplot-env">
 <h3>scikitplot._env<a class="headerlink" href="#scikitplot-env" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -958,6 +1018,12 @@ malformed <code class="docutils literal notranslate"><span class="pre">conda-met
 skipped, the empack configuration is downloaded with a timeout and an HTTP
 status check, and a PyPI package with a compiled file is refused before any
 of its files is copied into the prefix. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/869">#869</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  The xeus add-on of <code class="docutils literal notranslate"><span class="pre">scikitplot._env</span></code> reads JupyterLite’s aggregated
+federated-extension settings file as UTF-8. It was read with the locale’s
+encoding, so a build on a machine whose locale is not UTF-8 (a Windows code
+page, an ASCII container locale) failed with <code class="docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code> when an
+extension’s settings held a non-ASCII character. Every other file the add-on
+reads or writes already named UTF-8. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/973">#973</a></p></li>
 </ul>
 </section>
 <section id="scikitplot-externals">
@@ -1407,6 +1473,163 @@ file is refused with the reason, and a modern file saved under such a
 name is read.
 <code class="docutils literal notranslate"><span class="pre">code_files=&quot;skip&quot;</span></code> passes over add-ins with a warning instead, so a
 large folder or archive is read past them; neither setting reads one. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/937">#937</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <code class="docutils literal notranslate"><span class="pre">TextReader(encoding=&quot;detect&quot;)</span></code> reads legacy encodings: after the
+byte-order mark and UTF-8, charset-normalizer (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span>
+<span class="pre">charset-normalizer</span></code>, else chardet) picks the codec, so Turkish cp1254,
+Shift-JIS, GB18030, EUC-KR, Big5 and KOI8-R files no longer come out as
+mojibake. Ties go to cp1252, a weak guess (a short file) logs a warning
+naming the file, and the default policy is unchanged; its warning now
+names the file and points to <code class="docutils literal notranslate"><span class="pre">encoding=&quot;detect&quot;</span></code>. To use it in a whole
+corpus, <code class="docutils literal notranslate"><span class="pre">BuilderConfig(reader_kwargs={&quot;.txt&quot;:</span> <span class="pre">{&quot;encoding&quot;:</span> <span class="pre">&quot;detect&quot;}})</span></code>
+passes reader options per file extension to every reader
+<code class="docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> makes, archive members included. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/966">#966</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  A <code class="docutils literal notranslate"><span class="pre">FluentCorpus</span></code> plan carries a document filter:
+<code class="docutils literal notranslate"><span class="pre">FluentCorpus().filter(policy)</span></code> (and <code class="docutils literal notranslate"><span class="pre">replace_filter</span></code>) takes a filter
+instance, a filter class or a registered filter name, and
+<code class="docutils literal notranslate"><span class="pre">materialize()</span></code> passes it to the pipeline, so <code class="docutils literal notranslate"><span class="pre">run()</span></code> and <code class="docutils literal notranslate"><span class="pre">add()</span></code>
+keep the same documents a hand-built <code class="docutils literal notranslate"><span class="pre">CorpusPipeline(filter_=...)</span></code>
+keeps. The filter is part of what gets built: it changes the plan’s
+fingerprint, while plans without one keep theirs. <code class="docutils literal notranslate"><span class="pre">CorpusPipeline</span></code>
+now refuses <code class="docutils literal notranslate"><span class="pre">reader_kwargs</span></code> that set <code class="docutils literal notranslate"><span class="pre">filter_</span></code>, <code class="docutils literal notranslate"><span class="pre">chunker</span></code>,
+<code class="docutils literal notranslate"><span class="pre">default_language</span></code> or <code class="docutils literal notranslate"><span class="pre">filename_override</span></code>, which it passes to every
+reader itself, instead of failing later inside <code class="docutils literal notranslate"><span class="pre">run()</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/968">#968</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Local HTML files (<code class="docutils literal notranslate"><span class="pre">.html</span></code>, <code class="docutils literal notranslate"><span class="pre">.htm</span></code>, <code class="docutils literal notranslate"><span class="pre">.xhtml</span></code>) are read by the new
+<code class="docutils literal notranslate"><span class="pre">HTMLReader</span></code>, offline, through the same parsing <code class="docutils literal notranslate"><span class="pre">WebReader</span></code> uses, so
+a saved page gives the chunks of its live URL. A <code class="docutils literal notranslate"><span class="pre">&lt;meta&gt;</span></code> charset is
+used when the bytes are not UTF-8 and it decodes them; the codec used is
+in each chunk’s <code class="docutils literal notranslate"><span class="pre">encoding</span></code>. Nested extracted elements are now read
+once, by the outermost one: unclosed <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> tags nest, and a 72 kB page
+of them took minutes and quadratic memory in <code class="docutils literal notranslate"><span class="pre">WebReader</span></code> as well.
+<code class="docutils literal notranslate"><span class="pre">beautifulsoup4</span></code> joins the <code class="docutils literal notranslate"><span class="pre">corpus</span></code> extra. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/975">#975</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Compiled HTML Help files (<code class="docutils literal notranslate"><span class="pre">.chm</span></code>), the offline help and e-book format
+of Windows applications, are read by the new <code class="docutils literal notranslate"><span class="pre">CHMReader</span></code>. Pages are
+decompressed by a pure-Python LZX decoder (standard library only, any
+platform) and parsed as <code class="docutils literal notranslate"><span class="pre">HTMLReader</span></code> parses a file, in
+table-of-contents order, each chunk naming its page, reading position
+and contents title. A page’s codec is found from its byte-order mark,
+UTF-8, its <code class="docutils literal notranslate"><span class="pre">&lt;meta&gt;</span></code> charset, then the archive locale’s Windows code
+page. A page is decoded from the reset point before it, never the whole
+stream; limits on file size, pages, page size and decoded bytes (with
+the same size-ratio rule as <code class="docutils literal notranslate"><span class="pre">ZipReader</span></code>) bound a hostile file. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/976">#976</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Saved web pages in MHTML (<code class="docutils literal notranslate"><span class="pre">.mhtml</span></code>, <code class="docutils literal notranslate"><span class="pre">.mht</span></code>), what a browser writes
+for “save page as single file”, are read by the new <code class="docutils literal notranslate"><span class="pre">MHTMLReader</span></code>
+with the standard library <code class="docutils literal notranslate"><span class="pre">email</span></code> package: every HTML part, the page
+first and then its frames, parsed as <code class="docutils literal notranslate"><span class="pre">HTMLReader</span></code> parses a file.
+Quoted-printable and base64 parts are decoded; a part’s declared
+charset is used when it decodes the bytes. Each chunk names its part,
+and <code class="docutils literal notranslate"><span class="pre">url</span></code> is the page’s original address. Limits on file size, part
+count, part size and multipart nesting bound a hostile file. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/977">#977</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Delimited tables (<code class="docutils literal notranslate"><span class="pre">.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">.tsv</span></code>) are read by the new <code class="docutils literal notranslate"><span class="pre">CSVReader</span></code>,
+with the standard library <code class="docutils literal notranslate"><span class="pre">csv</span></code> module: rows become tab-separated
+lines, <code class="docutils literal notranslate"><span class="pre">rows_per_chunk</span></code> a chunk as for spreadsheets, and each chunk
+opens with the header row so it reads on its own. The delimiter is tab
+for <code class="docutils literal notranslate"><span class="pre">.tsv</span></code>; otherwise a stated rule picks, among
+<code class="docutils literal notranslate"><span class="pre">candidate_delimiters</span></code> (comma, semicolon, tab, bar), the one whose
+field count holds for most records, and a table where none does is read
+as one column, so prose with commas is not split (<code class="docutils literal notranslate"><span class="pre">delimiter=</span></code> skips
+detection). The file is parsed as a stream: peak memory is about the
+file’s size once, not five times. Checking whether a file decodes in a
+codec no longer builds the whole decoded text, which lowers the memory
+of every text-based reader on large files. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/978">#978</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Structured data is read by the new <code class="docutils literal notranslate"><span class="pre">JSONReader</span></code> (<code class="docutils literal notranslate"><span class="pre">.json</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.jsonl</span></code>, <code class="docutils literal notranslate"><span class="pre">.ndjson</span></code>), <code class="docutils literal notranslate"><span class="pre">YAMLReader</span></code> (<code class="docutils literal notranslate"><span class="pre">.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">.yml</span></code>, every
+document of a stream) and <code class="docutils literal notranslate"><span class="pre">TOMLReader</span></code> (<code class="docutils literal notranslate"><span class="pre">.toml</span></code>). Every value
+becomes a line <code class="docutils literal notranslate"><span class="pre">path:</span> <span class="pre">value</span></code> (<code class="docutils literal notranslate"><span class="pre">users[0].name:</span> <span class="pre">Ada</span></code>), so the text
+keeps what each value means, grouped by top-level item,
+<code class="docutils literal notranslate"><span class="pre">items_per_chunk</span></code> items a chunk; <code class="docutils literal notranslate"><span class="pre">values=&quot;text&quot;</span></code> keeps strings only.
+YAML is read with the safe loader only; a tag it does not know (as in
+MkDocs configs) is read as plain data, never run, or refused with
+<code class="docutils literal notranslate"><span class="pre">unknown_tags=&quot;refuse&quot;</span></code>. A JSON Lines record that does not parse is
+refused, or skipped and counted with <code class="docutils literal notranslate"><span class="pre">on_error=&quot;skip&quot;</span></code>. Deep nesting,
+self-referencing anchors and alias “bombs” are bounded by
+<code class="docutils literal notranslate"><span class="pre">max_values</span></code> and the text ratio limit. <code class="docutils literal notranslate"><span class="pre">pyyaml</span></code> and, before Python
+3.11, <code class="docutils literal notranslate"><span class="pre">tomli</span></code> join the <code class="docutils literal notranslate"><span class="pre">corpus</span></code> extra. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/979">#979</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Source code and plain configuration files are read by the new
+<code class="docutils literal notranslate"><span class="pre">CodeReader</span></code>: about 90 extensions (<code class="docutils literal notranslate"><span class="pre">.py</span></code>, <code class="docutils literal notranslate"><span class="pre">.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">.js</span></code>, <code class="docutils literal notranslate"><span class="pre">.ts</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">.java</span></code>, <code class="docutils literal notranslate"><span class="pre">.go</span></code>, <code class="docutils literal notranslate"><span class="pre">.rs</span></code>, <code class="docutils literal notranslate"><span class="pre">.sql</span></code>, <code class="docutils literal notranslate"><span class="pre">.tex</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> and more; <code class="docutils literal notranslate"><span class="pre">LANGUAGES</span></code> lists them) are yielded in
+blocks of whole lines, <code class="docutils literal notranslate"><span class="pre">lines_per_chunk</span></code> (200) a block, each naming
+its <code class="docutils literal notranslate"><span class="pre">language</span></code> and its <code class="docutils literal notranslate"><span class="pre">line_start</span></code> and <code class="docutils literal notranslate"><span class="pre">line_end</span></code>, so a
+retrieved chunk points back to its lines. Indentation is kept, and a
+line ends only at a line break, so numbers match an editor’s. The file
+is read as a stream after the codec is chosen: peak memory is about the
+file’s size once.
+<code class="docutils literal notranslate"><span class="pre">.env</span></code> is left out because it holds secrets, and extensions two
+languages share (<code class="docutils literal notranslate"><span class="pre">.m</span></code>, <code class="docutils literal notranslate"><span class="pre">.pl</span></code>, <code class="docutils literal notranslate"><span class="pre">.v</span></code>, <code class="docutils literal notranslate"><span class="pre">.fs</span></code>, <code class="docutils literal notranslate"><span class="pre">.s</span></code>) are left out
+rather than guessed (<code class="docutils literal notranslate"><span class="pre">.h</span></code>, shared by C and C++, is named <code class="docutils literal notranslate"><span class="pre">c/c++</span></code>);
+a subclass adds a language. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/980">#980</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Jupyter notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) are read by the new <code class="docutils literal notranslate"><span class="pre">NotebookReader</span></code>,
+with the standard library <code class="docutils literal notranslate"><span class="pre">json</span></code>: one chunk per cell, markdown as text
+and code as code in the kernel’s language (from the notebook metadata),
+each naming its <code class="docutils literal notranslate"><span class="pre">cell_index</span></code> and, for code, its <code class="docutils literal notranslate"><span class="pre">execution_count</span></code>.
+<code class="docutils literal notranslate"><span class="pre">cell_types=</span></code> selects markdown, code and raw cells; <code class="docutils literal notranslate"><span class="pre">outputs=True</span></code>
+adds the text each code cell printed (stream output, errors and
+<code class="docutils literal notranslate"><span class="pre">text/markdown</span></code> or <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> results), never images or HTML.
+nbformat 4 and the older nbformat 3 are read; skipped cells are counted
+in <code class="docutils literal notranslate"><span class="pre">reader.coverage</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/981">#981</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  Subtitle, caption and lyrics files are read by the new
+<code class="docutils literal notranslate"><span class="pre">SubtitleReader</span></code> (<code class="docutils literal notranslate"><span class="pre">.srt</span></code>, <code class="docutils literal notranslate"><span class="pre">.vtt</span></code>, <code class="docutils literal notranslate"><span class="pre">.sbv</span></code>, <code class="docutils literal notranslate"><span class="pre">.sub</span></code>, <code class="docutils literal notranslate"><span class="pre">.ass</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.ssa</span></code>, <code class="docutils literal notranslate"><span class="pre">.lrc</span></code>), and <code class="docutils literal notranslate"><span class="pre">VideoReader</span></code> and <code class="docutils literal notranslate"><span class="pre">AudioReader</span></code> now parse
+companion files with the same parser, which fixes, for all three:
+WebVTT cues with short <code class="docutils literal notranslate"><span class="pre">01:02.000</span></code> times and SubRip times with fewer
+than three fraction digits were dropped silently; UTF-16 files gave no
+cues and legacy encodings were read as Latin-1 (the <code class="docutils literal notranslate"><span class="pre">TextReader</span></code>
+encoding policy applies now); entities stayed escaped and ASS
+<code class="docutils literal notranslate"><span class="pre">{\an8}</span></code> tags stayed in the text; a malformed cue is dropped and
+counted instead of spilling into its neighbour. New: Advanced
+SubStation Alpha, a speaker from a WebVTT <code class="docutils literal notranslate"><span class="pre">&lt;v</span> <span class="pre">Name&gt;</span></code> tag or the ASS
+<code class="docutils literal notranslate"><span class="pre">Name</span></code> field, <code class="docutils literal notranslate"><span class="pre">cues_per_chunk</span></code> and <code class="docutils literal notranslate"><span class="pre">max_chunk_seconds</span></code> grouping,
+<code class="docutils literal notranslate"><span class="pre">dedupe_rolling</span></code> for automatic “rolling” captions, tagged companions
+(<code class="docutils literal notranslate"><span class="pre">talk.en.srt</span></code>) in any letter case, and the MicroDVD file’s own frame
+rate. LRC lyrics keep every timestamp of a repeated line, end a line at
+an instrumental break, and apply <code class="docutils literal notranslate"><span class="pre">[offset:]</span></code> in the direction the
+format defines (a positive offset makes lyrics sooner). A video whose
+companion gives no cue now falls back to transcription.
+<code class="docutils literal notranslate"><span class="pre">VideoReader</span></code> and <code class="docutils literal notranslate"><span class="pre">AudioReader</span></code> take <code class="docutils literal notranslate"><span class="pre">companion_options</span></code>
+(<code class="docutils literal notranslate"><span class="pre">language</span></code> to prefer <code class="docutils literal notranslate"><span class="pre">talk.en.srt</span></code>, <code class="docutils literal notranslate"><span class="pre">encoding</span></code>,
+<code class="docutils literal notranslate"><span class="pre">dedupe_rolling</span></code>), checked when the reader is made. Finding
+companions lists a folder once per change instead of once per media
+file (5000 videos: from about 330 s to 0.14 s), and markup that never
+closes (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;v</span></code>, <code class="docutils literal notranslate"><span class="pre">{\</span></code>) is removed in linear time (40 kB of
+<code class="docutils literal notranslate"><span class="pre">&lt;v</span></code> took 39 s). A plain-text audio companion follows the encoding
+policy too. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/983">#983</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <a class="reference internal" href="../modules/generated/scikitplot.corpus.TarReader.html#scikitplot.corpus.TarReader" title="scikitplot.corpus.TarReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarReader</span></code></a> reads tar archives, plain or
+compressed with gzip, bzip2 or xz (<code class="docutils literal notranslate"><span class="pre">.tar</span></code>, <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code>, <code class="docutils literal notranslate"><span class="pre">.tgz</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.tar.bz2</span></code>, <code class="docutils literal notranslate"><span class="pre">.tbz2</span></code>, <code class="docutils literal notranslate"><span class="pre">.tar.xz</span></code>, <code class="docutils literal notranslate"><span class="pre">.txz</span></code>), and single compressed
+files (<code class="docutils literal notranslate"><span class="pre">notes.txt.gz</span></code> is read as <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code>). The file’s first
+bytes decide the format, not its name. Each member is read by its own
+reader, in natural order, under the same nesting depth, extraction
+budget and path checks as <a class="reference internal" href="../modules/generated/scikitplot.corpus.ZipReader.html#scikitplot.corpus.ZipReader" title="scikitplot.corpus.ZipReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZipReader</span></code></a>. Only
+regular files are read (links and devices are skipped), the last copy
+of a repeated name wins, and in a compressed tar every member’s size,
+read or not, counts against the extraction limit, since reaching a
+member decompresses everything stored before it. Hostile headers are
+refused before memory is spent: one member’s headers may take 1 MiB (a
+300 MiB pax header in a 300 kB file needed 600 MiB before), a
+compressed stream is never decompressed past the extraction limit, and
+<code class="docutils literal notranslate"><span class="pre">max_files</span></code> counts a tar’s directories too. In zip and tar archives
+alike, a member whose name the file system cannot hold (too long, or a
+forbidden character) is skipped and counted as <code class="docutils literal notranslate"><span class="pre">unwritable-name</span></code>
+instead of stopping the whole archive, and member paths are checked
+against the extraction folder with one resolve each (10,000 members:
+tar 32%, zip 7% faster). <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/985">#985</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-success">Feature</span></span>  <a class="reference internal" href="../modules/generated/scikitplot.corpus.LeanReader.html#scikitplot.corpus.LeanReader" title="scikitplot.corpus.LeanReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">LeanReader</span></code></a> reads Lean source files
+(<code class="docutils literal notranslate"><span class="pre">.lean</span></code>; Lean 4, and Lean 3 with <code class="docutils literal notranslate"><span class="pre">dialect=&quot;lean3&quot;</span></code>) one command at
+a time: each declaration with its doc comment and attributes is a chunk
+that names its kind (<code class="docutils literal notranslate"><span class="pre">lean_kind</span></code>), its fully qualified name
+(<code class="docutils literal notranslate"><span class="pre">declaration</span></code>, namespaces included), its namespace, modifiers and
+attributes, and the file lines it came from. Every non-blank line lands
+in exactly one chunk whose text is the file’s own lines, so retrieved
+text points back to its source in a project of any size; 17.4 million
+lines in 175,187 files split at about 5 MiB/s. Chunks also carry audit
+<code class="docutils literal notranslate"><span class="pre">flags</span></code> found in code, outside comments and strings (<code class="docutils literal notranslate"><span class="pre">sorry</span></code>,
+<code class="docutils literal notranslate"><span class="pre">admit</span></code>, axioms, <code class="docutils literal notranslate"><span class="pre">native_decide</span></code>, <code class="docutils literal notranslate"><span class="pre">unsafe</span></code>, <code class="docutils literal notranslate"><span class="pre">implemented_by</span></code>,
+<code class="docutils literal notranslate"><span class="pre">extern</span></code>, a disabled kernel check, text after <code class="docutils literal notranslate"><span class="pre">#exit</span></code>): what the
+text contains, not a proof check, which is <code class="docutils literal notranslate"><span class="pre">#print</span> <span class="pre">axioms</span></code>’s job.
+<code class="docutils literal notranslate"><span class="pre">proofs=&quot;drop&quot;</span></code> keeps theorem statements and names the proof’s lines;
+<code class="docutils literal notranslate"><span class="pre">watch</span></code> locates every use of chosen names; <code class="docutils literal notranslate"><span class="pre">kinds</span></code> and <code class="docutils literal notranslate"><span class="pre">commands</span></code>
+select and extend what is read. <code class="docutils literal notranslate"><span class="pre">reader_snapshot.py</span> <span class="pre">snapshot</span> <span class="pre">--lines</span></code>
+checks that a line-based reader accounts for every line of a folder. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/986">#986</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-info">Efficiency</span></span>  Keyword (BM25) search over an unscoped index scores from contributions
 computed once per build when <a class="reference internal" href="../apis/scikitplot.rank_bm25.html#module-scikitplot.rank_bm25" title="scikitplot.rank_bm25"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.rank_bm25</span></code></a> is installed:
 about 99 ms to about 2 ms per four-term query on 200 000 documents, with
@@ -1487,6 +1710,29 @@ stream: 4 KB yielded 4 million characters) default to 256 Mi characters
 and 50 characters per byte. <code class="docutils literal notranslate"><span class="pre">ZipReader</span></code> bounds each member by its own
 reader and the archive total by its own setting; a truncated chunk is
 marked <code class="docutils literal notranslate"><span class="pre">text_truncated</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/937">#937</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-info">Enhancement</span></span>  Readers say what they covered (<a class="reference internal" href="../modules/generated/scikitplot.corpus.ReadCoverage.html#scikitplot.corpus.ReadCoverage" title="scikitplot.corpus.ReadCoverage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReadCoverage</span></code></a>:
+parts read, empty, and skipped by reason). <code class="docutils literal notranslate"><span class="pre">ZipReader</span></code> warns once per
+archive, nested archives included, when no member gave text or more
+than <code class="docutils literal notranslate"><span class="pre">coverage_warn_share</span></code> (default 0.5) were skipped or empty: an
+archive of only unsupported members used to report “processed 3
+members”. <code class="docutils literal notranslate"><span class="pre">PDFReader</span></code> warns when most pages (<code class="docutils literal notranslate"><span class="pre">coverage_warn_share</span></code>,
+default 0.8) have fewer than <code class="docutils literal notranslate"><span class="pre">coverage_min_chars</span></code> (default 10)
+characters, such as scanned pages that carry only a page number, and
+suggests <code class="docutils literal notranslate"><span class="pre">ocr=&quot;auto&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> logs one line per folder with
+the files it skipped, a warning when it kept none. After a read,
+<code class="docutils literal notranslate"><span class="pre">reader.coverage</span></code> holds the counts. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/972">#972</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-info">Enhancement</span></span>  <code class="docutils literal notranslate"><span class="pre">JSONReader</span></code>, <code class="docutils literal notranslate"><span class="pre">YAMLReader</span></code> and <code class="docutils literal notranslate"><span class="pre">TOMLReader</span></code> can be shaped for a
+task. <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">exclude</span></code> keep or drop subtrees by path, and a
+<em>records mode</em> yields one chunk per record: <code class="docutils literal notranslate"><span class="pre">record_path</span></code> says where
+the records are (<code class="docutils literal notranslate"><span class="pre">data.articles[*]</span></code>), <code class="docutils literal notranslate"><span class="pre">text_fields</span></code> or a
+<code class="docutils literal notranslate"><span class="pre">template</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;{title}\n\n{body}&quot;</span></code>) makes the text, and
+<code class="docutils literal notranslate"><span class="pre">metadata_fields</span></code> carries chosen values as metadata, under their path
+or a name you give (<code class="docutils literal notranslate"><span class="pre">{&quot;url&quot;:</span> <span class="pre">&quot;meta.link&quot;}</span></code> also sets the document’s
+<code class="docutils literal notranslate"><span class="pre">url</span></code>). A chat dataset in JSON Lines, for example, becomes one
+document per conversation with <code class="docutils literal notranslate"><span class="pre">text_fields=[&quot;messages[*].content&quot;]</span></code>.
+Paths use the syntax the path lines are written in (<code class="docutils literal notranslate"><span class="pre">.key</span></code>,
+<code class="docutils literal notranslate"><span class="pre">[&quot;any</span> <span class="pre">key&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">[*]</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>), are checked when the reader
+is made, and a template only substitutes values, never evaluates them. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/982">#982</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">EmbeddingEngine</span></code> no longer serves one custom provider’s cached vectors to
 another (a custom provider is cached only under a <code class="docutils literal notranslate"><span class="pre">custom_fn_id</span></code>), loads
 the <code class="docutils literal notranslate"><span class="pre">model_revision</span></code> it records, applies <code class="docutils literal notranslate"><span class="pre">normalize=True</span></code> to every
@@ -1663,6 +1909,83 @@ which ends the whole tree instead of skipping one member. With
 <code class="docutils literal notranslate"><span class="pre">on_text_limit=&quot;truncate&quot;</span></code> the archive ends with a warning and keeps
 what was read. Highly compressible members past these limits need a
 larger <code class="docutils literal notranslate"><span class="pre">max_text_chars_per_byte</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code>, which turns both off). <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/941">#941</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">XMLReader</span></code> and <code class="docutils literal notranslate"><span class="pre">TEIReader</span></code> raise <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> for a file that is
+not valid XML (empty, truncated or malformed) whether lxml is installed or
+not. Before, the same file raised <code class="docutils literal notranslate"><span class="pre">lxml.etree.XMLSyntaxError</span></code> (a
+<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>) with lxml and <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> without it, so code had to
+catch both. The message starts with <code class="docutils literal notranslate"><span class="pre">XMLReader:</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">parse</span> <span class="pre">XML</span>
+<span class="pre">content:</span></code> and the parser’s own error is kept as <code class="docutils literal notranslate"><span class="pre">__cause__</span></code>; the text
+after the prefix is the parser’s and still differs between parsers. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/947">#947</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">ALTOReader</span></code> skips a page that is not valid XML (empty, truncated or
+malformed) with a warning and reads the rest of the archive, whether lxml is
+installed or not. Before, with lxml one such page raised
+<code class="docutils literal notranslate"><span class="pre">lxml.etree.XMLSyntaxError</span></code> and ended the whole archive, while without
+lxml the page was skipped. The page’s error is a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> starting
+with <code class="docutils literal notranslate"><span class="pre">ALTOReader:</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">parse</span> <span class="pre">XML:</span></code>, the parser’s error as
+<code class="docutils literal notranslate"><span class="pre">__cause__</span></code>. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/951">#951</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  ALTO OCR pages are read by default. <code class="docutils literal notranslate"><span class="pre">DocumentReader.create</span></code> on an ALTO
+<code class="docutils literal notranslate"><span class="pre">.xml</span></code> page, or on a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> of pages, used to return only the page’s
+image file names and silently drop every word; <code class="docutils literal notranslate"><span class="pre">XMLReader</span></code> now reads an
+ALTO page with ALTO’s layout (option <code class="docutils literal notranslate"><span class="pre">alto</span></code>, default <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>), words
+broken across lines are rejoined (<code class="docutils literal notranslate"><span class="pre">Geschichts-</span></code> + <code class="docutils literal notranslate"><span class="pre">auffassung</span></code>;
+option <code class="docutils literal notranslate"><span class="pre">dehyphenate</span></code> on <code class="docutils literal notranslate"><span class="pre">ALTOReader</span></code>), and <code class="docutils literal notranslate"><span class="pre">ZipReader</span></code> reads members
+in natural order of their paths (<code class="docutils literal notranslate"><span class="pre">page_2</span></code> before <code class="docutils literal notranslate"><span class="pre">page_10</span></code>). <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/953">#953</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">PDFReader</span></code> reads text drawn inside figures (form XObjects) with
+pdfminer.six, its default backend. Files from design and presentation
+tools often draw all their text that way and used to come out almost
+empty, without a warning; that text now follows the page’s own text,
+nested figures included, and is grouped the same way on every read.
+pdfminer’s layout defaults now include <code class="docutils literal notranslate"><span class="pre">all_texts=True</span></code>;
+<code class="docutils literal notranslate"><span class="pre">pdfminer_kwargs={&quot;laparams&quot;:</span> <span class="pre">{&quot;all_texts&quot;:</span> <span class="pre">False}}</span></code> skips the layout
+analysis inside figures but still reads their characters. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/957">#957</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <a class="reference internal" href="../modules/generated/scikitplot.corpus.load_documents.html#scikitplot.corpus.load_documents" title="scikitplot.corpus.load_documents"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_documents</span></code></a> opts in to pickle and joblib
+files only for <code class="docutils literal notranslate"><span class="pre">trusted=True</span></code> itself (a truthy string such as
+<code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code> no longer counts) and rejects an <code class="docutils literal notranslate"><span class="pre">expected_sha256</span></code> that is
+not 64 hexadecimal digits before reading the file. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/963">#963</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">CorpusBuilder</span></code> reads the same files from a glob pattern as from the
+directory it names. A pattern under a hidden folder (<code class="docutils literal notranslate"><span class="pre">~/.cache/docs/*</span></code>,
+a project’s <code class="docutils literal notranslate"><span class="pre">.venv</span></code> or <code class="docutils literal notranslate"><span class="pre">.data</span></code>) used to match nothing without a
+warning, and a pattern kept files no reader supports, which then failed
+one by one. Hidden parts are now judged below the pattern’s fixed prefix
+(so <code class="docutils literal notranslate"><span class="pre">docs/.notes/*.md</span></code> reads the folder it names), unsupported types
+are skipped for both, and a pattern whose matches are all skipped logs
+one warning with the counts by reason. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/965">#965</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">PDFReader</span></code> reads rotated text as words with its default pdfminer
+backend. A vertical chart label used to come out one character per line,
+reversed at 90 degrees, so years and units were unsearchable (“2015” as
+<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">2</span></code>). Text boxes whose every character is rotated are now
+regrouped into lines in writing order, at any angle; upright text and
+its order are unchanged. <code class="docutils literal notranslate"><span class="pre">PDFReader(pdfminer_rotated=&quot;pdfminer&quot;)</span></code>
+keeps pdfminer.six’s own lines, for comparing with it. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/969">#969</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">XMLReader</span></code> reads each text node once by default. Its old default,
+<code class="docutils literal notranslate"><span class="pre">block_xpath=&quot;.//*&quot;</span></code>, took the text of every element including its
+descendants, so a TEI, JATS or DocBook file came out several times over
+(a TEI file’s title four times). The new default, <code class="docutils literal notranslate"><span class="pre">block_xpath=None</span></code>,
+reads the document’s text blocks: the outermost elements that hold text
+themselves, in document order, with inline markup kept inside its word
+(<code class="docutils literal notranslate"><span class="pre">Elementar&lt;hi&gt;form&lt;/hi&gt;</span></code>) and empty elements such as <code class="docutils literal notranslate"><span class="pre">&lt;lb/&gt;</span></code> read
+as word breaks. An explicit <code class="docutils literal notranslate"><span class="pre">block_xpath</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;.//*&quot;</span></code> included, keeps
+its meaning. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/971">#971</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  Markup patterns no longer cost quadratic time on text full of unclosed
+<code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">{</span></code>: <code class="docutils literal notranslate"><span class="pre">HTMLStripNormalizer</span></code>, the YouTube transcript
+cleaner, the CHM contents parser and the subtitle cleaners each stop a
+tag at the next opener (<code class="docutils literal notranslate"><span class="pre">&lt;[^&lt;&gt;]+&gt;</span></code>), and CHM <code class="docutils literal notranslate"><span class="pre">&lt;object&gt;</span></code> blocks are
+paired in one pass. 400 kB of <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> now takes milliseconds (it was
+over a minute), and a lone <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> keeps the text after it: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">and</span>
+<span class="pre">&lt;b&gt;bold&lt;/b&gt;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">and</span> <span class="pre">bold</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">and</span></code> was
+deleted. HTML comments are removed before tags, so a <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> inside a
+comment no longer leaves comment text behind. Also lands the subtitle
+review fixes merged without them in #983: companion lookup in 0.14 s
+instead of about 330 s for 5000 videos (folder listings are cached for
+at most eight folders and refreshed when a folder changes),
+<code class="docutils literal notranslate"><span class="pre">companion_options</span></code> on <code class="docutils literal notranslate"><span class="pre">VideoReader</span></code> and <code class="docutils literal notranslate"><span class="pre">AudioReader</span></code>, and the
+encoding policy for plain-text companions. A static check
+(<code class="docutils literal notranslate"><span class="pre">sweep_static.py</span> <span class="pre">--fail-on</span> <span class="pre">regex-unbounded-scan</span></code>, now in CI)
+refuses the pattern shape anywhere in first-party code, including
+bytes patterns and patterns held in module constants. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/984">#984</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <a class="reference internal" href="../modules/generated/scikitplot.corpus.TarReader.html#scikitplot.corpus.TarReader" title="scikitplot.corpus.TarReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarReader</span></code></a> refuses an oversized pax or GNU
+long-name header with the same header message on every Python version,
+whether <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> reads the header in one call or in bounded chunks. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/987">#987</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-warning">API Change</span></span>  <code class="docutils literal notranslate"><span class="pre">TextReader(encoding=...)</span></code> is a policy, and chardet is no longer
 consulted unless asked for. <code class="docutils literal notranslate"><span class="pre">None</span></code> detects by fixed rules, the same on
 every machine; a codec name decodes strictly; a list of codecs takes the
@@ -1688,6 +2011,24 @@ process, under a time ceiling (20 s) and a traced-memory ceiling
 <section id="scikitplot-datasets">
 <h3>scikitplot.datasets<a class="headerlink" href="#scikitplot-datasets" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <a class="reference internal" href="../apis/scikitplot.datasets.html#module-scikitplot.datasets" title="scikitplot.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.datasets</span></code></a> no longer unpickles a file it was not told to
+trust. Pickle, joblib, cloudpickle and pandas-pickle files (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>,
+<code class="docutils literal notranslate"><span class="pre">.pickle</span></code>, <code class="docutils literal notranslate"><span class="pre">.joblib</span></code>, <code class="docutils literal notranslate"><span class="pre">.cloudpkl</span></code>, <code class="docutils literal notranslate"><span class="pre">.pd.pkl</span></code>), and <code class="docutils literal notranslate"><span class="pre">.npy</span></code> files
+read with <code class="docutils literal notranslate"><span class="pre">allow_pickle=True</span></code>, need <code class="docutils literal notranslate"><span class="pre">trusted=True</span></code>, and with
+<code class="docutils literal notranslate"><span class="pre">expected_sha256=</span></code> the bytes are checked before loading. This includes
+files fetched from a URL, which used to be unpickled as soon as they were
+downloaded. <code class="docutils literal notranslate"><span class="pre">load_file_from_path</span></code>, <code class="docutils literal notranslate"><span class="pre">load_file_from_url</span></code> and
+<code class="docutils literal notranslate"><span class="pre">load_uploaded_file</span></code> now pass keyword arguments to the loader. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/964">#964</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <a class="reference internal" href="../apis/scikitplot.datasets.html#module-scikitplot.datasets" title="scikitplot.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scikitplot.datasets</span></code></a> downloads within limits. Loading from a URL and
+fetching the example datasets had no timeout, no size limit and left the
+first response open: a stalled server blocked the caller forever and a
+large response was read whole. Downloads now wait at most 30 s for the
+connection and each read, refuse a response over 512 MiB (declared or
+sent), close it on every path, accept only http and https (redirects
+included) and name the URL in errors; <code class="docutils literal notranslate"><span class="pre">load_data</span></code> and the other loaders
+take <code class="docutils literal notranslate"><span class="pre">timeout=</span></code> and <code class="docutils literal notranslate"><span class="pre">max_bytes=</span></code>. The dataset cache is written
+atomically, so an interrupted download no longer leaves a partial file to
+be read as the dataset next time. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/974">#974</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scikitplot.datasets</span></code> declares <code class="docutils literal notranslate"><span class="pre">__all__</span></code> (the loader functions it
 already exported), so the API-reference check reads it. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/937">#937</a></p></li>
 </ul>
@@ -1871,6 +2212,10 @@ now in the API reference. <a class="reference external" href="https://github.com
 <section id="id1">
 <h3>scikitplot.utils<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  Removed the private <code class="docutils literal notranslate"><span class="pre">scikitplot.utils._fixes.tarfile_extractall</span></code>. On a
+Python without tar extraction filters it fell back to extracting with no
+filter, which follows absolute paths, <code class="docutils literal notranslate"><span class="pre">..</span></code> and links out of the target
+directory; nothing in the package called it. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/962">#962</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-warning">API Change</span></span>  <code class="docutils literal notranslate"><span class="pre">scikitplot.utils</span></code> declares <code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scikitplot.utils</span> <span class="pre">import</span> <span class="pre">*</span></code>
 no longer leaks <code class="docutils literal notranslate"><span class="pre">logger</span></code> and <code class="docutils literal notranslate"><span class="pre">annotations</span></code>. <code class="docutils literal notranslate"><span class="pre">get_path</span></code> and
 <code class="docutils literal notranslate"><span class="pre">remove_path</span></code> are now in the API reference. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/937">#937</a></p></li>
@@ -1917,11 +2262,23 @@ with each hit’s file and line, and the workflow “CI Security Review” runs 
 on every pull request into the job summary. A hit is a place to look, not a
 verdict; the job fails only when a credential pattern is added, and never
 prints the matched value. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/940">#940</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-info">Enhancement</span></span>  <code class="docutils literal notranslate"><span class="pre">maintenances/_repo/_maintenance/tools/check_records.py</span></code> gains a
+<code class="docutils literal notranslate"><span class="pre">memory</span></code> check that enforces <code class="docutils literal notranslate"><span class="pre">MEMORY.md</span></code>’s own rules (200 lines,
+25 KB, a source and a non-future check date on every fact, no credential
+shapes), so the rules cannot drift into prose only. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/945">#945</a></p></li>
 <li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">tools/maint_tools/generate_usage_skills.py</span></code> loads its renderer
 (<code class="docutils literal notranslate"><span class="pre">scikitplot/_api_listing.py</span></code>) from its own checkout by file path instead
 of importing an installed scikit-plots, so its golden tests run on every
 Python with nothing installed and skills are always rendered by the tree
 they describe. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/944">#944</a></p></li>
+<li><p><span class="raw-html"><span class="badge text-bg-danger">Fix</span></span>  <code class="docutils literal notranslate"><span class="pre">sweep_static.py</span></code> reports a text file opened without an encoding only when
+the encoding is provably missing. It counted <code class="docutils literal notranslate"><span class="pre">**mapping</span></code> arguments that
+supply <code class="docutils literal notranslate"><span class="pre">encoding=</span></code> (<code class="docutils literal notranslate"><span class="pre">**UTF8</span></code>) and binary opens of the form
+<code class="docutils literal notranslate"><span class="pre">Path(p).open(&quot;rb&quot;)</span></code> as findings: 36 of its 46 encoding findings were
+false. <code class="docutils literal notranslate"><span class="pre">ledger_notes.py</span> <span class="pre">check</span></code> now also fails for a catalog note that is no
+longer on disk, so a note closed by deleting its file cannot be written
+again by the next <code class="docutils literal notranslate"><span class="pre">render</span> <span class="pre">--apply</span></code>; five such entries are removed from the
+sweeps catalog. <a class="reference external" href="https://github.com/scikit-plots/scikit-plots/pull/973">#973</a></p></li>
 <li><p>The usage skills of the <code class="docutils literal notranslate"><span class="pre">scikitplot</span></code> Claude plugin no longer ship a frozen
 <code class="docutils literal notranslate"><span class="pre">references/API.md</span></code> per module (1,331 lines removed). Each skill tells the
 assistant to read the API of the installed version: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">scikitplot</span>
@@ -1990,14 +2347,17 @@ the project since version 0.4, including:</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261115-c051ece">Version 0.5.dev0+git.20261115.c051ece</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-0-5-dev0-git-20261126-fbd8e1a">Version 0.5.dev0+git.20261126.fbd8e1a</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-packaging">Build and packaging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility-and-dependencies">Compatibility and dependencies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security">Security</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-top-level">scikitplot (top-level)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-brand">scikitplot._brand</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-build-utils">scikitplot._build_utils</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-cli">scikitplot._cli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-compat">scikitplot._compat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-decorates">scikitplot._decorates</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-env">scikitplot._env</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-externals">scikitplot._externals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikitplot-externals-sphinx-ext-sphinx-feedback">scikitplot._externals._sphinx_ext._sphinx_feedback</a></li>
@@ -2077,7 +2437,7 @@ the project since version 0.4, including:</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

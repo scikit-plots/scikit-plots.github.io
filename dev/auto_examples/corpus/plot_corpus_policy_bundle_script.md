@@ -160,11 +160,11 @@ Related examples
 
 [Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
 
-Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_cleanprompt_moderate_script_thumb.png)
+Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
-[Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle](../cleanprompt/plot_cleanprompt_moderate_script.html)
+[Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 
-Cleanprompt Moderate: Policies, Entities, and the Vault's Lifecycle![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
+Compare Corpus Chunking Strategies on OCR Text![](../../_images/sphx_glr_plot_corpus_who_zip_script_thumb.png)
 
 [Process a Mixed-Media ZIP Archive with Corpus](plot_corpus_who_zip_script.html)
 

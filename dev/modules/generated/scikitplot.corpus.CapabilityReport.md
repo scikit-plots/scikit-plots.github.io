@@ -1,6 +1,6 @@
 # CapabilityReport[#](#capabilityreport "Link to this heading")
 
-class scikitplot.corpus.CapabilityReport(**name**, **role**, **status**, **installed**, **assets\_ready**, **ready**, **selected=False**, **active=False**, **version=None**, **reason\_code=None**, **remedy=None**, **may\_download=False**, **requires\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport "Link to this definition")
+class scikitplot.corpus.CapabilityReport(**name**, **role**, **status**, **installed**, **assets\_ready**, **ready**, **selected=False**, **active=False**, **version=None**, **reason\_code=None**, **remedy=None**, **may\_download=False**, **requires\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport "Link to this definition")
 :   Read-only readiness state for one optional component.
 
     `installed` means Python can locate the package/module. `assets_ready`
@@ -26,18 +26,18 @@ class scikitplot.corpus.CapabilityReport(**name**, **role**, **status**, **insta
 
     active: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.CapabilityReport.active "Link to this definition")
 
-    assets\_ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.assets_ready "Link to this definition")
+    assets\_ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.assets_ready "Link to this definition")
 
     property available: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[#](#scikitplot.corpus.CapabilityReport.available "Link to this definition")
     :   Whether this capability is known usable now.
 
-    installed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.installed "Link to this definition")
+    installed: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.installed "Link to this definition")
 
     may\_download: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.CapabilityReport.may_download "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.name "Link to this definition")
 
-    ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.ready "Link to this definition")
+    ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.ready "Link to this definition")
 
     reason\_code: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CapabilityReport.reason_code "Link to this definition")
 
@@ -45,13 +45,13 @@ class scikitplot.corpus.CapabilityReport(**name**, **role**, **status**, **insta
 
     requires\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.CapabilityReport.requires_network "Link to this definition")
 
-    role: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.role "Link to this definition")
+    role: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.role "Link to this definition")
 
     selected: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.CapabilityReport.selected "Link to this definition")
 
-    status: [CapabilityStatus](scikitplot.corpus.CapabilityStatus.html#scikitplot.corpus.CapabilityStatus "scikitplot.corpus._capabilities.CapabilityStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.status "Link to this definition")
+    status: [CapabilityStatus](scikitplot.corpus.CapabilityStatus.html#scikitplot.corpus.CapabilityStatus "scikitplot.corpus._capabilities.CapabilityStatus")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L419)[#](#scikitplot.corpus.CapabilityReport.status "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L449)[#](#scikitplot.corpus.CapabilityReport.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L449)[#](#scikitplot.corpus.CapabilityReport.to_dict "Link to this definition")
     :   Return a JSON-compatible representation.
 
         Return type:

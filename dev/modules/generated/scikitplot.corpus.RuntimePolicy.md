@@ -1,6 +1,6 @@
 # RuntimePolicy[#](#runtimepolicy "Link to this heading")
 
-class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_runtime.py#L52)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
+class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L52)[#](#scikitplot.corpus.RuntimePolicy "Link to this definition")
 :   Execution-boundary policy applied by [`RuntimeCorpus`](scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus").
 
     Parameters:
@@ -8,7 +8,7 @@ class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https:
 
     allow\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.RuntimePolicy.allow_network "Link to this definition")
 
-    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_runtime.py#L76)[#](#scikitplot.corpus.RuntimePolicy.from_config "Link to this definition")
+    classmethod from\_config(**config**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L76)[#](#scikitplot.corpus.RuntimePolicy.from_config "Link to this definition")
     :   Build from JSON/YAML-shaped data, rejecting unknown fields.
 
         Parameters:
@@ -17,19 +17,19 @@ class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https:
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    classmethod networked()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_runtime.py#L67)[#](#scikitplot.corpus.RuntimePolicy.networked "Link to this definition")
+    classmethod networked()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L67)[#](#scikitplot.corpus.RuntimePolicy.networked "Link to this definition")
     :   Return a policy that explicitly permits URL source execution.
 
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_runtime.py#L62)[#](#scikitplot.corpus.RuntimePolicy.offline "Link to this definition")
+    classmethod offline()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L62)[#](#scikitplot.corpus.RuntimePolicy.offline "Link to this definition")
     :   Return the default local-only execution policy.
 
         Return type:
         :   [**RuntimePolicy**](#scikitplot.corpus.RuntimePolicy "scikitplot.corpus._runtime.RuntimePolicy")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_runtime.py#L72)[#](#scikitplot.corpus.RuntimePolicy.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_runtime.py#L72)[#](#scikitplot.corpus.RuntimePolicy.to_dict "Link to this definition")
     :   Return a JSON-compatible representation.
 
         Return type:
@@ -43,10 +43,10 @@ class scikitplot.corpus.RuntimePolicy(**allow\_network=False**)[[source]](https:
 
 Configure Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+[Build and Search a Hamlet Corpus, Step by Step](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
+Build and Search a Hamlet Corpus, Step by Step![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
+[Write Your Own Corpus Components: a Hamlet Walkthrough](../../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus
+Write Your Own Corpus Components: a Hamlet Walkthrough

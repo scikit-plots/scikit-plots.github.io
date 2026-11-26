@@ -1,6 +1,6 @@
 # StructureChunkerConfig[#](#structurechunkerconfig "Link to this heading")
 
-class scikitplot.corpus.StructureChunkerConfig(**markup='markdown'**, **chunk\_size=1000**, **include\_heading=True**, **separators=('\n\n', '\n', '. ', ' ', '')**, **min\_length=1**, **front\_matter=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_chunkers/_structure.py#L520)[#](#scikitplot.corpus.StructureChunkerConfig "Link to this definition")
+class scikitplot.corpus.StructureChunkerConfig(**markup='markdown'**, **chunk\_size=1000**, **include\_heading=True**, **separators=('\n\n', '\n', '. ', ' ', '')**, **min\_length=1**, **front\_matter=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_chunkers/_structure.py#L520)[#](#scikitplot.corpus.StructureChunkerConfig "Link to this definition")
 :   Configuration for [`StructureChunker`](scikitplot.corpus.StructureChunker.html#scikitplot.corpus.StructureChunker "scikitplot.corpus.StructureChunker").
 
     Parameters:

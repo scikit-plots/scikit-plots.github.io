@@ -1,6 +1,6 @@
 # StateError[#](#stateerror "Link to this heading")
 
-exception scikitplot.agent.StateError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_errors.py#L95)[#](#scikitplot.agent.StateError "Link to this definition")
+exception scikitplot.agent.StateError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_errors.py#L95)[#](#scikitplot.agent.StateError "Link to this definition")
 :   A saved run state is malformed, or of a schema version not supported.
 
     Annotation:

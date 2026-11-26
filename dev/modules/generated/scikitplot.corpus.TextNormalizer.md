@@ -1,6 +1,6 @@
 # TextNormalizer[#](#textnormalizer "Link to this heading")
 
-class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_text_normalizer.py#L346)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
+class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_text_normalizer.py#L346)[#](#scikitplot.corpus.TextNormalizer "Link to this definition")
 :   Pipeline component that populates `normalized_text` on
     [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument") instances.
 
@@ -50,7 +50,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
     ```
     Go BackOpen In Tab
 
-    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_text_normalizer.py#L393)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
+    normalize(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_text_normalizer.py#L393)[#](#scikitplot.corpus.TextNormalizer.normalize "Link to this definition")
     :   Normalise a single string using only the steps in `config.steps`.
 
         Unlike [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text"), this method:
@@ -92,7 +92,7 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
         ```
         Go BackOpen In Tab
 
-    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_text_normalizer.py#L456)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
+    normalize\_documents(**documents**, **\***, **overwrite=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_text_normalizer.py#L456)[#](#scikitplot.corpus.TextNormalizer.normalize_documents "Link to this definition")
     :   Normalise text for a batch of `CorpusDocument` instances.
 
         Parameters:
@@ -114,11 +114,3 @@ class scikitplot.corpus.TextNormalizer(**config=None**)[[source]](https://github
 
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
-
-## Gallery examples[#](#gallery-examples "Link to this heading")
-
-![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
-
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
-
-Build and Search a Real Hamlet Corpus with FluentCorpus

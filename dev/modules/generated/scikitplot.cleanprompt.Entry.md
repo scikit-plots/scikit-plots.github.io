@@ -1,6 +1,6 @@
 # Entry[#](#entry "Link to this heading")
 
-class scikitplot.cleanprompt.Entry(**label**, **kind**, **ordinal**, **original**, **occurrences**, **detector**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry "Link to this definition")
+class scikitplot.cleanprompt.Entry(**label**, **kind**, **ordinal**, **original**, **occurrences**, **detector**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry "Link to this definition")
 :   One resolved detection and the placeholder label assigned to it.
 
     Parameters:
@@ -51,14 +51,14 @@ class scikitplot.cleanprompt.Entry(**label**, **kind**, **ordinal**, **original*
         Type:
         :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    detector: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.detector "Link to this definition")
+    detector: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.detector "Link to this definition")
 
-    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.kind "Link to this definition")
+    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.kind "Link to this definition")
 
-    label: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.label "Link to this definition")
+    label: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.label "Link to this definition")
 
-    occurrences: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.occurrences "Link to this definition")
+    occurrences: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")], ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.occurrences "Link to this definition")
 
-    ordinal: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.ordinal "Link to this definition")
+    ordinal: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.ordinal "Link to this definition")
 
-    original: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.original "Link to this definition")
+    original: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L136)[#](#scikitplot.cleanprompt.Entry.original "Link to this definition")

@@ -1,6 +1,6 @@
 # SecretFilter[#](#secretfilter "Link to this heading")
 
-class scikitplot.cleanprompt.SecretFilter(**secrets=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L176)[#](#scikitplot.cleanprompt.SecretFilter "Link to this definition")
+class scikitplot.cleanprompt.SecretFilter(**secrets=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L176)[#](#scikitplot.cleanprompt.SecretFilter "Link to this definition")
 :   Replace known secret surfaces in a record with `REDACTION_MARK`.
 
     Parameters:
@@ -48,7 +48,7 @@ class scikitplot.cleanprompt.SecretFilter(**secrets=None**)[[source]](https://gi
         unreadable; this filter is the second line of defence — the submodule
         never passes a value to a logger in the first place.
 
-    add(**secrets**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L224)[#](#scikitplot.cleanprompt.SecretFilter.add "Link to this definition")
+    add(**secrets**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L224)[#](#scikitplot.cleanprompt.SecretFilter.add "Link to this definition")
     :   Add surfaces to scrub, longest first.
 
         Parameters:
@@ -57,7 +57,7 @@ class scikitplot.cleanprompt.SecretFilter(**secrets=None**)[[source]](https://gi
         Return type:
         :   None
 
-    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L251)[#](#scikitplot.cleanprompt.SecretFilter.filter "Link to this definition")
+    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L251)[#](#scikitplot.cleanprompt.SecretFilter.filter "Link to this definition")
     :   Scrub the record in place. Always returns `True`.
 
         Notes
@@ -74,7 +74,7 @@ class scikitplot.cleanprompt.SecretFilter(**secrets=None**)[[source]](https://gi
         Return type:
         :   [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")
 
-    scrub(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L232)[#](#scikitplot.cleanprompt.SecretFilter.scrub "Link to this definition")
+    scrub(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L232)[#](#scikitplot.cleanprompt.SecretFilter.scrub "Link to this definition")
     :   Return `text` with every held surface replaced.
 
         Parameters:

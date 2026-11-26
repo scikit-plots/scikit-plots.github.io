@@ -1,6 +1,6 @@
 # Span[#](#span "Link to this heading")
 
-class scikitplot.cleanprompt.Span(**start**, **end**, **kind**, **text**, **detector**, **priority=0**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span "Link to this definition")
+class scikitplot.cleanprompt.Span(**start**, **end**, **kind**, **text**, **detector**, **priority=0**, **confidence=1.0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span "Link to this definition")
 :   A half-open `[start, end)` character interval flagged by one detector.
 
     Parameters:
@@ -61,11 +61,11 @@ class scikitplot.cleanprompt.Span(**start**, **end**, **kind**, **text**, **dete
 
     confidence: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 1.0[#](#scikitplot.cleanprompt.Span.confidence "Link to this definition")
 
-    detector: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.detector "Link to this definition")
+    detector: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.detector "Link to this definition")
 
-    end: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.end "Link to this definition")
+    end: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.end "Link to this definition")
 
-    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.kind "Link to this definition")
+    kind: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.kind "Link to this definition")
 
     property length: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[#](#scikitplot.cleanprompt.Span.length "Link to this definition")
     :   Number of characters covered by this span.
@@ -73,7 +73,7 @@ class scikitplot.cleanprompt.Span(**start**, **end**, **kind**, **text**, **dete
         Type:
         :   [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")
 
-    overlaps(**other**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L119)[#](#scikitplot.cleanprompt.Span.overlaps "Link to this definition")
+    overlaps(**other**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L119)[#](#scikitplot.cleanprompt.Span.overlaps "Link to this definition")
     :   Return whether this span shares at least one character with `other`.
 
         Parameters:
@@ -92,6 +92,6 @@ class scikitplot.cleanprompt.Span(**start**, **end**, **kind**, **text**, **dete
 
     priority: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 0[#](#scikitplot.cleanprompt.Span.priority "Link to this definition")
 
-    start: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.start "Link to this definition")
+    start: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.start "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L48)[#](#scikitplot.cleanprompt.Span.text "Link to this definition")

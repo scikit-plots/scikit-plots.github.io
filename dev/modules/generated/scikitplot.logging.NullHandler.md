@@ -1,6 +1,6 @@
 # NullHandler[#](#nullhandler "Link to this heading")
 
-class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L2285)[#](#scikitplot.logging.NullHandler "Link to this definition")
+class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L2285)[#](#scikitplot.logging.NullHandler "Link to this definition")
 :   This handler does nothing. It’s intended to be used to avoid the
     “No handlers could be found for logger XXX” one-off warning. This is
     important for library code, which may contain code to log events. If a user
@@ -9,13 +9,13 @@ class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/s
     a NullHandler and add it to the top-level logger of the library module or
     package.
 
-    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L968)[#](#scikitplot.logging.NullHandler.acquire "Link to this definition")
+    acquire()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L968)[#](#scikitplot.logging.NullHandler.acquire "Link to this definition")
     :   Acquire the I/O thread lock.
 
-    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L817)[#](#scikitplot.logging.NullHandler.addFilter "Link to this definition")
+    addFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L817)[#](#scikitplot.logging.NullHandler.addFilter "Link to this definition")
     :   Add the specified filter to this handler.
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L1048)[#](#scikitplot.logging.NullHandler.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1048)[#](#scikitplot.logging.NullHandler.close "Link to this definition")
     :   Tidy up any resources used by the handler.
 
         This version removes the handler from an internal map of handlers,
@@ -23,13 +23,13 @@ class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/s
         should ensure that this gets called from overridden close()
         methods.
 
-    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L2301)[#](#scikitplot.logging.NullHandler.createLock "Link to this definition")
+    createLock()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L2301)[#](#scikitplot.logging.NullHandler.createLock "Link to this definition")
     :   Acquire a thread lock for serializing access to the underlying I/O.
 
-    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L2298)[#](#scikitplot.logging.NullHandler.emit "Link to this definition")
+    emit(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L2298)[#](#scikitplot.logging.NullHandler.emit "Link to this definition")
     :   Stub.
 
-    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L831)[#](#scikitplot.logging.NullHandler.filter "Link to this definition")
+    filter(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L831)[#](#scikitplot.logging.NullHandler.filter "Link to this definition")
     :   Determine if a record is loggable by consulting all the filters.
 
         The default is to allow the record to be logged; any filter can veto
@@ -50,24 +50,24 @@ class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/s
         Changed in version 3.12: Allow filters to return a LogRecord instead of
         modifying it in place.
 
-    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L1039)[#](#scikitplot.logging.NullHandler.flush "Link to this definition")
+    flush()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1039)[#](#scikitplot.logging.NullHandler.flush "Link to this definition")
     :   Ensure all logging output has been flushed.
 
         This version does nothing and is intended to be implemented by
         subclasses.
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L988)[#](#scikitplot.logging.NullHandler.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L988)[#](#scikitplot.logging.NullHandler.format "Link to this definition")
     :   Format the specified record.
 
         If a formatter is set, use it. Otherwise, use the default formatter
         for the module.
 
-    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.NullHandler.get_name "Link to this definition")
+    get\_name()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L942)[#](#scikitplot.logging.NullHandler.get_name "Link to this definition")
 
-    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L2295)[#](#scikitplot.logging.NullHandler.handle "Link to this definition")
+    handle(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L2295)[#](#scikitplot.logging.NullHandler.handle "Link to this definition")
     :   Stub.
 
-    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L1066)[#](#scikitplot.logging.NullHandler.handleError "Link to this definition")
+    handleError(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1066)[#](#scikitplot.logging.NullHandler.handleError "Link to this definition")
     :   Handle errors which occur during an emit() call.
 
         This method should be called from handlers when an exception is
@@ -85,16 +85,16 @@ class scikitplot.logging.NullHandler(**level=0**)[[source]](https://github.com/s
         :   str | None
             :   The current handler object name if provided, otherwise None.
 
-    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L975)[#](#scikitplot.logging.NullHandler.release "Link to this definition")
+    release()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L975)[#](#scikitplot.logging.NullHandler.release "Link to this definition")
     :   Release the I/O thread lock.
 
-    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L824)[#](#scikitplot.logging.NullHandler.removeFilter "Link to this definition")
+    removeFilter(**filter**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L824)[#](#scikitplot.logging.NullHandler.removeFilter "Link to this definition")
     :   Remove the specified filter from this handler.
 
-    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L1033)[#](#scikitplot.logging.NullHandler.setFormatter "Link to this definition")
+    setFormatter(**fmt**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L1033)[#](#scikitplot.logging.NullHandler.setFormatter "Link to this definition")
     :   Set the formatter for this handler.
 
-    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L982)[#](#scikitplot.logging.NullHandler.setLevel "Link to this definition")
+    setLevel(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L982)[#](#scikitplot.logging.NullHandler.setLevel "Link to this definition")
     :   Set the logging level of this handler. level must be an int or a str.
 
-    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L945)[#](#scikitplot.logging.NullHandler.set_name "Link to this definition")
+    set\_name(**name**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L945)[#](#scikitplot.logging.NullHandler.set_name "Link to this definition")

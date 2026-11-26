@@ -1,6 +1,6 @@
 # RestorationResult[#](#restorationresult "Link to this heading")
 
-class scikitplot.cleanprompt.RestorationResult(**text**, **restored**, **unknown=()**, **unused=()**, **repaired=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult "Link to this definition")
+class scikitplot.cleanprompt.RestorationResult(**text**, **restored**, **unknown=()**, **unused=()**, **repaired=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult "Link to this definition")
 :   Output of a restoration pass.
 
     Parameters:
@@ -48,9 +48,9 @@ class scikitplot.cleanprompt.RestorationResult(**text**, **restored**, **unknown
 
     repaired: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")], ...] = ()[#](#scikitplot.cleanprompt.RestorationResult.repaired "Link to this definition")
 
-    restored: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult.restored "Link to this definition")
+    restored: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult.restored "Link to this definition")
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_types.py#L284)[#](#scikitplot.cleanprompt.RestorationResult.text "Link to this definition")
 
     unknown: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...] = ()[#](#scikitplot.cleanprompt.RestorationResult.unknown "Link to this definition")
 

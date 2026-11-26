@@ -1,24 +1,24 @@
 # BackendStatus[#](#backendstatus "Link to this heading")
 
-class scikitplot.corpus.BackendStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L87)[#](#scikitplot.corpus.BackendStatus "Link to this definition")
+class scikitplot.corpus.BackendStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L87)[#](#scikitplot.corpus.BackendStatus "Link to this definition")
 :   Outcome of one ordered backend operation.
 
-    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.DEGRADED "Link to this definition")
+    DEGRADED = 'degraded'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.DEGRADED "Link to this definition")
     :   A fallback succeeded after at least one earlier backend failed.
 
-    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.EMPTY "Link to this definition")
+    EMPTY = 'empty'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.EMPTY "Link to this definition")
     :   A backend completed successfully and produced a valid empty result.
 
-    EXHAUSTED = 'exhausted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.EXHAUSTED "Link to this definition")
+    EXHAUSTED = 'exhausted'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.EXHAUSTED "Link to this definition")
     :   Backends ran normally but none produced an accepted result.
 
-    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.FAILED "Link to this definition")
+    FAILED = 'failed'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.FAILED "Link to this definition")
     :   No backend completed successfully and at least one backend failed.
 
-    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.SUCCESS "Link to this definition")
+    SUCCESS = 'success'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.SUCCESS "Link to this definition")
     :   A backend completed and produced a non-empty accepted result.
 
-    UNAVAILABLE = 'unavailable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.UNAVAILABLE "Link to this definition")
+    UNAVAILABLE = 'unavailable'[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L)[#](#scikitplot.corpus.BackendStatus.UNAVAILABLE "Link to this definition")
     :   Policy/readiness left no backend eligible to execute.
 
     capitalize(**/**)[#](#scikitplot.corpus.BackendStatus.capitalize "Link to this definition")

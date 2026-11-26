@@ -1,6 +1,6 @@
 # CorpusPipeline[#](#corpuspipeline "Link to this heading")
 
-class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_pipeline.py#L197)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_pipeline.py#L203)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
 :   Orchestrates the full corpus ingestion pipeline.
 
     Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
@@ -264,7 +264,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Deprecated since version 0.5.0: Use `pipeline.filter` (no trailing underscore).
         `filter_` will be removed in 0.7.0.
 
-    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_pipeline.py#L500)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_pipeline.py#L517)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
     :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
 
         Accepts a local file path ****or**** an `http(s)://` URL string.
@@ -348,7 +348,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_pipeline.py#L907)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_pipeline.py#L924)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources sequentially.
 
         Each item may be a local file path ****or**** an `http(s)://` URL
@@ -435,7 +435,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_pipeline.py#L742)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_pipeline.py#L759)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs.
 
         Accepts a single URL string or a list of URL strings. When a list
@@ -535,11 +535,11 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
 [Process an MP3 with Corpus](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
+[Write Your Own Corpus Components: a Hamlet Walkthrough](../../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+Write Your Own Corpus Components: a Hamlet Walkthrough![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
 
 [Process a YouTube Transcript with Corpus](../../auto_examples/corpus/plot_corpus_who_youtube_script.html)
 

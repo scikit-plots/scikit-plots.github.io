@@ -1,6 +1,6 @@
 # BlockedError[#](#blockederror "Link to this heading")
 
-exception scikitplot.cleanprompt.BlockedError(**message**, **kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_exceptions.py#L194)[#](#scikitplot.cleanprompt.BlockedError "Link to this definition")
+exception scikitplot.cleanprompt.BlockedError(**message**, **kinds**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L194)[#](#scikitplot.cleanprompt.BlockedError "Link to this definition")
 :   The text holds a value of a kind whose action is `block`; nothing was returned.
 
     Parameters:

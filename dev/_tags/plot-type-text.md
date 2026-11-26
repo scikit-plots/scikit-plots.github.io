@@ -13,7 +13,6 @@ With this tag
 * [Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](../auto_examples/cleanprompt/plot_cleanprompt_recipes_script.html)
 * [Process an MP3 with Corpus](../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
 * [Configure Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_corpus_script.html)
-* [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
 * [Compare Corpus Chunking Strategies on OCR Text](../auto_examples/corpus/plot_corpus_knowledge_script.html)

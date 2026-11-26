@@ -1,6 +1,6 @@
 # log\_level\_from\_env[#](#log-level-from-env "Link to this heading")
 
-scikitplot.cleanprompt.log\_level\_from\_env(**default='warning'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L332)[#](#scikitplot.cleanprompt.log_level_from_env "Link to this definition")
+scikitplot.cleanprompt.log\_level\_from\_env(**default='warning'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L332)[#](#scikitplot.cleanprompt.log_level_from_env "Link to this definition")
 :   Return the log level named by the environment, or `default`.
 
     Parameters:

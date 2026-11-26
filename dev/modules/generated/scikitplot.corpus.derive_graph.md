@@ -1,6 +1,6 @@
 # derive\_graph[#](#derive-graph "Link to this heading")
 
-scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_graph.py#L513)[#](#scikitplot.corpus.derive_graph "Link to this definition")
+scikitplot.corpus.derive\_graph(**documents**, **\***, **generation=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_graph.py#L513)[#](#scikitplot.corpus.derive_graph "Link to this definition")
 :   Build the G0 view from document fields.
 
     Parameters:

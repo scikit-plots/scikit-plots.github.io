@@ -1,6 +1,6 @@
 # PatternError[#](#patternerror "Link to this heading")
 
-exception scikitplot.cleanprompt.PatternError(**message**, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_exceptions.py#L62)[#](#scikitplot.cleanprompt.PatternError "Link to this definition")
+exception scikitplot.cleanprompt.PatternError(**message**, **name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L62)[#](#scikitplot.cleanprompt.PatternError "Link to this definition")
 :   A detection pattern is uncompilable or structurally unsafe.
 
     Parameters:

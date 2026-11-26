@@ -1,6 +1,6 @@
 # run\_backend\_chain[#](#run-backend-chain "Link to this heading")
 
-scikitplot.corpus.run\_backend\_chain(**candidates**, **\***, **default**, **logger**, **component**, **operation**, **subject=None**, **error\_code='OPTIONAL\_BACKEND\_FAILED'**, **error\_category=ErrorCategory.CAPABILITY**, **stage=None**, **is\_empty=<function \_never\_empty>**, **passthrough\_exceptions=(<class 'MemoryError'>**, **)**, **policy=None**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L693)[#](#scikitplot.corpus.run_backend_chain "Link to this definition")
+scikitplot.corpus.run\_backend\_chain(**candidates**, **\***, **default**, **logger**, **component**, **operation**, **subject=None**, **error\_code='OPTIONAL\_BACKEND\_FAILED'**, **error\_category=ErrorCategory.CAPABILITY**, **stage=None**, **is\_empty=<function \_never\_empty>**, **passthrough\_exceptions=(<class 'MemoryError'>**, **)**, **policy=None**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L693)[#](#scikitplot.corpus.run_backend_chain "Link to this definition")
 :   Try **candidates** in order and return a structured outcome.
 
     This function deliberately does ****not**** decide whether a failed chain should

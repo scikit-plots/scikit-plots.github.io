@@ -1,6 +1,6 @@
 # binary\_log\_loss[#](#binary-log-loss "Link to this heading")
 
-scikitplot.corpus.binary\_log\_loss(**y\_true**, **y\_prob**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_calibration.py#L191)[#](#scikitplot.corpus.binary_log_loss "Link to this definition")
+scikitplot.corpus.binary\_log\_loss(**y\_true**, **y\_prob**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_metrics/_calibration.py#L191)[#](#scikitplot.corpus.binary_log_loss "Link to this definition")
 :   Mean negative log-likelihood of binary outcomes under the probabilities.
 
     Parameters:

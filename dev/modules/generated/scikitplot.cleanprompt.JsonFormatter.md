@@ -1,6 +1,6 @@
 # JsonFormatter[#](#jsonformatter "Link to this heading")
 
-class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **style='%'**, **validate=True**, **\***, **defaults=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L293)[#](#scikitplot.cleanprompt.JsonFormatter "Link to this definition")
+class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **style='%'**, **validate=True**, **\***, **defaults=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L293)[#](#scikitplot.cleanprompt.JsonFormatter "Link to this definition")
 :   Format a record as one JSON object per line.
 
     Notes
@@ -14,7 +14,7 @@ class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **sty
 
     default\_time\_format = '%Y-%m-%d %H:%M:%S'[#](#scikitplot.cleanprompt.JsonFormatter.default_time_format "Link to this definition")
 
-    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L309)[#](#scikitplot.cleanprompt.JsonFormatter.format "Link to this definition")
+    format(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L309)[#](#scikitplot.cleanprompt.JsonFormatter.format "Link to this definition")
     :   Return the record as a JSON object.
 
         Parameters:
@@ -23,15 +23,15 @@ class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **sty
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L649)[#](#scikitplot.cleanprompt.JsonFormatter.formatException "Link to this definition")
+    formatException(**ei**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L649)[#](#scikitplot.cleanprompt.JsonFormatter.formatException "Link to this definition")
     :   Format and return the specified exception information as a string.
 
         This default implementation just uses
         traceback.print\_exception()
 
-    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L674)[#](#scikitplot.cleanprompt.JsonFormatter.formatMessage "Link to this definition")
+    formatMessage(**record**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L674)[#](#scikitplot.cleanprompt.JsonFormatter.formatMessage "Link to this definition")
 
-    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L677)[#](#scikitplot.cleanprompt.JsonFormatter.formatStack "Link to this definition")
+    formatStack(**stack\_info**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L677)[#](#scikitplot.cleanprompt.JsonFormatter.formatStack "Link to this definition")
     :   This method is provided as an extension point for specialized
         formatting of stack information.
 
@@ -41,7 +41,7 @@ class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **sty
 
         The base implementation just returns the value passed in.
 
-    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L622)[#](#scikitplot.cleanprompt.JsonFormatter.formatTime "Link to this definition")
+    formatTime(**record**, **datefmt=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L622)[#](#scikitplot.cleanprompt.JsonFormatter.formatTime "Link to this definition")
     :   Return the creation time of the specified LogRecord as formatted text.
 
         This method should be called from format() by a formatter which
@@ -58,5 +58,5 @@ class scikitplot.cleanprompt.JsonFormatter(**fmt=None**, **datefmt=None**, **sty
         formatters, for example if you want all logging times to be shown in GMT,
         set the ‘converter’ attribute in the Formatter class.
 
-    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/../../logging/__init__.py#L668)[#](#scikitplot.cleanprompt.JsonFormatter.usesTime "Link to this definition")
+    usesTime()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/../../logging/__init__.py#L668)[#](#scikitplot.cleanprompt.JsonFormatter.usesTime "Link to this definition")
     :   Check if the format uses the creation time of the record.

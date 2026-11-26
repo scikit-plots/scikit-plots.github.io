@@ -1,6 +1,6 @@
 # get\_config[#](#get-config "Link to this heading")
 
-scikitplot.config.get\_config()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/config/_config.py#L116)[#](#scikitplot.config.get_config "Link to this definition")
+scikitplot.config.get\_config()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/config/_config.py#L116)[#](#scikitplot.config.get_config "Link to this definition")
 :   Retrieve current values for configuration set by [`set_config`](scikitplot.config.set_config.html#scikitplot.config.set_config "scikitplot.config.set_config").
 
     Returns:

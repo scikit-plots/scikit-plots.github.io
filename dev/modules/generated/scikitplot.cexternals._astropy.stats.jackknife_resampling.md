@@ -1,6 +1,6 @@
 # jackknife\_resampling[#](#jackknife-resampling "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.jackknife\_resampling(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/jackknife.py#L15)[#](#scikitplot.cexternals._astropy.stats.jackknife_resampling "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.jackknife\_resampling(**data**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/jackknife.py#L15)[#](#scikitplot.cexternals._astropy.stats.jackknife_resampling "Link to this definition")
 :   Performs jackknife resampling on numpy arrays.
 
     Jackknife resampling is a technique to generate ‘n’ deterministic samples

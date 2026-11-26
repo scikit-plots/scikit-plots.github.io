@@ -1,6 +1,6 @@
 # BackendSkip[#](#backendskip "Link to this heading")
 
-class scikitplot.corpus.BackendSkip(**backend**, **reason**, **capability=None**, **capability\_status=None**, **ready=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip "Link to this definition")
+class scikitplot.corpus.BackendSkip(**backend**, **reason**, **capability=None**, **capability\_status=None**, **ready=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip "Link to this definition")
 :   Why a backend was not executed under the resolved policy.
 
     The record is deliberately small and JSON-compatible. It contains no live
@@ -14,7 +14,7 @@ class scikitplot.corpus.BackendSkip(**backend**, **reason**, **capability=None**
         * ****capability\_status**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****ready**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") **|** **None**)
 
-    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip.backend "Link to this definition")
+    backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip.backend "Link to this definition")
 
     capability: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BackendSkip.capability "Link to this definition")
 
@@ -22,9 +22,9 @@ class scikitplot.corpus.BackendSkip(**backend**, **reason**, **capability=None**
 
     ready: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.BackendSkip.ready "Link to this definition")
 
-    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip.reason "Link to this definition")
+    reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L375)[#](#scikitplot.corpus.BackendSkip.reason "Link to this definition")
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L390)[#](#scikitplot.corpus.BackendSkip.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L390)[#](#scikitplot.corpus.BackendSkip.to_dict "Link to this definition")
     :   Return a JSON-compatible representation.
 
         Return type:

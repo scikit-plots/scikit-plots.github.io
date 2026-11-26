@@ -1,6 +1,6 @@
 # ScikitplotTracingException[#](#scikitplottracingexception "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotTracingException(**message**, **error\_code=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/exceptions.py#L511)[#](#scikitplot.exceptions.ScikitplotTracingException "Link to this definition")
+exception scikitplot.exceptions.ScikitplotTracingException(**message**, **error\_code=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L511)[#](#scikitplot.exceptions.ScikitplotTracingException "Link to this definition")
 :   Exception thrown from tracing logic.
 
     Tracing logic should not block the main execution flow in general; hence

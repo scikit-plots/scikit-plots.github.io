@@ -1,6 +1,6 @@
 # read\_audit[#](#read-audit "Link to this heading")
 
-scikitplot.agent.read\_audit(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_audit.py#L278)[#](#scikitplot.agent.read_audit "Link to this definition")
+scikitplot.agent.read\_audit(**path**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_audit.py#L278)[#](#scikitplot.agent.read_audit "Link to this definition")
 :   Read a JSON Lines audit file.
 
     Parameters:

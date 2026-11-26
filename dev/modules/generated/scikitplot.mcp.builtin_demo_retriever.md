@@ -1,6 +1,6 @@
 # builtin\_demo\_retriever[#](#builtin-demo-retriever "Link to this heading")
 
-scikitplot.mcp.builtin\_demo\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/mcp/_demo.py#L315)[#](#scikitplot.mcp.builtin_demo_retriever "Link to this definition")
+scikitplot.mcp.builtin\_demo\_retriever()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/mcp/_demo.py#L315)[#](#scikitplot.mcp.builtin_demo_retriever "Link to this definition")
 :   Return a tiny corpus that explains the sample’s own mechanism.
 
     Return type:

@@ -1,6 +1,6 @@
 # error[#](#error "Link to this heading")
 
-scikitplot.logging.error(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/logging/_logging.py#L1464)[#](#scikitplot.logging.error "Link to this definition")
+scikitplot.logging.error(**msg**, **\*args**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/logging/_logging.py#L1464)[#](#scikitplot.logging.error "Link to this definition")
 :   Log a message at the ERROR log level.
 
     Parameters:

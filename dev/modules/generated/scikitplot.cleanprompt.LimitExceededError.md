@@ -1,6 +1,6 @@
 # LimitExceededError[#](#limitexceedederror "Link to this heading")
 
-exception scikitplot.cleanprompt.LimitExceededError(**message**, **limit\_name**, **limit**, **actual**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_exceptions.py#L154)[#](#scikitplot.cleanprompt.LimitExceededError "Link to this definition")
+exception scikitplot.cleanprompt.LimitExceededError(**message**, **limit\_name**, **limit**, **actual**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_exceptions.py#L154)[#](#scikitplot.cleanprompt.LimitExceededError "Link to this definition")
 :   A policy limit was exceeded.
 
     Parameters:

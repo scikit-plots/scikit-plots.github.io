@@ -2,82 +2,54 @@
 > [Go to the end](#sphx-glr-download-auto-examples-corpus-plot-corpus-fluent-hamlet-retrieval-script-py)
 to download the full example code or to run this example in your browser via JupyterLite or Binder.
 
-# Build and Search a Real Hamlet Corpus with FluentCorpus[#](#build-and-search-a-real-hamlet-corpus-with-fluentcorpus "Link to this heading")
+# Build and Search a Hamlet Corpus, Step by Step[#](#build-and-search-a-hamlet-corpus-step-by-step "Link to this heading")
 
-This example uses a real public-domain **Hamlet** excerpt to demonstrate the
-first-class [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus") runtime workflow.
+This example builds a searchable corpus from a public-domain **Hamlet**
+excerpt with [`FluentCorpus`](../../modules/generated/scikitplot.corpus.FluentCorpus.html#scikitplot.corpus.FluentCorpus "scikitplot.corpus.FluentCorpus"), starting from the smallest working
+configuration and adding one capability per step:
 
-The configuration remains declarative:
+1. ****Minimal****: one file, paragraph chunks, keyword search.
+2. ****Richer documents****: normalization, keywords and dense vectors, so
+   keyword, semantic and hybrid search can be compared on one query.
+3. ****A growing corpus****: storage queries, adding a second source, a new
+   index generation, per-request retrieval settings, and export.
+4. ****Another backend****: the same plan configured for Annoy, validated
+   without building it.
 
-```
-FluentCorpus
-  → source
-  → reader
-  → normalizer
-  → chunker
-  → enricher
-  → embedder
-  → storage
-  → index
-  → retrieval
-  → export
+Every step runs offline and gives the same output on every run:
+[`HAMLET_TEXT`](../../modules/generated/scikitplot.corpus.HAMLET_TEXT.html#scikitplot.corpus.HAMLET_TEXT "scikitplot.corpus.HAMLET_TEXT") is bundled with [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus"),
+[`HashEmbedder`](../../modules/generated/scikitplot.corpus.HashEmbedder.html#scikitplot.corpus.HashEmbedder "scikitplot.corpus.HashEmbedder") makes vectors without a model download, and the
+`bruteforce` index is exact. The one figure compares the scores of the
+three search modes for the same query.
 
-```
-
-The operational boundary is now explicit:
+The lifecycle is the same at every step:
 
 ```
-FluentCorpus.materialize()
-  → RuntimeCorpus
-  → run()
-  → add()
-  → search() / query_storage() / export()
+FluentCorpus (configuration)
+  → materialize()  → RuntimeCorpus (components, no data read yet)
+  → run()          → read, chunk, enrich, embed, store, index
+  → search() / add() / query_storage() / export()
+  → close()
 
 ```
-
-Unlike the earlier version of this example, no gallery-local `RuntimeCorpus`
-or `materialize_plan` helper is required. The Corpus submodule owns that
-translation and lifecycle directly.
-
-The executed path is intentionally offline and deterministic:
-
-* [`HAMLET_TEXT`](../../modules/generated/scikitplot.corpus.HAMLET_TEXT.html#scikitplot.corpus.HAMLET_TEXT "scikitplot.corpus.HAMLET_TEXT") provides a bundled public-domain sample,
-* normalization and paragraph chunking use local Corpus components,
-* [`SimpleEnricherSpec`](../../modules/generated/scikitplot.corpus.SimpleEnricherSpec.html#scikitplot.corpus.SimpleEnricherSpec "scikitplot.corpus.SimpleEnricherSpec") configures [`SimpleFrequencyEnricher`](../../modules/generated/scikitplot.corpus.SimpleFrequencyEnricher.html#scikitplot.corpus.SimpleFrequencyEnricher "scikitplot.corpus.SimpleFrequencyEnricher"),
-* [`HashEmbedder`](../../modules/generated/scikitplot.corpus.HashEmbedder.html#scikitplot.corpus.HashEmbedder "scikitplot.corpus.HashEmbedder") provides deterministic local lexical embeddings,
-* dense retrieval uses the exact `bruteforce` backend,
-* storage uses [`InMemoryStorage`](../../modules/generated/scikitplot.corpus.InMemoryStorage.html#scikitplot.corpus.InMemoryStorage "scikitplot.corpus.InMemoryStorage"),
-* export uses JSONL.
-
-The sample, simple enricher, enricher spec, and hashing embedder are public
-[`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") helpers rather than gallery-local implementations.
-
-Because Sphinx-Gallery turns `# %%` blocks into independent notebook cells,
-the runtime is kept explicitly open across the multi-cell workflow and closed
-in the final cleanup cell. For a single-cell script, a context manager remains
-the preferred lifecycle form. A bounded `add()` scenario extends the same
-runtime generation with a second local source and rebuilds one coherent
-retrieval index.
-
-A final configuration-only branch shows the modern generic `index_kwargs`
-form for Annoy without requiring the native backend during the gallery build.
-
 ```
 # Authors: The scikit-plots developers
 # SPDX-License-Identifier: BSD-3-Clause
 
 ```
 
-## Imports[#](#imports "Link to this heading")
+## Imports and a temporary workspace[#](#imports-and-a-temporary-workspace "Link to this heading")
 
-Runtime construction, sample data, dependency-free enrichment, embeddings,
-lifecycle, storage, retrieval, and export all come from the public Corpus API.
+Sources and exports live in a temporary folder, so the example leaves
+nothing in the gallery tree. It is removed in the last cell.
 
 ```
 from __future__ import annotations
 
 import tempfile
 from pathlib import Path
+
+import matplotlib.pyplot as plt
 
 from scikitplot.corpus import (
     HAMLET_TEXT,
@@ -90,545 +62,251 @@ from scikitplot.corpus import (
     RetrievalConfig,
     RuntimePolicy,
     SimpleEnricherSpec,
-    SimpleFrequencyEnricher,
     StorageQuery,
     TextNormalizerConfig,
 )
 
-```
-
-## 1. Use the public Hamlet sample[#](#use-the-public-hamlet-sample "Link to this heading")
-
-`HAMLET_TEXT` is exported directly by [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus"). Keeping a
-small public-domain sample in the submodule makes examples, smoke tests, and
-offline experiments reproducible without copying the same text into every
-gallery file.
-
-The addendum stays local because it exists only to demonstrate
-[`RuntimeCorpus.add`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus.add "scikitplot.corpus.RuntimeCorpus.add") later in this example.
-
-```
-HAMLET_ADDENDUM = """\
-POLONIUS. This business is well ended.
-My liege, and madam, to expostulate
-What majesty should be, what duty is,
-Why day is day, night night, and time is time,
-Were nothing but to waste night, day, and time.
-Therefore, since brevity is the soul of wit,
-And tediousness the limbs and outward flourishes,
-I will be brief.
-
-HAMLET. What a piece of work is a man! How noble in reason,
-how infinite in faculty, in form and moving how express and admirable,
-in action how like an angel, in apprehension how like a god:
-the beauty of the world, the paragon of animals.
-"""
-
-```
-
-## 2. Create temporary real source files[#](#create-temporary-real-source-files "Link to this heading")
-
-The runtime uses the normal file-oriented reader layer. A temporary
-workspace gives us a genuine source path and export destination without
-modifying the gallery source tree.
-
-```
 _WORKSPACE = tempfile.TemporaryDirectory(prefix="scikitplot-hamlet-")
-_WORK_DIR = Path(_WORKSPACE.name)
-_HAMLET_PATH = _WORK_DIR / "hamlet_excerpt.txt"
-_HAMLET_ADDENDUM_PATH = _WORK_DIR / "hamlet_addendum.txt"
-_EXPORT_PATH = _WORK_DIR / "hamlet_corpus.jsonl"
+WORK_DIR = Path(_WORKSPACE.name)
+HAMLET_PATH = WORK_DIR / "hamlet_excerpt.txt"
+HAMLET_PATH.write_text(HAMLET_TEXT, encoding="utf-8")
 
-_HAMLET_PATH.write_text(HAMLET_TEXT, encoding="utf-8")
-_HAMLET_ADDENDUM_PATH.write_text(HAMLET_ADDENDUM, encoding="utf-8")
+#: Network access is never needed here; the policy makes that explicit.
+OFFLINE = RuntimePolicy(allow_network=False)
 
-print("Initial source:", _HAMLET_PATH)
-print("Initial characters:", len(HAMLET_TEXT))
-print("Addendum source:", _HAMLET_ADDENDUM_PATH)
+print("Source:", HAMLET_PATH.name, f"({len(HAMLET_TEXT):,} characters)")
 
 ```
 ```
-Initial source: /tmp/scikitplot-hamlet-f1obszdp/hamlet_excerpt.txt
-Initial characters: 3820
-Addendum source: /tmp/scikitplot-hamlet-f1obszdp/hamlet_addendum.txt
+Source: hamlet_excerpt.txt (3,820 characters)
 
 ```
 
-## 3. Configure the public dependency-free helpers[#](#configure-the-public-dependency-free-helpers "Link to this heading")
+## Step 1: the minimal corpus[#](#step-1-the-minimal-corpus "Link to this heading")
 
-These helpers now belong to [`scikitplot.corpus`](../../apis/scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus"); the gallery does not
-need to define its own hashing embedder or token/keyword enricher.
+A source, a chunker, an embedder and an index are the smallest plan that
+can be searched: an index needs vectors to build from, and
+[`HashEmbedder`](../../modules/generated/scikitplot.corpus.HashEmbedder.html#scikitplot.corpus.HashEmbedder "scikitplot.corpus.HashEmbedder") makes them locally. Paragraph chunks keep each
+speech together.
 
-`SimpleEnricherSpec` is the declarative form accepted directly by
-`FluentCorpus.enricher(...)`. `SimpleFrequencyEnricher` is the direct
-imperative equivalent when an application wants to enrich documents itself.
+In one Python scope, the context manager opens and closes the runtime.
 
 ```
-ENRICHER_SPEC = SimpleEnricherSpec(
-    min_token_length=3,
-    max_keywords=8,
+minimal = (
+    FluentCorpus()
+    .source(HAMLET_PATH)
+    .chunker(ParagraphChunkerConfig(min_length=40, max_length=900))
+    .embedder(HashEmbedder(dimension=256))
+    .index(RetrievalConfig(backend="bruteforce"))
+    .retrieval(RetrievalConfig(match_mode="keyword", top_k=3))
 )
-DIRECT_ENRICHER = SimpleFrequencyEnricher(ENRICHER_SPEC)
-HASH_EMBEDDER = HashEmbedder(dimension=1024)
+print("Validation problems:", minimal.validate())
 
-print("Sample characters:", len(HAMLET_TEXT))
-print("Declarative enricher spec:", ENRICHER_SPEC)
-print("Direct enricher type:", type(DIRECT_ENRICHER).__name__)
-print("Hash embedding dimension:", HASH_EMBEDDER.dimension)
-
-```
-```
-Sample characters: 3820
-Declarative enricher spec: SimpleEnricherSpec(min_token_length=3, max_keywords=8, lowercase=True)
-Direct enricher type: SimpleFrequencyEnricher
-Hash embedding dimension: 1024
+with minimal.materialize(policy=OFFLINE) as rt:
+    built = rt.run()
+    print("Chunks:", built.n_documents)
+    for rank, hit in enumerate(rt.search("ghost father"), start=1):
+        print(f"#{rank} {hit.score:.3f}  {hit.doc.text[:90]!r}")
 
 ```
+```
+Validation problems: []
+Chunks: 12
+#1 3.578  "GHOST. I am thy father's spirit,\nDoom'd for a certain term to walk the night,\nAnd for the "
+#2 1.769  'HAMLET. O all you host of heaven! O earth! What else?\nAnd shall I couple hell? O, fie! Hol'
 
-## 4. Describe the whole corpus with FluentCorpus[#](#describe-the-whole-corpus-with-fluentcorpus "Link to this heading")
+```
 
-`index` and `retrieval` are deliberately separate decisions:
+## Step 2: richer documents and three search modes[#](#step-2-richer-documents-and-three-search-modes "Link to this heading")
 
-* `index` chooses how dense vectors are indexed.
-* `retrieval` chooses how the already-built corpus is queried/fused.
+The same plan with every stage named: a normalizer, a keyword enricher,
+wider vectors and in-memory storage. `index` (how vectors are indexed)
+and `retrieval` (how a query is matched) are separate decisions.
 
-`RetrievalConfig` is still used for both domains in the current transitional
-API, but backend-specific constructor settings now belong in generic
-`index_kwargs` rather than requiring a new top-level field per backend.
+This runtime stays open across the following cells, because a gallery
+turns each `# %%` block into its own notebook cell; it is closed in the
+last cell.
 
 ```
 fluent = (
     FluentCorpus()
-    .source(_HAMLET_PATH)
+    .source(HAMLET_PATH)
     .reader(DocumentReader)
-    .normalizer(
-        TextNormalizerConfig(
-            steps=["unicode", "whitespace"],
-            lowercase=False,
-        )
-    )
+    .normalizer(TextNormalizerConfig(steps=["unicode", "whitespace"], lowercase=False))
     .chunker(
-        ParagraphChunkerConfig(
-            min_length=40,
-            max_length=900,
-            overlap=0,
-            merge_short=True,
-        )
+        ParagraphChunkerConfig(min_length=40, max_length=900, overlap=0, merge_short=True)
     )
-    .enricher(ENRICHER_SPEC)
-    .embedder(HASH_EMBEDDER)
+    .enricher(SimpleEnricherSpec(min_token_length=3, max_keywords=8))
+    .embedder(HashEmbedder(dimension=1024))
     .storage(InMemoryStorage)
-    .index(
-        RetrievalConfig(
-            backend="bruteforce",
-        )
-    )
-    .retrieval(
-        RetrievalConfig(
-            match_mode="hybrid",
-            top_k=4,
-            hybrid_alpha=0.55,
-        )
-    )
+    .index(RetrievalConfig(backend="bruteforce"))
+    .retrieval(RetrievalConfig(match_mode="hybrid", top_k=4, hybrid_alpha=0.55))
     .export(ExportFormat.JSONL)
 )
+print("Configured stages:", fluent.plan().configured)
 
-print(fluent)
-print("Configured domains:", fluent.plan().configured)
-print("Validation problems:", fluent.validate())
-
-```
-```
-<FluentCorpus configured=[source, reader, normalizer, chunker, enricher, embedder, storage, index, retrieval, export] a9e072f99241b0c3038ac0e4822305a41f7bae5a5661c8889ce38adee7587278>
-Configured domains: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
-Validation problems: []
-
-```
-
-## 5. Materialize with an explicit runtime lifecycle[#](#materialize-with-an-explicit-runtime-lifecycle "Link to this heading")
-
-`materialize()` constructs operational components and returns
-[`RuntimeCorpus`](../../modules/generated/scikitplot.corpus.RuntimeCorpus.html#scikitplot.corpus.RuntimeCorpus "scikitplot.corpus.RuntimeCorpus"), but it does ****not**** read `plan.source`. That keeps
-configuration/materialization separate from execution.
-
-`RuntimePolicy` is also explicit. This gallery forbids network sources,
-even though both configured sources are local.
-
-A context manager is ideal when materialize/run/search/export all live in one
-Python scope. This gallery intentionally spans multiple `# %%` cells,
-which become independent cells in the generated notebook. Therefore we keep
-the runtime explicitly open across cells and close it in the final cleanup
-cell. This makes both `Run all` and step-by-step notebook execution safe.
-
-Single-cell/script equivalent:
-
-```
-with fluent.materialize(policy=RuntimePolicy(allow_network=False)) as rt:
-    result = rt.run()
-
-```
-```
-runtime = fluent.materialize(
-    policy=RuntimePolicy(allow_network=False),
-)
-
-print("Runtime type:", type(runtime).__name__)
-print("Plan fingerprint:", runtime.plan_fingerprint)
-print("Documents before run:", len(runtime.documents))
-print("Index before run:", runtime.index)
-
-```
-```
-Runtime type: RuntimeCorpus
-Plan fingerprint: a9e072f99241b0c3038ac0e4822305a41f7bae5a5661c8889ce38adee7587278
-Documents before run: 0
-Index before run: None
-
-```
-
-## 6. Run once: process, store, and build the index[#](#run-once-process-store-and-build-the-index "Link to this heading")
-
-`RuntimeCorpus.run()` owns:
-
-`CorpusPipeline → storage.save_batch → RetrievalIndex.build`.
-
-`run()` is intentionally one-shot. Additional sources belong to
-`add()` so the generation transition is explicit.
-
-```
+runtime = fluent.materialize(policy=OFFLINE)
 result = runtime.run()
-
-print("Pipeline documents:", result.n_documents)
-print("Runtime documents:", len(runtime.documents))
-print("Stored documents:", runtime.storage.count())
-print("Index documents:", runtime.index.n_documents)
-print("Dense index available:", runtime.index.has_embeddings)
-print("Dense backend:", runtime.index.backend_name)
-print("Index generation:", runtime.index_generation)
-
-for i, doc in enumerate(runtime.documents[:3]):
-    print(f"\n[{i}] {doc.text[:180]!r}")
-    print("    keywords:", doc.keywords)
+print("Chunks:", result.n_documents, "| stored:", runtime.storage.count())
+print("Dense index:", runtime.index.backend_name, "| generation:", runtime.index_generation)
+print("Keywords of the first chunk:", runtime.documents[0].keywords)
 
 ```
 ```
-Pipeline documents: 12
-Runtime documents: 12
-Stored documents: 12
-Index documents: 12
-Dense index available: True
-Dense backend: bruteforce
-Index generation: be0a247547f274eb31d8309e44eb9c36e7b2bc0ae5b1711f1b9a8ddd5252a90b
-
-[0] 'THE TRAGEDY OF HAMLET, PRINCE OF DENMARK'
-    keywords: ['denmark', 'hamlet', 'prince', 'the', 'tragedy']
-
-[1] "HAMLET. O that this too too solid flesh would melt,\nThaw, and resolve itself into a dew!\nOr that the Everlasting had not fix'd\nHis canon 'gainst self-slaughter! O God! God!\nHow wea"
-    keywords: ['that', 'and', 'this', 'fie', 'god', 'the', 'too', 'all']
-
-[2] "POLONIUS. Yet here, Laertes? Aboard, aboard, for shame!\nThe wind sits in the shoulder of your sail,\nAnd you are stay'd for. There- my blessing with thee!\nGive thy thoughts no tongu"
-    keywords: ['thy', 'the', 'and', 'but', 'thou', 'aboard', 'any', 'for']
+Configured stages: ['source', 'reader', 'normalizer', 'chunker', 'enricher', 'embedder', 'storage', 'index', 'retrieval', 'export']
+Chunks: 12 | stored: 12
+Dense index: bruteforce | generation: 7385e63524caa5d7e8d7ebf0e47fe5174165458351efc26e52d4ed0042d002cb
+Keywords of the first chunk: ['denmark', 'hamlet', 'prince', 'the', 'tragedy']
 
 ```
 
-## 7. Query storage through RuntimeCorpus[#](#query-storage-through-runtimecorpus "Link to this heading")
+Compare the modes on one question. Keyword search matches words;
+semantic search matches the hashed vectors; hybrid mixes the two with
+`hybrid_alpha`. Retrieval settings change per request, without a
+rebuild.
 
-The runtime exposes the configured storage backend without making the
-user keep a parallel storage variable in sync with the plan.
+Each mode scores on its own scale (keyword is a BM25 score, semantic a
+vector similarity, hybrid a weighted reciprocal-rank fusion of the two
+rankings), so the figure compares the **shape** of each ranking: how far
+the best hit stands out, not one mode’s numbers against another’s.
 
 ```
-ghost_docs = runtime.query_storage(
-    StorageQuery(
-        full_text="ghost",
-        limit=3,
-    )
+QUERY = "to die sleep dream death what comes after"
+MODES = ("keyword", "semantic", "hybrid")
+scores = {}
+for mode in MODES:
+    response = runtime.search(QUERY, config=RetrievalConfig(match_mode=mode, top_k=4))
+    scores[mode] = [hit.score for hit in response]
+    top = response[0].doc.text.replace("\n", " ")[:80] if response else "(no hit)"
+    print(f"{mode:9s} hits={len(response)}  top: {top!r}")
+
+fig, axes = plt.subplots(1, len(MODES), figsize=(9, 3))
+for ax, mode in zip(axes, MODES):
+    values = scores[mode]
+    ax.bar(range(1, len(values) + 1), values, color="tab:blue")
+    ax.set_title(mode)
+    ax.set_xlabel("rank")
+    ax.set_xticks(range(1, len(values) + 1))
+axes[0].set_ylabel("score")
+fig.suptitle(f"Scores for {QUERY!r}", fontsize=10)
+fig.tight_layout()
+plt.show()
+
+```
+![Scores for 'to die sleep dream death what comes after', keyword, semantic, hybrid](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_001.png)
+```
+keyword   hits=3  top: "HAMLET. To be, or not to be- that is the question: Whether 'tis nobler in the mi"
+semantic  hits=4  top: "HAMLET. To be, or not to be- that is the question: Whether 'tis nobler in the mi"
+hybrid    hits=4  top: "HAMLET. To be, or not to be- that is the question: Whether 'tis nobler in the mi"
+
+```
+
+## Step 3: query storage, grow the corpus, export[#](#step-3-query-storage-grow-the-corpus-export "Link to this heading")
+
+Storage answers structured questions without the index:
+
+```
+ghost = runtime.query_storage(StorageQuery(full_text="ghost", limit=3))
+print("Chunks that mention 'ghost':", ghost.total)
+
+```
+```
+Chunks that mention 'ghost': 2
+
+```
+
+`add()` reads a new source, stores its chunks and rebuilds one index
+over every document: a new generation. `run()` is one-shot by design,
+so growth is always explicit.
+
+```
+ADDENDUM_PATH = WORK_DIR / "hamlet_addendum.txt"
+ADDENDUM_PATH.write_text(
+    "POLONIUS. Therefore, since brevity is the soul of wit,\n"
+    "And tediousness the limbs and outward flourishes,\n"
+    "I will be brief.\n\n"
+    "HAMLET. What a piece of work is a man! How noble in reason,\n"
+    "how infinite in faculty, in form and moving how express and admirable.\n",
+    encoding="utf-8",
 )
 
-print("Storage full-text matches:", ghost_docs.total)
-print("Filter support:", ghost_docs.filter_support)
+generation = runtime.index_generation
+added = runtime.add(ADDENDUM_PATH)
+print("New chunks:", added.n_documents, "| total:", len(runtime.documents))
+print("Generation changed:", runtime.index_generation != generation)
+
+hits = runtime.search("brevity soul wit")
+print("Top hit after add:", hits[0].doc.text[:80] if hits else "(no hit)")
 
 ```
 ```
-Storage full-text matches: 2
-Filter support: {'full_text': <FilterSupport.EMULATED: 'emulated'>}
-
-```
-
-## 8. Run a real hybrid search[#](#run-a-real-hybrid-search "Link to this heading")
-
-`RuntimeCorpus.search` automatically embeds semantic/hybrid queries with
-the same embedding engine that was used for corpus documents.
-
-```
-query = "to die sleep dream death what comes after"
-response = runtime.search(query)
-
-print("Query:", query)
-print("Retrieval status:", response.status)
-print("Hits:", len(response))
-
-for rank, hit in enumerate(response, start=1):
-    preview = hit.doc.text.replace("\n", " ")[:170]
-    print(
-        f"\n#{rank} score={hit.score:.6f} "
-        f"mode={hit.match_mode} backend={hit.backend}"
-    )
-    print(preview)
-
-```
-```
-Query: to die sleep dream death what comes after
-Retrieval status: success
-Hits: 4
-
-#1 score=0.016393 mode=hybrid backend=bruteforce
-HAMLET. To be, or not to be- that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune Or to take arms against a sea of
-
-#2 score=0.015737 mode=hybrid backend=bruteforce
-HAMLET. O all you host of heaven! O earth! What else? And shall I couple hell? O, fie! Hold, hold, my heart, And you, my sinews, grow not instant old, But bear me stiffly
-
-#3 score=0.015591 mode=hybrid backend=bruteforce
-OPHELIA. O, what a noble mind is here o'erthrown! The courtier's, soldier's, scholar's, eye, tongue, sword; The expectancy and rose of the fair state, The glass of fashio
-
-#4 score=0.008871 mode=hybrid backend=bruteforce
-HAMLET. O that this too too solid flesh would melt, Thaw, and resolve itself into a dew! Or that the Everlasting had not fix'd His canon 'gainst self-slaughter! O God! Go
-
-```
-
-## 9. Add another source and advance the index generation[#](#add-another-source-and-advance-the-index-generation "Link to this heading")
-
-`add()` processes new source data, appends the resulting documents to
-the runtime, commits them to storage, and rebuilds one coherent index over
-the complete document set.
-
-This is different from calling `run()` twice: `run()` establishes the
-first generation and `add()` makes later growth explicit.
-
-```
-documents_before_add = len(runtime.documents)
-generation_before_add = runtime.index_generation
-
-added = runtime.add(_HAMLET_ADDENDUM_PATH)
-
-documents_after_add = len(runtime.documents)
-generation_after_add = runtime.index_generation
-
-print("Addendum pipeline documents:", added.n_documents)
-print("Documents before add:", documents_before_add)
-print("Documents after add:", documents_after_add)
-print("Stored documents after add:", runtime.storage.count())
-print("Generation before add:", generation_before_add)
-print("Generation after add:", generation_after_add)
-print("Generation changed:", generation_before_add != generation_after_add)
-
-add_response = runtime.search("brevity soul wit tediousness")
-print("Addendum search status:", add_response.status)
-if add_response:
-    print("Addendum top hit:", add_response[0].doc.text[:220])
-
-```
-```
-Addendum pipeline documents: 2
-Documents before add: 12
-Documents after add: 14
-Stored documents after add: 14
-Generation before add: be0a247547f274eb31d8309e44eb9c36e7b2bc0ae5b1711f1b9a8ddd5252a90b
-Generation after add: ba92c74ead0710d16c25768aad6a084c90fab542758c03c695954b7dd43177f1
+New chunks: 2 | total: 14
 Generation changed: True
-Addendum search status: success
-Addendum top hit: POLONIUS. This business is well ended.
-My liege, and madam, to expostulate
-What majesty should be, what duty is,
-Why day is day, night night, and time is time,
-Were nothing but to waste night, day, and time.
-Therefore, s
+Top hit after add: POLONIUS. Therefore, since brevity is the soul of wit,
+And tediousness the limbs
 
 ```
 
-## 10. Override retrieval policy without rebuilding[#](#override-retrieval-policy-without-rebuilding "Link to this heading")
-
-Search policy can change per request while the current index generation
-stays intact. Keyword mode needs no query embedding; semantic mode is
-embedded automatically by `RuntimeCorpus.search`.
+The plan chose JSONL, so export needs only a path. It writes the current
+generation, the added source included.
 
 ```
-keyword_response = runtime.search(
-    "father spirit ghost",
-    config=RetrievalConfig(
-        match_mode="keyword",
-        top_k=3,
-    ),
-)
-
-semantic_response = runtime.search(
-    "mortality dreams after death",
-    config=RetrievalConfig(
-        match_mode="semantic",
-        top_k=3,
-    ),
-)
-
-print("Keyword top hit:")
-if keyword_response:
-    print(keyword_response[0].doc.text[:220])
-
-print("\nSemantic top hit:")
-if semantic_response:
-    print(semantic_response[0].doc.text[:220])
+exported = runtime.export(WORK_DIR / "hamlet_corpus.jsonl", include_embedding=False)
+print("Exported:", exported.name, f"({exported.stat().st_size:,} bytes,",
+      len(runtime.documents), "documents)")
 
 ```
 ```
-Keyword top hit:
-GHOST. I am thy father's spirit,
-Doom'd for a certain term to walk the night,
-And for the day confin'd to fast in fires,
-Till the foul crimes done in my days of nature
-Are burnt and purg'd away.
-I could a tale unfold who
-
-Semantic top hit:
-HAMLET. To be, or not to be- that is the question:
-Whether 'tis nobler in the mind to suffer
-The slings and arrows of outrageous fortune
-Or to take arms against a sea of troubles,
-And by opposing end them. To die- to sle
+Exported: hamlet_corpus.jsonl (34,799 bytes, 14 documents)
 
 ```
 
-## 11. Export the current generation through RuntimeCorpus[#](#export-the-current-generation-through-runtimecorpus "Link to this heading")
+## Step 4: the same corpus on another index backend[#](#step-4-the-same-corpus-on-another-index-backend "Link to this heading")
 
-The plan already selected JSONL, so `runtime.export` only needs the
-output path. Export happens after `add()` and therefore includes the
-complete current runtime generation.
-
-```
-exported = runtime.export(
-    _EXPORT_PATH,
-    include_embedding=False,
-)
-
-print("Exported:", exported)
-print("Bytes:", exported.stat().st_size)
-print("Exported documents:", len(runtime.documents))
-print("First JSONL row:")
-print(exported.read_text(encoding="utf-8").splitlines()[0][:300])
-
-# The runtime intentionally remains open for the following independent gallery
-# cells.  It is closed explicitly in the final cleanup section.
-print("Runtime still open after export:", not runtime.closed)
-
-```
-```
-Exported: /tmp/scikitplot-hamlet-f1obszdp/hamlet_corpus.jsonl
-Bytes: 35811
-Exported documents: 14
-First JSONL row:
-{"schema_version":"3.0","doc_id":"0d4874993c04ef91eab3d6ce118c39876c9d6b24a11086f398699d8cd0896127","input_path":"hamlet_excerpt.txt","chunk_index":0,"text":"THE TRAGEDY OF HAMLET, PRINCE OF DENMARK","section_type":"text","chunking_strategy":"paragraph","language":null,"char_start":0,"char_end":40,"
-Runtime still open after export: True
-
-```
-
-## 12. Configure the same corpus for Annoy with generic index\_kwargs[#](#configure-the-same-corpus-for-annoy-with-generic-index-kwargs "Link to this heading")
-
-Backend-specific constructor options now live in the generic `index_kwargs`
-mapping. The old `annoy_*` fields remain compatible, but new examples
-should prefer the generic form because it scales to other vector backends.
-
-This branch is configuration-only: it validates the immutable plan but does
-not materialize/build Annoy, so native Annoy is not required by the gallery.
+A plan is immutable: `replace_index` returns a new one. Backend options
+go in the generic `index_kwargs` mapping. This plan is only validated,
+so the native Annoy backend is not needed to run the example.
 
 ```
 annoy = fluent.replace_index(
     RetrievalConfig(
         backend="annoy",
-        index_kwargs={
-            "impl": "auto",
-            "metric": "angular",
-            "n_trees": 20,
-            "search_k": -1,
-        },
+        index_kwargs={"impl": "auto", "metric": "angular", "n_trees": 20, "search_k": -1},
     )
 )
-
-print("Portable backend:", fluent.plan().get("index").backend)
-print("Annoy backend:", annoy.plan().get("index").backend)
-print("Annoy constructor kwargs:", annoy.plan().get("index").index_kwargs)
-print("Source unchanged:", annoy.plan().get("source") == fluent.plan().get("source"))
-print("Annoy plan validation:", annoy.validate())
+print("Backend:", fluent.plan().get("index").backend, "→", annoy.plan().get("index").backend)
+print("Index options:", annoy.plan().get("index").index_kwargs)
+print("Same source:", annoy.plan().get("source") == fluent.plan().get("source"))
+print("Validation problems:", annoy.validate())
 
 ```
 ```
-Portable backend: bruteforce
-Annoy backend: annoy
-Annoy constructor kwargs: {'impl': 'auto', 'metric': 'angular', 'n_trees': 20, 'search_k': -1}
-Source unchanged: True
-Annoy plan validation: []
+Backend: bruteforce → annoy
+Index options: {'impl': 'auto', 'metric': 'angular', 'n_trees': 20, 'search_k': -1}
+Same source: True
+Validation problems: []
 
 ```
 
-## 13. Compare the old and new structure[#](#compare-the-old-and-new-structure "Link to this heading")
+## Cleanup[#](#cleanup "Link to this heading")
 
-The mature Corpus components perform the processing, and the reusable sample,
-enrichment, and hashing helpers now live in the submodule too. The gallery
-therefore focuses on composition and lifecycle instead of local helper code.
-
-```
-BEFORE V2
-
-FluentCorpus
-    ↓
-CorpusPlan
-    ↓
-gallery-local materialize_plan()
-    ↓
-gallery-local RuntimeCorpus
-    ↓
-pipeline.run()
-storage.save_batch()
-index.build()
-index.search()
-export_documents()
-
-
-CURRENT
-
-FluentCorpus
-    ↓
-.materialize()
-    ↓
-RuntimeCorpus
-    ↓
-.run()
-.add()
-.query_storage()
-.search()
-.export()
-.close()  # explicit across gallery/notebook cells
-
-```
-
-## 14. Cleanup[#](#cleanup "Link to this heading")
-
-Close runtime-owned resources before deleting the temporary source/export
-workspace. `close()` is idempotent, so rerunning this cleanup cell is safe.
+`close()` is idempotent, so rerunning this cell is safe; the workspace
+goes after the runtime that may hold files in it.
 
 ```
 runtime.close()
-print("Runtime closed:", runtime.closed)
-
 _WORKSPACE.cleanup()
-print("Temporary workspace cleaned.")
+print("Runtime closed:", runtime.closed)
 
 ```
 ```
 Runtime closed: True
-Temporary workspace cleaned.
 
 ```
 
-Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
+Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: bar](../../_tags/plot-type-bar.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 1.002 seconds)
+****Total running time of the script:**** (0 minutes 1.895 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.ipynb)
 
@@ -648,14 +326,14 @@ Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_gl
 
 [Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
+Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
+
+[Write Your Own Corpus Components: a Hamlet Walkthrough](plot_corpus_hamlet_custom_components_script.html)
+
+Write Your Own Corpus Components: a Hamlet Walkthrough![](../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png)
 
 [Configure Corpus with FluentCorpus](plot_corpus_fluent_corpus_script.html)
 
-Configure Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
-
-[Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
-
-Build a Multi-Source WHO Corpus
+Configure Corpus with FluentCorpus
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

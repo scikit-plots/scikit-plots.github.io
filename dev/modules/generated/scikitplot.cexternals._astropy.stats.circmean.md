@@ -1,6 +1,6 @@
 # circmean[#](#circmean "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.circmean(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/circstats.py#L85)[#](#scikitplot.cexternals._astropy.stats.circmean "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.circmean(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L85)[#](#scikitplot.cexternals._astropy.stats.circmean "Link to this definition")
 :   Computes the circular mean angle of an array of circular data.
 
     Parameters:

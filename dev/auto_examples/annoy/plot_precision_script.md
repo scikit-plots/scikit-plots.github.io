@@ -187,15 +187,15 @@ Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [pl
 
 Related examples
 
-![](../../_images/sphx_glr_plot_simple_script_thumb.png)
-
-[Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
-
-Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
 
 [Mmap annoy.AnnoyIndex with examples](plot_mmap_script.html)
 
-Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+Mmap annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+
+[Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
+
+Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 

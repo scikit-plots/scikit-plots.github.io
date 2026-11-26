@@ -1,6 +1,6 @@
 # capability\_report[#](#capability-report "Link to this heading")
 
-scikitplot.corpus.capability\_report(**name**, **\***, **selected=False**, **active=False**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_capabilities.py#L894)[#](#scikitplot.corpus.capability_report "Link to this definition")
+scikitplot.corpus.capability\_report(**name**, **\***, **selected=False**, **active=False**, **registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_capabilities.py#L894)[#](#scikitplot.corpus.capability_report "Link to this definition")
 :   Probe one registered component capability.
 
     Parameters:

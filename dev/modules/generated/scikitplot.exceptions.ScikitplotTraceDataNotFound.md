@@ -1,6 +1,6 @@
 # ScikitplotTraceDataNotFound[#](#scikitplottracedatanotfound "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotTraceDataNotFound(**request\_id=None**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/exceptions.py#L617)[#](#scikitplot.exceptions.ScikitplotTraceDataNotFound "Link to this definition")
+exception scikitplot.exceptions.ScikitplotTraceDataNotFound(**request\_id=None**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L617)[#](#scikitplot.exceptions.ScikitplotTraceDataNotFound "Link to this definition")
 :   Exception thrown when trace data is not found.
 
     Parameters:

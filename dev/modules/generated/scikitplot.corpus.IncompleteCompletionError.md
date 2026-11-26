@@ -1,6 +1,6 @@
 # IncompleteCompletionError[#](#incompletecompletionerror "Link to this heading")
 
-exception scikitplot.corpus.IncompleteCompletionError(**completion**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_llm.py#L165)[#](#scikitplot.corpus.IncompleteCompletionError "Link to this definition")
+exception scikitplot.corpus.IncompleteCompletionError(**completion**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_metrics/_llm.py#L165)[#](#scikitplot.corpus.IncompleteCompletionError "Link to this definition")
 :   A completion that did not end normally (cut off, filtered, refused).
 
     Parameters:

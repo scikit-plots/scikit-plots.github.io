@@ -1,6 +1,6 @@
 # ProbabilityFusion[#](#probabilityfusion "Link to this heading")
 
-class scikitplot.corpus.ProbabilityFusion(**policy**, **calibrators**, **scope=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion "Link to this definition")
+class scikitplot.corpus.ProbabilityFusion(**policy**, **calibrators**, **scope=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion "Link to this definition")
 :   Opt-in probability fusion for hybrid search: a policy and a calibrator per leg.
 
     Parameters:
@@ -52,11 +52,11 @@ class scikitplot.corpus.ProbabilityFusion(**policy**, **calibrators**, **scope=N
     ****Developer.**** The scope is matched by digest, never by label: two
     filters with one label are two scopes.
 
-    calibrators: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion.calibrators "Link to this definition")
+    calibrators: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion.calibrators "Link to this definition")
 
-    policy: [LogOddsFusion](scikitplot.corpus.LogOddsFusion.html#scikitplot.corpus.LogOddsFusion "scikitplot.corpus._logodds_fusion.LogOddsFusion")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion.policy "Link to this definition")
+    policy: [LogOddsFusion](scikitplot.corpus.LogOddsFusion.html#scikitplot.corpus.LogOddsFusion "scikitplot.corpus._logodds_fusion.LogOddsFusion")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_logodds_fusion.py#L428)[#](#scikitplot.corpus.ProbabilityFusion.policy "Link to this definition")
 
-    require\_scope(**scope**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_logodds_fusion.py#L516)[#](#scikitplot.corpus.ProbabilityFusion.require_scope "Link to this definition")
+    require\_scope(**scope**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_logodds_fusion.py#L516)[#](#scikitplot.corpus.ProbabilityFusion.require_scope "Link to this definition")
     :   Refuse an index scope the lexical calibrator was not fitted under.
 
         Parameters:
@@ -73,7 +73,7 @@ class scikitplot.corpus.ProbabilityFusion(**policy**, **calibrators**, **scope=N
         Return type:
         :   None
 
-    runs(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_logodds_fusion.py#L543)[#](#scikitplot.corpus.ProbabilityFusion.runs "Link to this definition")
+    runs(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_logodds_fusion.py#L543)[#](#scikitplot.corpus.ProbabilityFusion.runs "Link to this definition")
     :   Whether the leg named `leg` is retrieved and fused.
 
         Parameters:

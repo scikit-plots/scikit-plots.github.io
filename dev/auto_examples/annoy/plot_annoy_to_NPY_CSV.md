@@ -593,15 +593,15 @@ Tags: [model-workflow: vector-db](../../_tags/model-workflow-vector-db.html) [le
 
 Related examples
 
-![](../../_images/sphx_glr_plot_precision_script_thumb.png)
-
-[Precision annoy.AnnoyIndex with examples](plot_precision_script.html)
-
-Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
+![](../../_images/sphx_glr_plot_Annoy_legacy_c_api_thumb.png)
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+
+[Precision annoy.AnnoyIndex with examples](plot_precision_script.html)
+
+Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
 
 [Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
 

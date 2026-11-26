@@ -1,6 +1,6 @@
 # show\_versions[#](#show-versions "Link to this heading")
 
-scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
+scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/utils/_show_versions.py#L298)[#](#scikitplot.show_versions "Link to this definition")
 :   Print or return debugging information about the system, Python, dependencies, and hardware.
 
     Parameters:
@@ -56,11 +56,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20261115.c051ece
+                   scikitplot: 0.5.dev0+git.20261126.fbd8e1a
                           pip: 26.3
                    setuptools: 84.2.1
-                       cython: 3.3.1
-                        numpy: 2.5.4
+                       cython: 3.3.2
+                        numpy: 2.5.5
                         scipy: 1.18.1
                       aggdraw: 1.4.1
                        pandas: 3.1.1
@@ -89,8 +89,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                  internal_api: openblas
                   num_threads: 36
                        prefix: libscipy_openblas
-                     filepath: /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so
-                      version: 0.3.34.106.0
+                     filepath: /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-4b78795a.so
+                      version: 0.3.34.237.2
               threading_layer: pthreads
                  architecture: SkylakeX
 
@@ -113,11 +113,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
       'is_free_threaded_build': False,
       'is_running_no_gil': False,
       'is_gil_enabled': True},
-     'dependencies': {'scikitplot': '0.5.dev0+git.20261115.c051ece',
+     'dependencies': {'scikitplot': '0.5.dev0+git.20261126.fbd8e1a',
       'pip': '26.3',
       'setuptools': '84.2.1',
-      'cython': '3.3.1',
-      'numpy': '2.5.4',
+      'cython': '3.3.2',
+      'numpy': '2.5.5',
       'scipy': '1.18.1',
       'aggdraw': '1.4.1',
       'pandas': '3.1.1',
@@ -136,8 +136,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
        'internal_api': 'openblas',
        'num_threads': 36,
        'prefix': 'libscipy_openblas',
-       'filepath': '/home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so',
-       'version': '0.3.34.106.0',
+       'filepath': '/home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-4b78795a.so',
+       'version': '0.3.34.237.2',
        'threading_layer': 'pthreads',
        'architecture': 'SkylakeX'}]}
 
@@ -163,11 +163,11 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                is_gil_enabled: True
 
     Python Dependencies:
-                   scikitplot: 0.5.dev0+git.20261115.c051ece
+                   scikitplot: 0.5.dev0+git.20261126.fbd8e1a
                           pip: 26.3
                    setuptools: 84.2.1
-                       cython: 3.3.1
-                        numpy: 2.5.4
+                       cython: 3.3.2
+                        numpy: 2.5.5
                         scipy: 1.18.1
                       aggdraw: 1.4.1
                        pandas: 3.1.1
@@ -196,8 +196,8 @@ scikitplot.show\_versions(**mode='stdout'**)[[source]](https://github.com/scikit
                  internal_api: openblas
                   num_threads: 36
                        prefix: libscipy_openblas
-                     filepath: /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so
-                      version: 0.3.34.106.0
+                     filepath: /home/circleci/.pyenv/versions/3.12.16/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-4b78795a.so
+                      version: 0.3.34.237.2
               threading_layer: pthreads
                  architecture: SkylakeX
 

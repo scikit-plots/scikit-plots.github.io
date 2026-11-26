@@ -1,6 +1,6 @@
 # wants\_json[#](#wants-json "Link to this heading")
 
-scikitplot.\_ipymagic.wants\_json(**argv**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_bridge.py#L201)[#](#scikitplot._ipymagic.wants_json "Link to this definition")
+scikitplot.\_ipymagic.wants\_json(**argv**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_bridge.py#L201)[#](#scikitplot._ipymagic.wants_json "Link to this definition")
 :   Return whether `argv` asks for JSON output (`--format json`).
 
     Parameters:

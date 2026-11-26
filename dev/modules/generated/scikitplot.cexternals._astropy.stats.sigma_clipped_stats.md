@@ -1,6 +1,6 @@
 # sigma\_clipped\_stats[#](#sigma-clipped-stats "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.sigma\_clipped\_stats(**data**, **mask=None**, **mask\_value=None**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **std\_ddof=0**, **axis=None**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1210)[#](#scikitplot.cexternals._astropy.stats.sigma_clipped_stats "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.sigma\_clipped\_stats(**data**, **mask=None**, **mask\_value=None**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **std\_ddof=0**, **axis=None**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L1210)[#](#scikitplot.cexternals._astropy.stats.sigma_clipped_stats "Link to this definition")
 :   Calculate sigma-clipped statistics on the provided data.
 
     Parameters:

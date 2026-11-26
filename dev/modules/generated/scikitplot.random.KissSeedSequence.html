@@ -18,7 +18,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:11:06Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:21:53Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.random.KissSeedSequence","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -933,6 +933,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PipelineGuard.html">PipelineGuard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReadCoverage.html">ReadCoverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CapabilityStatus.html">CapabilityStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.capability_snapshot.html">capability_snapshot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.distribution_version.html">distribution_version</a></li>
@@ -1196,15 +1197,28 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FluentCorpus.html">FluentCorpus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ALTOReader.html">ALTOReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.AudioReader.html">AudioReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CHMReader.html">CHMReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeReader.html">CodeReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LANGUAGES.html">LANGUAGES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CustomReader.html">CustomReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.normalize_extractor_output.html">normalize_extractor_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ImageReader.html">ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LEAN_FLAGS.html">LEAN_FLAGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LeanReader.html">LeanReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MHTMLReader.html">MHTMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NotebookReader.html">NotebookReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.OfficeReader.html">OfficeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.PDFReader.html">PDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.JSONReader.html">JSONReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TOMLReader.html">TOMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YAMLReader.html">YAMLReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.SubtitleReader.html">SubtitleReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CSVReader.html">CSVReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.MarkdownReader.html">MarkdownReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ReSTReader.html">ReSTReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TextReader.html">TextReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.VideoReader.html">VideoReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.HTMLReader.html">HTMLReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.WebReader.html">WebReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.YouTubeReader.html">YouTubeReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TEIReader.html">TEIReader</a></li>
@@ -1212,6 +1226,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveBudgetError.html">ArchiveBudgetError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArchiveNestingError.html">ArchiveNestingError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ZipReader.html">ZipReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.TarReader.html">TarReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ComponentRegistry.html">ComponentRegistry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.registry.html">registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.LegKind.html">LegKind</a></li>
@@ -2046,7 +2061,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>KissSeedSequence<a class="headerlink" href="#kissseedsequence" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissSeedSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">spawn_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_children_spawned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissSeedSequence" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.random.</span></span><span class="sig-name descname"><span class="pre">KissSeedSequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">spawn_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_children_spawned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/random/__init__.py#L"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.random.KissSeedSequence" title="Link to this definition">#</a></dt>
 <dd><p>Seed sequence compatible with numpy.random.SeedSequence.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2129,8 +2144,8 @@ Statistically Good Algorithms for Random Number Generation.”
 </div>
 </div>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="ebb1ee3d-8ffb-4a59-bbb4-96941ac873f1">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ebb1ee3d-8ffb-4a59-bbb4-96941ac873f1','f3aa2f04-45ba-453b-961a-01fda4efe184','2df7c087-4707-49b6-823b-f2682870e341','../../lite/tree/../notebooks/index.html?path=35cc6f30_3207_43cb_a9a1_5810653e79cf.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="1bf27484-efb9-43d4-89b9-7c960ceb2656">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('1bf27484-efb9-43d4-89b9-7c960ceb2656','83ab83e2-d3ee-490a-8342-fb5010188ccd','7bd56e33-be8d-411a-9e3c-576ce9eb64bc','../../lite/tree/../notebooks/index.html?path=c9c0207f_cb14_4e79_b3d2_713451c95559.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">generate_state</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">children</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -2142,7 +2157,7 @@ Statistically Good Algorithms for Random Number Generation.”
 </div>
 </div>
 </div>
-<div id="2df7c087-4707-49b6-823b-f2682870e341" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ebb1ee3d-8ffb-4a59-bbb4-96941ac873f1','2df7c087-4707-49b6-823b-f2682870e341')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ebb1ee3d-8ffb-4a59-bbb4-96941ac873f1','2df7c087-4707-49b6-823b-f2682870e341')">Open In Tab</button></div><div id="f3aa2f04-45ba-453b-961a-01fda4efe184" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="7bd56e33-be8d-411a-9e3c-576ce9eb64bc" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('1bf27484-efb9-43d4-89b9-7c960ceb2656','7bd56e33-be8d-411a-9e3c-576ce9eb64bc')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('1bf27484-efb9-43d4-89b9-7c960ceb2656','7bd56e33-be8d-411a-9e3c-576ce9eb64bc')">Open In Tab</button></div><div id="83ab83e2-d3ee-490a-8342-fb5010188ccd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.deserialize">
 <span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict</span> <span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scikitplot.random.KissSeedSequence.deserialize" title="Link to this definition">#</a></dt>
 <dd><p>Deserialize from dictionary.</p>
@@ -2164,8 +2179,8 @@ Statistically Good Algorithms for Random Number Generation.”
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e2a88c3f-3925-4fa0-bd49-c3ae71e15af9">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e2a88c3f-3925-4fa0-bd49-c3ae71e15af9','d14dc879-66e5-4718-a579-bfea07eae0ff','097947df-69e0-4f73-be4b-0ea6ea1dbe83','../../lite/tree/../notebooks/index.html?path=a0f89c55_20e3_4f74_9933_4f7d1c4f4fd6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="7f7b4e4f-013c-4b78-8818-70990af1114e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7f7b4e4f-013c-4b78-8818-70990af1114e','edd3405e-1944-4341-b751-7562d4b3f9a9','5f7bbb6a-e741-401f-9639-8f1766f91b84','../../lite/tree/../notebooks/index.html?path=1b293c40_fb36_4250_869b_67f4b724a943.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
@@ -2175,7 +2190,7 @@ Statistically Good Algorithms for Random Number Generation.”
 </div>
 </div>
 </div>
-<div id="097947df-69e0-4f73-be4b-0ea6ea1dbe83" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e2a88c3f-3925-4fa0-bd49-c3ae71e15af9','097947df-69e0-4f73-be4b-0ea6ea1dbe83')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e2a88c3f-3925-4fa0-bd49-c3ae71e15af9','097947df-69e0-4f73-be4b-0ea6ea1dbe83')">Open In Tab</button></div><div id="d14dc879-66e5-4718-a579-bfea07eae0ff" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="5f7bbb6a-e741-401f-9639-8f1766f91b84" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7f7b4e4f-013c-4b78-8818-70990af1114e','5f7bbb6a-e741-401f-9639-8f1766f91b84')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7f7b4e4f-013c-4b78-8818-70990af1114e','5f7bbb6a-e741-401f-9639-8f1766f91b84')">Open In Tab</button></div><div id="edd3405e-1944-4341-b751-7562d4b3f9a9" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.from_dict">
@@ -2228,8 +2243,8 @@ If dtype is not uint32 or uint64</p>
 <p>Generates deterministic state from entropy and spawn_key.
 Uses multiplicative congruential generator for mixing.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="9eed90b7-f87e-4928-9923-d9e20ba3536b">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9eed90b7-f87e-4928-9923-d9e20ba3536b','929cc5a0-a0bb-44fe-952d-d37bb0001ee7','6ccf85b3-7f3c-49e4-8620-89b6b9f815ce','../../lite/tree/../notebooks/index.html?path=cac237d6_52e1_4d83_80ed_8a09b37eb68f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="071bf14a-c0b5-44ce-9ba4-8562e0a13085">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('071bf14a-c0b5-44ce-9ba4-8562e0a13085','8c92d1c2-e1f3-45b9-ae40-c4d9e9e70333','bc5623fb-99a5-40f9-a4b4-2f71954c3401','../../lite/tree/../notebooks/index.html?path=bd1f3df7_c6c9_4090_b8b7_8c095b16f1b2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">generate_state</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -2238,7 +2253,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="6ccf85b3-7f3c-49e4-8620-89b6b9f815ce" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9eed90b7-f87e-4928-9923-d9e20ba3536b','6ccf85b3-7f3c-49e4-8620-89b6b9f815ce')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9eed90b7-f87e-4928-9923-d9e20ba3536b','6ccf85b3-7f3c-49e4-8620-89b6b9f815ce')">Open In Tab</button></div><div id="929cc5a0-a0bb-44fe-952d-d37bb0001ee7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="bc5623fb-99a5-40f9-a4b4-2f71954c3401" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('071bf14a-c0b5-44ce-9ba4-8562e0a13085','bc5623fb-99a5-40f9-a4b4-2f71954c3401')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('071bf14a-c0b5-44ce-9ba4-8562e0a13085','bc5623fb-99a5-40f9-a4b4-2f71954c3401')">Open In Tab</button></div><div id="8c92d1c2-e1f3-45b9-ae40-c4d9e9e70333" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.get_params">
@@ -2265,8 +2280,8 @@ Uses multiplicative congruential generator for mixing.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="66bacda1-a33a-42e7-a4d7-7ad789905b41">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('66bacda1-a33a-42e7-a4d7-7ad789905b41','350b0523-0af5-40fa-a1bf-6c30d90f63f7','957d30ce-2185-4208-8438-590ee591ca26','../../lite/tree/../notebooks/index.html?path=b787c008_c237_49d0_ba85_d146e9ab9060.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="327d7dd3-6bac-4343-9739-635a84803fed">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('327d7dd3-6bac-4343-9739-635a84803fed','134ce23e-75c0-44c1-8662-d53a9cd51a9d','ca6b7f15-cf76-41a2-b4b0-de56b9b526b6','../../lite/tree/../notebooks/index.html?path=ca96a726_e2fd_4e3a_89f3_bfd7aede132a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"entropy"</span><span class="p">])</span>
@@ -2275,7 +2290,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="957d30ce-2185-4208-8438-590ee591ca26" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('66bacda1-a33a-42e7-a4d7-7ad789905b41','957d30ce-2185-4208-8438-590ee591ca26')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('66bacda1-a33a-42e7-a4d7-7ad789905b41','957d30ce-2185-4208-8438-590ee591ca26')">Open In Tab</button></div><div id="350b0523-0af5-40fa-a1bf-6c30d90f63f7" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="ca6b7f15-cf76-41a2-b4b0-de56b9b526b6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('327d7dd3-6bac-4343-9739-635a84803fed','ca6b7f15-cf76-41a2-b4b0-de56b9b526b6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('327d7dd3-6bac-4343-9739-635a84803fed','ca6b7f15-cf76-41a2-b4b0-de56b9b526b6')">Open In Tab</button></div><div id="134ce23e-75c0-44c1-8662-d53a9cd51a9d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.get_state">
@@ -2293,8 +2308,8 @@ Uses multiplicative congruential generator for mixing.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="97931714-4619-46f4-9c37-34abb2b40f3d">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('97931714-4619-46f4-9c37-34abb2b40f3d','788caab3-55ac-454e-b2ab-4ab1c0d11dbf','9fde0dc9-25e8-400e-bcaa-bc58ab065ded','../../lite/tree/../notebooks/index.html?path=193b334c_af6f_4360_bcd7_680241216fc6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="dca43793-cb8f-487b-b16d-f431b26bef47">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('dca43793-cb8f-487b-b16d-f431b26bef47','eac17e9c-e18b-46ae-ad4a-ecf0a17c4799','2c99db95-f2d1-48fb-9d4f-e92390e7cbd6','../../lite/tree/../notebooks/index.html?path=2c31708a_6fa6_4004_90fc_8148fe592a33.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"entropy"</span><span class="p">])</span>
@@ -2303,7 +2318,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="9fde0dc9-25e8-400e-bcaa-bc58ab065ded" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('97931714-4619-46f4-9c37-34abb2b40f3d','9fde0dc9-25e8-400e-bcaa-bc58ab065ded')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('97931714-4619-46f4-9c37-34abb2b40f3d','9fde0dc9-25e8-400e-bcaa-bc58ab065ded')">Open In Tab</button></div><div id="788caab3-55ac-454e-b2ab-4ab1c0d11dbf" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="2c99db95-f2d1-48fb-9d4f-e92390e7cbd6" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('dca43793-cb8f-487b-b16d-f431b26bef47','2c99db95-f2d1-48fb-9d4f-e92390e7cbd6')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('dca43793-cb8f-487b-b16d-f431b26bef47','2c99db95-f2d1-48fb-9d4f-e92390e7cbd6')">Open In Tab</button></div><div id="eac17e9c-e18b-46ae-ad4a-ecf0a17c4799" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.serialize">
@@ -2321,8 +2336,8 @@ Uses multiplicative congruential generator for mixing.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="79827bc4-4981-4018-82ac-df5e0a04e929">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('79827bc4-4981-4018-82ac-df5e0a04e929','cef0ed56-2a91-4039-b305-0cf5edbcee96','b27411c7-c83f-461e-972d-6949cbf218a7','../../lite/tree/../notebooks/index.html?path=eb741110_86f6_4603_9d4b_020b8c95803a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="9dacc459-3409-417a-8324-ceb6ef002fb0">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('9dacc459-3409-417a-8324-ceb6ef002fb0','ed19a576-debc-4261-b851-4bac20419689','10e1216e-1422-42e6-909c-f6b9b7a01824','../../lite/tree/../notebooks/index.html?path=a258ffe9_0dc8_4f89_a566_11af9e141b81.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
@@ -2331,7 +2346,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="b27411c7-c83f-461e-972d-6949cbf218a7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('79827bc4-4981-4018-82ac-df5e0a04e929','b27411c7-c83f-461e-972d-6949cbf218a7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('79827bc4-4981-4018-82ac-df5e0a04e929','b27411c7-c83f-461e-972d-6949cbf218a7')">Open In Tab</button></div><div id="cef0ed56-2a91-4039-b305-0cf5edbcee96" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="10e1216e-1422-42e6-909c-f6b9b7a01824" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('9dacc459-3409-417a-8324-ceb6ef002fb0','10e1216e-1422-42e6-909c-f6b9b7a01824')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('9dacc459-3409-417a-8324-ceb6ef002fb0','10e1216e-1422-42e6-909c-f6b9b7a01824')">Open In Tab</button></div><div id="ed19a576-debc-4261-b851-4bac20419689" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.set_params">
@@ -2352,8 +2367,8 @@ Uses multiplicative congruential generator for mixing.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="62286f01-6e8b-4380-89cc-92d1b6056dae">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('62286f01-6e8b-4380-89cc-92d1b6056dae','2eee0d43-e740-43ff-b02c-1aff25f6cc9a','65ba4518-9ef0-413e-8013-aa99b0dcd775','../../lite/tree/../notebooks/index.html?path=78e0db2a_6af3_448e_a3d7_5a66bb77e92c.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="385afc30-d649-4eea-b14b-5ec9a2a25d46">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('385afc30-d649-4eea-b14b-5ec9a2a25d46','f18fabf0-f135-465c-bf3f-95ffff563e54','b083ddb3-3b3a-4b50-93c8-f2d1664f2c40','../../lite/tree/../notebooks/index.html?path=6c99a87a_a415_4f8c_988e_cea237851330.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">entropy</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">entropy</span><span class="p">)</span>
@@ -2362,7 +2377,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="65ba4518-9ef0-413e-8013-aa99b0dcd775" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('62286f01-6e8b-4380-89cc-92d1b6056dae','65ba4518-9ef0-413e-8013-aa99b0dcd775')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('62286f01-6e8b-4380-89cc-92d1b6056dae','65ba4518-9ef0-413e-8013-aa99b0dcd775')">Open In Tab</button></div><div id="2eee0d43-e740-43ff-b02c-1aff25f6cc9a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="b083ddb3-3b3a-4b50-93c8-f2d1664f2c40" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('385afc30-d649-4eea-b14b-5ec9a2a25d46','b083ddb3-3b3a-4b50-93c8-f2d1664f2c40')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('385afc30-d649-4eea-b14b-5ec9a2a25d46','b083ddb3-3b3a-4b50-93c8-f2d1664f2c40')">Open In Tab</button></div><div id="f18fabf0-f135-465c-bf3f-95ffff563e54" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.set_state">
@@ -2389,8 +2404,8 @@ Uses multiplicative congruential generator for mixing.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="e9c0c27a-ab7e-4394-a419-cbb77b3403bd">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e9c0c27a-ab7e-4394-a419-cbb77b3403bd','ab257eda-51bf-4586-9e1b-1c2a44bc625e','6a2304a0-496c-4598-960e-48dc48b1e406','../../lite/tree/../notebooks/index.html?path=d1c7e562_4686_46e3_9918_ba200c3766a4.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="51840c8a-bc47-4725-8dc6-a3d4a507cb4a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('51840c8a-bc47-4725-8dc6-a3d4a507cb4a','0e2796a8-f8ab-490d-bc99-9a2a2d28139a','c6697278-9aa8-4691-bb9d-b0c7ccdc591e','../../lite/tree/../notebooks/index.html?path=24af3756_76f8_460f_842c_be9e4955aa58.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq1</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">seq1</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq2</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -2401,7 +2416,7 @@ Uses multiplicative congruential generator for mixing.</p>
 </div>
 </div>
 </div>
-<div id="6a2304a0-496c-4598-960e-48dc48b1e406" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e9c0c27a-ab7e-4394-a419-cbb77b3403bd','6a2304a0-496c-4598-960e-48dc48b1e406')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('e9c0c27a-ab7e-4394-a419-cbb77b3403bd','6a2304a0-496c-4598-960e-48dc48b1e406')">Open In Tab</button></div><div id="ab257eda-51bf-4586-9e1b-1c2a44bc625e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c6697278-9aa8-4691-bb9d-b0c7ccdc591e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('51840c8a-bc47-4725-8dc6-a3d4a507cb4a','c6697278-9aa8-4691-bb9d-b0c7ccdc591e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('51840c8a-bc47-4725-8dc6-a3d4a507cb4a','c6697278-9aa8-4691-bb9d-b0c7ccdc591e')">Open In Tab</button></div><div id="0e2796a8-f8ab-490d-bc99-9a2a2d28139a" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.spawn">
@@ -2440,8 +2455,8 @@ independence even with identical entropy.</p>
 <p>The spawn tree structure allows for hierarchical parallelization:
 master → workers → tasks, where each level is independent.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="0b1d8db7-1fc7-42c5-95d7-3886e116dac6">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0b1d8db7-1fc7-42c5-95d7-3886e116dac6','ca58bd5a-cb81-4f88-b31d-79f9b73fc0bc','d959e675-5e35-4eef-b8c8-fa09ba2c096a','../../lite/tree/../notebooks/index.html?path=6446a98f_3f5b_4dd1_ac18_ff1ec409adeb.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="47461cfb-6672-4efe-addf-d714f2aac002">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('47461cfb-6672-4efe-addf-d714f2aac002','eb7a02a8-cdee-4bfa-8e05-8d36a853f073','88e137a3-0fd0-42b7-bec5-3edafc2c4a66','../../lite/tree/../notebooks/index.html?path=80f25862_688c_4b65_b2f8_19674d63bcf5.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">children</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">))</span>
@@ -2450,7 +2465,7 @@ master → workers → tasks, where each level is independent.</p>
 </div>
 </div>
 </div>
-<div id="d959e675-5e35-4eef-b8c8-fa09ba2c096a" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0b1d8db7-1fc7-42c5-95d7-3886e116dac6','d959e675-5e35-4eef-b8c8-fa09ba2c096a')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('0b1d8db7-1fc7-42c5-95d7-3886e116dac6','d959e675-5e35-4eef-b8c8-fa09ba2c096a')">Open In Tab</button></div><div id="ca58bd5a-cb81-4f88-b31d-79f9b73fc0bc" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="88e137a3-0fd0-42b7-bec5-3edafc2c4a66" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('47461cfb-6672-4efe-addf-d714f2aac002','88e137a3-0fd0-42b7-bec5-3edafc2c4a66')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('47461cfb-6672-4efe-addf-d714f2aac002','88e137a3-0fd0-42b7-bec5-3edafc2c4a66')">Open In Tab</button></div><div id="eb7a02a8-cdee-4bfa-8e05-8d36a853f073" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py">
@@ -2471,8 +2486,8 @@ master → workers → tasks, where each level is independent.</p>
 <p class="rubric">Notes</p>
 <p>State can be used for serialization and restoration.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="7bd5d00b-41a6-4f6f-aa35-723b81cc9731">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7bd5d00b-41a6-4f6f-aa35-723b81cc9731','ef7be816-61a4-44ec-82cc-553bfe9aed0d','0d74654f-3ebb-4302-b6ed-017380234eba','../../lite/tree/../notebooks/index.html?path=c3bda4fb_8305_4f27_9ede_daae2c391573.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="32e3a3f7-a07a-4992-be0d-2fd8b3414c7e">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('32e3a3f7-a07a-4992-be0d-2fd8b3414c7e','696b5e24-0a86-4001-8861-2f2818fbb831','30e75722-da67-470d-b561-25b236a47cc4','../../lite/tree/../notebooks/index.html?path=ced7d3c9_eb02_4413_8c74_136260318d17.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">KissSeedSequence</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">state</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">state</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Restore with: KissSeedSequence(**state)</span>
@@ -2480,7 +2495,7 @@ master → workers → tasks, where each level is independent.</p>
 </div>
 </div>
 </div>
-<div id="0d74654f-3ebb-4302-b6ed-017380234eba" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7bd5d00b-41a6-4f6f-aa35-723b81cc9731','0d74654f-3ebb-4302-b6ed-017380234eba')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('7bd5d00b-41a6-4f6f-aa35-723b81cc9731','0d74654f-3ebb-4302-b6ed-017380234eba')">Open In Tab</button></div><div id="ef7be816-61a4-44ec-82cc-553bfe9aed0d" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="30e75722-da67-470d-b561-25b236a47cc4" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('32e3a3f7-a07a-4992-be0d-2fd8b3414c7e','30e75722-da67-470d-b561-25b236a47cc4')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('32e3a3f7-a07a-4992-be0d-2fd8b3414c7e','30e75722-da67-470d-b561-25b236a47cc4')">Open In Tab</button></div><div id="696b5e24-0a86-4001-8861-2f2818fbb831" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.random.KissSeedSequence.to_dict">
@@ -2617,7 +2632,7 @@ master → workers → tasks, where each level is independent.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
     
   </p>

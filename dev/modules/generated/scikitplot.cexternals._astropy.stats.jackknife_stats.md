@@ -1,6 +1,6 @@
 # jackknife\_stats[#](#jackknife-stats "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.jackknife\_stats(**data**, **statistic**, **confidence\_level=0.95**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/jackknife.py#L60)[#](#scikitplot.cexternals._astropy.stats.jackknife_stats "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.jackknife\_stats(**data**, **statistic**, **confidence\_level=0.95**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/jackknife.py#L60)[#](#scikitplot.cexternals._astropy.stats.jackknife_stats "Link to this definition")
 :   Performs jackknife estimation on the basis of jackknife resamples.
 
     This function requires [SciPy](https://www.scipy.org/) to be installed.

@@ -7,7 +7,7 @@ With this tag
 * [Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data](../auto_examples/cleanprompt/plot_cleanprompt_notebooks_script.html)
 * [Cleanprompt Packs and Formats: Records, Configs and Whole Folders](../auto_examples/cleanprompt/plot_cleanprompt_packs_formats_script.html)
 * [Cleanprompt from Python: Single Calls and Edge Cases](../auto_examples/cleanprompt/plot_cleanprompt_python_api_script.html)
-* [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
+* [Build and Search a Hamlet Corpus, Step by Step](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v1.html)
 * [Build and Search a Real Hamlet Corpus with FluentCorpus](../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2.html)
 * [Build a Multi-Source WHO Corpus](../auto_examples/corpus/plot_corpus_who_per_file_script.html)

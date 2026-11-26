@@ -1,6 +1,6 @@
 # reliability\_table[#](#reliability-table "Link to this heading")
 
-scikitplot.corpus.reliability\_table(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_calibration.py#L236)[#](#scikitplot.corpus.reliability_table "Link to this definition")
+scikitplot.corpus.reliability\_table(**y\_true**, **y\_prob**, **\***, **n\_bins=10**, **strategy='uniform'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_metrics/_calibration.py#L236)[#](#scikitplot.corpus.reliability_table "Link to this definition")
 :   Per-bin mean predicted probability against observed relevance frequency.
 
     Parameters:

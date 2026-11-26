@@ -1,6 +1,6 @@
 # CachedSearch[#](#cachedsearch "Link to this heading")
 
-class scikitplot.corpus.CachedSearch(**index**, **\***, **max\_entries=1024**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_search_cache.py#L84)[#](#scikitplot.corpus.CachedSearch "Link to this definition")
+class scikitplot.corpus.CachedSearch(**index**, **\***, **max\_entries=1024**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_search_cache.py#L84)[#](#scikitplot.corpus.CachedSearch "Link to this definition")
 :   Exact, bounded cache in front of one retrieval index.
 
     Parameters:
@@ -18,13 +18,13 @@ class scikitplot.corpus.CachedSearch(**index**, **\***, **max\_entries=1024**)[[
     :   * ****index**** (**Any**)
         * ****max\_entries**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
 
-    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_search_cache.py#L213)[#](#scikitplot.corpus.CachedSearch.clear "Link to this definition")
+    clear()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_search_cache.py#L213)[#](#scikitplot.corpus.CachedSearch.clear "Link to this definition")
     :   Drop every stored response.
 
         Return type:
         :   None
 
-    key(**query**, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_search_cache.py#L120)[#](#scikitplot.corpus.CachedSearch.key "Link to this definition")
+    key(**query**, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_search_cache.py#L120)[#](#scikitplot.corpus.CachedSearch.key "Link to this definition")
     :   Return the cache key of a search, or `None` when it cannot be cached.
 
         Returns:
@@ -41,7 +41,7 @@ class scikitplot.corpus.CachedSearch(**index**, **\***, **max\_entries=1024**)[[
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | None
 
-    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_search_cache.py#L164)[#](#scikitplot.corpus.CachedSearch.search "Link to this definition")
+    search(**query**, **\***, **config=None**, **query\_embedding=None**, **filter=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_search_cache.py#L164)[#](#scikitplot.corpus.CachedSearch.search "Link to this definition")
     :   Answer like [`RetrievalIndex.search`](scikitplot.corpus.RetrievalIndex.html#scikitplot.corpus.RetrievalIndex.search "scikitplot.corpus.RetrievalIndex.search"), from the cache when possible.
 
         Returns:
@@ -57,7 +57,7 @@ class scikitplot.corpus.CachedSearch(**index**, **\***, **max\_entries=1024**)[[
         Return type:
         :   [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")
 
-    stats()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_search_cache.py#L208)[#](#scikitplot.corpus.CachedSearch.stats "Link to this definition")
+    stats()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_search_cache.py#L208)[#](#scikitplot.corpus.CachedSearch.stats "Link to this definition")
     :   Count hits, misses, stored, uncacheable and evicted, and the size.
 
         Return type:

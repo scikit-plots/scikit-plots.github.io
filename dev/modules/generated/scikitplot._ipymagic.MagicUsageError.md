@@ -1,6 +1,6 @@
 # MagicUsageError[#](#magicusageerror "Link to this heading")
 
-exception scikitplot.\_ipymagic.MagicUsageError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/_ipymagic/_errors.py#L92)[#](#scikitplot._ipymagic.MagicUsageError "Link to this definition")
+exception scikitplot.\_ipymagic.MagicUsageError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/_ipymagic/_errors.py#L92)[#](#scikitplot._ipymagic.MagicUsageError "Link to this definition")
 :   The magic was called with arguments it cannot run (nothing was run).
 
     Annotation:

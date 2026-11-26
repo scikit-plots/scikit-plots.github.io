@@ -1,6 +1,6 @@
 # FilterBase[#](#filterbase "Link to this heading")
 
-class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L569)[#](#scikitplot.corpus.FilterBase "Link to this definition")
+class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L660)[#](#scikitplot.corpus.FilterBase "Link to this definition")
 :   Abstract base class for corpus document filters.
 
     A filter receives a fully-constructed [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
@@ -43,7 +43,7 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
     ```
     Go BackOpen In Tab
 
-    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L604)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
+    abstractmethod include(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L695)[#](#scikitplot.corpus.FilterBase.include "Link to this definition")
     :   Return `True` if `doc` should be included in the corpus.
 
         Parameters:
@@ -66,3 +66,11 @@ class scikitplot.corpus.FilterBase[[source]](https://github.com/scikit-plots/sci
         should return `False` defensively rather than raising, unless the
         error indicates a programming error (e.g. `None` passed instead of
         a document).
+
+## Gallery examples[#](#gallery-examples "Link to this heading")
+
+![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
+
+[Write Your Own Corpus Components: a Hamlet Walkthrough](../../auto_examples/corpus/plot_corpus_hamlet_custom_components_script.html)
+
+Write Your Own Corpus Components: a Hamlet Walkthrough

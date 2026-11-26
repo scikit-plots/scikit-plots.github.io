@@ -1,6 +1,6 @@
 # SchemaError[#](#schemaerror "Link to this heading")
 
-exception scikitplot.agent.SchemaError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_errors.py#L91)[#](#scikitplot.agent.SchemaError "Link to this definition")
+exception scikitplot.agent.SchemaError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_errors.py#L91)[#](#scikitplot.agent.SchemaError "Link to this definition")
 :   A tool’s parameter schema uses something outside the supported subset.
 
     Annotation:

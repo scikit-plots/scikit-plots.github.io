@@ -1,6 +1,6 @@
 # IncompatibleEmbeddingsError[#](#incompatibleembeddingserror "Link to this heading")
 
-exception scikitplot.corpus.IncompatibleEmbeddingsError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_embedding_manifest.py#L88)[#](#scikitplot.corpus.IncompatibleEmbeddingsError "Link to this definition")
+exception scikitplot.corpus.IncompatibleEmbeddingsError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_embedding_manifest.py#L88)[#](#scikitplot.corpus.IncompatibleEmbeddingsError "Link to this definition")
 :   Raised when vectors from incompatible generations would be combined.
 
     Notes

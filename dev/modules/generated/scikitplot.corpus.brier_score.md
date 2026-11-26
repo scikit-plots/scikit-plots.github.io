@@ -1,6 +1,6 @@
 # brier\_score[#](#brier-score "Link to this heading")
 
-scikitplot.corpus.brier\_score(**y\_true**, **y\_prob**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_metrics/_calibration.py#L157)[#](#scikitplot.corpus.brier_score "Link to this definition")
+scikitplot.corpus.brier\_score(**y\_true**, **y\_prob**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_metrics/_calibration.py#L157)[#](#scikitplot.corpus.brier_score "Link to this definition")
 :   Mean squared difference between probabilities and binary outcomes.
 
     Parameters:

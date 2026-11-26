@@ -1,6 +1,6 @@
 # bayesian\_blocks[#](#bayesian-blocks "Link to this heading")
 
-scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
+scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='events'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/bayesian_blocks.py#L67)[#](#scikitplot.stats.bayesian_blocks "Link to this definition")
 :   Compute optimal segmentation of data with Scargle’s Bayesian Blocks.
 
     This is a flexible implementation of the Bayesian Blocks algorithm
@@ -60,7 +60,7 @@ scikitplot.stats.bayesian\_blocks(**t**, **x=None**, **sigma=None**, **fitness='
     :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
     > **See also**
-    > [`astropy.stats.histogram`](https://docs.astropy.org/en/latest/api/astropy.stats.histogram.html#astropy.stats.histogram "(in Astropy v8.1)")
+    > [`astropy.stats.histogram`](https://docs.astropy.org/en/latest/api/astropy.stats.histogram.html#astropy.stats.histogram "(in Astropy v9.0)")
     :   compute a histogram using bayesian blocks
 
     References

@@ -592,15 +592,15 @@ Tags: [model-workflow: cleanprompt](../../_tags/model-workflow-cleanprompt.html)
 
 Related examples
 
-![](../../_images/sphx_glr_plot_cleanprompt_recipes_script_thumb.png)
-
-[Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](plot_cleanprompt_recipes_script.html)
-
-Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_cleanprompt_cli_usage_script_thumb.png)
+![](../../_images/sphx_glr_plot_cleanprompt_cli_usage_script_thumb.png)
 
 [Cleanprompt on the Command Line: Single Commands and Edge Cases](plot_cleanprompt_cli_usage_script.html)
 
-Cleanprompt on the Command Line: Single Commands and Edge Cases![](../../_images/sphx_glr_plot_cleanprompt_moderate_script_thumb.png)
+Cleanprompt on the Command Line: Single Commands and Edge Cases![](../../_images/sphx_glr_plot_cleanprompt_recipes_script_thumb.png)
+
+[Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents](plot_cleanprompt_recipes_script.html)
+
+Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents![](../../_images/sphx_glr_plot_cleanprompt_moderate_script_thumb.png)
 
 [Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle](plot_cleanprompt_moderate_script.html)
 

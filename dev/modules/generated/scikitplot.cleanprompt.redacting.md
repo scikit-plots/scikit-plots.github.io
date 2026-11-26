@@ -1,6 +1,6 @@
 # redacting[#](#redacting "Link to this heading")
 
-class scikitplot.cleanprompt.redacting(**secrets=None**, **logger=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cleanprompt/_logging.py#L437)[#](#scikitplot.cleanprompt.redacting "Link to this definition")
+class scikitplot.cleanprompt.redacting(**secrets=None**, **logger=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cleanprompt/_logging.py#L437)[#](#scikitplot.cleanprompt.redacting "Link to this definition")
 :   Scrub known secrets from log records for the duration of a block.
 
     Parameters:

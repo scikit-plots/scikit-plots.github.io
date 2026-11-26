@@ -1,6 +1,6 @@
 # biweight\_midvariance[#](#biweight-midvariance "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.biweight\_midvariance(**data**, **c=9.0**, **M=None**, **axis=None**, **modify\_sample\_size=False**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/biweight.py#L308)[#](#scikitplot.cexternals._astropy.stats.biweight_midvariance "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.biweight\_midvariance(**data**, **c=9.0**, **M=None**, **axis=None**, **modify\_sample\_size=False**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/biweight.py#L308)[#](#scikitplot.cexternals._astropy.stats.biweight_midvariance "Link to this definition")
 :   Compute the biweight midvariance.
 
     The biweight midvariance is a robust statistic for determining the
@@ -89,7 +89,7 @@ scikitplot.cexternals.\_astropy.stats.biweight\_midvariance(**data**, **c=9.0**,
     :   [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
     > **See also**
-    > [`biweight_midcovariance`](scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance "scikitplot.cexternals._astropy.stats.biweight_midcovariance"), [`biweight_midcorrelation`](scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html#scikitplot.cexternals._astropy.stats.biweight_midcorrelation "scikitplot.cexternals._astropy.stats.biweight_midcorrelation"), [`astropy.stats.mad_std`](https://docs.astropy.org/en/latest/api/astropy.stats.mad_std.html#astropy.stats.mad_std "(in Astropy v8.1)"), [`astropy.stats.median_absolute_deviation`](https://docs.astropy.org/en/latest/api/astropy.stats.median_absolute_deviation.html#astropy.stats.median_absolute_deviation "(in Astropy v8.1)")
+    > [`biweight_midcovariance`](scikitplot.cexternals._astropy.stats.biweight_midcovariance.html#scikitplot.cexternals._astropy.stats.biweight_midcovariance "scikitplot.cexternals._astropy.stats.biweight_midcovariance"), [`biweight_midcorrelation`](scikitplot.cexternals._astropy.stats.biweight_midcorrelation.html#scikitplot.cexternals._astropy.stats.biweight_midcorrelation "scikitplot.cexternals._astropy.stats.biweight_midcorrelation"), [`astropy.stats.mad_std`](https://docs.astropy.org/en/latest/api/astropy.stats.mad_std.html#astropy.stats.mad_std "(in Astropy v9.0)"), [`astropy.stats.median_absolute_deviation`](https://docs.astropy.org/en/latest/api/astropy.stats.median_absolute_deviation.html#astropy.stats.median_absolute_deviation "(in Astropy v9.0)")
 
     References
 

@@ -1,6 +1,6 @@
 # RipleysKEstimator[#](#ripleyskestimator "Link to this heading")
 
-class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max=None**, **y\_max=None**, **x\_min=None**, **y\_min=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L18)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator "Link to this definition")
+class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max=None**, **y\_max=None**, **x\_min=None**, **y\_min=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L18)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator "Link to this definition")
 :   Estimators for Ripley’s K function for two-dimensional spatial data.
     See [[1]](#rc5e9dbe789b2-1), [[2]](#rc5e9dbe789b2-2), [[3]](#rc5e9dbe789b2-3), [[4]](#rc5e9dbe789b2-4), [[5]](#rc5e9dbe789b2-5) for detailed mathematical and
     practical aspects of those estimators.
@@ -75,7 +75,7 @@ class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max
 
     Go BackOpen In Tab
 
-    Hfunction(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L186)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.Hfunction "Link to this definition")
+    Hfunction(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L186)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.Hfunction "Link to this definition")
     :   Evaluates the H function at `radii`. For parameter description
         see `evaluate` method.
 
@@ -87,7 +87,7 @@ class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
-    Lfunction(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L174)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.Lfunction "Link to this definition")
+    Lfunction(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L174)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.Lfunction "Link to this definition")
     :   Evaluates the L function at `radii`. For parameter description
         see `evaluate` method.
 
@@ -99,7 +99,7 @@ class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
-    \_\_call\_\_(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L138)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.__call__ "Link to this definition")
+    \_\_call\_\_(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L138)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.__call__ "Link to this definition")
     :   Call self as a function.
 
         Parameters:
@@ -113,7 +113,7 @@ class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max
     property area: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.area "Link to this definition")
     :   !! processed by numpydoc !!
 
-    evaluate(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L198)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.evaluate "Link to this definition")
+    evaluate(**data**, **radii**, **mode='none'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L198)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.evaluate "Link to this definition")
     :   Evaluates the Ripley K estimator for a given set of values `radii`.
 
         Parameters:
@@ -169,7 +169,7 @@ class scikitplot.cexternals.\_astropy.stats.RipleysKEstimator(**area**, **x\_max
         Return type:
         :   **NDArray**[[float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")]
 
-    poisson(**radii**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/spatial.py#L157)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.poisson "Link to this definition")
+    poisson(**radii**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/spatial.py#L157)[#](#scikitplot.cexternals._astropy.stats.RipleysKEstimator.poisson "Link to this definition")
     :   Evaluates the Ripley K function for the homogeneous Poisson process,
         also known as Complete State of Randomness (CSR).
 

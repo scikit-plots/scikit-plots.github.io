@@ -130,17 +130,13 @@ Customize Corpus backends and readiness policies![](../../_images/sphx_glr_plot_
 
 Configure Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script.html)
+[Build and Search a Hamlet Corpus, Step by Step](plot_corpus_fluent_hamlet_retrieval_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png)
+Build and Search a Hamlet Corpus, Step by Step![](../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png)
 
-[Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script_v1.html)
+[Write Your Own Corpus Components: a Hamlet Walkthrough](plot_corpus_hamlet_custom_components_script.html)
 
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v2_thumb.png)
-
-[Build and Search a Real Hamlet Corpus with FluentCorpus](plot_corpus_fluent_hamlet_retrieval_script_v2.html)
-
-Build and Search a Real Hamlet Corpus with FluentCorpus![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
+Write Your Own Corpus Components: a Hamlet Walkthrough![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
 
 [Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
 

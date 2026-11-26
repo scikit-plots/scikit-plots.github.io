@@ -1,6 +1,6 @@
 # CutPolicy[#](#cutpolicy "Link to this heading")
 
-class scikitplot.corpus.CutPolicy(**mode**, **threshold=None**, **min\_k=1**, **max\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L79)[#](#scikitplot.corpus.CutPolicy "Link to this definition")
+class scikitplot.corpus.CutPolicy(**mode**, **threshold=None**, **min\_k=1**, **max\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_cut.py#L79)[#](#scikitplot.corpus.CutPolicy "Link to this definition")
 :   A rule for how many ranked hits to keep.
 
     Parameters:
@@ -40,7 +40,7 @@ class scikitplot.corpus.CutPolicy(**mode**, **threshold=None**, **min\_k=1**, **
     ```
     Go BackOpen In Tab
 
-    apply(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L184)[#](#scikitplot.corpus.CutPolicy.apply "Link to this definition")
+    apply(**hits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_cut.py#L184)[#](#scikitplot.corpus.CutPolicy.apply "Link to this definition")
     :   Keep the hits this policy keeps, scored by their `score` attribute.
 
         Parameters:
@@ -57,7 +57,7 @@ class scikitplot.corpus.CutPolicy(**mode**, **threshold=None**, **min\_k=1**, **
         Return type:
         :   [list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]
 
-    cut(**scores**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L139)[#](#scikitplot.corpus.CutPolicy.cut "Link to this definition")
+    cut(**scores**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_cut.py#L139)[#](#scikitplot.corpus.CutPolicy.cut "Link to this definition")
     :   Decide how many of `scores` (best first) to keep.
 
         Parameters:
@@ -82,6 +82,6 @@ class scikitplot.corpus.CutPolicy(**mode**, **threshold=None**, **min\_k=1**, **
 
     min\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 1[#](#scikitplot.corpus.CutPolicy.min_k "Link to this definition")
 
-    mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_cut.py#L79)[#](#scikitplot.corpus.CutPolicy.mode "Link to this definition")
+    mode: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_cut.py#L79)[#](#scikitplot.corpus.CutPolicy.mode "Link to this definition")
 
     threshold: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CutPolicy.threshold "Link to this definition")

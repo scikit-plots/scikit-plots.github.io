@@ -1,6 +1,6 @@
 # TooHardError[#](#tooharderror "Link to this heading")
 
-exception scikitplot.exceptions.TooHardError[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/exceptions.py#L114)[#](#scikitplot.exceptions.TooHardError "Link to this definition")
+exception scikitplot.exceptions.TooHardError[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L114)[#](#scikitplot.exceptions.TooHardError "Link to this definition")
 :   `max_work` was exceeded.
 
     This is raised whenever the maximum number of candidate solutions

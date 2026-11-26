@@ -1,6 +1,6 @@
 # WorkflowGraph[#](#workflowgraph "Link to this heading")
 
-class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***, **channels=None**, **initial=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L574)[#](#scikitplot.agent.WorkflowGraph "Link to this definition")
+class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***, **channels=None**, **initial=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L574)[#](#scikitplot.agent.WorkflowGraph "Link to this definition")
 :   A checked, immutable workflow: nodes, edges and channels.
 
     Parameters:
@@ -73,7 +73,7 @@ class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***,
     property nodes: [Mapping](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][#](#scikitplot.agent.WorkflowGraph.nodes "Link to this definition")
     :   Every node, by name.
 
-    planner(**\***, **artifacts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L896)[#](#scikitplot.agent.WorkflowGraph.planner "Link to this definition")
+    planner(**\***, **artifacts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L896)[#](#scikitplot.agent.WorkflowGraph.planner "Link to this definition")
     :   Return the planner that walks this graph.
 
         Parameters:
@@ -92,7 +92,7 @@ class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***,
         Return type:
         :   [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")[[…], [**Decision**](scikitplot.agent.Decision.html#scikitplot.agent.Decision "scikitplot.agent._state.Decision")]
 
-    replay(**state**, **\***, **artifacts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L921)[#](#scikitplot.agent.WorkflowGraph.replay "Link to this definition")
+    replay(**state**, **\***, **artifacts=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L921)[#](#scikitplot.agent.WorkflowGraph.replay "Link to this definition")
     :   Rebuild where `state` stands in this graph.
 
         Parameters:
@@ -116,7 +116,7 @@ class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***,
         Return type:
         :   [**WorkflowView**](scikitplot.agent.WorkflowView.html#scikitplot.agent.WorkflowView "scikitplot.agent._workflow.WorkflowView")
 
-    classmethod sequence(**\*nodes**, **channels=None**, **initial=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L798)[#](#scikitplot.agent.WorkflowGraph.sequence "Link to this definition")
+    classmethod sequence(**\*nodes**, **channels=None**, **initial=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L798)[#](#scikitplot.agent.WorkflowGraph.sequence "Link to this definition")
     :   Return a graph that runs `nodes` in order and ends at the last one.
 
         Parameters:
@@ -144,7 +144,7 @@ class scikitplot.agent.WorkflowGraph(**start**, **nodes**, **edges=()**, **\***,
     property start: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[#](#scikitplot.agent.WorkflowGraph.start "Link to this definition")
     :   The first node’s name.
 
-    tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/agent/_workflow.py#L884)[#](#scikitplot.agent.WorkflowGraph.tools "Link to this definition")
+    tools()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/agent/_workflow.py#L884)[#](#scikitplot.agent.WorkflowGraph.tools "Link to this definition")
     :   Return every tool the graph calls, for the agent’s toolset.
 
         Returns:

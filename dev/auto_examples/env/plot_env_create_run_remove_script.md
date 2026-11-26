@@ -209,15 +209,15 @@ Tags: [model-workflow: env](../../_tags/model-workflow-env.html) [plot-type: tex
 
 Related examples
 
-![](../../_images/sphx_glr_plot_env_plan_script_thumb.png)
-
-[Plan an Environment Before Building It](plot_env_plan_script.html)
-
-Plan an Environment Before Building It![](../../_images/sphx_glr_plot_env_config_policy_script_thumb.png)
+![](../../_images/sphx_glr_plot_env_config_policy_script_thumb.png)
 
 [One Configuration File for Laptops, CI and Agents](plot_env_config_policy_script.html)
 
-One Configuration File for Laptops, CI and Agents![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_thumb.png)
+One Configuration File for Laptops, CI and Agents![](../../_images/sphx_glr_plot_env_plan_script_thumb.png)
+
+[Plan an Environment Before Building It](plot_env_plan_script.html)
+
+Plan an Environment Before Building It![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_thumb.png)
 
 [Run scikit-plots Commands from a Notebook](../ipymagic/plot_ipymagic_scikit-plots.html)
 

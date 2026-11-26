@@ -1,6 +1,6 @@
 # circstd[#](#circstd "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.circstd(**data**, **axis=None**, **weights=None**, **method='angular'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/circstats.py#L190)[#](#scikitplot.cexternals._astropy.stats.circstd "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.circstd(**data**, **axis=None**, **weights=None**, **method='angular'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L190)[#](#scikitplot.cexternals._astropy.stats.circstd "Link to this definition")
 :   Computes the circular standard deviation of an array of circular data.
 
     The standard deviation implemented here is based on the definitions given

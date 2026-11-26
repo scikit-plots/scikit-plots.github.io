@@ -1,6 +1,6 @@
 # PDFReader[#](#pdfreader "Link to this heading")
 
-class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=268435456**, **max\_text\_chars\_per\_byte=50**, **on\_text\_limit='refuse'**, **password=''**, **max\_file\_bytes=2147483648**, **prefer\_backend=None**, **pdfminer\_kwargs=None**, **pdfminer\_ties='stable'**, **ocr='off'**, **ocr\_min\_chars=1**, **ocr\_max\_pages=64**, **ocr\_engine='tesseract'**, **ocr\_lang=None**, **ocr\_dpi=300**, **pypdfium2\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028)[#](#scikitplot.corpus.PDFReader "Link to this definition")
+class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=268435456**, **max\_text\_chars\_per\_byte=50**, **on\_text\_limit='refuse'**, **password=''**, **max\_file\_bytes=2147483648**, **prefer\_backend=None**, **pdfminer\_kwargs=None**, **pdfminer\_ties='stable'**, **pdfminer\_rotated='words'**, **ocr='off'**, **coverage\_min\_chars=10**, **coverage\_warn\_share=0.8**, **ocr\_min\_chars=1**, **ocr\_max\_pages=64**, **ocr\_engine='tesseract'**, **ocr\_lang=None**, **ocr\_dpi=300**, **pypdfium2\_kwargs=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1228)[#](#scikitplot.corpus.PDFReader "Link to this definition")
 :   PDF document reader with pdfminer.six → pypdf cascade.
 
     Yields one raw chunk per PDF page. Pages that produce no extractable
@@ -26,9 +26,11 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         :   Keyword arguments for `pdfminer.high_level.extract_pages`, used
             when pdfminer.six reads a page; pypdf ignores them. A mapping under
             `"laparams"` is turned into a `pdfminer.layout.LAParams`, so
-            the layout analysis can be set without importing pdfminer.
+            the layout analysis can be set without importing pdfminer; its
+            defaults are pdfminer’s except `all_texts=True` (text inside
+            figures is laid out too), which the mapping may override.
             `password`, `page_numbers` and `maxpages` are set by the
-            reader and are not accepted. `None` uses pdfminer’s defaults.
+            reader and are not accepted. `None` uses those defaults.
             Default: `None`.
 
         ****pdfminer\_ties****{“stable”, “pdfminer”}, optional
@@ -38,6 +40,12 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
             own order, by memory address, which can change from one read to the
             next; for comparing with pdfminer.six itself. Pages without such
             ties are the same either way. See the Notes. Default: `"stable"`.
+
+        ****pdfminer\_rotated****{“words”, “pdfminer”}, optional
+        :   How text drawn at an angle (a chart’s vertical axis label) is read.
+            `"words"`: regrouped into lines in writing order. `"pdfminer"`:
+            pdfminer.six’s own lines, one rotated character per line, for
+            comparing with pdfminer.six itself. Default: `"words"`.
 
         ****ocr****{“off”, “auto”, “always”} or callable, optional
         :   Which pages are rendered and read with OCR. `"off"` reads the text
@@ -125,7 +133,10 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         * ****prefer\_backend**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** **None**)
         * ****pdfminer\_kwargs**** ([**Mapping**](https://docs.python.org/3/library/typing.html#typing.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]** **|** **None**)
         * ****pdfminer\_ties**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
+        * ****pdfminer\_rotated**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****ocr**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]****,** [**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)")**]**)
+        * ****coverage\_min\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
+        * ****coverage\_warn\_share**** ([**float**](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)"))
         * ****ocr\_min\_chars**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)"))
         * ****ocr\_max\_pages**** ([**int**](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") **|** **None**)
         * ****ocr\_engine**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") **|** [**Callable**](https://docs.python.org/3/library/typing.html#typing.Callable "(in Python v3.15)")**[****[**[**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]****,** [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")**]**)
@@ -177,6 +188,14 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
     `pdfminer_ties="pdfminer"` reads in pdfminer.six’s own order instead.
     `pdfminer_kwargs={"laparams": {"boxes_flow": None}}` orders the boxes
     by position without grouping them into columns: reproducible either way.
+
+    ****Text inside figures:**** Design and presentation tools often draw text
+    inside form XObjects, which pdfminer.six lays out as figures. The reader
+    reads that text with pdfminer.six too (finding CX-47): after the page’s
+    own text, each figure where it is drawn, nested figures included, with
+    the same reproducible grouping. `pdfminer_kwargs={"laparams":
+    {"all_texts": False}}` skips the layout analysis inside figures; their
+    characters are then joined as `pdfminer.high_level.extract_text` does.
 
     ****Encrypted PDFs:**** Supply `password` when constructing the reader.
     If the password is wrong, affected pages are skipped with a warning.
@@ -240,13 +259,26 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1171)[#](#scikitplot.corpus.PDFReader.clear_backend_reports "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L1262)[#](#scikitplot.corpus.PDFReader.clear_backend_reports "Link to this definition")
     :   Clear structured optional-backend reports on this reader instance.
 
         Return type:
         :   None
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2041)[#](#scikitplot.corpus.PDFReader.create "Link to this definition")
+    coverage\_min\_chars: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") = 10[#](#scikitplot.corpus.PDFReader.coverage_min_chars "Link to this definition")
+    :   A page whose text has fewer non-space characters than this counts as
+        **empty** in `reader.coverage` (it is still yielded): a scanned page
+        that carries only a printed page number. Default: `10`.
+
+    coverage\_warn\_share: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 0.8[#](#scikitplot.corpus.PDFReader.coverage_warn_share "Link to this definition")
+    :   Share of pages without text (or unreadable) above which a read logs
+        one coverage warning, such as for a PDF of scanned pages that still
+        carry printed page numbers. Higher than the archive default (0.5): a
+        short document with a cover and a blank page is common. After a read,
+        `reader.coverage` holds the counts ([`ReadCoverage`](scikitplot.corpus.ReadCoverage.html#scikitplot.corpus.ReadCoverage "scikitplot.corpus.ReadCoverage")).
+        Default: `0.8`.
+
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L2132)[#](#scikitplot.corpus.PDFReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -468,7 +500,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028)[#](#scikitplot.corpus.PDFReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1228)[#](#scikitplot.corpus.PDFReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.PDFReader.custom_extractor "scikitplot.corpus.PDFReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -510,7 +542,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028)[#](#scikitplot.corpus.PDFReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1228)[#](#scikitplot.corpus.PDFReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -533,7 +565,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PDFReader.filter_ "Link to this definition")
     :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2358)[#](#scikitplot.corpus.PDFReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L2449)[#](#scikitplot.corpus.PDFReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -660,7 +692,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L2554)[#](#scikitplot.corpus.PDFReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L2645)[#](#scikitplot.corpus.PDFReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -761,7 +793,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1510)[#](#scikitplot.corpus.PDFReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L1601)[#](#scikitplot.corpus.PDFReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -806,7 +838,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1427)[#](#scikitplot.corpus.PDFReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1675)[#](#scikitplot.corpus.PDFReader.get_raw_chunks "Link to this definition")
     :   Yield one raw chunk dict per PDF page.
 
         When `prefer_backend="custom"` and [`custom_extractor`](#scikitplot.corpus.PDFReader.custom_extractor "scikitplot.corpus.PDFReader.custom_extractor") is
@@ -859,7 +891,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         Return type:
         :   [**Generator**](https://docs.python.org/3/library/typing.html#typing.Generator "(in Python v3.15)")[[dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**Any**](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")], None, None]
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028)[#](#scikitplot.corpus.PDFReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1228)[#](#scikitplot.corpus.PDFReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -942,9 +974,11 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
     :   Keyword arguments for `pdfminer.high_level.extract_pages`; `None`
         uses pdfminer’s defaults. Default: `None`.
 
+    pdfminer\_rotated: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'words'[#](#scikitplot.corpus.PDFReader.pdfminer_rotated "Link to this definition")
+    :   `"words"` (rotated text regrouped in writing order) or `"pdfminer"`
+        (pdfminer.six’s own lines). Default: `"words"`.
+
     pdfminer\_ties: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = 'stable'[#](#scikitplot.corpus.PDFReader.pdfminer_ties "Link to this definition")
-    :   `"stable"` (same text on every read) or `"pdfminer"` (pdfminer.six’s
-        own order of equally distant text boxes). Default: `"stable"`.
 
     prefer\_backend: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.PDFReader.prefer_backend "Link to this definition")
     :   Force a specific extraction backend. One of `"pdfminer"`, `"pypdf"`,
@@ -957,7 +991,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
     :   Keyword arguments for pypdfium2’s `PdfPage.render`, used for OCR;
         `scale` is set from [`ocr_dpi`](#scikitplot.corpus.PDFReader.ocr_dpi "scikitplot.corpus.PDFReader.ocr_dpi"). Default: `None`.
 
-    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_readers/_pdf.py#L1028)[#](#scikitplot.corpus.PDFReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_readers/_pdf.py#L1228)[#](#scikitplot.corpus.PDFReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -984,7 +1018,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1900)[#](#scikitplot.corpus.PDFReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L1991)[#](#scikitplot.corpus.PDFReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -1006,7 +1040,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1882)[#](#scikitplot.corpus.PDFReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L1973)[#](#scikitplot.corpus.PDFReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -1027,7 +1061,7 @@ class scikitplot.corpus.PDFReader(**input\_path**, **chunker=None**, **filter\_=
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_base.py#L1205)[#](#scikitplot.corpus.PDFReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_base.py#L1296)[#](#scikitplot.corpus.PDFReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:

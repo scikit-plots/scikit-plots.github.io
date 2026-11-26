@@ -1,6 +1,6 @@
 # TaskLevelStatusMessage[#](#tasklevelstatusmessage "Link to this heading")
 
-scikitplot.logging.TaskLevelStatusMessage(**msg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/logging/_logging.py#L1510)[#](#scikitplot.logging.TaskLevelStatusMessage "Link to this definition")
+scikitplot.logging.TaskLevelStatusMessage(**msg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/logging/_logging.py#L1510)[#](#scikitplot.logging.TaskLevelStatusMessage "Link to this definition")
 :   Compatibility wrapper for legacy call sites.
 
     Parameters:

@@ -1,6 +1,6 @@
 # rayleightest[#](#rayleightest "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.rayleightest(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/circstats.py#L402)[#](#scikitplot.cexternals._astropy.stats.rayleightest "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.rayleightest(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L402)[#](#scikitplot.cexternals._astropy.stats.rayleightest "Link to this definition")
 :   Performs the Rayleigh test of uniformity.
 
     This test is used to identify a non-uniform distribution, i.e. it is

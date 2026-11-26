@@ -1,6 +1,6 @@
 # circcorrcoef[#](#circcorrcoef "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.circcorrcoef(**alpha**, **beta**, **axis=None**, **weights\_alpha=None**, **weights\_beta=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/cexternals/_astropy/stats/circstats.py#L333)[#](#scikitplot.cexternals._astropy.stats.circcorrcoef "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.circcorrcoef(**alpha**, **beta**, **axis=None**, **weights\_alpha=None**, **weights\_beta=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/cexternals/_astropy/stats/circstats.py#L333)[#](#scikitplot.cexternals._astropy.stats.circcorrcoef "Link to this definition")
 :   Computes the circular correlation coefficient between two array of
     circular data.
 

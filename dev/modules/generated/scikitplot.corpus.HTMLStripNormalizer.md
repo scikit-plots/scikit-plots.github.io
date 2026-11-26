@@ -1,6 +1,6 @@
 # HTMLStripNormalizer[#](#htmlstripnormalizer "Link to this heading")
 
-class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L346)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
+class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L380)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
 :   Remove HTML and XML tags from the document text.
 
     Two modes are available:
@@ -28,6 +28,16 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
         * ****parser**** ([**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"))
         * ****decode\_entities**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
+    Notes
+
+    ****Regex mode:**** comments go first (`<!-- ... -->`, even holding
+    `<`), then every `<...>` holding no other `<`. So a lone `<` in
+    text keeps what follows it (`x < y and <b>b</b>` gives `x < y and
+    b`), and the cost is linear in the text however many `<` it holds.
+    A tag whose attribute value holds an unescaped `<`
+    (`title="a < b"`) is not recognised and leaves a fragment; use
+    `use_beautifulsoup=True` for markup that needs exact parsing.
+
     Examples
 
     Try it in your browser!
@@ -40,7 +50,7 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L191)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
     :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
@@ -58,7 +68,7 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
-    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_normalizers/_normalizer.py#L387)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_text "Link to this definition")
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_text "Link to this definition")
     :   Strip HTML tags from the text.
 
         Parameters:

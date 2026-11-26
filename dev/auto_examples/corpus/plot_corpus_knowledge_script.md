@@ -41,6 +41,12 @@ The summary near the end compares:
 This makes the example a decision guide rather than a sequence of unrelated
 configuration snippets.
 
+A last section reads a small folder of text files in legacy encodings
+(Turkish, Japanese, Chinese, Korean, Russian) with
+`TextReader(encoding="detect")`, set once for a whole corpus through
+`BuilderConfig(reader_kwargs=...)`, and shows that a glob pattern and the
+folder it names give the same files.
+
 ```
 # Authors: The scikit-plots developers
 # SPDX-License-Identifier: BSD-3-Clause
@@ -59,6 +65,8 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
 from scikitplot.corpus import (
+    BuilderConfig,
+    CorpusBuilder,
     DocumentReader,
     FixedWindowChunker,
     FixedWindowChunkerConfig,
@@ -699,6 +707,101 @@ Semantic chunk metadata keys:
 
 ```
 
+## Read a folder of legacy encodings[#](#read-a-folder-of-legacy-encodings "Link to this heading")
+
+Text that arrives as files is not always UTF-8: archives from many regions
+hold Turkish cp1254, Shift-JIS, GB18030, EUC-KR or KOI8-R. The default
+`TextReader` policy is fixed (byte-order mark, UTF-8, cp1252, latin-1)
+and cannot know them; it decodes them as cp1252 and logs a warning naming
+the file. `encoding="detect"` adds a statistical detector after UTF-8.
+
+`BuilderConfig(reader_kwargs=...)` sets reader options per file
+extension, once, for every reader the builder makes: local files,
+downloads and archive members. Here the folder is written to a temporary
+directory, so the example needs no asset and leaves nothing behind.
+
+```
+import tempfile
+
+LEGACY_SAMPLES = {
+    "cp1254": "Iğdır'da şöyle bir çay içtik, ılık ve güzeldi. Öğretmenler çalışıyor.",
+    "shift_jis": "日本語のテキストです。これは文字コードの確認のための文章です。",
+    "gb18030": "这是一个中文文本文件，用于测试字符编码的检测功能。",
+    "euc_kr": "이것은 한국어 텍스트 파일입니다. 인코딩 감지를 시험합니다.",
+    "koi8_r": "Это русский текст для проверки определения кодировки файла.",
+}
+
+detector_ready = importlib.util.find_spec("charset_normalizer") is not None
+
+with tempfile.TemporaryDirectory() as tmp:
+    folder = Path(tmp) / "legacy"
+    folder.mkdir()
+    for codec, text in LEGACY_SAMPLES.items():
+        (folder / f"{codec}.txt").write_bytes(text.encode(codec))
+
+    # A glob and the folder it names give the same files.
+    from_folder = CorpusBuilder._expand_sources([folder])
+    from_glob = CorpusBuilder._expand_sources([str(folder / "*.txt")])
+    print(f"\nFolder sources: {len(from_folder)}, glob sources: {len(from_glob)}")
+    print("Same files:", sorted(map(str, from_folder)) == sorted(map(str, from_glob)))
+
+    policies = [("default", BuilderConfig(chunker="paragraph"))]
+    if detector_ready:
+        policies.append(
+            (
+                "detect",
+                BuilderConfig(
+                    chunker="paragraph",
+                    reader_kwargs={".txt": {"encoding": "detect"}},
+                ),
+            )
+        )
+    else:
+        print("[SKIP] encoding='detect': charset-normalizer is not installed")
+
+    encoding_rows = []
+    for label, config in policies:
+        result = CorpusBuilder(config).build(str(folder / "*.txt"))
+        texts = {Path(str(d.input_path)).stem: d.text for d in result.documents}
+        for codec, original in LEGACY_SAMPLES.items():
+            got = texts.get(codec, "")
+            # Mojibake can be dropped by the default quality filter: no document.
+            shown = got[:28] if got else "(no document: filtered as noise)"
+            encoding_rows.append((codec, label, original in got, shown))
+
+print("\nLegacy encodings")
+print("=" * 72)
+print(f"{'file':12s} {'policy':8s} {'exact':6s} first characters read")
+print("-" * 72)
+for codec, label, exact, head in encoding_rows:
+    print(f"{codec:12s} {label:8s} {'yes' if exact else 'no':6s} {head}")
+
+# Western single-byte text is ambiguous to a detector (French cp1252 can rank
+# as a Baltic code page); when the region is known, a list policy is exact:
+# BuilderConfig(reader_kwargs={".txt": {"encoding": ["utf-8", "cp1252"]}}).
+
+```
+```
+Folder sources: 5, glob sources: 5
+Same files: True
+
+Legacy encodings
+========================================================================
+file         policy   exact  first characters read
+------------------------------------------------------------------------
+cp1254       default  no     Iðdýr'da þöyle bir çay içtik
+shift_jis    default  no     (no document: filtered as noise)
+gb18030      default  no     (no document: filtered as noise)
+euc_kr       default  no     ÀÌ°ÍÀº ÇÑ±¹¾î ÅØ½ºÆ® ÆÄÀÏÀÔ´
+koi8_r       default  no     üÔÏ ÒÕÓÓËÉÊ ÔÅËÓÔ ÄÌÑ ÐÒÏ×ÅÒ
+cp1254       detect   yes    Iğdır'da şöyle bir çay içtik
+shift_jis    detect   yes    日本語のテキストです。これは文字コードの確認のための文章
+gb18030      detect   yes    这是一个中文文本文件，用于测试字符编码的检测功能。
+euc_kr       detect   yes    이것은 한국어 텍스트 파일입니다. 인코딩 감지를 시
+koi8_r       detect   yes    Это русский текст для провер
+
+```
+
 ## Display the OCR source image[#](#display-the-ocr-source-image "Link to this heading")
 
 The image remains useful even when OCR capability is absent: the gallery can
@@ -740,9 +843,14 @@ A practical starting point is:
 Optional NLP backends should be selected intentionally and pre-provisioned in
 reproducible CI/documentation environments.
 
+Before chunking, make sure the text is right: choose an encoding policy for
+the corpus (`encoding="detect"` for mixed or non-Western archives, an
+explicit list when the region is known) and set it once with
+`BuilderConfig(reader_kwargs=...)`.
+
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: beginner](../../_tags/level-beginner.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 3.832 seconds)
+****Total running time of the script:**** (0 minutes 4.694 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_knowledge_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_knowledge_script.ipynb)
 
@@ -758,15 +866,15 @@ Related examples
 
 [Process an MP3 with Corpus](plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
-
-[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
-
-Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_who_per_file_script_thumb.png)
 
 [Build a Multi-Source WHO Corpus](plot_corpus_who_per_file_script.html)
 
-Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
+Build a Multi-Source WHO Corpus![](../../_images/sphx_glr_plot_corpus_who_youtube_script_thumb.png)
+
+[Process a YouTube Transcript with Corpus](plot_corpus_who_youtube_script.html)
+
+Process a YouTube Transcript with Corpus![](../../_images/sphx_glr_plot_corpus_backend_policy_script_thumb.png)
 
 [Customize Corpus backends and readiness policies](plot_corpus_backend_policy_script.html)
 

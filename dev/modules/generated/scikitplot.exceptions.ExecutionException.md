@@ -1,6 +1,6 @@
 # ExecutionException[#](#executionexception "Link to this heading")
 
-exception scikitplot.exceptions.ExecutionException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/exceptions.py#L484)[#](#scikitplot.exceptions.ExecutionException "Link to this definition")
+exception scikitplot.exceptions.ExecutionException(**message**, **error\_code=0**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/exceptions.py#L484)[#](#scikitplot.exceptions.ExecutionException "Link to this definition")
 :   Exception thrown when executing a project fails.
 
     Annotation:

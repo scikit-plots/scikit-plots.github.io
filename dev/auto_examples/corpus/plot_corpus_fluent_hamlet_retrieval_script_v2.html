@@ -16,7 +16,7 @@
 window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.bd-article","content_selectors":["article.bd-article","article[role=\"main\"]","div[role=\"main\"]","div.document","div.body","main","article","div.bd-article-container article","div.bd-content","div.rst-content","div.content","div.section","div.md-content","article.md-content__inner","div.vp-doc","section.page-inner","article.post-content"],"features":{"markdown_export":true,"view_markdown":true,"ai_chat":true,"mcp_integration":true,"theme_toggle":true,"pdf_export":true,"ai_panel":true},"providers":{"chatgpt":{"enabled":true,"label":"Ask ChatGPT","description":"Ask OpenAI ChatGPT about this page","icon":"chatgpt.svg","url_template":"https://chatgpt.com/?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"gpt-4o","type":"web"},"claude":{"enabled":true,"label":"Ask Claude","description":"Ask Anthropic Claude about this page","icon":"claude.svg","url_template":"https://claude.ai/new?q={prompt}","prompt_template":"Hi! Please read this documentation page: {url}\n\nI have questions about it.","model":"claude-sonnet-4-6","type":"web"},"gemini":{"enabled":true,"label":"Ask Gemini","description":"Ask Google Gemini about this page","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQyODVGNCIgZD0iTTEyIDJsLTEgOUgzbDcuNSA1LjUtMi41IDguNUwxMiAxOWw0IDYtMi41LTguNUwyMSAxMWgtOHoiLz48L3N2Zz4=","url_template":"https://gemini.google.com/app?q={prompt}","prompt_template":"Hi! Please review this documentation content: {url}\n\nI have questions about it.","model":"gemini-2.5-flash","type":"web"}},"mcp_tools":{"vscode":{"enabled":false,"type":"vscode","label":"Connect to VS Code","description":"Install your MCP server directly into VS Code.","icon":"vscode.svg","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"},"claude_desktop":{"enabled":false,"type":"claude_desktop","label":"Connect to Claude","description":"Download and run the Claude MCP bundle.","icon":"claude.svg","mcpb_url":"https://docs.example.com/_static/your-mcpb-config.zip"},"cursor":{"enabled":false,"type":"cursor","label":"Connect to Cursor","description":"Connect the MCP server to Cursor IDE.","icon":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzg4OCIgZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTEgMTVoLTJ2LTZoMnY2em0wLThoLTJWN2gydjJ6Ii8+PC9zdmc+","server_name":"your-docs-mcp-server","server_url":"https://your-docs-mcp-server/sse","transport":"sse"}},"baseUrl":"https://scikit-plots.github.io/dev","intention":null,"customContext":null,"customPromptPrefix":null,"includeRawImage":false,"pdfExportUrl":"https://scikit-plots.github.io/dev","pdfUrlModeToggle":true,"copyMode":"browser","copyModeToggle":true,"conversionRules":[{"name":"admonition","selector":"div.admonition","kind":"admonition","label":""},{"name":"video-embed","selector":"iframe[src]","kind":"video","label":"Video"},{"name":"headerlink","selector":"a.headerlink","kind":"drop","label":""},{"name":"card-header","selector":"div.sd-card-header","kind":"heading","label":""},{"name":"card","selector":"div.sd-card","kind":"passthrough","label":""},{"name":"inheritance-diagram","selector":"img[src*=\"inheritance-\"]","kind":"passthrough","label":""},{"name":"row","selector":"div.sd-row","kind":"passthrough","label":""},{"name":"column","selector":"div.sd-col","kind":"passthrough","label":""},{"name":"container","selector":"div.sd-container-fluid","kind":"passthrough","label":""},{"name":"tab-label","selector":"label.sd-tab-label","kind":"heading","label":""},{"name":"tab-input","selector":"input[name^='sd-tab-set']","kind":"drop","label":""},{"name":"dropdown-summary","selector":"summary.sd-summary-title","kind":"heading","label":""},{"name":"rubric","selector":"p.rubric","kind":"heading","label":""},{"name":"hlist","selector":"table.hlist","kind":"unwrap","label":""},{"name":"topic-title","selector":"p.topic-title","kind":"heading","label":""},{"name":"tab-content","selector":"div.sd-tab-content","kind":"passthrough","label":""},{"name":"button-link","selector":"a.sd-btn","kind":"passthrough","label":""}],"videoEmbedPrefixes":[{"prefix":"https://www.youtube.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://www.youtube-nocookie.com/embed/","watch":"https://youtu.be/","label":"YouTube video"},{"prefix":"https://player.vimeo.com/video/","watch":null,"label":"Vimeo video"}],"peertubePaths":{"embed":"/videos/embed/","watch":"/w/"},"isolationOrigin":"","isolationFramePath":"/ai-assistant-isolated.html","isolationContextMaxChars":200000,"isolationProtocolVersion":"2.0.0","isolationAllowMicrophone":false,"panelTitle":"AI Assistant","panelPlaceholder":"Ask a question about this page\u2026","panelApiEnabled":true,"panelQuickQuestions":["What does this page cover?","Show me a quick usage example.","What are the key parameters?"],"panelPageHelp":true,"panelSpeakBanner":true,"panelMicSpaceShortcut":true,"panelTriggerLabel":"Ask AI","panelStartMinimized":true,"panelTriggerToggle":true,"panelReasoning":false,"panelEffortLevels":[],"panelEffortDefault":"","panelInjectionNotice":true,"panelModelEditing":true,"panelPersist":true,"panelRememberConversation":true,"panelCurrentPageContext":true,"panelFeedbackReviewDefault":true,"panelPageIntegrationDefault":false,"panelShortcut":"Alt+Shift+A","panelApiUrl":"","panelApiModel":"","panelStubModels":true,"panelApiModels":[{"id":"gpt-oss-20b-hf","label":"GPT-OSS 20B (OpenAI/HuggingFace)","provider":"huggingface","model":"openai/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/openai/gpt-oss-20b","description":"OpenAI open-source 20B via HuggingFace Inference API \u2014 OpenAI-compat /v1/chat/completions, SSE streaming enabled."},{"default":true,"id":"Qwen2.5-Coder-7B-Instruct-hf","label":"Qwen2.5-Coder-7B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"Qwen2.5-Coder-32B-Instruct-hf","label":"Qwen2.5-Coder-32B-Instruct (Qwen/HuggingFace)","provider":"huggingface","model":"Qwen/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct","description":"Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). For more:https://github.com/QwenLM"},{"id":"gpt-oss-20b-skplt","label":"GPT-OSS 20B (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/gpt-oss-20b","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/gpt-oss-20b","description":"(future) scikit-plots fine-tune of GPT-OSS-20B \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-7B-Instruct-skplt","label":"Qwen2.5-Coder-7B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-7B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-7B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-7B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"Qwen2.5-Coder-32B-Instruct-skplt","label":"Qwen2.5-Coder-32B-Instruct (scikit-plots/HuggingFace)","provider":"huggingface","model":"scikit-plots/Qwen2.5-Coder-32B-Instruct","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions","info_url":"https://huggingface.co/scikit-plots/Qwen2.5-Coder-32B-Instruct","description":"(future) scikit-plots fine-tune of Qwen2.5-Coder-32B-Instruct \u2014 trained on the full scikit-plots documentation corpus for higher answer accuracy."},{"id":"stub-echo","model":"stub/echo","provider":"custom","label":"Stub \u00b7 echo request","description":"Concise transport diagnostic. Reports request keys, reasoning fields, credential-header presence by safe shape, and secret-pattern findings. No upstream model is called.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-mirror","model":"stub/mirror","provider":"custom","label":"Stub \u00b7 mirror request chain","description":"Advanced security inspector. Shows Boundary A: the bounded browser-to-proxy request actually received, and Boundary B: the effective provider-style AI input after trusted server policy is applied, without forwarding upstream. Includes one-turn files/pages, controls, leakage/injection diagnostics, and safe fingerprints.","reasoning":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-error","model":"stub/error:503","provider":"custom","label":"Stub \u00b7 error 503","description":"Deterministic HTTP 503 response for testing error presentation, retry, and fail-closed request handling. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-hostile","model":"stub/hostile","provider":"custom","label":"Stub \u00b7 hostile output","description":"Replies with inert prompt-injection text, script tags, dangerous links, and malformed markup to exercise renderer and trust boundaries.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-qa","model":"stub/qa","provider":"custom","label":"Stub \u00b7 canned answers","description":"Deterministic fixture replies \u2014 try \"ping\" \u2014 for repeatable UI and multi-turn behaviour tests.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"},{"id":"stub-slow","model":"stub/slow:1500","provider":"custom","label":"Stub \u00b7 slow 1.5 s","description":"Deterministic delayed response for testing loading, cancellation, timeout, streaming, and duplicate-submit behaviour. No upstream model is called.","endpoint":"https://scikit-plots-ai.hf.space/v1/chat/completions"}],"providerColors":{"anthropic":"#c96442","openai":"#74aa9c","google":"#4285f4","mistral":"#ff7000","deepseek":"#4d6bfe","huggingface":"#ff9d00","ollama":"#222222","groq":"#f55036","cerebras":"#8c52ff","together":"#4b5563","fireworks":"#ef4444","sambanova":"#e95b2e","cloudflare":"#f38020","perplexity":"#20b2aa","azure_openai":"#0078d4"},"panelApiStreaming":true,"panelStreamingDefault":true,"panelInlineModelPicker":true,"panelUsagePolicy":true,"panelUsagePolicyTitle":"Usage Policy","panelUsagePolicyHtml":"","panelTerms":true,"panelTermsTitle":"Terms of Service","panelTermsLinkText":"Terms of Service","panelTermsHtml":"","panelShare":true,"panelShareLabel":"Share","panelShareTargets":[{"id":"copy_link","label":"Copy link","url_template":"","icon":"copy-to-clipboard.svg"},{"id":"email","label":"Email","url_template":"mailto:?subject={title}&body={url}","icon":"share.svg"},{"id":"x","label":"X (Twitter)","url_template":"https://twitter.com/intent/tweet?text={title}&url={url}","icon":"share.svg"},{"id":"linkedin","label":"LinkedIn","url_template":"https://www.linkedin.com/sharing/share-offsite/?url={url}","icon":"share.svg"},{"id":"reddit","label":"Reddit","url_template":"https://www.reddit.com/submit?url={url}&title={title}","icon":"share.svg"},{"id":"hacker_news","label":"Hacker News","url_template":"https://news.ycombinator.com/submitlink?u={url}&t={title}","icon":"share.svg"}],"panelSkillGenerator":true,"panelLinks":true,"panelLinksTitle":"Project Links","panelLinksHtml":"","panelSource":true,"panelSourceUrl":"https://github.com/scikit-plots/scikit-plots","panelSourceLabel":"GitHub Source","panelSourceDesc":"Browse, contribute, report issues, and review the scikit-plots source.","panelSourceBtnLabel":"Source","panelSite":true,"panelSiteUrl":"https://scikit-plots.github.io/dev","panelSiteLabel":"Documentation Site","panelSiteDesc":"Explore the scikit-plots API reference and user guide.","panelSiteBtnLabel":"Website","panelDatasetRepo":"scikit-plots/ai-assistant-contributions","panelHfSpaceUrl":"","panelHfSpaceLabel":"HuggingFace Space","panelHfDatasetUrl":"","panelHfDatasetLabel":"HuggingFace Dataset","panelHfEndpointUrl":"","panelHfEndpointLabel":"Active Endpoint","panelHamburger":true,"panelFeedback":true,"panelFeedbackQuestion":"Was this helpful?","panelFeedbackOptions":[],"panelFeedbackScale":[-5,-4,-3,-2,-1,1,2,3,4,5],"panelFeedbackScaleName":"auto","panelFeedbackPlaceholder":"","panelFeedbackSubmit":"Send feedback","panelFeedbackThanks":"Thanks for your feedback!","panelChatPrivacyBanner":true,"panelChatPrivacyText":"","panelChatPrivacyMoreText":"More information","panelActivityTimeline":true,"panelActivityAutoCollapse":true,"panelGeneratedFilePreview":true,"panelPrivacyTitle":"Privacy & Responsibility","panelPrivacyLinkText":"Privacy & Responsibility","panelPrivacyHtml":"","searchBar":true,"searchBarSelector":".bd-sidebar-primary","searchBarMini":false,"searchBarAdaptive":true,"searchBarCollapsedSelector":"","searchBarPosition":"top","panelSearchPlaceholder":"Ask AI about these docs\u2026","allowRuntimeTokens":false,"allowCredentialedFetch":false,"panelGlobalShareTtlDays":30};
 </script>
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-15T09:06:47Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T01:17:35Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script id="sphinx-feedback-config" type="application/json">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script_v2","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -98,7 +98,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <link href="../../_static/scikit-plots-favicon.ico" rel="icon"/>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="plot_corpus_knowledge_script.html" rel="next" title="Compare Corpus Chunking Strategies on OCR Text"/>
+<link href="../../_tags/model-type-classification.html" rel="next" title="My tags: model-type: classification"/>
 <link href="plot_corpus_fluent_hamlet_retrieval_script_v1.html" rel="prev" title="Build and Search a Real Hamlet Corpus with FluentCorpus"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="light dark" name="color-scheme"/>
@@ -155,7 +155,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     APIs Reference
   </a>
 </li>
-<li class="nav-item current active">
+<li class="nav-item">
 <a class="nav-link nav-internal" href="../index.html">
     Tutorials
   </a>
@@ -165,7 +165,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     Learn
   </a>
 </li>
-<li class="nav-item">
+<li class="nav-item current active">
 <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
     Tags
   </a>
@@ -300,7 +300,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     APIs Reference
   </a>
 </li>
-<li class="nav-item current active">
+<li class="nav-item">
 <a class="nav-link nav-internal" href="../index.html">
     Tutorials
   </a>
@@ -310,7 +310,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
     Learn
   </a>
 </li>
-<li class="nav-item">
+<li class="nav-item current active">
 <a class="nav-link nav-internal" href="../../_tags/tagsindex.html">
     Tags
   </a>
@@ -406,68 +406,13 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <div class="sidebar-primary-item">
 <nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
 <p aria-level="1" class="bd-links__title" role="heading">Section Navigation</p>
-<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../00-jupyter_notebooks/index.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../annoy/index.html">Annoy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annoy/s_compile_cpp.html">Compile and run the C++ Annoy with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../array_api/index.html">Array API support</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../calibration/index.html">Calibration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Tags</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/component-model.html">component: model (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../classification/index.html">Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cleanprompt/index.html">Cleanprompt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_advanced_script.html">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/index.html">Clustering</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Corpus</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_backend_policy_script.html">Customize Corpus backends and readiness policies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
-<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_levenshtein_script.html">Use Levenshtein distance with Corpus retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_policy_bundle_script.html">Compose Corpus policies without hiding boundaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cython/index.html">Cython</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/domain-cython.html">domain: cython (11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
@@ -481,100 +426,11 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decile/index.html">Decile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../decomposition/index.html">Decomposition</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../env/index.html">Env</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_config_policy_script.html">One Configuration File for Laptops, CI and Agents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_create_run_remove_script.html">Build, Use and Remove an Environment, Idempotently</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_plan_script.html">Plan an Environment Before Building It</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/index.html">Feature Selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../feature_selection/plot_feature_profiling_and_lineage.html">Profile, route, trace and monitor wide tables</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../impute/index.html">Impute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ipymagic/index.html">IPyMagic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots.html">Run scikit-plots Commands from a Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html">Clean a Prompt in a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_mcp.html">Inspect and Self-test the MCP Server from a Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_profiler.html">Profile a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code></a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../levenshtein/index.html">Levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_backends_script.html">Backend discovery and safe fallback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_basics_script.html">Levenshtein basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_corpus_script.html">Use Levenshtein with Corpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_ranking_script.html">Rank fuzzy matches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../levenshtein/plot_levenshtein_sequences_script.html">Sequences and explicit normalization</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../mcp/index.html">Mcp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../memmap/index.html">MemMap</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Misc</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../mlflow/index.html">MLflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/domain-mlflow.html">domain: mlflow (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nc/index.html">Nc (NumCpp)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../nc/plot_nc_test.html">nc with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preprocessing/index.html">Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preprocessing/plot_dummy_code_encoder.html">Comparing DummyCode Encoder with Other Encoders</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../random/index.html">Random</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../random/plot_kiss_random.html">Enhanced KISS Random Generator - Complete Usage Examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rank_bm25/index.html">Rank-BM25</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../regression/index.html">Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../seaborn/index.html">Seaborn</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stats/index.html">Stats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../visualkeras/index.html">Visualkeras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/domain-neural-network.html">domain: neural network (9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
@@ -584,6 +440,534 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/domain-statistics.html">domain: statistics (5)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/internal-needs-review.html">internal: needs-review (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../devel/guide_document_tag_glossary.html">Tag Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/level-advanced.html">level: advanced (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_advanced_script.html">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html">Write Your Own Corpus Components: a Hamlet Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/level-beginner.html">level: beginner (53)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_create_run_remove_script.html">Build, Use and Remove an Environment, Idempotently</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_plan_script.html">Plan an Environment Before Building It</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots.html">Run scikit-plots Commands from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html">Clean a Prompt in a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_tags/level-intermediate.html">level: intermediate (20)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Hamlet Corpus, Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_config_policy_script.html">One Configuration File for Laptops, CI and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_mcp.html">Inspect and Self-test the MCP Server from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_profiler.html">Profile a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-type-classification.html">model-type: classification (30)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-type-clustering.html">model-type: clustering (3)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-type-regression.html">model-type: regression (3)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-cleanprompt.html">model-workflow: cleanprompt (10)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_advanced_script.html">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html">Clean a Prompt in a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_tags/model-workflow-corpus.html">model-workflow: corpus (11)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Hamlet Corpus, Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html">Write Your Own Corpus Components: a Hamlet Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-env.html">model-workflow: env (3)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_config_policy_script.html">One Configuration File for Laptops, CI and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_create_run_remove_script.html">Build, Use and Remove an Environment, Idempotently</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_plan_script.html">Plan an Environment Before Building It</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-feature-engineering.html">model-workflow: feature engineering (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-impute.html">model-workflow: impute (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-ipymagic.html">model-workflow: ipymagic (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots.html">Run scikit-plots Commands from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html">Clean a Prompt in a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_mcp.html">Inspect and Self-test the MCP Server from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_profiler.html">Profile a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-mcp.html">model-workflow: mcp (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_mcp.html">Inspect and Self-test the MCP Server from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-model-building.html">model-workflow: model building (11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-model-evaluation.html">model-workflow: model evaluation (20)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-model-selection.html">model-workflow: model-selection (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-retrieval.html">model-workflow: retrieval (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/model-workflow-vector-db.html">model-workflow: vector-db (9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-inertia-sum-of-squared-distances.html">plot-type: Inertia (sum of squared distances) (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-pca.html">plot-type: PCA (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-wss-within-cluster-sum-of-squares.html">plot-type: WSS (within-cluster sum of squares) (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-auc.html">plot-type: auc (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-bar.html">plot-type: bar (9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Hamlet Corpus, Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html">Write Your Own Corpus Components: a Hamlet Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-barh.html">plot-type: barh (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-cython.html">plot-type: cython (11)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-decile.html">plot-type: decile (7)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-density.html">plot-type: density (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-eval.html">plot-type: eval (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-heatmap.html">plot-type: heatmap (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-histogram.html">plot-type: histogram (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-line.html">plot-type: line (16)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-model.html">plot-type: model (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-qqplot.html">plot-type: qqplot (2)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-scatter.html">plot-type: scatter (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-silhouette.html">plot-type: silhouette (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_tags/plot-type-text.html">plot-type: text (31)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_advanced_script.html">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_config_policy_script.html">One Configuration File for Laptops, CI and Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_create_run_remove_script.html">Build, Use and Remove an Environment, Idempotently</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../env/plot_env_plan_script.html">Plan an Environment Before Building It</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots.html">Run scikit-plots Commands from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_cleanprompt.html">Clean a Prompt in a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_mcp.html">Inspect and Self-test the MCP Server from a Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipymagic/plot_ipymagic_scikit-plots_profiler.html">Profile a Notebook Cell with <code class="docutils literal notranslate"><span class="pre">%%scikitplot_profile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/plot-type-visualkeras.html">plot-type: visualkeras (9)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/purpose-compare.html">purpose: compare (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_recipes_script.html">Compare the Three Rank-BM25 Scoring Recipes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/purpose-explain.html">purpose: explain (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_sparse_dense_script.html">Sparse Retrieval and Dense BM25 Diagnostics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/purpose-reference.html">purpose: reference (4)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_cli_usage_script.html">Cleanprompt on the Command Line: Single Commands and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_python_api_script.html">Cleanprompt from Python: Single Calls and Edge Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_recipes_script.html">Cleanprompt Recipes: CI Gates, Notebooks, Pipelines and Agents</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../devel/guide_document_tag.html">Documentation Tagging Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../devel/guide_document_tag_glossary.html">Tag Glossary</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_tags/purpose-showcase.html">purpose: showcase (73)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_legacy_c_api.html">annoy.Annoy legacy c-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_Annoy_python_api.html">annoy.Index python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_0benchmark.html">Index (cython) python-api benchmark with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_api.html">Index (cython) python-api with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html">Approximate Nearest Neighbors with Annoy — A Hamlet Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_annoy_to_NPY_CSV.html">annoy.Index to NPY or CSV with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_mmap_script.html">Mmap annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_precision_script.html">Precision annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../annoy/plot_simple_script.html">Simple annoy.AnnoyIndex with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calibration/plot_calibration_script.html">plot_calibration with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_classifier_eval_script.html">plot_classifier_eval with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_confusion_matrix_script.html">plot_confusion_matrix with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_feature_importances_script.html">plot_feature_importances with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_learning_curve_script.html">plot_learning_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_precision_recall_script.html">plot_precision_recall with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classification/plot_roc_script.html">plot_roc_curve with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_advanced_script.html">Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_basics_script.html">Cleanprompt Basics: Hide a Value, Then Get It Back</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_guard_agents_script.html">Cleanprompt as a Gate: Any Model, Any Agent, Nothing Private Leaves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_moderate_script.html">Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_notebooks_script.html">Cleanprompt for Notebooks: Sending an Analysis Without Sending the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cleanprompt/plot_cleanprompt_packs_formats_script.html">Cleanprompt Packs and Formats: Records, Configs and Whole Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_elbow_script.html">plot_elbow with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/plot_silhouette_script.html">plot_silhouette with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_a_tale_of_two_cities_mp3_script.html">Process an MP3 with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_corpus_script.html">Configure Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html">Build and Search a Hamlet Corpus, Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Build and Search a Real Hamlet Corpus with FluentCorpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html">Write Your Own Corpus Components: a Hamlet Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_knowledge_script.html">Compare Corpus Chunking Strategies on OCR Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_per_file_script.html">Build a Multi-Source WHO Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_youtube_script.html">Process a YouTube Transcript with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_corpus_who_zip_script.html">Process a Mixed-Media ZIP Archive with Corpus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_00_quickstart_compile_and_load.html">Cython quickstart: compile_and_load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_01_browse_and_compile_templates.html">Browse and compile templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_02_build_profiles.html">Build profiles: fast-debug, release, annotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_03_cache_and_restart_reuse.html">Cache and restart reuse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_04_pin_alias.html">Pin/Alias: stable handles for cached builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_05_package_examples_multimodule.html">Multi-module package builds (5 package examples)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_06_multifile_support_files.html">Multi-file builds: .pxi includes and external headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_07_cpp_mode_basics.html">C++ mode basics: cppclass and libcpp containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_08_vector_ops_without_numpy.html">Vector ops without NumPy: array(‘d’) + memoryviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_09_workflow_templates_cli.html">Workflow templates (train / hpo / predict) + CLI entry template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cython/plot_cython_template.html">Cython: Realtime compile_and_load (.pyx)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_cumulative_gain_script.html">plot_cumulative_gain with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_ks_statistic_script.html">plot_ks_statistic with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_lift_script.html">plot_lift with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_legacy_script.html">Introduction to modelplotpy (legacy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_modelplotpy_script.html">Introduction to modelplotpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decile/plot_report_script.html">plot_report with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_2d_projection_script.html">plot_pca_2d_projection with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../decomposition/plot_pca_component_variance_script.html">plot_pca_component_variance with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../impute/plot_impute_script.html">annoy impute with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mcp/plot_mcp_corpus_annoy_hamlet_script.html">Serve a Real Hamlet Corpus over MCP with Annoy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memmap/plot_mman.html">Memory-Mapping Showcase – Basic / Medium / Advanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plot_misc_script.html">Misc Showcase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlflow/plot_mlflow.html">MLflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../regression/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_aucplot_script.html">plot_aucplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_decileplot_script.html">plot_decileplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../seaborn/plot_evalplot_script.html">plot_evalplot_script with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_gaussian_mixture_models.html">Gaussian Mixture Models — AIC, AICc, and BIC Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/plot_residuals_distribution_script.html">plot_residuals_distribution with examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_conv_dense.html">Visualkeras: Spam Classification Conv1D Dense Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_ann_dense.html">visualkeras: Spam Dense example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_autoencoder.html">visualkeras: autoencoder example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16.html">visualkeras: custom vgg16 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_custom_vgg16_show_dimension.html">visualkeras: custom vgg16 show dimension example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_efficientnetv2.html">visualkeras: EfficientNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_resnetv2.html">visualkeras: ResNetV2 example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_cnn_vgg.html">visualkeras: custom VGG example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualkeras/plot_dl_nlp_vector_index_db.html">visualkeras: Vector Index DB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/purpose-tutorial.html">purpose: tutorial (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_quickstart_script.html">Rank-BM25 Quick Start with Stable Document IDs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/purpose-workflow.html">purpose: workflow (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rank_bm25/plot_rank_bm25_persistence_script.html">Persist and Reload a Rank-BM25 Index</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_tags/topic-tagging.html">topic: tagging (1)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../devel/guide_document_tag.html">Documentation Tagging Guidelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../devel/guide_document_tag_glossary.html">Tag Glossary</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -607,8 +991,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <i class="fa-solid fa-house"></i>
 </a>
 </li>
-<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Examples</a></li>
-<li class="breadcrumb-item"><a class="nav-link" href="index.html">Corpus</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../_tags/tagsindex.html">Tags overview</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../../_tags/level-intermediate.html">My tags: level: intermediate</a></li>
 <li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Build and Search a Real Hamlet Corpus with FluentCorpus</span></li>
 </ul>
 </nav>
@@ -1245,15 +1629,15 @@ examples.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example takes a real public-domain text excerpt from William Shakespeare's Hamlet and restructures a traditional hand-written retrieval workflow around FluentCorpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_v1_thumb.png"/>
 <p><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script_v1.html"><span class="doc">Build and Search a Real Hamlet Corpus with FluentCorpus</span></a></p>
 <div class="sphx-glr-thumbnail-title">Build and Search a Real Hamlet Corpus with FluentCorpus</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example uses a real public-domain Hamlet excerpt to demonstrate the first-class FluentCorpus runtime workflow."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png"/>
-<p><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html"><span class="doc">Build and Search a Real Hamlet Corpus with FluentCorpus</span></a></p>
-<div class="sphx-glr-thumbnail-title">Build and Search a Real Hamlet Corpus with FluentCorpus</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example builds a searchable corpus from a public-domain Hamlet excerpt with FluentCorpus, starting from the smallest working configuration and adding one capability per step:"><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_fluent_hamlet_retrieval_script.html"><span class="doc">Build and Search a Hamlet Corpus, Step by Step</span></a></p>
+<div class="sphx-glr-thumbnail-title">Build and Search a Hamlet Corpus, Step by Step</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="FluentCorpus is an immutable configuration facade for building a canonical CorpusPlan and, when requested, materializing that plan as a RuntimeCorpus."><img alt="" src="../../_images/sphx_glr_plot_corpus_fluent_corpus_script_thumb.png"/>
 <p><a class="reference internal" href="plot_corpus_fluent_corpus_script.html"><span class="doc">Configure Corpus with FluentCorpus</span></a></p>
 <div class="sphx-glr-thumbnail-title">Configure Corpus with FluentCorpus</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="An example showing the Index class."><img alt="" src="../../_images/sphx_glr_plot_annoy_cython_hamlet_example_thumb.png"/>
-<p><a class="reference internal" href="../annoy/plot_annoy_cython_hamlet_example.html"><span class="doc">Approximate Nearest Neighbors with Annoy — A Hamlet Example</span></a></p>
-<div class="sphx-glr-thumbnail-title">Approximate Nearest Neighbors with Annoy — A Hamlet Example</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="plot_corpus_fluent_hamlet_retrieval_script builds a searchable Hamlet corpus from built-in parts. This example builds it by hand and replaces each part with one written here, to show the contract every part must meet and where a part of your own plugs in:"><img alt="" src="../../_images/sphx_glr_plot_corpus_hamlet_custom_components_script_thumb.png"/>
+<p><a class="reference internal" href="plot_corpus_hamlet_custom_components_script.html"><span class="doc">Write Your Own Corpus Components: a Hamlet Walkthrough</span></a></p>
+<div class="sphx-glr-thumbnail-title">Write Your Own Corpus Components: a Hamlet Walkthrough</div>
 </div></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
 </section>
@@ -1269,10 +1653,10 @@ examples.</p>
 <p class="prev-next-title">Build and Search a Real Hamlet Corpus with FluentCorpus</p>
 </div>
 </a>
-<a class="right-next" href="plot_corpus_knowledge_script.html" title="next page">
+<a class="right-next" href="../../_tags/model-type-classification.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">Compare Corpus Chunking Strategies on OCR Text</p>
+<p class="prev-next-title">My tags: model-type: classification</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -1371,7 +1755,7 @@ examples.</p>
 <div class="footer-item">
 <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261115.c051ece 2026-11-15T09:00Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.fbd8e1a 2026-11-26T01:09Z.
       <br/>
 </p>
 </div>

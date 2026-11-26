@@ -1,6 +1,6 @@
 # plan\_backend\_chain[#](#plan-backend-chain "Link to this heading")
 
-scikitplot.corpus.plan\_backend\_chain(**candidates**, **\***, **policy=None**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/corpus/_backends.py#L452)[#](#scikitplot.corpus.plan_backend_chain "Link to this definition")
+scikitplot.corpus.plan\_backend\_chain(**candidates**, **\***, **policy=None**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/corpus/_backends.py#L452)[#](#scikitplot.corpus.plan_backend_chain "Link to this definition")
 :   Resolve backend order/readiness without executing a backend.
 
     This is suitable for diagnostics, galleries, CI preflight and user-facing

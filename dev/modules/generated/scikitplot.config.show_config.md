@@ -1,6 +1,6 @@
 # show\_config[#](#show-config "Link to this heading")
 
-scikitplot.config.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/c051ecec/scikitplot/config/__config__.py#L189)[#](#scikitplot.config.show_config "Link to this definition")
+scikitplot.config.show\_config(**mode='stdout'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/fbd8e1af/scikitplot/config/__config__.py#L189)[#](#scikitplot.config.show_config "Link to this definition")
 :   Show libraries and system information on which SciPy was built
     and is being used
 
@@ -69,7 +69,7 @@ scikitplot.config.show\_config(**mode='stdout'**)[[source]](https://github.com/s
         commands: cython
         linker: cython
         name: cython
-        version: 3.3.1
+        version: 3.3.2
       fortran:
         commands: gfortran
         linker: ld.bfd

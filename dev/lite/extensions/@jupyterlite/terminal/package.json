@@ -1,6 +1,6 @@
 {
   "name": "@jupyterlite/terminal",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "A terminal for JupyterLite",
   "keywords": [
     "jupyter",
@@ -41,7 +41,7 @@
     "clean": "jlpm clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
-    "clean:labextension": "rimraf jupyterlite_terminal/labextension jupyterlite_terminal/_version.py",
+    "clean:labextension": "rimraf jupyterlite_terminal/labextension jupyterlite_terminal/cockle jupyterlite_terminal/_version.py",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
     "eslint": "jlpm eslint:check --fix",
     "eslint:check": "eslint . --cache",
@@ -64,9 +64,9 @@
     "@jupyterlab/pluginmanager": "^4.5.0",
     "@jupyterlab/services": "^7.5.0",
     "@jupyterlab/settingregistry": "^4.5.0",
-    "@jupyterlite/apputils": "^0.7.0 || ^0.8.0",
-    "@jupyterlite/cockle": "^1.8.0",
-    "@jupyterlite/services": "^0.7.0 || ^0.8.0",
+    "@jupyterlite/apputils": "^0.8.0",
+    "@jupyterlite/cockle": "^1.9.1",
+    "@jupyterlite/services": "^0.8.0",
     "@lumino/coreutils": "^2.2.1",
     "@lumino/signaling": "^2.1.4",
     "coincident": "^4.1.1",
@@ -137,7 +137,7 @@
       }
     },
     "_build": {
-      "load": "static/remoteEntry.597bbfc608f6a941.js",
+      "load": "static/remoteEntry.94d6a4fbd4536c9a.js",
       "extension": "./extension",
       "style": "./style"
     }
