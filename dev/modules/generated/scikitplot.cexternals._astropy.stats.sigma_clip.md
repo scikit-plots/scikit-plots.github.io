@@ -1,6 +1,6 @@
 # sigma\_clip[#](#sigma-clip "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.sigma\_clip(**data**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **axis=None**, **masked=True**, **return\_bounds=False**, **copy=True**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L674)[#](#scikitplot.cexternals._astropy.stats.sigma_clip "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.sigma\_clip(**data**, **sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **axis=None**, **masked=True**, **return\_bounds=False**, **copy=True**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L674)[#](#scikitplot.cexternals._astropy.stats.sigma_clip "Link to this definition")
 :   Perform sigma-clipping on the provided data.
 
     The data will be iterated over, each time rejecting values that are

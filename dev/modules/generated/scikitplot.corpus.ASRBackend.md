@@ -1,6 +1,6 @@
 # ASRBackend[#](#asrbackend "Link to this heading")
 
-class scikitplot.corpus.ASRBackend(**name**, **transcribe**, **capability=None**, **fallback\_exceptions=(<class 'Exception'>**, **)**, **requires\_network=False**, **may\_download=False**, **offline\_capable=False**, **degrades\_on\_failure=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend "Link to this definition")
+class scikitplot.corpus.ASRBackend(**name**, **transcribe**, **capability=None**, **fallback\_exceptions=(<class 'Exception'>**, **)**, **requires\_network=False**, **may\_download=False**, **offline\_capable=False**, **degrades\_on\_failure=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend "Link to this definition")
 :   User-defined ASR backend adapter.
 
     Parameters:
@@ -55,13 +55,13 @@ class scikitplot.corpus.ASRBackend(**name**, **transcribe**, **capability=None**
 
     may\_download: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.ASRBackend.may_download "Link to this definition")
 
-    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend.name "Link to this definition")
+    name: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend.name "Link to this definition")
 
     offline\_capable: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.ASRBackend.offline_capable "Link to this definition")
 
     requires\_network: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.corpus.ASRBackend.requires_network "Link to this definition")
 
-    transcribe: [Callable](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.15)")[[[ASRRequest](scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus._readers._whisper.ASRRequest")], [Iterable](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")[[Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend.transcribe "Link to this definition")
+    transcribe: [Callable](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable "(in Python v3.15)")[[[ASRRequest](scikitplot.corpus.ASRRequest.html#scikitplot.corpus.ASRRequest "scikitplot.corpus._readers._whisper.ASRRequest")], [Iterable](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable "(in Python v3.15)")[[Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")]]][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_whisper.py#L73)[#](#scikitplot.corpus.ASRBackend.transcribe "Link to this definition")
 
 ## Gallery examples[#](#gallery-examples "Link to this heading")
 

@@ -1,6 +1,6 @@
 # register\_corpus\_readers[#](#register-corpus-readers "Link to this heading")
 
-scikitplot.cleanprompt.register\_corpus\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_corpus.py#L355)[#](#scikitplot.cleanprompt.register_corpus_readers "Link to this definition")
+scikitplot.cleanprompt.register\_corpus\_readers()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_corpus.py#L355)[#](#scikitplot.cleanprompt.register_corpus_readers "Link to this definition")
 :   Let corpus read `.docx`, `.xlsx` and `.pptx` with cleanprompt’s reader.
 
     Returns:

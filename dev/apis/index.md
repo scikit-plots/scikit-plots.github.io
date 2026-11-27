@@ -1,6 +1,6 @@
 🌱 Scikit-plots APIs
   
- 0.5.dev0+git.20261126.740e0f5 - November 26, 2026 15:04 UTC
+ 0.5.dev0+git.20261128.0f76614 - November 27, 2026 21:44 UTC
 
 # APIs Reference[#](#apis-reference "Link to this heading")
 
@@ -278,7 +278,9 @@ reference on concepts repeated across the APIs, see glossary-index.
 | [`ANNIndexArtifact`](../modules/generated/scikitplot.corpus.ANNIndexArtifact.html#scikitplot.corpus.ANNIndexArtifact "scikitplot.corpus.ANNIndexArtifact") | A persisted vector index together with its provenance.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`ArtifactError`](../modules/generated/scikitplot.corpus.ArtifactError.html#scikitplot.corpus.ArtifactError "scikitplot.corpus.ArtifactError") | Raised when an artifact is missing, malformed or incompatible.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`ChunkerBase`](../modules/generated/scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") | Abstract base class for all text chunkers.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
+| [`CodeAwareFilter`](../modules/generated/scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus.CodeAwareFilter") | Keep code that is not blank; filter everything else as prose.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`DefaultFilter`](../modules/generated/scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter") | Standard noise filter ported and improved from remarx’s `include_sentence`.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
+| [`NonBlankFilter`](../modules/generated/scikitplot.corpus.NonBlankFilter.html#scikitplot.corpus.NonBlankFilter "scikitplot.corpus.NonBlankFilter") | Keep every document whose text holds a non-whitespace character.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`DocumentReader`](../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus.DocumentReader") | Abstract base class for all format-specific document readers.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`DummyReader`](../modules/generated/scikitplot.corpus.DummyReader.html#scikitplot.corpus.DummyReader "scikitplot.corpus.DummyReader") | A no-op reader that validates source existence and accessibility.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
 | [`FilterBase`](../modules/generated/scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") | Abstract base class for corpus document filters.  [`scikitplot.corpus`](scikitplot.corpus.html#module-scikitplot.corpus "scikitplot.corpus") |
@@ -954,6 +956,10 @@ reference on concepts repeated across the APIs, see glossary-index.
 | [`ANNImputer`](../modules/generated/scikitplot.impute._ann.ANNImputer.html#scikitplot.impute._ann.ANNImputer "scikitplot.impute._ann.ANNImputer") | Approximate K-nearest-neighbours (KNN) imputer with pluggable ANN backends.  [`scikitplot.impute._ann`](scikitplot.impute.html#module-scikitplot.impute._ann "scikitplot.impute._ann") |
 | [`MissingIndicator`](../modules/generated/scikitplot.impute.MissingIndicator.html#scikitplot.impute.MissingIndicator "scikitplot.impute.MissingIndicator") | Binary indicators for missing values.  [`scikitplot.impute`](scikitplot.impute.html#module-scikitplot.impute "scikitplot.impute") |
 | [`SimpleImputer`](../modules/generated/scikitplot.impute.SimpleImputer.html#scikitplot.impute.SimpleImputer "scikitplot.impute.SimpleImputer") | Univariate imputer for completing missing values with simple strategies.  [`scikitplot.impute`](scikitplot.impute.html#module-scikitplot.impute "scikitplot.impute") |
+| `LeanIndex` | Declarations of a Lean project, their audit flags and the names they use.  [`scikitplot.lean`](scikitplot.lean.html#module-scikitplot.lean "scikitplot.lean") |
+| `defined_commands` | Return the command keywords a Lean file’s text defines, with the line of each.  [`scikitplot.lean`](scikitplot.lean.html#module-scikitplot.lean "scikitplot.lean") |
+| `AUDIT_FLAGS` | frozenset() -> empty frozenset object  [`scikitplot.lean`](scikitplot.lean.html#module-scikitplot.lean "scikitplot.lean") |
+| `LEAN_FLAGS` | [`scikitplot.lean`](scikitplot.lean.html#module-scikitplot.lean "scikitplot.lean") |
 | [`BackendInfo`](../modules/generated/scikitplot.levenshtein.BackendInfo.html#scikitplot.levenshtein.BackendInfo "scikitplot.levenshtein.BackendInfo") | Read-only description of one implementation backend.  [`scikitplot.levenshtein`](scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") |
 | [`Match`](../modules/generated/scikitplot.levenshtein.Match.html#scikitplot.levenshtein.Match "scikitplot.levenshtein.Match") | One ranked fuzzy-match result with actual backend provenance.  [`scikitplot.levenshtein`](scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") |
 | [`available_backends`](../modules/generated/scikitplot.levenshtein.available_backends.html#scikitplot.levenshtein.available_backends "scikitplot.levenshtein.available_backends") | Return backend capability records in preferred order.  [`scikitplot.levenshtein`](scikitplot.levenshtein.html#module-scikitplot.levenshtein "scikitplot.levenshtein") |

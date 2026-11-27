@@ -1,6 +1,6 @@
 # WorkflowBranchError[#](#workflowbrancherror "Link to this heading")
 
-exception scikitplot.agent.WorkflowBranchError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_workflow.py#L112)[#](#scikitplot.agent.WorkflowBranchError "Link to this definition")
+exception scikitplot.agent.WorkflowBranchError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_workflow.py#L112)[#](#scikitplot.agent.WorkflowBranchError "Link to this definition")
 :   A branch of a concurrent fan-out raised; the fan-out step failed.
 
     Annotation:

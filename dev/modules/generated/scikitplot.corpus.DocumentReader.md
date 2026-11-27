@@ -1,6 +1,6 @@
 # DocumentReader[#](#documentreader "Link to this heading")
 
-class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader "Link to this definition")
+class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader "Link to this definition")
 :   Abstract base class for all format-specific document readers.
 
     A `DocumentReader` reads a single source file of a known format and
@@ -151,13 +151,13 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1262)[#](#scikitplot.corpus.DocumentReader.clear_backend_reports "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1345)[#](#scikitplot.corpus.DocumentReader.clear_backend_reports "Link to this definition")
     :   Clear structured optional-backend reports on this reader instance.
 
         Return type:
         :   None
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2132)[#](#scikitplot.corpus.DocumentReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2215)[#](#scikitplot.corpus.DocumentReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -379,7 +379,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.DocumentReader.custom_extractor "scikitplot.corpus.DocumentReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -395,6 +395,9 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
 
         ```
         Go BackOpen In Tab
+
+    default\_filter[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L748)[#](#scikitplot.corpus.DocumentReader.default_filter "Link to this definition")
+    :   alias of [`CodeAwareFilter`](scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus._base.CodeAwareFilter")
 
     default\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.DocumentReader.default_language "Link to this definition")
     :   ISO 639-1 language code to assign when the source has no language info.
@@ -421,7 +424,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader.file_type "Link to this definition")
+    file\_type: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader.file_type "Link to this definition")
     :   Single file extension this reader handles (lowercase, including leading
         dot). E.g. `".txt"`, `".xml"`, `".zip"`.
 
@@ -429,7 +432,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         (plural) instead. ****Exactly one**** of `file_type` or `file_types`
         must be defined on every concrete subclass.
 
-    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader.file_types "Link to this definition")
+    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader.file_types "Link to this definition")
     :   List of file extensions this reader handles (lowercase, leading dot).
         Use instead of `file_type` when a single reader class should be
         registered for several extensions — e.g. an image reader for
@@ -442,9 +445,11 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
     :   Override for the `input_path` label in generated documents.
 
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.DocumentReader.filter_ "Link to this definition")
-    :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
+    :   Filter applied after chunking. `None` uses the reader’s
+        [`default_filter`](#scikitplot.corpus.DocumentReader.default_filter "scikitplot.corpus.DocumentReader.default_filter") ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter") unless the reader says
+        otherwise).
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2449)[#](#scikitplot.corpus.DocumentReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2532)[#](#scikitplot.corpus.DocumentReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -571,7 +576,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2645)[#](#scikitplot.corpus.DocumentReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2728)[#](#scikitplot.corpus.DocumentReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -672,7 +677,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1601)[#](#scikitplot.corpus.DocumentReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1684)[#](#scikitplot.corpus.DocumentReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -717,7 +722,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    abstractmethod get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1327)[#](#scikitplot.corpus.DocumentReader.get_raw_chunks "Link to this definition")
+    abstractmethod get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1410)[#](#scikitplot.corpus.DocumentReader.get_raw_chunks "Link to this definition")
     :   Yield raw text chunks with associated metadata from the source file.
 
         Every yielded dict ****must**** contain a `"text"` key mapping to a
@@ -750,7 +755,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         value or a plain string coercible to one. The `"text"` value must
         be a plain string — no XML nodes or bytes.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -789,7 +794,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         `text_truncated=True` (none when the limit falls between chunks) and
         logs a warning either way.
 
-    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L863)[#](#scikitplot.corpus.DocumentReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L937)[#](#scikitplot.corpus.DocumentReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -816,7 +821,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1991)[#](#scikitplot.corpus.DocumentReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2074)[#](#scikitplot.corpus.DocumentReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -838,7 +843,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1973)[#](#scikitplot.corpus.DocumentReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2056)[#](#scikitplot.corpus.DocumentReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -859,7 +864,7 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
         ```
         Go BackOpen In Tab
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1296)[#](#scikitplot.corpus.DocumentReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1379)[#](#scikitplot.corpus.DocumentReader.validate_input "Link to this definition")
     :   Assert that the input file exists and is readable.
 
         Raises:
@@ -893,7 +898,11 @@ class scikitplot.corpus.DocumentReader(**input\_path**, **chunker=None**, **filt
 
 [Process an MP3 with Corpus](../../auto_examples/corpus/plot_corpus_a_tale_of_two_cities_mp3_script.html)
 
-Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
+Process an MP3 with Corpus![](../../_images/sphx_glr_plot_corpus_code_reader_script_thumb.png)
+
+[Read Source Code with CodeReader: from One File to a Whole Project](../../auto_examples/corpus/plot_corpus_code_reader_script.html)
+
+Read Source Code with CodeReader: from One File to a Whole Project![](../../_images/sphx_glr_plot_corpus_fluent_hamlet_retrieval_script_thumb.png)
 
 [Build and Search a Hamlet Corpus, Step by Step](../../auto_examples/corpus/plot_corpus_fluent_hamlet_retrieval_script.html)
 

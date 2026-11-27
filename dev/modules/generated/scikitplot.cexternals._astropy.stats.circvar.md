@@ -1,6 +1,6 @@
 # circvar[#](#circvar "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.circvar(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/circstats.py#L131)[#](#scikitplot.cexternals._astropy.stats.circvar "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.circvar(**data**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/circstats.py#L131)[#](#scikitplot.cexternals._astropy.stats.circvar "Link to this definition")
 :   Computes the circular variance of an array of circular data.
 
     There are some concepts for defining measures of dispersion for circular

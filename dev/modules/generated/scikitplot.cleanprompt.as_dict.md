@@ -1,6 +1,6 @@
 # as\_dict[#](#as-dict "Link to this heading")
 
-scikitplot.cleanprompt.as\_dict(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L329)[#](#scikitplot.cleanprompt.as_dict "Link to this definition")
+scikitplot.cleanprompt.as\_dict(**obj**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L329)[#](#scikitplot.cleanprompt.as_dict "Link to this definition")
 :   Return a JSON-safe, secret-free dictionary for a result object.
 
     Parameters:

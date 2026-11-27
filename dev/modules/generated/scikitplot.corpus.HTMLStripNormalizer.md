@@ -1,6 +1,6 @@
 # HTMLStripNormalizer[#](#htmlstripnormalizer "Link to this heading")
 
-class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L380)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
+class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **parser='html.parser'**, **decode\_entities=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L380)[#](#scikitplot.corpus.HTMLStripNormalizer "Link to this definition")
 :   Remove HTML and XML tags from the document text.
 
     Two modes are available:
@@ -50,7 +50,7 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_doc "Link to this definition")
     :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
@@ -68,7 +68,7 @@ class scikitplot.corpus.HTMLStripNormalizer(**use\_beautifulsoup=False**, **pars
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
-    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_text "Link to this definition")
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L431)[#](#scikitplot.corpus.HTMLStripNormalizer.normalize_text "Link to this definition")
     :   Strip HTML tags from the text.
 
         Parameters:

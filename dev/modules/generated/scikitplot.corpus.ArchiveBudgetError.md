@@ -1,6 +1,6 @@
 # ArchiveBudgetError[#](#archivebudgeterror "Link to this heading")
 
-exception scikitplot.corpus.ArchiveBudgetError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_zip.py#L114)[#](#scikitplot.corpus.ArchiveBudgetError "Link to this definition")
+exception scikitplot.corpus.ArchiveBudgetError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_zip.py#L114)[#](#scikitplot.corpus.ArchiveBudgetError "Link to this definition")
 :   Raised when the members of an archive tree inflate past its extraction budget.
 
     The budget belongs to the top-level archive and is shared by every

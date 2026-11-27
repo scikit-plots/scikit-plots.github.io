@@ -1,6 +1,6 @@
 # RedactionResult[#](#redactionresult "Link to this heading")
 
-class scikitplot.cleanprompt.RedactionResult(**text**, **entries**, **vault**, **stats**, **policy\_fingerprint**, **truncated=False**, **reported=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult "Link to this definition")
+class scikitplot.cleanprompt.RedactionResult(**text**, **entries**, **vault**, **stats**, **policy\_fingerprint**, **truncated=False**, **reported=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult "Link to this definition")
 :   Output of a redaction pass.
 
     Parameters:
@@ -44,7 +44,7 @@ class scikitplot.cleanprompt.RedactionResult(**text**, **entries**, **vault**, *
     > `scikitplot.cleanprompt._engine.restore`
     :   The inverse operation.
 
-    entries: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Entry](scikitplot.cleanprompt.Entry.html#scikitplot.cleanprompt.Entry "scikitplot.cleanprompt._types.Entry"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.entries "Link to this definition")
+    entries: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Entry](scikitplot.cleanprompt.Entry.html#scikitplot.cleanprompt.Entry "scikitplot.cleanprompt._types.Entry"), ...][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.entries "Link to this definition")
 
     property labels: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.cleanprompt.RedactionResult.labels "Link to this definition")
     :   Every placeholder label issued, in order.
@@ -52,13 +52,13 @@ class scikitplot.cleanprompt.RedactionResult(**text**, **entries**, **vault**, *
         Type:
         :   Tuple of [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    policy\_fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.policy_fingerprint "Link to this definition")
+    policy\_fingerprint: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.policy_fingerprint "Link to this definition")
 
     reported: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[Span](scikitplot.cleanprompt.Span.html#scikitplot.cleanprompt.Span "scikitplot.cleanprompt._types.Span"), ...] = ()[#](#scikitplot.cleanprompt.RedactionResult.reported "Link to this definition")
 
-    stats: [Stats](scikitplot.cleanprompt.Stats.html#scikitplot.cleanprompt.Stats "scikitplot.cleanprompt._types.Stats")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.stats "Link to this definition")
+    stats: [Stats](scikitplot.cleanprompt.Stats.html#scikitplot.cleanprompt.Stats "scikitplot.cleanprompt._types.Stats")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.stats "Link to this definition")
 
-    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L260)[#](#scikitplot.cleanprompt.RedactionResult.summary "Link to this definition")
+    summary()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L260)[#](#scikitplot.cleanprompt.RedactionResult.summary "Link to this definition")
     :   Return a one-line, secret-free description of this pass.
 
         Returns:
@@ -75,8 +75,8 @@ class scikitplot.cleanprompt.RedactionResult(**text**, **entries**, **vault**, *
         echoes every secret to the terminal and therefore into shell history and
         any captured log. This deliberately names categories and counts only.
 
-    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.text "Link to this definition")
+    text: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.text "Link to this definition")
 
     truncated: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.cleanprompt.RedactionResult.truncated "Link to this definition")
 
-    vault: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.vault "Link to this definition")
+    vault: [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_types.py#L214)[#](#scikitplot.cleanprompt.RedactionResult.vault "Link to this definition")

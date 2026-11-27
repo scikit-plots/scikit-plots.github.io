@@ -1,4 +1,4 @@
-# scikitplot.externals.\_sphinxext.plot\_directive[#](#scikitplot-externals-sphinxext-plot-directive "Link to this heading")
+# plot\_directive[#](#plot-directive "Link to this heading")
 
 A directive for including a Matplotlib plot in a Sphinx document.
 

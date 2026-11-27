@@ -1,6 +1,6 @@
 # CorpusPipeline[#](#corpuspipeline "Link to this heading")
 
-class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L203)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
+class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **embedding\_engine=None**, **output\_path=None**, **format=ExportFormat.CSV**, **normalizer=None**, **enricher=None**, **default\_language=None**, **progress\_callback=None**, **reader\_kwargs=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_pipeline.py#L203)[#](#scikitplot.corpus.CorpusPipeline "Link to this definition")
 :   Orchestrates the full corpus ingestion pipeline.
 
     Instantiate once, then call [`run`](#scikitplot.corpus.CorpusPipeline.run "scikitplot.corpus.CorpusPipeline.run") (single file),
@@ -16,8 +16,9 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
 
         ****filter\_****FilterBase or None, optional
         :   Filter applied after chunking. `None` uses
-            [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus._base.DefaultFilter").
-            Default: `None`.
+            [`CodeAwareFilter`](scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus._base.CodeAwareFilter"): code is kept when
+            it is not blank, prose goes through
+            [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus._base.DefaultFilter"). Default: `None`.
 
         ****embedding\_engine****EmbeddingEngine or None, optional
         :   When provided, documents are embedded in batches after
@@ -251,7 +252,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Returns:
         :   FilterBase
             :   The current filter instance (never `None` — defaults to
-                [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus._base.DefaultFilter")).
+                [`CodeAwareFilter`](scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus._base.CodeAwareFilter")).
 
         Notes
 
@@ -264,7 +265,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         Deprecated since version 0.5.0: Use `pipeline.filter` (no trailing underscore).
         `filter_` will be removed in 0.7.0.
 
-    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L517)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
+    run(**input\_path**, **\***, **output\_path=None**, **format=None**, **filename\_override=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_pipeline.py#L519)[#](#scikitplot.corpus.CorpusPipeline.run "Link to this definition")
     :   Process a single source and return a [`PipelineResult`](scikitplot.corpus.PipelineResult.html#scikitplot.corpus.PipelineResult "scikitplot.corpus.PipelineResult").
 
         Accepts a local file path ****or**** an `http(s)://` URL string.
@@ -348,7 +349,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L924)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
+    run\_batch(**input\_files**, **\***, **stop\_on\_error=False**, **format=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_pipeline.py#L926)[#](#scikitplot.corpus.CorpusPipeline.run_batch "Link to this definition")
     :   Process multiple sources sequentially.
 
         Each item may be a local file path ****or**** an `http(s)://` URL
@@ -435,7 +436,7 @@ class scikitplot.corpus.CorpusPipeline(**chunker=None**, **filter\_=None**, **em
         ```
         Go BackOpen In Tab
 
-    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L759)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
+    run\_url(**url**, **\***, **output\_path=None**, **format=None**, **stop\_on\_error=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_pipeline.py#L761)[#](#scikitplot.corpus.CorpusPipeline.run_url "Link to this definition")
     :   Process one URL or a list of URLs.
 
         Accepts a single URL string or a list of URL strings. When a list

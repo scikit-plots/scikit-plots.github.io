@@ -1,6 +1,6 @@
 # builtin\_catalog[#](#builtin-catalog "Link to this heading")
 
-scikitplot.cleanprompt.builtin\_catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L849)[#](#scikitplot.cleanprompt.builtin_catalog "Link to this definition")
+scikitplot.cleanprompt.builtin\_catalog()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L849)[#](#scikitplot.cleanprompt.builtin_catalog "Link to this definition")
 :   Return the built-in catalog, read from the compiled JSON.
 
     Returns:

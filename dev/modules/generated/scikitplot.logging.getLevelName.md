@@ -1,6 +1,6 @@
 # getLevelName[#](#getlevelname "Link to this heading")
 
-scikitplot.logging.getLevelName(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L129)[#](#scikitplot.logging.getLevelName "Link to this definition")
+scikitplot.logging.getLevelName(**level**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../../logging/__init__.py#L129)[#](#scikitplot.logging.getLevelName "Link to this definition")
 :   Return the textual or numeric representation of logging level ‘level’.
 
     If the level is one of the predefined levels (CRITICAL, ERROR, WARNING,

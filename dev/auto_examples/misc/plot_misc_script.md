@@ -59,15 +59,15 @@ Tags: [plot-type: barh](../../_tags/plot-type-barh.html) [plot-type: text](../..
 
 Related examples
 
-![](../../_images/sphx_glr_plot_nc_test_thumb.png)
-
-[nc with examples](../nc/plot_nc_test.html)
-
-nc with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png)
+![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb.png)
 
 [plot\_residuals\_distribution with examples](../stats/plot_residuals_distribution_script.html)
 
-plot\_residuals\_distribution with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png)
+plot\_residuals\_distribution with examples![](../../_images/sphx_glr_plot_nc_test_thumb.png)
+
+[nc with examples](../nc/plot_nc_test.html)
+
+nc with examples![](../../_images/sphx_glr_plot_residuals_distribution_script_thumb1.png)
 
 [plot\_residuals\_distribution with examples](../regression/plot_residuals_distribution_script.html)
 

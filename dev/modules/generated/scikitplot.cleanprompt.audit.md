@@ -1,6 +1,6 @@
 # audit[#](#audit "Link to this heading")
 
-scikitplot.cleanprompt.audit(**event**, **\*\*fields**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_logging.py#L697)[#](#scikitplot.cleanprompt.audit "Link to this definition")
+scikitplot.cleanprompt.audit(**event**, **\*\*fields**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_logging.py#L697)[#](#scikitplot.cleanprompt.audit "Link to this definition")
 :   Emit one structured audit event on [`AUDIT_LOGGER_NAME`](scikitplot.cleanprompt.AUDIT_LOGGER_NAME.html#scikitplot.cleanprompt.AUDIT_LOGGER_NAME "scikitplot.cleanprompt.AUDIT_LOGGER_NAME").
 
     Parameters:

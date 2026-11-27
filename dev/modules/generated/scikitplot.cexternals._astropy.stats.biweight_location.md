@@ -1,6 +1,6 @@
 # biweight\_location[#](#biweight-location "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.biweight\_location(**data**, **c=6.0**, **M=None**, **axis=None**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/biweight.py#L44)[#](#scikitplot.cexternals._astropy.stats.biweight_location "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.biweight\_location(**data**, **c=6.0**, **M=None**, **axis=None**, **\***, **ignore\_nan=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/biweight.py#L44)[#](#scikitplot.cexternals._astropy.stats.biweight_location "Link to this definition")
 :   Compute the biweight location.
 
     The biweight location is a robust statistic for determining the

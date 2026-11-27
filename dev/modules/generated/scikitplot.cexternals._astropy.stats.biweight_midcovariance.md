@@ -1,6 +1,6 @@
 # biweight\_midcovariance[#](#biweight-midcovariance "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.biweight\_midcovariance(**data**, **c=9.0**, **M=None**, **modify\_sample\_size=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/biweight.py#L492)[#](#scikitplot.cexternals._astropy.stats.biweight_midcovariance "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.biweight\_midcovariance(**data**, **c=9.0**, **M=None**, **modify\_sample\_size=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/biweight.py#L492)[#](#scikitplot.cexternals._astropy.stats.biweight_midcovariance "Link to this definition")
 :   Compute the biweight midcovariance between pairs of multiple
     variables.
 

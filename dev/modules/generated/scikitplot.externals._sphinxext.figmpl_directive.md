@@ -1,4 +1,4 @@
-# scikitplot.externals.\_sphinxext.figmpl\_directive[#](#scikitplot-externals-sphinxext-figmpl-directive "Link to this heading")
+# figmpl\_directive[#](#figmpl-directive "Link to this heading")
 
 Add a `figure-mpl` directive that is a responsive version of `figure`.
 

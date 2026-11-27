@@ -1,6 +1,6 @@
 # CapabilityError[#](#capabilityerror "Link to this heading")
 
-exception scikitplot.cleanprompt.CapabilityError(**message**, **tier**, **status**, **install\_hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L241)[#](#scikitplot.cleanprompt.CapabilityError "Link to this definition")
+exception scikitplot.cleanprompt.CapabilityError(**message**, **tier**, **status**, **install\_hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_exceptions.py#L241)[#](#scikitplot.cleanprompt.CapabilityError "Link to this definition")
 :   An optional tier is not usable in this environment.
 
     Parameters:

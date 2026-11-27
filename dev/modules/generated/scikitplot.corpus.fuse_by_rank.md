@@ -1,6 +1,6 @@
 # fuse\_by\_rank[#](#fuse-by-rank "Link to this heading")
 
-scikitplot.corpus.fuse\_by\_rank(**results**, **\***, **rrf\_k=60**, **weights=None**, **top\_k=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_retrievers.py#L265)[#](#scikitplot.corpus.fuse_by_rank "Link to this definition")
+scikitplot.corpus.fuse\_by\_rank(**results**, **\***, **rrf\_k=60**, **weights=None**, **top\_k=10**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_retrievers.py#L265)[#](#scikitplot.corpus.fuse_by_rank "Link to this definition")
 :   Combine leg results by weighted reciprocal rank fusion.
 
     Parameters:

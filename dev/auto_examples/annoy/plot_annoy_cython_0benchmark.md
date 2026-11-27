@@ -114,11 +114,11 @@ Index (cython) python-api with examples![](../../_images/sphx_glr_plot_Annoy_leg
 
 [annoy.Annoy legacy c-api with examples](plot_Annoy_legacy_c_api.html)
 
-annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_plot_simple_script_thumb.png)
+annoy.Annoy legacy c-api with examples![](../../_images/sphx_glr_s_compile_cpp_thumb.png)
 
-[Simple annoy.AnnoyIndex with examples](plot_simple_script.html)
+[Compile and run the C++ Annoy with examples](s_compile_cpp.html)
 
-Simple annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+Compile and run the C++ Annoy with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
 
 [Mmap annoy.AnnoyIndex with examples](plot_mmap_script.html)
 

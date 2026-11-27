@@ -14,10 +14,13 @@ raises. This example goes from the simplest case to the hard ones:
 2. statements without proofs (`proofs="drop"`), for reading claims;
 3. audit flags: `sorry`, `native_decide`, `axiom`, code after `#exit`;
 4. choosing what to read: `kinds`, `watch`, `commands`;
-5. very long proofs read in parts (`lines_per_chunk`);
-6. Lean 3 sources (`dialect="lean3"`);
-7. hostile input: unclosed comments, too-deep scopes;
-8. a generated project of thousands of declarations, with a check that
+5. what a declaration refers to (`references=True`), and chunks an index
+   reads (`statements=True`);
+6. very long proofs read in parts (`lines_per_chunk`);
+7. Lean 3 sources (`dialect="lean3"`);
+8. hostile input: unclosed comments, too-deep scopes, and the source
+   problems Lean would refuse;
+9. a generated project of thousands of declarations, with a check that
    every line lands in exactly one chunk.
 
 Everything runs on files the example writes: no Lean toolchain, no download.
@@ -127,7 +130,7 @@ show(read(risky, "Risky.lean"), "flags")
 
 ```
 ```
-['add_decl', 'admit', 'extern', 'implemented_by', 'native', 'skip_kernel_tc', 'sorry', 'unsafe']
+['add_decl', 'admit', 'axiom', 'extern', 'implemented_by', 'native', 'skip_kernel_tc', 'sorry', 'unsafe']
   1-1   theorem    gap {'flags': ['sorry']}
   2-3   theorem    fast {'flags': ['native']}
   4-4   axiom      trust_me {'flags': ['axiom']}
@@ -158,7 +161,52 @@ print([c["lean_kind"] for c in read(custom, "Custom.lean", commands=["my_check"]
 
 ```
 
-## 5. Very long proofs[#](#very-long-proofs "Link to this heading")
+## 5. What a declaration refers to[#](#what-a-declaration-refers-to "Link to this heading")
+
+With `references=True` each chunk lists the names it uses, and the
+`open` namespaces in force, so a dependency graph can be built.
+
+```
+refs = """\
+def base : Nat := 1
+def next : Nat := base + 1
+open Nat in
+theorem uses : next = 2 := by simp [next, base]
+"""
+show(read(refs, "Refs.lean", references=True), "references", "opens")
+
+```
+```
+1-1   def        base {'references': ['Nat']}
+2-2   def        next {'references': ['Nat', 'base']}
+3-4   theorem    uses {'references': ['Nat', 'base', 'next', 'simp'], 'opens': ['Nat']}
+
+```
+
+With `statements=True` (whole commands: `lines_per_chunk=None`) each
+theorem also carries its statement. Chunks read with both are what
+`scikitplot.lean.LeanIndex.add_chunks` indexes, for a file inside an
+archive, say: the same index as reading the file. A project that defines
+commands gives them first (`learn_commands`, `defined_commands`) and
+reads each file with `commands=index.commands()`.
+
+```
+from scikitplot.lean import LeanIndex  # noqa: E402
+
+chunks = read(refs, "Refs.lean", references=True, statements=True, lines_per_chunk=None)
+print([c["statement"] for c in chunks if "statement" in c])
+index = LeanIndex()
+index.add_chunks(chunks, label="Refs.lean")
+print(index.dossier("uses")["dependencies"]["declarations"], "declarations reached by uses")
+
+```
+```
+['open Nat in\ntheorem uses : next = 2']
+2 declarations reached by uses
+
+```
+
+## 6. Very long proofs[#](#very-long-proofs "Link to this heading")
 
 A proof of thousands of lines is read in parts of `lines_per_chunk`
 lines; `part` numbers them, and every part keeps the declaration name.
@@ -174,7 +222,7 @@ print([(c["part"], c["line_start"], c["line_end"]) for c in parts])
 
 ```
 
-## 6. Lean 3[#](#lean-3 "Link to this heading")
+## 7. Lean 3[#](#lean-3 "Link to this heading")
 
 Lean 3 proofs use `begin ... end` blocks; `dialect="lean3"` reads them
 as one command each.
@@ -197,7 +245,7 @@ show(read(lean3, "Old.lean", dialect="lean3"))
 
 ```
 
-## 7. Hostile input[#](#hostile-input "Link to this heading")
+## 8. Hostile input[#](#hostile-input "Link to this heading")
 
 A comment that never closes swallows the rest of the file as comment, as
 Lean would. Scopes nested deeper than `max_scope_depth` are refused with
@@ -205,6 +253,20 @@ a clear error instead of using unbounded memory.
 
 ```
 print([c["section_type"] for c in read("/- never closed\ntheorem x : True := trivial\n", "Open.lean")])
+
+```
+```
+['text']
+
+```
+
+What Lean refuses to read is on the chunk holding its line, in
+`source_problems`: an `end` that closes nothing, a file ending inside a
+comment, bytes that are not UTF-8.
+
+```
+problems = read("namespace A\nend B\n/- never closed\n", "Bad.lean")
+print([p for c in problems for p in c.get("source_problems", ())])
 try:
     read("namespace N\n" * 1_000, "Deep.lean", max_scope_depth=256)
 except ValueError as exc:
@@ -212,12 +274,12 @@ except ValueError as exc:
 
 ```
 ```
-['text']
-refused: LeanReader: Deep.lean nests more than max_scope_depth=256 namespaces a
+[{'line': 2, 'problem': '`end B` does not match `namespace A`'}, {'line': 3, 'problem': 'the file ends inside a comment'}]
+refused: Lean: Deep.lean nests more than max_scope_depth=256 namespaces and sec
 
 ```
 
-## 8. A generated project[#](#a-generated-project "Link to this heading")
+## 9. A generated project[#](#a-generated-project "Link to this heading")
 
 Thousands of small declarations, a few of them flagged. Counting the
 flags points straight at the lines to review, and the partition check
@@ -249,7 +311,7 @@ all 5,002 lines are in exactly one chunk
 
 Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-type: text](../../_tags/plot-type-text.html) [level: intermediate](../../_tags/level-intermediate.html) [purpose: showcase](../../_tags/purpose-showcase.html)
 
-****Total running time of the script:**** (0 minutes 0.229 seconds)
+****Total running time of the script:**** (0 minutes 0.247 seconds)
 
 [![Launch binder](../../_images/binder_badge_logo5.svg)](https://mybinder.org/v2/gh/scikit-plots/scikit-plots/main?urlpath=lab/tree/notebooks/auto_examples/corpus/plot_corpus_lean_reader_script.ipynb)[![Launch JupyterLite](../../_images/jupyterlite_badge_logo5.svg)](../../lite/lab/index.html?path=auto_examples/corpus/plot_corpus_lean_reader_script.ipynb)
 
@@ -261,22 +323,22 @@ Tags: [model-workflow: corpus](../../_tags/model-workflow-corpus.html) [plot-typ
 
 Related examples
 
-![](../../_images/sphx_glr_plot_corpus_code_reader_script_thumb.png)
+![](../../_images/sphx_glr_plot_lean_index_script_thumb.png)
+
+[Gather the Evidence on a Lean Proof with LeanIndex](../lean/plot_lean_index_script.html)
+
+Gather the Evidence on a Lean Proof with LeanIndex![](../../_images/sphx_glr_plot_lean_audit_script_thumb.png)
+
+[Audit an AI-Assisted Formal Proof with LeanIndex](../lean/plot_lean_audit_script.html)
+
+Audit an AI-Assisted Formal Proof with LeanIndex![](../../_images/sphx_glr_plot_corpus_code_reader_script_thumb.png)
 
 [Read Source Code with CodeReader: from One File to a Whole Project](plot_corpus_code_reader_script.html)
 
-Read Source Code with CodeReader: from One File to a Whole Project![](../../_images/sphx_glr_plot_cleanprompt_moderate_script_thumb.png)
+Read Source Code with CodeReader: from One File to a Whole Project![](../../_images/sphx_glr_plot_lean_layers_script_thumb.png)
 
-[Cleanprompt Moderate: Policies, Entities, and the Vault’s Lifecycle](../cleanprompt/plot_cleanprompt_moderate_script.html)
+[Index a Lean Project over its Saved Dependencies with LeanIndex](../lean/plot_lean_layers_script.html)
 
-Cleanprompt Moderate: Policies, Entities, and the Vault's Lifecycle![](../../_images/sphx_glr_plot_ipymagic_scikit-plots_profiler_thumb.png)
-
-[Profile a Notebook Cell with %%scikitplot\_profile](../ipymagic/plot_ipymagic_scikit-plots_profiler.html)
-
-Profile a Notebook Cell with %%scikitplot\_profile![](../../_images/sphx_glr_plot_corpus_knowledge_script_thumb.png)
-
-[Compare Corpus Chunking Strategies on OCR Text](plot_corpus_knowledge_script.html)
-
-Compare Corpus Chunking Strategies on OCR Text
+Index a Lean Project over its Saved Dependencies with LeanIndex
 
 [Gallery generated by Sphinx-Gallery](https://sphinx-gallery.github.io)

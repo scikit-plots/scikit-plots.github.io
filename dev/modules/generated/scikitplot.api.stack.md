@@ -1,6 +1,6 @@
 # stack[#](#stack "Link to this heading")
 
-scikitplot.api.stack(**\*figs**, **orient='vertical'**, **padding=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/utils/_matplotlib.py#L417)[#](#scikitplot.api.stack "Link to this definition")
+scikitplot.api.stack(**\*figs**, **orient='vertical'**, **padding=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/utils/_matplotlib.py#L417)[#](#scikitplot.api.stack "Link to this definition")
 :   Stack multiple matplotlib figures into a single combined figure.
 
     Save it (if specified).

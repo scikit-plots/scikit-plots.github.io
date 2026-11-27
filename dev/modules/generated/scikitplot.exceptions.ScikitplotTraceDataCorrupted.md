@@ -1,6 +1,6 @@
 # ScikitplotTraceDataCorrupted[#](#scikitplottracedatacorrupted "Link to this heading")
 
-exception scikitplot.exceptions.ScikitplotTraceDataCorrupted(**request\_id=None**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L635)[#](#scikitplot.exceptions.ScikitplotTraceDataCorrupted "Link to this definition")
+exception scikitplot.exceptions.ScikitplotTraceDataCorrupted(**request\_id=None**, **artifact\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/exceptions.py#L635)[#](#scikitplot.exceptions.ScikitplotTraceDataCorrupted "Link to this definition")
 :   Exception thrown when trace data is corrupted.
 
     Parameters:

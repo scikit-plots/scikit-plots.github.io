@@ -33,10 +33,13 @@ raises. This example goes from the simplest case to the hard ones:
 2. statements without proofs (``proofs="drop"``), for reading claims;
 3. audit flags: ``sorry``, ``native_decide``, ``axiom``, code after ``#exit``;
 4. choosing what to read: ``kinds``, ``watch``, ``commands``;
-5. very long proofs read in parts (``lines_per_chunk``);
-6. Lean 3 sources (``dialect="lean3"``);
-7. hostile input: unclosed comments, too-deep scopes;
-8. a generated project of thousands of declarations, with a check that
+5. what a declaration refers to (``references=True``), and chunks an index
+   reads (``statements=True``);
+6. very long proofs read in parts (``lines_per_chunk``);
+7. Lean 3 sources (``dialect="lean3"``);
+8. hostile input: unclosed comments, too-deep scopes, and the source
+   problems Lean would refuse;
+9. a generated project of thousands of declarations, with a check that
    every line lands in exactly one chunk.
 
 Everything runs on files the example writes: no Lean toolchain, no download.
@@ -47,7 +50,7 @@ Everything runs on files the example writes: no Lean toolchain, no download.
    A file without flags is not proved correct; that is for Lean's kernel
    (``lake build``, ``#print axioms``).
 
-.. GENERATED FROM PYTHON SOURCE LINES 31-35
+.. GENERATED FROM PYTHON SOURCE LINES 34-38
 
 .. code-block:: Python
 
@@ -62,7 +65,7 @@ Everything runs on files the example writes: no Lean toolchain, no download.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-62
+.. GENERATED FROM PYTHON SOURCE LINES 39-65
 
 .. code-block:: Python
 
@@ -99,7 +102,7 @@ Everything runs on files the example writes: no Lean toolchain, no download.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-68
+.. GENERATED FROM PYTHON SOURCE LINES 66-71
 
 1. One file
 -----------
@@ -107,7 +110,7 @@ Imports, namespaces, doc comments and declarations each become a chunk.
 A doc comment stays with the declaration it documents; ``declaration`` is
 the full name, namespace included.
 
-.. GENERATED FROM PYTHON SOURCE LINES 68-84
+.. GENERATED FROM PYTHON SOURCE LINES 71-87
 
 .. code-block:: Python
 
@@ -144,14 +147,14 @@ the full name, namespace included.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 85-89
+.. GENERATED FROM PYTHON SOURCE LINES 88-92
 
 2. Statements without proofs
 ----------------------------
 ``proofs="drop"`` keeps what a declaration claims and leaves out how it is
 proved. ``proof_line_start``/``proof_line_end`` say where the proof was.
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-94
+.. GENERATED FROM PYTHON SOURCE LINES 92-97
 
 .. code-block:: Python
 
@@ -173,7 +176,7 @@ proved. ``proof_line_start``/``proof_line_end`` say where the proof was.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-101
+.. GENERATED FROM PYTHON SOURCE LINES 98-104
 
 3. Audit flags
 --------------
@@ -182,7 +185,7 @@ The reader flags them in code only, never in comments or strings. A
 comment line belongs to the declaration after it (``fast`` starts at 2).
 Everything after ``#exit`` is flagged too, since Lean never reads it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-113
+.. GENERATED FROM PYTHON SOURCE LINES 104-116
 
 .. code-block:: Python
 
@@ -206,7 +209,7 @@ Everything after ``#exit`` is flagged too, since Lean never reads it.
 
  .. code-block:: none
 
-    ['add_decl', 'admit', 'extern', 'implemented_by', 'native', 'skip_kernel_tc', 'sorry', 'unsafe']
+    ['add_decl', 'admit', 'axiom', 'extern', 'implemented_by', 'native', 'skip_kernel_tc', 'sorry', 'unsafe']
       1-1   theorem    gap {'flags': ['sorry']}
       2-3   theorem    fast {'flags': ['native']}
       4-4   axiom      trust_me {'flags': ['axiom']}
@@ -216,7 +219,7 @@ Everything after ``#exit`` is flagged too, since Lean never reads it.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-119
+.. GENERATED FROM PYTHON SOURCE LINES 117-122
 
 4. Choosing what to read
 ------------------------
@@ -224,7 +227,7 @@ Everything after ``#exit`` is flagged too, since Lean never reads it.
 identifiers you care about; ``commands`` adds a project's own command
 keywords, so their uses become chunks of their own.
 
-.. GENERATED FROM PYTHON SOURCE LINES 119-126
+.. GENERATED FROM PYTHON SOURCE LINES 122-129
 
 .. code-block:: Python
 
@@ -251,14 +254,85 @@ keywords, so their uses become chunks of their own.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-131
+.. GENERATED FROM PYTHON SOURCE LINES 130-134
 
-5. Very long proofs
+5. What a declaration refers to
+-------------------------------
+With ``references=True`` each chunk lists the names it uses, and the
+``open`` namespaces in force, so a dependency graph can be built.
+
+.. GENERATED FROM PYTHON SOURCE LINES 134-143
+
+.. code-block:: Python
+
+
+    refs = """\
+    def base : Nat := 1
+    def next : Nat := base + 1
+    open Nat in
+    theorem uses : next = 2 := by simp [next, base]
+    """
+    show(read(refs, "Refs.lean", references=True), "references", "opens")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+      1-1   def        base {'references': ['Nat']}
+      2-2   def        next {'references': ['Nat', 'base']}
+      3-4   theorem    uses {'references': ['Nat', 'base', 'next', 'simp'], 'opens': ['Nat']}
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 144-150
+
+With ``statements=True`` (whole commands: ``lines_per_chunk=None``) each
+theorem also carries its statement. Chunks read with both are what
+:meth:`scikitplot.lean.LeanIndex.add_chunks` indexes, for a file inside an
+archive, say: the same index as reading the file. A project that defines
+commands gives them first (``learn_commands``, ``defined_commands``) and
+reads each file with ``commands=index.commands()``.
+
+.. GENERATED FROM PYTHON SOURCE LINES 150-159
+
+.. code-block:: Python
+
+
+    from scikitplot.lean import LeanIndex  # noqa: E402
+
+    chunks = read(refs, "Refs.lean", references=True, statements=True, lines_per_chunk=None)
+    print([c["statement"] for c in chunks if "statement" in c])
+    index = LeanIndex()
+    index.add_chunks(chunks, label="Refs.lean")
+    print(index.dossier("uses")["dependencies"]["declarations"], "declarations reached by uses")
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ['open Nat in\ntheorem uses : next = 2']
+    2 declarations reached by uses
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 160-164
+
+6. Very long proofs
 -------------------
 A proof of thousands of lines is read in parts of ``lines_per_chunk``
 lines; ``part`` numbers them, and every part keeps the declaration name.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-136
+.. GENERATED FROM PYTHON SOURCE LINES 164-169
 
 .. code-block:: Python
 
@@ -280,14 +354,14 @@ lines; ``part`` numbers them, and every part keeps the declaration name.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-141
+.. GENERATED FROM PYTHON SOURCE LINES 170-174
 
-6. Lean 3
+7. Lean 3
 ---------
 Lean 3 proofs use ``begin ... end`` blocks; ``dialect="lean3"`` reads them
 as one command each.
 
-.. GENERATED FROM PYTHON SOURCE LINES 141-152
+.. GENERATED FROM PYTHON SOURCE LINES 174-185
 
 .. code-block:: Python
 
@@ -316,20 +390,47 @@ as one command each.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 153-158
+.. GENERATED FROM PYTHON SOURCE LINES 186-191
 
-7. Hostile input
+8. Hostile input
 ----------------
 A comment that never closes swallows the rest of the file as comment, as
 Lean would. Scopes nested deeper than ``max_scope_depth`` are refused with
 a clear error instead of using unbounded memory.
 
-.. GENERATED FROM PYTHON SOURCE LINES 158-165
+.. GENERATED FROM PYTHON SOURCE LINES 191-194
 
 .. code-block:: Python
 
 
     print([c["section_type"] for c in read("/- never closed\ntheorem x : True := trivial\n", "Open.lean")])
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    ['text']
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 195-198
+
+What Lean refuses to read is on the chunk holding its line, in
+``source_problems``: an ``end`` that closes nothing, a file ending inside a
+comment, bytes that are not UTF-8.
+
+.. GENERATED FROM PYTHON SOURCE LINES 198-206
+
+.. code-block:: Python
+
+
+    problems = read("namespace A\nend B\n/- never closed\n", "Bad.lean")
+    print([p for c in problems for p in c.get("source_problems", ())])
     try:
         read("namespace N\n" * 1_000, "Deep.lean", max_scope_depth=256)
     except ValueError as exc:
@@ -343,21 +444,21 @@ a clear error instead of using unbounded memory.
 
  .. code-block:: none
 
-    ['text']
-    refused: LeanReader: Deep.lean nests more than max_scope_depth=256 namespaces a
+    [{'line': 2, 'problem': '`end B` does not match `namespace A`'}, {'line': 3, 'problem': 'the file ends inside a comment'}]
+    refused: Lean: Deep.lean nests more than max_scope_depth=256 namespaces and sec
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 166-171
+.. GENERATED FROM PYTHON SOURCE LINES 207-212
 
-8. A generated project
+9. A generated project
 ----------------------
 Thousands of small declarations, a few of them flagged. Counting the
 flags points straight at the lines to review, and the partition check
 proves no line was lost or read twice.
 
-.. GENERATED FROM PYTHON SOURCE LINES 171-187
+.. GENERATED FROM PYTHON SOURCE LINES 212-228
 
 .. code-block:: Python
 
@@ -392,7 +493,7 @@ proves no line was lost or read twice.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 188-194
+.. GENERATED FROM PYTHON SOURCE LINES 229-235
 
 .. tags::
 
@@ -404,7 +505,7 @@ proves no line was lost or read twice.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.229 seconds)
+   **Total running time of the script:** (0 minutes 0.247 seconds)
 
 
 .. _sphx_glr_download_auto_examples_corpus_plot_corpus_lean_reader_script.py:

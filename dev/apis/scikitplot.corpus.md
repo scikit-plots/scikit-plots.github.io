@@ -243,7 +243,7 @@ Class inheritance
 
 Class inheritance
 
-![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-80c1012d591c48864eb17b35d9c4fb9cab412614.png)
+![Inheritance diagram of DocumentReader, DummyReader](../_images/inheritance-6d83bd6a8c65b37953dfa0bc56064c2182e94805.png)
 
 
 
@@ -279,7 +279,9 @@ Class inheritance
 |  |  |
 | --- | --- |
 | [`ChunkerBase`](../modules/generated/scikitplot.corpus.ChunkerBase.html#scikitplot.corpus.ChunkerBase "scikitplot.corpus.ChunkerBase") | Abstract base class for all text chunkers. |
+| [`CodeAwareFilter`](../modules/generated/scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus.CodeAwareFilter") | Keep code that is not blank; filter everything else as prose. |
 | [`DefaultFilter`](../modules/generated/scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter") | Standard noise filter ported and improved from remarx's `include_sentence`. |
+| [`NonBlankFilter`](../modules/generated/scikitplot.corpus.NonBlankFilter.html#scikitplot.corpus.NonBlankFilter "scikitplot.corpus.NonBlankFilter") | Keep every document whose text holds a non-whitespace character. |
 | [`DocumentReader`](../modules/generated/scikitplot.corpus.DocumentReader.html#scikitplot.corpus.DocumentReader "scikitplot.corpus.DocumentReader") | Abstract base class for all format-specific document readers. |
 | [`DummyReader`](../modules/generated/scikitplot.corpus.DummyReader.html#scikitplot.corpus.DummyReader "scikitplot.corpus.DummyReader") | A no-op reader that validates source existence and accessibility. |
 | [`FilterBase`](../modules/generated/scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus.FilterBase") | Abstract base class for corpus document filters. |

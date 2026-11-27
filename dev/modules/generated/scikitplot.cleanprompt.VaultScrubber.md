@@ -1,6 +1,6 @@
 # VaultScrubber[#](#vaultscrubber "Link to this heading")
 
-class scikitplot.cleanprompt.VaultScrubber(**owner=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_logging.py#L646)[#](#scikitplot.cleanprompt.VaultScrubber "Link to this definition")
+class scikitplot.cleanprompt.VaultScrubber(**owner=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_logging.py#L646)[#](#scikitplot.cleanprompt.VaultScrubber "Link to this definition")
 :   Keep a vault’s values out of every log record for as long as it holds them.
 
     Notes
@@ -20,7 +20,7 @@ class scikitplot.cleanprompt.VaultScrubber(**owner=None**)[[source]](https://git
     Parameters:
     :   ****owner**** ([**object**](https://docs.python.org/3/builtins/functions.html#object "(in Python v3.15)") **|** **None**)
 
-    add(**secrets**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_logging.py#L679)[#](#scikitplot.cleanprompt.VaultScrubber.add "Link to this definition")
+    add(**secrets**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_logging.py#L679)[#](#scikitplot.cleanprompt.VaultScrubber.add "Link to this definition")
     :   Scrub these surfaces too.
 
         Parameters:
@@ -29,7 +29,7 @@ class scikitplot.cleanprompt.VaultScrubber(**owner=None**)[[source]](https://git
         Return type:
         :   None
 
-    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_logging.py#L689)[#](#scikitplot.cleanprompt.VaultScrubber.close "Link to this definition")
+    close()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_logging.py#L689)[#](#scikitplot.cleanprompt.VaultScrubber.close "Link to this definition")
     :   Stop scrubbing this vault’s surfaces and forget them.
 
         Return type:

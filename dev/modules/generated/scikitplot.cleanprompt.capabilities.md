@@ -1,6 +1,6 @@
 # capabilities[#](#capabilities "Link to this heading")
 
-scikitplot.cleanprompt.capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_capabilities.py#L375)[#](#scikitplot.cleanprompt.capabilities "Link to this definition")
+scikitplot.cleanprompt.capabilities()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_capabilities.py#L375)[#](#scikitplot.cleanprompt.capabilities "Link to this definition")
 :   Probe every optional tier.
 
     Returns:

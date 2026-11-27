@@ -1,6 +1,6 @@
 # remove\_path[#](#remove-path "Link to this heading")
 
-scikitplot.utils.\_path.remove\_path(**paths=None**, **base\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/utils/_path.py#L928)[#](#scikitplot.utils._path.remove_path "Link to this definition")
+scikitplot.utils.\_path.remove\_path(**paths=None**, **base\_path=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/utils/_path.py#L928)[#](#scikitplot.utils._path.remove_path "Link to this definition")
 :   Remove unwanted files or directories from a specified base path.
 
     Parameters:

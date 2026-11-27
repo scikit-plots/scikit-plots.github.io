@@ -1,6 +1,6 @@
 # DTypePromotionError[#](#dtypepromotionerror "Link to this heading")
 
-exception scikitplot.exceptions.DTypePromotionError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L142)[#](#scikitplot.exceptions.DTypePromotionError "Link to this definition")
+exception scikitplot.exceptions.DTypePromotionError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/exceptions.py#L142)[#](#scikitplot.exceptions.DTypePromotionError "Link to this definition")
 :   Multiple DTypes could not be converted to a common one.
 
     This exception derives from `TypeError` and is raised whenever dtypes

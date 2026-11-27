@@ -1,6 +1,6 @@
 # probe[#](#probe "Link to this heading")
 
-scikitplot.cleanprompt.probe(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_capabilities.py#L272)[#](#scikitplot.cleanprompt.probe "Link to this definition")
+scikitplot.cleanprompt.probe(**tier**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_capabilities.py#L272)[#](#scikitplot.cleanprompt.probe "Link to this definition")
 :   Report whether one optional tier is usable.
 
     Parameters:

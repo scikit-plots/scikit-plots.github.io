@@ -1,6 +1,6 @@
 # CustomReader[#](#customreader "Link to this heading")
 
-class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**, **extractor=None**, **extensions=None**, **reader\_kwargs=<factory>**, **default\_source\_type=SourceType.UNKNOWN**, **default\_section\_type=SectionType.TEXT**, **validate\_file=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader "Link to this definition")
+class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_uri=None**, **source\_provenance=<factory>**, **custom\_extractor=None**, **custom\_extractor\_kwargs=<factory>**, **max\_text\_chars=None**, **max\_text\_chars\_per\_byte=None**, **on\_text\_limit='refuse'**, **extractor=None**, **extensions=None**, **reader\_kwargs=<factory>**, **default\_source\_type=SourceType.UNKNOWN**, **default\_section\_type=SectionType.TEXT**, **validate\_file=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader "Link to this definition")
 :   Fully user-customizable reader for any file extension and resource type.
 
     [`CustomReader`](#scikitplot.corpus.CustomReader "scikitplot.corpus.CustomReader") accepts **any** file extension and a caller-supplied
@@ -260,13 +260,13 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
     :   Chunker to apply to each raw text block. `None` means each raw chunk
         is used as-is (one CorpusDocument per raw chunk).
 
-    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1262)[#](#scikitplot.corpus.CustomReader.clear_backend_reports "Link to this definition")
+    clear\_backend\_reports()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1345)[#](#scikitplot.corpus.CustomReader.clear_backend_reports "Link to this definition")
     :   Clear structured optional-backend reports on this reader instance.
 
         Return type:
         :   None
 
-    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2132)[#](#scikitplot.corpus.CustomReader.create "Link to this definition")
+    classmethod create(**\*input\_path**, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2215)[#](#scikitplot.corpus.CustomReader.create "Link to this definition")
     :   Instantiate the appropriate reader for one or more sources.
 
         Accepts any mix of file paths, URL strings, and
@@ -488,7 +488,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.custom_extractor_kwargs "Link to this definition")
+    custom\_extractor\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.custom_extractor_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`custom_extractor`](#scikitplot.corpus.CustomReader.custom_extractor "scikitplot.corpus.CustomReader.custom_extractor") on every
         invocation. Merged into the call as `**custom_extractor_kwargs`.
 
@@ -505,14 +505,17 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
+    default\_filter[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L748)[#](#scikitplot.corpus.CustomReader.default_filter "Link to this definition")
+    :   alias of [`CodeAwareFilter`](scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus._base.CodeAwareFilter")
+
     default\_language: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CustomReader.default_language "Link to this definition")
     :   ISO 639-1 language code to assign when the source has no language info.
 
-    default\_section\_type: [SectionType](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType") = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomReader.default_section_type "Link to this definition")
+    default\_section\_type: [SectionType](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType") = 'text'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomReader.default_section_type "Link to this definition")
     :   Fallback [`SectionType`](scikitplot.corpus.SectionType.html#scikitplot.corpus.SectionType "scikitplot.corpus._schema.SectionType") for chunks
         where the extractor does not set `"section_type"`.
 
-    default\_source\_type: [SourceType](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomReader.default_source_type "Link to this definition")
+    default\_source\_type: [SourceType](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") = 'unknown'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_schema.py#L)[#](#scikitplot.corpus.CustomReader.default_source_type "Link to this definition")
     :   Fallback [`SourceType`](scikitplot.corpus.SourceType.html#scikitplot.corpus.SourceType "scikitplot.corpus._schema.SourceType") for chunks
         where the extractor does not set `"source_type"`.
 
@@ -561,7 +564,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         (plural) instead. ****Exactly one**** of `file_type` or `file_types`
         must be defined on every concrete subclass.
 
-    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.file_types "Link to this definition")
+    file\_types: [ClassVar](https://docs.python.org/3/library/typing.html#typing.ClassVar "(in Python v3.15)")[[list](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")] | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.file_types "Link to this definition")
     :   List of file extensions this reader handles (lowercase, leading dot).
         Use instead of `file_type` when a single reader class should be
         registered for several extensions — e.g. an image reader for
@@ -574,9 +577,11 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
     :   Override for the `input_path` label in generated documents.
 
     filter\_: [FilterBase](scikitplot.corpus.FilterBase.html#scikitplot.corpus.FilterBase "scikitplot.corpus._base.FilterBase") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.CustomReader.filter_ "Link to this definition")
-    :   Filter applied after chunking. `None` triggers the [`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter").
+    :   Filter applied after chunking. `None` uses the reader’s
+        [`default_filter`](#scikitplot.corpus.CustomReader.default_filter "scikitplot.corpus.CustomReader.default_filter") ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter") unless the reader says
+        otherwise).
 
-    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2449)[#](#scikitplot.corpus.CustomReader.from_manifest "Link to this definition")
+    classmethod from\_manifest(**manifest\_path**, **\***, **chunker=None**, **filter\_=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **encoding='utf-8'**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2532)[#](#scikitplot.corpus.CustomReader.from_manifest "Link to this definition")
     :   Build a `_MultiSourceReader` from a manifest file.
 
         The manifest is a text file with one source per line — either a
@@ -703,7 +708,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L2645)[#](#scikitplot.corpus.CustomReader.from_url "Link to this definition")
+    classmethod from\_url(**url**, **\***, **chunker=None**, **filter\_=None**, **filename\_override=None**, **default\_language=None**, **source\_type=None**, **source\_title=None**, **source\_author=None**, **source\_date=None**, **collection\_id=None**, **doi=None**, **isbn=None**, **\*\*kwargs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2728)[#](#scikitplot.corpus.CustomReader.from_url "Link to this definition")
     :   Instantiate the appropriate reader for a URL source.
 
         Dispatches to `YouTubeReader`
@@ -804,7 +809,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1601)[#](#scikitplot.corpus.CustomReader.get_documents "Link to this definition")
+    get\_documents()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L1684)[#](#scikitplot.corpus.CustomReader.get_documents "Link to this definition")
     :   Yield validated [`CorpusDocument`](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
         instances for the input file.
 
@@ -849,7 +854,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L601)[#](#scikitplot.corpus.CustomReader.get_raw_chunks "Link to this definition")
+    get\_raw\_chunks()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L601)[#](#scikitplot.corpus.CustomReader.get_raw_chunks "Link to this definition")
     :   Call the user-supplied extractor and yield normalised raw chunk dicts.
 
         Calls `self.extractor(self.input_path, **self.reader_kwargs)`
@@ -883,7 +888,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         Logging at `INFO` level records the extractor name, file name,
         and chunk count. `DEBUG` records the kwargs forwarded.
 
-    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.input_path "Link to this definition")
+    input\_path: [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.input_path "Link to this definition")
     :   Path to the source file.
 
         For URL-based readers ([`WebReader`](scikitplot.corpus.WebReader.html#scikitplot.corpus.WebReader "scikitplot.corpus.WebReader"), [`YouTubeReader`](scikitplot.corpus.YouTubeReader.html#scikitplot.corpus.YouTubeReader "scikitplot.corpus.YouTubeReader")),
@@ -922,10 +927,10 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         `text_truncated=True` (none when the limit falls between chunks) and
         logs a warning either way.
 
-    reader\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.reader_kwargs "Link to this definition")
+    reader\_kwargs: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.reader_kwargs "Link to this definition")
     :   Extra keyword arguments forwarded to [`extractor`](#scikitplot.corpus.CustomReader.extractor "scikitplot.corpus.CustomReader.extractor") on every call.
 
-    classmethod register(**\***, **name**, **extensions**, **extractor**, **reader\_kwargs=None**, **default\_source\_type=SourceType.UNKNOWN**, **default\_section\_type=SectionType.TEXT**, **validate\_file=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L675)[#](#scikitplot.corpus.CustomReader.register "Link to this definition")
+    classmethod register(**\***, **name**, **extensions**, **extractor**, **reader\_kwargs=None**, **default\_source\_type=SourceType.UNKNOWN**, **default\_section\_type=SectionType.TEXT**, **validate\_file=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L675)[#](#scikitplot.corpus.CustomReader.register "Link to this definition")
     :   Create a named [`CustomReader`](#scikitplot.corpus.CustomReader "scikitplot.corpus.CustomReader") subclass and register it by
         extension.
 
@@ -1075,7 +1080,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.source_provenance "Link to this definition")
+    source\_provenance: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [Any](https://docs.python.org/3/library/typing.html#typing.Any "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L296)[#](#scikitplot.corpus.CustomReader.source_provenance "Link to this definition")
     :   Provenance overrides propagated into every yielded `CorpusDocument`.
 
         Keys may include `"source_type"`, `"source_title"`,
@@ -1102,7 +1107,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1991)[#](#scikitplot.corpus.CustomReader.subclass_by_type "Link to this definition")
+    classmethod subclass\_by\_type()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2074)[#](#scikitplot.corpus.CustomReader.subclass_by_type "Link to this definition")
     :   Return a copy of the extension → reader class registry.
 
         Returns:
@@ -1124,7 +1129,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         ```
         Go BackOpen In Tab
 
-    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_base.py#L1973)[#](#scikitplot.corpus.CustomReader.supported_types "Link to this definition")
+    classmethod supported\_types()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_base.py#L2056)[#](#scikitplot.corpus.CustomReader.supported_types "Link to this definition")
     :   Return a sorted list of file extensions supported by registered readers.
 
         Returns:
@@ -1150,7 +1155,7 @@ class scikitplot.corpus.CustomReader(**input\_path**, **chunker=None**, **filter
         [`validate_input`](#scikitplot.corpus.CustomReader.validate_input "scikitplot.corpus.CustomReader.validate_input"). Use for non-filesystem resources where
         [`input_path`](#scikitplot.corpus.CustomReader.input_path "scikitplot.corpus.CustomReader.input_path") is a synthetic path.
 
-    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_custom.py#L580)[#](#scikitplot.corpus.CustomReader.validate_input "Link to this definition")
+    validate\_input()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_custom.py#L580)[#](#scikitplot.corpus.CustomReader.validate_input "Link to this definition")
     :   Check source accessibility.
 
         Delegates to the parent implementation when [`validate_file`](#scikitplot.corpus.CustomReader.validate_file "scikitplot.corpus.CustomReader.validate_file")

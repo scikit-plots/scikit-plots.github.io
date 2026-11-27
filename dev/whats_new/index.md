@@ -7,7 +7,7 @@ on <libraries.io> to be ****notified**** when new versions are released.
 Changelogs and release notes for all scikit-plots releases are linked in this page.
 
 * [Version 0.5](v0.5.html)
-  * [Version 0.5.dev0+git.20261126.740e0f5](v0.5.html#version-0-5-dev0-git-20261126-740e0f5)
+  * [Version 0.5.dev0+git.20261128.0f76614](v0.5.html#version-0-5-dev0-git-20261128-0f76614)
 * [Version 0.4](v0.4.html)
 * [Older Versions](older_versions.html)
   * [Version 0.3.7](older_versions.html#version-0-3-7)

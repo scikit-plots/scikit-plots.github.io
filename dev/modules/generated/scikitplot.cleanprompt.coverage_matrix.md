@@ -1,6 +1,6 @@
 # coverage\_matrix[#](#coverage-matrix "Link to this heading")
 
-scikitplot.cleanprompt.coverage\_matrix(**policy=None**, **catalog=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_diagnostics.py#L820)[#](#scikitplot.cleanprompt.coverage_matrix "Link to this definition")
+scikitplot.cleanprompt.coverage\_matrix(**policy=None**, **catalog=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_diagnostics.py#L820)[#](#scikitplot.cleanprompt.coverage_matrix "Link to this definition")
 :   Return one row per detection kind, derived from the live registries.
 
     Parameters:

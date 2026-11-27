@@ -58,7 +58,7 @@ rather than assuming unrelated releases are interchangeable.
 
 ### Partial-distribution registry[#](#partial-distribution-registry "Link to this heading")
 
-Current project-owned partial distributions: ****9****.
+Current project-owned partial distributions: ****10****.
 
 The registry below is generated from the same ownership and packaging
 metadata used to build the distributions. A new `libs/` distribution
@@ -69,6 +69,7 @@ therefore cannot be silently omitted from this page.
 | `scikit-plots-skinny` | `scikitplot`, `scikitplot._cli`, `scikitplot.logging` | same as scikit-plots core | pure Python | Dependency-free core of scikit-plots: the root package, logging and the scikitplot command line. |
 | `scikit-plots-rank-bm25` | `scikitplot.rank_bm25` | same as scikit-plots core | pure Python | BM25 ranking algorithms (Okapi BM25, BM25L, BM25+) from scikit-plots. |
 | `scikit-plots-corpus` | `scikitplot.corpus` | >=3.9 | pure Python | Document ingestion, chunking, embedding and retrieval pipeline from scikit-plots. |
+| `scikit-plots-lean` | `scikitplot.lean` | same as scikit-plots core | pure Python | Evidence on Lean projects (dossiers, project summaries, discovery), read from source text, from scikit-plots. |
 | `scikit-plots-annoy` | `scikitplot.annoy`, `scikitplot.cexternals._annoy` | >=3.10 | compiled | Approximate nearest-neighbour index (Annoy) with the scikit-plots high-level wrapper; the one partial distribution that is compiled. |
 | `scikit-plots-sphinx-ext` | `scikitplot._externals._sphinx_ext` | same as scikit-plots core | pure Python | The Sphinx extensions of the scikit-plots documentation, installable on their own for any Sphinx project. |
 | `scikit-plots-mcp` | `scikitplot.mcp` | same as scikit-plots core | pure Python | Documentation retrieval for Model Context Protocol servers from scikit-plots. |
@@ -93,6 +94,7 @@ The current directory mapping is:
 | `scikit-plots-skinny` | `libs/skinny/` |
 | `scikit-plots-rank-bm25` | `libs/rank-bm25/` |
 | `scikit-plots-corpus` | `libs/corpus/` |
+| `scikit-plots-lean` | `libs/lean/` |
 | `scikit-plots-annoy` | `libs/annoy/` |
 | `scikit-plots-sphinx-ext` | `libs/sphinx-ext/` |
 | `scikit-plots-mcp` | `libs/mcp/` |

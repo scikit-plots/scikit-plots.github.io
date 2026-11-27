@@ -1,6 +1,6 @@
 # CleanPromptError[#](#cleanprompterror "Link to this heading")
 
-exception scikitplot.cleanprompt.CleanPromptError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L49)[#](#scikitplot.cleanprompt.CleanPromptError "Link to this definition")
+exception scikitplot.cleanprompt.CleanPromptError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_exceptions.py#L49)[#](#scikitplot.cleanprompt.CleanPromptError "Link to this definition")
 :   Base class for every error raised by [`scikitplot.cleanprompt`](../../apis/scikitplot.cleanprompt.html#module-scikitplot.cleanprompt "scikitplot.cleanprompt").
 
     Annotation:

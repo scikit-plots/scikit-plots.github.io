@@ -1,6 +1,6 @@
 # register\_lemmatizer[#](#register-lemmatizer "Link to this heading")
 
-scikitplot.corpus.register\_lemmatizer(**name**, **lemmatizer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L895)[#](#scikitplot.corpus.register_lemmatizer "Link to this definition")
+scikitplot.corpus.register\_lemmatizer(**name**, **lemmatizer**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_chunkers/_custom_tokenizer.py#L895)[#](#scikitplot.corpus.register_lemmatizer "Link to this definition")
 :   Register a named [`LemmatizerProtocol`](scikitplot.corpus.LemmatizerProtocol.html#scikitplot.corpus.LemmatizerProtocol "scikitplot.corpus.LemmatizerProtocol") implementation.
 
     Parameters:

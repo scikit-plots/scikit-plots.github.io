@@ -1,6 +1,6 @@
 # UnicodeNormalizer[#](#unicodenormalizer "Link to this heading")
 
-class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L258)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
+class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L258)[#](#scikitplot.corpus.UnicodeNormalizer "Link to this definition")
 :   Apply Unicode normalisation (NFC, NFD, NFKC, or NFKD).
 
     Parameters:
@@ -25,7 +25,7 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
     ```
     Go BackOpen In Tab
 
-    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
+    normalize\_doc(**doc**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L225)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_doc "Link to this definition")
     :   Apply [`normalize_text`](scikitplot.corpus.normalize_text.html#scikitplot.corpus.normalize_text "scikitplot.corpus.normalize_text") to the document.
 
         Parameters:
@@ -43,7 +43,7 @@ class scikitplot.corpus.UnicodeNormalizer(**form='NFC'**)[[source]](https://gith
         Return type:
         :   [**CorpusDocument**](scikitplot.corpus.CorpusDocument.html#scikitplot.corpus.CorpusDocument "scikitplot.corpus._schema.CorpusDocument")
 
-    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_normalizers/_normalizer.py#L288)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_text "Link to this definition")
+    normalize\_text(**text**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_normalizers/_normalizer.py#L288)[#](#scikitplot.corpus.UnicodeNormalizer.normalize_text "Link to this definition")
     :   Apply Unicode normalisation to the text.
 
         Parameters:

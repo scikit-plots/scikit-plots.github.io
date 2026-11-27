@@ -1,6 +1,6 @@
 # corpus\_policy\_bundle[#](#corpus-policy-bundle "Link to this heading")
 
-scikitplot.corpus.corpus\_policy\_bundle(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_policies.py#L242)[#](#scikitplot.corpus.corpus_policy_bundle "Link to this definition")
+scikitplot.corpus.corpus\_policy\_bundle(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_policies.py#L242)[#](#scikitplot.corpus.corpus_policy_bundle "Link to this definition")
 :   Resolve a policy bundle object, named preset, or mapping.
 
     Parameters:

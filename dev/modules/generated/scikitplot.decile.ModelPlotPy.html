@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T15:30:57Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-27T21:56:11Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.decile.ModelPlotPy","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -930,7 +930,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ANNIndexArtifact.html">ANNIndexArtifact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArtifactError.html">ArtifactError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeAwareFilter.html">CodeAwareFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NonBlankFilter.html">NonBlankFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
@@ -1626,6 +1628,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.SimpleImputer.html">SimpleImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.lean.html">scikitplot.lean</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.levenshtein.BackendInfo.html">BackendInfo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.levenshtein.Match.html">Match</a></li>
@@ -1929,7 +1932,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1956,9 +1959,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -2063,7 +2066,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>ModelPlotPy<a class="headerlink" href="#modelplotpy" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.decile.</span></span><span class="sig-name descname"><span class="pre">ModelPlotPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.decile.</span></span><span class="sig-name descname"><span class="pre">ModelPlotPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy" title="Link to this definition">#</a></dt>
 <dd><p>Decile/ntile analysis for sklearn classifiers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2123,8 +2126,8 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li><p>No randomness in ntile assignment (random noise added for qcut).</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="13a2b872-10ef-4189-92c2-910457486c7f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('13a2b872-10ef-4189-92c2-910457486c7f','643a00ac-d4e1-43da-bd65-28f6a5573f59','aba878d5-ce6c-43a9-88bc-8047b4d297c3','../../lite/tree/../notebooks/index.html?path=7e4f1ebc_c4f6_4cf9_83df_11de45b9d68f.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="bf192f72-b5bc-4670-890c-9711b91c959c">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('bf192f72-b5bc-4670-890c-9711b91c959c','0c821822-1907-4eda-b71e-b9febaa33c7e','ca851c26-aaa4-4535-a61b-190b8438abce','../../lite/tree/../notebooks/index.html?path=c01f1935_a7d5_4c1b_8a80_6b479c76ee5a.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -2145,9 +2148,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </div>
 </div>
 </div>
-<div id="aba878d5-ce6c-43a9-88bc-8047b4d297c3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('13a2b872-10ef-4189-92c2-910457486c7f','aba878d5-ce6c-43a9-88bc-8047b4d297c3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('13a2b872-10ef-4189-92c2-910457486c7f','aba878d5-ce6c-43a9-88bc-8047b4d297c3')">Open In Tab</button></div><div id="643a00ac-d4e1-43da-bd65-28f6a5573f59" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
+<div id="ca851c26-aaa4-4535-a61b-190b8438abce" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('bf192f72-b5bc-4670-890c-9711b91c959c','ca851c26-aaa4-4535-a61b-190b8438abce')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('bf192f72-b5bc-4670-890c-9711b91c959c','ca851c26-aaa4-4535-a61b-190b8438abce')">Open In Tab</button></div><div id="0c821822-1907-4eda-b71e-b9febaa33c7e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.aggregate_over_ntiles">
-<span class="sig-name descname"><span class="pre">aggregate_over_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L722"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">aggregate_over_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L722"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.aggregate_over_ntiles" title="Link to this definition">#</a></dt>
 <dd><p>Aggregate counts and lift/gain metrics per ntile.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2183,18 +2186,18 @@ by the existing plot functions.</p>
 <p>Dev note: this implementation avoids mutating shared columns in the scores
 dataframe during loops (the legacy code writes <code class="docutils literal notranslate"><span class="pre">pos</span></code>/<code class="docutils literal notranslate"><span class="pre">neg</span></code> repeatedly).</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="11b27a90-f1b7-449b-808a-33df7ce7ddec">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('11b27a90-f1b7-449b-808a-33df7ce7ddec','d88ad7cd-c8b2-4b46-ad75-a740d7675fcd','ee4a26b6-3473-4702-8d58-d64280bacb6e','../../lite/tree/../notebooks/index.html?path=7425ce46_5fc0_48ed_ac19_0440b12598c6.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="f8b727f8-f402-44a4-bc73-3d4bed8894c6">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f8b727f8-f402-44a4-bc73-3d4bed8894c6','2dec0049-27c6-48af-8b74-79fc3e7dbcea','168c000f-9c6f-4556-9fa1-f3ba92e03eb7','../../lite/tree/../notebooks/index.html?path=214ca346_1e45_49a3_a123_efd40197c6b2.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># agg = mp.aggregate_over_ntiles()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="ee4a26b6-3473-4702-8d58-d64280bacb6e" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('11b27a90-f1b7-449b-808a-33df7ce7ddec','ee4a26b6-3473-4702-8d58-d64280bacb6e')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('11b27a90-f1b7-449b-808a-33df7ce7ddec','ee4a26b6-3473-4702-8d58-d64280bacb6e')">Open In Tab</button></div><div id="d88ad7cd-c8b2-4b46-ad75-a740d7675fcd" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="168c000f-9c6f-4556-9fa1-f3ba92e03eb7" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f8b727f8-f402-44a4-bc73-3d4bed8894c6','168c000f-9c6f-4556-9fa1-f3ba92e03eb7')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f8b727f8-f402-44a4-bc73-3d4bed8894c6','168c000f-9c6f-4556-9fa1-f3ba92e03eb7')">Open In Tab</button></div><div id="2dec0049-27c6-48af-8b74-79fc3e7dbcea" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.get_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.get_params" title="Link to this definition">#</a></dt>
 <dd><p>Get parameters (sklearn-style API).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2227,18 +2230,18 @@ dataframe during loops (the legacy code writes <code class="docutils literal not
 <p>The returned objects are the current attributes; callers should not mutate
 them in-place if they want stable behavior.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6a34399a-a7c6-4aa3-ba00-cbda46a5441f">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6a34399a-a7c6-4aa3-ba00-cbda46a5441f','baecf34e-4abb-4d7e-9f0c-6fc6f8127e7b','f4a2dbf7-ead6-4e8b-a9b0-4381ec50b009','../../lite/tree/../notebooks/index.html?path=446d5651_b80c_485b_b7a2_8551db398ca1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="dcced00e-06d9-4931-adc5-651bdd006f60">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('dcced00e-06d9-4931-adc5-651bdd006f60','aa56e7f1-281f-4fc2-9cc8-267544f30a03','e2afe340-470c-455c-814a-78b5f6d706c3','../../lite/tree/../notebooks/index.html?path=b78019c7_c3a2_4a1d_b3ec_cf5bf80dc505.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># mp.get_params()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="f4a2dbf7-ead6-4e8b-a9b0-4381ec50b009" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6a34399a-a7c6-4aa3-ba00-cbda46a5441f','f4a2dbf7-ead6-4e8b-a9b0-4381ec50b009')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6a34399a-a7c6-4aa3-ba00-cbda46a5441f','f4a2dbf7-ead6-4e8b-a9b0-4381ec50b009')">Open In Tab</button></div><div id="baecf34e-4abb-4d7e-9f0c-6fc6f8127e7b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e2afe340-470c-455c-814a-78b5f6d706c3" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('dcced00e-06d9-4931-adc5-651bdd006f60','e2afe340-470c-455c-814a-78b5f6d706c3')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('dcced00e-06d9-4931-adc5-651bdd006f60','e2afe340-470c-455c-814a-78b5f6d706c3')">Open In Tab</button></div><div id="aa56e7f1-281f-4fc2-9cc8-267544f30a03" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.plotting_scope">
-<span class="sig-name descname"><span class="pre">plotting_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_model_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_dataset_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_smallest_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L861"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.plotting_scope" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plotting_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_model_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_dataset_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_smallest_targetclass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L861"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.plotting_scope" title="Link to this definition">#</a></dt>
 <dd><p>Build <code class="docutils literal notranslate"><span class="pre">plot_input</span></code> subset according to a strict scope contract.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2326,8 +2329,8 @@ ambiguous and a ValueError is raised.</p></li>
 </li>
 </ol>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="6eec04c8-2ca7-49b0-bf2f-4d0de0aa18bb">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('6eec04c8-2ca7-49b0-bf2f-4d0de0aa18bb','5c3e1b62-6ef5-4cbc-8656-980b1498d767','8aeb5008-4b37-435e-8248-f5c075f3c830','../../lite/tree/../notebooks/index.html?path=ceaa159c_2a75_4c1a_8c74_d58e2cb38d24.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="523dfd34-401a-4829-b420-a510cfb363ba">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('523dfd34-401a-4829-b420-a510cfb363ba','b13af9f7-e6c0-46f4-b096-a4a58d243fe2','e9189b00-83ca-4e43-86a0-61f0bc99a0a5','../../lite/tree/../notebooks/index.html?path=ac0f2721_bd1a_42d5_882b_f96602cf5a85.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compare all models on a fixed dataset and target class (scope inferred):</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot_input = mp.plotting_scope(select_dataset_label=['test'], select_targetclass=[1])</span>
 <span class="gp">&gt;&gt;&gt;</span>
@@ -2337,11 +2340,11 @@ ambiguous and a ValueError is raised.</p></li>
 </div>
 </div>
 </div>
-<div id="8aeb5008-4b37-435e-8248-f5c075f3c830" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('6eec04c8-2ca7-49b0-bf2f-4d0de0aa18bb','8aeb5008-4b37-435e-8248-f5c075f3c830')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('6eec04c8-2ca7-49b0-bf2f-4d0de0aa18bb','8aeb5008-4b37-435e-8248-f5c075f3c830')">Open In Tab</button></div><div id="5c3e1b62-6ef5-4cbc-8656-980b1498d767" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="e9189b00-83ca-4e43-86a0-61f0bc99a0a5" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('523dfd34-401a-4829-b420-a510cfb363ba','e9189b00-83ca-4e43-86a0-61f0bc99a0a5')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('523dfd34-401a-4829-b420-a510cfb363ba','e9189b00-83ca-4e43-86a0-61f0bc99a0a5')">Open In Tab</button></div><div id="b13af9f7-e6c0-46f4-b096-a4a58d243fe2" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles">
-<span class="sig-name descname"><span class="pre">prepare_scores_and_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prepare_scores_and_ntiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.prepare_scores_and_ntiles" title="Link to this definition">#</a></dt>
 <dd><p>Compute per-row class probabilities and deterministic ntiles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2382,18 +2385,18 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 <p>This replaces the legacy approach that added random noise and used
 <a class="reference external" href="https://pandas.pydata.org/docs/dev/reference/api/pandas.qcut.html#pandas.qcut" title="(in pandas v3.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pandas.qcut</span></code></a> for binning.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="8fb40a54-f8b6-482e-9ce0-a4bb8fa52ada">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('8fb40a54-f8b6-482e-9ce0-a4bb8fa52ada','034aa110-8e6e-4058-a743-2d32bcc9c9b4','90d26202-e048-4f54-b46f-95dc11867875','../../lite/tree/../notebooks/index.html?path=3b6f39e8_6701_490b_b5e0_57600cbfc311.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="d4094382-b3c5-4c9a-85cf-fe4c8a7ba484">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d4094382-b3c5-4c9a-85cf-fe4c8a7ba484','c08e3a47-ed83-402a-b605-a283a660d723','07b3daea-26ce-4534-a38d-cb5b004d4a01','../../lite/tree/../notebooks/index.html?path=8bce6f7c_9065_47b6_9463_d8a61a3e5ef1.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># scores = mp.prepare_scores_and_ntiles()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="90d26202-e048-4f54-b46f-95dc11867875" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('8fb40a54-f8b6-482e-9ce0-a4bb8fa52ada','90d26202-e048-4f54-b46f-95dc11867875')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('8fb40a54-f8b6-482e-9ce0-a4bb8fa52ada','90d26202-e048-4f54-b46f-95dc11867875')">Open In Tab</button></div><div id="034aa110-8e6e-4058-a743-2d32bcc9c9b4" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="07b3daea-26ce-4534-a38d-cb5b004d4a01" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d4094382-b3c5-4c9a-85cf-fe4c8a7ba484','07b3daea-26ce-4534-a38d-cb5b004d4a01')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('d4094382-b3c5-4c9a-85cf-fe4c8a7ba484','07b3daea-26ce-4534-a38d-cb5b004d4a01')">Open In Tab</button></div><div id="c08e3a47-ed83-402a-b605-a283a660d723" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.reset_params">
-<span class="sig-name descname"><span class="pre">reset_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.reset_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L603"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.reset_params" title="Link to this definition">#</a></dt>
 <dd><p>Reset all parameters to a default empty state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2424,18 +2427,18 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 <p class="rubric">Notes</p>
 <p>The object remains usable after repopulating fields.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="005ba960-6b26-4cc2-8c72-1e73e3a47530">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('005ba960-6b26-4cc2-8c72-1e73e3a47530','73a7cb01-02d2-4e50-86a1-df7f158b888b','ed521114-60a4-4f9f-b695-fb8cf98d6b60','../../lite/tree/../notebooks/index.html?path=7f47c2b4_17f8_4f14_8b12_dff30d849615.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="30dc94a9-c1f7-4471-8bcf-308006463c90">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('30dc94a9-c1f7-4471-8bcf-308006463c90','5f84c58e-85fa-4f1e-8160-7c0e998d7c4e','1ba8e6d8-85a6-49a6-aace-dbc3188226b8','../../lite/tree/../notebooks/index.html?path=5d558206_386c_4623_9002_28b20ad4f517.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># mp.reset_params()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="ed521114-60a4-4f9f-b695-fb8cf98d6b60" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('005ba960-6b26-4cc2-8c72-1e73e3a47530','ed521114-60a4-4f9f-b695-fb8cf98d6b60')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('005ba960-6b26-4cc2-8c72-1e73e3a47530','ed521114-60a4-4f9f-b695-fb8cf98d6b60')">Open In Tab</button></div><div id="73a7cb01-02d2-4e50-86a1-df7f158b888b" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="1ba8e6d8-85a6-49a6-aace-dbc3188226b8" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('30dc94a9-c1f7-4471-8bcf-308006463c90','1ba8e6d8-85a6-49a6-aace-dbc3188226b8')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('30dc94a9-c1f7-4471-8bcf-308006463c90','1ba8e6d8-85a6-49a6-aace-dbc3188226b8')">Open In Tab</button></div><div id="5f84c58e-85fa-4f1e-8160-7c0e998d7c4e" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.decile.ModelPlotPy.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/decile/_decile_modelplotpy.py#L567"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.set_params" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/decile/_decile_modelplotpy.py#L567"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.decile.ModelPlotPy.set_params" title="Link to this definition">#</a></dt>
 <dd><p>Set parameters (sklearn-style API) and re-validate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2471,14 +2474,14 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 <p class="rubric">Notes</p>
 <p>After updating attributes, the internal state is validated.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="144f8bf2-1e0f-427a-85ce-00adb47dbaf3">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('144f8bf2-1e0f-427a-85ce-00adb47dbaf3','60f14b7d-d8b8-4282-be16-bdeba12c4da6','ad789d96-a7e3-4413-b2bd-5ef8e7bb6305','../../lite/tree/../notebooks/index.html?path=20a8728a_6cbc_4773_a1cb_c14c75726b0e.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="497450ff-02a3-4d96-89cd-b36d8dc8c267">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('497450ff-02a3-4d96-89cd-b36d8dc8c267','0ddd2f09-f5a6-4080-b2cf-ddf24b770131','d82af667-bf75-4b80-a04e-50b8bc27de9f','../../lite/tree/../notebooks/index.html?path=9ec28fd1_e525_4878_a46d_9473c30a93e7.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># mp.set_params(ntiles=20)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div id="ad789d96-a7e3-4413-b2bd-5ef8e7bb6305" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('144f8bf2-1e0f-427a-85ce-00adb47dbaf3','ad789d96-a7e3-4413-b2bd-5ef8e7bb6305')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('144f8bf2-1e0f-427a-85ce-00adb47dbaf3','ad789d96-a7e3-4413-b2bd-5ef8e7bb6305')">Open In Tab</button></div><div id="60f14b7d-d8b8-4282-be16-bdeba12c4da6" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="d82af667-bf75-4b80-a04e-50b8bc27de9f" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('497450ff-02a3-4d96-89cd-b36d8dc8c267','d82af667-bf75-4b80-a04e-50b8bc27de9f')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('497450ff-02a3-4d96-89cd-b36d8dc8c267','d82af667-bf75-4b80-a04e-50b8bc27de9f')">Open In Tab</button></div><div id="0ddd2f09-f5a6-4080-b2cf-ddf24b770131" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 </dd></dl>
 
@@ -2607,7 +2610,7 @@ fewer rows than <code class="docutils literal notranslate"><span class="pre">nti
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.740e0f5 2026-11-26T15:04Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261128.0f76614 2026-11-27T21:44Z.
       <br/>
     
   </p>

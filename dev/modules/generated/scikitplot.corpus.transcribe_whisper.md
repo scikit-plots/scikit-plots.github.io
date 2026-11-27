@@ -1,6 +1,6 @@
 # transcribe\_whisper[#](#transcribe-whisper "Link to this heading")
 
-scikitplot.corpus.transcribe\_whisper(**media\_path**, **model\_size**, **language**, **\***, **component**, **logger**, **strict=False**, **faster\_model\_kwargs=None**, **faster\_transcribe\_kwargs=None**, **include\_confidence=False**, **report=None**, **policy=None**, **custom\_backends=()**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_readers/_whisper.py#L404)[#](#scikitplot.corpus.transcribe_whisper "Link to this definition")
+scikitplot.corpus.transcribe\_whisper(**media\_path**, **model\_size**, **language**, **\***, **component**, **logger**, **strict=False**, **faster\_model\_kwargs=None**, **faster\_transcribe\_kwargs=None**, **include\_confidence=False**, **report=None**, **policy=None**, **custom\_backends=()**, **capability\_registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_readers/_whisper.py#L404)[#](#scikitplot.corpus.transcribe_whisper "Link to this definition")
 :   Transcribe media with a shared, policy-driven ASR backend chain.
 
     Preflight and execution are built from the same candidate factory. Runtime

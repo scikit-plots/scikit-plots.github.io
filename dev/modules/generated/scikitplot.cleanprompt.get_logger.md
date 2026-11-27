@@ -1,6 +1,6 @@
 # get\_logger[#](#get-logger "Link to this heading")
 
-scikitplot.cleanprompt.get\_logger(**name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_logging.py#L134)[#](#scikitplot.cleanprompt.get_logger "Link to this definition")
+scikitplot.cleanprompt.get\_logger(**name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_logging.py#L134)[#](#scikitplot.cleanprompt.get_logger "Link to this definition")
 :   Return a logger under this submodule’s namespace.
 
     Parameters:

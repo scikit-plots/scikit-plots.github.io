@@ -1,6 +1,6 @@
 📚 Scikit-plots Documentation
   
- 0.5.dev0+git.20261126.740e0f5 - November 26, 2026 15:04 UTC
+ 0.5.dev0+git.20261128.0f76614 - November 27, 2026 21:44 UTC
 
 # User Guide[#](#user-guide "Link to this heading")
 
@@ -93,6 +93,18 @@
 * [Levenshtein](levenshtein/index.html)
   * [Scope](levenshtein/index.html#scope)
   * [Examples](levenshtein/index.html#examples)
+**formal proofs (Lean)**
+
+* [Lean](lean/index.html)
+  * [Quick start](lean/index.html#quick-start)
+  * [The reports](lean/index.html#the-reports)
+  * [Policies](lean/index.html#policies)
+  * [What a text index cannot see](lean/index.html#what-a-text-index-cannot-see)
+  * [Saving an index](lean/index.html#saving-an-index)
+  * [A project over its dependencies](lean/index.html#a-project-over-its-dependencies)
+  * [Files one at a time](lean/index.html#files-one-at-a-time)
+  * [Near-duplicate statements](lean/index.html#near-duplicate-statements)
+  * [Scale](lean/index.html#scale)
 **logging system**
 
 * [Logging](logging/index.html)

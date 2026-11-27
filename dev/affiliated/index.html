@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T15:26:51Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-27T21:52:08Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"affiliated/index","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -739,7 +739,7 @@ compatibility.  For reproducible deployments, pin the distributions you choose
 rather than assuming unrelated releases are interchangeable.</p>
 <section id="partial-distribution-registry">
 <h3>Partial-distribution registry<a class="headerlink" href="#partial-distribution-registry" title="Link to this heading">#</a></h3>
-<p>Current project-owned partial distributions: <strong>9</strong>.</p>
+<p>Current project-owned partial distributions: <strong>10</strong>.</p>
 <p>The registry below is generated from the same ownership and packaging
 metadata used to build the distributions.  A new <code class="docutils literal notranslate"><span class="pre">libs/</span></code> distribution
 therefore cannot be silently omitted from this page.</p>
@@ -778,37 +778,43 @@ therefore cannot be silently omitted from this page.</p>
 <td><p>pure Python</p></td>
 <td><p>Document ingestion, chunking, embedding and retrieval pipeline from scikit-plots.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-annoy</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-lean</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.lean</span></code></p></td>
+<td><p>same as scikit-plots core</p></td>
+<td><p>pure Python</p></td>
+<td><p>Evidence on Lean projects (dossiers, project summaries, discovery), read from source text, from scikit-plots.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-annoy</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.annoy</span></code>, <code class="docutils literal notranslate"><span class="pre">scikitplot.cexternals._annoy</span></code></p></td>
 <td><p>&gt;=3.10</p></td>
 <td><p>compiled</p></td>
 <td><p>Approximate nearest-neighbour index (Annoy) with the scikit-plots high-level wrapper; the one partial distribution that is compiled.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-sphinx-ext</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-sphinx-ext</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot._externals._sphinx_ext</span></code></p></td>
 <td><p>same as scikit-plots core</p></td>
 <td><p>pure Python</p></td>
 <td><p>The Sphinx extensions of the scikit-plots documentation, installable on their own for any Sphinx project.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mcp</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mcp</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.mcp</span></code></p></td>
 <td><p>same as scikit-plots core</p></td>
 <td><p>pure Python</p></td>
 <td><p>Documentation retrieval for Model Context Protocol servers from scikit-plots.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cleanprompt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cleanprompt</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.cleanprompt</span></code></p></td>
 <td><p>same as scikit-plots core</p></td>
 <td><p>pure Python</p></td>
 <td><p>Redact sensitive values from a prompt before it is sent to an LLM, from scikit-plots.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cython</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cython</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.cython</span></code></p></td>
 <td><p>&gt;=3.10</p></td>
 <td><p>pure Python</p></td>
 <td><p>Runtime Cython and pybind11 build helpers from scikit-plots.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mlflow</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mlflow</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">scikitplot.mlflow</span></code></p></td>
 <td><p>&gt;=3.11</p></td>
 <td><p>pure Python</p></td>
@@ -846,22 +852,25 @@ checkout, install only the part you need with:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-corpus</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/corpus/</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-annoy</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-lean</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libs/lean/</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-annoy</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/annoy/</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-sphinx-ext</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-sphinx-ext</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/sphinx-ext/</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mcp</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mcp</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/mcp/</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cleanprompt</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cleanprompt</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/cleanprompt/</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cython</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-cython</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/cython/</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mlflow</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scikit-plots-mlflow</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">libs/mlflow/</span></code></p></td>
 </tr>
 </tbody>
@@ -1059,7 +1068,7 @@ these project-owned partial distributions.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.740e0f5 2026-11-26T15:04Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261128.0f76614 2026-11-27T21:44Z.
       <br/>
     
   </p>

@@ -1,6 +1,6 @@
 # check\_plan\_change[#](#check-plan-change "Link to this heading")
 
-scikitplot.agent.check\_plan\_change(**current**, **proposed**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L158)[#](#scikitplot.agent.check_plan_change "Link to this definition")
+scikitplot.agent.check\_plan\_change(**current**, **proposed**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L158)[#](#scikitplot.agent.check_plan_change "Link to this definition")
 :   Refuse a plan change that would hide or rewrite progress.
 
     Parameters:

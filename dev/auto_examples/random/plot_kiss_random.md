@@ -947,11 +947,11 @@ Profile, route, trace and monitor wide tables![](../../_images/sphx_glr_plot_mma
 
 [Memory-Mapping Showcase – Basic / Medium / Advanced](../memmap/plot_mman.html)
 
-Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_precision_script_thumb.png)
+Memory-Mapping Showcase – Basic / Medium / Advanced![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
 
-[Precision annoy.AnnoyIndex with examples](../annoy/plot_precision_script.html)
+[annoy.Index to NPY or CSV with examples](../annoy/plot_annoy_to_NPY_CSV.html)
 
-Precision annoy.AnnoyIndex with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
+annoy.Index to NPY or CSV with examples![](../../_images/sphx_glr_plot_mmap_script_thumb.png)
 
 [Mmap annoy.AnnoyIndex with examples](../annoy/plot_mmap_script.html)
 

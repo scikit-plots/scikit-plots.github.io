@@ -1,6 +1,6 @@
 # RankWarning[#](#rankwarning "Link to this heading")
 
-exception scikitplot.exceptions.RankWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L134)[#](#scikitplot.exceptions.RankWarning "Link to this definition")
+exception scikitplot.exceptions.RankWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/exceptions.py#L134)[#](#scikitplot.exceptions.RankWarning "Link to this definition")
 :   Matrix rank warning.
 
     Issued by polynomial functions when the design matrix is rank deficient.

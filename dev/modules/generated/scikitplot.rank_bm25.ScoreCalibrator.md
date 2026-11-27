@@ -1,6 +1,6 @@
 # ScoreCalibrator[#](#scorecalibrator "Link to this heading")
 
-class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **platt\_targets=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L222)[#](#scikitplot.rank_bm25.ScoreCalibrator "Link to this definition")
+class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **platt\_targets=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L222)[#](#scikitplot.rank_bm25.ScoreCalibrator "Link to this definition")
 :   Monotone map from BM25 scores to probabilities of relevance.
 
     Parameters:
@@ -44,7 +44,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
     ([`require_held_out`](#scikitplot.rank_bm25.ScoreCalibrator.require_held_out "scikitplot.rank_bm25.ScoreCalibrator.require_held_out")). A score transformed without fitting is not a
     probability; this class has no unfitted transform on purpose.
 
-    fit(**scores**, **labels**, **\***, **query\_ids**, **population**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L276)[#](#scikitplot.rank_bm25.ScoreCalibrator.fit "Link to this definition")
+    fit(**scores**, **labels**, **\***, **query\_ids**, **population**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L276)[#](#scikitplot.rank_bm25.ScoreCalibrator.fit "Link to this definition")
     :   Fit the map on labelled (query, document) pairs.
 
         Parameters:
@@ -84,7 +84,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
         Return type:
         :   [**ScoreCalibrator**](#scikitplot.rank_bm25.ScoreCalibrator "scikitplot.rank_bm25._calibration.ScoreCalibrator")
 
-    classmethod from\_dict(**state**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L485)[#](#scikitplot.rank_bm25.ScoreCalibrator.from_dict "Link to this definition")
+    classmethod from\_dict(**state**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L485)[#](#scikitplot.rank_bm25.ScoreCalibrator.from_dict "Link to this definition")
     :   Rebuild a fitted calibrator from [`to_dict`](#scikitplot.rank_bm25.ScoreCalibrator.to_dict "scikitplot.rank_bm25.ScoreCalibrator.to_dict") output.
 
         Raises:
@@ -97,7 +97,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
         Return type:
         :   [**ScoreCalibrator**](#scikitplot.rank_bm25.ScoreCalibrator "scikitplot.rank_bm25._calibration.ScoreCalibrator")
 
-    predict\_proba(**scores**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L363)[#](#scikitplot.rank_bm25.ScoreCalibrator.predict_proba "Link to this definition")
+    predict\_proba(**scores**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L363)[#](#scikitplot.rank_bm25.ScoreCalibrator.predict_proba "Link to this definition")
     :   Probability of relevance for each score.
 
         Parameters:
@@ -121,7 +121,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
         Return type:
         :   [**ndarray**](https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray "(in NumPy v2.6.dev0)")
 
-    require\_held\_out(**query\_ids**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L434)[#](#scikitplot.rank_bm25.ScoreCalibrator.require_held_out "Link to this definition")
+    require\_held\_out(**query\_ids**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L434)[#](#scikitplot.rank_bm25.ScoreCalibrator.require_held_out "Link to this definition")
     :   Refuse evaluation queries that were used to fit.
 
         Parameters:
@@ -139,7 +139,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
         Return type:
         :   None
 
-    shift\_prior(**base\_rate**, **\***, **population**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L400)[#](#scikitplot.rank_bm25.ScoreCalibrator.shift_prior "Link to this definition")
+    shift\_prior(**base\_rate**, **\***, **population**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L400)[#](#scikitplot.rank_bm25.ScoreCalibrator.shift_prior "Link to this definition")
     :   Return a copy valid for a population with another relevant share.
 
         Parameters:
@@ -168,7 +168,7 @@ class scikitplot.rank\_bm25.ScoreCalibrator(**method='sigmoid'**, **\***, **plat
         mix differs) – true for a subsample, not for a different candidate
         generator. Isotonic outputs of exactly 0 or 1 stay 0 or 1.
 
-    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_calibration.py#L462)[#](#scikitplot.rank_bm25.ScoreCalibrator.to_dict "Link to this definition")
+    to\_dict()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_calibration.py#L462)[#](#scikitplot.rank_bm25.ScoreCalibrator.to_dict "Link to this definition")
     :   Return a JSON-serialisable state; query ids appear only as digests.
 
         Return type:

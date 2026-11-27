@@ -1,6 +1,6 @@
 # plain[#](#plain "Link to this heading")
 
-scikitplot.agent.plain(**value**, **\***, **what='value'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_canonical.py#L47)[#](#scikitplot.agent.plain "Link to this definition")
+scikitplot.agent.plain(**value**, **\***, **what='value'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_canonical.py#L47)[#](#scikitplot.agent.plain "Link to this definition")
 :   Return `value` as a plain JSON value, or raise.
 
     Parameters:

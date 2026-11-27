@@ -1,6 +1,6 @@
 # children[#](#children "Link to this heading")
 
-scikitplot.corpus.children(**documents**, **doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_hierarchy.py#L242)[#](#scikitplot.corpus.children "Link to this definition")
+scikitplot.corpus.children(**documents**, **doc\_id**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_hierarchy.py#L242)[#](#scikitplot.corpus.children "Link to this definition")
 :   Return the direct children of `doc_id`.
 
     Parameters:

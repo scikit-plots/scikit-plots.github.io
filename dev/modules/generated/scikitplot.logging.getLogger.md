@@ -1,6 +1,6 @@
 # getLogger[#](#getlogger "Link to this heading")
 
-scikitplot.logging.getLogger(**name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../../logging/__init__.py#L2149)[#](#scikitplot.logging.getLogger "Link to this definition")
+scikitplot.logging.getLogger(**name=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../../logging/__init__.py#L2149)[#](#scikitplot.logging.getLogger "Link to this definition")
 :   Return a logger with the specified name, creating it if necessary.
 
     If no name is specified, return the root logger.

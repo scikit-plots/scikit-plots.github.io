@@ -1,6 +1,6 @@
 # DuplicateRepresentationWarning[#](#duplicaterepresentationwarning "Link to this heading")
 
-exception scikitplot.exceptions.DuplicateRepresentationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/exceptions.py#L360)[#](#scikitplot.exceptions.DuplicateRepresentationWarning "Link to this definition")
+exception scikitplot.exceptions.DuplicateRepresentationWarning[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/exceptions.py#L360)[#](#scikitplot.exceptions.DuplicateRepresentationWarning "Link to this definition")
 :   A warning class indicating a representation name was already registered.
 
     Annotation:

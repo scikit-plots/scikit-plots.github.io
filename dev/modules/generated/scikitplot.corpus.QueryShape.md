@@ -1,21 +1,21 @@
 # QueryShape[#](#queryshape "Link to this heading")
 
-class scikitplot.corpus.QueryShape(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L70)[#](#scikitplot.corpus.QueryShape "Link to this definition")
+class scikitplot.corpus.QueryShape(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L70)[#](#scikitplot.corpus.QueryShape "Link to this definition")
 :   The built-in shapes of [`DEFAULT_ROUTING_POLICY`](scikitplot.corpus.DEFAULT_ROUTING_POLICY.html#scikitplot.corpus.DEFAULT_ROUTING_POLICY "scikitplot.corpus.DEFAULT_ROUTING_POLICY").
 
-    AGGREGATION = 'aggregation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.AGGREGATION "Link to this definition")
+    AGGREGATION = 'aggregation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.AGGREGATION "Link to this definition")
     :   The answer counts, sums, averages or lists everything of a kind.
 
-    HIERARCHY = 'hierarchy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.HIERARCHY "Link to this definition")
+    HIERARCHY = 'hierarchy'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.HIERARCHY "Link to this definition")
     :   The answer depends on what contains what.
 
-    MULTI\_HOP = 'multi\_hop'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.MULTI_HOP "Link to this definition")
+    MULTI\_HOP = 'multi\_hop'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.MULTI_HOP "Link to this definition")
     :   The answer joins facts across documents or entities.
 
-    NEGATION = 'negation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.NEGATION "Link to this definition")
+    NEGATION = 'negation'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.NEGATION "Link to this definition")
     :   The answer excludes something.
 
-    TEMPORAL = 'temporal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.TEMPORAL "Link to this definition")
+    TEMPORAL = 'temporal'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L)[#](#scikitplot.corpus.QueryShape.TEMPORAL "Link to this definition")
     :   The answer depends on a date, a period or an order in time.
 
     capitalize(**/**)[#](#scikitplot.corpus.QueryShape.capitalize "Link to this definition")

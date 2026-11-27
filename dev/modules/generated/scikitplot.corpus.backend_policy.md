@@ -1,6 +1,6 @@
 # backend\_policy[#](#backend-policy "Link to this heading")
 
-scikitplot.corpus.backend\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_backends.py#L299)[#](#scikitplot.corpus.backend_policy "Link to this definition")
+scikitplot.corpus.backend\_policy(**value**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_backends.py#L299)[#](#scikitplot.corpus.backend_policy "Link to this definition")
 :   Resolve an object, named preset or mapping without hidden global state.
 
     Parameters:

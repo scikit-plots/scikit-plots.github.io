@@ -20,7 +20,7 @@ window.AI_ASSISTANT_CONFIG = {"position":"sidebar","content_selector":"article.b
 </script>
 
 <script>
-window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-26T15:28:29Z"}};
+window.AI_ASSISTANT_ENDPOINTS = {"default":{"label":"Default Proxy","datasetRepo":"scikit-plots/ai-assistant-contributions","_schemaV":9,"base":"https://scikit-plots-ai.hf.space","chat":"","share":"","training":"","image":"","video":"","audio":"","document":"","publication":"","shareToken":"","ttlDays":30,"_warn":[]},"_meta":{"schemaVersion":9,"buildId":"2026-11-27T21:53:42Z"}};
 window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </script>
 <script type="application/json" id="sphinx-feedback-config">{"buttons_ratings":{"left_button_rating":"left","right_button_rating":"right"},"comment_enabled":true,"contract":"page.feedback-config.v1","contributor_enabled":true,"counter":{"count":0,"negative_count":0,"neutral_count":0,"positive_count":0,"score":0},"detailed_enabled":true,"enabled":true,"endpoint":"https://scikit-plots-ai.hf.space/v1/feedback","fallback":"main-bottom","main_selectors":["article[role=\"main\"]","article.bd-article","div.rst-content","[role=\"main\"]","main","div.document","div.body","article"],"page_id":"modules/generated/scikitplot.cleanprompt.Redactor","page_main":true,"page_revision":"","position":"sidebar","quick_enabled":true,"sidebar_selectors":["aside[role=\"complementary\"]",".bd-sidebar-secondary",".bd-toc",".toc-sidebar",".toc-drawer",".sphinxsidebar"],"site_id":"scikit-plots"}</script>
@@ -930,7 +930,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ANNIndexArtifact.html">ANNIndexArtifact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ArtifactError.html">ArtifactError</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.ChunkerBase.html">ChunkerBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.CodeAwareFilter.html">CodeAwareFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DefaultFilter.html">DefaultFilter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.NonBlankFilter.html">NonBlankFilter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DocumentReader.html">DocumentReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.DummyReader.html">DummyReader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.corpus.FilterBase.html">FilterBase</a></li>
@@ -1626,6 +1628,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.impute.SimpleImputer.html">SimpleImputer</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apis/scikitplot.lean.html">scikitplot.lean</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.levenshtein.html">scikitplot.levenshtein</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.levenshtein.BackendInfo.html">BackendInfo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.levenshtein.Match.html">Match</a></li>
@@ -1929,7 +1932,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../apis/scikitplot.experimental.html">scikitplot.experimental</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">scikitplot.experimental.enable_ann_imputer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.enable_ann_imputer.html">enable_ann_imputer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental.pipeline.pipeline.html">pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.ENVELOPES.html">ENVELOPES</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.experimental._doremi.compose_as_waveform.html">compose_as_waveform</a></li>
@@ -1956,9 +1959,9 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.probplot.html">probplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.plot_pos.html">plot_pos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._probscale.fit_line.html">fit_line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">scikitplot.externals._sphinxext.figmpl_directive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">scikitplot.externals._sphinxext.mathmpl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">scikitplot.externals._sphinxext.plot_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.figmpl_directive.html">figmpl_directive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.mathmpl.html">mathmpl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.plot_directive.html">plot_directive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.roles.html">roles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._sphinxext.sphinx_tabs_patch.html">sphinx_tabs_patch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scikitplot.externals._tweedie.tweedie.html">tweedie</a></li>
@@ -2063,7 +2066,7 @@ window.AI_ASSISTANT_ENDPOINT_DEFAULT = "default";
 <h1>Redactor<a class="headerlink" href="#redactor" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Redactor">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Redactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engine.py#L555"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Redactor" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scikitplot.cleanprompt.</span></span><span class="sig-name descname"><span class="pre">Redactor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_engine.py#L555"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Redactor" title="Link to this definition">#</a></dt>
 <dd><p>Reusable, stateless redactor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2101,8 +2104,8 @@ numbering — and the web tier shared one instance across every HTTP request,
 which made one visitor’s data influence another’s output. Every counter here
 lives in a local of <a class="reference internal" href="#scikitplot.cleanprompt.Redactor.redact" title="scikitplot.cleanprompt.Redactor.redact"><code class="xref py py-meth docutils literal notranslate"><span class="pre">redact</span></code></a>.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="624ad715-3518-4f57-b8b0-d9ac0a71cb84">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('624ad715-3518-4f57-b8b0-d9ac0a71cb84','e8aa8825-c1ba-4ced-8d91-564e3551421f','9122e9e2-94e0-4054-9baa-fa460714e0af','../../lite/tree/../notebooks/index.html?path=fa8846c6_1f47_4b11_afa6_3de5388b2bf0.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="be5e3cfb-fd2a-49e4-addb-d0f4a3cae71b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('be5e3cfb-fd2a-49e4-addb-d0f4a3cae71b','8549dac4-5b2a-46df-a673-447ad6cbe030','818f6cf8-ebb8-46b4-a886-322c18ebfc82','../../lite/tree/../notebooks/index.html?path=079b2db2_4dba_40cf_a5e2_036b87f54612.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">redactor</span> <span class="o">=</span> <span class="n">Redactor</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">=</span> <span class="n">redactor</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="s2">"mail a@b.co"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">second</span> <span class="o">=</span> <span class="n">redactor</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="s2">"mail c@d.co"</span><span class="p">)</span>
@@ -2114,7 +2117,7 @@ lives in a local of <a class="reference internal" href="#scikitplot.cleanprompt.
 </div>
 </div>
 </div>
-<div id="9122e9e2-94e0-4054-9baa-fa460714e0af" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('624ad715-3518-4f57-b8b0-d9ac0a71cb84','9122e9e2-94e0-4054-9baa-fa460714e0af')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('624ad715-3518-4f57-b8b0-d9ac0a71cb84','9122e9e2-94e0-4054-9baa-fa460714e0af')">Open In Tab</button></div><div id="e8aa8825-c1ba-4ced-8d91-564e3551421f" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
+<div id="818f6cf8-ebb8-46b4-a886-322c18ebfc82" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('be5e3cfb-fd2a-49e4-addb-d0f4a3cae71b','818f6cf8-ebb8-46b4-a886-322c18ebfc82')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('be5e3cfb-fd2a-49e4-addb-d0f4a3cae71b','818f6cf8-ebb8-46b4-a886-322c18ebfc82')">Open In Tab</button></div><div id="8549dac4-5b2a-46df-a673-447ad6cbe030" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script><dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Redactor.policy">
 <span class="sig-name descname"><span class="pre">policy</span></span><a class="headerlink" href="#scikitplot.cleanprompt.Redactor.policy" title="Link to this definition">#</a></dt>
 <dd><p>!! processed by numpydoc !!</p>
@@ -2122,7 +2125,7 @@ lives in a local of <a class="reference internal" href="#scikitplot.cleanprompt.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Redactor.redact">
-<span class="sig-name descname"><span class="pre">redact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CUSTOM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_engine.py#L611"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Redactor.redact" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">redact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CUSTOM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_engine.py#L611"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scikitplot.cleanprompt.Redactor.redact" title="Link to this definition">#</a></dt>
 <dd><p>Replace sensitive values in <code class="docutils literal notranslate"><span class="pre">text</span></code> with stable placeholders.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2199,8 +2202,8 @@ skipped email, phone and URL detection entirely — so supplying an extra
 term made the result <em>less</em> redacted. There is one pipeline here, and
 adding a term can only add detections.</p>
 <p class="rubric">Examples</p>
-<div class="try_examples_outer_container docutils container" id="f9f76790-1d20-4846-ad85-073fe67d7aca">
-<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f9f76790-1d20-4846-ad85-073fe67d7aca','a31cc876-324e-42d4-a056-2328ac03004c','a6943a2e-f095-4ef8-9904-ba52d890ede2','../../lite/tree/../notebooks/index.html?path=57f02de4_e521_4646_a63c_beb420f54444.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
+<div class="try_examples_outer_container docutils container" id="ffd7d078-90de-49ba-9735-378d0d91ed3b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('ffd7d078-90de-49ba-9735-378d0d91ed3b','fe082231-b0fe-4ac9-a55d-dab72ded78d3','c5d6cd3a-6840-4362-8e5f-082fb8335e11','../../lite/tree/../notebooks/index.html?path=203f4521_b7f7_4a4c_9fc9_ea77c63e36cc.ipynb','None')">Try it in your browser!</button></div><div class="try_examples_content docutils container">
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">Redactor</span><span class="p">()</span><span class="o">.</span><span class="n">redact</span><span class="p">(</span><span class="s2">"Ann met Anna"</span><span class="p">,</span> <span class="n">extra_terms</span><span class="o">=</span><span class="p">[</span><span class="s2">"Ann"</span><span class="p">,</span> <span class="s2">"Anna"</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">text</span>
 <span class="go">'[CUSTOM-1] met [CUSTOM-2]'</span>
@@ -2210,7 +2213,7 @@ adding a term can only add detections.</p>
 </div>
 </div>
 </div>
-<div id="a6943a2e-f095-4ef8-9904-ba52d890ede2" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f9f76790-1d20-4846-ad85-073fe67d7aca','a6943a2e-f095-4ef8-9904-ba52d890ede2')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('f9f76790-1d20-4846-ad85-073fe67d7aca','a6943a2e-f095-4ef8-9904-ba52d890ede2')">Open In Tab</button></div><div id="a31cc876-324e-42d4-a056-2328ac03004c" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
+<div id="c5d6cd3a-6840-4362-8e5f-082fb8335e11" class="try_examples_outer_iframe  hidden"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('ffd7d078-90de-49ba-9735-378d0d91ed3b','c5d6cd3a-6840-4362-8e5f-082fb8335e11')">Go Back</button><button class="try_examples_button" onclick="window.openInNewTab('ffd7d078-90de-49ba-9735-378d0d91ed3b','c5d6cd3a-6840-4362-8e5f-082fb8335e11')">Open In Tab</button></div><div id="fe082231-b0fe-4ac9-a55d-dab72ded78d3" class="jupyterlite_sphinx_iframe_container"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../../try_examples.json");});</script></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="scikitplot.cleanprompt.Redactor.registry">
@@ -2348,7 +2351,7 @@ adding a term can only add detections.</p>
 
   <p class="copyright">
     
-      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261126.740e0f5 2026-11-26T15:04Z.
+      © Copyright 2024 - 2026 scikit-plots developers (BSD-3 Clause License) 0.5.dev0+git.20261128.0f76614 2026-11-27T21:44Z.
       <br/>
     
   </p>

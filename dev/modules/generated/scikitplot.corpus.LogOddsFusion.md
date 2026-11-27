@@ -1,6 +1,6 @@
 # LogOddsFusion[#](#logoddsfusion "Link to this heading")
 
-class scikitplot.corpus.LogOddsFusion(**base\_rate**, **weights=()**, **default\_weight=1.0**, **clip=1e-06**, **top\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_logodds_fusion.py#L219)[#](#scikitplot.corpus.LogOddsFusion "Link to this definition")
+class scikitplot.corpus.LogOddsFusion(**base\_rate**, **weights=()**, **default\_weight=1.0**, **clip=1e-06**, **top\_k=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_logodds_fusion.py#L219)[#](#scikitplot.corpus.LogOddsFusion "Link to this definition")
 :   Pool calibrated legs as log-odds evidence into probabilities of relevance.
 
     Parameters:
@@ -58,13 +58,13 @@ class scikitplot.corpus.LogOddsFusion(**base\_rate**, **weights=()**, **default\
     ```
     Go BackOpen In Tab
 
-    base\_rate: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_logodds_fusion.py#L219)[#](#scikitplot.corpus.LogOddsFusion.base_rate "Link to this definition")
+    base\_rate: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_logodds_fusion.py#L219)[#](#scikitplot.corpus.LogOddsFusion.base_rate "Link to this definition")
 
     clip: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 1e-06[#](#scikitplot.corpus.LogOddsFusion.clip "Link to this definition")
 
     default\_weight: [float](https://docs.python.org/3/builtins/functions.html#float "(in Python v3.15)") = 1.0[#](#scikitplot.corpus.LogOddsFusion.default_weight "Link to this definition")
 
-    fuse(**legs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_logodds_fusion.py#L314)[#](#scikitplot.corpus.LogOddsFusion.fuse "Link to this definition")
+    fuse(**legs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_logodds_fusion.py#L314)[#](#scikitplot.corpus.LogOddsFusion.fuse "Link to this definition")
     :   Fuse calibrated legs.
 
         Parameters:
@@ -93,7 +93,7 @@ class scikitplot.corpus.LogOddsFusion(**base\_rate**, **weights=()**, **default\
 
     top\_k: [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.corpus.LogOddsFusion.top_k "Link to this definition")
 
-    weight(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_logodds_fusion.py#L310)[#](#scikitplot.corpus.LogOddsFusion.weight "Link to this definition")
+    weight(**leg**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_logodds_fusion.py#L310)[#](#scikitplot.corpus.LogOddsFusion.weight "Link to this definition")
     :   Return the weight of the leg named `leg`.
 
         Parameters:

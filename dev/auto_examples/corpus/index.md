@@ -52,7 +52,7 @@ pip install scikit-plots[corpus]
     languages, custom extensions, awkward encodings and a line-coverage check.
 12. ****Read Lean proofs**** — `LeanReader`: one chunk per command, proofs
     kept or dropped, audit flags (`sorry`, `native_decide`, `axiom`,
-    `#exit`), long proofs in parts, Lean 3 and hostile input.
+    `#exit`), references, long proofs in parts, Lean 3 and hostile input.
 
 ## Which API should I use?[#](#which-api-should-i-use "Link to this heading")
 

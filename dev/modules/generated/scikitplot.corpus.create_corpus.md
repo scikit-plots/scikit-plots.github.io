@@ -1,6 +1,6 @@
 # create\_corpus[#](#create-corpus "Link to this heading")
 
-scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_pipeline.py#L1222)[#](#scikitplot.corpus.create_corpus "Link to this definition")
+scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **chunker=None**, **filter\_=None**, **normalizer=None**, **enricher=None**, **filename\_override=None**, **format=ExportFormat.CSV**, **default\_language=None**, **doc\_id\_scheme=DocIdScheme.SHA256**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_pipeline.py#L1224)[#](#scikitplot.corpus.create_corpus "Link to this definition")
 :   Create and export a corpus from a single source file.
 
     Convenience wrapper around [`CorpusPipeline`](scikitplot.corpus.CorpusPipeline.html#scikitplot.corpus.CorpusPipeline "scikitplot.corpus.CorpusPipeline") for the common
@@ -18,7 +18,7 @@ scikitplot.corpus.create\_corpus(**input\_path**, **output\_path**, **\***, **ch
         :   Text chunker. Default: `None` (one doc per raw chunk).
 
         ****filter\_****FilterBase or None, optional
-        :   Document filter. Default: `None` ([`DefaultFilter`](scikitplot.corpus.DefaultFilter.html#scikitplot.corpus.DefaultFilter "scikitplot.corpus.DefaultFilter")).
+        :   Document filter. Default: `None` ([`CodeAwareFilter`](scikitplot.corpus.CodeAwareFilter.html#scikitplot.corpus.CodeAwareFilter "scikitplot.corpus.CodeAwareFilter")).
 
         ****normalizer****TextNormalizer or None, optional
         :   When provided, `normalized_text` is populated on every document

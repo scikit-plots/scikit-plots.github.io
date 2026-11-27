@@ -1,6 +1,6 @@
 # circmoment[#](#circmoment "Link to this heading")
 
-scikitplot.cexternals.\_astropy.stats.circmoment(**data**, **p=1.0**, **centered=False**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/circstats.py#L273)[#](#scikitplot.cexternals._astropy.stats.circmoment "Link to this definition")
+scikitplot.cexternals.\_astropy.stats.circmoment(**data**, **p=1.0**, **centered=False**, **axis=None**, **weights=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/circstats.py#L273)[#](#scikitplot.cexternals._astropy.stats.circmoment "Link to this definition")
 :   Computes the `p`-th trigonometric circular moment for an array
     of circular data.
 

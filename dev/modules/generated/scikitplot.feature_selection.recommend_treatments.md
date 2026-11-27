@@ -1,6 +1,6 @@
 # recommend\_treatments[#](#recommend-treatments "Link to this heading")
 
-scikitplot.feature\_selection.recommend\_treatments(**schema**, **\***, **rule=None**, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/feature_selection/_analysis.py#L358)[#](#scikitplot.feature_selection.recommend_treatments "Link to this definition")
+scikitplot.feature\_selection.recommend\_treatments(**schema**, **\***, **rule=None**, **role='feature'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/feature_selection/_analysis.py#L358)[#](#scikitplot.feature_selection.recommend_treatments "Link to this definition")
 :   Recommend an ordered preprocessing chain per feature.
 
     Parameters:

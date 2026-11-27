@@ -323,11 +323,11 @@ Enhanced KISS Random Generator - Complete Usage Examples![](../../_images/sphx_g
 
 [Gaussian Mixture Models — AIC, AICc, and BIC Model Selection](../stats/plot_gaussian_mixture_models.html)
 
-Gaussian Mixture Models — AIC, AICc, and BIC Model Selection![](../../_images/sphx_glr_plot_impute_script_thumb.png)
+Gaussian Mixture Models — AIC, AICc, and BIC Model Selection![](../../_images/sphx_glr_plot_annoy_to_NPY_CSV_thumb.png)
 
-[annoy impute with examples](../impute/plot_impute_script.html)
+[annoy.Index to NPY or CSV with examples](../annoy/plot_annoy_to_NPY_CSV.html)
 
-annoy impute with examples![](../../_images/sphx_glr_plot_cleanprompt_advanced_script_thumb.png)
+annoy.Index to NPY or CSV with examples![](../../_images/sphx_glr_plot_cleanprompt_advanced_script_thumb.png)
 
 [Cleanprompt Advanced: Invariants, Encryption, and the Lossy Model Hop](../cleanprompt/plot_cleanprompt_advanced_script.html)
 

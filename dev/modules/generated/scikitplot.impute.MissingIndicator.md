@@ -1,6 +1,6 @@
 # MissingIndicator[#](#missingindicator "Link to this heading")
 
-class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **features='missing-only'**, **sparse='auto'**, **error\_on\_new=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L787)[#](#scikitplot.impute.MissingIndicator "Link to this definition")
+class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **features='missing-only'**, **sparse='auto'**, **error\_on\_new=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/impute/_base.py#L787)[#](#scikitplot.impute.MissingIndicator "Link to this definition")
 :   Binary indicators for missing values.
 
     Note that this component typically should not be used in a vanilla
@@ -89,7 +89,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
     ```
     Go BackOpen In Tab
 
-    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L1023)[#](#scikitplot.impute.MissingIndicator.fit "Link to this definition")
+    fit(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/impute/_base.py#L1023)[#](#scikitplot.impute.MissingIndicator.fit "Link to this definition")
     :   Fit the transformer on `X`.
 
         Parameters:
@@ -104,7 +104,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
         :   ****self****object
             :   Fitted estimator.
 
-    fit\_transform(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L1086)[#](#scikitplot.impute.MissingIndicator.fit_transform "Link to this definition")
+    fit\_transform(**X**, **y=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/impute/_base.py#L1086)[#](#scikitplot.impute.MissingIndicator.fit_transform "Link to this definition")
     :   Generate missing values indicator for `X`.
 
         Parameters:
@@ -119,7 +119,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
             :   The missing indicator for input data. The data type of `Xt`
                 will be boolean.
 
-    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L1112)[#](#scikitplot.impute.MissingIndicator.get_feature_names_out "Link to this definition")
+    get\_feature\_names\_out(**input\_features=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/impute/_base.py#L1112)[#](#scikitplot.impute.MissingIndicator.get_feature_names_out "Link to this definition")
     :   Get output feature names for transformation.
 
         Parameters:
@@ -137,7 +137,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
         :   ****feature\_names\_out****ndarray of str objects
             :   Transformed feature names.
 
-    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.impute.MissingIndicator.get_metadata_routing "Link to this definition")
+    get\_metadata\_routing()[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/utils/_metadata_requests.py#L1743)[#](#scikitplot.impute.MissingIndicator.get_metadata_routing "Link to this definition")
     :   Get metadata routing of this object.
 
         Please check [User Guide](../../user_guide/metadata_routing.html#metadata-routing) on how the routing
@@ -148,7 +148,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
             :   A [`MetadataRequest`](https://scikit-learn.org/dev/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest "(in scikit-learn v1.10)") encapsulating
                 routing information.
 
-    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute.MissingIndicator.get_params "Link to this definition")
+    get\_params(**deep=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/base.py#L248)[#](#scikitplot.impute.MissingIndicator.get_params "Link to this definition")
     :   Get parameters for this estimator.
 
         Parameters:
@@ -160,7 +160,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
         :   ****params****dict
             :   Parameter names mapped to their values.
 
-    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.impute.MissingIndicator.set_output "Link to this definition")
+    set\_output(**\***, **transform=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/utils/_set_output.py#L400)[#](#scikitplot.impute.MissingIndicator.set_output "Link to this definition")
     :   Set output container.
 
         Refer to the [user guide](https://scikit-learn.org/dev/modules/df_output_transform.html#df-output-transform "(in scikit-learn v1.10)") for more details
@@ -182,7 +182,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
         :   ****self****estimator instance
             :   Estimator instance.
 
-    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute.MissingIndicator.set_params "Link to this definition")
+    set\_params(**\*\*params**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/base.py#L400)[#](#scikitplot.impute.MissingIndicator.set_params "Link to this definition")
     :   Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
@@ -198,7 +198,7 @@ class scikitplot.impute.MissingIndicator(**\***, **missing\_values=nan**, **feat
         :   ****self****estimator instance
             :   Estimator instance.
 
-    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/../sklearn/impute/_base.py#L1045)[#](#scikitplot.impute.MissingIndicator.transform "Link to this definition")
+    transform(**X**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/../sklearn/impute/_base.py#L1045)[#](#scikitplot.impute.MissingIndicator.transform "Link to this definition")
     :   Generate missing values indicator for `X`.
 
         Parameters:

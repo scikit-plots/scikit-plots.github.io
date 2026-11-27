@@ -1,6 +1,6 @@
 # list\_assessment\_providers[#](#list-assessment-providers "Link to this heading")
 
-scikitplot.feature\_selection.list\_assessment\_providers(**registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/feature_selection/_assessments.py#L616)[#](#scikitplot.feature_selection.list_assessment_providers "Link to this definition")
+scikitplot.feature\_selection.list\_assessment\_providers(**registry=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/feature_selection/_assessments.py#L616)[#](#scikitplot.feature_selection.list_assessment_providers "Link to this definition")
 :   Tabulate registered providers.
 
     Parameters:

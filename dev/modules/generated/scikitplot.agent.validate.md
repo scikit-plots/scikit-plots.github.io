@@ -1,6 +1,6 @@
 # validate[#](#validate "Link to this heading")
 
-scikitplot.agent.validate(**schema**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_schema.py#L248)[#](#scikitplot.agent.validate "Link to this definition")
+scikitplot.agent.validate(**schema**, **instance**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_schema.py#L248)[#](#scikitplot.agent.validate "Link to this definition")
 :   Return the reasons `instance` does not match `schema`.
 
     Parameters:

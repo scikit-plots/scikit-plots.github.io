@@ -1,6 +1,6 @@
 # CapabilityMissingError[#](#capabilitymissingerror "Link to this heading")
 
-exception scikitplot.\_ipymagic.CapabilityMissingError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_errors.py#L125)[#](#scikitplot._ipymagic.CapabilityMissingError "Link to this definition")
+exception scikitplot.\_ipymagic.CapabilityMissingError(**message**, **\***, **hint=None**, **code=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/_ipymagic/_errors.py#L125)[#](#scikitplot._ipymagic.CapabilityMissingError "Link to this definition")
 :   An optional package the request needs is not installed.
 
     Annotation:

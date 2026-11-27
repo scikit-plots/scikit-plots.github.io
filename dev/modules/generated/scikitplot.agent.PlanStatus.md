@@ -1,18 +1,18 @@
 # PlanStatus[#](#planstatus "Link to this heading")
 
-class scikitplot.agent.PlanStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L57)[#](#scikitplot.agent.PlanStatus "Link to this definition")
+class scikitplot.agent.PlanStatus(**\*values**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L57)[#](#scikitplot.agent.PlanStatus "Link to this definition")
 :   Where one plan item stands.
 
-    DONE = 'done'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.DONE "Link to this definition")
+    DONE = 'done'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.DONE "Link to this definition")
     :   Finished. Final.
 
-    DROPPED = 'dropped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.DROPPED "Link to this definition")
+    DROPPED = 'dropped'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.DROPPED "Link to this definition")
     :   Abandoned, kept on record. Final.
 
-    IN\_PROGRESS = 'in\_progress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.IN_PROGRESS "Link to this definition")
+    IN\_PROGRESS = 'in\_progress'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.IN_PROGRESS "Link to this definition")
     :   Being worked on; at most one item at a time.
 
-    PENDING = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.PENDING "Link to this definition")
+    PENDING = 'pending'[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_plan.py#L)[#](#scikitplot.agent.PlanStatus.PENDING "Link to this definition")
     :   Not started.
 
     capitalize(**/**)[#](#scikitplot.agent.PlanStatus.capitalize "Link to this definition")

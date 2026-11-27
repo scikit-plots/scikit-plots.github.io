@@ -183,15 +183,15 @@ Tags: [domain: cython](../../_tags/domain-cython.html) [plot-type: cython](../..
 
 Related examples
 
-![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
-
-[Browse and compile templates](plot_01_browse_and_compile_templates.html)
-
-Browse and compile templates![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
+![](../../_images/sphx_glr_plot_05_package_examples_multimodule_thumb.png)
 
 [Multi-module package builds (5 package examples)](plot_05_package_examples_multimodule.html)
 
-Multi-module package builds (5 package examples)![](../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png)
+Multi-module package builds (5 package examples)![](../../_images/sphx_glr_plot_01_browse_and_compile_templates_thumb.png)
+
+[Browse and compile templates](plot_01_browse_and_compile_templates.html)
+
+Browse and compile templates![](../../_images/sphx_glr_plot_06_multifile_support_files_thumb.png)
 
 [Multi-file builds: .pxi includes and external headers](plot_06_multifile_support_files.html)
 

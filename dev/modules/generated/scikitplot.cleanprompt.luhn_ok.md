@@ -1,6 +1,6 @@
 # luhn\_ok[#](#luhn-ok "Link to this heading")
 
-scikitplot.cleanprompt.luhn\_ok(**digits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_patterns.py#L148)[#](#scikitplot.cleanprompt.luhn_ok "Link to this definition")
+scikitplot.cleanprompt.luhn\_ok(**digits**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_patterns.py#L148)[#](#scikitplot.cleanprompt.luhn_ok "Link to this definition")
 :   Return whether `digits` satisfies the Luhn checksum.
 
     Parameters:

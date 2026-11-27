@@ -1,6 +1,6 @@
 # Item[#](#item "Link to this heading")
 
-class scikitplot.cleanprompt.Item(**status**, **relative**, **format=None**, **output=None**, **reason=''**, **count=0**, **kinds=<factory>**, **reported=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item "Link to this definition")
+class scikitplot.cleanprompt.Item(**status**, **relative**, **format=None**, **output=None**, **reason=''**, **count=0**, **kinds=<factory>**, **reported=<factory>**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item "Link to this definition")
 :   What happened to one file of a folder or archive.
 
     Parameters:
@@ -45,14 +45,14 @@ class scikitplot.cleanprompt.Item(**status**, **relative**, **format=None**, **o
 
     format: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.Item.format "Link to this definition")
 
-    kinds: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.kinds "Link to this definition")
+    kinds: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.kinds "Link to this definition")
 
     output: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") | [None](https://docs.python.org/3/builtins/constants.html#None "(in Python v3.15)") = None[#](#scikitplot.cleanprompt.Item.output "Link to this definition")
 
     reason: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)") = ''[#](#scikitplot.cleanprompt.Item.reason "Link to this definition")
 
-    relative: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.relative "Link to this definition")
+    relative: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.relative "Link to this definition")
 
-    reported: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.reported "Link to this definition")
+    reported: [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [int](https://docs.python.org/3/builtins/functions.html#int "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.reported "Link to this definition")
 
-    status: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.status "Link to this definition")
+    status: [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_runtime.py#L249)[#](#scikitplot.cleanprompt.Item.status "Link to this definition")

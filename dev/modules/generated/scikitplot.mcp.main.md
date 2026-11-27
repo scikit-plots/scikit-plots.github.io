@@ -1,6 +1,6 @@
 # main[#](#main "Link to this heading")
 
-scikitplot.mcp.main(**argv=None**, **\***, **stdout=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/mcp/__main__.py#L720)[#](#scikitplot.mcp.main "Link to this definition")
+scikitplot.mcp.main(**argv=None**, **\***, **stdout=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/mcp/__main__.py#L720)[#](#scikitplot.mcp.main "Link to this definition")
 :   Parameters:
     :   * ****argv**** ([**list**](https://docs.python.org/3/builtins/stdtypes.html#list "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]** **|** **None**)
         * ****stdout**** ([**TextIO**](https://docs.python.org/3/library/typing.html#typing.TextIO "(in Python v3.15)") **|** **None**)

@@ -1,6 +1,6 @@
 # RoutingPolicy[#](#routingpolicy "Link to this heading")
 
-class scikitplot.corpus.RoutingPolicy(**rules=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L218)[#](#scikitplot.corpus.RoutingPolicy "Link to this definition")
+class scikitplot.corpus.RoutingPolicy(**rules=()**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L218)[#](#scikitplot.corpus.RoutingPolicy "Link to this definition")
 :   An ordered set of [`RoutingRule`](scikitplot.corpus.RoutingRule.html#scikitplot.corpus.RoutingRule "scikitplot.corpus.RoutingRule"), one per shape.
 
     Parameters:
@@ -32,7 +32,7 @@ class scikitplot.corpus.RoutingPolicy(**rules=()**)[[source]](https://github.com
     ```
     Go BackOpen In Tab
 
-    detect(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L265)[#](#scikitplot.corpus.RoutingPolicy.detect "Link to this definition")
+    detect(**query**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L265)[#](#scikitplot.corpus.RoutingPolicy.detect "Link to this definition")
     :   Return the shapes of `query`, in rule order.
 
         Parameters:
@@ -49,7 +49,7 @@ class scikitplot.corpus.RoutingPolicy(**rules=()**)[[source]](https://github.com
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), …]
 
-    legs\_for(**shapes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L282)[#](#scikitplot.corpus.RoutingPolicy.legs_for "Link to this definition")
+    legs\_for(**shapes**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L282)[#](#scikitplot.corpus.RoutingPolicy.legs_for "Link to this definition")
     :   Return the legs the given shapes need, each once, in rule order.
 
         Parameters:
@@ -63,7 +63,7 @@ class scikitplot.corpus.RoutingPolicy(**rules=()**)[[source]](https://github.com
     property shapes: [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), ...][#](#scikitplot.corpus.RoutingPolicy.shapes "Link to this definition")
     :   Every shape this policy can report, in order.
 
-    with\_rules(**\*rules**, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/corpus/_routing.py#L291)[#](#scikitplot.corpus.RoutingPolicy.with_rules "Link to this definition")
+    with\_rules(**\*rules**, **replace=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/corpus/_routing.py#L291)[#](#scikitplot.corpus.RoutingPolicy.with_rules "Link to this definition")
     :   Return a policy with `rules` added.
 
         Parameters:

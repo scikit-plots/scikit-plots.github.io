@@ -1,6 +1,6 @@
 # CommandFailedError[#](#commandfailederror "Link to this heading")
 
-exception scikitplot.\_ipymagic.CommandFailedError(**message**, **\***, **result**, **hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/_ipymagic/_errors.py#L98)[#](#scikitplot._ipymagic.CommandFailedError "Link to this definition")
+exception scikitplot.\_ipymagic.CommandFailedError(**message**, **\***, **result**, **hint=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/_ipymagic/_errors.py#L98)[#](#scikitplot._ipymagic.CommandFailedError "Link to this definition")
 :   A command exited with a non-zero status (raised only when asked to).
 
     Parameters:

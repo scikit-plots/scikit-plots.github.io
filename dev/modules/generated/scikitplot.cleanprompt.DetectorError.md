@@ -1,6 +1,6 @@
 # DetectorError[#](#detectorerror "Link to this heading")
 
-exception scikitplot.cleanprompt.DetectorError(**message**, **detector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_exceptions.py#L79)[#](#scikitplot.cleanprompt.DetectorError "Link to this definition")
+exception scikitplot.cleanprompt.DetectorError(**message**, **detector**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_exceptions.py#L79)[#](#scikitplot.cleanprompt.DetectorError "Link to this definition")
 :   A detector raised while scanning.
 
     Parameters:

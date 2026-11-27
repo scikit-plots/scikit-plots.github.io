@@ -1,6 +1,6 @@
 # lexical\_identity[#](#lexical-identity "Link to this heading")
 
-scikitplot.rank\_bm25.lexical\_identity(**recipe**, **analyzer**, **parameters**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/rank_bm25/_identity.py#L266)[#](#scikitplot.rank_bm25.lexical_identity "Link to this definition")
+scikitplot.rank\_bm25.lexical\_identity(**recipe**, **analyzer**, **parameters**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/rank_bm25/_identity.py#L266)[#](#scikitplot.rank_bm25.lexical_identity "Link to this definition")
 :   Return the identity of a lexical build.
 
     Parameters:

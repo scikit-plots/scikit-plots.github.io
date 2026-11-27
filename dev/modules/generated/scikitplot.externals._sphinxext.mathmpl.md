@@ -1,4 +1,4 @@
-# scikitplot.externals.\_sphinxext.mathmpl[#](#scikitplot-externals-sphinxext-mathmpl "Link to this heading")
+# mathmpl[#](#mathmpl "Link to this heading")
 
 A role and directive to display mathtext in Sphinx.
 

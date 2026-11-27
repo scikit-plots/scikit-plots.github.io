@@ -1,6 +1,6 @@
 # analyse\_pattern[#](#analyse-pattern "Link to this heading")
 
-scikitplot.cleanprompt.analyse\_pattern(**source**, **flags=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_pattern_risk.py#L865)[#](#scikitplot.cleanprompt.analyse_pattern "Link to this definition")
+scikitplot.cleanprompt.analyse\_pattern(**source**, **flags=0**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_pattern_risk.py#L865)[#](#scikitplot.cleanprompt.analyse_pattern "Link to this definition")
 :   Report the shapes in `source` that can backtrack catastrophically.
 
     Parameters:

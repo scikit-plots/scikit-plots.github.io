@@ -1473,7 +1473,7 @@ Start here
     languages, custom extensions, awkward encodings and a line-coverage check.
 12. **Read Lean proofs** — :class:`LeanReader`: one chunk per command, proofs
     kept or dropped, audit flags (``sorry``, ``native_decide``, ``axiom``,
-    ``#exit``), long proofs in parts, Lean 3 and hostile input.
+    ``#exit``), references, long proofs in parts, Lean 3 and hostile input.
 
 Which API should I use?
 -----------------------
@@ -2580,6 +2580,103 @@ servers (``mcp``) and the profiler. See also :ref:`ipymagic-index`.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Profile a Notebook Cell with %%scikitplot_profile</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Lean
+====
+
+.. currentmodule:: scikitplot.lean
+
+Evidence on Lean projects, read from source text with :class:`LeanIndex`:
+what a theorem claims, what its proof rests on, and whether any of that is
+``sorry``, an axiom or code that adds declarations at build time. Every
+item names its file and lines. The examples write their own projects: no
+Lean toolchain, no download.
+
+.. code-block:: text
+
+   .lean files
+        ↓
+   LeanIndex.from_folder      (declarations, names used, audit flags)
+        ↓                     save / load: one file, read in seconds;
+        ↓                     refresh: read again only what changed
+   add_folder                 (a project over its saved dependencies)
+        ↓
+   summary   dossier   discover / export     (layer=: one project's files)
+        ↓
+   lake build, #print axioms  (the kernel decides)
+
+To read ``.lean`` files as documents of a retrieval corpus, see
+:class:`scikitplot.corpus.LeanReader` in the corpus examples.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A formal proof that Lean accepts can still prove less than it seems to. When a model writes much of a development, a reviewer has to check what the theorem says as carefully as whether it is proved. This example builds a small project with the gaps a reviewer looks for and shows the report that exposes each one:">
+
+.. only:: html
+
+  .. image:: /auto_examples/lean/images/thumb/sphx_glr_plot_lean_audit_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/lean/plot_lean_audit_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Audit an AI-Assisted Formal Proof with LeanIndex</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A reviewer of a formal proof asks three questions first: what does the theorem claim, what does its proof rest on, and does any of that rest on sorry, an axiom, native_decide or code that adds declarations when Lean builds the project? LeanIndex answers them from the source text, every item with its file and lines. This example goes from a project of three files to a generated one of a few hundred:">
+
+.. only:: html
+
+  .. image:: /auto_examples/lean/images/thumb/sphx_glr_plot_lean_index_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/lean/plot_lean_index_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gather the Evidence on a Lean Proof with LeanIndex</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A Lean project sits on dependencies far larger than itself: a few hundred files over mathlib&#x27;s ten thousand. Reading the dependency once, saving its index, and adding each project over it as a layer keeps the cost of a review to the project&#x27;s own files, with the same reports as one index of everything. This example:">
+
+.. only:: html
+
+  .. image:: /auto_examples/lean/images/thumb/sphx_glr_plot_lean_layers_script_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/lean/plot_lean_layers_script`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Index a Lean Project over its Saved Dependencies with LeanIndex</div>
     </div>
 
 
@@ -3880,6 +3977,7 @@ e.g. a DL (ANN, CNN, NLP) :py:class:`~tensorflow.keras.Model` model instance.
    /auto_examples/feature_selection/index.rst
    /auto_examples/impute/index.rst
    /auto_examples/ipymagic/index.rst
+   /auto_examples/lean/index.rst
    /auto_examples/levenshtein/index.rst
    /auto_examples/mcp/index.rst
    /auto_examples/memmap/index.rst

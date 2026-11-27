@@ -1,6 +1,6 @@
 # Catalog[#](#catalog "Link to this heading")
 
-class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**, **documents=<factory>**, **partial=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog "Link to this definition")
+class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**, **documents=<factory>**, **partial=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog "Link to this definition")
 :   An immutable set of packs and formats.
 
     Parameters:
@@ -30,7 +30,7 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         * ****documents**** ([**Mapping**](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")**[**[**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**,** [**str**](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")**]**)
         * ****partial**** ([**bool**](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)"))
 
-    static code\_vocabulary(**packs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L429)[#](#scikitplot.cleanprompt.Catalog.code_vocabulary "Link to this definition")
+    static code\_vocabulary(**packs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L429)[#](#scikitplot.cleanprompt.Catalog.code_vocabulary "Link to this definition")
     :   Return the union of the packs’ code sections.
 
         Parameters:
@@ -47,9 +47,9 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         Return type:
         :   **CodeSpec**
 
-    documents: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.documents "Link to this definition")
+    documents: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.documents "Link to this definition")
 
-    static field\_index(**packs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L387)[#](#scikitplot.cleanprompt.Catalog.field_index "Link to this definition")
+    static field\_index(**packs**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L387)[#](#scikitplot.cleanprompt.Catalog.field_index "Link to this definition")
     :   Return normalised field name to rule, across packs.
 
         Parameters:
@@ -72,7 +72,7 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         Return type:
         :   [dict](https://docs.python.org/3/builtins/stdtypes.html#dict "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [**FieldSpec**](scikitplot.cleanprompt.FieldSpec.html#scikitplot.cleanprompt.FieldSpec "scikitplot.cleanprompt._packs.FieldSpec")]
 
-    fingerprint(**packs**, **formats**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L458)[#](#scikitplot.cleanprompt.Catalog.fingerprint "Link to this definition")
+    fingerprint(**packs**, **formats**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L458)[#](#scikitplot.cleanprompt.Catalog.fingerprint "Link to this definition")
     :   Return a digest of the selected definitions’ content.
 
         Parameters:
@@ -90,7 +90,7 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         Return type:
         :   [str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)")
 
-    format\_for(**path**, **allowed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L341)[#](#scikitplot.cleanprompt.Catalog.format_for "Link to this definition")
+    format\_for(**path**, **allowed=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L341)[#](#scikitplot.cleanprompt.Catalog.format_for "Link to this definition")
     :   Return the format that reads a file, or `None`.
 
         Parameters:
@@ -130,9 +130,9 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         ```
         Go BackOpen In Tab
 
-    formats: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [FormatSpec](scikitplot.cleanprompt.FormatSpec.html#scikitplot.cleanprompt.FormatSpec "scikitplot.cleanprompt._formats.FormatSpec")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.formats "Link to this definition")
+    formats: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [FormatSpec](scikitplot.cleanprompt.FormatSpec.html#scikitplot.cleanprompt.FormatSpec "scikitplot.cleanprompt._formats.FormatSpec")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.formats "Link to this definition")
 
-    merge(**other**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L482)[#](#scikitplot.cleanprompt.Catalog.merge "Link to this definition")
+    merge(**other**, **conflict='error'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L482)[#](#scikitplot.cleanprompt.Catalog.merge "Link to this definition")
     :   Return this catalog with another’s definitions added.
 
         Parameters:
@@ -158,11 +158,11 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         Return type:
         :   [**Catalog**](#scikitplot.cleanprompt.Catalog "scikitplot.cleanprompt._catalog.Catalog")
 
-    packs: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [PackSpec](scikitplot.cleanprompt.PackSpec.html#scikitplot.cleanprompt.PackSpec "scikitplot.cleanprompt._packs.PackSpec")][[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.packs "Link to this definition")
+    packs: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping "(in Python v3.15)")[[str](https://docs.python.org/3/builtins/stdtypes.html#str "(in Python v3.15)"), [PackSpec](scikitplot.cleanprompt.PackSpec.html#scikitplot.cleanprompt.PackSpec "scikitplot.cleanprompt._packs.PackSpec")][[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L119)[#](#scikitplot.cleanprompt.Catalog.packs "Link to this definition")
 
     partial: [bool](https://docs.python.org/3/builtins/functions.html#bool "(in Python v3.15)") = False[#](#scikitplot.cleanprompt.Catalog.partial "Link to this definition")
 
-    resolve\_formats(**selection='all'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L293)[#](#scikitplot.cleanprompt.Catalog.resolve_formats "Link to this definition")
+    resolve\_formats(**selection='all'**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L293)[#](#scikitplot.cleanprompt.Catalog.resolve_formats "Link to this definition")
     :   Return the formats a selection means, sorted by name.
 
         Parameters:
@@ -184,7 +184,7 @@ class scikitplot.cleanprompt.Catalog(**packs=<factory>**, **formats=<factory>**,
         Return type:
         :   [tuple](https://docs.python.org/3/builtins/stdtypes.html#tuple "(in Python v3.15)")[[**FormatSpec**](scikitplot.cleanprompt.FormatSpec.html#scikitplot.cleanprompt.FormatSpec "scikitplot.cleanprompt._formats.FormatSpec"), …]
 
-    resolve\_packs(**selection='all'**, **formats=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cleanprompt/_catalog.py#L236)[#](#scikitplot.cleanprompt.Catalog.resolve_packs "Link to this definition")
+    resolve\_packs(**selection='all'**, **formats=None**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cleanprompt/_catalog.py#L236)[#](#scikitplot.cleanprompt.Catalog.resolve_packs "Link to this definition")
     :   Return the packs a selection means, with their requirements.
 
         Parameters:

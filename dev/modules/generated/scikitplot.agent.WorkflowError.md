@@ -1,6 +1,6 @@
 # WorkflowError[#](#workflowerror "Link to this heading")
 
-exception scikitplot.agent.WorkflowError[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/agent/_workflow.py#L108)[#](#scikitplot.agent.WorkflowError "Link to this definition")
+exception scikitplot.agent.WorkflowError[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/agent/_workflow.py#L108)[#](#scikitplot.agent.WorkflowError "Link to this definition")
 :   A graph that cannot be built, or a run the graph cannot continue.
 
     Annotation:

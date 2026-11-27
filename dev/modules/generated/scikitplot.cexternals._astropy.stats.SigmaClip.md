@@ -1,6 +1,6 @@
 # SigmaClip[#](#sigmaclip "Link to this heading")
 
-class scikitplot.cexternals.\_astropy.stats.SigmaClip(**sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L35)[#](#scikitplot.cexternals._astropy.stats.SigmaClip "Link to this definition")
+class scikitplot.cexternals.\_astropy.stats.SigmaClip(**sigma=3.0**, **sigma\_lower=None**, **sigma\_upper=None**, **maxiters=5**, **cenfunc='median'**, **stdfunc='std'**, **grow=False**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L35)[#](#scikitplot.cexternals._astropy.stats.SigmaClip "Link to this definition")
 :   Class to perform sigma clipping.
 
     The data will be iterated over, each time rejecting values that are
@@ -159,7 +159,7 @@ class scikitplot.cexternals.\_astropy.stats.SigmaClip(**sigma=3.0**, **sigma\_lo
 
     Go BackOpen In Tab
 
-    \_\_call\_\_(**data**, **axis=None**, **masked=True**, **return\_bounds=False**, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/740e0f58/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L552)[#](#scikitplot.cexternals._astropy.stats.SigmaClip.__call__ "Link to this definition")
+    \_\_call\_\_(**data**, **axis=None**, **masked=True**, **return\_bounds=False**, **copy=True**)[[source]](https://github.com/scikit-plots/scikit-plots/blob/0f76614b/scikitplot/cexternals/_astropy/stats/sigma_clipping.py#L552)[#](#scikitplot.cexternals._astropy.stats.SigmaClip.__call__ "Link to this definition")
     :   Perform sigma clipping on the provided data.
 
         Parameters:
